@@ -1,0 +1,2244 @@
+:root {
+  font-family: "Noto Sans JP", system-ui, sans-serif;
+  color: #26233c;
+  background: #eff0f7;
+  font-synthesis: none;
+  font-weight: 500;
+  font-size: 14px;
+  --purple: #8751ee;
+  --orange: #f28b36;
+  --muted: #8b889f;
+  --attack: #e46e54;
+  --balance: #a277c7;
+  --defense: #75ad79;
+  --speed: #58a6c1;
+  --support: #d6aa54;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+}
+button,
+input,
+select {
+  font: inherit;
+}
+button,
+a,
+input,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  cursor: pointer;
+}
+button {
+  border: 0;
+}
+button:disabled {
+  cursor: default;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #5a36d2;
+  outline-offset: 3px;
+}
+button,
+select {
+  touch-action: manipulation;
+}
+button svg {
+  flex-shrink: 0;
+}
+button {
+  transition:
+    background 0.16s,
+    border-color 0.16s,
+    box-shadow 0.16s,
+    transform 0.16s;
+}
+button:not(:disabled):active {
+  transform: translateY(1px);
+}
+button:not(:disabled):hover {
+  filter: brightness(1.05);
+}
+.app {
+  min-height: 100dvh;
+  background:
+    radial-gradient(ellipse at 0% 43%, #a284e350, transparent 39%),
+    radial-gradient(ellipse at 100% 42%, #eaa66738, transparent 37%),
+    linear-gradient(170deg, #f6f6fb 0%, #e8ecf5 55%, #e7e5f1 100%);
+  overflow: hidden;
+  --team: var(--purple);
+}
+.app.orange {
+  --team: var(--orange);
+}
+.app-header {
+  height: 76px;
+  padding: 0 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: #eae8f5;
+  background: #18162d;
+  border-bottom: 3px solid #32284e;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  letter-spacing: 0.3px;
+  font-weight: 900;
+  line-height: 1.05;
+  flex-shrink: 0;
+}
+.brand-light {
+  font-weight: 400;
+  letter-spacing: 1.5px;
+}
+.brand small {
+  font-size: 10px;
+  letter-spacing: 2px;
+  display: block;
+  margin-top: 7px;
+  color: #b7b3cc;
+  font-weight: 500;
+}
+.header-center {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  color: #c5bfd6;
+}
+.header-center > svg {
+  color: #c9a5ff;
+}
+.header-center > span:last-child {
+  font-size: 11px;
+  letter-spacing: 1.2px;
+}
+.header-divider {
+  height: 14px;
+  width: 1px;
+  background: #514762;
+  margin: 0 5px;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.snapshot {
+  font-size: 11px;
+  color: #aba5bf;
+  letter-spacing: 1px;
+  margin-right: 12px;
+}
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 7px;
+  background: transparent;
+  color: inherit;
+}
+.icon-button:hover {
+  background: #ffffff13;
+}
+.settings-button {
+  color: #e4e0f1;
+  background: #ffffff0e;
+  border: 1px solid #ffffff20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+.app main {
+  max-width: 1640px;
+  margin: auto;
+  padding: 0 32px;
+}
+.phase-banner {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 22px 0 20px;
+  min-height: 100px;
+}
+.eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+.phase-label {
+  min-width: 188px;
+  border-right: 1px solid #bbb5cb;
+  padding-right: 25px;
+}
+.phase-label > .eyebrow {
+  color: #80639f;
+  font-size: 10px;
+  letter-spacing: 1.7px;
+}
+.phase-label h1 {
+  font-size: 21px;
+  letter-spacing: 1px;
+  margin: 3px 0 0;
+  font-weight: 800;
+}
+.phase-message {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex: 1;
+  min-width: 0;
+}
+.team-tag {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e5d9fb;
+  color: #7e43de;
+  flex-shrink: 0;
+}
+.team-tag.orange {
+  background: #ffe6cf;
+  color: #d4772a;
+}
+.phase-message strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.phase-message div > span {
+  display: block;
+  font-size: 11px;
+  color: #8a829a;
+  margin-top: 3px;
+}
+.timer {
+  margin-left: auto;
+  text-align: right;
+  min-width: 130px;
+}
+.timer > .eyebrow {
+  font-size: 10px;
+  color: #8c829b;
+  letter-spacing: 0.6px;
+}
+.timer > div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  height: 40px;
+}
+.timer > div > svg {
+  color: #9a92a9;
+}
+.timer strong {
+  font-size: 37px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.timer-button {
+  width: 27px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  color: #857599;
+  border: 1px solid #c8bfd8;
+  background: #fff7;
+  border-radius: 50%;
+}
+.timer-button:disabled {
+  opacity: 0.4;
+}
+.timer.urgent strong {
+  color: #df6546;
+}
+.draft-arena {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) minmax(400px, 2.35fr) minmax(
+      200px,
+      1fr
+    );
+  gap: 24px;
+  align-items: start;
+  position: relative;
+}
+.team-panel {
+  --side: #9260ed;
+  --side-rgb: 146, 96, 237;
+  min-width: 0;
+}
+.team-panel.orange {
+  --side: #ed973e;
+  --side-rgb: 237, 151, 62;
+}
+.team-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  height: 49px;
+  margin-bottom: 16px;
+}
+.team-emblem {
+  height: 36px;
+  width: 31px;
+  display: grid;
+  place-items: center;
+  background: rgba(var(--side-rgb), 0.13);
+  color: var(--side);
+  clip-path: polygon(0 0, 100% 0, 100% 73%, 50% 100%, 0 73%);
+  flex-shrink: 0;
+}
+.team-heading .eyebrow {
+  font-size: 9px;
+  color: var(--side);
+  letter-spacing: 1.6px;
+}
+.team-heading h2 {
+  font-size: 16px;
+  margin: 3px 0 0;
+  letter-spacing: 0.2px;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+}
+.team-heading > div {
+  min-width: 0;
+}
+.order-label {
+  margin-left: auto;
+  background: rgba(var(--side-rgb), 0.11);
+  color: var(--side);
+  padding: 3px 7px;
+  font-size: 10px;
+  white-space: nowrap;
+  border: 1px solid rgba(var(--side-rgb), 0.2);
+  border-radius: 3px;
+}
+.bans-heading,
+.picks-heading {
+  display: flex;
+  justify-content: space-between;
+  color: #898197;
+  font-size: 11px;
+  margin: 0 0 8px;
+}
+.bans-heading > span:first-child {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.bans-heading > span:last-child,
+.picks-heading > span:last-child {
+  font-variant-numeric: tabular-nums;
+  font-size: 10px;
+}
+.ban-slots {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 21px;
+}
+.ban-slot {
+  height: 70px;
+  border: 1px solid #c9c5d4;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  background: #e3e0eb;
+  color: #b5adc5;
+  overflow: hidden;
+  transition: border 0.15s;
+}
+.ban-slot.active {
+  border: 2px solid var(--side);
+  background: rgba(var(--side-rgb), 0.1);
+  box-shadow: 0 0 0 3px rgba(var(--side-rgb), 0.07);
+  color: var(--side);
+}
+.ban-slot.filled {
+  border-color: #a77b7b;
+  background: #d8d0d9;
+}
+.ban-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: saturate(0.65);
+  opacity: 0.8;
+  padding-bottom: 8px;
+}
+.ban-slot > svg:not(.ban-mark) {
+  margin-bottom: 10px;
+  opacity: 0.6;
+}
+.ban-slot-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 9px;
+  padding: 2px 0;
+  background: #28203512;
+  color: #8a7a96;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ban-slot.filled .ban-slot-label {
+  background: #322539ba;
+  color: #fff;
+}
+.ban-mark {
+  position: absolute;
+  right: 4px;
+  bottom: 18px;
+  color: #d74447;
+  background: #e7d9e4;
+  border-radius: 50%;
+  stroke-width: 3;
+}
+.skip-mark {
+  color: #897e93;
+}
+.picks-heading {
+  margin-bottom: 9px;
+}
+.player-list {
+  display: grid;
+  gap: 9px;
+}
+.player-slot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 73px;
+  width: 100%;
+  position: relative;
+  padding: 0 11px 0 6px;
+  overflow: hidden;
+  border: 1px solid #d1c9df;
+  border-left: 3px solid rgba(var(--side-rgb), 0.55);
+  border-radius: 5px;
+  background: linear-gradient(105deg, rgba(var(--side-rgb), 0.16), #f8f6fc8f);
+  text-align: left;
+  color: #665972;
+}
+.player-slot:disabled {
+  opacity: 1;
+}
+.player-slot.active {
+  border: 2px solid var(--side);
+  background: linear-gradient(110deg, rgba(var(--side-rgb), 0.2), #fcf6fc);
+  box-shadow: 0 3px 12px rgba(var(--side-rgb), 0.14);
+}
+.player-slot.filled {
+  background: linear-gradient(105deg, rgba(var(--side-rgb), 0.23), #f8f6fcba);
+}
+.player-slot.swapping {
+  outline: 3px solid #f0c749;
+  outline-offset: 2px;
+}
+.player-number {
+  font-size: 10px;
+  font-weight: 700;
+  color: #a59aaa;
+  position: absolute;
+  top: 6px;
+  left: 7px;
+  z-index: 1;
+}
+.player-portrait {
+  height: 66px;
+  width: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+.player-portrait.has-pokemon {
+  height: 75px;
+  margin-left: 0;
+  width: 74px;
+}
+.player-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 3px #1b153029);
+}
+.pokeball-symbol {
+  width: 33px;
+  height: 33px;
+  border: 2px solid rgba(var(--side-rgb), 0.2);
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+.pokeball-symbol:before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: rgba(var(--side-rgb), 0.2);
+  top: 14px;
+  left: 0;
+}
+.pokeball-symbol:after {
+  content: "";
+  position: absolute;
+  border: 2px solid rgba(var(--side-rgb), 0.25);
+  background: #e3ddee;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  top: 10px;
+  left: 10px;
+}
+.player-info {
+  min-width: 0;
+  flex: 1;
+}
+.player-name {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+  color: #a096ac;
+}
+.filled .player-name {
+  color: #30293f;
+  font-size: 13px;
+}
+.active .player-name {
+  color: var(--side);
+  font-size: 11px;
+}
+.trainer {
+  font-family: system-ui, sans-serif;
+  font-size: 10px;
+  color: #a69baa;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 5px;
+  letter-spacing: 0.3px;
+}
+.role-text {
+  display: block;
+  font-size: 9px;
+  margin-top: 3px;
+  color: var(--role);
+}
+.attack {
+  --role: var(--attack);
+}
+.balance {
+  --role: var(--balance);
+}
+.defense {
+  --role: var(--defense);
+}
+.speed {
+  --role: var(--speed);
+}
+.support {
+  --role: var(--support);
+}
+.player-check {
+  color: var(--side);
+  flex-shrink: 0;
+}
+.slot-dash {
+  color: #c9c0d2;
+  font-size: 14px;
+}
+.selecting-bars {
+  display: flex;
+  gap: 2px;
+  height: 13px;
+  align-items: center;
+}
+.selecting-bars i {
+  width: 2px;
+  background: var(--side);
+  height: 8px;
+  animation: bars 1s ease-in-out infinite;
+}
+.selecting-bars i:nth-child(2) {
+  height: 13px;
+  animation-delay: 0.15s;
+}
+.selecting-bars i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.team-composition {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  padding-top: 14px;
+  font-size: 10px;
+  color: #988c9e;
+}
+.team-composition span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.team-composition i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--role);
+  opacity: 0.8;
+}
+.selection-panel {
+  background: linear-gradient(160deg, #353147 0%, #292635 100%);
+  border: 1px solid #fff7;
+  border-radius: 12px;
+  padding: 17px 17px 0;
+  box-shadow: 0 12px 28px #3b304b14;
+  color: #f1eef9;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  height: 575px;
+  position: relative;
+  overflow: hidden;
+}
+.selection-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+.selection-top > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.selection-top > div > svg {
+  color: #a99abd;
+}
+.selection-top h2 {
+  font-size: 14px;
+  margin: 0;
+  letter-spacing: 0.4px;
+  font-weight: 700;
+}
+.roster-count {
+  border-radius: 4px;
+  border: 1px solid #81738d50;
+  padding: 1px 5px;
+  color: #a99db9;
+  font-size: 10px;
+}
+.sort-select {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+.sort-select select {
+  appearance: none;
+  color: #b5aabd;
+  background: transparent;
+  border: 0;
+  outline-offset: 0;
+  font-size: 10px;
+  cursor: pointer;
+  padding: 3px 18px 3px 3px;
+}
+.sort-select option {
+  color: #39303f;
+  background: #fff;
+}
+.sort-select > svg {
+  pointer-events: none;
+  position: absolute;
+  right: 2px;
+  color: #aa9ab7;
+}
+.roster-tools {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 13px;
+}
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid #72688066;
+  background: #221f30b3;
+  border-radius: 5px;
+  flex: 1;
+  min-width: 0;
+  color: #8f839f;
+}
+.search-field input {
+  border: 0;
+  background: transparent;
+  outline: none;
+  color: #ece4f6;
+  width: 100%;
+  min-width: 0;
+  font-size: 11px;
+}
+.search-field input::placeholder {
+  color: #9b8baa;
+}
+.search-field input::-webkit-search-cancel-button {
+  appearance: none;
+}
+.search-field button {
+  background: transparent;
+  color: #bbb;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+.hide-used {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  font-size: 10px;
+  color: #b4a6c0;
+  cursor: pointer;
+}
+.hide-used input {
+  width: 12px;
+  height: 12px;
+  accent-color: #b17cfa;
+}
+.role-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.role-tabs button {
+  font-size: 10px;
+  color: #b6a9c3;
+  background: #51465b66;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  min-height: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 7px;
+  flex: 1;
+  white-space: nowrap;
+}
+.role-tabs i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--role);
+}
+.role-tabs button.selected {
+  background: #8b56de;
+  color: white;
+  border-color: #b792ef;
+}
+.role-tabs button.selected i {
+  background: #fff;
+}
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  overflow: auto;
+  align-content: start;
+  min-height: 0;
+  flex: 1;
+  padding: 3px 7px 6px 3px;
+  margin: -3px -7px 0 -3px;
+  scrollbar-width: thin;
+  scrollbar-color: #70607c transparent;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+.pokemon-card {
+  aspect-ratio: 0.96;
+  min-width: 0;
+  border: 1px solid #ffffff1c;
+  border-radius: 7px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    140deg,
+    color-mix(in srgb, var(--role) 85%, #fff),
+    color-mix(in srgb, var(--role) 80%, #33253d)
+  );
+  padding: 0;
+  isolation: isolate;
+}
+.pokemon-card:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(#ffffff15 1px, transparent 1px);
+  background-size: 5px 5px;
+  z-index: -1;
+}
+.pokemon-card img {
+  height: calc(100% - 17px);
+  width: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 3px 1px #22112722);
+  transition: transform 0.18s;
+  pointer-events: none;
+}
+.pokemon-card:not(:disabled):hover img {
+  transform: scale(1.09);
+}
+.pokemon-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 5px 2px 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: linear-gradient(transparent, #302036b3);
+  text-shadow: 0 1px 2px #31213680;
+}
+.card-role-stripe {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 13px;
+  height: 3px;
+  background: #fff8;
+  border-radius: 2px;
+}
+.pokemon-card.is-selected {
+  outline: 3px solid #f8c85f;
+  outline-offset: 0;
+  box-shadow: 0 0 0 2px #3b2b35;
+  z-index: 2;
+}
+.selected-check {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #ffce65;
+  padding: 2px;
+  color: #5b421d;
+  border-radius: 0 0 0 5px;
+  display: grid;
+  place-items: center;
+}
+.pokemon-card.unavailable img {
+  filter: grayscale(0.8);
+  opacity: 0.37;
+}
+.pokemon-card.unavailable .pokemon-name {
+  opacity: 0.45;
+}
+.used-overlay {
+  position: absolute;
+  inset: 0;
+  background: #1c182b73;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #eea2a6;
+  gap: 3px;
+}
+.used-overlay > span {
+  font-size: 9px;
+  letter-spacing: 0.6px;
+}
+.selection-footer {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  font-size: 9px;
+  color: #b5a7bf;
+}
+.selection-footer > span:last-child {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.selection-footer svg {
+  margin-left: 6px;
+}
+.legend-dot {
+  width: 7px;
+  height: 7px;
+  background: #f3c969;
+  border-radius: 2px;
+}
+.empty-results {
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 240px;
+  gap: 18px;
+  color: #b8a8c5;
+  font-size: 13px;
+}
+.empty-results button {
+  padding: 8px 14px;
+  background: #5f467d;
+  border: 1px solid #8664b4;
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.decision-bar {
+  display: grid;
+  grid-template-columns: 1fr 2.35fr 1fr;
+  gap: 24px;
+  min-height: 101px;
+  align-items: center;
+  padding: 14px 0;
+}
+.utility-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.subtle-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: #887794;
+  font-size: 11px;
+  padding: 6px 0;
+  white-space: nowrap;
+}
+.subtle-button:disabled {
+  opacity: 0.38;
+}
+.decision-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.selected-description {
+  font-size: 11px;
+  text-align: center;
+  color: #8f809a;
+  min-height: 17px;
+  line-height: 1.5;
+}
+.selected-description strong {
+  font-weight: 700;
+  color: #49324f;
+  margin-right: 5px;
+}
+.confirm-button {
+  height: 46px;
+  min-width: 224px;
+  border-radius: 25px;
+  background: linear-gradient(#ffa343, #f2862c);
+  border: 1px solid #e78c39;
+  border-bottom: 4px solid #cd712a;
+  box-shadow: 0 4px 8px #bf6b1e14;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 0 25px;
+  position: relative;
+}
+.confirm-button:disabled {
+  background: linear-gradient(#d9d0e3, #c8bed4);
+  border-color: #c1b4ce;
+  color: #f9f4fc;
+  box-shadow: none;
+}
+.enter-hint {
+  font-size: 13px;
+  position: absolute;
+  right: 18px;
+  opacity: 0.55;
+}
+.decision-extra {
+  display: flex;
+  justify-content: flex-end;
+}
+.game-counter {
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #8e7b9b;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.next-game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: #69517f;
+  background: transparent;
+  font-size: 11px;
+}
+.complete-button {
+  background: linear-gradient(#9768e5, #814ed6);
+  border-color: #6c3bb7;
+}
+.timeline {
+  min-height: 72px;
+  border: 1px solid #fff9;
+  background: #ffffff69;
+  box-shadow: 0 3px 12px #50446905;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  padding: 14px 22px;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+.timeline-label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.timeline-label .eyebrow {
+  font-size: 8px;
+  color: #a392b0;
+  letter-spacing: 1px;
+}
+.timeline-label > span:last-child {
+  font-size: 12px;
+  color: #746082;
+}
+.timeline-stages {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  gap: 5px;
+  min-width: 0;
+}
+.timeline-step {
+  --side: #a67de1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  min-width: 30px;
+  flex: 1;
+}
+.timeline-step.orange {
+  --side: #df9b60;
+}
+.step-node {
+  height: 22px;
+  width: 22px;
+  display: grid;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--side) 40%, transparent);
+  border-radius: 50%;
+  color: var(--side);
+  background: color-mix(in srgb, var(--side) 8%, transparent);
+  font-size: 10px;
+  font-weight: 700;
+  z-index: 1;
+}
+.timeline-step.current .step-node {
+  background: var(--side);
+  border-color: var(--side);
+  color: white;
+  outline: 3px solid color-mix(in srgb, var(--side) 20%, transparent);
+  outline-offset: 2px;
+}
+.timeline-step > span:last-child {
+  font-size: 8px;
+  color: #a99bb1;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+.timeline-step.current > span:last-child {
+  color: #715181;
+  font-weight: 800;
+}
+.timeline-step.done .step-node {
+  background: color-mix(in srgb, var(--side) 28%, transparent);
+  border-color: transparent;
+}
+.timeline-step:not(:last-child):after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  background: #cfc3db;
+  left: 70%;
+  right: -30%;
+  top: 11px;
+}
+.timeline-step:nth-child(6):after {
+  display: none;
+}
+.timeline-separator {
+  position: absolute;
+  width: 1px;
+  height: 35px;
+  background: #d7ccdf;
+  left: -10%;
+  top: 0;
+}
+.progress-count {
+  font-size: 18px;
+  font-weight: 700;
+  color: #7c658c;
+  white-space: nowrap;
+}
+.progress-count small {
+  font-size: 10px;
+  font-weight: 400;
+  margin-left: 4px;
+  color: #a694b2;
+}
+.app-footer {
+  max-width: 1640px;
+  margin: auto;
+  padding: 0 32px 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 8px;
+  color: #a494b0;
+  align-items: center;
+}
+.footer-divider {
+  margin: 0 7px;
+}
+.app-footer > div {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.footer-link,
+.sound-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 0;
+  background: transparent;
+  color: #9681a2;
+  padding: 0;
+  font-size: 9px;
+  white-space: nowrap;
+}
+.connection {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 9px;
+  white-space: nowrap;
+  color: #92849c;
+}
+.sound-button {
+  padding: 5px;
+}
+.toast {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: calc(100vw - 32px);
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #b598d9;
+  background: #30233fef;
+  color: white;
+  box-shadow: 0 5px 25px #21152e30;
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 12px;
+  z-index: 10;
+}
+.toast > svg {
+  flex-shrink: 0;
+}
+.toast button {
+  background: transparent;
+  color: #c9b5db;
+  display: grid;
+  place-items: center;
+}
+dialog {
+  border: 1px solid #ece6f4;
+  border-radius: 15px;
+  background: #faf9fd;
+  color: #44354f;
+  padding: 26px;
+  width: 480px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100dvh - 48px);
+  box-shadow: 0 24px 100px #20142f50;
+  overflow-y: auto;
+}
+dialog::backdrop {
+  background: #22173588;
+  backdrop-filter: blur(5px);
+}
+.modal-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+.modal-heading h2 {
+  font-size: 20px;
+  margin: 0;
+}
+.modal-heading .icon-button {
+  background: #e9e3f1;
+  color: #8a70a0;
+}
+.settings-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 16px;
+}
+.settings-form label {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #8e759e;
+}
+.settings-form input,
+.settings-form select {
+  width: 100%;
+  min-width: 0;
+  background: white;
+  border: 1px solid #d5c7e1;
+  border-radius: 5px;
+  padding: 10px;
+  color: #4c375c;
+  font-size: 13px;
+}
+.settings-form select:disabled {
+  opacity: 0.5;
+}
+.setting-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 24px;
+}
+.setting-toggle input {
+  accent-color: #8959d9;
+  margin-top: 4px;
+  width: 15px;
+  height: 15px;
+}
+.setting-toggle strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.setting-toggle small {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #9a86a6;
+  display: block;
+}
+.form-note {
+  font-size: 11px !important;
+  line-height: 1.8 !important;
+  color: #9c8aa9;
+  margin: 20px 0;
+}
+.modal-primary {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  background: #8955d8;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+}
+.modal-secondary {
+  padding: 11px 16px;
+  border: 1px solid #cdbbdc;
+  border-radius: 6px;
+  color: #866198;
+  background: #f0e9f8;
+  font-size: 13px;
+}
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+.modal-buttons > * {
+  flex: 1;
+  width: auto;
+}
+dialog > p {
+  font-size: 14px;
+  line-height: 1.9;
+}
+.info-content p {
+  font-size: 13px;
+  line-height: 1.9;
+  color: #887097;
+}
+.info-content h3 {
+  font-size: 14px;
+  margin-top: 24px;
+}
+.info-content > a {
+  display: block;
+  color: #8458ba;
+  text-decoration: underline;
+  font-size: 12px;
+  line-height: 2.3;
+}
+.draft-complete .player-slot:hover {
+  outline: 2px solid var(--side);
+}
+@keyframes bars {
+  50% {
+    transform: scaleY(0.45);
+  }
+}
+@media (min-width: 1600px) {
+  .selection-panel {
+    height: 640px;
+  }
+  .player-slot {
+    height: 86px;
+  }
+  .player-portrait {
+    height: 78px;
+    width: 76px;
+  }
+  .player-portrait.has-pokemon {
+    height: 87px;
+    width: 90px;
+  }
+  .player-name {
+    font-size: 14px;
+  }
+  .filled .player-name {
+    font-size: 15px;
+  }
+  .pokemon-name {
+    font-size: 12px;
+  }
+  .role-tabs button {
+    font-size: 12px;
+  }
+  .ban-slot {
+    height: 80px;
+  }
+  .selection-top h2 {
+    font-size: 16px;
+  }
+  .search-field input {
+    font-size: 13px;
+  }
+  .hide-used {
+    font-size: 12px;
+  }
+  .selection-panel {
+    padding: 20px 20px 0;
+  }
+  .role-tabs {
+    margin-bottom: 17px;
+  }
+  .pokemon-grid {
+    gap: 12px;
+  }
+  .decision-bar {
+    min-height: 108px;
+  }
+}
+@media (min-width: 1050px) and (max-height: 820px) {
+  .app-header {
+    height: 63px;
+  }
+  .phase-banner {
+    min-height: 84px;
+    padding: 16px 0;
+  }
+  .selection-panel {
+    height: 510px;
+  }
+  .team-heading {
+    margin-bottom: 7px;
+  }
+  .ban-slots {
+    margin-bottom: 14px;
+  }
+  .ban-slot {
+    height: 58px;
+  }
+  .player-slot {
+    height: 65px;
+  }
+  .player-portrait.has-pokemon {
+    height: 65px;
+    width: 66px;
+  }
+  .player-list {
+    gap: 7px;
+  }
+  .decision-bar {
+    min-height: 89px;
+    padding: 10px 0;
+  }
+  .timeline {
+    margin-bottom: 15px;
+    min-height: 63px;
+    padding: 10px 20px;
+  }
+  .app-footer {
+    padding-bottom: 12px;
+  }
+  .team-composition {
+    padding-top: 10px;
+  }
+}
+@media (max-width: 1200px) {
+  .app main {
+    padding: 0 22px;
+  }
+  .app-header {
+    padding: 0 22px;
+  }
+  .draft-arena,
+  .decision-bar {
+    gap: 16px;
+    grid-template-columns: minmax(178px, 1fr) minmax(360px, 2.25fr) minmax(
+        178px,
+        1fr
+      );
+  }
+  .team-heading h2 {
+    font-size: 13px;
+  }
+  .team-heading .eyebrow {
+    font-size: 8px;
+  }
+  .team-emblem {
+    width: 24px;
+  }
+  .order-label {
+    font-size: 9px;
+    padding: 3px 5px;
+  }
+  .player-slot {
+    gap: 3px;
+    padding-right: 7px;
+  }
+  .player-portrait {
+    width: 50px;
+  }
+  .player-portrait.has-pokemon {
+    width: 62px;
+  }
+  .player-name {
+    font-size: 11px;
+  }
+  .filled .player-name {
+    font-size: 11px;
+  }
+  .trainer {
+    font-size: 9px;
+  }
+  .selection-panel {
+    padding: 14px 12px 0;
+  }
+  .pokemon-grid {
+    gap: 7px;
+  }
+  .pokemon-name {
+    font-size: 9px;
+  }
+  .role-tabs {
+    gap: 3px;
+  }
+  .role-tabs button {
+    font-size: 9px;
+    padding: 4px;
+  }
+  .team-composition {
+    gap: 13px;
+  }
+  .header-center {
+    font-size: 11px;
+  }
+  .snapshot {
+    display: none;
+  }
+  .phase-label {
+    min-width: 175px;
+  }
+  .phase-message strong {
+    font-size: 12px;
+  }
+  .phase-message div > span {
+    font-size: 10px;
+  }
+  .timeline {
+    gap: 18px;
+    padding: 14px 16px;
+  }
+  .app-footer {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  .utility-actions {
+    gap: 9px;
+  }
+  .subtle-button {
+    font-size: 10px;
+  }
+  .role-tabs i {
+    width: 4px;
+    height: 4px;
+  }
+}
+@media (max-width: 900px) {
+  .app-header {
+    height: 67px;
+    padding: 0 18px;
+  }
+  .header-center {
+    display: none;
+  }
+  .brand {
+    font-size: 20px;
+  }
+  .app main {
+    padding: 0 16px;
+  }
+  .phase-banner {
+    gap: 16px;
+    min-height: 91px;
+  }
+  .phase-label {
+    min-width: 140px;
+    padding-right: 16px;
+  }
+  .phase-label h1 {
+    font-size: 17px;
+  }
+  .phase-message strong {
+    font-size: 12px;
+  }
+  .phase-message div > span {
+    font-size: 9px;
+  }
+  .team-tag {
+    display: none;
+  }
+  .timer {
+    min-width: 88px;
+  }
+  .timer strong {
+    font-size: 30px;
+  }
+  .timer > div {
+    gap: 7px;
+  }
+  .timer > div > svg {
+    display: none;
+  }
+  .timer .eyebrow {
+    font-size: 9px;
+  }
+  .draft-arena,
+  .decision-bar {
+    grid-template-columns: minmax(150px, 1fr) minmax(300px, 2.1fr) minmax(
+        150px,
+        1fr
+      );
+    gap: 10px;
+  }
+  .team-heading {
+    gap: 5px;
+  }
+  .team-heading h2 {
+    font-size: 11px;
+  }
+  .team-emblem {
+    display: none;
+  }
+  .order-label {
+    font-size: 8px;
+  }
+  .team-heading .eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.7px;
+  }
+  .ban-slots {
+    gap: 5px;
+  }
+  .ban-slot {
+    height: 55px;
+  }
+  .ban-slot-label {
+    font-size: 8px;
+  }
+  .player-slot {
+    height: 68px;
+    padding-left: 0;
+  }
+  .player-portrait.has-pokemon {
+    width: 48px;
+  }
+  .player-portrait {
+    width: 46px;
+    margin-left: 0;
+  }
+  .filled .player-name {
+    font-size: 10px;
+  }
+  .active .player-name {
+    font-size: 9px;
+  }
+  .player-check {
+    display: none;
+  }
+  .trainer {
+    font-size: 8px;
+  }
+  .trainer svg {
+    display: none;
+  }
+  .player-number {
+    font-size: 8px;
+    left: 3px;
+  }
+  .role-text {
+    font-size: 8px;
+  }
+  .selection-panel {
+    padding: 13px 10px 0;
+    height: 550px;
+  }
+  .pokemon-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 7px;
+  }
+  .selection-top h2 {
+    font-size: 12px;
+  }
+  .selection-top > div > svg {
+    display: none;
+  }
+  .roster-count {
+    font-size: 9px;
+  }
+  .sort-select select {
+    font-size: 9px;
+  }
+  .roster-tools {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .search-field {
+    flex-basis: 100%;
+  }
+  .hide-used {
+    font-size: 9px;
+    margin-left: auto;
+  }
+  .role-tabs button {
+    flex: 1 0 28%;
+    padding: 5px;
+  }
+  .role-tabs {
+    margin-bottom: 10px;
+  }
+  .team-composition {
+    gap: 10px;
+  }
+  .team-composition i {
+    width: 4px;
+    height: 4px;
+  }
+  .utility-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .confirm-button {
+    min-width: 190px;
+    height: 43px;
+    font-size: 15px;
+  }
+  .selected-description {
+    font-size: 10px;
+  }
+  .decision-extra .subtle-button {
+    font-size: 9px;
+    gap: 3px;
+  }
+  .timeline-label {
+    display: none;
+  }
+  .timeline {
+    gap: 14px;
+    padding: 12px;
+  }
+  .timeline-step > span:last-child {
+    font-size: 7px;
+  }
+  .timeline-stages {
+    gap: 4px;
+  }
+  .timeline-step {
+    min-width: 22px;
+  }
+  .progress-count {
+    font-size: 15px;
+  }
+  .app-footer {
+    padding: 0 16px 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .app-footer > span {
+    font-size: 7px;
+  }
+  .footer-link,
+  .connection {
+    font-size: 9px;
+  }
+}
+@media (max-width: 680px) {
+  .app-header {
+    height: 62px;
+    padding: 0 14px;
+    gap: 10px;
+  }
+  .brand {
+    font-size: 19px;
+    gap: 7px;
+  }
+  .brand img {
+    width: 30px;
+    height: 30px;
+  }
+  .brand small {
+    font-size: 8px;
+    letter-spacing: 1.4px;
+  }
+  .header-actions {
+    gap: 3px;
+  }
+  .settings-button {
+    padding: 7px 9px;
+  }
+  .settings-button span {
+    display: none;
+  }
+  .header-actions > .icon-button:first-of-type {
+    display: none;
+  }
+  .app main {
+    padding: 0 12px;
+  }
+  .phase-banner {
+    flex-wrap: wrap;
+    gap: 9px;
+    padding: 16px 0 14px;
+    position: relative;
+  }
+  .phase-label {
+    border: 0;
+    padding: 0;
+    min-width: 0;
+    flex: 1;
+  }
+  .phase-label h1 {
+    font-size: 18px;
+  }
+  .phase-label > .eyebrow {
+    font-size: 8px;
+  }
+  .timer {
+    order: 2;
+    min-width: 80px;
+    position: absolute;
+    top: 15px;
+    right: 2px;
+  }
+  .timer strong {
+    font-size: 28px;
+  }
+  .timer > div {
+    height: 31px;
+  }
+  .phase-message {
+    order: 3;
+    flex: 0 0 100%;
+    padding-top: 2px;
+  }
+  .phase-message strong {
+    font-size: 11px;
+  }
+  .phase-message div > span {
+    font-size: 9px;
+    margin-top: 3px;
+  }
+  .draft-arena {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 16px 13px;
+  }
+  .team-panel.purple {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .team-panel.orange {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .selection-panel {
+    grid-column: 1/-1;
+    grid-row: 2;
+    height: 508px;
+    border-radius: 9px;
+    padding: 14px 13px 0;
+  }
+  .team-heading {
+    height: 32px;
+    margin-bottom: 9px;
+    gap: 7px;
+  }
+  .team-heading h2 {
+    font-size: 12px;
+    margin-top: 2px;
+  }
+  .team-heading .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+  .order-label {
+    font-size: 9px;
+    padding: 2px 5px;
+  }
+  .team-emblem {
+    display: grid;
+    width: 23px;
+    height: 28px;
+  }
+  .team-emblem svg {
+    width: 17px;
+  }
+  .bans-heading,
+  .picks-heading {
+    font-size: 9px;
+    margin-bottom: 6px;
+  }
+  .bans-heading > span:last-child,
+  .picks-heading > span:last-child {
+    font-size: 9px;
+  }
+  .ban-slots {
+    gap: 6px;
+    margin-bottom: 11px;
+  }
+  .ban-slot {
+    height: 51px;
+  }
+  .ban-slot > svg:not(.ban-mark) {
+    width: 19px;
+  }
+  .ban-slot-label {
+    font-size: 8px;
+  }
+  .ban-mark {
+    width: 15px;
+    height: 15px;
+    right: 2px;
+    bottom: 14px;
+  }
+  .player-list {
+    gap: 5px;
+  }
+  .player-slot {
+    height: 47px;
+    border-radius: 4px;
+    gap: 4px;
+  }
+  .player-portrait,
+  .player-portrait.has-pokemon {
+    width: 46px;
+    height: 47px;
+  }
+  .player-number {
+    top: 3px;
+    font-size: 7px;
+  }
+  .pokeball-symbol {
+    width: 24px;
+    height: 24px;
+  }
+  .pokeball-symbol:before {
+    top: 10px;
+  }
+  .pokeball-symbol:after {
+    width: 8px;
+    height: 8px;
+    top: 6px;
+    left: 6px;
+  }
+  .player-name,
+  .filled .player-name {
+    font-size: 10px;
+    line-height: 1.3;
+  }
+  .trainer {
+    font-size: 8px;
+    margin-top: 3px;
+  }
+  .role-text {
+    display: none;
+  }
+  .team-composition {
+    padding-top: 9px;
+    gap: 14px;
+    font-size: 9px;
+  }
+  .slot-dash {
+    font-size: 10px;
+  }
+  .team-composition i {
+    width: 5px;
+    height: 5px;
+  }
+  .selection-top {
+    margin-bottom: 11px;
+  }
+  .selection-top h2 {
+    font-size: 14px;
+  }
+  .selection-top > div > svg {
+    display: block;
+    width: 15px;
+  }
+  .sort-select select {
+    font-size: 10px;
+  }
+  .roster-tools {
+    flex-wrap: nowrap;
+    margin-bottom: 10px;
+    gap: 9px;
+  }
+  .search-field {
+    flex-basis: auto;
+  }
+  .search-field input {
+    font-size: 12px;
+  }
+  .hide-used {
+    font-size: 9px;
+  }
+  .role-tabs {
+    flex-wrap: nowrap;
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+  .role-tabs button {
+    font-size: 9px;
+    flex: 1 1 auto;
+    padding: 6px 4px;
+    min-height: 29px;
+  }
+  .role-tabs i {
+    display: none;
+  }
+  .pokemon-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 7px;
+  }
+  .pokemon-name {
+    font-size: 8px;
+    padding: 5px 1px 3px;
+  }
+  .selection-footer {
+    font-size: 9px;
+  }
+  .decision-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    justify-content: space-between;
+    padding: 14px 2px 17px;
+  }
+  .decision-main {
+    order: 0;
+    width: 100%;
+    flex: 0 0 100%;
+    gap: 8px;
+  }
+  .decision-extra {
+    order: 2;
+  }
+  .utility-actions {
+    order: 1;
+    flex-direction: row;
+    gap: 18px;
+  }
+  .subtle-button,
+  .decision-extra .subtle-button {
+    font-size: 11px;
+  }
+  .confirm-button {
+    width: 240px;
+    height: 46px;
+    font-size: 16px;
+  }
+  .selected-description {
+    font-size: 11px;
+  }
+  .timeline {
+    padding: 12px 8px;
+    gap: 7px;
+    margin-bottom: 15px;
+    overflow: auto;
+    min-height: 66px;
+  }
+  .timeline-stages {
+    gap: 1px;
+    min-width: 0;
+  }
+  .timeline-step {
+    min-width: 20px;
+  }
+  .timeline-step > span:last-child {
+    font-size: 6px;
+    letter-spacing: 0;
+  }
+  .step-node {
+    width: 19px;
+    height: 19px;
+    font-size: 8px;
+  }
+  .step-node svg {
+    width: 10px;
+  }
+  .timeline-step:not(:last-child):after {
+    top: 9px;
+  }
+  .timeline-step.current .step-node {
+    outline-width: 2px;
+    outline-offset: 1px;
+  }
+  .timeline-separator {
+    display: none;
+  }
+  .progress-count {
+    font-size: 12px;
+  }
+  .progress-count small {
+    font-size: 8px;
+    margin-left: 2px;
+  }
+  .app-footer {
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 12px 15px;
+  }
+  .app-footer > span {
+    font-size: 7px;
+    text-align: center;
+  }
+  .app-footer > div {
+    gap: 12px;
+  }
+  .footer-link,
+  .connection {
+    font-size: 9px;
+  }
+  .toast {
+    font-size: 12px;
+    bottom: 14px;
+    padding: 12px 13px;
+  }
+  .settings-form {
+    gap: 16px 12px;
+  }
+  dialog {
+    padding: 22px 18px;
+  }
+  .modal-heading h2 {
+    font-size: 18px;
+  }
+  .game-counter {
+    font-size: 10px;
+  }
+  .selection-panel .pokemon-card {
+    aspect-ratio: 0.9;
+  }
+}
+@media (max-width: 370px) {
+  .team-emblem {
+    display: none;
+  }
+  .role-tabs button {
+    font-size: 8px;
+    padding: 5px 2px;
+  }
+  .pokemon-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .pokemon-name {
+    font-size: 9px;
+  }
+  .team-composition {
+    gap: 10px;
+  }
+  .player-portrait,
+  .player-portrait.has-pokemon {
+    width: 40px;
+  }
+  .team-heading h2 {
+    font-size: 11px;
+  }
+  .timeline {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .progress-count {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Fixed-size grid tracks keep aspect-ratio cards from overlapping in a scroll area. */
+.pokemon-grid {
+  grid-auto-rows: max-content;
+  align-items: start;
+}
+.pokemon-card {
+  width: 100%;
+}
+.pokemon-card img {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+@media (min-width: 901px) {
+  .draft-arena {
+    height: clamp(450px, calc(100dvh - 400px), 680px);
+  }
+  .selection-panel {
+    height: 100%;
+  }
+  .team-panel {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .team-heading {
+    flex-shrink: 0;
+    height: 42px;
+    margin-bottom: 10px;
+  }
+  .bans-heading,
+  .picks-heading,
+  .ban-slots {
+    flex-shrink: 0;
+  }
+  .ban-slots {
+    margin-bottom: 14px;
+  }
+  .player-list {
+    flex: 1;
+    min-height: 0;
+    grid-template-rows: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .player-slot {
+    height: 100%;
+    min-height: 0;
+  }
+  .player-portrait,
+  .player-portrait.has-pokemon {
+    height: 100%;
+    max-height: 90px;
+  }
+  .team-composition {
+    flex-shrink: 0;
+    padding-top: 10px;
+  }
+  .timeline {
+    margin-bottom: 13px;
+  }
+  .app-footer {
+    padding-bottom: 10px;
+  }
+}

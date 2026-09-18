@@ -1,0 +1,893 @@
+[
+  {
+    "id": "pikachu",
+    "name": "ピカチュウ",
+    "role": "attack",
+    "order": 1,
+    "image": "/pokemon/pikachu.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/pikachu.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/pikachu/"
+  },
+  {
+    "id": "charizard",
+    "name": "リザードン",
+    "role": "balance",
+    "order": 2,
+    "image": "/pokemon/charizard.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/charizard.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/charizard/"
+  },
+  {
+    "id": "snorlax",
+    "name": "カビゴン",
+    "role": "defense",
+    "order": 3,
+    "image": "/pokemon/snorlax.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/snorlax.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/snorlax/"
+  },
+  {
+    "id": "crustle",
+    "name": "イワパレス",
+    "role": "defense",
+    "order": 4,
+    "image": "/pokemon/crustle.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/crustle.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/crustle/"
+  },
+  {
+    "id": "greninja",
+    "name": "ゲッコウガ",
+    "role": "attack",
+    "order": 5,
+    "image": "/pokemon/greninja.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/greninja.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/greninja/"
+  },
+  {
+    "id": "lucario",
+    "name": "ルカリオ",
+    "role": "balance",
+    "order": 6,
+    "image": "/pokemon/lucario.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/lucario.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/lucario/"
+  },
+  {
+    "id": "venusaur",
+    "name": "フシギバナ",
+    "role": "attack",
+    "order": 7,
+    "image": "/pokemon/venusaur.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/venusaur.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/venusaur/"
+  },
+  {
+    "id": "talonflame",
+    "name": "ファイアロー",
+    "role": "speed",
+    "order": 8,
+    "image": "/pokemon/talonflame.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/talonflame.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/talonflame/"
+  },
+  {
+    "id": "eldegoss",
+    "name": "ワタシラガ",
+    "role": "support",
+    "order": 9,
+    "image": "/pokemon/eldegoss.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/eldegoss.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/eldegoss/"
+  },
+  {
+    "id": "mrmime",
+    "name": "バリヤード",
+    "role": "support",
+    "order": 10,
+    "image": "/pokemon/mrmime.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/mrmime.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/mrmime/"
+  },
+  {
+    "id": "zeraora",
+    "name": "ゼラオラ",
+    "role": "speed",
+    "order": 11,
+    "image": "/pokemon/zeraora.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/zeraora.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/zeraora/"
+  },
+  {
+    "id": "cinderace",
+    "name": "エースバーン",
+    "role": "attack",
+    "order": 12,
+    "image": "/pokemon/cinderace.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/cinderace.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/cinderace/"
+  },
+  {
+    "id": "gengar",
+    "name": "ゲンガー",
+    "role": "speed",
+    "order": 13,
+    "image": "/pokemon/gengar.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/gengar.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/gengar/"
+  },
+  {
+    "id": "ninetales",
+    "name": "アローラキュウコン",
+    "role": "attack",
+    "order": 14,
+    "image": "/pokemon/ninetales.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/ninetales.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/ninetales/"
+  },
+  {
+    "id": "machamp",
+    "name": "カイリキー",
+    "role": "balance",
+    "order": 15,
+    "image": "/pokemon/machamp.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/machamp.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/machamp/"
+  },
+  {
+    "id": "cramorant",
+    "name": "ウッウ",
+    "role": "attack",
+    "order": 16,
+    "image": "/pokemon/cramorant.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/cramorant.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/cramorant/"
+  },
+  {
+    "id": "wigglytuff",
+    "name": "プクリン",
+    "role": "support",
+    "order": 17,
+    "image": "/pokemon/wigglytuff.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/wigglytuff.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/wigglytuff/"
+  },
+  {
+    "id": "slowbro",
+    "name": "ヤドラン",
+    "role": "defense",
+    "order": 18,
+    "image": "/pokemon/slowbro.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/slowbro.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/slowbro/"
+  },
+  {
+    "id": "absol",
+    "name": "アブソル",
+    "role": "speed",
+    "order": 19,
+    "image": "/pokemon/absol.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/absol.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/absol/"
+  },
+  {
+    "id": "garchomp",
+    "name": "ガブリアス",
+    "role": "balance",
+    "order": 20,
+    "image": "/pokemon/garchomp.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/garchomp.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/garchomp/"
+  },
+  {
+    "id": "gardevoir",
+    "name": "サーナイト",
+    "role": "attack",
+    "order": 21,
+    "image": "/pokemon/gardevoir.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/gardevoir.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/gardevoir/"
+  },
+  {
+    "id": "blissey",
+    "name": "ハピナス",
+    "role": "support",
+    "order": 22,
+    "image": "/pokemon/blissey.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/blissey.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/blissey/"
+  },
+  {
+    "id": "blastoise",
+    "name": "カメックス",
+    "role": "defense",
+    "order": 23,
+    "image": "/pokemon/blastoise.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/blastoise.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/blastoise/"
+  },
+  {
+    "id": "mamoswine",
+    "name": "マンムー",
+    "role": "defense",
+    "order": 24,
+    "image": "/pokemon/mamoswine.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/mamoswine.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/mamoswine/"
+  },
+  {
+    "id": "sylveon",
+    "name": "ニンフィア",
+    "role": "attack",
+    "order": 25,
+    "image": "/pokemon/sylveon.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/sylveon.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/sylveon/"
+  },
+  {
+    "id": "greedent",
+    "name": "ヨクバリス",
+    "role": "defense",
+    "order": 26,
+    "image": "/pokemon/greedent.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/greedent.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/greedent/"
+  },
+  {
+    "id": "decidueye",
+    "name": "ジュナイパー",
+    "role": "attack",
+    "order": 27,
+    "image": "/pokemon/decidueye.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/decidueye.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/decidueye/"
+  },
+  {
+    "id": "tsareena",
+    "name": "アマージョ",
+    "role": "balance",
+    "order": 28,
+    "image": "/pokemon/tsareena.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/tsareena.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/tsareena/"
+  },
+  {
+    "id": "dragonite",
+    "name": "カイリュー",
+    "role": "balance",
+    "order": 29,
+    "image": "/pokemon/dragonite.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/dragonite.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/dragonite/"
+  },
+  {
+    "id": "trevenant",
+    "name": "オーロット",
+    "role": "defense",
+    "order": 30,
+    "image": "/pokemon/trevenant.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/trevenant.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/trevenant/"
+  },
+  {
+    "id": "aegislash",
+    "name": "ギルガルド",
+    "role": "balance",
+    "order": 31,
+    "image": "/pokemon/aegislash.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/aegislash.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/aegislash/"
+  },
+  {
+    "id": "hoopa",
+    "name": "フーパ",
+    "role": "support",
+    "order": 32,
+    "image": "/pokemon/hoopa.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/hoopa.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/hoopa/"
+  },
+  {
+    "id": "duraludon",
+    "name": "ジュラルドン",
+    "role": "attack",
+    "order": 33,
+    "image": "/pokemon/duraludon.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/duraludon.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/duraludon/"
+  },
+  {
+    "id": "azumarill",
+    "name": "マリルリ",
+    "role": "balance",
+    "order": 34,
+    "image": "/pokemon/azumarill.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/azumarill.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/azumarill/"
+  },
+  {
+    "id": "espeon",
+    "name": "エーフィ",
+    "role": "attack",
+    "order": 35,
+    "image": "/pokemon/espeon.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/espeon.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/espeon/"
+  },
+  {
+    "id": "delphox",
+    "name": "マフォクシー",
+    "role": "attack",
+    "order": 36,
+    "image": "/pokemon/delphox.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/delphox.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/delphox/"
+  },
+  {
+    "id": "glaceon",
+    "name": "グレイシア",
+    "role": "attack",
+    "order": 37,
+    "image": "/pokemon/glaceon.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/glaceon.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/glaceon/"
+  },
+  {
+    "id": "buzzwole",
+    "name": "マッシブーン",
+    "role": "balance",
+    "order": 38,
+    "image": "/pokemon/buzzwole.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/buzzwole.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/buzzwole/"
+  },
+  {
+    "id": "tyranitar",
+    "name": "バンギラス",
+    "role": "balance",
+    "order": 39,
+    "image": "/pokemon/tyranitar.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/tyranitar.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/tyranitar/"
+  },
+  {
+    "id": "mew",
+    "name": "ミュウ",
+    "role": "attack",
+    "order": 40,
+    "image": "/pokemon/mew.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/ミュウ.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/mew/"
+  },
+  {
+    "id": "dodrio",
+    "name": "ドードリオ",
+    "role": "speed",
+    "order": 41,
+    "image": "/pokemon/dodrio.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/dodrio.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/dodrio/"
+  },
+  {
+    "id": "scizor",
+    "name": "ハッサム",
+    "role": "balance",
+    "order": 42,
+    "image": "/pokemon/scizor.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/scizor.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/scizor/"
+  },
+  {
+    "id": "clefable",
+    "name": "ピクシー",
+    "role": "support",
+    "order": 43,
+    "image": "/pokemon/clefable.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/ピクシー.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/clefable/"
+  },
+  {
+    "id": "zoroark",
+    "name": "ゾロアーク",
+    "role": "speed",
+    "order": 44,
+    "image": "/pokemon/zoroark.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/zoroark.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/zoroark/"
+  },
+  {
+    "id": "sableye",
+    "name": "ヤミラミ",
+    "role": "support",
+    "order": 45,
+    "image": "/pokemon/sableye.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/sableye.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/sableye/"
+  },
+  {
+    "id": "urshifu",
+    "name": "ウーラオス",
+    "role": "balance",
+    "order": 46,
+    "image": "/pokemon/urshifu.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/urshifu.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/urshifu/"
+  },
+  {
+    "id": "dragapult",
+    "name": "ドラパルト",
+    "role": "attack",
+    "order": 47,
+    "image": "/pokemon/dragapult.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/dragapult-2.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/dragapult/"
+  },
+  {
+    "id": "comfey",
+    "name": "キュワワー",
+    "role": "support",
+    "order": 48,
+    "image": "/pokemon/comfey.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/comfey-1.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/comfey/"
+  },
+  {
+    "id": "zacian",
+    "name": "ザシアン",
+    "role": "balance",
+    "order": 49,
+    "image": "/pokemon/zacian.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/zacian-1.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/zacian/"
+  },
+  {
+    "id": "goodra",
+    "name": "ヌメルゴン",
+    "role": "defense",
+    "order": 50,
+    "image": "/pokemon/goodra.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/goodra.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/goodra/"
+  },
+  {
+    "id": "lapras",
+    "name": "ラプラス",
+    "role": "defense",
+    "order": 51,
+    "image": "/pokemon/lapras.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/lapras.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/lapras/"
+  },
+  {
+    "id": "chandelure",
+    "name": "シャンデラ",
+    "role": "attack",
+    "order": 52,
+    "image": "/pokemon/chandelure.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/chandelure.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/chandelure/"
+  },
+  {
+    "id": "umbreon",
+    "name": "ブラッキー",
+    "role": "defense",
+    "order": 53,
+    "image": "/pokemon/umbreon.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/umbreon-1.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/umbreon/"
+  },
+  {
+    "id": "leafeon",
+    "name": "リーフィア",
+    "role": "speed",
+    "order": 54,
+    "image": "/pokemon/leafeon.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/leafeon.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/leafeon/"
+  },
+  {
+    "id": "iinteleon",
+    "name": "インテレオン",
+    "role": "attack",
+    "order": 55,
+    "image": "/pokemon/iinteleon.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/inteleon-1.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/iinteleon/"
+  },
+  {
+    "id": "mewtwox",
+    "name": "ミュウツーX",
+    "role": "balance",
+    "order": 56,
+    "image": "/pokemon/mewtwox.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/mewtwo_x-1.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/mewtwox/"
+  },
+  {
+    "id": "mewtwoy",
+    "name": "ミュウツーY",
+    "role": "attack",
+    "order": 57,
+    "image": "/pokemon/mewtwoy.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/mewtwo_y-1.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/mewtwoy/"
+  },
+  {
+    "id": "blaziken",
+    "name": "バシャーモ",
+    "role": "balance",
+    "order": 58,
+    "image": "/pokemon/blaziken.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/blaziken.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/blaziken/"
+  },
+  {
+    "id": "mimikyu",
+    "name": "ミミッキュ",
+    "role": "balance",
+    "order": 59,
+    "image": "/pokemon/mimikyu.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/mimikyu.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/mimikyu/"
+  },
+  {
+    "id": "meowscarada",
+    "name": "マスカーニャ",
+    "role": "speed",
+    "order": 60,
+    "image": "/pokemon/meowscarada.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/meowscarada.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/meowscarada/"
+  },
+  {
+    "id": "metagross",
+    "name": "メタグロス",
+    "role": "balance",
+    "order": 61,
+    "image": "/pokemon/metagross.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/metagross.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/metagross/"
+  },
+  {
+    "id": "gyarados",
+    "name": "ギャラドス",
+    "role": "balance",
+    "order": 62,
+    "image": "/pokemon/gyarados.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/gyarados.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/gyarados/"
+  },
+  {
+    "id": "miraidon",
+    "name": "ミライドン",
+    "role": "attack",
+    "order": 63,
+    "image": "/pokemon/miraidon.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/miraidon-1.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/miraidon/"
+  },
+  {
+    "id": "falinks",
+    "name": "タイレーツ",
+    "role": "balance",
+    "order": 64,
+    "image": "/pokemon/falinks.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/falinks.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/falinks/"
+  },
+  {
+    "id": "ceruledge",
+    "name": "ソウブレイズ",
+    "role": "balance",
+    "order": 65,
+    "image": "/pokemon/ceruledge.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/ソウブレイズ.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/ceruledge/"
+  },
+  {
+    "id": "ho-oh",
+    "name": "ホウオウ",
+    "role": "defense",
+    "order": 66,
+    "image": "/pokemon/ho-oh.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Ho-Oh.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/ho-oh/"
+  },
+  {
+    "id": "armarouge",
+    "name": "グレンアルマ",
+    "role": "attack",
+    "order": 67,
+    "image": "/pokemon/armarouge.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Armarouge.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/armarouge/"
+  },
+  {
+    "id": "darkrai",
+    "name": "ダークライ",
+    "role": "speed",
+    "order": 68,
+    "image": "/pokemon/darkrai.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Darkrai.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/darkrai/"
+  },
+  {
+    "id": "psyduck",
+    "name": "コダック",
+    "role": "support",
+    "order": 69,
+    "image": "/pokemon/psyduck.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Psyduck.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/psyduck/"
+  },
+  {
+    "id": "tinkaton",
+    "name": "デカヌチャン",
+    "role": "balance",
+    "order": 70,
+    "image": "/pokemon/tinkaton.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Tinkaton.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/tinkaton/"
+  },
+  {
+    "id": "galarianrapidash",
+    "name": "ガラルギャロップ",
+    "role": "speed",
+    "order": 71,
+    "image": "/pokemon/galarianrapidash.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Galarian-Rapidash.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/galarianrapidash/"
+  },
+  {
+    "id": "suicune",
+    "name": "スイクン",
+    "role": "balance",
+    "order": 72,
+    "image": "/pokemon/suicune.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Suicune.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/suicune/"
+  },
+  {
+    "id": "alolanraichu",
+    "name": "アローラライチュウ",
+    "role": "attack",
+    "order": 73,
+    "image": "/pokemon/alolanraichu.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Alolan-Raichu.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/alolanraichu/"
+  },
+  {
+    "id": "alcremie",
+    "name": "マホイップ",
+    "role": "support",
+    "order": 74,
+    "image": "/pokemon/alcremie.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Alcremie.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/alcremie/"
+  },
+  {
+    "id": "latios",
+    "name": "ラティオス",
+    "role": "attack",
+    "order": 75,
+    "image": "/pokemon/latios.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Latios.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/latios/"
+  },
+  {
+    "id": "latias",
+    "name": "ラティアス",
+    "role": "support",
+    "order": 76,
+    "image": "/pokemon/latias.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Latias.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/latias/"
+  },
+  {
+    "id": "pawmot",
+    "name": "パーモット",
+    "role": "balance",
+    "order": 77,
+    "image": "/pokemon/pawmot.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Pawmot.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/pawmot/"
+  },
+  {
+    "id": "empoleon",
+    "name": "エンペルト",
+    "role": "balance",
+    "order": 78,
+    "image": "/pokemon/empoleon.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Empoleon.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/empoleon/"
+  },
+  {
+    "id": "megalucario",
+    "name": "メガルカリオ",
+    "role": "balance",
+    "order": 79,
+    "image": "/pokemon/megalucario.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Mega-Lucario.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/megalucario/"
+  },
+  {
+    "id": "megacharizardx",
+    "name": "メガリザードンX",
+    "role": "balance",
+    "order": 80,
+    "image": "/pokemon/megacharizardx.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Mega-Charizard-X.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/megacharizardx/"
+  },
+  {
+    "id": "dhelmise",
+    "name": "ダダリン",
+    "role": "balance",
+    "order": 81,
+    "image": "/pokemon/dhelmise.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Dhelmise.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/dhelmise/"
+  },
+  {
+    "id": "vaporeon",
+    "name": "シャワーズ",
+    "role": "defense",
+    "order": 82,
+    "image": "/pokemon/vaporeon.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Vaporeon.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/vaporeon/"
+  },
+  {
+    "id": "megagyarados",
+    "name": "メガギャラドス",
+    "role": "balance",
+    "order": 83,
+    "image": "/pokemon/megagyarados.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Mega-Gyarados.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/megagyarados/"
+  },
+  {
+    "id": "megacharizardy",
+    "name": "メガリザードンY",
+    "role": "balance",
+    "order": 84,
+    "image": "/pokemon/megacharizardy.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Mega-Charizard-Y.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/megacharizardy/"
+  },
+  {
+    "id": "meowth",
+    "name": "ニャース",
+    "role": "speed",
+    "order": 85,
+    "image": "/pokemon/meowth.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Meowth.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/meowth/"
+  },
+  {
+    "id": "sirfetchd",
+    "name": "ネギガナイト",
+    "role": "balance",
+    "order": 86,
+    "image": "/pokemon/sirfetchd.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Sirfetchd-1.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/sirfetchd/"
+  },
+  {
+    "id": "zapdos",
+    "name": "サンダー",
+    "role": "attack",
+    "order": 87,
+    "image": "/pokemon/zapdos.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Zapdos.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/zapdos/"
+  },
+  {
+    "id": "moltres",
+    "name": "ファイヤー",
+    "role": "balance",
+    "order": 88,
+    "image": "/pokemon/moltres.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/moltres.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/moltres/"
+  },
+  {
+    "id": "articuno",
+    "name": "フリーザー",
+    "role": "defense",
+    "order": 89,
+    "image": "/pokemon/articuno.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/articuno.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/articuno/"
+  },
+  {
+    "id": "typhlosion",
+    "name": "バクフーン",
+    "role": "attack",
+    "order": 90,
+    "image": "/pokemon/typhlosion.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Typhlosion.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/typhlosion/"
+  },
+  {
+    "id": "feraligatr",
+    "name": "オーダイル",
+    "role": "balance",
+    "order": 91,
+    "image": "/pokemon/feraligatr.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Feraligatr.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/feraligatr/"
+  },
+  {
+    "id": "meganium",
+    "name": "メガニウム",
+    "role": "support",
+    "order": 92,
+    "image": "/pokemon/meganium.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Meganium.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/meganium/"
+  },
+  {
+    "id": "skeledirge",
+    "name": "ラウドボーン",
+    "role": "attack",
+    "order": 93,
+    "image": "/pokemon/skeledirge.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Skeledirge.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/skeledirge/"
+  },
+  {
+    "id": "quaquaval",
+    "name": "ウェーニバル",
+    "role": "balance",
+    "order": 94,
+    "image": "/pokemon/quaquaval.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Quaquaval.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/quaquaval/"
+  },
+  {
+    "id": "yveltal",
+    "name": "イベルタル",
+    "role": "attack",
+    "order": 95,
+    "image": "/pokemon/yveltal.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Yveltal.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/yveltal/"
+  },
+  {
+    "id": "palkia",
+    "name": "パルキア",
+    "role": "balance",
+    "order": 96,
+    "image": "/pokemon/palkia.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Palkia.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/palkia/"
+  },
+  {
+    "id": "reshiram",
+    "name": "レシラム",
+    "role": "attack",
+    "order": 97,
+    "image": "/pokemon/reshiram.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Reshiram.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/reshiram/"
+  },
+  {
+    "id": "solgaleo",
+    "name": "ソルガレオ",
+    "role": "balance",
+    "order": 98,
+    "image": "/pokemon/solgaleo.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Solgaleo.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/solgaleo/"
+  },
+  {
+    "id": "morpeko",
+    "name": "モルペコ",
+    "role": "speed",
+    "order": 99,
+    "image": "/pokemon/morpeko.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Morpeko.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/morpeko/"
+  }
+]

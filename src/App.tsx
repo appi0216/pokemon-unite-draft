@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import Portrait from "./components/Portrait";
 import SetupScreen from "./components/SetupScreen";
+import TeamHistory from "./components/TeamHistory";
 import {
   ArrowLeftRight,
   ArrowRight,
@@ -68,6 +69,9 @@ function load() {
     const s = v?.settings;
     return {
       draft: draft || createDraft(),
+      started:
+        !!draft &&
+        (v?.started === true || draft.actions.length > 0 || draft.game > 1),
       settings:
         s &&
         typeof s.purple === "string" &&
@@ -78,7 +82,7 @@ function load() {
           : defaults,
     };
   } catch {
-    return { draft: createDraft(), settings: defaults };
+    return { draft: createDraft(), settings: defaults, started: false };
   }
 }
 function Modal({
@@ -118,8 +122,10 @@ function App() {
   const [initial] = useState(load);
   const [draft, setDraft] = useState<Draft>(initial.draft);
   const [settings, setSettings] = useState<Settings>(initial.settings);
-  const [screen, setScreen] = useState<"setup" | "draft">("setup");
-  const [continuing, setContinuing] = useState(false);
+  const [started, setStarted] = useState(initial.started);
+  const [screen, setScreen] = useState<"setup" | "draft">(
+    initial.started ? "draft" : "setup",
+  );
   const [selected, setSelected] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [role, setRole] = useState<Role | "all">("all");
@@ -152,11 +158,14 @@ function App() {
   const picks = draft.actions.filter((a) => a.phase === "pick");
   useEffect(() => {
     try {
-      localStorage.setItem(STORAGE, JSON.stringify({ draft, settings }));
+      localStorage.setItem(
+        STORAGE,
+        JSON.stringify({ draft, settings, started }),
+      );
     } catch {
       setNotice("自動保存が利用できません。この画面では引き続き操作できます。");
     }
-  }, [draft, settings]);
+  }, [draft, settings, started]);
   useEffect(() => {
     setRemaining(settings.seconds);
   }, [stageIndex, draft.game, settings.seconds]);
@@ -281,10 +290,10 @@ function App() {
   const teamName = (team: Team) => settings[team];
   const openSetup = () => {
     setRunning(false);
-    setContinuing(false);
     setSelected(null);
     setDraftSettings({ ...settings, first: "purple", allStar: draft.allStar });
     setScreen("setup");
+    window.scrollTo({ top: 0, behavior: "instant" });
   };
   const startDraft = () => {
     const next = {
@@ -294,11 +303,8 @@ function App() {
       sound: settings.sound,
     };
     setSettings(next);
-    setDraft(
-      continuing
-        ? { ...draft, first: draftSettings.first }
-        : createDraft(draftSettings.first, draftSettings.allStar),
-    );
+    setDraft(createDraft(draftSettings.first, draftSettings.allStar));
+    setStarted(true);
     setSelected(null);
     setSwapFrom(null);
     setQuery("");
@@ -308,15 +314,17 @@ function App() {
     setRemaining(next.seconds);
     setRunning(next.seconds > 0);
     setScreen("draft");
+    window.scrollTo({ top: 0, behavior: "instant" });
   };
   const resumeDraft = () => {
     setRemaining(settings.seconds);
     setRunning(false);
     setScreen("draft");
+    window.scrollTo({ top: 0, behavior: "instant" });
   };
   const exportResult = () => {
     const lines = [
-      `UNITE DRAFT / GAME ${draft.game}`,
+      draft.allStar ? `UNITE DRAFT / GAME ${draft.game}` : "UNITE DRAFT",
       `2026-09-18 公式掲載ロスター`,
       ...(["purple", "orange"] as Team[]).flatMap((team) => [
         `\n${teamName(team)}${draft.first === team ? "（先攻）" : "（後攻）"}`,
@@ -335,7 +343,9 @@ function App() {
     );
     const a = document.createElement("a");
     a.href = url;
-    a.download = `unite-draft-game-${draft.game}.txt`;
+    a.download = draft.allStar
+      ? `unite-draft-game-${draft.game}.txt`
+      : "unite-draft.txt";
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -489,7 +499,15 @@ function App() {
       className={`app ${activeTeam} ${complete ? "draft-complete" : ""} ${screen === "setup" ? "setup-mode" : ""}`}
     >
       <header className="app-header">
-        <a className="brand" href="/" aria-label="UNITE DRAFT">
+        <a
+          className="brand"
+          href="/"
+          aria-label="UNITE DRAFT ホーム"
+          onClick={(e) => {
+            e.preventDefault();
+            openSetup();
+          }}
+        >
           <img src="/icon.svg" width="34" height="34" alt="" />
           <span>
             UNITE<span className="brand-light"> DRAFT</span>
@@ -535,11 +553,11 @@ function App() {
           {screen === "draft" && (
             <button
               className="setup-return-button"
-              aria-label="準備画面に戻る"
+              aria-label="ホームに戻る"
               onClick={openSetup}
             >
               <House size={16} />
-              <span>準備画面</span>
+              <span>ホーム</span>
             </button>
           )}
         </div>
@@ -550,10 +568,10 @@ function App() {
           onChange={setDraftSettings}
           onStart={startDraft}
           onResume={resumeDraft}
-          hasSaved={draft.actions.length > 0 || draft.game > 1}
+          hasSaved={started}
           progress={draft.actions.length}
           game={draft.game}
-          continuing={continuing}
+          savedAllStar={draft.allStar}
         />
       ) : (
         <main className="draft-main">
@@ -624,8 +642,45 @@ function App() {
               </div>
             </div>
           </section>
-          <section className="draft-arena" aria-label="ドラフト画面">
-            {renderTeamPanel("purple")}
+          {draft.allStar &&
+            draft.excluded.some(
+              (id) =>
+                !draft.history.some((g) =>
+                  g.picks.some((p) => p.pokemon === id),
+                ),
+            ) && (
+              <details className="legacy-history">
+                <summary>
+                  以前の保存データの使用済みポケモン（チーム情報なし）
+                </summary>
+                <div>
+                  {draft.excluded
+                    .filter(
+                      (id) =>
+                        !draft.history.some((g) =>
+                          g.picks.some((p) => p.pokemon === id),
+                        ),
+                    )
+                    .map((id) => (
+                      <span key={id}>{byId.get(id)?.name}</span>
+                    ))}
+                </div>
+              </details>
+            )}
+          <section
+            className={`draft-arena ${draft.allStar ? "allstar-arena" : ""}`}
+            aria-label="ドラフト画面"
+          >
+            <div className="team-side purple">
+              {draft.allStar && (
+                <TeamHistory
+                  team="purple"
+                  name={teamName("purple")}
+                  history={draft.history}
+                />
+              )}
+              {renderTeamPanel("purple")}
+            </div>
             <section className="selection-panel" aria-label="ポケモン一覧">
               <div className="selection-top">
                 <div>
@@ -760,7 +815,16 @@ function App() {
                 </span>
               </div>
             </section>
-            {renderTeamPanel("orange")}
+            <div className="team-side orange">
+              {renderTeamPanel("orange")}
+              {draft.allStar && (
+                <TeamHistory
+                  team="orange"
+                  name={teamName("orange")}
+                  history={draft.history}
+                />
+              )}
+            </div>
           </section>
           <section className="decision-bar">
             <div className="utility-actions">
@@ -802,14 +866,13 @@ function App() {
                       setDraft(next);
                       setSelected(null);
                       setSwapFrom(null);
-                      setRunning(false);
-                      setContinuing(true);
-                      setDraftSettings({
-                        ...settings,
-                        first: "purple",
-                        allStar: next.allStar,
-                      });
-                      setScreen("setup");
+                      setQuery("");
+                      setRole("all");
+                      setHideUsed(false);
+                      setNotice("");
+                      setRemaining(settings.seconds);
+                      setRunning(settings.seconds > 0);
+                      window.scrollTo({ top: 0, behavior: "instant" });
                     }}
                   >
                     次の試合
@@ -860,11 +923,11 @@ function App() {
                   <SkipForward size={16} />
                   BANをスキップ
                 </button>
-              ) : (
+              ) : draft.allStar ? (
                 <span className="game-counter">
                   <Flag size={15} /> GAME {String(draft.game).padStart(2, "0")}
                 </span>
-              )}
+              ) : null}
             </div>
           </section>
           <section className="timeline" aria-label="BAN・PICKの順番">
@@ -943,8 +1006,9 @@ function App() {
       {modal === "reset" && (
         <Modal title="ドラフトをリセット" onClose={() => setModal(null)}>
           <p>
-            現在のBAN・PICKと、オールスタードラフトの過去の選出を消去し、GAME
-            01からやり直します。
+            {draft.allStar
+              ? "現在のBAN・PICKと過去の選出を消去し、オールスタードラフトを最初からやり直します。"
+              : "現在のBAN・PICKを消去し、ドラフトを最初からやり直します。"}
           </p>
           <div className="modal-buttons">
             <button className="modal-secondary" onClick={() => setModal(null)}>

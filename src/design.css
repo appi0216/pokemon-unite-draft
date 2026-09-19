@@ -2894,3 +2894,250 @@ dialog > p,
 .modal-secondary {
   color: #746080;
 }
+/* Team history sits outside each team on wide screens, below it on smaller screens. */
+.team-side {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+}
+.team-side > .team-panel {
+  grid-column: auto;
+  grid-row: auto;
+}
+.allstar-arena .team-side {
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 8px;
+}
+.allstar-arena .team-side.orange {
+  grid-template-columns: minmax(0, 1fr) 76px;
+}
+.team-history {
+  --history-color: #8058bb;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  border: 1px solid #e5ddec;
+  border-radius: 14px;
+  background: #ffffffa6;
+  overflow: hidden;
+}
+.team-history.orange {
+  --history-color: #b67935;
+  border-color: #ece1d4;
+}
+.history-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  color: var(--history-color);
+  font-size: 10px;
+  padding: 12px 3px 9px;
+  border-bottom: 1px solid #ede8f2;
+  flex-shrink: 0;
+}
+.history-heading > span {
+  font-variant-numeric: tabular-nums;
+  font-size: 9px;
+  border-radius: 5px;
+  background: #f0ebf5;
+  padding: 2px 4px;
+}
+.history-scroll {
+  overflow: auto;
+  min-height: 0;
+  padding: 8px 4px;
+  scrollbar-width: thin;
+  scrollbar-color: #d8cce7 transparent;
+  overscroll-behavior: contain;
+}
+.history-game + .history-game {
+  margin-top: 12px;
+  padding-top: 9px;
+  border-top: 1px solid #ece5f1;
+}
+.history-game h3 {
+  font-size: 8px;
+  letter-spacing: 0.6px;
+  text-align: center;
+  color: var(--history-color);
+  margin: 0 0 6px;
+}
+.history-pokemon {
+  display: grid;
+  gap: 5px;
+}
+.history-pokemon-item {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f7f5fa;
+  border-radius: 7px;
+  padding: 3px 2px;
+}
+.history-pokemon-item .portrait {
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+}
+.history-pokemon-item > span {
+  font-size: 8px;
+  color: #6b5d76;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.history-empty {
+  font-size: 9px;
+  line-height: 1.9;
+  text-align: center;
+  color: #8c7c99;
+  margin: 13px 0;
+}
+.legacy-history {
+  background: #fff;
+  border: 1px solid #eee4f3;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  font-size: 11px;
+  color: #80668d;
+}
+.legacy-history summary {
+  cursor: pointer;
+}
+.legacy-history > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 12px;
+}
+.legacy-history > div > span {
+  background: #f5f0f9;
+  padding: 5px 8px;
+  border-radius: 5px;
+}
+@media (min-width: 1300px) {
+  .allstar-arena {
+    grid-template-columns: minmax(290px, 1.1fr) minmax(360px, 1.9fr) minmax(
+        290px,
+        1.1fr
+      );
+    gap: 14px;
+  }
+}
+@media (max-width: 1299px) {
+  .allstar-arena .team-side,
+  .allstar-arena .team-side.orange {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .allstar-arena .team-panel {
+    flex: 1;
+    min-height: 0;
+  }
+  .team-history {
+    order: 2;
+    flex: 0 0 111px;
+    border-radius: 10px;
+  }
+  .history-heading {
+    padding: 5px 8px;
+    justify-content: flex-start;
+    gap: 6px;
+    font-size: 9px;
+  }
+  .history-heading > svg {
+    width: 11px;
+    height: 11px;
+  }
+  .history-heading > span {
+    padding: 0 3px;
+  }
+  .history-scroll {
+    padding: 5px 6px;
+    display: flex;
+    gap: 10px;
+    overflow: auto;
+  }
+  .history-game {
+    flex: 0 0 auto;
+  }
+  .history-game + .history-game {
+    margin: 0;
+    padding: 0 0 0 10px;
+    border-top: 0;
+    border-left: 1px solid #ece5f1;
+  }
+  .history-game h3 {
+    text-align: left;
+    font-size: 7px;
+    margin-bottom: 3px;
+  }
+  .history-pokemon {
+    grid-template-columns: repeat(5, 38px);
+    gap: 3px;
+  }
+  .history-pokemon-item {
+    padding: 0 1px 2px;
+  }
+  .history-pokemon-item .portrait {
+    width: 34px;
+    height: 34px;
+  }
+  .history-pokemon-item > span {
+    font-size: 7px;
+  }
+  .history-empty {
+    margin: 4px;
+    font-size: 9px;
+  }
+  .history-empty br {
+    display: none;
+  }
+}
+@media (max-width: 680px) {
+  .team-side.purple {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .team-side.orange {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .team-side > .team-panel {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .allstar-arena {
+    grid-template-rows: 535px 475px;
+  }
+}
+@media (max-width: 1299px) {
+  .history-scroll {
+    scroll-snap-type: x proximity;
+  }
+  .history-game {
+    flex: 0 0 100%;
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+  .history-pokemon {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  .history-pokemon-item .portrait {
+    width: min(34px, 100%);
+    height: auto;
+    aspect-ratio: 1;
+  }
+  .history-game + .history-game {
+    padding-left: 0;
+    border-left: 0;
+  }
+}

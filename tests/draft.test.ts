@@ -94,6 +94,47 @@ test("normal next game clears bans/picks; swapping only within completed team", 
   assert.equal(switched.actions[14].pokemon, ids[6]);
   assert.equal(switched.actions[7].pokemon, d.actions[7].pokemon);
   assert.deepEqual(nextGame(d).excluded, []);
+  assert.deepEqual(nextGame(d), createDraft("purple"));
+  let right = createDraft("orange");
+  for (let i = 0; i < 16; i++) right = choose(right, ids[i], ids);
+  assert.deepEqual(nextGame(right), createDraft("orange"));
+});
+test("All-Star records each team's final picks across games and restores ownership", () => {
+  let d = createDraft("purple", true);
+  for (let i = 0; i < 16; i++) d = choose(d, ids[i], ids);
+  d = swap(d, "purple", 0, 4);
+  const firstPicks = d.actions
+    .filter((a) => a.phase === "pick")
+    .map(({ team, pokemon }) => ({ team, pokemon }));
+  d = nextGame(d);
+  assert.deepEqual(d.history, [{ game: 1, picks: firstPicks }]);
+  assert.deepEqual(
+    d.history[0].picks.filter((p) => p.team === "purple").map((p) => p.pokemon),
+    [ids[14], ids[9], ids[10], ids[13], ids[6]],
+  );
+  for (let i = 16; i < 32; i++) d = choose(d, ids[i], ids);
+  d = nextGame(d);
+  assert.equal(d.history.length, 2);
+  assert.deepEqual(restoreDraft(JSON.parse(JSON.stringify(d)), ids), d);
+  assert.equal(undo(d).history.length, 2);
+  assert.equal(createDraft("purple", true).history.length, 0);
+  const corrupt = JSON.parse(JSON.stringify(d));
+  corrupt.history[0].picks[0].team = "unknown";
+  assert.equal(restoreDraft(corrupt, ids), null);
+});
+test("legacy saves keep bans from prior picks without inventing team history", () => {
+  let d = createDraft("purple", true);
+  for (let i = 0; i < 16; i++) d = choose(d, ids[i], ids);
+  d = nextGame(d);
+  const { history, ...legacy } = d;
+  const restored = restoreDraft(legacy, ids)!;
+  assert.deepEqual(restored.history, []);
+  assert.deepEqual(restored.excluded, ids.slice(6, 16));
+  assert.equal(choose(restored, ids[6], ids), restored);
+  assert.equal(
+    restoreDraft({ ...createDraft(), game: 8, history: undefined }, ids)?.game,
+    1,
+  );
 });
 test("stored data is validated and invalid progress never loaded", () => {
   let d = createDraft();

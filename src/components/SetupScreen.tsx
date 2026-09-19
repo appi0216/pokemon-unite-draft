@@ -30,7 +30,7 @@ type Props = {
   hasSaved: boolean;
   progress: number;
   game: number;
-  continuing: boolean;
+  savedAllStar: boolean;
 };
 export default function SetupScreen({
   values,
@@ -40,7 +40,7 @@ export default function SetupScreen({
   hasSaved,
   progress,
   game,
-  continuing,
+  savedAllStar,
 }: Props) {
   return (
     <main className="setup-main">
@@ -86,17 +86,13 @@ export default function SetupScreen({
         <div className="setup-title-row">
           <div>
             <span className="section-kicker">MATCH SETUP</span>
-            <h2 id="setup-title">
-              {continuing
-                ? `GAME ${String(game).padStart(2, "0")} の準備`
-                : "ドラフトの準備"}
-            </h2>
+            <h2 id="setup-title">ドラフトの準備</h2>
           </div>
           <span className="setup-symbol">
             <Swords size={23} />
           </span>
         </div>
-        {hasSaved && !continuing && (
+        {hasSaved && (
           <button className="resume-card" onClick={onResume}>
             <span className="resume-icon">
               <Play size={17} fill="currentColor" />
@@ -106,7 +102,10 @@ export default function SetupScreen({
                 {progress === 16 ? "前回の結果を見る" : "続きから再開"}
               </strong>
               <small>
-                GAME {String(game).padStart(2, "0")} · {progress} / 16 選択済み
+                {savedAllStar
+                  ? `オールスター · GAME ${String(game).padStart(2, "0")} · `
+                  : "通常ドラフト · "}
+                {progress} / 16 選択済み
               </small>
             </span>
             <ChevronRight size={20} />
@@ -119,7 +118,6 @@ export default function SetupScreen({
               className={`mode-option ${!values.allStar ? "chosen" : ""}`}
               type="button"
               aria-pressed={!values.allStar}
-              disabled={continuing}
               onClick={() => onChange({ ...values, allStar: false })}
             >
               <Swords size={21} />
@@ -131,7 +129,6 @@ export default function SetupScreen({
               className={`mode-option ${values.allStar ? "chosen" : ""}`}
               type="button"
               aria-pressed={values.allStar}
-              disabled={continuing}
               onClick={() => onChange({ ...values, allStar: true })}
             >
               <Sparkles size={21} />
@@ -221,15 +218,11 @@ export default function SetupScreen({
           </div>
         </details>
         <button className="start-draft-button" onClick={onStart}>
-          <span>
-            {hasSaved && !continuing
-              ? "新しいドラフトを開始"
-              : "ドラフトを開始"}
-          </span>
+          <span>{hasSaved ? "新しいドラフトを開始" : "ドラフトを開始"}</span>
           <ArrowRight size={19} />
         </button>
         <p className="setup-footnote">
-          {hasSaved && !continuing
+          {hasSaved
             ? "新しく開始すると、保存中のドラフトを置き換えます。"
             : (values.first === "purple" ? "左側" : "右側") +
               "のチームが先攻。準備ができたら開始しましょう。"}

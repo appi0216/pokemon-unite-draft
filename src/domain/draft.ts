@@ -2,12 +2,17 @@ export type Team = "purple" | "orange";
 export type Phase = "ban" | "pick";
 export type Action = { team: Team; phase: Phase; pokemon: string | null };
 export type Step = { team: Team; phase: Phase; count: number };
+export type PastGame = {
+  game: number;
+  picks: { team: Team; pokemon: string }[];
+};
 export type Draft = {
   first: Team;
   actions: Action[];
   excluded: string[];
   game: number;
   allStar: boolean;
+  history: PastGame[];
 };
 export const opposite = (team: Team): Team =>
   team === "purple" ? "orange" : "purple";
@@ -40,7 +45,14 @@ export function currentStep(draft: Draft) {
 export const createDraft = (
   first: Team = "purple",
   allStar = false,
-): Draft => ({ first, allStar, actions: [], excluded: [], game: 1 });
+): Draft => ({
+  first,
+  allStar,
+  actions: [],
+  excluded: [],
+  game: 1,
+  history: [],
+});
 export const unavailable = (draft: Draft, id: string) =>
   draft.excluded.includes(id) || draft.actions.some((a) => a.pokemon === id);
 export function choose(
@@ -69,6 +81,7 @@ export const undo = (draft: Draft): Draft => ({
 });
 export function nextGame(draft: Draft): Draft {
   if (currentStep(draft)) return draft;
+  if (!draft.allStar) return createDraft(draft.first);
   const played = draft.actions
     .filter((a) => a.phase === "pick" && a.pokemon)
     .map((a) => a.pokemon!);
@@ -78,6 +91,15 @@ export function nextGame(draft: Draft): Draft {
     first: opposite(draft.first),
     actions: [],
     excluded: draft.allStar ? [...new Set([...draft.excluded, ...played])] : [],
+    history: [
+      ...draft.history,
+      {
+        game: draft.game,
+        picks: draft.actions
+          .filter((a) => a.phase === "pick" && a.pokemon)
+          .map((a) => ({ team: a.team, pokemon: a.pokemon! })),
+      },
+    ],
   };
 }
 export function swap(
@@ -124,10 +146,42 @@ export function restoreDraft(
     new Set(v.excluded).size !== v.excluded.length
   )
     return null;
+  // Older saves have exclusions but no team attribution. Keep those exclusions
+  // without inventing ownership; new games record the full team history.
+  const history = v.history === undefined ? [] : v.history;
+  if (!Array.isArray(history)) return null;
+  const seen = new Set<string>();
+  let lastGame = 0;
+  for (const past of history) {
+    if (
+      !past ||
+      !Number.isInteger(past.game) ||
+      past.game <= lastGame ||
+      past.game >= v.game ||
+      !Array.isArray(past.picks) ||
+      past.picks.length !== 10
+    )
+      return null;
+    lastGame = past.game;
+    for (const pick of past.picks) {
+      if (
+        !pick ||
+        !["purple", "orange"].includes(pick.team) ||
+        typeof pick.pokemon !== "string" ||
+        !v.excluded.includes(pick.pokemon) ||
+        seen.has(pick.pokemon)
+      )
+        return null;
+      seen.add(pick.pokemon);
+    }
+    if (past.picks.filter((p) => p.team === "purple").length !== 5) return null;
+  }
+  if (!v.allStar && (v.excluded.length || history.length)) return null;
   let draft = {
     ...createDraft(v.first, v.allStar),
     excluded: v.excluded,
-    game: v.game,
+    game: v.allStar ? v.game : 1,
+    history,
   };
   for (const a of v.actions) {
     const step = currentStep(draft);

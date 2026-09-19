@@ -1,0 +1,69 @@
+import { History } from "lucide-react";
+import type { PastGame, Team } from "../domain/draft";
+import { byId } from "../data/roster";
+import Portrait from "./Portrait";
+
+export default function TeamHistory({
+  team,
+  name,
+  history,
+}: {
+  team: Team;
+  name: string;
+  history: PastGame[];
+}) {
+  return (
+    <aside
+      className={`team-history ${team}`}
+      aria-label={`${name}の過去の選出`}
+    >
+      <div className="history-heading">
+        <History size={13} />
+        <strong>使用済み</strong>
+        <span>{history.length * 5}</span>
+      </div>
+      <div
+        className="history-scroll"
+        tabIndex={0}
+        aria-label={`${name}の使用済みポケモン一覧`}
+      >
+        {history.length === 0 ? (
+          <p className="history-empty">
+            前の試合の
+            <br />
+            選出がここに
+            <br />
+            表示されます
+          </p>
+        ) : (
+          history.map((past) => (
+            <section
+              className="history-game"
+              key={past.game}
+              aria-label={`GAME ${past.game}`}
+            >
+              <h3>GAME {String(past.game).padStart(2, "0")}</h3>
+              <div className="history-pokemon">
+                {past.picks
+                  .filter((p) => p.team === team)
+                  .map((pick) => {
+                    const p = byId.get(pick.pokemon)!;
+                    return (
+                      <div
+                        className="history-pokemon-item"
+                        key={p.id}
+                        title={`${p.name} · GAME ${past.game}で使用済み`}
+                      >
+                        <Portrait p={p} />
+                        <span>{p.name}</span>
+                      </div>
+                    );
+                  })}
+              </div>
+            </section>
+          ))
+        )}
+      </div>
+    </aside>
+  );
+}

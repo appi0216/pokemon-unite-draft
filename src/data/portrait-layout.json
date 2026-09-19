@@ -1,0 +1,497 @@
+{
+  "pikachu": {
+    "width": 107.19,
+    "left": -9.006,
+    "top": 0.528
+  },
+  "charizard": {
+    "width": 97.067,
+    "left": 0.533,
+    "top": 3.567
+  },
+  "snorlax": {
+    "width": 90.062,
+    "left": 4.536,
+    "top": 5.186
+  },
+  "crustle": {
+    "width": 111.287,
+    "left": -8.318,
+    "top": -4.306
+  },
+  "greninja": {
+    "width": 103.385,
+    "left": -3.183,
+    "top": 1.538
+  },
+  "lucario": {
+    "width": 102.175,
+    "left": -0.351,
+    "top": 0.14
+  },
+  "venusaur": {
+    "width": 89.6,
+    "left": 4.985,
+    "top": 3.908
+  },
+  "talonflame": {
+    "width": 112,
+    "left": -10.577,
+    "top": -3.308
+  },
+  "eldegoss": {
+    "width": 109.2,
+    "left": -4.337,
+    "top": -4.075
+  },
+  "mrmime": {
+    "width": 95.475,
+    "left": 2.033,
+    "top": 2.033
+  },
+  "zeraora": {
+    "width": 99.273,
+    "left": -1.545,
+    "top": -0.352
+  },
+  "cinderace": {
+    "width": 95.475,
+    "left": 1.803,
+    "top": 2.033
+  },
+  "gengar": {
+    "width": 94.957,
+    "left": 5.717,
+    "top": 6.63
+  },
+  "ninetales": {
+    "width": 90.528,
+    "left": 4.083,
+    "top": 5.824
+  },
+  "machamp": {
+    "width": 93.433,
+    "left": 3.059,
+    "top": 3.059
+  },
+  "cramorant": {
+    "width": 94.957,
+    "left": 0.696,
+    "top": 2.522
+  },
+  "wigglytuff": {
+    "width": 91.476,
+    "left": 8,
+    "top": 4.042
+  },
+  "slowbro": {
+    "width": 94.957,
+    "left": 2.522,
+    "top": 1.152
+  },
+  "absol": {
+    "width": 96.53,
+    "left": -0.354,
+    "top": 3.359
+  },
+  "garchomp": {
+    "width": 91,
+    "left": 1.656,
+    "top": 2.75
+  },
+  "gardevoir": {
+    "width": 92.936,
+    "left": 5.096,
+    "top": 3.532
+  },
+  "blissey": {
+    "width": 95.475,
+    "left": 2.033,
+    "top": -1.639
+  },
+  "blastoise": {
+    "width": 91.958,
+    "left": 5.789,
+    "top": 2.032
+  },
+  "mamoswine": {
+    "width": 96,
+    "left": 2.462,
+    "top": 5.923
+  },
+  "sylveon": {
+    "width": 94.443,
+    "left": 1.189,
+    "top": 3.005
+  },
+  "greedent": {
+    "width": 91,
+    "left": 6.25,
+    "top": 6.688
+  },
+  "decidueye": {
+    "width": 87.799,
+    "left": 7.789,
+    "top": 6.734
+  },
+  "tsareena": {
+    "width": 91,
+    "left": 3.188,
+    "top": 6.688
+  },
+  "dragonite": {
+    "width": 93.433,
+    "left": 2.16,
+    "top": 5.08
+  },
+  "trevenant": {
+    "width": 87.36,
+    "left": 6.74,
+    "top": 8
+  },
+  "aegislash": {
+    "width": 90.062,
+    "left": 5.402,
+    "top": 5.835
+  },
+  "hoopa": {
+    "width": 90.062,
+    "left": 4.969,
+    "top": 6.701
+  },
+  "duraludon": {
+    "width": 98.157,
+    "left": -0.494,
+    "top": 2.809
+  },
+  "azumarill": {
+    "width": 95.475,
+    "left": -0.951,
+    "top": 2.033
+  },
+  "espeon": {
+    "width": 92.444,
+    "left": 3.556,
+    "top": 3.556
+  },
+  "delphox": {
+    "width": 88.69,
+    "left": 4.802,
+    "top": 5.442
+  },
+  "glaceon": {
+    "width": 86.925,
+    "left": 4.239,
+    "top": 5.075
+  },
+  "buzzwole": {
+    "width": 91.958,
+    "left": 3.137,
+    "top": 2.695
+  },
+  "tyranitar": {
+    "width": 99.84,
+    "left": -0.4,
+    "top": -0.16
+  },
+  "mew": {
+    "width": 102.175,
+    "left": -1.333,
+    "top": -2.807
+  },
+  "dodrio": {
+    "width": 93.935,
+    "left": 2.806,
+    "top": 3.032
+  },
+  "scizor": {
+    "width": 91.958,
+    "left": 0.705,
+    "top": 4.463
+  },
+  "clefable": {
+    "width": 91.958,
+    "left": 3.137,
+    "top": 5.347
+  },
+  "zoroark": {
+    "width": 86.925,
+    "left": 9.463,
+    "top": 7.164
+  },
+  "sableye": {
+    "width": 104,
+    "left": 1.5,
+    "top": -0.25
+  },
+  "urshifu": {
+    "width": 91.958,
+    "left": 1.811,
+    "top": 4.021
+  },
+  "dragapult": {
+    "width": 94.443,
+    "left": -0.173,
+    "top": 1.643
+  },
+  "comfey": {
+    "width": 91.476,
+    "left": 6.901,
+    "top": 4.042
+  },
+  "zacian": {
+    "width": 89.143,
+    "left": 5.429,
+    "top": 3.714
+  },
+  "goodra": {
+    "width": 94.443,
+    "left": 2.324,
+    "top": 2.551
+  },
+  "lapras": {
+    "width": 88.69,
+    "left": 0.538,
+    "top": 7.147
+  },
+  "chandelure": {
+    "width": 95.475,
+    "left": 0.656,
+    "top": 2.721
+  },
+  "umbreon": {
+    "width": 92.444,
+    "left": 4,
+    "top": 4
+  },
+  "leafeon": {
+    "width": 110.582,
+    "left": -12.203,
+    "top": -9.013
+  },
+  "iinteleon": {
+    "width": 86.925,
+    "left": 6.537,
+    "top": 6.328
+  },
+  "mewtwox": {
+    "width": 86.495,
+    "left": 1.139,
+    "top": 5.505
+  },
+  "mewtwoy": {
+    "width": 86.495,
+    "left": 1.139,
+    "top": 5.505
+  },
+  "blaziken": {
+    "width": 91.476,
+    "left": 3.602,
+    "top": 4.482
+  },
+  "mimikyu": {
+    "width": 87.36,
+    "left": 8.63,
+    "top": 6.32
+  },
+  "meowscarada": {
+    "width": 92.936,
+    "left": -1.606,
+    "top": 3.532
+  },
+  "metagross": {
+    "width": 99.273,
+    "left": 1.795,
+    "top": -5.602
+  },
+  "gyarados": {
+    "width": 85.229,
+    "left": 4.927,
+    "top": 8
+  },
+  "miraidon": {
+    "width": 86.925,
+    "left": 7.373,
+    "top": 6.746
+  },
+  "falinks": {
+    "width": 99.273,
+    "left": -4.409,
+    "top": -3.693
+  },
+  "ceruledge": {
+    "width": 87.799,
+    "left": 5.467,
+    "top": 4.201
+  },
+  "ho-oh": {
+    "width": 87.799,
+    "left": 5.889,
+    "top": 6.312
+  },
+  "armarouge": {
+    "width": 87.799,
+    "left": 5.256,
+    "top": 6.734
+  },
+  "darkrai": {
+    "width": 88.242,
+    "left": 4.394,
+    "top": 7.152
+  },
+  "psyduck": {
+    "width": 91.958,
+    "left": 4.463,
+    "top": 4.021
+  },
+  "tinkaton": {
+    "width": 91,
+    "left": 5.156,
+    "top": 5.813
+  },
+  "galarianrapidash": {
+    "width": 97.067,
+    "left": -0.867,
+    "top": 4.733
+  },
+  "suicune": {
+    "width": 89.6,
+    "left": 4.985,
+    "top": 8.215
+  },
+  "alolanraichu": {
+    "width": 99.273,
+    "left": 3.705,
+    "top": 5.136
+  },
+  "alcremie": {
+    "width": 101.581,
+    "left": -3.233,
+    "top": 2.14
+  },
+  "latios": {
+    "width": 91.476,
+    "left": 3.602,
+    "top": 9.099
+  },
+  "latias": {
+    "width": 91.958,
+    "left": 5.347,
+    "top": 4.684
+  },
+  "pawmot": {
+    "width": 94.443,
+    "left": 1.189,
+    "top": 1.643
+  },
+  "empoleon": {
+    "width": 87.799,
+    "left": 10.111,
+    "top": 5.889
+  },
+  "megalucario": {
+    "width": 90.528,
+    "left": 5.824,
+    "top": 4.083
+  },
+  "megacharizardx": {
+    "width": 90.062,
+    "left": -0.443,
+    "top": 5.402
+  },
+  "dhelmise": {
+    "width": 92.444,
+    "left": 4,
+    "top": 3.556
+  },
+  "vaporeon": {
+    "width": 90.528,
+    "left": 6.912,
+    "top": 4.953
+  },
+  "megagyarados": {
+    "width": 93.935,
+    "left": 3.032,
+    "top": 3.258
+  },
+  "megacharizardy": {
+    "width": 91.476,
+    "left": 4.042,
+    "top": 2.283
+  },
+  "meowth": {
+    "width": 97.067,
+    "left": 2.867,
+    "top": 1.933
+  },
+  "sirfetchd": {
+    "width": 96,
+    "left": 6.615,
+    "top": 8
+  },
+  "zapdos": {
+    "width": 90.062,
+    "left": 3.67,
+    "top": 5.835
+  },
+  "moltres": {
+    "width": 86.925,
+    "left": 6.328,
+    "top": 8.209
+  },
+  "articuno": {
+    "width": 91.476,
+    "left": 4.702,
+    "top": 4.921
+  },
+  "typhlosion": {
+    "width": 87.36,
+    "left": 8.63,
+    "top": 5.9
+  },
+  "feraligatr": {
+    "width": 90.528,
+    "left": 4.083,
+    "top": 4.736
+  },
+  "meganium": {
+    "width": 90.528,
+    "left": 1.472,
+    "top": 4.083
+  },
+  "skeledirge": {
+    "width": 89.6,
+    "left": 6.277,
+    "top": 5.846
+  },
+  "quaquaval": {
+    "width": 87.36,
+    "left": 6.11,
+    "top": 6.32
+  },
+  "yveltal": {
+    "width": 84.406,
+    "left": 7.594,
+    "top": 12.261
+  },
+  "palkia": {
+    "width": 87.799,
+    "left": 7.578,
+    "top": 7.156
+  },
+  "reshiram": {
+    "width": 86.495,
+    "left": 5.505,
+    "top": 5.297
+  },
+  "solgaleo": {
+    "width": 91.476,
+    "left": 3.602,
+    "top": 4.042
+  },
+  "morpeko": {
+    "width": 87.36,
+    "left": 7.79,
+    "top": 7.58
+  }
+}

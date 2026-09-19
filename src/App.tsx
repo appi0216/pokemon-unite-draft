@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
+import Portrait from "./components/Portrait";
+import SetupScreen from "./components/SetupScreen";
 import {
   ArrowLeftRight,
   ArrowRight,
@@ -18,7 +20,7 @@ import {
   Play,
   RotateCcw,
   Search,
-  Settings2,
+  House,
   Shield,
   SkipForward,
   Swords,
@@ -32,7 +34,7 @@ import {
   Zap,
 } from "lucide-react";
 import { byId, ids, normalize, pokemon, roles } from "./data/roster";
-import type { Pokemon, Role } from "./data/roster";
+import type { Role } from "./data/roster";
 import {
   choose,
   createDraft,
@@ -79,28 +81,6 @@ function load() {
     return { draft: createDraft(), settings: defaults };
   }
 }
-function Portrait({
-  p,
-  eager = false,
-  className = "",
-}: {
-  p: Pokemon;
-  eager?: boolean;
-  className?: string;
-}) {
-  return (
-    <img
-      className={className}
-      src={p.image}
-      alt={p.name}
-      width="208"
-      height="208"
-      loading={eager ? "eager" : "lazy"}
-      decoding="async"
-      draggable={false}
-    />
-  );
-}
 function Modal({
   title,
   onClose,
@@ -138,6 +118,8 @@ function App() {
   const [initial] = useState(load);
   const [draft, setDraft] = useState<Draft>(initial.draft);
   const [settings, setSettings] = useState<Settings>(initial.settings);
+  const [screen, setScreen] = useState<"setup" | "draft">("setup");
+  const [continuing, setContinuing] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [role, setRole] = useState<Role | "all">("all");
@@ -145,9 +127,7 @@ function App() {
   const [sort, setSort] = useState("official");
   const [running, setRunning] = useState(false);
   const [remaining, setRemaining] = useState(settings.seconds);
-  const [modal, setModal] = useState<"settings" | "info" | "reset" | null>(
-    null,
-  );
+  const [modal, setModal] = useState<"info" | "reset" | null>(null);
   const [online, setOnline] = useState(navigator.onLine);
   const [cacheReady, setCacheReady] = useState(false);
   const [notice, setNotice] = useState("");
@@ -157,7 +137,7 @@ function App() {
   } | null>(null);
   const [draftSettings, setDraftSettings] = useState({
     ...settings,
-    first: draft.first,
+    first: "purple" as Team,
     allStar: draft.allStar,
   });
   const [deferredInstall, setDeferredInstall] = useState<Event | null>(null);
@@ -181,13 +161,20 @@ function App() {
     setRemaining(settings.seconds);
   }, [stageIndex, draft.game, settings.seconds]);
   useEffect(() => {
-    if (!running || complete || modal || settings.seconds === 0) return;
+    if (
+      !running ||
+      complete ||
+      modal ||
+      screen === "setup" ||
+      settings.seconds === 0
+    )
+      return;
     const id = window.setInterval(
       () => setRemaining((t) => Math.max(0, t - 1)),
       1000,
     );
     return () => clearInterval(id);
-  }, [running, complete, modal, settings.seconds]);
+  }, [running, complete, modal, screen, settings.seconds]);
   useEffect(() => {
     if (remaining === 0 && running && settings.seconds > 0) {
       setRunning(false);
@@ -279,6 +266,7 @@ function App() {
         e.key === "Enter" &&
         selected &&
         !modal &&
+        screen === "draft" &&
         !(e.target instanceof HTMLInputElement) &&
         !(e.target instanceof HTMLButtonElement) &&
         !(e.target instanceof HTMLSelectElement)
@@ -291,30 +279,40 @@ function App() {
     return () => removeEventListener("keydown", key);
   });
   const teamName = (team: Team) => settings[team];
-  const openSettings = () => {
-    setDraftSettings({
-      ...settings,
-      first: draft.first,
-      allStar: draft.allStar,
-    });
-    setModal("settings");
+  const openSetup = () => {
+    setRunning(false);
+    setContinuing(false);
+    setSelected(null);
+    setDraftSettings({ ...settings, first: "purple", allStar: draft.allStar });
+    setScreen("setup");
   };
-  const saveSettings = () => {
+  const startDraft = () => {
     const next = {
       purple: draftSettings.purple.trim() || defaults.purple,
       orange: draftSettings.orange.trim() || defaults.orange,
       seconds: draftSettings.seconds,
-      sound: draftSettings.sound,
+      sound: settings.sound,
     };
     setSettings(next);
-    if (draft.actions.length === 0)
-      setDraft({
-        ...draft,
-        first: draftSettings.first,
-        allStar: draft.game === 1 ? draftSettings.allStar : draft.allStar,
-      });
+    setDraft(
+      continuing
+        ? { ...draft, first: draftSettings.first }
+        : createDraft(draftSettings.first, draftSettings.allStar),
+    );
+    setSelected(null);
+    setSwapFrom(null);
+    setQuery("");
+    setRole("all");
+    setHideUsed(false);
+    setNotice("");
+    setRemaining(next.seconds);
+    setRunning(next.seconds > 0);
+    setScreen("draft");
+  };
+  const resumeDraft = () => {
+    setRemaining(settings.seconds);
     setRunning(false);
-    setModal(null);
+    setScreen("draft");
   };
   const exportResult = () => {
     const lines = [
@@ -345,7 +343,10 @@ function App() {
     const ownBans = bans.filter((a) => a.team === team);
     const ownPicks = picks.filter((a) => a.team === team);
     return (
-      <aside className={`team-panel ${team}`} aria-label={teamName(team)}>
+      <aside
+        className={`team-panel ${team} ${step?.team === team ? "team-active" : ""}`}
+        aria-label={teamName(team)}
+      >
         <div className="team-heading">
           <span className="team-emblem">
             <Shield size={21} />
@@ -484,7 +485,9 @@ function App() {
     );
   }
   return (
-    <div className={`app ${activeTeam} ${complete ? "draft-complete" : ""}`}>
+    <div
+      className={`app ${activeTeam} ${complete ? "draft-complete" : ""} ${screen === "setup" ? "setup-mode" : ""}`}
+    >
       <header className="app-header">
         <a className="brand" href="/" aria-label="UNITE DRAFT">
           <img src="/icon.svg" width="34" height="34" alt="" />
@@ -529,351 +532,378 @@ function App() {
           >
             <CircleHelp size={19} />
           </button>
-          <button
-            className="settings-button"
-            aria-label="設定"
-            onClick={openSettings}
-          >
-            <Settings2 size={16} />
-            <span>設定</span>
-          </button>
+          {screen === "draft" && (
+            <button
+              className="setup-return-button"
+              aria-label="準備画面に戻る"
+              onClick={openSetup}
+            >
+              <House size={16} />
+              <span>準備画面</span>
+            </button>
+          )}
         </div>
       </header>
-      <main>
-        <section className="phase-banner" aria-label="ドラフトの進行状況">
-          <div className="phase-label">
-            <span className="eyebrow">
-              {complete
-                ? "DRAFT COMPLETE"
-                : phase === "ban"
-                  ? "BAN PHASE"
-                  : "PICK PHASE"}
-            </span>
-            <h1>
-              {complete
-                ? "ドラフト完了"
-                : phase === "ban"
-                  ? "使用禁止フェーズ"
-                  : "選択フェーズ"}
-            </h1>
-          </div>
-          <div className="phase-message" aria-live="polite">
-            <span className={`team-tag ${activeTeam}`}>
-              {complete ? (
-                <CheckCheck size={16} />
-              ) : phase === "ban" ? (
-                <Ban size={16} />
-              ) : (
-                <Swords size={16} />
-              )}
-            </span>
-            <div>
-              <strong>
+      {screen === "setup" ? (
+        <SetupScreen
+          values={draftSettings}
+          onChange={setDraftSettings}
+          onStart={startDraft}
+          onResume={resumeDraft}
+          hasSaved={draft.actions.length > 0 || draft.game > 1}
+          progress={draft.actions.length}
+          game={draft.game}
+          continuing={continuing}
+        />
+      ) : (
+        <main className="draft-main">
+          <section className="phase-banner" aria-label="ドラフトの進行状況">
+            <div className="phase-label">
+              <span className="eyebrow">
                 {complete
-                  ? "両チームの選出が完了しました"
-                  : `${teamName(activeTeam)}が${phase === "ban" ? "使用禁止にする" : "使用する"}ポケモンを選択`}
-              </strong>
-              <span>
-                {complete
-                  ? "味方の枠を2つ選ぶと、ポケモンを交換できます。"
+                  ? "DRAFT COMPLETE"
                   : phase === "ban"
-                    ? `BAN ${bans.length + 1} / 6 · 各チーム3体を交互に指定`
-                    : `PICK ${picks.length + 1} / 10 · このターンはあと${step?.remaining}体`}
+                    ? "BAN PHASE"
+                    : "PICK PHASE"}
               </span>
+              <h1>
+                {complete
+                  ? "ドラフト完了"
+                  : phase === "ban"
+                    ? "使用禁止フェーズ"
+                    : "選択フェーズ"}
+              </h1>
             </div>
-          </div>
-          <div
-            className={`timer ${remaining <= 5 && settings.seconds > 0 ? "urgent" : ""}`}
-          >
-            <span className="eyebrow">練習タイマー</span>
-            <div>
-              <Clock3 size={18} />
-              <strong>
-                {settings.seconds === 0
-                  ? "∞"
-                  : String(remaining).padStart(2, "0")}
-              </strong>
-              <button
-                className="timer-button"
-                aria-label={running ? "タイマーを停止" : "タイマーを開始"}
-                disabled={complete || settings.seconds === 0}
-                onClick={() => {
-                  if (remaining === 0) setRemaining(settings.seconds);
-                  setRunning(!running);
-                }}
-              >
-                {running ? <Pause size={16} /> : <Play size={16} />}
-              </button>
-            </div>
-          </div>
-        </section>
-        <section className="draft-arena" aria-label="ドラフト画面">
-          {renderTeamPanel("purple")}
-          <section className="selection-panel" aria-label="ポケモン一覧">
-            <div className="selection-top">
-              <div>
-                <Grid2X2 size={17} />
-                <h2>ポケモンを選択</h2>
-                <span className="roster-count">{pokemon.length}</span>
-              </div>
-              <label className="sort-select">
-                <select
-                  aria-label="ポケモンの並び順"
-                  value={sort}
-                  onChange={(e) => setSort(e.target.value)}
-                >
-                  <option value="official">公式掲載順</option>
-                  <option value="name">名前順</option>
-                  <option value="new">新しい順</option>
-                </select>
-                <ChevronDown size={13} />
-              </label>
-            </div>
-            <div className="roster-tools">
-              <label className="search-field">
-                <Search size={17} />
-                <input
-                  type="search"
-                  placeholder="ポケモンを検索"
-                  aria-label="ポケモンを検索"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                />
-                {query && (
-                  <button
-                    aria-label="検索をクリア"
-                    onClick={() => setQuery("")}
-                  >
-                    <X size={14} />
-                  </button>
+            <div className="phase-message" aria-live="polite">
+              <span className={`team-tag ${activeTeam}`}>
+                {complete ? (
+                  <CheckCheck size={16} />
+                ) : phase === "ban" ? (
+                  <Ban size={16} />
+                ) : (
+                  <Swords size={16} />
                 )}
-              </label>
-              <label className="hide-used">
-                <input
-                  type="checkbox"
-                  checked={hideUsed}
-                  onChange={(e) => setHideUsed(e.target.checked)}
-                />
-                <span>選択可能のみ</span>
-              </label>
-            </div>
-            <div className="role-tabs" aria-label="バトルスタイル">
-              <button
-                className={role === "all" ? "selected" : ""}
-                onClick={() => setRole("all")}
-                aria-pressed={role === "all"}
-              >
-                すべて
-              </button>
-              {(Object.keys(roles) as Role[]).map((r) => (
-                <button
-                  key={r}
-                  className={`${r} ${role === r ? "selected" : ""}`}
-                  onClick={() => setRole(r)}
-                  aria-pressed={role === r}
-                >
-                  <i />
-                  {roles[r]}
-                </button>
-              ))}
-            </div>
-            <div className="pokemon-grid" key={`${role}-${sort}`}>
-              {visible.map((p, i) => {
-                const used = unavailable(draft, p.id);
-                const action = draft.actions.find((a) => a.pokemon === p.id);
-                const old = draft.excluded.includes(p.id);
-                return (
-                  <button
-                    key={p.id}
-                    className={`pokemon-card ${p.role} ${selected === p.id ? "is-selected" : ""} ${used ? "unavailable" : ""}`}
-                    disabled={used || complete}
-                    aria-label={`${p.name} ${roles[p.role]}型${used ? " 選択不可" : ""}`}
-                    aria-pressed={selected === p.id}
-                    onClick={() => setSelected(p.id)}
-                  >
-                    <span className="card-role-stripe" />
-                    <Portrait p={p} eager={i < 24} />
-                    <span className="pokemon-name">{p.name}</span>
-                    {selected === p.id && (
-                      <span className="selected-check">
-                        <Check size={14} />
-                      </span>
-                    )}
-                    {used && (
-                      <span className="used-overlay">
-                        {action?.phase === "pick" ? (
-                          <Check size={23} />
-                        ) : (
-                          <Ban size={25} />
-                        )}
-                        <span>
-                          {old
-                            ? "前の試合"
-                            : action?.phase === "pick"
-                              ? "PICK"
-                              : "BAN"}
-                        </span>
-                      </span>
-                    )}
-                  </button>
-                );
-              })}
-              {visible.length === 0 && (
-                <div className="empty-results">
-                  <Search size={30} />
-                  <strong>該当するポケモンがいません</strong>
-                  <button
-                    onClick={() => {
-                      setQuery("");
-                      setRole("all");
-                      setHideUsed(false);
-                    }}
-                  >
-                    絞り込みを解除
-                  </button>
-                </div>
-              )}
-            </div>
-            <div className="selection-footer">
-              <span>{visible.length}体を表示</span>
-              <span>
-                <i className="legend-dot" />
-                選択中 <Ban size={12} />
-                使用不可
               </span>
+              <div>
+                <strong>
+                  {complete
+                    ? "両チームの選出が完了しました"
+                    : `${teamName(activeTeam)}が${phase === "ban" ? "使用禁止にする" : "使用する"}ポケモンを選択`}
+                </strong>
+                <span>
+                  {complete
+                    ? "味方の枠を2つ選ぶと、ポケモンを交換できます。"
+                    : phase === "ban"
+                      ? `BAN ${bans.length + 1} / 6 · 各チーム3体を交互に指定`
+                      : `PICK ${picks.length + 1} / 10 · このターンはあと${step?.remaining}体`}
+                </span>
+              </div>
             </div>
-          </section>
-          {renderTeamPanel("orange")}
-        </section>
-        <section className="decision-bar">
-          <div className="utility-actions">
-            <button
-              className="subtle-button"
-              disabled={!draft.actions.length}
-              onClick={() => {
-                setDraft(undo(draft));
-                setSelected(null);
-                setSwapFrom(null);
-                setRunning(false);
-              }}
+            <div
+              className={`timer ${remaining <= 5 && settings.seconds > 0 ? "urgent" : ""}`}
             >
-              <Undo2 size={17} />
-              <span>1つ戻す</span>
-            </button>
-            <button className="subtle-button" onClick={() => setModal("reset")}>
-              <RotateCcw size={16} />
-              <span>リセット</span>
-            </button>
-          </div>
-          <div className="decision-main">
-            {complete ? (
-              <>
+              <span className="eyebrow">練習タイマー</span>
+              <div>
+                <Clock3 size={18} />
+                <strong>
+                  {settings.seconds === 0
+                    ? "∞"
+                    : String(remaining).padStart(2, "0")}
+                </strong>
                 <button
-                  className="confirm-button complete-button"
-                  onClick={exportResult}
-                >
-                  <Download size={18} />
-                  結果を保存
-                </button>
-                <button
-                  className="next-game"
+                  className="timer-button"
+                  aria-label={running ? "タイマーを停止" : "タイマーを開始"}
+                  disabled={complete || settings.seconds === 0}
                   onClick={() => {
-                    setDraft(nextGame(draft));
-                    setSelected(null);
-                    setSwapFrom(null);
+                    if (remaining === 0) setRemaining(settings.seconds);
+                    setRunning(!running);
                   }}
                 >
-                  次の試合
-                  <ArrowRight size={16} />
+                  {running ? <Pause size={16} /> : <Play size={16} />}
                 </button>
-              </>
-            ) : (
-              <>
-                <div className="selected-description">
-                  {selectedPokemon ? (
-                    <>
-                      <strong>{selectedPokemon.name}</strong>
-                      <span>
-                        {phase === "ban"
-                          ? "を使用禁止にします"
-                          : "を選出します"}
-                      </span>
-                    </>
-                  ) : (
-                    <span>
-                      {phase === "ban"
-                        ? "使用禁止にするポケモンを選んでください"
-                        : "使用するポケモンを選んでください"}
-                    </span>
-                  )}
+              </div>
+            </div>
+          </section>
+          <section className="draft-arena" aria-label="ドラフト画面">
+            {renderTeamPanel("purple")}
+            <section className="selection-panel" aria-label="ポケモン一覧">
+              <div className="selection-top">
+                <div>
+                  <Grid2X2 size={17} />
+                  <h2>ポケモンを選択</h2>
+                  <span className="roster-count">{pokemon.length}</span>
                 </div>
-                <button
-                  className="confirm-button"
-                  disabled={!selected}
-                  onClick={confirm}
-                >
-                  {phase === "ban" ? <Ban size={18} /> : <Check size={21} />}
-                  <span>{phase === "ban" ? "使用禁止にする" : "決定"}</span>
-                  <span className="enter-hint">↵</span>
-                </button>
-              </>
-            )}
-          </div>
-          <div className="decision-extra">
-            {step?.phase === "ban" ? (
-              <button
-                className="subtle-button"
-                onClick={() => {
-                  setDraft(choose(draft, null, ids));
-                  setSelected(null);
-                }}
-              >
-                <SkipForward size={16} />
-                BANをスキップ
-              </button>
-            ) : (
-              <span className="game-counter">
-                <Flag size={15} /> GAME {String(draft.game).padStart(2, "0")}
-              </span>
-            )}
-          </div>
-        </section>
-        <section className="timeline" aria-label="BAN・PICKの順番">
-          <div className="timeline-label">
-            <span className="eyebrow">DRAFT ORDER</span>
-            <span>進行順</span>
-          </div>
-          <div className="timeline-stages">
-            {schedule.map((s, i) => (
-              <div
-                key={i}
-                className={`timeline-step ${s.team} ${i === stageIndex ? "current" : ""} ${i < stageIndex ? "done" : ""}`}
-                title={`${teamName(s.team)} ${s.phase.toUpperCase()} ${s.count}体`}
-                aria-current={i === stageIndex ? "step" : undefined}
-              >
-                {i === 6 && <span className="timeline-separator" />}
-                <span className="step-node">
-                  {i < stageIndex ? (
-                    <Check size={13} />
-                  ) : s.phase === "ban" ? (
-                    <Ban size={12} />
-                  ) : (
-                    s.count
+                <label className="sort-select">
+                  <select
+                    aria-label="ポケモンの並び順"
+                    value={sort}
+                    onChange={(e) => setSort(e.target.value)}
+                  >
+                    <option value="official">公式掲載順</option>
+                    <option value="name">名前順</option>
+                    <option value="new">新しい順</option>
+                  </select>
+                  <ChevronDown size={13} />
+                </label>
+              </div>
+              <div className="roster-tools">
+                <label className="search-field">
+                  <Search size={17} />
+                  <input
+                    type="search"
+                    placeholder="ポケモンを検索"
+                    aria-label="ポケモンを検索"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                  />
+                  {query && (
+                    <button
+                      aria-label="検索をクリア"
+                      onClick={() => setQuery("")}
+                    >
+                      <X size={14} />
+                    </button>
                   )}
-                </span>
+                </label>
+                <label className="hide-used">
+                  <input
+                    type="checkbox"
+                    checked={hideUsed}
+                    onChange={(e) => setHideUsed(e.target.checked)}
+                  />
+                  <span>選択可能のみ</span>
+                </label>
+              </div>
+              <div className="role-tabs" aria-label="バトルスタイル">
+                <button
+                  className={role === "all" ? "selected" : ""}
+                  onClick={() => setRole("all")}
+                  aria-pressed={role === "all"}
+                >
+                  すべて
+                </button>
+                {(Object.keys(roles) as Role[]).map((r) => (
+                  <button
+                    key={r}
+                    className={`${r} ${role === r ? "selected" : ""}`}
+                    onClick={() => setRole(r)}
+                    aria-pressed={role === r}
+                  >
+                    <i />
+                    {roles[r]}
+                  </button>
+                ))}
+              </div>
+              <div className="pokemon-grid" key={`${role}-${sort}`}>
+                {visible.map((p, i) => {
+                  const used = unavailable(draft, p.id);
+                  const action = draft.actions.find((a) => a.pokemon === p.id);
+                  const old = draft.excluded.includes(p.id);
+                  return (
+                    <button
+                      key={p.id}
+                      className={`pokemon-card ${p.role} ${selected === p.id ? "is-selected" : ""} ${used ? "unavailable" : ""}`}
+                      disabled={used || complete}
+                      aria-label={`${p.name} ${roles[p.role]}型${used ? " 選択不可" : ""}`}
+                      aria-pressed={selected === p.id}
+                      onClick={() => setSelected(p.id)}
+                    >
+                      <span className="card-role-stripe" />
+                      <Portrait p={p} eager={i < 24} />
+                      <span className="pokemon-name">{p.name}</span>
+                      {selected === p.id && (
+                        <span className="selected-check">
+                          <Check size={14} />
+                        </span>
+                      )}
+                      {used && (
+                        <span className="used-overlay">
+                          {action?.phase === "pick" ? (
+                            <Check size={23} />
+                          ) : (
+                            <Ban size={25} />
+                          )}
+                          <span>
+                            {old
+                              ? "前の試合"
+                              : action?.phase === "pick"
+                                ? "PICK"
+                                : "BAN"}
+                          </span>
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+                {visible.length === 0 && (
+                  <div className="empty-results">
+                    <Search size={30} />
+                    <strong>該当するポケモンがいません</strong>
+                    <button
+                      onClick={() => {
+                        setQuery("");
+                        setRole("all");
+                        setHideUsed(false);
+                      }}
+                    >
+                      絞り込みを解除
+                    </button>
+                  </div>
+                )}
+              </div>
+              <div className="selection-footer">
+                <span>{visible.length}体を表示</span>
                 <span>
-                  {s.phase.toUpperCase()}
-                  {s.phase === "pick" && s.count === 2 ? " ×2" : ""}
+                  <i className="legend-dot" />
+                  選択中 <Ban size={12} />
+                  使用不可
                 </span>
               </div>
-            ))}
-          </div>
-          <span className="progress-count">
-            {draft.actions.length}
-            <small>/ 16</small>
-          </span>
-        </section>
-      </main>
+            </section>
+            {renderTeamPanel("orange")}
+          </section>
+          <section className="decision-bar">
+            <div className="utility-actions">
+              <button
+                className="subtle-button"
+                disabled={!draft.actions.length}
+                onClick={() => {
+                  setDraft(undo(draft));
+                  setSelected(null);
+                  setSwapFrom(null);
+                  setRunning(false);
+                }}
+              >
+                <Undo2 size={17} />
+                <span>1つ戻す</span>
+              </button>
+              <button
+                className="subtle-button"
+                onClick={() => setModal("reset")}
+              >
+                <RotateCcw size={16} />
+                <span>リセット</span>
+              </button>
+            </div>
+            <div className="decision-main">
+              {complete ? (
+                <>
+                  <button
+                    className="confirm-button complete-button"
+                    onClick={exportResult}
+                  >
+                    <Download size={18} />
+                    結果を保存
+                  </button>
+                  <button
+                    className="next-game"
+                    onClick={() => {
+                      const next = nextGame(draft);
+                      setDraft(next);
+                      setSelected(null);
+                      setSwapFrom(null);
+                      setRunning(false);
+                      setContinuing(true);
+                      setDraftSettings({
+                        ...settings,
+                        first: "purple",
+                        allStar: next.allStar,
+                      });
+                      setScreen("setup");
+                    }}
+                  >
+                    次の試合
+                    <ArrowRight size={16} />
+                  </button>
+                </>
+              ) : (
+                <>
+                  <div className="selected-description">
+                    {selectedPokemon ? (
+                      <>
+                        <strong>{selectedPokemon.name}</strong>
+                        <span>
+                          {phase === "ban"
+                            ? "を使用禁止にします"
+                            : "を選出します"}
+                        </span>
+                      </>
+                    ) : (
+                      <span>
+                        {phase === "ban"
+                          ? "使用禁止にするポケモンを選んでください"
+                          : "使用するポケモンを選んでください"}
+                      </span>
+                    )}
+                  </div>
+                  <button
+                    className="confirm-button"
+                    disabled={!selected}
+                    onClick={confirm}
+                  >
+                    {phase === "ban" ? <Ban size={18} /> : <Check size={21} />}
+                    <span>{phase === "ban" ? "使用禁止にする" : "決定"}</span>
+                    <span className="enter-hint">↵</span>
+                  </button>
+                </>
+              )}
+            </div>
+            <div className="decision-extra">
+              {step?.phase === "ban" ? (
+                <button
+                  className="subtle-button"
+                  onClick={() => {
+                    setDraft(choose(draft, null, ids));
+                    setSelected(null);
+                  }}
+                >
+                  <SkipForward size={16} />
+                  BANをスキップ
+                </button>
+              ) : (
+                <span className="game-counter">
+                  <Flag size={15} /> GAME {String(draft.game).padStart(2, "0")}
+                </span>
+              )}
+            </div>
+          </section>
+          <section className="timeline" aria-label="BAN・PICKの順番">
+            <div className="timeline-label">
+              <span className="eyebrow">DRAFT ORDER</span>
+              <span>進行順</span>
+            </div>
+            <div className="timeline-stages">
+              {schedule.map((s, i) => (
+                <div
+                  key={i}
+                  className={`timeline-step ${s.team} ${i === stageIndex ? "current" : ""} ${i < stageIndex ? "done" : ""}`}
+                  title={`${teamName(s.team)} ${s.phase.toUpperCase()} ${s.count}体`}
+                  aria-current={i === stageIndex ? "step" : undefined}
+                >
+                  {i === 6 && <span className="timeline-separator" />}
+                  <span className="step-node">
+                    {i < stageIndex ? (
+                      <Check size={13} />
+                    ) : s.phase === "ban" ? (
+                      <Ban size={12} />
+                    ) : (
+                      s.count
+                    )}
+                  </span>
+                  <span>
+                    {s.phase.toUpperCase()}
+                    {s.phase === "pick" && s.count === 2 ? " ×2" : ""}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <span className="progress-count">
+              {draft.actions.length}
+              <small>/ 16</small>
+            </span>
+          </section>
+        </main>
+      )}
       <footer className="app-footer">
         <span>
           非公式ファンメイドツール<span className="footer-divider">·</span>©
@@ -909,92 +939,6 @@ function App() {
             <X size={15} />
           </button>
         </div>
-      )}
-      {modal === "settings" && (
-        <Modal title="ドラフト設定" onClose={() => setModal(null)}>
-          <div className="settings-form">
-            <label>
-              パープルチーム名
-              <input
-                maxLength={20}
-                value={draftSettings.purple}
-                onChange={(e) =>
-                  setDraftSettings({ ...draftSettings, purple: e.target.value })
-                }
-              />
-            </label>
-            <label>
-              オレンジチーム名
-              <input
-                maxLength={20}
-                value={draftSettings.orange}
-                onChange={(e) =>
-                  setDraftSettings({ ...draftSettings, orange: e.target.value })
-                }
-              />
-            </label>
-            <label>
-              先攻チーム
-              <select
-                value={draftSettings.first}
-                disabled={draft.actions.length > 0}
-                onChange={(e) =>
-                  setDraftSettings({
-                    ...draftSettings,
-                    first: e.target.value as Team,
-                  })
-                }
-              >
-                <option value="purple">パープルチーム</option>
-                <option value="orange">オレンジチーム</option>
-              </select>
-            </label>
-            <label>
-              練習タイマー
-              <select
-                value={draftSettings.seconds}
-                onChange={(e) =>
-                  setDraftSettings({
-                    ...draftSettings,
-                    seconds: Number(e.target.value),
-                  })
-                }
-              >
-                <option value={0}>制限なし</option>
-                {[20, 30, 45, 60].map((s) => (
-                  <option key={s} value={s}>
-                    {s}秒 / ターン
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
-          <label className="setting-toggle">
-            <input
-              type="checkbox"
-              checked={draftSettings.allStar}
-              disabled={draft.actions.length > 0 || draft.game > 1}
-              onChange={(e) =>
-                setDraftSettings({
-                  ...draftSettings,
-                  allStar: e.target.checked,
-                })
-              }
-            />
-            <span>
-              <strong>オールスタードラフト</strong>
-              <small>
-                次の試合では、それまでに両チームが選出したポケモンを使用禁止にします。
-              </small>
-            </span>
-          </label>
-          <p className="form-note">
-            先攻・形式は開始前に設定できます。タイマーは練習用です。時間切れで自動選択せず、手動で確定します。
-          </p>
-          <button className="modal-primary" onClick={saveSettings}>
-            設定を保存
-          </button>
-        </Modal>
       )}
       {modal === "reset" && (
         <Modal title="ドラフトをリセット" onClose={() => setModal(null)}>

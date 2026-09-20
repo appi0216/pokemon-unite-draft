@@ -13,6 +13,7 @@ export type Draft = {
   game: number;
   allStar: boolean;
   history: PastGame[];
+  bestOf: 3 | 5;
 };
 export const opposite = (team: Team): Team =>
   team === "purple" ? "orange" : "purple";
@@ -45,6 +46,7 @@ export function currentStep(draft: Draft) {
 export const createDraft = (
   first: Team = "purple",
   allStar = false,
+  bestOf: 3 | 5 = 3,
 ): Draft => ({
   first,
   allStar,
@@ -52,6 +54,7 @@ export const createDraft = (
   excluded: [],
   game: 1,
   history: [],
+  bestOf,
 });
 export const unavailable = (draft: Draft, id: string) =>
   draft.excluded.includes(id) || draft.actions.some((a) => a.pokemon === id);
@@ -82,6 +85,7 @@ export const undo = (draft: Draft): Draft => ({
 export function nextGame(draft: Draft): Draft {
   if (currentStep(draft)) return draft;
   if (!draft.allStar) return createDraft(draft.first);
+  if (draft.game >= draft.bestOf) return draft;
   const played = draft.actions
     .filter((a) => a.phase === "pick" && a.pokemon)
     .map((a) => a.pokemon!);
@@ -132,6 +136,8 @@ export function restoreDraft(
 ): Draft | null {
   if (!value || typeof value !== "object") return null;
   const v = value as Draft;
+  const bestOf = v.bestOf ?? (v.game > 3 ? 5 : 3);
+  if (bestOf !== 3 && bestOf !== 5) return null;
   if (
     !["purple", "orange"].includes(v.first) ||
     !Array.isArray(v.actions) ||
@@ -178,7 +184,7 @@ export function restoreDraft(
   }
   if (!v.allStar && (v.excluded.length || history.length)) return null;
   let draft = {
-    ...createDraft(v.first, v.allStar),
+    ...createDraft(v.first, v.allStar, bestOf),
     excluded: v.excluded,
     game: v.allStar ? v.game : 1,
     history,

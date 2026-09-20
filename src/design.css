@@ -3141,3 +3141,103 @@ dialog > p,
     border-left: 0;
   }
 }
+/* History must never take height away from the five active pick slots. */
+.draft-arena {
+  grid-template-rows: clamp(610px, calc(100dvh - 365px), 750px);
+}
+.player-portrait > .portrait {
+  width: min(70px, 100%);
+  height: auto;
+  max-height: 100%;
+  aspect-ratio: 1;
+}
+.player-list {
+  grid-template-rows: repeat(5, minmax(58px, 1fr));
+}
+.player-slot {
+  min-height: 58px;
+}
+.series-options button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.result-image-preview {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid #e7dfef;
+}
+.image-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background: #8052bb;
+  color: white;
+  border-radius: 10px;
+  padding: 13px;
+  margin-top: 16px;
+}
+dialog:has(.result-image-preview) {
+  width: 820px;
+}
+@media (min-width: 1600px) {
+  .player-portrait > .portrait {
+    width: min(88px, 100%);
+  }
+}
+@media (min-width: 681px) and (max-width: 1299px) {
+  .allstar-arena {
+    grid-template-rows: 729px;
+  }
+  .allstar-arena .team-panel {
+    flex: 1 0 610px;
+  }
+  .player-portrait > .portrait {
+    width: min(62px, 100%);
+  }
+}
+@media (max-width: 680px) {
+  .draft-arena {
+    grid-template-rows: 510px 475px;
+  }
+  .allstar-arena {
+    grid-template-rows: 629px 475px;
+  }
+  .allstar-arena .team-panel {
+    flex: 1 0 510px;
+  }
+  .player-list {
+    grid-template-rows: repeat(5, minmax(52px, 1fr));
+  }
+  .player-slot {
+    min-height: 52px;
+  }
+  .player-portrait > .portrait {
+    width: 46px;
+    height: 46px;
+  }
+  .player-portrait,
+  .player-portrait.has-pokemon {
+    flex-basis: 46px;
+  }
+}
+@media (max-width: 370px) {
+  .player-portrait > .portrait {
+    width: 40px;
+    height: 40px;
+  }
+  .player-portrait,
+  .player-portrait.has-pokemon {
+    flex-basis: 40px;
+  }
+}
+.final-image-action {
+  order: 2;
+}
+.decision-main > .confirm-button {
+  flex-shrink: 0;
+}

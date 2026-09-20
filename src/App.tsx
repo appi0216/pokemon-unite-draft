@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import Portrait from "./components/Portrait";
 import SetupScreen from "./components/SetupScreen";
+import { createResultImage } from "./result-image";
 import TeamHistory from "./components/TeamHistory";
 import {
   ArrowLeftRight,
@@ -129,7 +130,9 @@ function App() {
   const [selected, setSelected] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [role, setRole] = useState<Role | "all">("all");
-  const [hideUsed, setHideUsed] = useState(false);
+  const [hideUsed, setHideUsed] = useState(true);
+  const [exporting, setExporting] = useState(false);
+  const [resultImage, setResultImage] = useState<string | null>(null);
   const [sort, setSort] = useState("official");
   const [running, setRunning] = useState(false);
   const [remaining, setRemaining] = useState(settings.seconds);
@@ -145,6 +148,7 @@ function App() {
     ...settings,
     first: "purple" as Team,
     allStar: draft.allStar,
+    bestOf: draft.bestOf,
   });
   const [deferredInstall, setDeferredInstall] = useState<Event | null>(null);
   const step = currentStep(draft);
@@ -291,7 +295,12 @@ function App() {
   const openSetup = () => {
     setRunning(false);
     setSelected(null);
-    setDraftSettings({ ...settings, first: "purple", allStar: draft.allStar });
+    setDraftSettings({
+      ...settings,
+      first: "purple",
+      allStar: draft.allStar,
+      bestOf: draft.bestOf,
+    });
     setScreen("setup");
     window.scrollTo({ top: 0, behavior: "instant" });
   };
@@ -303,13 +312,19 @@ function App() {
       sound: settings.sound,
     };
     setSettings(next);
-    setDraft(createDraft(draftSettings.first, draftSettings.allStar));
+    setDraft(
+      createDraft(
+        draftSettings.first,
+        draftSettings.allStar,
+        draftSettings.bestOf,
+      ),
+    );
     setStarted(true);
     setSelected(null);
     setSwapFrom(null);
     setQuery("");
     setRole("all");
-    setHideUsed(false);
+    setHideUsed(true);
     setNotice("");
     setRemaining(next.seconds);
     setRunning(next.seconds > 0);
@@ -322,32 +337,15 @@ function App() {
     setScreen("draft");
     window.scrollTo({ top: 0, behavior: "instant" });
   };
-  const exportResult = () => {
-    const lines = [
-      draft.allStar ? `UNITE DRAFT / GAME ${draft.game}` : "UNITE DRAFT",
-      `2026-09-18 公式掲載ロスター`,
-      ...(["purple", "orange"] as Team[]).flatMap((team) => [
-        `\n${teamName(team)}${draft.first === team ? "（先攻）" : "（後攻）"}`,
-        `BAN: ${bans
-          .filter((a) => a.team === team)
-          .map((a) => (a.pokemon ? byId.get(a.pokemon)?.name : "スキップ"))
-          .join(" / ")}`,
-        `PICK: ${picks
-          .filter((a) => a.team === team)
-          .map((a) => byId.get(a.pokemon!)?.name)
-          .join(" / ")}`,
-      ]),
-    ];
-    const url = URL.createObjectURL(
-      new Blob([lines.join("\n")], { type: "text/plain;charset=utf-8" }),
-    );
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = draft.allStar
-      ? `unite-draft-game-${draft.game}.txt`
-      : "unite-draft.txt";
-    a.click();
-    URL.revokeObjectURL(url);
+  const exportResult = async () => {
+    setExporting(true);
+    try {
+      setResultImage(await createResultImage(draft, settings));
+    } catch {
+      setNotice("画像を作成できませんでした。もう一度お試しください。");
+    } finally {
+      setExporting(false);
+    }
   };
   function renderTeamPanel(team: Team) {
     const ownBans = bans.filter((a) => a.team === team);
@@ -853,29 +851,44 @@ function App() {
               {complete ? (
                 <>
                   <button
-                    className="confirm-button complete-button"
+                    className={
+                      draft.allStar && draft.game >= draft.bestOf
+                        ? "next-game final-image-action"
+                        : "confirm-button complete-button"
+                    }
                     onClick={exportResult}
+                    disabled={exporting}
                   >
                     <Download size={18} />
-                    結果を保存
+                    {exporting ? "画像を作成中…" : "結果を画像で保存"}
                   </button>
                   <button
-                    className="next-game"
+                    className={
+                      draft.allStar && draft.game >= draft.bestOf
+                        ? "confirm-button"
+                        : "next-game"
+                    }
                     onClick={() => {
+                      if (draft.allStar && draft.game >= draft.bestOf) {
+                        openSetup();
+                        return;
+                      }
                       const next = nextGame(draft);
                       setDraft(next);
                       setSelected(null);
                       setSwapFrom(null);
                       setQuery("");
                       setRole("all");
-                      setHideUsed(false);
+                      setHideUsed(true);
                       setNotice("");
                       setRemaining(settings.seconds);
                       setRunning(settings.seconds > 0);
                       window.scrollTo({ top: 0, behavior: "instant" });
                     }}
                   >
-                    次の試合
+                    {draft.allStar && draft.game >= draft.bestOf
+                      ? "準備画面へ戻る"
+                      : "次の試合"}
                     <ArrowRight size={16} />
                   </button>
                 </>
@@ -925,7 +938,8 @@ function App() {
                 </button>
               ) : draft.allStar ? (
                 <span className="game-counter">
-                  <Flag size={15} /> GAME {String(draft.game).padStart(2, "0")}
+                  <Flag size={15} /> GAME {String(draft.game).padStart(2, "0")}{" "}
+                  / BO{draft.bestOf}
                 </span>
               ) : null}
             </div>
@@ -994,6 +1008,28 @@ function App() {
           </button>
         </div>
       </footer>
+      {resultImage && (
+        <Modal title="ドラフト結果の画像" onClose={() => setResultImage(null)}>
+          <img
+            className="result-image-preview"
+            src={resultImage}
+            alt="両チームのBANとPICKの結果"
+          />
+          <a
+            className="image-download"
+            href={resultImage}
+            download={
+              draft.allStar
+                ? `unite-draft-bo${draft.bestOf}-game-${draft.game}.png`
+                : "unite-draft.png"
+            }
+          >
+            <Download size={18} />
+            PNG画像を保存
+          </a>
+          <p className="field-hint">画像を長押しして保存することもできます。</p>
+        </Modal>
+      )}
       {notice && (
         <div className="toast" role="status">
           <Info size={17} />
@@ -1017,7 +1053,7 @@ function App() {
             <button
               className="modal-primary"
               onClick={() => {
-                setDraft(createDraft(draft.first, draft.allStar));
+                setDraft(createDraft(draft.first, draft.allStar, draft.bestOf));
                 setSelected(null);
                 setSwapFrom(null);
                 setRunning(false);

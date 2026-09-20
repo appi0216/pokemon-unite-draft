@@ -21,6 +21,7 @@ export type SetupValues = {
   sound: boolean;
   first: Team;
   allStar: boolean;
+  bestOf: 3 | 5;
 };
 type Props = {
   values: SetupValues;
@@ -138,6 +139,27 @@ export default function SetupScreen({
             </button>
           </div>
         </fieldset>
+        {values.allStar && (
+          <fieldset className="setup-field">
+            <legend>シリーズ形式</legend>
+            <div className="timer-options series-options">
+              {([3, 5] as const).map((bestOf) => (
+                <button
+                  key={bestOf}
+                  aria-pressed={values.bestOf === bestOf}
+                  className={values.bestOf === bestOf ? "chosen" : ""}
+                  onClick={() => onChange({ ...values, bestOf })}
+                >
+                  BO{bestOf}
+                  <small>最大{bestOf}試合</small>
+                </button>
+              ))}
+            </div>
+            <p className="field-hint">
+              第{values.bestOf}試合の選出で終了します。勝敗の記録は行いません。
+            </p>
+          </fieldset>
+        )}
         <fieldset className="setup-field">
           <legend>
             <Clock3 size={15} />

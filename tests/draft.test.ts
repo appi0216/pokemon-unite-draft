@@ -11,6 +11,25 @@ import {
   undo,
 } from "../src/domain/draft.ts";
 const ids = Array.from({ length: 80 }, (_, i) => `p${i}`);
+test("BO3 and BO5 stop at their final draft and survive reload", () => {
+  for (const bestOf of [3, 5] as const) {
+    let d = createDraft("purple", true, bestOf);
+    for (let game = 1; game <= bestOf; game++) {
+      for (let i = 0; i < 6; i++) d = choose(d, null, ids);
+      for (let i = 0; i < 10; i++) d = choose(d, ids[(game - 1) * 10 + i], ids);
+      assert.equal(currentStep(d), null);
+      const restored = restoreDraft(JSON.parse(JSON.stringify(d)), ids)!;
+      assert.equal(restored.bestOf, bestOf);
+      assert.equal(restored.game, game);
+      if (game === bestOf) assert.equal(nextGame(d), d);
+      else {
+        d = nextGame(d);
+        assert.equal(d.game, game + 1);
+      }
+    }
+  }
+  assert.equal(restoreDraft({ ...createDraft(), bestOf: 4 }, ids), null);
+});
 test("six alternating bans, then exact 1-2-2-2-2-1 pick groups, either first team", () => {
   for (const first of ["purple", "orange"] as const) {
     let d = createDraft(first);

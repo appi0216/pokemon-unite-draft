@@ -1,4 +1,73 @@
 /* One surface scale for home, draft, history, and dialogs. */
+.pokemon-card.attack {
+  --role: #f16b70;
+}
+.pokemon-card.defense {
+  --role: #53c391;
+}
+.pokemon-card.balance {
+  --role: #b28aed;
+}
+.pokemon-card.speed {
+  --role: #58bce8;
+}
+.pokemon-card.support {
+  --role: #ebc45c;
+}
+.pokemon-grid .pokemon-card {
+  background: radial-gradient(
+    ellipse at 50% 35%,
+    color-mix(in srgb, var(--role) 42%, #292531),
+    #292531 85%
+  );
+  border-color: color-mix(in srgb, var(--role) 65%, #443e50);
+}
+.pokemon-card .card-role-stripe {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  opacity: 1;
+  border-radius: 0;
+}
+.pokemon-card .pokemon-name {
+  background: color-mix(in srgb, var(--role) 26%, #211c28);
+  border-top: 1px solid color-mix(in srgb, var(--role) 50%, #443e50);
+}
+.pokemon-grid .pokemon-card.is-selected {
+  box-shadow: inset 0 0 0 2px #e3d5ff;
+}
+.pokemon-card:focus-visible {
+  outline: 3px solid #f4edff;
+  outline-offset: -3px;
+}
+.player-portrait .empty-pick-mark {
+  width: 34px;
+  height: 38px;
+  opacity: 1;
+  border: 1px solid #6f647e66;
+  border-radius: 10px;
+  color: #a79ab9;
+  background: #ffffff03;
+}
+.active .player-portrait .empty-pick-mark {
+  color: #d4b9fb;
+  border-color: #aa85e580;
+  background: #aa85e512;
+}
+.orange .active .player-portrait .empty-pick-mark {
+  color: #e8bf94;
+  border-color: #c8976280;
+  background: #c8976212;
+}
+.selection-footer .keyboard-hint {
+  font-size: 9px;
+}
+@media (max-width: 1100px) {
+  .selection-footer .keyboard-hint {
+    display: none;
+  }
+}
 .phase-banner {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;

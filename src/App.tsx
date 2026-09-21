@@ -134,7 +134,8 @@ function App() {
   const [hideUsed, setHideUsed] = useState(true);
   const [exporting, setExporting] = useState(false);
   const [resultImage, setResultImage] = useState<string | null>(null);
-  const [sort, setSort] = useState("official");
+  const [sort, setSort] = useState("name");
+  const pokemonGrid = useRef<HTMLDivElement>(null);
   const [running, setRunning] = useState(false);
   const [remaining, setRemaining] = useState(() =>
     turnSeconds(settings.seconds > 0, currentStep(draft)?.phase || "ban"),
@@ -242,9 +243,7 @@ function App() {
         .sort((a, b) =>
           sort === "name"
             ? a.name.localeCompare(b.name, "ja")
-            : sort === "new"
-              ? b.order - a.order
-              : a.order - b.order,
+            : b.order - a.order,
         ),
     [role, hideUsed, draft, query, sort],
   );
@@ -456,8 +455,7 @@ function App() {
                     <Portrait p={shown} eager />
                   ) : (
                     <span className="empty-pick-mark" aria-hidden="true">
-                      <span />
-                      <span />
+                      <UserRound size={22} strokeWidth={1.25} />
                     </span>
                   )}
                 </div>
@@ -704,7 +702,6 @@ function App() {
                     value={sort}
                     onChange={(e) => setSort(e.target.value)}
                   >
-                    <option value="official">公式掲載順</option>
                     <option value="name">名前順</option>
                     <option value="new">新しい順</option>
                   </select>
@@ -759,7 +756,78 @@ function App() {
                   </button>
                 ))}
               </div>
-              <div className="pokemon-grid" key={`${role}-${sort}`}>
+              <div
+                className="pokemon-grid"
+                ref={pokemonGrid}
+                key={`${role}-${sort}`}
+                aria-label="ポケモン選択。矢印キーで移動、Enterで確定"
+                onKeyDown={(e) => {
+                  const current = (
+                    e.target as HTMLElement
+                  ).closest<HTMLButtonElement>(".pokemon-card");
+                  if (!current || current.disabled) return;
+                  const cards = Array.from(
+                    e.currentTarget.querySelectorAll<HTMLButtonElement>(
+                      ".pokemon-card:not(:disabled)",
+                    ),
+                  );
+                  const index = cards.indexOf(current);
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (e.repeat) return;
+                    confirm();
+                    requestAnimationFrame(() => {
+                      const next = Array.from(
+                        pokemonGrid.current?.querySelectorAll<HTMLButtonElement>(
+                          ".pokemon-card:not(:disabled)",
+                        ) || [],
+                      );
+                      next[Math.min(index, next.length - 1)]?.focus();
+                    });
+                    return;
+                  }
+                  if (
+                    ![
+                      "ArrowLeft",
+                      "ArrowRight",
+                      "ArrowUp",
+                      "ArrowDown",
+                      "Home",
+                      "End",
+                    ].includes(e.key)
+                  )
+                    return;
+                  e.preventDefault();
+                  let target: HTMLButtonElement | undefined;
+                  if (e.key === "Home") target = cards[0];
+                  else if (e.key === "End") target = cards[cards.length - 1];
+                  else if (e.key === "ArrowLeft") target = cards[index - 1];
+                  else if (e.key === "ArrowRight") target = cards[index + 1];
+                  else {
+                    const from = current.getBoundingClientRect();
+                    const direction = e.key === "ArrowDown" ? 1 : -1;
+                    target = cards
+                      .filter(
+                        (card) =>
+                          (card.getBoundingClientRect().top - from.top) *
+                            direction >
+                          1,
+                      )
+                      .sort((a, b) => {
+                        const ar = a.getBoundingClientRect(),
+                          br = b.getBoundingClientRect();
+                        return (
+                          Math.abs(ar.top - from.top) -
+                            Math.abs(br.top - from.top) ||
+                          Math.abs(ar.left - from.left) -
+                            Math.abs(br.left - from.left)
+                        );
+                      })[0];
+                  }
+                  target?.focus();
+                }}
+              >
                 {visible.map((p, i) => {
                   const used = unavailable(draft, p.id);
                   const action = draft.actions.find((a) => a.pokemon === p.id);
@@ -769,9 +837,21 @@ function App() {
                       key={p.id}
                       className={`pokemon-card ${p.role} ${selected === p.id ? "is-selected" : ""} ${used ? "unavailable" : ""}`}
                       disabled={used || complete}
+                      tabIndex={
+                        p.id ===
+                        (selected &&
+                        visible.some(
+                          (v) => v.id === selected && !unavailable(draft, v.id),
+                        )
+                          ? selected
+                          : visible.find((v) => !unavailable(draft, v.id))?.id)
+                          ? 0
+                          : -1
+                      }
                       aria-label={`${p.name} ${roles[p.role]}型${used ? " 選択不可" : ""}`}
                       aria-pressed={selected === p.id}
                       onClick={() => setSelected(p.id)}
+                      onFocus={() => setSelected(p.id)}
                     >
                       <span className="card-role-stripe" />
                       <Portrait p={p} eager={i < 24} />
@@ -818,6 +898,9 @@ function App() {
               </div>
               <div className="selection-footer">
                 <span>{visible.length}体を表示</span>
+                <span className="keyboard-hint">
+                  Tabで一覧へ · 矢印で選択 · Enterで確定
+                </span>
                 <span>
                   <i className="legend-dot" />
                   選択中 <Ban size={12} />

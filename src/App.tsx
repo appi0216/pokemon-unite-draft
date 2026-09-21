@@ -278,6 +278,48 @@ function App() {
   };
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
+      const editing =
+        e.target instanceof HTMLElement &&
+        (e.target.isContentEditable ||
+          !!e.target.closest("input, textarea, select"));
+      if (
+        screen === "draft" &&
+        !modal &&
+        !resultImage &&
+        !editing &&
+        !e.ctrlKey &&
+        !e.metaKey &&
+        !e.altKey &&
+        !e.repeat
+      ) {
+        if (e.key === "/") {
+          e.preventDefault();
+          document
+            .querySelector<HTMLInputElement>('input[type="search"]')
+            ?.focus();
+          return;
+        }
+        if (e.key === "Escape") {
+          e.preventDefault();
+          setSelected(null);
+          (document.activeElement as HTMLElement)?.blur();
+          return;
+        }
+        if (e.key.toLowerCase() === "p" && settings.seconds > 0 && !complete) {
+          e.preventDefault();
+          if (!remaining) setRemaining(duration);
+          setRunning(!running);
+          return;
+        }
+        if (e.key.toLowerCase() === "u" && draft.actions.length) {
+          e.preventDefault();
+          setDraft(undo(draft));
+          setSelected(null);
+          setSwapFrom(null);
+          setRunning(false);
+          return;
+        }
+      }
       if (
         e.key === "Enter" &&
         selected &&
@@ -1164,6 +1206,12 @@ function App() {
       {modal === "info" && (
         <Modal title="使い方・ルールについて" onClose={() => setModal(null)}>
           <div className="info-content">
+            <h3>キーボード操作</h3>
+            <p>
+              Tab：操作対象を移動 ／ 矢印：ポケモンを選択 ／ Enter：確定 ／
+              /：検索 ／ Esc：選択解除 ／ P：タイマー停止・再開 ／
+              U：1つ戻す。文字入力中はショートカットを無効にします。
+            </p>
             <p>
               1台の端末で両チームを操作する、大会形式のドラフト練習ツールです。ポケモンを選び、中央のボタンで確定してください。
             </p>

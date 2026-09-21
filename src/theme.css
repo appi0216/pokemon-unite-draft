@@ -1,38 +1,139 @@
 /* One surface scale for home, draft, history, and dialogs. */
-.pokemon-card.attack {
-  --role: #f16b70;
-}
-.pokemon-card.defense {
-  --role: #53c391;
-}
-.pokemon-card.balance {
-  --role: #b28aed;
-}
-.pokemon-card.speed {
-  --role: #58bce8;
-}
-.pokemon-card.support {
-  --role: #ebc45c;
+:root {
+  --attack: #f16c56;
+  --defense: #94c85a;
+  --balance: #b778cf;
+  --speed: #51b9d9;
+  --support: #e8bf4f;
 }
 .pokemon-grid .pokemon-card {
-  background: radial-gradient(
-    ellipse at 50% 35%,
-    color-mix(in srgb, var(--role) 42%, #292531),
-    #292531 85%
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--role) 25%, #34303e),
+    #28252f
   );
-  border-color: color-mix(in srgb, var(--role) 65%, #443e50);
+  border-color: color-mix(in srgb, var(--role) 36%, #443e50);
 }
 .pokemon-card .card-role-stripe {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  opacity: 1;
-  border-radius: 0;
+  opacity: 0.85;
 }
-.pokemon-card .pokemon-name {
-  background: color-mix(in srgb, var(--role) 26%, #211c28);
-  border-top: 1px solid color-mix(in srgb, var(--role) 50%, #443e50);
+.player-info .role-text {
+  color: color-mix(in srgb, var(--role) 75%, #fff);
+}
+.role-tabs button.selected:not(:first-child) {
+  background: color-mix(in srgb, var(--role) 30%, #302a3a);
+  border-color: var(--role);
+}
+.decision-main > .complete-button,
+.decision-main > .next-game,
+.image-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  background: linear-gradient(160deg, #40384e, #2c2736);
+  border: 1px solid #675778;
+  color: #eee7f7;
+  box-shadow:
+    inset 0 1px #ffffff0b,
+    0 4px 12px #0002;
+}
+.decision-main > .next-game,
+.image-download {
+  background: linear-gradient(145deg, #705294, #523a73);
+  border-color: #9679b5;
+}
+.decision-main > .complete-button:hover,
+.decision-main > .next-game:hover,
+.image-download:hover {
+  filter: brightness(1.12);
+}
+@media (min-width: 901px) and (min-height: 760px) {
+  .app:not(.setup-mode) .app-header {
+    height: 60px;
+    min-height: 60px;
+  }
+  .app:not(.setup-mode) main {
+    padding-top: 12px;
+  }
+  .phase-banner {
+    min-height: 76px;
+    padding-block: 12px;
+    margin-bottom: 12px;
+  }
+  .draft-arena,
+  .allstar-arena {
+    grid-template-rows: minmax(0, calc(100dvh - 370px));
+  }
+  .allstar-arena .team-panel {
+    flex: 1 1 0;
+  }
+  .team-panel {
+    grid-template-rows: 30px 12px 40px 14px minmax(0, 1fr) 18px;
+    gap: 6px;
+    padding-block: 10px;
+  }
+  .player-list {
+    grid-template-rows: repeat(5, minmax(36px, 1fr));
+  }
+  .player-slot {
+    min-height: 36px;
+  }
+  .player-portrait > .portrait {
+    width: min(52px, 100%);
+    height: auto;
+    max-height: 100%;
+  }
+  .decision-bar {
+    min-height: 68px;
+    padding-block: 10px;
+  }
+  .timeline {
+    min-height: 54px;
+    padding-block: 8px;
+    margin-bottom: 8px;
+  }
+  .app-footer {
+    padding-bottom: 8px;
+  }
+  .allstar-arena .team-history {
+    flex-basis: 48px;
+  }
+  .allstar-arena .history-heading {
+    padding-block: 2px;
+  }
+  .allstar-arena .history-scroll {
+    padding-block: 2px;
+  }
+  .player-info .trainer {
+    display: none;
+  }
+  .player-info .player-name {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+  .player-info .role-text {
+    font-size: 9px;
+    line-height: 1.3;
+    margin-top: 2px;
+  }
+  .decision-main:has(.complete-button),
+  .decision-main:has(.final-image-action) {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .decision-main > .complete-button,
+  .decision-main > .next-game {
+    min-width: 0;
+    flex: 0 1 auto;
+  }
 }
 .pokemon-grid .pokemon-card.is-selected {
   box-shadow: inset 0 0 0 2px #e3d5ff;

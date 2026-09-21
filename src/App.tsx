@@ -49,6 +49,7 @@ import {
   undo,
 } from "./domain/draft";
 import type { Draft, Team } from "./domain/draft";
+import { turnSeconds } from "./domain/timer";
 
 const STORAGE = "unite-draft.v1";
 type Settings = {
@@ -135,7 +136,9 @@ function App() {
   const [resultImage, setResultImage] = useState<string | null>(null);
   const [sort, setSort] = useState("official");
   const [running, setRunning] = useState(false);
-  const [remaining, setRemaining] = useState(settings.seconds);
+  const [remaining, setRemaining] = useState(() =>
+    turnSeconds(settings.seconds > 0, currentStep(draft)?.phase || "ban"),
+  );
   const [modal, setModal] = useState<"info" | "reset" | null>(null);
   const [online, setOnline] = useState(navigator.onLine);
   const [cacheReady, setCacheReady] = useState(false);
@@ -155,6 +158,7 @@ function App() {
   const stageIndex = step?.index ?? 12;
   const complete = !step;
   const phase = step?.phase || "pick";
+  const duration = turnSeconds(settings.seconds > 0, phase);
   const activeTeam = step?.team || draft.first;
   const selectedPokemon = selected ? byId.get(selected) : undefined;
   const schedule = steps(draft.first);
@@ -171,8 +175,8 @@ function App() {
     }
   }, [draft, settings, started]);
   useEffect(() => {
-    setRemaining(settings.seconds);
-  }, [stageIndex, draft.game, settings.seconds]);
+    setRemaining(duration);
+  }, [stageIndex, draft.game, duration]);
   useEffect(() => {
     if (
       !running ||
@@ -326,13 +330,13 @@ function App() {
     setRole("all");
     setHideUsed(true);
     setNotice("");
-    setRemaining(next.seconds);
+    setRemaining(turnSeconds(next.seconds > 0, "ban"));
     setRunning(next.seconds > 0);
     setScreen("draft");
     window.scrollTo({ top: 0, behavior: "instant" });
   };
   const resumeDraft = () => {
-    setRemaining(settings.seconds);
+    setRemaining(duration);
     setRunning(false);
     setScreen("draft");
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -638,7 +642,7 @@ function App() {
                   aria-label={running ? "タイマーを停止" : "タイマーを開始"}
                   disabled={complete || settings.seconds === 0}
                   onClick={() => {
-                    if (remaining === 0) setRemaining(settings.seconds);
+                    if (remaining === 0) setRemaining(duration);
                     setRunning(!running);
                   }}
                 >
@@ -888,7 +892,7 @@ function App() {
                       setRole("all");
                       setHideUsed(true);
                       setNotice("");
-                      setRemaining(settings.seconds);
+                      setRemaining(turnSeconds(settings.seconds > 0, "ban"));
                       setRunning(settings.seconds > 0);
                       window.scrollTo({ top: 0, behavior: "instant" });
                     }}
@@ -1064,7 +1068,7 @@ function App() {
                 setSelected(null);
                 setSwapFrom(null);
                 setRunning(false);
-                setRemaining(settings.seconds);
+                setRemaining(turnSeconds(settings.seconds > 0, "ban"));
                 setModal(null);
               }}
             >

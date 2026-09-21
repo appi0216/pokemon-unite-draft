@@ -200,7 +200,9 @@ export default function SetupScreen({
               </button>
             ))}
           </div>
-          <p className="field-hint">時間切れでも、選択は手動で確定できます。</p>
+          <p className="field-hint">
+            あり：BANは各15秒、PICKは各ターン20秒。時間切れ後は手動で確定できます。
+          </p>
         </fieldset>
         <fieldset className="setup-field first-team-field">
           <legend>

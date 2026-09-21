@@ -11,6 +11,25 @@ import {
   undo,
 } from "../src/domain/draft.ts";
 const ids = Array.from({ length: 80 }, (_, i) => `p${i}`);
+import { turnSeconds } from "../src/domain/timer.ts";
+
+test("timer follows six BAN turns and shared two-pick turns", () => {
+  let d = createDraft();
+  for (let i = 0; i < 6; i++) {
+    assert.equal(turnSeconds(true, currentStep(d)!.phase), 15);
+    d = choose(d, null, ids);
+  }
+  assert.equal(turnSeconds(true, currentStep(d)!.phase), 20);
+  d = choose(d, ids[0], ids);
+  const sharedTurn = currentStep(d)!.index;
+  d = choose(d, ids[1], ids);
+  assert.equal(currentStep(d)!.index, sharedTurn);
+  assert.equal(turnSeconds(true, currentStep(d)!.phase), 20);
+  d = choose(d, ids[2], ids);
+  assert.notEqual(currentStep(d)!.index, sharedTurn);
+  assert.equal(turnSeconds(false, "ban"), 0);
+  assert.equal(turnSeconds(false, "pick"), 0);
+});
 test("BO3 and BO5 stop at their final draft and survive reload", () => {
   for (const bestOf of [3, 5] as const) {
     let d = createDraft("purple", true, bestOf);

@@ -9,7 +9,10 @@ export type Pokemon = {
   source: string;
   detail: string;
 };
-export const pokemon = data as Pokemon[];
+export const pokemon: Pokemon[] = (data as Pokemon[]).map((p) => ({
+  ...p,
+  image: import.meta.env.BASE_URL + p.image.replace(/^\//, ""),
+}));
 export const ids = pokemon.map((p) => p.id);
 export const byId = new Map(pokemon.map((p) => [p.id, p]));
 export const roles: Record<Role, string> = {
@@ -25,3 +28,4 @@ export const normalize = (s: string) =>
     .toLowerCase()
     .replace(/[ぁ-ゖ]/g, (c) => String.fromCharCode(c.charCodeAt(0) + 0x60))
     .replace(/\s/g, "");
+

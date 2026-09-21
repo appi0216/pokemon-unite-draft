@@ -96,3 +96,12 @@ npm run test:offline
 - [公式：2026年9月4日モルペコ参戦](https://www.pokemonunite.jp/ja/topics/news/20260904-1/)
 
 各画像の元URLは`src/data/pokemon.json`に記録しています。ポケモンおよび画像等の権利は各権利者に帰属します。本アプリは公式アプリではありません。
+## GitHub Pages
+
+公開先: https://appi0216.github.io/pokemon-unite-draft/
+
+GitHubのSettings → Pages → Sourceを「GitHub Actions」に設定します。
+mainへの更新でテスト・ビルド・公開が自動実行されます。手動実行はActions → Publish draft simulator → Run workflowです。
+
+ローカル確認は `npm run build` と `npm run preview` の後、http://127.0.0.1:4173/pokemon-unite-draft/ を開きます。
+画像、PNG出力、ホーム画面、PWA、Service Workerはこの公開パスに対応しています。公開URLが変わるため、旧サイトのブラウザー保存データは自動移行しません。

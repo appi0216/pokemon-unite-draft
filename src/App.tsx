@@ -499,14 +499,19 @@ function App() {
       <header className="app-header">
         <a
           className="brand"
-          href="/"
+          href={import.meta.env.BASE_URL}
           aria-label="UNITE DRAFT ホーム"
           onClick={(e) => {
             e.preventDefault();
             openSetup();
           }}
         >
-          <img src="/icon.svg" width="34" height="34" alt="" />
+          <img
+            src={`${import.meta.env.BASE_URL}icon.svg`}
+            width="34"
+            height="34"
+            alt=""
+          />
           <span>
             UNITE<span className="brand-light"> DRAFT</span>
             <small>ドラフトシミュレーター</small>

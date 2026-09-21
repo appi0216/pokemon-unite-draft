@@ -455,7 +455,10 @@ function App() {
                   {shown ? (
                     <Portrait p={shown} eager />
                   ) : (
-                    <span className="pokeball-symbol" />
+                    <span className="empty-pick-mark" aria-hidden="true">
+                      <span />
+                      <span />
+                    </span>
                   )}
                 </div>
                 <div className="player-info">
@@ -626,30 +629,28 @@ function App() {
                 </span>
               </div>
             </div>
-            <div
-              className={`timer ${remaining <= 5 && settings.seconds > 0 ? "urgent" : ""}`}
-            >
-              <span className="eyebrow">練習タイマー</span>
-              <div>
-                <Clock3 size={18} />
-                <strong>
-                  {settings.seconds === 0
-                    ? "∞"
-                    : String(remaining).padStart(2, "0")}
-                </strong>
-                <button
-                  className="timer-button"
-                  aria-label={running ? "タイマーを停止" : "タイマーを開始"}
-                  disabled={complete || settings.seconds === 0}
-                  onClick={() => {
-                    if (remaining === 0) setRemaining(duration);
-                    setRunning(!running);
-                  }}
-                >
-                  {running ? <Pause size={16} /> : <Play size={16} />}
-                </button>
+            {settings.seconds > 0 && (
+              <div
+                className={`timer ${remaining <= 5 && settings.seconds > 0 ? "urgent" : ""}`}
+                aria-label="ターンの残り時間"
+              >
+                <div>
+                  <Clock3 size={18} />
+                  <strong>{String(remaining).padStart(2, "0")}</strong>
+                  <button
+                    className="timer-button"
+                    aria-label={running ? "タイマーを停止" : "タイマーを開始"}
+                    disabled={complete || settings.seconds === 0}
+                    onClick={() => {
+                      if (remaining === 0) setRemaining(duration);
+                      setRunning(!running);
+                    }}
+                  >
+                    {running ? <Pause size={16} /> : <Play size={16} />}
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
           </section>
           {draft.allStar &&
             draft.excluded.some(

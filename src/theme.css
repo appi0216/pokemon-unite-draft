@@ -1,4 +1,95 @@
 /* One surface scale for home, draft, history, and dialogs. */
+.phase-banner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  padding-block: 18px;
+  min-height: 88px;
+}
+.phase-label,
+.phase-message > div,
+.team-heading > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+.phase-label {
+  border-color: var(--surface-border);
+}
+.phase-label > .eyebrow {
+  display: block;
+  line-height: 1.2;
+}
+.phase-label h1 {
+  margin: 0;
+  line-height: 1.3;
+}
+.phase-message div > span {
+  margin: 0;
+  line-height: 1.4;
+}
+.team-heading h2 {
+  margin: 0;
+}
+.team-heading .eyebrow {
+  display: block;
+  line-height: 1.2;
+}
+.timer {
+  align-self: center;
+}
+.timer > div {
+  margin: 0;
+}
+.empty-pick-mark {
+  width: 28px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  opacity: 0.5;
+}
+.empty-pick-mark > span {
+  width: 6px;
+  height: 20px;
+  border-radius: 2px;
+  background: var(--text-secondary);
+  transform: skew(-15deg);
+}
+.active .empty-pick-mark {
+  opacity: 0.85;
+}
+.active .empty-pick-mark > span {
+  background: var(--side);
+}
+@media (max-width: 600px) {
+  .phase-banner {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    padding-block: 16px;
+    min-height: 0;
+  }
+  .phase-label {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+  }
+  .phase-message {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    padding: 0;
+  }
+  .phase-message > div {
+    gap: 5px;
+  }
+  .timer {
+    position: static;
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
 :root {
   color-scheme: dark;
   --surface-base: #16151b;

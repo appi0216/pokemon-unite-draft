@@ -3157,6 +3157,35 @@ dialog > p,
 .player-slot {
   min-height: 58px;
 }
+.match-format-panels {
+  display: grid;
+}
+.match-format-panel {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+.match-format-panel[aria-hidden="true"] {
+  visibility: hidden;
+}
+.match-format-panels .series-options,
+.single-match-format {
+  min-height: 46px;
+}
+.single-match-format {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #f0ebf5;
+  border-radius: 10px;
+  background: #f5f2f9;
+  color: #9470ad;
+  font-size: 13px;
+}
+.single-match-format small {
+  font-size: 10px;
+  font-weight: 400;
+}
 .series-options button {
   display: flex;
   align-items: center;

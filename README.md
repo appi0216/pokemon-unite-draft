@@ -98,6 +98,8 @@ npm run test:offline
 各画像の元URLは`src/data/pokemon.json`に記録しています。ポケモンおよび画像等の権利は各権利者に帰属します。本アプリは公式アプリではありません。
 ## GitHub Pages
 
+更新・過去の版への戻し方は [運用手順](docs/MAINTENANCE.md) を参照してください。
+
 公開先: https://appi0216.github.io/pokemon-unite-draft/
 
 GitHubのSettings → Pages → Sourceを「GitHub Actions」に設定します。

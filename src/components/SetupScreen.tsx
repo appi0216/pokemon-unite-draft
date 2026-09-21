@@ -50,9 +50,9 @@ export default function SetupScreen({
           <span /> YOUR DRAFT ROOM
         </span>
         <h1>
-          チームの可能性を、
+          勝負は、
           <br />
-          <span>この選択から。</span>
+          <span>選ぶ瞬間から。</span>
         </h1>
         <p>
           大会と同じ順番で、BANからPICKまで。
@@ -64,7 +64,9 @@ export default function SetupScreen({
           {["gengar", "pikachu", "megalucario"].map((id, i) => (
             <div key={id} className={`showcase-card showcase-${i}`}>
               <span className="showcase-index">0{i + 1}</span>
-              <Portrait p={byId.get(id)!} eager />
+              <div className="showcase-image">
+                <Portrait p={byId.get(id)!} eager />
+              </div>
               <span className="showcase-name">{byId.get(id)!.name}</span>
             </div>
           ))}
@@ -186,22 +188,15 @@ export default function SetupScreen({
             ターンの制限時間
           </legend>
           <div className="timer-options">
-            {[0, 20, 30, 45, 60].map((seconds) => (
+            {[0, 30].map((seconds) => (
               <button
                 type="button"
                 key={seconds}
-                className={values.seconds === seconds ? "chosen" : ""}
-                aria-pressed={values.seconds === seconds}
+                className={values.seconds > 0 === seconds > 0 ? "chosen" : ""}
+                aria-pressed={values.seconds > 0 === seconds > 0}
                 onClick={() => onChange({ ...values, seconds })}
               >
-                {seconds === 0 ? (
-                  "なし"
-                ) : (
-                  <>
-                    {seconds}
-                    <small>秒</small>
-                  </>
-                )}
+                {seconds === 0 ? "なし" : "あり"}
               </button>
             ))}
           </div>

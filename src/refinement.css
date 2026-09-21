@@ -1,0 +1,345 @@
+/* Shared finish: quiet surfaces, clear hierarchy, and restrained team accents. */
+:root {
+  --purple: #7452d6;
+  --orange: #c87935;
+  color: #25252a;
+}
+.app {
+  background: #f2f2f4;
+}
+.app-header {
+  background: #ffffffdc;
+  backdrop-filter: blur(20px);
+}
+.team-panel,
+.selection-panel,
+.timeline {
+  border-color: #dedee5;
+  box-shadow: 0 8px 30px #16162508;
+}
+.selection-panel {
+  background: #fff;
+  border-radius: 22px;
+}
+.team-panel {
+  background: linear-gradient(165deg, #fff 50%, #f1edf9);
+}
+.team-panel.orange {
+  background: linear-gradient(165deg, #fff 50%, #faf0e6);
+}
+.team-panel.team-active {
+  box-shadow:
+    0 0 0 2px rgba(var(--side-rgb), 0.18),
+    0 12px 35px rgba(var(--side-rgb), 0.1);
+}
+.phase-banner {
+  background: #202025;
+  color: #f5f5f7;
+  border-radius: 20px;
+  padding-inline: 22px;
+}
+.phase-label h1,
+.phase-message strong,
+.timer strong {
+  color: inherit;
+}
+.phase-label > .eyebrow,
+.phase-message div > span,
+.timer > .eyebrow {
+  color: #b7b7c4;
+}
+.timer.urgent strong {
+  color: #ff9b85;
+}
+.timer-button {
+  background: #ffffff14;
+  color: #f5f5f7;
+}
+.start-draft-button,
+.confirm-button,
+.modal-primary,
+.image-download {
+  background: linear-gradient(125deg, #7958d9, #5739af);
+  box-shadow: 0 6px 20px #5739af24;
+}
+.pokemon-card {
+  border-radius: 13px;
+}
+@media (hover: hover) {
+  .pokemon-card:not(:disabled):hover {
+    box-shadow: 0 5px 16px #27223c18;
+  }
+  .start-draft-button:hover {
+    filter: brightness(1.08);
+  }
+}
+
+/* Images get a square inside the available area; labels have their own row. */
+.ban-image {
+  position: absolute;
+  inset: 2px 2px 17px;
+  display: grid;
+  place-items: center;
+  container-type: size;
+}
+.ban-image .portrait {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+  width: min(100cqw, 100cqh);
+  height: min(100cqw, 100cqh);
+  opacity: 1;
+}
+.ban-slot.filled .ban-slot-label {
+  background: #ece8f0;
+}
+
+/* Home: a cinematic introduction alongside the immediately available controls. */
+.app.setup-mode {
+  background:
+    radial-gradient(ellipse at 20% 45%, #352541 0, transparent 45%), #101013;
+  color: #f5f5f7;
+}
+.setup-mode .app-header {
+  background: #101013e6;
+  border-bottom-color: #ffffff18;
+}
+.setup-mode .brand {
+  color: #f5f5f7;
+}
+.setup-mode .app-footer,
+.setup-mode .footer-link,
+.setup-mode .connection {
+  color: #a8a8b4;
+}
+.app .setup-main {
+  max-width: 1320px;
+  width: 100%;
+  gap: clamp(32px, 5vw, 80px);
+  padding: 56px 40px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+}
+.setup-intro {
+  min-width: 0;
+}
+.setup-intro > .section-kicker {
+  color: #c3b1dd;
+  letter-spacing: 2.5px;
+}
+.setup-intro h1 {
+  color: #f5f5f7;
+  font-size: clamp(40px, 4.4vw, 64px);
+  line-height: 1.25;
+  letter-spacing: -0.045em;
+  margin: 25px 0;
+}
+.setup-intro h1 > span {
+  background: linear-gradient(100deg, #d3befd, #e2bcb0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.setup-intro > p {
+  color: #b7b2bf;
+  font-size: 14px;
+  line-height: 1.9;
+}
+.setup-art {
+  display: block;
+  height: 300px;
+  margin: 30px 0 12px;
+}
+.art-orbit {
+  border: 0;
+  background: radial-gradient(ellipse, #bd8cfc25, transparent 70%);
+}
+.showcase-card {
+  width: 31%;
+  height: 210px;
+  top: 48px;
+  border-radius: 26px;
+  border: 1px solid #ffffff30;
+  background: linear-gradient(145deg, #54435f, #24212d);
+  box-shadow:
+    inset 0 1px #ffffff30,
+    0 20px 40px #0005;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) 32px;
+  padding: 22px 8px 8px;
+}
+.showcase-0 {
+  left: 0;
+  transform: rotate(-8deg);
+}
+.showcase-1 {
+  left: 34.5%;
+  top: 12px;
+  background: linear-gradient(145deg, #796445, #322c26);
+  transform: none;
+}
+.showcase-2 {
+  right: 0;
+  transform: rotate(8deg);
+  background: linear-gradient(145deg, #40536b, #222731);
+}
+.showcase-image {
+  min-height: 0;
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  container-type: size;
+}
+.showcase-image .portrait {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: min(100cqw, 100cqh);
+  height: min(100cqw, 100cqh);
+}
+.showcase-name {
+  position: static;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  letter-spacing: 0;
+  color: #eee9f4;
+}
+.showcase-index {
+  top: 10px;
+  left: 14px;
+  font-size: 9px;
+  color: #d4c9dd;
+}
+.art-badge {
+  bottom: 0;
+  background: #2c2633;
+  border-color: #ffffff20;
+  color: #d7c8e7;
+}
+.setup-features {
+  color: #b8a9c9;
+  font-size: 11px;
+}
+.setup-card {
+  color: #25252a;
+  border: 1px solid #fff;
+  border-radius: 30px;
+  background: #fafafa;
+  padding: 32px;
+  box-shadow: 0 30px 70px #0004;
+}
+.setup-title-row h2 {
+  font-size: 26px;
+  letter-spacing: -0.7px;
+  color: #25252a;
+}
+.setup-title-row .section-kicker {
+  color: #817589;
+  letter-spacing: 2px;
+}
+.setup-field legend {
+  color: #4c4657;
+}
+.mode-option {
+  background: #fff;
+  border-color: #dedbe3;
+  border-radius: 15px;
+}
+.mode-option strong {
+  color: #39343f;
+}
+.mode-option small,
+.field-hint,
+.setup-footnote {
+  color: #756f7c;
+}
+.mode-option.chosen {
+  background: #eee9fa;
+  border-color: #9470db;
+  box-shadow: inset 0 0 0 1px #9470db;
+}
+.timer-options,
+.single-match-format {
+  background: #edecf0;
+  border-color: #e4e1e8;
+  border-radius: 12px;
+}
+.timer-options button {
+  min-height: 36px;
+}
+.timer-options button.chosen {
+  color: #51388b;
+  border-radius: 9px;
+  box-shadow: 0 2px 5px #18102112;
+}
+.start-draft-button {
+  border-radius: 30px;
+  min-height: 50px;
+  font-size: 15px;
+}
+@media (max-width: 1000px) {
+  .app .setup-main {
+    padding: 36px 24px;
+    gap: 28px;
+  }
+  .setup-intro h1 {
+    font-size: 38px;
+  }
+  .setup-intro > p {
+    font-size: 12px;
+  }
+  .setup-card {
+    padding: 24px;
+  }
+  .showcase-card {
+    height: 165px;
+    border-radius: 20px;
+  }
+  .showcase-name {
+    font-size: 9px;
+  }
+  .setup-art {
+    height: 245px;
+  }
+}
+@media (max-width: 700px) {
+  .app .setup-main {
+    display: flex;
+    max-width: 520px;
+    padding: 28px 18px;
+    gap: 28px;
+  }
+  .setup-intro h1 {
+    font-size: clamp(34px, 8vw, 44px);
+    margin: 18px 0;
+  }
+  .setup-intro > p {
+    font-size: 11px;
+  }
+  .setup-art {
+    max-width: 340px;
+    height: 200px;
+    margin: 22px auto 0;
+  }
+  .showcase-card {
+    height: 142px;
+    top: 25px;
+    padding-top: 20px;
+    grid-template-rows: minmax(0, 1fr) 25px;
+  }
+  .showcase-1 {
+    top: 4px;
+  }
+  .setup-card {
+    padding: 24px 20px;
+    border-radius: 25px;
+  }
+  .setup-title-row h2 {
+    font-size: 23px;
+  }
+  .phase-banner {
+    padding-inline: 12px;
+    border-radius: 15px;
+  }
+}

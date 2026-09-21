@@ -392,7 +392,9 @@ function App() {
               >
                 {p ? (
                   <>
-                    <Portrait p={p} eager />
+                    <div className="ban-image">
+                      <Portrait p={p} eager />
+                    </div>
                     <Ban className="ban-mark" size={20} />
                   </>
                 ) : action ? (

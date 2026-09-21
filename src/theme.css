@@ -1,0 +1,273 @@
+/* One surface scale for home, draft, history, and dialogs. */
+:root {
+  color-scheme: dark;
+  --surface-base: #16151b;
+  --surface-panel: #211f28;
+  --surface-control: #2b2834;
+  --surface-raised: #363141;
+  --surface-border: #443e50;
+  --text-primary: #eeeaf4;
+  --text-secondary: #bbb3c9;
+  --accent-text: #cdb5ff;
+  background: var(--surface-base);
+  color: var(--text-primary);
+}
+.app,
+.app.setup-mode {
+  background:
+    radial-gradient(ellipse at 15% 25%, #35254155, transparent 55%),
+    var(--surface-base);
+  color: var(--text-primary);
+}
+.app-header,
+.setup-mode .app-header {
+  background: #19171ee6;
+  border-color: var(--surface-border);
+}
+.setup-card,
+.selection-panel,
+.team-panel,
+.team-panel.orange,
+.phase-banner,
+.timeline,
+.team-history,
+.team-history.orange,
+dialog {
+  background: var(--surface-panel);
+  border-color: var(--surface-border);
+  color: var(--text-primary);
+  box-shadow: 0 12px 32px #00000018;
+}
+.brand,
+.setup-title-row h2,
+.selection-top h2,
+.team-heading h2,
+.mode-option strong,
+.filled .player-name,
+.selected-description strong,
+.progress-count,
+.modal-heading h2,
+.info-content h3 {
+  color: var(--text-primary);
+}
+.setup-field legend,
+.team-name-settings summary,
+.team-name-settings label,
+.side-options button > span:nth-child(2),
+.setup-title-row .section-kicker,
+.mode-option small,
+.mode-option.chosen small,
+.field-hint,
+.setup-footnote,
+.side-options small,
+.resume-card small,
+.subtle-button,
+.selected-description,
+.sort-select select,
+.hide-used,
+.role-tabs button,
+.bans-heading,
+.picks-heading,
+.trainer,
+.selection-footer,
+.timeline-label,
+.timeline-label .eyebrow,
+.timeline-label > span:last-child,
+.timeline-step > span:last-child,
+.game-counter,
+.player-name,
+.player-number,
+.role-text,
+.slot-dash,
+.history-empty,
+.history-pokemon-item > span,
+.app-footer,
+.footer-link,
+.connection,
+.header-center,
+.info-content p,
+dialog > p,
+.form-note {
+  color: var(--text-secondary);
+}
+.mode-option,
+.side-options button,
+.timer-options,
+.single-match-format,
+.team-name-settings input,
+.search-field,
+.sort-select select,
+.player-slot,
+.ban-slot,
+.ban-slot.filled,
+.history-pokemon-item,
+.history-heading > span,
+.roster-count,
+.icon-button,
+.setup-return-button,
+.setup-symbol,
+.resume-card,
+.resume-icon,
+.modal-secondary,
+.modal-heading .icon-button,
+.toast,
+.legacy-history {
+  background: var(--surface-control);
+  border-color: var(--surface-border);
+  color: var(--text-secondary);
+}
+.team-name-settings input,
+.search-field input {
+  color: var(--text-primary);
+}
+.search-field input::placeholder {
+  color: #aaa0b8;
+}
+.timer-options button {
+  color: var(--text-secondary);
+}
+.mode-option.chosen,
+.timer-options button.chosen,
+.side-options button.chosen,
+.resume-card:hover {
+  background: #3c3151;
+  border-color: #9474c7;
+}
+.mode-option.chosen strong,
+.mode-option.chosen > svg:first-child,
+.timer-options button.chosen,
+.resume-card strong,
+.option-check,
+.single-match-format strong,
+.setup-symbol,
+.info-content > a {
+  color: var(--accent-text);
+}
+.team-history {
+  --history-color: #c4a5f4;
+}
+.team-history.orange {
+  --history-color: #eab889;
+}
+.player-slot.filled,
+.player-slot.active,
+.ban-slot.active {
+  background: color-mix(in srgb, var(--side) 15%, var(--surface-control));
+  border-color: color-mix(in srgb, var(--side) 55%, var(--surface-border));
+}
+.active .player-name,
+.player-check {
+  color: var(--text-primary);
+}
+.player-slot.swapping,
+.draft-complete .player-slot:hover {
+  background: var(--surface-raised);
+}
+.ban-slot-label,
+.ban-slot.filled .ban-slot-label {
+  background: var(--surface-control);
+  color: var(--text-secondary);
+}
+.ban-slot > .ban-mark {
+  background: #42303a;
+  color: #f4a4ae;
+}
+.role-tabs button {
+  background: var(--surface-control);
+  border-color: var(--surface-border);
+}
+.role-tabs button.selected,
+.role-tabs button.active {
+  background: #68489b;
+  color: #fff;
+}
+.pokemon-card {
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--role) 16%, #34303e),
+    #28252f
+  );
+  border-color: color-mix(in srgb, var(--role) 30%, var(--surface-border));
+}
+.pokemon-name {
+  background: #24212de6;
+  color: var(--text-primary);
+}
+.pokemon-card.is-selected {
+  background: #493864;
+  border-color: #bc98f4;
+  box-shadow: 0 0 0 2px #bc98f4;
+}
+.pokemon-card.unavailable .pokemon-name {
+  color: var(--text-secondary);
+}
+.used-overlay {
+  background: #15121b99;
+  color: #fff;
+}
+.confirm-button:disabled {
+  background: var(--surface-control);
+  color: var(--text-secondary);
+  border-color: var(--surface-border);
+}
+.next-game {
+  background: #7653af;
+  color: #fff;
+}
+.step-node {
+  background: var(--surface-control);
+  border-color: var(--surface-border);
+  color: var(--text-secondary);
+}
+.timeline-step.done .step-node {
+  background: #493b5c;
+  color: #e1cef9;
+}
+.timeline-step.current .step-node {
+  background: var(--side);
+  color: #fff;
+  box-shadow: 0 0 0 3px #b396d52b;
+}
+.timeline-step.current > span:last-child {
+  color: var(--text-primary);
+}
+.timeline-step:not(:last-child):after,
+.timeline-separator,
+.header-divider,
+.footer-divider {
+  background: var(--surface-border);
+}
+.team-name-settings,
+.history-heading,
+.history-game + .history-game,
+.selection-footer,
+.phase-message,
+.result-image-preview {
+  border-color: var(--surface-border);
+}
+.order-label,
+.team-tag,
+.team-tag.orange,
+.team-emblem {
+  background: #3b324b;
+  color: #d7baff;
+}
+.orange .order-label,
+.orange .team-emblem,
+.team-tag.orange {
+  background: #44372c;
+  color: #edbf94;
+}
+.icon-button:hover,
+.setup-return-button:hover,
+.subtle-button:not(:disabled):hover {
+  background: var(--surface-raised);
+  color: var(--text-primary);
+}
+dialog::backdrop {
+  background: #08070cb3;
+}
+.pokemon-grid,
+.history-scroll {
+  scrollbar-color: #62576f transparent;
+}

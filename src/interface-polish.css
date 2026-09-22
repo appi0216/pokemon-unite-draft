@@ -472,12 +472,22 @@ dialog {
 
 .team-panel.purple,
 .team-history.purple {
-  background: color-mix(in srgb, var(--purple) 26%, #25353e);
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--purple) 38%, #25353e),
+    color-mix(in srgb, var(--purple) 18%, #25353e) 55%,
+    #25353e
+  );
 }
 
 .team-panel.orange,
 .team-history.orange {
-  background: color-mix(in srgb, var(--orange) 26%, #25353e);
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--orange) 38%, #25353e),
+    color-mix(in srgb, var(--orange) 18%, #25353e) 55%,
+    #25353e
+  );
 }
 
 /* The phase deck carries the directional turn cue. */
@@ -502,21 +512,69 @@ dialog {
 }
 
 .phase-label {
+  grid-column: 1;
+  grid-row: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
   text-align: center;
   align-items: center;
 }
 
 .phase-message {
+  grid-column: 1;
+  grid-row: 2;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
   justify-content: center;
   text-align: center;
 }
 
 .phase-message > div {
+  flex-direction: column;
+  gap: 2px;
+  justify-content: center;
   align-items: center;
 }
 
 .phase-label::before {
   display: none;
+}
+
+.phase-banner {
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 4px;
+  padding-block: 10px;
+}
+
+.phase-banner > .timeline {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.phase-banner > .timer {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .phase-banner > .timer {
+    position: static;
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: center;
+  }
+
+  .phase-banner > .timeline {
+    grid-row: 4;
+  }
 }
 
 .app.draft-complete .phase-banner {

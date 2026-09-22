@@ -240,8 +240,9 @@
   }
 }
 
-/* Keep the All-Star history rails outside each team at every width. */
-@media (max-width: 1299px) {
+/* Use the same vertical history layout on both sides at every width.
+   The scroll container and game groups must also be vertical, not only cards. */
+@media (min-width: 0px) {
   .allstar-arena .team-side {
     display: grid;
     grid-template-columns: 60px minmax(0, 1fr);
@@ -288,14 +289,17 @@
 
   .allstar-arena .history-scroll {
     display: block;
+    flex: 1 1 auto;
     overflow-x: hidden;
     overflow-y: auto;
     padding: 5px 3px;
+    scroll-snap-type: none;
   }
 
   .allstar-arena .history-game {
     display: block;
     min-width: 0;
+    width: 100%;
   }
 
   .allstar-arena .history-game + .history-game {

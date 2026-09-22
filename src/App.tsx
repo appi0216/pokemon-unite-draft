@@ -1108,7 +1108,6 @@ function App() {
                   >
                     {phase === "ban" ? <Ban size={18} /> : <Check size={21} />}
                     <span>{phase === "ban" ? "使用禁止にする" : "決定"}</span>
-                    <span className="enter-hint">↵</span>
                   </button>
                 </>
               )}

@@ -353,3 +353,114 @@ dialog {
 .history-scroll {
   scrollbar-color: #52727e transparent;
 }
+
+/* One recognizable header material across setup and draft screens. */
+.app .app-header,
+.app.setup-mode .app-header,
+.app:not(.setup-mode) .app-header {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, #0e1b23f7, #162832f7 48%, #111d25f7),
+    #101b22;
+  border-bottom-color: #4b6975;
+  box-shadow:
+    0 12px 34px #02080c52,
+    inset 0 -1px #78d7e31f;
+  backdrop-filter: blur(20px);
+}
+
+.app .app-header::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent, #62cedd0d 42%, transparent 68%),
+    linear-gradient(115deg, transparent 0 72%, #e4aa6809 86%, transparent);
+}
+
+.app .app-header::after {
+  content: "";
+  position: absolute;
+  left: 3%;
+  right: 3%;
+  bottom: 0;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, #62cedd8f, #87aeb7, #e4aa686e, transparent);
+}
+
+.app-header .brand {
+  color: #f2fbfc;
+  text-shadow: 0 0 18px #62cedd16;
+}
+
+.app-header .brand small,
+.app-header .snapshot,
+.app-header .header-center {
+  color: #9fb4bc;
+}
+
+.app-header .header-center > svg {
+  color: #72d5e1;
+  filter: drop-shadow(0 0 7px #62cedd4a);
+}
+
+.app-header .header-divider {
+  background: linear-gradient(180deg, transparent, #6f929f, transparent);
+}
+
+/* Lift work panels clearly above the darker arena background. */
+.selection-panel,
+.team-panel,
+.team-history {
+  background:
+    linear-gradient(135deg, #ffffff06, transparent 34%),
+    linear-gradient(155deg, #25353e, #19262d 68%);
+  border-color: #506975;
+  box-shadow:
+    0 22px 52px #02080c59,
+    0 0 0 1px #76909b0b,
+    inset 0 1px #ffffff12,
+    inset 0 -20px 36px #0711161f;
+}
+
+.team-panel.team-active,
+.team-history.turn-active {
+  border-color: color-mix(in srgb, var(--side) 74%, #7fa0aa 26%);
+  box-shadow:
+    0 22px 54px #02080c66,
+    0 0 25px color-mix(in srgb, var(--side) 23%, transparent),
+    inset 3px 0 color-mix(in srgb, var(--side) 68%, transparent),
+    inset 0 1px #ffffff15;
+}
+
+.bans-heading > span:first-child,
+.picks-heading > span:first-child {
+  min-height: 14px;
+  padding-left: 7px;
+  border-left: 2px solid color-mix(in srgb, var(--side) 76%, #78d4df 24%);
+  color: #c6d7dc;
+  text-shadow: 0 0 10px color-mix(in srgb, var(--side) 22%, transparent);
+}
+
+.bans-heading > span:last-child,
+.picks-heading > span:last-child {
+  color: #d5e2e5;
+}
+
+.confirm-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-inline: 30px;
+}
+
+.confirm-button > svg,
+.confirm-button > span {
+  flex: 0 0 auto;
+}

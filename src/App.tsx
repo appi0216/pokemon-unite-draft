@@ -768,6 +768,7 @@ function App() {
                   team="purple"
                   name={teamName("purple")}
                   history={draft.history}
+                  active={!complete && step?.team === "purple"}
                 />
               )}
               {renderTeamPanel("purple")}
@@ -1007,6 +1008,7 @@ function App() {
                   team="orange"
                   name={teamName("orange")}
                   history={draft.history}
+                  active={!complete && step?.team === "orange"}
                 />
               )}
             </div>

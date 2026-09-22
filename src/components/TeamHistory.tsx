@@ -7,14 +7,16 @@ export default function TeamHistory({
   team,
   name,
   history,
+  active,
 }: {
   team: Team;
   name: string;
   history: PastGame[];
+  active: boolean;
 }) {
   return (
     <aside
-      className={`team-history ${team}`}
+      className={`team-history ${team} ${active ? "turn-active" : ""}`}
       aria-label={`${name}の過去の選出`}
     >
       <div className="history-heading">
@@ -47,7 +49,6 @@ export default function TeamHistory({
                         title={`${p.name} · GAME ${past.game}で使用済み`}
                       >
                         <Portrait p={p} />
-                        <span>{p.name}</span>
                       </div>
                     );
                   })}

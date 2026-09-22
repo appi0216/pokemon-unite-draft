@@ -8,6 +8,10 @@
   position: relative;
   isolation: isolate;
   overflow-x: clip;
+  background:
+    radial-gradient(ellipse at 14% 24%, #1f72803d, transparent 42%),
+    radial-gradient(ellipse at 88% 76%, #8d5c2929, transparent 40%),
+    linear-gradient(145deg, #111d24, #0c151b 58%, #121c22);
 }
 
 .app.setup-mode::before,
@@ -24,8 +28,8 @@
   background:
     linear-gradient(#8ecaff0c 1px, transparent 1px),
     linear-gradient(90deg, #8ecaff0c 1px, transparent 1px),
-    radial-gradient(ellipse at 18% 32%, #613f9559, transparent 43%),
-    radial-gradient(ellipse at 86% 68%, #245f7a38, transparent 42%);
+    radial-gradient(ellipse at 18% 32%, #176b8050, transparent 43%),
+    radial-gradient(ellipse at 86% 68%, #8c592d30, transparent 42%);
   background-size:
     64px 64px,
     64px 64px,
@@ -44,8 +48,8 @@
   background: linear-gradient(
     90deg,
     transparent,
-    #b58cff12,
-    #79cfff0e,
+    #72d8e612,
+    #efb36d0d,
     transparent
   );
   transform: skewX(-14deg);

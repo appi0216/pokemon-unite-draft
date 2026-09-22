@@ -4,9 +4,9 @@
   isolation: isolate;
   overflow-x: clip;
   background:
-    radial-gradient(ellipse at 12% 18%, #6f45a22c, transparent 38%),
-    radial-gradient(ellipse at 88% 72%, #276d8730, transparent 42%),
-    linear-gradient(145deg, #17151d, #121218 58%, #18151d);
+    radial-gradient(ellipse at 12% 18%, #1f728035, transparent 40%),
+    radial-gradient(ellipse at 88% 72%, #8d5c2926, transparent 42%),
+    linear-gradient(145deg, #111d24, #0c151b 58%, #121c22);
 }
 
 .app:not(.setup-mode)::before,
@@ -36,7 +36,7 @@
   left: -26%;
   width: 28%;
   opacity: 0.55;
-  background: linear-gradient(90deg, transparent, #ad82ec12, #6ecbf00c, transparent);
+  background: linear-gradient(90deg, transparent, #72d8e612, #efb36d0d, transparent);
   transform: skewX(-16deg);
   animation: draft-light-sweep 16s ease-in-out infinite;
 }
@@ -49,7 +49,7 @@
 }
 
 .app:not(.setup-mode) .app-header {
-  background: linear-gradient(180deg, #1c1922f5, #17151df0);
+  background: linear-gradient(180deg, #162128f5, #10191ff0);
   box-shadow: 0 10px 32px #00000028;
   backdrop-filter: blur(16px);
 }
@@ -62,7 +62,7 @@
   overflow: hidden;
   background:
     linear-gradient(112deg, color-mix(in srgb, var(--side) 11%, transparent), transparent 37%),
-    linear-gradient(145deg, #282430f7, #1d1b24f8 56%, #23202af7);
+    linear-gradient(145deg, #202d34f7, #151f25f8 56%, #1b272df7);
   border-color: color-mix(in srgb, var(--side) 28%, var(--surface-border));
   box-shadow:
     0 18px 48px #00000035,
@@ -156,12 +156,33 @@
 .team-panel,
 .team-history {
   background:
-    linear-gradient(155deg, #292530f2, #1e1c24f5 62%),
+    linear-gradient(155deg, #202b32f2, #151f25f5 62%),
     var(--surface-panel);
   border-color: #81709255;
   box-shadow:
     0 18px 44px #0000002e,
     inset 0 1px #ffffff0b;
+}
+
+.team-history.purple {
+  --side: var(--purple);
+}
+
+.team-history.orange {
+  --side: var(--orange);
+}
+
+.team-history.turn-active {
+  border-color: color-mix(in srgb, var(--side) 72%, var(--surface-border));
+  box-shadow:
+    0 16px 42px #00000032,
+    0 0 22px color-mix(in srgb, var(--side) 18%, transparent),
+    inset 0 1px #ffffff10;
+}
+
+.team-history.turn-active .history-heading {
+  color: color-mix(in srgb, var(--side) 82%, white 18%);
+  text-shadow: 0 0 12px color-mix(in srgb, var(--side) 42%, transparent);
 }
 
 .selection-panel,

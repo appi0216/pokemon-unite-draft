@@ -77,6 +77,16 @@ export function unavailable(draft: Draft, id: string, team?: Team) {
   // who used a Pokémon. Keep their former, global restriction intact.
   return draft.allStar && draft.excluded.includes(id);
 }
+
+/** Filter-only hint: banning a Pokémon the opponent already used has no value. */
+export function redundantAllStarBan(draft: Draft, id: string, team?: Team) {
+  const step = currentStep(draft);
+  if (!draft.allStar || step?.phase !== "ban") return false;
+  const opponent = opposite(team ?? step.team);
+  return draft.history.some((game) =>
+    game.picks.some((pick) => pick.team === opponent && pick.pokemon === id),
+  );
+}
 export function choose(
   draft: Draft,
   pokemon: string | null,

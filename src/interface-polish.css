@@ -17,8 +17,7 @@
 .setup-card,
 dialog {
   background:
-    linear-gradient(145deg, #1d2930fa, #131d23fc 68%),
-    var(--surface-panel);
+    linear-gradient(145deg, #1d2930fa, #131d23fc 68%), var(--surface-panel);
   border-color: #47606d;
   box-shadow:
     0 24px 64px #0000004a,
@@ -26,7 +25,14 @@ dialog {
 }
 
 .setup-card::before {
-  background: linear-gradient(90deg, transparent, var(--ui-cyan), #8fb5bf66, var(--ui-amber), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--ui-cyan),
+    #8fb5bf66,
+    var(--ui-amber),
+    transparent
+  );
 }
 
 .setup-intro h1 > span {
@@ -108,7 +114,11 @@ dialog {
 
 .side-options button.chosen {
   background:
-    linear-gradient(135deg, color-mix(in srgb, var(--side) 18%, transparent), transparent 74%),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--side) 18%, transparent),
+      transparent 74%
+    ),
     linear-gradient(145deg, #243139, #1a272e);
   border-color: color-mix(in srgb, var(--side) 76%, #8eb2ba 24%);
   box-shadow:
@@ -226,8 +236,11 @@ dialog {
 
 .role-tabs button.selected:not(:first-child) {
   color: #fff;
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--role) 42%, #25323a), #1c2930);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--role) 42%, #25323a),
+    #1c2930
+  );
   border-color: color-mix(in srgb, var(--role) 72%, #6d8790 28%);
   box-shadow: 0 0 15px color-mix(in srgb, var(--role) 22%, transparent);
 }
@@ -246,7 +259,11 @@ dialog {
 
 .ban-slot.active {
   background:
-    linear-gradient(135deg, color-mix(in srgb, var(--side) 21%, transparent), transparent 60%),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--side) 21%, transparent),
+      transparent 60%
+    ),
     linear-gradient(160deg, #293841, #1a272e 74%);
   border-color: color-mix(in srgb, var(--side) 74%, #6b8790 26%);
   box-shadow:
@@ -280,7 +297,11 @@ dialog {
 .player-slot.active,
 .player-slot.filled {
   background:
-    linear-gradient(105deg, color-mix(in srgb, var(--side) 18%, transparent), transparent 58%),
+    linear-gradient(
+      105deg,
+      color-mix(in srgb, var(--side) 18%, transparent),
+      transparent 58%
+    ),
     linear-gradient(145deg, #27353d, #19262d);
   border-color: color-mix(in srgb, var(--side) 58%, #49616c 42%);
 }
@@ -304,8 +325,7 @@ dialog {
 }
 
 .history-pokemon-item {
-  background:
-    linear-gradient(145deg, #26353d, #19262d);
+  background: linear-gradient(145deg, #26353d, #19262d);
   border: 1px solid #354b55;
   box-shadow: inset 0 1px #ffffff08;
 }
@@ -313,7 +333,11 @@ dialog {
 .team-history.turn-active .history-pokemon-item {
   border-color: color-mix(in srgb, var(--side) 38%, #354b55);
   background:
-    linear-gradient(135deg, color-mix(in srgb, var(--side) 12%, transparent), transparent 62%),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--side) 12%, transparent),
+      transparent 62%
+    ),
     linear-gradient(145deg, #27363e, #19262d);
 }
 
@@ -334,8 +358,11 @@ dialog {
 }
 
 .pokemon-card.is-selected {
-  background:
-    linear-gradient(145deg, color-mix(in srgb, var(--team) 28%, #293840), #17242b);
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--team) 28%, #293840),
+    #17242b
+  );
   border-color: color-mix(in srgb, var(--team) 76%, #8db1ba 24%);
   box-shadow:
     0 0 0 2px color-mix(in srgb, var(--team) 68%, transparent),
@@ -362,8 +389,7 @@ dialog {
   isolation: isolate;
   overflow: hidden;
   background:
-    linear-gradient(90deg, #0e1b23f7, #162832f7 48%, #111d25f7),
-    #101b22;
+    linear-gradient(90deg, #0e1b23f7, #162832f7 48%, #111d25f7), #101b22;
   border-bottom-color: #4b6975;
   box-shadow:
     0 12px 34px #02080c52,
@@ -390,7 +416,14 @@ dialog {
   bottom: 0;
   height: 1px;
   pointer-events: none;
-  background: linear-gradient(90deg, transparent, #62cedd8f, #87aeb7, #e4aa686e, transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #62cedd8f,
+    #87aeb7,
+    #e4aa686e,
+    transparent
+  );
 }
 
 .app-header .brand {
@@ -440,7 +473,12 @@ dialog {
 .team-panel.purple.team-active,
 .team-history.purple.turn-active {
   background:
-    linear-gradient(to right, color-mix(in srgb, var(--purple) 28%, transparent), transparent 64%),
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--purple) 40%, transparent),
+      color-mix(in srgb, var(--purple) 10%, transparent) 58%,
+      transparent 90%
+    ),
     linear-gradient(135deg, #ffffff06, transparent 34%),
     linear-gradient(155deg, #25353e, #19262d 68%);
 }
@@ -448,7 +486,12 @@ dialog {
 .team-panel.orange.team-active,
 .team-history.orange.turn-active {
   background:
-    linear-gradient(to left, color-mix(in srgb, var(--orange) 28%, transparent), transparent 64%),
+    linear-gradient(
+      to left,
+      color-mix(in srgb, var(--orange) 40%, transparent),
+      color-mix(in srgb, var(--orange) 10%, transparent) 58%,
+      transparent 90%
+    ),
     linear-gradient(225deg, #ffffff06, transparent 34%),
     linear-gradient(205deg, #25353e, #19262d 68%);
 }

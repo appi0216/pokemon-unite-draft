@@ -42,6 +42,7 @@ import {
   createDraft,
   currentStep,
   nextGame,
+  redundantAllStarBan,
   restoreDraft,
   steps,
   swap,
@@ -61,7 +62,7 @@ type Settings = {
 const defaults: Settings = {
   purple: "パープルチーム",
   orange: "オレンジチーム",
-  seconds: 30,
+  seconds: 0,
   sound: false,
 };
 function load() {
@@ -237,7 +238,9 @@ function App() {
         .filter(
           (p) =>
             (role === "all" || p.role === role) &&
-            (!hideUsed || !unavailable(draft, p.id, activeTeam)) &&
+            (!hideUsed ||
+              (!unavailable(draft, p.id, activeTeam) &&
+                !redundantAllStarBan(draft, p.id, activeTeam))) &&
             (!query || normalize(p.name + p.id).includes(normalize(query))),
         )
         .sort((a, b) =>
@@ -248,7 +251,11 @@ function App() {
     [role, hideUsed, draft, query, sort],
   );
   const confirm = () => {
-    if (!selected) return;
+    if (
+      !selected ||
+      (hideUsed && redundantAllStarBan(draft, selected, activeTeam))
+    )
+      return;
     const result = choose(draft, selected, ids);
     if (result === draft) return;
     setDraft(result);
@@ -815,7 +822,15 @@ function App() {
                   <input
                     type="checkbox"
                     checked={hideUsed}
-                    onChange={(e) => setHideUsed(e.target.checked)}
+                    onChange={(e) => {
+                      setHideUsed(e.target.checked);
+                      if (
+                        e.target.checked &&
+                        selected &&
+                        redundantAllStarBan(draft, selected, activeTeam)
+                      )
+                        setSelected(null);
+                    }}
                   />
                   <span>選択可能のみ</span>
                 </label>

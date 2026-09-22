@@ -5,6 +5,7 @@ import {
   createDraft,
   currentStep,
   nextGame,
+  redundantAllStarBan,
   restoreDraft,
   steps,
   swap,
@@ -132,6 +133,24 @@ test("All-Star locks prior picks only for the team that used them", () => {
   d = nextGame(d);
   assert.equal(d.excluded.length, 19);
   assert.equal(nextGame(d), d);
+});
+test("available-only BAN filter excludes the opponent's past picks for each team", () => {
+  let d = createDraft("purple", true);
+  for (let i = 0; i < 16; i++) d = choose(d, ids[i], ids);
+  d = nextGame(d);
+  // Orange bans first in game two. Purple's old pick is redundant for Orange.
+  assert.equal(redundantAllStarBan(d, ids[6], "orange"), true);
+  assert.equal(redundantAllStarBan(d, ids[7], "orange"), false);
+  // Purple may still pick its opponent's old Pokémon in a later game.
+  assert.equal(unavailable(d, ids[7], "purple"), false);
+  d = choose(d, null, ids);
+  assert.equal(redundantAllStarBan(d, ids[7], "purple"), true);
+  assert.equal(redundantAllStarBan(d, ids[6], "purple"), false);
+  // The filter does not change the underlying BAN rule.
+  assert.equal(choose(d, ids[7], ids).actions.length, 2);
+  for (let i = 1; i < 6; i++) d = choose(d, null, ids);
+  assert.equal(redundantAllStarBan(d, ids[7], "purple"), false);
+  assert.equal(redundantAllStarBan(createDraft(), ids[7]), false);
 });
 test("normal next game clears bans/picks; swapping only within completed team", () => {
   let d = createDraft();

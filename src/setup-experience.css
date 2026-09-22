@@ -1,4 +1,9 @@
 /* Compact, lively setup screen. Motion stays on compositor-friendly transforms. */
+.portrait,
+.portrait img {
+  aspect-ratio: 1 / 1;
+}
+
 .app.setup-mode {
   position: relative;
   isolation: isolate;
@@ -180,7 +185,7 @@
 
   .setup-card {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 12px 14px;
     padding: 22px;
     border-radius: 26px;
@@ -188,7 +193,6 @@
 
   .setup-title-row,
   .resume-card,
-  .first-team-field,
   .team-name-settings,
   .start-draft-button,
   .setup-footnote {
@@ -223,6 +227,43 @@
     background:
       linear-gradient(145deg, #ffffff06, transparent 55%),
       color-mix(in srgb, var(--surface-control) 58%, transparent);
+  }
+
+  .setup-fields-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-areas:
+      "draft draft timer first"
+      "match match timer first";
+    gap: 12px 14px;
+    min-width: 0;
+  }
+
+  .draft-format-field {
+    grid-area: draft;
+  }
+
+  .match-format-field {
+    grid-area: match;
+  }
+
+  .timer-field {
+    grid-area: timer;
+  }
+
+  .first-team-field {
+    grid-area: first;
+  }
+
+  .timer-field .timer-options,
+  .first-team-field .side-options {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+
+  .timer-field .timer-options button,
+  .first-team-field .side-options button {
+    width: 100%;
   }
 
   .setup-field legend {
@@ -386,6 +427,10 @@
 
   .setup-card {
     padding: 17px 16px 15px;
+  }
+
+  .setup-fields-grid {
+    display: block;
   }
 
   .setup-title-row,

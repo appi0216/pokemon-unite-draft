@@ -10,7 +10,7 @@ import {
   Sparkles,
   Swords,
 } from "lucide-react";
-import type { Team } from "../domain/draft";
+import type { BestOf, Team } from "../domain/draft";
 import { byId } from "../data/roster";
 import Portrait from "./Portrait";
 
@@ -21,7 +21,7 @@ export type SetupValues = {
   sound: boolean;
   first: Team;
   allStar: boolean;
-  bestOf: 3 | 5;
+  bestOf: BestOf;
 };
 type Props = {
   values: SetupValues;
@@ -114,120 +114,124 @@ export default function SetupScreen({
             <ChevronRight size={20} />
           </button>
         )}
-        <fieldset className="setup-field">
-          <legend>ドラフト形式</legend>
-          <div className="mode-options">
-            <button
-              className={`mode-option ${!values.allStar ? "chosen" : ""}`}
-              type="button"
-              aria-pressed={!values.allStar}
-              onClick={() => onChange({ ...values, allStar: false })}
-            >
-              <Swords size={21} />
-              <strong>通常ドラフト</strong>
-              <small>1試合ずつ自由に選出</small>
-              {!values.allStar && <Check className="option-check" size={15} />}
-            </button>
-            <button
-              className={`mode-option ${values.allStar ? "chosen" : ""}`}
-              type="button"
-              aria-pressed={values.allStar}
-              onClick={() => onChange({ ...values, allStar: true })}
-            >
-              <Sparkles size={21} />
-              <strong>オールスター</strong>
-              <small>過去の選出を持ち越して禁止</small>
-              {values.allStar && <Check className="option-check" size={15} />}
-            </button>
-          </div>
-        </fieldset>
-        <fieldset className="setup-field">
-          <legend>試合形式</legend>
-          <div className="match-format-panels">
-            <div
-              className="match-format-panel"
-              aria-hidden={values.allStar}
-              inert={values.allStar}
-            >
-              <div className="single-match-format">
-                <strong>1試合完結</strong>
-                <small>毎試合、新しいドラフト</small>
-              </div>
-              <p className="field-hint">
-                前の試合の選出を持ち越さず、何度でも遊べます。
-              </p>
-            </div>
-            <div
-              className="match-format-panel"
-              aria-hidden={!values.allStar}
-              inert={!values.allStar}
-            >
-              <div className="timer-options series-options">
-                {([3, 5] as const).map((bestOf) => (
-                  <button
-                    key={bestOf}
-                    aria-pressed={values.bestOf === bestOf}
-                    className={values.bestOf === bestOf ? "chosen" : ""}
-                    onClick={() => onChange({ ...values, bestOf })}
-                  >
-                    BO{bestOf}
-                    <small>最大{bestOf}試合</small>
-                  </button>
-                ))}
-              </div>
-              <p className="field-hint">
-                第{values.bestOf}
-                試合の選出で終了します。勝敗の記録は行いません。
-              </p>
-            </div>
-          </div>
-        </fieldset>
-        <fieldset className="setup-field">
-          <legend>
-            <Clock3 size={15} />
-            ターンの制限時間
-          </legend>
-          <div className="timer-options">
-            {[0, 30].map((seconds) => (
+        <div className="setup-fields-grid">
+          <fieldset className="setup-field draft-format-field">
+            <legend>ドラフト形式</legend>
+            <div className="mode-options">
               <button
+                className={`mode-option ${!values.allStar ? "chosen" : ""}`}
                 type="button"
-                key={seconds}
-                className={values.seconds > 0 === seconds > 0 ? "chosen" : ""}
-                aria-pressed={values.seconds > 0 === seconds > 0}
-                onClick={() => onChange({ ...values, seconds })}
+                aria-pressed={!values.allStar}
+                onClick={() => onChange({ ...values, allStar: false })}
               >
-                {seconds === 0 ? "なし" : "あり"}
+                <Swords size={21} />
+                <strong>通常ドラフト</strong>
+                <small>1試合ずつ自由に選出</small>
+                {!values.allStar && (
+                  <Check className="option-check" size={15} />
+                )}
               </button>
-            ))}
-          </div>
-          <p className="field-hint">
-            あり：BANは各15秒、PICKは各ターン20秒。時間切れ後は手動で確定できます。
-          </p>
-        </fieldset>
-        <fieldset className="setup-field first-team-field">
-          <legend>
-            <ArrowLeftRight size={15} />
-            先攻チーム
-          </legend>
-          <div className="side-options">
-            {(["purple", "orange"] as Team[]).map((team) => (
               <button
+                className={`mode-option ${values.allStar ? "chosen" : ""}`}
                 type="button"
-                key={team}
-                className={`${team} ${values.first === team ? "chosen" : ""}`}
-                aria-pressed={values.first === team}
-                onClick={() => onChange({ ...values, first: team })}
+                aria-pressed={values.allStar}
+                onClick={() => onChange({ ...values, allStar: true })}
               >
-                <span className="side-dot" />
-                <span>
-                  {team === "purple" ? "左側" : "右側"}
-                  <small>{team === "purple" ? "パープル" : "オレンジ"}</small>
-                </span>
-                {values.first === team && <Check size={16} />}
+                <Sparkles size={21} />
+                <strong>オールスター</strong>
+                <small>過去の選出を持ち越して禁止</small>
+                {values.allStar && <Check className="option-check" size={15} />}
               </button>
-            ))}
-          </div>
-        </fieldset>
+            </div>
+          </fieldset>
+          <fieldset className="setup-field match-format-field">
+            <legend>試合形式</legend>
+            <div className="match-format-panels">
+              <div
+                className="match-format-panel"
+                aria-hidden={values.allStar}
+                inert={values.allStar}
+              >
+                <div className="single-match-format">
+                  <strong>1試合完結</strong>
+                  <small>毎試合、新しいドラフト</small>
+                </div>
+                <p className="field-hint">
+                  前の試合の選出を持ち越さず、何度でも遊べます。
+                </p>
+              </div>
+              <div
+                className="match-format-panel"
+                aria-hidden={!values.allStar}
+                inert={!values.allStar}
+              >
+                <div className="timer-options series-options">
+                  {([3, 5, 7] as const).map((bestOf) => (
+                    <button
+                      key={bestOf}
+                      aria-pressed={values.bestOf === bestOf}
+                      className={values.bestOf === bestOf ? "chosen" : ""}
+                      onClick={() => onChange({ ...values, bestOf })}
+                    >
+                      BO{bestOf}
+                      <small>最大{bestOf}試合</small>
+                    </button>
+                  ))}
+                </div>
+                <p className="field-hint">
+                  第{values.bestOf}
+                  試合の選出で終了します。勝敗の記録は行いません。
+                </p>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset className="setup-field timer-field">
+            <legend>
+              <Clock3 size={15} />
+              ターンの制限時間
+            </legend>
+            <div className="timer-options">
+              {[0, 30].map((seconds) => (
+                <button
+                  type="button"
+                  key={seconds}
+                  className={values.seconds > 0 === seconds > 0 ? "chosen" : ""}
+                  aria-pressed={values.seconds > 0 === seconds > 0}
+                  onClick={() => onChange({ ...values, seconds })}
+                >
+                  {seconds === 0 ? "なし" : "あり"}
+                </button>
+              ))}
+            </div>
+            <p className="field-hint">
+              あり：BANは各15秒、PICKは各ターン20秒。時間切れ後は手動で確定できます。
+            </p>
+          </fieldset>
+          <fieldset className="setup-field first-team-field">
+            <legend>
+              <ArrowLeftRight size={15} />
+              先攻チーム
+            </legend>
+            <div className="side-options">
+              {(["purple", "orange"] as Team[]).map((team) => (
+                <button
+                  type="button"
+                  key={team}
+                  className={`${team} ${values.first === team ? "chosen" : ""}`}
+                  aria-pressed={values.first === team}
+                  onClick={() => onChange({ ...values, first: team })}
+                >
+                  <span className="side-dot" />
+                  <span>
+                    {team === "purple" ? "左側" : "右側"}
+                    <small>{team === "purple" ? "パープル" : "オレンジ"}</small>
+                  </span>
+                  {values.first === team && <Check size={16} />}
+                </button>
+              ))}
+            </div>
+          </fieldset>
+        </div>
         <details className="team-name-settings">
           <summary>
             チーム名を変更

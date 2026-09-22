@@ -30,8 +30,8 @@ test("timer follows six BAN turns and shared two-pick turns", () => {
   assert.equal(turnSeconds(false, "ban"), 0);
   assert.equal(turnSeconds(false, "pick"), 0);
 });
-test("BO3 and BO5 stop at their final draft and survive reload", () => {
-  for (const bestOf of [3, 5] as const) {
+test("BO3, BO5 and BO7 stop at their final draft and survive reload", () => {
+  for (const bestOf of [3, 5, 7] as const) {
     let d = createDraft("purple", true, bestOf);
     for (let game = 1; game <= bestOf; game++) {
       for (let i = 0; i < 6; i++) d = choose(d, null, ids);

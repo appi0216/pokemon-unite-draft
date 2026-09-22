@@ -1,5 +1,6 @@
 export type Team = "purple" | "orange";
 export type Phase = "ban" | "pick";
+export type BestOf = 3 | 5 | 7;
 export type Action = { team: Team; phase: Phase; pokemon: string | null };
 export type Step = { team: Team; phase: Phase; count: number };
 export type PastGame = {
@@ -13,7 +14,7 @@ export type Draft = {
   game: number;
   allStar: boolean;
   history: PastGame[];
-  bestOf: 3 | 5;
+  bestOf: BestOf;
 };
 export const opposite = (team: Team): Team =>
   team === "purple" ? "orange" : "purple";
@@ -46,7 +47,7 @@ export function currentStep(draft: Draft) {
 export const createDraft = (
   first: Team = "purple",
   allStar = false,
-  bestOf: 3 | 5 = 3,
+  bestOf: BestOf = 3,
 ): Draft => ({
   first,
   allStar,
@@ -137,7 +138,7 @@ export function restoreDraft(
   if (!value || typeof value !== "object") return null;
   const v = value as Draft;
   const bestOf = v.bestOf ?? (v.game > 3 ? 5 : 3);
-  if (bestOf !== 3 && bestOf !== 5) return null;
+  if (bestOf !== 3 && bestOf !== 5 && bestOf !== 7) return null;
   if (
     !["purple", "orange"].includes(v.first) ||
     !Array.isArray(v.actions) ||

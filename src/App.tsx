@@ -691,6 +691,41 @@ function App() {
                 </div>
               </div>
             )}
+            <section className="timeline" aria-label="BAN・PICKの順番">
+              <div className="timeline-label">
+                <span className="eyebrow">DRAFT ORDER</span>
+                <span>進行順</span>
+              </div>
+              <div className="timeline-stages">
+                {schedule.map((s, i) => (
+                  <div
+                    key={i}
+                    className={`timeline-step ${s.team} ${i === stageIndex ? "current" : ""} ${i < stageIndex ? "done" : ""}`}
+                    title={`${teamName(s.team)} ${s.phase.toUpperCase()} ${s.count}体`}
+                    aria-current={i === stageIndex ? "step" : undefined}
+                  >
+                    {i === 6 && <span className="timeline-separator" />}
+                    <span className="step-node">
+                      {i < stageIndex ? (
+                        <Check size={13} />
+                      ) : s.phase === "ban" ? (
+                        <Ban size={12} />
+                      ) : (
+                        s.count
+                      )}
+                    </span>
+                    <span>
+                      {s.phase.toUpperCase()}
+                      {s.phase === "pick" && s.count === 2 ? " ×2" : ""}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <span className="progress-count">
+                {draft.actions.length}
+                <small>/ 16</small>
+              </span>
+            </section>
           </section>
           {draft.allStar &&
             draft.excluded.some(
@@ -1080,41 +1115,6 @@ function App() {
                 </span>
               ) : null}
             </div>
-          </section>
-          <section className="timeline" aria-label="BAN・PICKの順番">
-            <div className="timeline-label">
-              <span className="eyebrow">DRAFT ORDER</span>
-              <span>進行順</span>
-            </div>
-            <div className="timeline-stages">
-              {schedule.map((s, i) => (
-                <div
-                  key={i}
-                  className={`timeline-step ${s.team} ${i === stageIndex ? "current" : ""} ${i < stageIndex ? "done" : ""}`}
-                  title={`${teamName(s.team)} ${s.phase.toUpperCase()} ${s.count}体`}
-                  aria-current={i === stageIndex ? "step" : undefined}
-                >
-                  {i === 6 && <span className="timeline-separator" />}
-                  <span className="step-node">
-                    {i < stageIndex ? (
-                      <Check size={13} />
-                    ) : s.phase === "ban" ? (
-                      <Ban size={12} />
-                    ) : (
-                      s.count
-                    )}
-                  </span>
-                  <span>
-                    {s.phase.toUpperCase()}
-                    {s.phase === "pick" && s.count === 2 ? " ×2" : ""}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <span className="progress-count">
-              {draft.actions.length}
-              <small>/ 16</small>
-            </span>
           </section>
         </main>
       )}

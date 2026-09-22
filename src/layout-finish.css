@@ -1,0 +1,133 @@
+/* A single progress panel, proportional team slots, and compact browsing. */
+.phase-banner > .timeline {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0 0;
+  min-height: 48px;
+  border: 0;
+  border-top: 1px solid var(--surface-border);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  gap: 16px;
+}
+.phase-banner {
+  row-gap: 12px;
+}
+.timeline-label {
+  display: none;
+}
+.timeline-stages {
+  flex: 1;
+}
+.pokemon-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+}
+.pokemon-card .pokemon-name {
+  font-size: 9px;
+}
+.confirm-button,
+.next-game,
+.complete-button,
+.modal-primary,
+.modal-secondary,
+.image-download,
+.setup-return-button {
+  border-radius: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.confirm-button:not(:disabled),
+.modal-primary,
+.image-download {
+  background: linear-gradient(145deg, #705294, #523a73);
+  border: 1px solid #9679b5;
+  box-shadow:
+    inset 0 1px #ffffff12,
+    0 4px 12px #0002;
+}
+.subtle-button,
+.setup-return-button,
+.modal-secondary {
+  background: var(--surface-control);
+  border: 1px solid var(--surface-border);
+  border-radius: 10px;
+  padding: 9px 12px;
+  color: var(--text-secondary);
+}
+.icon-button,
+.timer-button,
+.sound-button {
+  border-radius: 10px;
+}
+@media (min-width: 901px) and (min-height: 760px) {
+  .draft-arena,
+  .allstar-arena {
+    grid-template-rows: minmax(0, calc(100dvh - 340px));
+  }
+  .team-panel {
+    grid-template-rows: 34px 14px clamp(58px, 7dvh, 88px) 16px minmax(
+        0,
+        1fr
+      ) 18px;
+  }
+  .player-portrait,
+  .player-portrait.has-pokemon {
+    flex-basis: clamp(48px, 7dvh, 90px);
+    container-type: size;
+  }
+  .player-portrait > .portrait {
+    width: min(94cqw, 94cqh);
+    height: min(94cqw, 94cqh);
+    max-height: none;
+  }
+  .player-info .player-name {
+    font-size: clamp(11px, 1.35dvh, 16px);
+  }
+  .player-info .role-text {
+    font-size: clamp(9px, 1.05dvh, 12px);
+  }
+  .ban-image {
+    inset: 3px 3px 19px;
+  }
+  .ban-slot-label {
+    line-height: 18px;
+    font-size: clamp(8px, 1dvh, 11px);
+  }
+  .ban-slot > .ban-mark {
+    right: 3px;
+    bottom: 20px;
+    width: 12px;
+    height: 12px;
+  }
+}
+@media (min-width: 1600px) {
+  .pokemon-grid {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+}
+@media (max-width: 900px) {
+  .pokemon-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+@media (max-width: 680px) {
+  .phase-banner > .timeline {
+    grid-row: 3;
+    gap: 6px;
+    min-height: 38px;
+    padding-top: 8px;
+  }
+  .pokemon-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 5px;
+  }
+  .pokemon-card .pokemon-name {
+    font-size: 8px;
+  }
+  .subtle-button {
+    padding: 7px;
+  }
+}

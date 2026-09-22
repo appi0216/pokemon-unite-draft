@@ -5,6 +5,7 @@ import "./design.css";
 import "./refinement.css";
 import "./theme.css";
 import "./layout-finish.css";
+import "./setup-experience.css";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />

@@ -332,3 +332,44 @@
     font-size: 7px;
   }
 }
+
+/* The history rails remain outside both teams at every responsive width. */
+.allstar-arena > .team-side.purple,
+.allstar-arena > .team-side.orange {
+  display: grid !important;
+  grid-template-rows: minmax(0, 1fr) !important;
+  gap: 6px;
+}
+
+.allstar-arena > .team-side.purple {
+  grid-template-columns: 60px minmax(0, 1fr) !important;
+}
+
+.allstar-arena > .team-side.orange {
+  grid-template-columns: minmax(0, 1fr) 60px !important;
+}
+
+.allstar-arena > .team-side.purple > .team-history,
+.allstar-arena > .team-side.orange > .team-history,
+.allstar-arena > .team-side.purple > .team-panel,
+.allstar-arena > .team-side.orange > .team-panel {
+  grid-row: 1;
+  order: initial;
+  height: auto;
+  min-height: 0;
+}
+
+.allstar-arena > .team-side.purple > .team-history,
+.allstar-arena > .team-side.orange > .team-panel {
+  grid-column: 1;
+}
+
+.allstar-arena > .team-side.purple > .team-panel,
+.allstar-arena > .team-side.orange > .team-history {
+  grid-column: 2;
+}
+
+.allstar-arena > .team-side.purple > .team-history,
+.allstar-arena > .team-side.orange > .team-history {
+  flex: none;
+}

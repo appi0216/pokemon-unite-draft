@@ -27,15 +27,7 @@ export default function TeamHistory({
         tabIndex={0}
         aria-label={`${name}の使用済みポケモン一覧`}
       >
-        {history.length === 0 ? (
-          <p className="history-empty">
-            前の試合の
-            <br />
-            選出がここに
-            <br />
-            表示されます
-          </p>
-        ) : (
+        {history.length > 0 &&
           history.map((past) => (
             <section
               className="history-game"
@@ -61,8 +53,7 @@ export default function TeamHistory({
                   })}
               </div>
             </section>
-          ))
-        )}
+          ))}
       </div>
     </aside>
   );

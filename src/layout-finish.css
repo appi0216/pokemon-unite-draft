@@ -260,7 +260,7 @@
   .allstar-arena .team-side.orange {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr) 168px;
+    grid-template-rows: minmax(0, 1fr) 136px;
     gap: 8px;
   }
 
@@ -275,13 +275,22 @@
     order: initial;
     flex: none;
     width: 100%;
-    height: 168px;
-    min-height: 168px;
+    height: 136px;
+    min-height: 136px;
   }
 
   .allstar-arena .history-scroll {
     min-height: 0;
     overflow-y: hidden;
     align-items: flex-start;
+    padding-block: 3px;
+  }
+
+  .allstar-arena .history-heading {
+    padding-block: 3px;
+  }
+
+  .allstar-arena .history-game h3 {
+    margin-bottom: 1px;
   }
 }

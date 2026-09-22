@@ -708,10 +708,9 @@ dialog {
   }
 
   .app:not(.setup-mode) .team-panel {
-    grid-template-rows: 30px 12px clamp(54px, 8dvh, 72px) 14px minmax(
-        0,
-        1fr
-      ) 14px;
+    grid-template-rows:
+      30px 12px clamp(54px, 8dvh, 72px) 14px minmax(0, 1fr)
+      14px;
     gap: 4px;
     padding-block: 8px;
   }
@@ -722,6 +721,12 @@ dialog {
 
   .app:not(.setup-mode) .player-slot {
     min-height: 0;
+  }
+
+  .app:not(.setup-mode) .player-info .trainer,
+  .app:not(.setup-mode) .player-info .role-text {
+    margin-top: 1px;
+    line-height: 1.1;
   }
 
   .app:not(.setup-mode) .decision-bar {

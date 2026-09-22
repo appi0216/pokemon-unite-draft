@@ -112,9 +112,6 @@
   .allstar-arena .history-scroll {
     padding-block: 2px;
   }
-  .player-info .trainer {
-    display: none;
-  }
   .player-info .player-name {
     font-size: 11px;
     line-height: 1.35;

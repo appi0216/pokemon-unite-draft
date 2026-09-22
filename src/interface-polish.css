@@ -472,28 +472,58 @@ dialog {
 
 .team-panel.purple.team-active,
 .team-history.purple.turn-active {
-  background:
-    linear-gradient(
-      to right,
-      color-mix(in srgb, var(--purple) 40%, transparent),
-      color-mix(in srgb, var(--purple) 10%, transparent) 58%,
-      transparent 90%
-    ),
-    linear-gradient(135deg, #ffffff06, transparent 34%),
-    linear-gradient(155deg, #25353e, #19262d 68%);
+  background: color-mix(in srgb, var(--purple) 26%, #25353e);
 }
 
 .team-panel.orange.team-active,
 .team-history.orange.turn-active {
+  background: color-mix(in srgb, var(--orange) 26%, #25353e);
+}
+
+/* The phase deck carries the directional turn cue. */
+.phase-banner {
+  background:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--purple) 26%, #25353e),
+      color-mix(in srgb, var(--purple) 8%, #1c2930) 56%,
+      #19262d 100%
+    );
+}
+
+.app.orange .phase-banner {
   background:
     linear-gradient(
       to left,
-      color-mix(in srgb, var(--orange) 40%, transparent),
-      color-mix(in srgb, var(--orange) 10%, transparent) 58%,
-      transparent 90%
-    ),
-    linear-gradient(225deg, #ffffff06, transparent 34%),
-    linear-gradient(205deg, #25353e, #19262d 68%);
+      color-mix(in srgb, var(--orange) 26%, #25353e),
+      color-mix(in srgb, var(--orange) 8%, #1c2930) 56%,
+      #19262d 100%
+    );
+}
+
+.phase-label {
+  text-align: center;
+  align-items: center;
+}
+
+.phase-label::before {
+  display: none;
+}
+
+.app.draft-complete .phase-banner {
+  --side: var(--ui-cyan);
+  background: #202e36;
+  border-color: var(--surface-border);
+}
+
+.draft-complete .phase-label > .eyebrow {
+  color: var(--accent-text);
+}
+
+.draft-complete .phase-message .team-tag {
+  color: var(--accent-text);
+  background: #28404a;
+  border-color: #547582;
 }
 
 .bans-heading > span:first-child,

@@ -7,6 +7,7 @@ import "./theme.css";
 import "./layout-finish.css";
 import "./setup-experience.css";
 import "./draft-experience.css";
+import "./interface-polish.css";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />

@@ -1,0 +1,355 @@
+/* Shared interface material: deep navy, cyan light and restrained amber. */
+:root {
+  --surface-base: #0c151b;
+  --surface-panel: #172229;
+  --surface-control: #202c34;
+  --surface-raised: #293943;
+  --surface-border: #3a4e59;
+  --text-primary: #edf7f8;
+  --text-secondary: #a9bbc2;
+  --accent-text: #79d8e5;
+  --ui-cyan: #62cedd;
+  --ui-cyan-soft: #62cedd24;
+  --ui-amber: #e4aa68;
+  --ui-amber-soft: #e4aa681d;
+}
+
+.setup-card,
+dialog {
+  background:
+    linear-gradient(145deg, #1d2930fa, #131d23fc 68%),
+    var(--surface-panel);
+  border-color: #47606d;
+  box-shadow:
+    0 24px 64px #0000004a,
+    inset 0 1px #ffffff0d;
+}
+
+.setup-card::before {
+  background: linear-gradient(90deg, transparent, var(--ui-cyan), #8fb5bf66, var(--ui-amber), transparent);
+}
+
+.setup-intro h1 > span {
+  background: linear-gradient(105deg, #83e1e9 5%, #b5cfd3 48%, #efb779 96%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.setup-intro > .section-kicker > span,
+.setup-symbol,
+.option-check,
+.single-match-format strong,
+.resume-card strong {
+  color: var(--ui-cyan);
+}
+
+.setup-symbol,
+.resume-icon {
+  background: linear-gradient(145deg, #233640, #19272f);
+  border: 1px solid #42616f;
+  box-shadow: inset 0 1px #ffffff0c;
+}
+
+.setup-field {
+  border-color: #394d58;
+  background: linear-gradient(145deg, #1b272ef0, #162128f2);
+}
+
+.setup-field legend,
+.setup-title-row .section-kicker {
+  color: #89aeb8;
+}
+
+.mode-option,
+.timer-options,
+.timer-options button,
+.side-options button,
+.single-match-format,
+.resume-card,
+.team-name-settings input {
+  background: linear-gradient(145deg, #233139, #1b282f);
+  border-color: #405660;
+  color: var(--text-secondary);
+  box-shadow: inset 0 1px #ffffff08;
+}
+
+.mode-option:hover,
+.side-options button:hover,
+.resume-card:hover {
+  border-color: #60808c;
+  background: linear-gradient(145deg, #293a43, #1e2d35);
+}
+
+.mode-option.chosen,
+.timer-options button.chosen,
+.resume-card:hover {
+  background:
+    linear-gradient(135deg, var(--ui-cyan-soft), transparent 70%),
+    linear-gradient(145deg, #263942, #1b2931);
+  border-color: #5799a7;
+  box-shadow:
+    inset 3px 0 var(--ui-cyan),
+    inset 0 1px #ffffff10,
+    0 8px 22px #00000024;
+}
+
+.mode-option.chosen strong,
+.mode-option.chosen > svg:first-child,
+.timer-options button.chosen {
+  color: #a7edf2;
+}
+
+.mode-option.chosen small,
+.field-hint,
+.setup-footnote {
+  color: #9cb1b8;
+}
+
+.side-options button.chosen {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--side) 18%, transparent), transparent 74%),
+    linear-gradient(145deg, #243139, #1a272e);
+  border-color: color-mix(in srgb, var(--side) 76%, #8eb2ba 24%);
+  box-shadow:
+    inset 3px 0 var(--side),
+    inset 0 1px #ffffff0d;
+}
+
+.team-name-settings {
+  border-color: #354a55;
+}
+
+.team-name-settings input:focus,
+.search-field:focus-within {
+  border-color: var(--ui-cyan);
+  box-shadow: 0 0 0 3px #62cedd16;
+}
+
+.start-draft-button,
+.confirm-button:not(:disabled),
+.modal-primary,
+.image-download,
+.next-game,
+.complete-button {
+  color: #f3fcfd;
+  background:
+    linear-gradient(110deg, transparent 10%, #ffffff0b 48%, transparent 78%),
+    linear-gradient(135deg, #317d8e, #2d6175 55%, #4f596a);
+  border-color: #67b7c5;
+  box-shadow:
+    inset 0 1px #ffffff21,
+    0 8px 24px #07101552,
+    0 0 18px #62cedd12;
+}
+
+.start-draft-button:hover,
+.confirm-button:not(:disabled):hover,
+.next-game:hover,
+.complete-button:hover,
+.image-download:hover {
+  border-color: #8be0e8;
+  box-shadow:
+    inset 0 1px #ffffff25,
+    0 11px 28px #07101566,
+    0 0 24px #62cedd26;
+}
+
+.icon-button,
+.setup-return-button,
+.subtle-button,
+.modal-secondary,
+.timer-button,
+.sound-button {
+  background: linear-gradient(145deg, #26343c, #1b282f);
+  border-color: #405660;
+  color: #b8c9ce;
+  box-shadow: inset 0 1px #ffffff0b;
+}
+
+.icon-button:hover,
+.setup-return-button:hover,
+.subtle-button:not(:disabled):hover,
+.modal-secondary:hover {
+  background: linear-gradient(145deg, #30434c, #22323a);
+  border-color: #5b7b87;
+  color: #effbfc;
+}
+
+.selection-top,
+.bans-heading,
+.picks-heading,
+.history-heading,
+.selection-footer {
+  border-color: #354a55;
+}
+
+.selection-top > div > svg,
+.bans-heading > span:first-child svg,
+.history-heading > svg {
+  color: #73cbd7;
+  filter: drop-shadow(0 0 7px #62cedd38);
+}
+
+.search-field,
+.sort-select select,
+.hide-used,
+.role-tabs button {
+  background: linear-gradient(145deg, #202e36, #19262d);
+  border-color: #3c525d;
+  color: #b5c7cd;
+  box-shadow: inset 0 1px #ffffff08;
+}
+
+.search-field input,
+.sort-select select {
+  color: #e9f4f6;
+}
+
+.search-field input::placeholder {
+  color: #8298a1;
+}
+
+.role-tabs button:hover {
+  background: #263740;
+  border-color: #54727d;
+}
+
+.role-tabs button:first-child.selected {
+  color: #effdff;
+  background: linear-gradient(135deg, #347e8e, #285a6c);
+  border-color: #69c4d0;
+  box-shadow:
+    inset 0 1px #ffffff1a,
+    0 0 16px #62cedd1f;
+}
+
+.role-tabs button.selected:not(:first-child) {
+  color: #fff;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--role) 42%, #25323a), #1c2930);
+  border-color: color-mix(in srgb, var(--role) 72%, #6d8790 28%);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--role) 22%, transparent);
+}
+
+.ban-slot,
+.ban-slot.filled {
+  background:
+    linear-gradient(135deg, #ffffff05, transparent 44%),
+    linear-gradient(160deg, #26343d, #18242b 74%);
+  border-color: #405660;
+  color: #849ba4;
+  box-shadow:
+    inset 0 1px #ffffff0a,
+    inset 0 -12px 24px #07101524;
+}
+
+.ban-slot.active {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--side) 21%, transparent), transparent 60%),
+    linear-gradient(160deg, #293841, #1a272e 74%);
+  border-color: color-mix(in srgb, var(--side) 74%, #6b8790 26%);
+  box-shadow:
+    inset 3px 0 var(--side),
+    inset 0 1px #ffffff10,
+    0 0 18px color-mix(in srgb, var(--side) 20%, transparent);
+}
+
+.ban-slot-label,
+.ban-slot.filled .ban-slot-label {
+  color: #b4c4ca;
+  background: linear-gradient(90deg, #142128e8, #1d2a31ee, #142128e8);
+  border-top: 1px solid #3a4f595c;
+}
+
+.ban-slot > .ban-mark {
+  color: #ff9ca5;
+  background: #3a2930e8;
+  box-shadow: 0 0 10px #ff7f8d2b;
+}
+
+.player-slot {
+  background:
+    linear-gradient(105deg, #ffffff05, transparent 34%),
+    linear-gradient(145deg, #24323a, #18242b);
+  border-color: #3d525d;
+  color: #9eb2b9;
+  box-shadow: inset 0 1px #ffffff08;
+}
+
+.player-slot.active,
+.player-slot.filled {
+  background:
+    linear-gradient(105deg, color-mix(in srgb, var(--side) 18%, transparent), transparent 58%),
+    linear-gradient(145deg, #27353d, #19262d);
+  border-color: color-mix(in srgb, var(--side) 58%, #49616c 42%);
+}
+
+.player-slot.active {
+  box-shadow:
+    inset 3px 0 var(--side),
+    0 0 17px color-mix(in srgb, var(--side) 15%, transparent);
+}
+
+.player-name,
+.trainer,
+.player-number,
+.slot-dash {
+  color: #9fb2b9;
+}
+
+.filled .player-name,
+.active .player-name {
+  color: #edf7f8;
+}
+
+.history-pokemon-item {
+  background:
+    linear-gradient(145deg, #26353d, #19262d);
+  border: 1px solid #354b55;
+  box-shadow: inset 0 1px #ffffff08;
+}
+
+.team-history.turn-active .history-pokemon-item {
+  border-color: color-mix(in srgb, var(--side) 38%, #354b55);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--side) 12%, transparent), transparent 62%),
+    linear-gradient(145deg, #27363e, #19262d);
+}
+
+.pokemon-card {
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--role) 17%, #26353d),
+    #17232a
+  );
+  border-color: color-mix(in srgb, var(--role) 34%, #3b515b);
+  box-shadow: inset 0 1px #ffffff09;
+}
+
+.pokemon-name {
+  color: #eef7f8;
+  background: linear-gradient(90deg, #111d23e8, #1c2930ed, #111d23e8);
+  border-top: 1px solid #ffffff0b;
+}
+
+.pokemon-card.is-selected {
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--team) 28%, #293840), #17242b);
+  border-color: color-mix(in srgb, var(--team) 76%, #8db1ba 24%);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--team) 68%, transparent),
+    0 0 20px color-mix(in srgb, var(--team) 22%, transparent);
+}
+
+.confirm-button:disabled {
+  color: #71878f;
+  background: linear-gradient(145deg, #1d2a31, #18242a);
+  border-color: #344851;
+  box-shadow: inset 0 1px #ffffff06;
+}
+
+.pokemon-grid,
+.history-scroll {
+  scrollbar-color: #52727e transparent;
+}

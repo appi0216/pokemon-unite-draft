@@ -253,14 +253,14 @@
   }
 }
 
-/* Below the wide three-column breakpoint, histories sit under their team as
-   a single horizontal Pokémon row, leaving the active team slots the height. */
+/* Below the wide three-column breakpoint, histories sit under their team.
+   Each game is a compact heading and one horizontal Pokémon row. */
 @media (min-width: 681px) and (max-width: 1299px) {
   .allstar-arena .team-side,
   .allstar-arena .team-side.orange {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr) 76px;
+    grid-template-rows: minmax(0, 1fr) 80px;
     gap: 8px;
   }
 
@@ -275,15 +275,15 @@
     order: initial;
     flex: none;
     width: 100%;
-    height: 76px;
-    min-height: 76px;
+    height: 80px;
+    min-height: 80px;
   }
 
   .allstar-arena .history-scroll {
     min-height: 0;
     display: flex;
     overflow-y: hidden;
-    align-items: center;
+    align-items: stretch;
     gap: 4px;
     padding-block: 2px;
   }
@@ -293,16 +293,22 @@
   }
 
   .allstar-arena .history-game {
-    display: contents;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    min-width: max-content;
   }
 
   .allstar-arena .history-game h3 {
-    display: none;
+    display: block;
+    margin: 0 0 1px;
+    font-size: 7px;
+    line-height: 1;
   }
 
   .allstar-arena .history-game + .history-game {
-    padding: 0;
-    border: 0;
+    padding: 0 0 0 5px;
+    border-left: 1px solid var(--surface-border);
   }
 
   .allstar-arena .history-pokemon {
@@ -318,5 +324,88 @@
   .allstar-arena .history-pokemon-item .portrait {
     width: 30px;
     height: 30px;
+  }
+}
+
+/* Wide screens keep the two history rails beside their respective teams. */
+@media (min-width: 1300px) {
+  .allstar-arena .team-side {
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .allstar-arena .team-side.orange {
+    grid-template-columns: minmax(0, 1fr) 76px;
+  }
+
+  .allstar-arena .team-side.purple .team-history {
+    grid-column: 1;
+  }
+
+  .allstar-arena .team-side.purple .team-panel {
+    grid-column: 2;
+  }
+
+  .allstar-arena .team-side.orange .team-panel {
+    grid-column: 1;
+  }
+
+  .allstar-arena .team-side.orange .team-history {
+    grid-column: 2;
+  }
+
+  .allstar-arena .team-panel {
+    grid-row: 1;
+    height: auto;
+  }
+
+  .allstar-arena .team-history {
+    grid-row: 1;
+    order: initial;
+    height: auto;
+    min-height: 0;
+  }
+
+  .allstar-arena .history-scroll {
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 8px 4px;
+  }
+
+  .allstar-arena .history-game {
+    display: block;
+    min-width: 0;
+  }
+
+  .allstar-arena .history-game + .history-game {
+    margin-top: 12px;
+    padding: 9px 0 0;
+    border-top: 1px solid var(--surface-border);
+    border-left: 0;
+  }
+
+  .allstar-arena .history-game h3 {
+    display: block;
+    margin: 0 0 6px;
+    text-align: center;
+    font-size: 8px;
+  }
+
+  .allstar-arena .history-pokemon {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .allstar-arena .history-pokemon-item {
+    padding: 3px 2px;
+  }
+
+  .allstar-arena .history-pokemon-item .portrait {
+    width: 45px;
+    height: 45px;
   }
 }

@@ -490,25 +490,36 @@ dialog {
   );
 }
 
-/* The phase deck carries the directional turn cue. */
+/* Cross-fade the directional turn cue without repainting a full gradient each frame. */
 .phase-banner {
-  background:
-    linear-gradient(
-      to right,
-      color-mix(in srgb, var(--purple) 26%, #25353e),
-      color-mix(in srgb, var(--purple) 8%, #1c2930) 56%,
-      #19262d 100%
-    );
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--purple) 26%, #25353e),
+    color-mix(in srgb, var(--purple) 8%, #1c2930) 56%,
+    #19262d 100%
+  );
 }
 
-.app.orange .phase-banner {
-  background:
-    linear-gradient(
-      to left,
-      color-mix(in srgb, var(--orange) 26%, #25353e),
-      color-mix(in srgb, var(--orange) 8%, #1c2930) 56%,
-      #19262d 100%
-    );
+.phase-banner::before {
+  opacity: 0;
+  background: linear-gradient(
+    to left,
+    color-mix(in srgb, var(--orange) 26%, #25353e),
+    color-mix(in srgb, var(--orange) 8%, #1c2930) 56%,
+    #19262d 100%
+  );
+  background-size: auto;
+  -webkit-mask-image: none;
+  mask-image: none;
+  transform: translateX(5%);
+  transition:
+    opacity 520ms ease,
+    transform 520ms ease;
+}
+
+.app.orange:not(.draft-complete) .phase-banner::before {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .phase-label {
@@ -587,10 +598,137 @@ dialog {
   color: var(--accent-text);
 }
 
-.draft-complete .phase-message .team-tag {
-  color: var(--accent-text);
-  background: #28404a;
-  border-color: #547582;
+.timeline-step {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.timeline-step:disabled {
+  opacity: 1;
+}
+
+.timeline-step:not(:disabled):hover .step-node,
+.timeline-step:not(:disabled):focus-visible .step-node {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--side) 22%, transparent);
+}
+
+.timeline-step:not(:disabled) {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phase-banner::before {
+    transition: none;
+    transform: none;
+  }
+}
+
+@media (min-width: 681px) and (max-width: 900px) {
+  .allstar-arena {
+    grid-template-columns: minmax(194px, 1fr) minmax(260px, 1.35fr) minmax(
+        194px,
+        1fr
+      );
+    gap: 8px;
+  }
+
+  .allstar-arena > .team-side.purple {
+    grid-template-columns: 44px minmax(0, 1fr) !important;
+  }
+
+  .allstar-arena > .team-side.orange {
+    grid-template-columns: minmax(0, 1fr) 44px !important;
+  }
+}
+
+@media (min-width: 620px) and (max-width: 680px) {
+  .draft-arena,
+  .allstar-arena {
+    grid-template-columns: minmax(154px, 1fr) minmax(220px, 1.4fr) minmax(
+        154px,
+        1fr
+      );
+    grid-template-rows: minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .team-side.purple {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .selection-panel {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .team-side.orange {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .allstar-arena > .team-side.purple {
+    grid-template-columns: 44px minmax(0, 1fr) !important;
+  }
+
+  .allstar-arena > .team-side.orange {
+    grid-template-columns: minmax(0, 1fr) 44px !important;
+  }
+}
+
+@media (min-width: 620px) and (min-height: 640px) {
+  .app:not(.setup-mode) {
+    height: 100dvh;
+    min-height: 0;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    overflow: hidden;
+  }
+
+  .app:not(.setup-mode) > .draft-main {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .app:not(.setup-mode) .phase-banner {
+    flex: 0 0 auto;
+    margin-bottom: 8px;
+  }
+
+  .app:not(.setup-mode) .draft-arena {
+    flex: 1 1 auto;
+    min-height: 0;
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .app:not(.setup-mode) .team-panel {
+    grid-template-rows: 30px 12px clamp(54px, 8dvh, 72px) 14px minmax(
+        0,
+        1fr
+      ) 14px;
+    gap: 4px;
+    padding-block: 8px;
+  }
+
+  .app:not(.setup-mode) .player-list {
+    grid-template-rows: repeat(5, minmax(0, 1fr));
+  }
+
+  .app:not(.setup-mode) .player-slot {
+    min-height: 0;
+  }
+
+  .app:not(.setup-mode) .decision-bar {
+    flex: 0 0 auto;
+    min-height: 0;
+    padding-block: 6px;
+  }
 }
 
 .bans-heading > span:first-child,

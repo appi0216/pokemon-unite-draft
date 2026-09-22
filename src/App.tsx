@@ -9,7 +9,6 @@ import {
   ArrowRight,
   Ban,
   Check,
-  CheckCheck,
   ChevronDown,
   CircleHelp,
   Clock3,
@@ -42,6 +41,7 @@ import {
   currentStep,
   nextGame,
   redundantAllStarBan,
+  rewindToStep,
   restoreDraft,
   steps,
   swap,
@@ -163,6 +163,9 @@ function App() {
   const activeTeam = step?.team || draft.first;
   const selectedPokemon = selected ? byId.get(selected) : undefined;
   const schedule = steps(draft.first);
+  const stageStarts = schedule.map((_, index) =>
+    schedule.slice(0, index).reduce((total, stage) => total + stage.count, 0),
+  );
   const bans = draft.actions.filter((a) => a.phase === "ban");
   const picks = draft.actions.filter((a) => a.phase === "pick");
   useEffect(() => {
@@ -657,20 +660,12 @@ function App() {
               </h1>
             </div>
             <div className="phase-message" aria-live="polite">
-              {complete && (
-                <span className="team-tag">
-                  <CheckCheck size={16} />
-                </span>
-              )}
               <div>
                 <strong>
                   {complete
-                    ? "両チームの選出が完了しました"
+                    ? "両チームの選出が完了しました。味方の枠を2つ選ぶと、ポケモンを交換できます。"
                     : `${teamName(activeTeam)}が${phase === "ban" ? "使用禁止にする" : "使用する"}ポケモンを選択`}
                 </strong>
-                {complete && (
-                  <span>味方の枠を2つ選ぶと、ポケモンを交換できます。</span>
-                )}
               </div>
             </div>
             {settings.seconds > 0 && (
@@ -702,11 +697,25 @@ function App() {
               </div>
               <div className="timeline-stages">
                 {schedule.map((s, i) => (
-                  <div
+                  <button
                     key={i}
+                    type="button"
                     className={`timeline-step ${s.team} ${i === stageIndex ? "current" : ""} ${i < stageIndex ? "done" : ""}`}
-                    title={`${teamName(s.team)} ${s.phase.toUpperCase()} ${s.count}体`}
+                    disabled={stageStarts[i] >= draft.actions.length}
+                    title={
+                      stageStarts[i] < draft.actions.length
+                        ? `${teamName(s.team)}の${s.phase === "ban" ? "BAN" : "PICK"}ターンに戻る（以降の選出を取り消します）`
+                        : `${teamName(s.team)} ${s.phase.toUpperCase()} ${s.count}体`
+                    }
+                    aria-label={`第${i + 1}区間 ${teamName(s.team)}の${s.phase === "ban" ? "BAN" : "PICK"} ${s.count}体のターン${stageStarts[i] < draft.actions.length ? "に戻る" : ""}`}
                     aria-current={i === stageIndex ? "step" : undefined}
+                    onClick={() => {
+                      setDraft(rewindToStep(draft, i));
+                      setSelected(null);
+                      setSwapFrom(null);
+                      setRunning(false);
+                      setRemaining(turnSeconds(settings.seconds > 0, s.phase));
+                    }}
                   >
                     {i === 6 && <span className="timeline-separator" />}
                     <span className="step-node">
@@ -722,13 +731,9 @@ function App() {
                       {s.phase.toUpperCase()}
                       {s.phase === "pick" && s.count === 2 ? " ×2" : ""}
                     </span>
-                  </div>
+                  </button>
                 ))}
               </div>
-              <span className="progress-count">
-                {draft.actions.length}
-                <small>/ 16</small>
-              </span>
             </section>
           </section>
           {draft.allStar &&

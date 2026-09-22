@@ -112,6 +112,16 @@ export const undo = (draft: Draft): Draft => ({
   ...draft,
   actions: draft.actions.slice(0, -1),
 });
+export function rewindToStep(draft: Draft, index: number): Draft {
+  const sequence = steps(draft.first);
+  if (!Number.isInteger(index) || index < 0 || index >= sequence.length)
+    return draft;
+  const actionCount = sequence
+    .slice(0, index)
+    .reduce((total, step) => total + step.count, 0);
+  if (actionCount >= draft.actions.length) return draft;
+  return { ...draft, actions: draft.actions.slice(0, actionCount) };
+}
 export function nextGame(draft: Draft): Draft {
   if (currentStep(draft)) return draft;
   if (!draft.allStar) return createDraft(draft.first);

@@ -6,6 +6,7 @@ import {
   currentStep,
   nextGame,
   redundantAllStarBan,
+  rewindToStep,
   restoreDraft,
   steps,
   swap,
@@ -110,6 +111,32 @@ test("two-pick turn keeps its step after the first choice", () => {
   assert.equal(currentStep(d)?.remaining, 1);
   d = choose(d, ids[8], ids);
   assert.equal(currentStep(d)?.index, index! + 1);
+});
+test("rewinding a progress step removes later choices but keeps prior games", () => {
+  let d = createDraft("purple", true);
+  for (let i = 0; i < 16; i++) d = choose(d, ids[i], ids);
+  d = nextGame(d);
+  for (let i = 16; i < 25; i++) d = choose(d, ids[i], ids);
+  const atPickStart = rewindToStep(d, 7);
+  assert.equal(atPickStart.actions.length, 7);
+  assert.equal(currentStep(atPickStart)?.index, 7);
+  assert.equal(currentStep(atPickStart)?.remaining, 2);
+  assert.deepEqual(atPickStart.history, d.history);
+  assert.deepEqual(atPickStart.excluded, d.excluded);
+  assert.equal(rewindToStep(d, 9), d);
+  assert.equal(rewindToStep(d, -1), d);
+  assert.equal(rewindToStep(d, 12), d);
+  assert.equal(rewindToStep(d, 1.5), d);
+  assert.equal(
+    restoreDraft(JSON.parse(JSON.stringify(atPickStart)), ids)?.actions.length,
+    7,
+  );
+  for (let i = 25; i < 32; i++) d = choose(d, ids[i], ids);
+  assert.equal(currentStep(d), null);
+  const fromComplete = rewindToStep(d, 11);
+  assert.equal(fromComplete.actions.length, 15);
+  assert.equal(currentStep(fromComplete)?.index, 11);
+  assert.deepEqual(fromComplete.history, d.history);
 });
 test("All-Star locks prior picks only for the team that used them", () => {
   let d = createDraft("purple", true);

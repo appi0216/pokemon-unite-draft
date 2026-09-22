@@ -221,7 +221,7 @@
 
   .setup-field {
     margin: 0;
-    padding: 12px;
+    padding: 9px 11px;
     border: 1px solid var(--surface-border);
     border-radius: 15px;
     background:
@@ -231,11 +231,13 @@
 
   .setup-fields-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
-      "draft draft timer first"
-      "match match timer first";
-    gap: 12px 14px;
+      "draft"
+      "match"
+      "timer"
+      "first";
+    gap: 8px;
     min-width: 0;
   }
 
@@ -255,19 +257,8 @@
     grid-area: first;
   }
 
-  .timer-field .timer-options,
-  .first-team-field .side-options {
-    grid-template-columns: 1fr;
-    flex-direction: column;
-  }
-
-  .timer-field .timer-options button,
-  .first-team-field .side-options button {
-    width: 100%;
-  }
-
   .setup-field legend {
-    margin: 0 0 7px;
+    margin: 0 0 5px;
     padding: 0 5px;
     font-size: 11px;
   }
@@ -278,15 +269,15 @@
   }
 
   .mode-option {
-    min-height: 78px;
-    padding: 10px;
+    min-height: 62px;
+    padding: 7px 10px;
     border-radius: 11px;
   }
 
   .mode-option > svg:first-child {
-    width: 17px;
-    height: 17px;
-    margin-bottom: 5px;
+    width: 15px;
+    height: 15px;
+    margin-bottom: 3px;
   }
 
   .mode-option strong {
@@ -294,7 +285,7 @@
   }
 
   .mode-option small {
-    margin-top: 3px;
+    margin-top: 1px;
     font-size: 8px;
     line-height: 1.35;
   }
@@ -305,8 +296,8 @@
   }
 
   .timer-options button {
-    min-height: 32px;
-    padding-block: 6px;
+    min-height: 28px;
+    padding-block: 4px;
     font-size: 11px;
   }
 
@@ -315,14 +306,14 @@
   }
 
   .field-hint {
-    margin-top: 6px;
+    margin-top: 4px;
     font-size: 8px;
     line-height: 1.4;
   }
 
   .side-options button {
-    min-height: 42px;
-    padding: 8px 9px;
+    min-height: 34px;
+    padding: 6px 9px;
   }
 
   .side-options button > span:nth-child(2) {
@@ -331,8 +322,8 @@
   }
 
   .side-options small {
-    display: block;
-    margin: 2px 0 0;
+    display: inline;
+    margin: 0 0 0 4px;
     font-size: 8px;
   }
 
@@ -352,6 +343,11 @@
 
   .setup-footnote {
     margin: -5px 0 0;
+  }
+
+  .showcase-card {
+    height: auto;
+    aspect-ratio: 0.78;
   }
 }
 
@@ -394,7 +390,8 @@
   }
 
   .showcase-card {
-    height: 162px;
+    height: auto;
+    aspect-ratio: 0.78;
     top: 36px;
     padding-top: 18px;
   }

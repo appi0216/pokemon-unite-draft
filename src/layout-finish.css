@@ -141,6 +141,19 @@
   display: none;
 }
 
+/* At tablet-width desktop layouts the histories move below the team panels.
+   Reserve their full card height here so the row cannot be clipped. */
+@media (min-width: 681px) and (max-width: 1299px) {
+  .allstar-arena .team-history {
+    flex: 0 0 116px;
+    height: 116px;
+  }
+
+  .allstar-arena .history-scroll {
+    min-height: 0;
+  }
+}
+
 @media (min-width: 901px) and (min-height: 760px) {
   .phase-banner {
     min-height: 0;

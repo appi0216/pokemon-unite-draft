@@ -260,7 +260,7 @@
   .allstar-arena .team-side.orange {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr) 132px;
+    grid-template-rows: minmax(0, 1fr) 168px;
     gap: 8px;
   }
 
@@ -275,11 +275,13 @@
     order: initial;
     flex: none;
     width: 100%;
-    height: 132px;
-    min-height: 132px;
+    height: 168px;
+    min-height: 168px;
   }
 
   .allstar-arena .history-scroll {
     min-height: 0;
+    overflow-y: hidden;
+    align-items: flex-start;
   }
 }

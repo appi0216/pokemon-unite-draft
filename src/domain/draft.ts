@@ -57,8 +57,26 @@ export const createDraft = (
   history: [],
   bestOf,
 });
-export const unavailable = (draft: Draft, id: string) =>
-  draft.excluded.includes(id) || draft.actions.some((a) => a.pokemon === id);
+export function unavailable(draft: Draft, id: string, team?: Team) {
+  if (draft.actions.some((a) => a.pokemon === id)) return true;
+
+  const step = currentStep(draft);
+  if (step?.phase !== "pick") return false;
+  const pickingTeam = team ?? step.team;
+
+  // Current All-Star saves retain the owner of every past pick. A Pokémon is
+  // therefore unavailable only to the team that used it in an earlier game.
+  if (draft.history.length)
+    return draft.history.some((game) =>
+      game.picks.some(
+        (pick) => pick.team === pickingTeam && pick.pokemon === id,
+      ),
+    );
+
+  // Saved drafts from before team ownership was recorded have no way to tell
+  // who used a Pokémon. Keep their former, global restriction intact.
+  return draft.allStar && draft.excluded.includes(id);
+}
 export function choose(
   draft: Draft,
   pokemon: string | null,
@@ -68,7 +86,8 @@ export function choose(
   if (
     !step ||
     (!pokemon && step.phase === "pick") ||
-    (pokemon && (!validIds.includes(pokemon) || unavailable(draft, pokemon)))
+    (pokemon &&
+      (!validIds.includes(pokemon) || unavailable(draft, pokemon, step.team)))
   )
     return draft;
   return {
@@ -157,7 +176,10 @@ export function restoreDraft(
   // without inventing ownership; new games record the full team history.
   const history = v.history === undefined ? [] : v.history;
   if (!Array.isArray(history)) return null;
-  const seen = new Set<string>();
+  const usedByTeam: Record<Team, Set<string>> = {
+    purple: new Set<string>(),
+    orange: new Set<string>(),
+  };
   let lastGame = 0;
   for (const past of history) {
     if (
@@ -176,12 +198,13 @@ export function restoreDraft(
         !["purple", "orange"].includes(pick.team) ||
         typeof pick.pokemon !== "string" ||
         !v.excluded.includes(pick.pokemon) ||
-        seen.has(pick.pokemon)
+        usedByTeam[pick.team].has(pick.pokemon)
       )
         return null;
-      seen.add(pick.pokemon);
+      usedByTeam[pick.team].add(pick.pokemon);
     }
     if (past.picks.filter((p) => p.team === "purple").length !== 5) return null;
+    if (past.picks.filter((p) => p.team === "orange").length !== 5) return null;
   }
   if (!v.allStar && (v.excluded.length || history.length)) return null;
   let draft = {

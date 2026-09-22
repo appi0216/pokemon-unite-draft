@@ -237,7 +237,7 @@ function App() {
         .filter(
           (p) =>
             (role === "all" || p.role === role) &&
-            (!hideUsed || !unavailable(draft, p.id)) &&
+            (!hideUsed || !unavailable(draft, p.id, activeTeam)) &&
             (!query || normalize(p.name + p.id).includes(normalize(query))),
         )
         .sort((a, b) =>
@@ -910,9 +910,16 @@ function App() {
                 }}
               >
                 {visible.map((p, i) => {
-                  const used = unavailable(draft, p.id);
+                  const used = unavailable(draft, p.id, activeTeam);
                   const action = draft.actions.find((a) => a.pokemon === p.id);
-                  const old = draft.excluded.includes(p.id);
+                  const old = draft.history.length
+                    ? draft.history.some((game) =>
+                        game.picks.some(
+                          (pick) =>
+                            pick.team === activeTeam && pick.pokemon === p.id,
+                        ),
+                      )
+                    : draft.excluded.includes(p.id);
                   return (
                     <button
                       key={p.id}
@@ -922,10 +929,14 @@ function App() {
                         p.id ===
                         (selected &&
                         visible.some(
-                          (v) => v.id === selected && !unavailable(draft, v.id),
+                          (v) =>
+                            v.id === selected &&
+                            !unavailable(draft, v.id, activeTeam),
                         )
                           ? selected
-                          : visible.find((v) => !unavailable(draft, v.id))?.id)
+                          : visible.find(
+                              (v) => !unavailable(draft, v.id, activeTeam),
+                            )?.id)
                           ? 0
                           : -1
                       }

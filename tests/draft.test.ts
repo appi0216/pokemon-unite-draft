@@ -8,6 +8,7 @@ import {
   restoreDraft,
   steps,
   swap,
+  unavailable,
   undo,
 } from "../src/domain/draft.ts";
 const ids = Array.from({ length: 80 }, (_, i) => `p${i}`);
@@ -109,18 +110,27 @@ test("two-pick turn keeps its step after the first choice", () => {
   d = choose(d, ids[8], ids);
   assert.equal(currentStep(d)?.index, index! + 1);
 });
-test("All-Star carries only picks, cumulatively, and alternates first team", () => {
+test("All-Star locks prior picks only for the team that used them", () => {
   let d = createDraft("purple", true);
   for (let i = 0; i < 16; i++) d = choose(d, ids[i], ids);
   d = nextGame(d);
   assert.equal(d.game, 2);
   assert.equal(d.first, "orange");
   assert.deepEqual(d.excluded, ids.slice(6, 16));
+  // Earlier picks do not restrict BAN choices in the next game.
+  d = choose(d, ids[7], ids);
+  assert.equal(d.actions.length, 1);
+  for (let i = 1; i < 6; i++) d = choose(d, null, ids);
+  // Purple used p6 in game one, so orange may pick it in game two.
+  assert.equal(unavailable(d, ids[6], "orange"), false);
+  d = choose(d, ids[6], ids);
+  assert.equal(d.actions.length, 7);
+  // Orange used p7 in game one, so orange cannot use it again.
+  assert.equal(unavailable(d, ids[7], "orange"), true);
   assert.equal(choose(d, ids[7], ids), d);
-  assert.equal(choose(d, ids[0], ids).actions.length, 1);
-  for (let i = 16; i < 32; i++) d = choose(d, ids[i], ids);
+  for (let i = 16; i < 25; i++) d = choose(d, ids[i], ids);
   d = nextGame(d);
-  assert.equal(d.excluded.length, 20);
+  assert.equal(d.excluded.length, 19);
   assert.equal(nextGame(d), d);
 });
 test("normal next game clears bans/picks; swapping only within completed team", () => {
@@ -168,7 +178,9 @@ test("legacy saves keep bans from prior picks without inventing team history", (
   const restored = restoreDraft(legacy, ids)!;
   assert.deepEqual(restored.history, []);
   assert.deepEqual(restored.excluded, ids.slice(6, 16));
-  assert.equal(choose(restored, ids[6], ids), restored);
+  let pickStep = restored;
+  for (let i = 0; i < 6; i++) pickStep = choose(pickStep, null, ids);
+  assert.equal(choose(pickStep, ids[6], ids), pickStep);
   assert.equal(
     restoreDraft({ ...createDraft(), game: 8, history: undefined }, ids)?.game,
     1,

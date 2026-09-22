@@ -252,3 +252,34 @@
     padding: 7px;
   }
 }
+
+/* Below the wide three-column breakpoint, histories sit under their team.
+   Give that row a definite height rather than letting a flex-basis collapse it. */
+@media (min-width: 681px) and (max-width: 1299px) {
+  .allstar-arena .team-side,
+  .allstar-arena .team-side.orange {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) 132px;
+    gap: 8px;
+  }
+
+  .allstar-arena .team-panel {
+    grid-row: 1;
+    height: auto;
+    min-height: 0;
+  }
+
+  .allstar-arena .team-history {
+    grid-row: 2;
+    order: initial;
+    flex: none;
+    width: 100%;
+    height: 132px;
+    min-height: 132px;
+  }
+
+  .allstar-arena .history-scroll {
+    min-height: 0;
+  }
+}

@@ -25,7 +25,6 @@ import {
   House,
   Shield,
   SkipForward,
-  Swords,
   Trophy,
   Undo2,
   UserRound,
@@ -658,28 +657,20 @@ function App() {
               </h1>
             </div>
             <div className="phase-message" aria-live="polite">
-              <span className={`team-tag ${activeTeam}`}>
-                {complete ? (
+              {complete && (
+                <span className="team-tag">
                   <CheckCheck size={16} />
-                ) : phase === "ban" ? (
-                  <Ban size={16} />
-                ) : (
-                  <Swords size={16} />
-                )}
-              </span>
+                </span>
+              )}
               <div>
                 <strong>
                   {complete
                     ? "両チームの選出が完了しました"
                     : `${teamName(activeTeam)}が${phase === "ban" ? "使用禁止にする" : "使用する"}ポケモンを選択`}
                 </strong>
-                <span>
-                  {complete
-                    ? "味方の枠を2つ選ぶと、ポケモンを交換できます。"
-                    : phase === "ban"
-                      ? `BAN ${bans.length + 1} / 6 · 各チーム3体を交互に指定`
-                      : `PICK ${picks.length + 1} / 10 · このターンはあと${step?.remaining}体`}
-                </span>
+                {complete && (
+                  <span>味方の枠を2つ選ぶと、ポケモンを交換できます。</span>
+                )}
               </div>
             </div>
             {settings.seconds > 0 && (

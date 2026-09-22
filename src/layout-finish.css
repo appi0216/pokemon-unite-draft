@@ -62,6 +62,85 @@
 .sound-button {
   border-radius: 10px;
 }
+
+/* All-Star history stays in a horizontal strip, including BO7. */
+.allstar-arena .team-side,
+.allstar-arena .team-side.orange {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.allstar-arena .team-panel {
+  flex: 1 1 0;
+  min-height: 0;
+}
+.allstar-arena .team-history {
+  order: 2;
+  flex: 0 0 clamp(82px, 11dvh, 104px);
+  min-height: 0;
+  border-radius: 11px;
+}
+.allstar-arena .history-heading {
+  justify-content: flex-start;
+  gap: 6px;
+  padding: 4px 8px;
+  font-size: 9px;
+}
+.allstar-arena .history-heading > svg {
+  width: 11px;
+  height: 11px;
+}
+.allstar-arena .history-heading > span {
+  padding: 0 3px;
+}
+.allstar-arena .history-scroll {
+  display: flex;
+  gap: 9px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 6px;
+  scroll-snap-type: x proximity;
+}
+.allstar-arena .history-game {
+  flex: 0 0 auto;
+  min-width: max-content;
+  scroll-snap-align: start;
+}
+.allstar-arena .history-game + .history-game {
+  margin: 0;
+  padding: 0 0 0 9px;
+  border-top: 0;
+  border-left: 1px solid var(--surface-border);
+}
+.allstar-arena .history-game h3 {
+  margin: 0 0 2px;
+  text-align: left;
+  font-size: 7px;
+}
+.allstar-arena .history-pokemon {
+  display: grid;
+  grid-template-columns: repeat(5, 38px);
+  gap: 3px;
+}
+.allstar-arena .history-pokemon-item {
+  padding: 0 1px 2px;
+}
+.allstar-arena .history-pokemon-item .portrait {
+  width: 34px;
+  height: 34px;
+}
+.allstar-arena .history-pokemon-item > span {
+  font-size: 7px;
+}
+.allstar-arena .history-empty {
+  margin: 4px;
+  font-size: 9px;
+  white-space: nowrap;
+}
+.allstar-arena .history-empty br {
+  display: none;
+}
+
 @media (min-width: 901px) and (min-height: 760px) {
   .phase-banner {
     min-height: 0;

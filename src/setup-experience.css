@@ -10,26 +10,41 @@
   content: "";
   position: fixed;
   z-index: -1;
-  width: 46vmax;
-  aspect-ratio: 1;
-  border-radius: 50%;
   pointer-events: none;
-  opacity: 0.38;
   will-change: transform;
 }
 
 .app.setup-mode::before {
-  left: -20vmax;
-  top: 15vh;
-  background: radial-gradient(circle, #70479a55 0 18%, transparent 68%);
-  animation: setup-aurora-a 13s ease-in-out infinite alternate;
+  inset: -18%;
+  background:
+    linear-gradient(#8ecaff0c 1px, transparent 1px),
+    linear-gradient(90deg, #8ecaff0c 1px, transparent 1px),
+    radial-gradient(ellipse at 18% 32%, #613f9559, transparent 43%),
+    radial-gradient(ellipse at 86% 68%, #245f7a38, transparent 42%);
+  background-size:
+    64px 64px,
+    64px 64px,
+    auto,
+    auto;
+  opacity: 0.72;
+  transform: perspective(900px) rotateX(10deg) rotateZ(-2deg);
+  animation: setup-grid-drift 18s ease-in-out infinite alternate;
 }
 
 .app.setup-mode::after {
-  right: -24vmax;
-  top: -20vmax;
-  background: radial-gradient(circle, #a75c4540 0 17%, transparent 66%);
-  animation: setup-aurora-b 16s ease-in-out infinite alternate;
+  top: -12%;
+  bottom: -12%;
+  left: -28%;
+  width: 32%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #b58cff12,
+    #79cfff0e,
+    transparent
+  );
+  transform: skewX(-14deg);
+  animation: setup-light-sweep 14s ease-in-out infinite;
 }
 
 .setup-intro,
@@ -39,6 +54,33 @@
 
 .setup-card {
   animation-delay: 90ms;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, #25222cfa, #1d1b23fa), var(--surface-panel);
+  border-color: #ab8bd83d;
+  box-shadow:
+    0 24px 60px #00000052,
+    inset 0 1px #ffffff0d;
+}
+
+.setup-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 12% auto;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #b894f0a6,
+    #78caf08f,
+    transparent
+  );
+  pointer-events: none;
+}
+
+.setup-intro h1 {
+  text-shadow: 0 12px 42px #986fd22c;
 }
 
 .showcase-card {
@@ -46,19 +88,6 @@
     transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
     border-color 250ms ease,
     box-shadow 250ms ease;
-  will-change: transform;
-}
-
-.showcase-0 {
-  animation: showcase-left 5.8s ease-in-out 650ms infinite alternate;
-}
-
-.showcase-1 {
-  animation: showcase-center 5s ease-in-out 300ms infinite alternate;
-}
-
-.showcase-2 {
-  animation: showcase-right 6.4s ease-in-out 850ms infinite alternate;
 }
 
 .setup-art:hover .showcase-0 {
@@ -71,10 +100,6 @@
 
 .setup-art:hover .showcase-2 {
   transform: translate(5px, -4px) rotate(10deg);
-}
-
-.art-orbit {
-  animation: orbit-breathe 5s ease-in-out infinite alternate;
 }
 
 .mode-option,
@@ -150,11 +175,12 @@
   .app .setup-main {
     gap: clamp(28px, 4vw, 58px);
     padding: clamp(18px, 3vh, 34px) 36px;
+    grid-template-columns: minmax(280px, 0.72fr) minmax(620px, 1.38fr);
   }
 
   .setup-card {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px 14px;
     padding: 22px;
     border-radius: 26px;
@@ -162,6 +188,7 @@
 
   .setup-title-row,
   .resume-card,
+  .first-team-field,
   .team-name-settings,
   .start-draft-button,
   .setup-footnote {
@@ -193,7 +220,9 @@
     padding: 12px;
     border: 1px solid var(--surface-border);
     border-radius: 15px;
-    background: color-mix(in srgb, var(--surface-control) 58%, transparent);
+    background:
+      linear-gradient(145deg, #ffffff06, transparent 55%),
+      color-mix(in srgb, var(--surface-control) 58%, transparent);
   }
 
   .setup-field legend {
@@ -287,7 +316,9 @@
 
 @media (min-width: 701px) and (max-width: 1100px) {
   .app .setup-main {
-    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+    grid-template-columns: minmax(0, 0.58fr) minmax(0, 1.42fr);
+    gap: 24px;
+    padding-inline: 24px;
   }
 
   .single-match-format {
@@ -401,48 +432,20 @@
   }
 }
 
-@keyframes setup-aurora-a {
+@keyframes setup-grid-drift {
   to {
-    transform: translate3d(9vw, -5vh, 0) scale(1.12);
+    transform: perspective(900px) translate3d(2.5vw, -2vh, 0) rotateX(10deg)
+      rotateZ(0deg);
   }
 }
 
-@keyframes setup-aurora-b {
-  to {
-    transform: translate3d(-8vw, 9vh, 0) scale(1.08);
+@keyframes setup-light-sweep {
+  0%,
+  22% {
+    transform: translateX(0) skewX(-14deg);
   }
-}
-
-@keyframes orbit-breathe {
-  to {
-    transform: rotate(-9deg) scale(1.08);
-    opacity: 0.75;
-  }
-}
-
-@keyframes showcase-left {
-  from {
-    transform: translateY(2px) rotate(-8deg);
-  }
-  to {
-    transform: translateY(-5px) rotate(-10deg);
-  }
-}
-
-@keyframes showcase-center {
-  from {
-    transform: translateY(2px);
-  }
-  to {
-    transform: translateY(-7px);
-  }
-}
-
-@keyframes showcase-right {
-  from {
-    transform: translateY(2px) rotate(8deg);
-  }
-  to {
-    transform: translateY(-5px) rotate(10deg);
+  72%,
+  100% {
+    transform: translateX(430%) skewX(-14deg);
   }
 }

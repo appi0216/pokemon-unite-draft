@@ -975,9 +975,7 @@ function App() {
               </div>
               <div className="selection-footer">
                 <span>{visible.length}体を表示</span>
-                <span className="keyboard-hint">
-                  Tabで一覧へ · 矢印で選択 · Enterで確定
-                </span>
+                <span className="keyboard-hint">矢印で選択 · Enterで確定</span>
                 <span>
                   <i className="legend-dot" />
                   選択中 <Ban size={12} />
@@ -1208,8 +1206,8 @@ function App() {
           <div className="info-content">
             <h3>キーボード操作</h3>
             <p>
-              Tab：操作対象を移動 ／ 矢印：ポケモンを選択 ／ Enter：確定 ／
-              /：検索 ／ Esc：選択解除 ／ P：タイマー停止・再開 ／
+              矢印：ポケモンを選択 ／ Enter：確定 ／ /：検索 ／ Esc：選択解除 ／
+              P：タイマー停止・再開 ／
               U：1つ戻す。文字入力中はショートカットを無効にします。
             </p>
             <p>

@@ -470,13 +470,13 @@ dialog {
     inset 0 1px #ffffff15;
 }
 
-.team-panel.purple.team-active,
-.team-history.purple.turn-active {
+.team-panel.purple,
+.team-history.purple {
   background: color-mix(in srgb, var(--purple) 26%, #25353e);
 }
 
-.team-panel.orange.team-active,
-.team-history.orange.turn-active {
+.team-panel.orange,
+.team-history.orange {
   background: color-mix(in srgb, var(--orange) 26%, #25353e);
 }
 
@@ -503,6 +503,15 @@ dialog {
 
 .phase-label {
   text-align: center;
+  align-items: center;
+}
+
+.phase-message {
+  justify-content: center;
+  text-align: center;
+}
+
+.phase-message > div {
   align-items: center;
 }
 

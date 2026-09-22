@@ -430,12 +430,27 @@ dialog {
 
 .team-panel.team-active,
 .team-history.turn-active {
-  border-color: color-mix(in srgb, var(--side) 74%, #7fa0aa 26%);
+  border-color: #506975;
   box-shadow:
     0 22px 54px #02080c66,
     0 0 25px color-mix(in srgb, var(--side) 23%, transparent),
-    inset 3px 0 color-mix(in srgb, var(--side) 68%, transparent),
     inset 0 1px #ffffff15;
+}
+
+.team-panel.purple.team-active,
+.team-history.purple.turn-active {
+  background:
+    linear-gradient(to right, color-mix(in srgb, var(--purple) 28%, transparent), transparent 64%),
+    linear-gradient(135deg, #ffffff06, transparent 34%),
+    linear-gradient(155deg, #25353e, #19262d 68%);
+}
+
+.team-panel.orange.team-active,
+.team-history.orange.turn-active {
+  background:
+    linear-gradient(to left, color-mix(in srgb, var(--orange) 28%, transparent), transparent 64%),
+    linear-gradient(225deg, #ffffff06, transparent 34%),
+    linear-gradient(205deg, #25353e, #19262d 68%);
 }
 
 .bans-heading > span:first-child,

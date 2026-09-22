@@ -135,6 +135,10 @@ function App() {
   const [exporting, setExporting] = useState(false);
   const [resultImage, setResultImage] = useState<string | null>(null);
   const [sort, setSort] = useState("name");
+  const [compactView, setCompactView] = useState<
+    "purple" | "roster" | "orange"
+  >("roster");
+  const [rewindTarget, setRewindTarget] = useState<number | null>(null);
   const pokemonGrid = useRef<HTMLDivElement>(null);
   const [running, setRunning] = useState(false);
   const [remaining, setRemaining] = useState(() =>
@@ -294,6 +298,7 @@ function App() {
       if (
         screen === "draft" &&
         !modal &&
+        rewindTarget === null &&
         !resultImage &&
         !editing &&
         !e.ctrlKey &&
@@ -333,6 +338,7 @@ function App() {
         e.key === "Enter" &&
         selected &&
         !modal &&
+        rewindTarget === null &&
         screen === "draft" &&
         !(e.target instanceof HTMLInputElement) &&
         !(e.target instanceof HTMLButtonElement) &&
@@ -709,13 +715,7 @@ function App() {
                     }
                     aria-label={`第${i + 1}区間 ${teamName(s.team)}の${s.phase === "ban" ? "BAN" : "PICK"} ${s.count}体のターン${stageStarts[i] < draft.actions.length ? "に戻る" : ""}`}
                     aria-current={i === stageIndex ? "step" : undefined}
-                    onClick={() => {
-                      setDraft(rewindToStep(draft, i));
-                      setSelected(null);
-                      setSwapFrom(null);
-                      setRunning(false);
-                      setRemaining(turnSeconds(settings.seconds > 0, s.phase));
-                    }}
+                    onClick={() => setRewindTarget(i)}
                   >
                     {i === 6 && <span className="timeline-separator" />}
                     <span className="step-node">
@@ -761,8 +761,24 @@ function App() {
                 </div>
               </details>
             )}
+          <nav className="compact-view-tabs" aria-label="ドラフト画面の表示">
+            {(["purple", "roster", "orange"] as const).map((view) => (
+              <button
+                key={view}
+                type="button"
+                className={`${view} ${compactView === view ? "selected" : ""}`}
+                aria-current={compactView === view ? "page" : undefined}
+                onClick={() => setCompactView(view)}
+              >
+                {view === "roster" ? "ポケモン一覧" : teamName(view)}
+                {view !== "roster" && !complete && step?.team === view && (
+                  <span className="compact-turn-label">ターン</span>
+                )}
+              </button>
+            ))}
+          </nav>
           <section
-            className={`draft-arena ${draft.allStar ? "allstar-arena" : ""}`}
+            className={`draft-arena ${draft.allStar ? "allstar-arena" : ""} compact-view-${compactView}`}
             aria-label="ドラフト画面"
           >
             <div className="team-side purple">
@@ -782,6 +798,15 @@ function App() {
                   <Grid2X2 size={17} />
                   <h2>ポケモンを選択</h2>
                   <span className="roster-count">{pokemon.length}</span>
+                  {selectedPokemon && !complete && (
+                    <span
+                      className={`roster-selection-status ${phase}`}
+                      aria-live="polite"
+                    >
+                      {phase === "ban" ? "BAN候補" : "PICK候補"} ·{" "}
+                      {selectedPokemon.name}
+                    </span>
+                  )}
                 </div>
                 <label className="sort-select">
                   <select
@@ -1097,11 +1122,13 @@ function App() {
                   <div className="selected-description">
                     {selectedPokemon ? (
                       <>
+                        <span className={`selection-action-label ${phase}`}>
+                          {phase === "ban" ? "BAN候補" : "PICK候補"}
+                        </span>
                         <strong>{selectedPokemon.name}</strong>
                         <span>
-                          {phase === "ban"
-                            ? "を使用禁止にします"
-                            : "を選出します"}
+                          {roles[selectedPokemon.role]}型を
+                          {phase === "ban" ? "使用禁止" : "選出"}
                         </span>
                       </>
                     ) : (
@@ -1226,6 +1253,47 @@ function App() {
               }}
             >
               リセットする
+            </button>
+          </div>
+        </Modal>
+      )}
+      {rewindTarget !== null && (
+        <Modal
+          title="このターンに戻りますか？"
+          onClose={() => setRewindTarget(null)}
+        >
+          <p>
+            第{rewindTarget + 1}区間の
+            {teamName(schedule[rewindTarget].team)}
+            {schedule[rewindTarget].phase === "ban" ? "のBAN" : "のPICK"}
+            に戻ります。以降に確定した
+            <strong>
+              {draft.actions.length - stageStarts[rewindTarget]}件
+            </strong>
+            のBAN・PICKを取り消します。
+          </p>
+          <div className="modal-buttons">
+            <button
+              className="modal-secondary"
+              onClick={() => setRewindTarget(null)}
+            >
+              キャンセル
+            </button>
+            <button
+              className="modal-primary"
+              onClick={() => {
+                const target = rewindTarget;
+                setDraft(rewindToStep(draft, target));
+                setSelected(null);
+                setSwapFrom(null);
+                setRunning(false);
+                setRemaining(
+                  turnSeconds(settings.seconds > 0, schedule[target].phase),
+                );
+                setRewindTarget(null);
+              }}
+            >
+              このターンに戻る
             </button>
           </div>
         </Modal>

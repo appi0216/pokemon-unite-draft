@@ -373,3 +373,22 @@
 .allstar-arena > .team-side.orange > .team-history {
   flex: none;
 }
+
+/* A history rail always shows one Pokémon per row, whatever the viewport. */
+.allstar-arena .team-history .history-pokemon {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 4px;
+}
+
+.allstar-arena .team-history .history-pokemon-item {
+  width: 100%;
+  min-width: 0;
+  padding: 2px 1px;
+}
+
+.allstar-arena .team-history .history-pokemon-item .portrait {
+  width: min(42px, 100%);
+  height: auto;
+  aspect-ratio: 1;
+}

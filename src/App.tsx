@@ -429,18 +429,20 @@ function App() {
               step?.phase === "ban" &&
               step.team === team &&
               ownBans.length === i;
+            const preview = active ? selectedPokemon : undefined;
+            const shown = p ?? preview;
             return (
               <div
                 key={i}
-                className={`ban-slot ${active ? "active" : ""} ${action ? "filled" : ""}`}
-                aria-label={`BAN ${i + 1}: ${p?.name || (action ? "スキップ" : "未選択")}`}
+                className={`ban-slot ${active ? "active" : ""} ${action ? "filled" : ""} ${preview && !p ? "preview" : ""}`}
+                aria-label={`BAN ${i + 1}: ${shown?.name || (action ? "スキップ" : "未選択")}`}
               >
-                {p ? (
+                {shown ? (
                   <>
                     <div className="ban-image">
-                      <Portrait p={p} eager />
+                      <Portrait p={shown} eager />
                     </div>
-                    <Ban className="ban-mark" size={20} />
+                    {p && <Ban className="ban-mark" size={20} />}
                   </>
                 ) : action ? (
                   <span className="skip-mark">—</span>
@@ -448,7 +450,7 @@ function App() {
                   <Ban size={23} />
                 )}
                 <span className="ban-slot-label">
-                  {p?.name || (active ? "選択中" : `BAN ${i + 1}`)}
+                  {shown?.name || (active ? "選択中" : `BAN ${i + 1}`)}
                 </span>
               </div>
             );

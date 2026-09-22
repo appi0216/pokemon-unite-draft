@@ -91,6 +91,12 @@
   height: min(100cqw, 100cqh);
   opacity: 1;
 }
+
+/* BAN previews stay in full color until the choice is confirmed. */
+.ban-slot.preview .ban-image .portrait {
+  filter: none;
+  opacity: 1;
+}
 .ban-slot.filled .ban-slot-label {
   background: #ece8f0;
 }

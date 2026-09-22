@@ -253,14 +253,14 @@
   }
 }
 
-/* Below the wide three-column breakpoint, histories sit under their team.
-   Give that row a definite height rather than letting a flex-basis collapse it. */
+/* Below the wide three-column breakpoint, histories sit under their team as
+   a single horizontal Pokémon row, leaving the active team slots the height. */
 @media (min-width: 681px) and (max-width: 1299px) {
   .allstar-arena .team-side,
   .allstar-arena .team-side.orange {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr) 136px;
+    grid-template-rows: minmax(0, 1fr) 76px;
     gap: 8px;
   }
 
@@ -275,22 +275,48 @@
     order: initial;
     flex: none;
     width: 100%;
-    height: 136px;
-    min-height: 136px;
+    height: 76px;
+    min-height: 76px;
   }
 
   .allstar-arena .history-scroll {
     min-height: 0;
+    display: flex;
     overflow-y: hidden;
-    align-items: flex-start;
-    padding-block: 3px;
+    align-items: center;
+    gap: 4px;
+    padding-block: 2px;
   }
 
   .allstar-arena .history-heading {
     padding-block: 3px;
   }
 
+  .allstar-arena .history-game {
+    display: contents;
+  }
+
   .allstar-arena .history-game h3 {
-    margin-bottom: 1px;
+    display: none;
+  }
+
+  .allstar-arena .history-game + .history-game {
+    padding: 0;
+    border: 0;
+  }
+
+  .allstar-arena .history-pokemon {
+    display: flex;
+    grid-template-columns: none;
+    gap: 4px;
+  }
+
+  .allstar-arena .history-pokemon-item {
+    flex: 0 0 38px;
+  }
+
+  .allstar-arena .history-pokemon-item .portrait {
+    width: 30px;
+    height: 30px;
   }
 }

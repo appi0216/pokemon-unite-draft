@@ -513,8 +513,8 @@ dialog > p,
   background: #3b324b;
   color: #d7baff;
 }
-.orange .order-label,
-.orange .team-emblem,
+.team-panel.orange .order-label,
+.team-panel.orange .team-emblem,
 .team-tag.orange {
   background: #44372c;
   color: #edbf94;

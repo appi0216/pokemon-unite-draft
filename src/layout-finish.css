@@ -63,12 +63,41 @@
   border-radius: 10px;
 }
 @media (min-width: 901px) and (min-height: 760px) {
+  .phase-banner {
+    min-height: 0;
+    margin-bottom: 8px;
+    padding-block: 8px;
+    row-gap: 8px;
+  }
+
+  .phase-banner > .timeline {
+    min-height: 40px;
+    padding-top: 7px;
+  }
+
+  .phase-label,
+  .phase-message > div {
+    gap: 3px;
+  }
+
+  .phase-label h1 {
+    font-size: 18px;
+  }
+
+  .phase-message strong {
+    font-size: 13px;
+  }
+
+  .phase-message div > span {
+    font-size: 10px;
+  }
+
   .draft-arena,
   .allstar-arena {
-    grid-template-rows: minmax(0, calc(100dvh - 340px));
+    grid-template-rows: minmax(0, calc(100dvh - 312px));
   }
   .team-panel {
-    grid-template-rows: 34px 14px clamp(58px, 7dvh, 88px) 16px minmax(
+    grid-template-rows: 34px 14px clamp(72px, 9dvh, 108px) 16px minmax(
         0,
         1fr
       ) 18px;
@@ -90,17 +119,17 @@
     font-size: clamp(9px, 1.05dvh, 12px);
   }
   .ban-image {
-    inset: 3px 3px 19px;
+    inset: 4px 4px 20px;
   }
   .ban-slot-label {
-    line-height: 18px;
+    line-height: 19px;
     font-size: clamp(8px, 1dvh, 11px);
   }
   .ban-slot > .ban-mark {
     right: 3px;
-    bottom: 20px;
-    width: 12px;
-    height: 12px;
+    bottom: 22px;
+    width: 14px;
+    height: 14px;
   }
 }
 @media (min-width: 1600px) {

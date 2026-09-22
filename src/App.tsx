@@ -503,15 +503,19 @@ function App() {
                 </div>
                 <div className="player-info">
                   <span className="player-name">
-                    {p ? p.name : active ? "ポケモンを選択中" : "選択待ち"}
+                    {shown
+                      ? shown.name
+                      : active
+                        ? "ポケモンを選択中"
+                        : "選択待ち"}
                   </span>
                   <span className="trainer">
                     <UserRound size={12} />
                     Trainer {team === "purple" ? i + 1 : i + 6}
                   </span>
-                  {p && (
-                    <span className={`role-text ${p.role}`}>
-                      {roles[p.role]}型
+                  {shown && (
+                    <span className={`role-text ${shown.role}`}>
+                      {roles[shown.role]}型
                     </span>
                   )}
                 </div>

@@ -438,8 +438,9 @@ dialog.review-dialog.single-game {
 .app:not(.setup-mode) .decision-main .selected-description {
   position: absolute;
   right: 0;
-  bottom: calc(100% + 4px);
+  bottom: calc(var(--decision-action-height) + 8px);
   left: 0;
+  pointer-events: none;
 }
 .app:not(.setup-mode) .utility-actions,
 .app:not(.setup-mode) .decision-extra {

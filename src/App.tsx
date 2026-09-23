@@ -334,6 +334,29 @@ function App() {
   useEffect(() => {
     if (!firstPrompt) return;
     requestAnimationFrame(() => firstTeamOption.current?.focus());
+    const moveFirstPromptFocus = (event: KeyboardEvent) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      const purple = firstTeamOption.current;
+      const dialog = purple?.closest("dialog");
+      const orange = dialog?.querySelector<HTMLButtonElement>(
+        ".first-prompt-options .orange",
+      );
+      const close = dialog?.querySelector<HTMLButtonElement>(
+        ".modal-heading .icon-button",
+      );
+      if (!purple || !orange || !close) return;
+      event.preventDefault();
+      const controls = [purple, orange, close];
+      const current = controls.indexOf(
+        document.activeElement as HTMLButtonElement,
+      );
+      const direction = event.key === "ArrowRight" ? 1 : -1;
+      controls[
+        (Math.max(current, 0) + direction + controls.length) % controls.length
+      ].focus();
+    };
+    addEventListener("keydown", moveFirstPromptFocus);
+    return () => removeEventListener("keydown", moveFirstPromptFocus);
   }, [firstPrompt]);
   useEffect(() => {
     if (!notice) return;

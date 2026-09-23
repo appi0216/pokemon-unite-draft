@@ -1534,3 +1534,49 @@
 .app:not(.setup-mode) .header-instruction {
   grid-column: auto;
 }
+
+/* Align phase and timer with the central Pokemon selection panel. */
+.app:not(.setup-mode) .header-actions {
+  position: absolute;
+  z-index: 14;
+  right: clamp(10px, 2vw, 28px);
+  width: auto;
+}
+.app:not(.setup-mode) .header-phase {
+  width: min(50vw, 760px);
+  padding-inline: 0;
+  grid-template-columns: 1fr 1fr;
+}
+.app:not(.setup-mode) .header-phase-title {
+  grid-column: 1;
+  justify-self: start;
+}
+.app:not(.setup-mode) .header-timer {
+  grid-column: 2;
+  justify-self: end;
+}
+@media (max-width: 900px) {
+  .app:not(.setup-mode) .header-phase {
+    width: calc(100vw - 172px);
+    padding-inline: 0;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 680px) {
+  .app:not(.setup-mode) .header-phase {
+    width: calc(100vw - 148px);
+    padding-inline: 0;
+  }
+}
+
+/* Completed progress nodes retain the team that acted on that turn. */
+.timeline-step.done.purple .step-node {
+  background: color-mix(in srgb, var(--purple) 72%, #24313a);
+  border-color: color-mix(in srgb, var(--purple) 86%, #b9a8ec);
+  color: #fff;
+}
+.timeline-step.done.orange .step-node {
+  background: color-mix(in srgb, var(--orange) 72%, #3a3028);
+  border-color: color-mix(in srgb, var(--orange) 86%, #f3cba5);
+  color: #fff;
+}

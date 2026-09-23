@@ -213,9 +213,15 @@ function App() {
   useEffect(() => {
     if (remaining === 0 && running && settings.seconds > 0) {
       setRunning(false);
-      setNotice("制限時間になりました。ポケモンを選んで確定してください。");
+      if (phase === "ban") {
+        setDraft((current) => choose(current, null, ids));
+        setSelected(null);
+        setNotice("制限時間になったため、BANをスキップしました。");
+      } else {
+        setNotice("制限時間になりました。ポケモンを選んで確定してください。");
+      }
     }
-  }, [remaining, running, settings.seconds]);
+  }, [remaining, running, settings.seconds, phase]);
   useEffect(() => {
     if (complete) setRunning(false);
   }, [complete]);

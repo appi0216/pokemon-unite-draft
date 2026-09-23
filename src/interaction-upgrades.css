@@ -1975,3 +1975,9 @@ dialog.review-dialog {
 .setup-mode .setup-features > span:last-child svg {
   color: #e3ae6c;
 }
+
+/* Final legacy-purple cleanup: informational modal note. */
+.form-note {
+  color: #9eb7bf !important;
+  border-top-color: #55717b !important;
+}

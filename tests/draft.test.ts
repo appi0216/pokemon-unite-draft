@@ -194,11 +194,31 @@ test("normal next game clears bans/picks; swapping only within completed team", 
   assert.equal(switched.actions[6].pokemon, ids[14]);
   assert.equal(switched.actions[14].pokemon, ids[6]);
   assert.equal(switched.actions[7].pokemon, d.actions[7].pokemon);
-  assert.deepEqual(nextGame(d).excluded, []);
-  assert.deepEqual(nextGame(d), createDraft("purple"));
+  const next = nextGame(d);
+  assert.deepEqual(next.excluded, []);
+  assert.equal(next.actions.length, 0);
+  assert.equal(next.game, 2);
+  assert.equal(next.history.length, 1);
+  assert.equal(next.history[0].picks.length, 10);
   let right = createDraft("orange");
   for (let i = 0; i < 16; i++) right = choose(right, ids[i], ids);
-  assert.deepEqual(nextGame(right), createDraft("orange"));
+  assert.equal(nextGame(right).first, "orange");
+});
+
+test("standard draft keeps only the five most recent completed results", () => {
+  let draft = createDraft("purple");
+  for (let game = 1; game <= 7; game++) {
+    draft = finishDraft(draft);
+    assert.equal(reviewableGames(draft).at(-1)?.game, game);
+    draft = nextGame(draft, game % 2 ? "orange" : "purple");
+  }
+  assert.equal(draft.history.length, 5);
+  assert.deepEqual(
+    draft.history.map((game) => game.game),
+    [3, 4, 5, 6, 7],
+  );
+  assert.deepEqual(restoreDraft(JSON.parse(JSON.stringify(draft)), ids), draft);
+  assert.equal(unavailable(draft, ids[6], draft.first), false);
 });
 
 test("next game accepts an independently selected first team", () => {
@@ -283,7 +303,7 @@ test("legacy saves keep bans from prior picks without inventing team history", (
   assert.equal(choose(pickStep, ids[6], ids), pickStep);
   assert.equal(
     restoreDraft({ ...createDraft(), game: 8, history: undefined }, ids)?.game,
-    1,
+    8,
   );
 });
 test("stored data is validated and invalid progress never loaded", () => {

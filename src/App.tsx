@@ -200,6 +200,14 @@ function App() {
   const bans = draft.actions.filter((a) => a.phase === "ban");
   const picks = draft.actions.filter((a) => a.phase === "pick");
   const reviewGames = useMemo(() => reviewableGames(draft), [draft]);
+  const promptAllStar =
+    firstPrompt === "start" ? draftSettings.allStar : draft.allStar;
+  const promptGame =
+    firstPrompt === "next"
+      ? draft.game + 1
+      : firstPrompt === "start"
+        ? 1
+        : draft.game;
   useEffect(() => {
     if (!sortOpen) return;
     const close = (event: PointerEvent) => {
@@ -648,7 +656,9 @@ function App() {
               <span className="header-phase-divider" />
               <strong className="header-instruction">
                 {showingPastGame
-                  ? `GAME${String(reviewGame.game).padStart(2, "0")} - ドラフト結果を表示中`
+                  ? draft.allStar
+                    ? `GAME${String(reviewGame.game).padStart(2, "0")} - ドラフト結果を表示中`
+                    : "ドラフト結果を表示中"
                   : complete
                     ? "両チームの選出が完了しました。味方の枠を2つ選ぶと、ポケモンを交換できます。"
                     : `${teamName(activeTeam)}が${phase === "ban" ? "使用禁止にする" : "使用する"}ポケモンを選択中`}
@@ -737,8 +747,14 @@ function App() {
       ) : showingPastGame ? (
         <main className="draft-main past-draft-screen">
           <section className="past-draft-heading">
-            <span>ALL-STAR · BO{draft.bestOf}</span>
-            <strong>GAME {String(reviewGame.game).padStart(2, "0")}</strong>
+            <span>
+              {draft.allStar ? `ALL-STAR · BO${draft.bestOf}` : "STANDARD"}
+            </span>
+            <strong>
+              {draft.allStar
+                ? `GAME ${String(reviewGame.game).padStart(2, "0")}`
+                : "ドラフト結果"}
+            </strong>
             <span>終了時点</span>
           </section>
           <section
@@ -820,7 +836,9 @@ function App() {
             <section className="timeline" aria-label="BAN・PICKの順番">
               <span className="timeline-meta">
                 {draft.allStar ? `ALL-STAR · BO${draft.bestOf}` : "STANDARD"}
-                <b>GAME {String(draft.game).padStart(2, "0")}</b>
+                {draft.allStar && (
+                  <b>GAME {String(draft.game).padStart(2, "0")}</b>
+                )}
               </span>
               <div className="timeline-label">
                 <span className="eyebrow">DRAFT ORDER</span>
@@ -1225,7 +1243,7 @@ function App() {
           </section>
           <section className="decision-bar">
             <div className="utility-actions">
-              {draft.allStar && reviewGames.length > 0 && (
+              {reviewGames.length > 0 && (
                 <button
                   className="subtle-button review-history-button"
                   onClick={() => setReviewOpen(true)}
@@ -1427,7 +1445,11 @@ function App() {
       )}
       {firstPrompt && (
         <Modal
-          title={`GAME ${String(firstPrompt === "next" ? draft.game + 1 : firstPrompt === "start" ? 1 : draft.game).padStart(2, "0")} の先攻チーム`}
+          title={
+            promptAllStar
+              ? `GAME ${String(promptGame).padStart(2, "0")} の先攻チーム`
+              : "先攻チーム"
+          }
           onClose={() => setFirstPrompt(null)}
         >
           <p className="first-prompt-copy">
@@ -1493,6 +1515,7 @@ function App() {
           <div className="past-games-review">
             {reviewGames.map((past) => {
               const first = past.first ?? past.bans?.[0]?.team;
+              const gamesAgo = draft.game - past.game;
               return (
                 <section className="past-game-review-card" key={past.game}>
                   <button
@@ -1505,7 +1528,15 @@ function App() {
                       window.scrollTo({ top: 0, behavior: "instant" });
                     }}
                   >
-                    <span>GAME {String(past.game).padStart(2, "0")}</span>
+                    <span>
+                      {draft.allStar
+                        ? `GAME ${String(past.game).padStart(2, "0")}`
+                        : gamesAgo === 0
+                          ? "最新のドラフト"
+                          : gamesAgo === 1
+                            ? "直前のドラフト"
+                            : `${gamesAgo}試合前のドラフト`}
+                    </span>
                     <span>
                       終了画面を表示 <ArrowRight size={14} />
                     </span>

@@ -68,7 +68,7 @@ export function unavailable(draft: Draft, id: string, team?: Team) {
 
   // Current All-Star saves retain the owner of every past pick. A Pokémon is
   // therefore unavailable only to the team that used it in an earlier game.
-  if (draft.history.length)
+  if (draft.allStar && draft.history.length)
     return draft.history.some((game) =>
       game.picks.some(
         (pick) => pick.team === pickingTeam && pick.pokemon === id,
@@ -122,14 +122,10 @@ export const undo = (draft: Draft): Draft => ({
  */
 export function reviewableGames(draft: Draft): PastGame[] {
   const games = [...draft.history];
-  if (
-    !draft.allStar ||
-    currentStep(draft) ||
-    games.some((game) => game.game === draft.game)
-  )
+  if (currentStep(draft) || games.some((game) => game.game === draft.game))
     return games;
 
-  return [
+  const reviewable = [
     ...games,
     {
       game: draft.game,
@@ -142,6 +138,20 @@ export function reviewableGames(draft: Draft): PastGame[] {
         .map(({ team, pokemon }) => ({ team, pokemon: pokemon! })),
     },
   ];
+  return draft.allStar ? reviewable : reviewable.slice(-5);
+}
+
+function completedGame(draft: Draft): PastGame {
+  return {
+    game: draft.game,
+    first: draft.first,
+    bans: draft.actions
+      .filter((action) => action.phase === "ban")
+      .map(({ team, pokemon }) => ({ team, pokemon })),
+    picks: draft.actions
+      .filter((action) => action.phase === "pick" && action.pokemon)
+      .map(({ team, pokemon }) => ({ team, pokemon: pokemon! })),
+  };
 }
 
 export function rewindToStep(draft: Draft, index: number): Draft {
@@ -156,7 +166,13 @@ export function rewindToStep(draft: Draft, index: number): Draft {
 }
 export function nextGame(draft: Draft, first?: Team): Draft {
   if (currentStep(draft)) return draft;
-  if (!draft.allStar) return createDraft(first ?? draft.first);
+  if (!draft.allStar) {
+    return {
+      ...createDraft(first ?? draft.first),
+      game: draft.game + 1,
+      history: [...draft.history, completedGame(draft)].slice(-5),
+    };
+  }
   if (draft.game >= draft.bestOf) return draft;
   const played = draft.actions
     .filter((a) => a.phase === "pick" && a.pokemon)
@@ -167,19 +183,7 @@ export function nextGame(draft: Draft, first?: Team): Draft {
     first: first ?? opposite(draft.first),
     actions: [],
     excluded: draft.allStar ? [...new Set([...draft.excluded, ...played])] : [],
-    history: [
-      ...draft.history,
-      {
-        game: draft.game,
-        first: draft.first,
-        bans: draft.actions
-          .filter((a) => a.phase === "ban")
-          .map((a) => ({ team: a.team, pokemon: a.pokemon })),
-        picks: draft.actions
-          .filter((a) => a.phase === "pick" && a.pokemon)
-          .map((a) => ({ team: a.team, pokemon: a.pokemon! })),
-      },
-    ],
+    history: [...draft.history, completedGame(draft)],
   };
 }
 export function swap(
@@ -272,8 +276,10 @@ export function restoreDraft(
         !pick ||
         !["purple", "orange"].includes(pick.team) ||
         typeof pick.pokemon !== "string" ||
-        !v.excluded.includes(pick.pokemon) ||
-        usedByTeam[pick.team].has(pick.pokemon)
+        !validIds.includes(pick.pokemon) ||
+        (v.allStar &&
+          (!v.excluded.includes(pick.pokemon) ||
+            usedByTeam[pick.team].has(pick.pokemon)))
       )
         return null;
       usedByTeam[pick.team].add(pick.pokemon);
@@ -281,11 +287,11 @@ export function restoreDraft(
     if (past.picks.filter((p) => p.team === "purple").length !== 5) return null;
     if (past.picks.filter((p) => p.team === "orange").length !== 5) return null;
   }
-  if (!v.allStar && (v.excluded.length || history.length)) return null;
+  if (!v.allStar && (v.excluded.length || history.length > 5)) return null;
   let draft = {
     ...createDraft(v.first, v.allStar, bestOf),
     excluded: v.excluded,
-    game: v.allStar ? v.game : 1,
+    game: v.game,
     history,
   };
   for (const a of v.actions) {

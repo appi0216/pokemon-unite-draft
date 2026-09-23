@@ -643,7 +643,7 @@ function App() {
               <strong className="header-instruction">
                 {complete
                   ? "両チームの選出が完了しました。味方の枠を2つ選ぶと、ポケモンを交換できます。"
-                  : `${teamName(activeTeam)}が${phase === "ban" ? "使用禁止にする" : "使用する"}ポケモンを選択`}
+                  : `${teamName(activeTeam)}が${phase === "ban" ? "使用禁止にする" : "使用する"}ポケモンを選択中`}
               </strong>
               {settings.seconds > 0 && !complete && (
                 <div

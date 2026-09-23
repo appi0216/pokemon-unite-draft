@@ -2055,3 +2055,35 @@ dialog.review-dialog {
     font-size: 12px;
   }
 }
+
+/* Phase label is visually bracketed; match metadata is readable at a glance. */
+.app:not(.setup-mode) .header-phase:not(.is-complete) .header-phase-title {
+  position: relative;
+  padding-inline: 14px;
+}
+.app:not(.setup-mode) .header-phase:not(.is-complete) .header-phase-title::before,
+.app:not(.setup-mode) .header-phase:not(.is-complete) .header-phase-title::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  width: 1px;
+  height: 24px;
+  background: linear-gradient(to bottom, transparent, #668590, transparent);
+  transform: translateY(-50%);
+}
+.app:not(.setup-mode) .header-phase:not(.is-complete) .header-phase-title::before {
+  left: 0;
+}
+.app:not(.setup-mode) .header-phase:not(.is-complete) .header-phase-title::after {
+  right: 0;
+}
+.timeline-meta {
+  gap: 4px;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+.timeline-meta b {
+  font-size: 11px;
+  letter-spacing: 0.8px;
+}

@@ -141,6 +141,30 @@ export function reviewableGames(draft: Draft): PastGame[] {
   return draft.allStar ? reviewable : reviewable.slice(-5);
 }
 
+/** Rebuild a completed, read-only standard draft for the history viewer. */
+export function draftFromPastGame(past: PastGame, bestOf: BestOf = 3): Draft {
+  return {
+    first: past.first ?? past.bans?.[0]?.team ?? "purple",
+    actions: [
+      ...(past.bans ?? []).map(({ team, pokemon }) => ({
+        team,
+        phase: "ban" as Phase,
+        pokemon,
+      })),
+      ...past.picks.map(({ team, pokemon }) => ({
+        team,
+        phase: "pick" as Phase,
+        pokemon,
+      })),
+    ],
+    excluded: [],
+    game: past.game,
+    allStar: false,
+    history: [],
+    bestOf,
+  };
+}
+
 function completedGame(draft: Draft): PastGame {
   return {
     game: draft.game,

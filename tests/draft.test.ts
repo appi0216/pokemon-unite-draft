@@ -4,6 +4,7 @@ import {
   choose,
   createDraft,
   currentStep,
+  draftFromPastGame,
   nextGame,
   redundantAllStarBan,
   rewindToStep,
@@ -219,6 +220,17 @@ test("standard draft keeps only the five most recent completed results", () => {
   );
   assert.deepEqual(restoreDraft(JSON.parse(JSON.stringify(draft)), ids), draft);
   assert.equal(unavailable(draft, ids[6], draft.first), false);
+});
+
+test("standard history rebuilds the original completed draft without history state", () => {
+  const completed = finishDraft(createDraft("orange"));
+  const past = reviewableGames(completed)[0];
+  const restoredView = draftFromPastGame(past);
+  assert.equal(currentStep(restoredView), null);
+  assert.equal(restoredView.first, "orange");
+  assert.deepEqual(restoredView.actions, completed.actions);
+  assert.deepEqual(restoredView.history, []);
+  assert.deepEqual(restoredView.excluded, []);
 });
 
 test("next game accepts an independently selected first team", () => {

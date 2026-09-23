@@ -40,6 +40,7 @@ import {
   choose,
   createDraft,
   currentStep,
+  draftFromPastGame,
   nextGame,
   redundantAllStarBan,
   rewindToStep,
@@ -141,7 +142,7 @@ function Modal({
 }
 function App() {
   const [initial] = useState(load);
-  const [draft, setDraft] = useState<Draft>(initial.draft);
+  const [liveDraft, setDraft] = useState<Draft>(initial.draft);
   const [settings, setSettings] = useState<Settings>(initial.settings);
   const [started, setStarted] = useState(initial.started);
   const [screen, setScreen] = useState<"setup" | "draft">(
@@ -165,6 +166,14 @@ function App() {
   >(null);
   const [reviewOpen, setReviewOpen] = useState(false);
   const [reviewGame, setReviewGame] = useState<PastGame | null>(null);
+  const reviewingStandard = reviewGame !== null && !liveDraft.allStar;
+  const draft = useMemo(
+    () =>
+      reviewingStandard
+        ? draftFromPastGame(reviewGame, liveDraft.bestOf)
+        : liveDraft,
+    [liveDraft, reviewGame, reviewingStandard],
+  );
   const pokemonGrid = useRef<HTMLDivElement>(null);
   const [running, setRunning] = useState(false);
   const [remaining, setRemaining] = useState(() =>
@@ -199,7 +208,7 @@ function App() {
   );
   const bans = draft.actions.filter((a) => a.phase === "ban");
   const picks = draft.actions.filter((a) => a.phase === "pick");
-  const reviewGames = useMemo(() => reviewableGames(draft), [draft]);
+  const reviewGames = useMemo(() => reviewableGames(liveDraft), [liveDraft]);
   const promptAllStar =
     firstPrompt === "start" ? draftSettings.allStar : draft.allStar;
   const promptGame =
@@ -220,12 +229,12 @@ function App() {
     try {
       localStorage.setItem(
         STORAGE,
-        JSON.stringify({ draft, settings, started }),
+        JSON.stringify({ draft: liveDraft, settings, started }),
       );
     } catch {
       setNotice("自動保存が利用できません。この画面では引き続き操作できます。");
     }
-  }, [draft, settings, started]);
+  }, [liveDraft, settings, started]);
   useEffect(() => {
     setRemaining(duration);
   }, [stageIndex, draft.game, duration]);
@@ -347,6 +356,7 @@ function App() {
           !!e.target.closest("input, textarea, select"));
       if (
         screen === "draft" &&
+        !showingPastGame &&
         !modal &&
         rewindTarget === null &&
         !resultImage &&
@@ -388,6 +398,7 @@ function App() {
       if (
         e.key === "Enter" &&
         selected &&
+        !showingPastGame &&
         !modal &&
         rewindTarget === null &&
         screen === "draft" &&
@@ -542,7 +553,7 @@ function App() {
               <button
                 key={i}
                 className={`player-slot ${active ? "active" : ""} ${p ? "filled" : ""} ${swapping ? "swapping" : ""}`}
-                disabled={!complete}
+                disabled={!complete || showingPastGame}
                 aria-label={`${teamName(team)} ${i + 1}番: ${p?.name || "未選択"}${complete ? " 交換する" : ""}`}
                 onClick={() => {
                   if (!swapFrom) {
@@ -744,7 +755,7 @@ function App() {
           game={draft.game}
           savedAllStar={draft.allStar}
         />
-      ) : showingPastGame ? (
+      ) : showingPastGame && !reviewingStandard ? (
         <main className="draft-main past-draft-screen">
           <section className="past-draft-heading">
             <span>
@@ -850,7 +861,9 @@ function App() {
                     key={i}
                     type="button"
                     className={`timeline-step ${s.team} ${i === stageIndex ? "current" : ""} ${i < stageIndex ? "done" : ""}`}
-                    disabled={stageStarts[i] >= draft.actions.length}
+                    disabled={
+                      showingPastGame || stageStarts[i] >= draft.actions.length
+                    }
                     title={
                       stageStarts[i] < draft.actions.length
                         ? `${teamName(s.team)}の${s.phase === "ban" ? "BAN" : "PICK"}ターンに戻る（以降の選出を取り消します）`
@@ -1254,7 +1267,7 @@ function App() {
               )}
               <button
                 className="subtle-button"
-                disabled={!draft.actions.length}
+                disabled={showingPastGame || !draft.actions.length}
                 onClick={() => {
                   setDraft(undo(draft));
                   setSelected(null);
@@ -1267,6 +1280,7 @@ function App() {
               </button>
               <button
                 className="subtle-button"
+                disabled={showingPastGame}
                 onClick={() => setModal("reset")}
               >
                 <RotateCcw size={16} />
@@ -1290,11 +1304,17 @@ function App() {
                   </button>
                   <button
                     className={
-                      draft.allStar && draft.game >= draft.bestOf
+                      reviewingStandard
                         ? "confirm-button"
-                        : "next-game"
+                        : draft.allStar && draft.game >= draft.bestOf
+                          ? "confirm-button"
+                          : "next-game"
                     }
                     onClick={() => {
+                      if (reviewingStandard) {
+                        setReviewGame(null);
+                        return;
+                      }
                       if (draft.allStar && draft.game >= draft.bestOf) {
                         openSetup();
                         return;
@@ -1302,10 +1322,16 @@ function App() {
                       setFirstPrompt("next");
                     }}
                   >
-                    {draft.allStar && draft.game >= draft.bestOf
-                      ? "準備画面へ戻る"
-                      : "次の試合"}
-                    <ArrowRight size={16} />
+                    {reviewingStandard
+                      ? "閉じる"
+                      : draft.allStar && draft.game >= draft.bestOf
+                        ? "準備画面へ戻る"
+                        : "次の試合"}
+                    {reviewingStandard ? (
+                      <X size={16} />
+                    ) : (
+                      <ArrowRight size={16} />
+                    )}
                   </button>
                 </>
               ) : (
@@ -1525,6 +1551,8 @@ function App() {
                       setReviewGame(past);
                       setReviewOpen(false);
                       setRunning(false);
+                      setSelected(null);
+                      setSwapFrom(null);
                       window.scrollTo({ top: 0, behavior: "instant" });
                     }}
                   >

@@ -1,0 +1,237 @@
+/* Shared motion and control metrics. Component rules reference these tokens. */
+:root {
+  --motion-standard-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-ambient-easing: cubic-bezier(0.45, 0, 0.55, 1);
+  --decision-action-width: 210px;
+  --decision-action-height: 38px;
+  --decision-action-font-size: 13px;
+}
+
+.app:not(.setup-mode)
+  .decision-main
+  > :is(.confirm-button, .complete-button, .next-game, .final-image-action) {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  width: var(--decision-action-width);
+  min-width: var(--decision-action-width);
+  max-width: var(--decision-action-width);
+  height: var(--decision-action-height);
+  min-height: var(--decision-action-height);
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--decision-action-font-size);
+  line-height: 1;
+  text-align: center;
+}
+.app:not(.setup-mode)
+  :is(
+    .selected-description,
+    .trainer,
+    .role-text,
+    .bans-heading,
+    .picks-heading,
+    .roster-count,
+    .available-only,
+    .selection-bottom,
+    .role-tabs button
+  ) {
+  font-size: 11px;
+}
+.app:not(.setup-mode) .utility-actions {
+  gap: 6px;
+}
+.app:not(.setup-mode) .subtle-button {
+  font-size: 12px;
+  padding-inline: 8px;
+}
+.app:not(.setup-mode) :is(.header-phase-title > strong, .header-instruction) {
+  font-size: 12px;
+}
+
+.setup-tools-button,
+.draft-tools button,
+.series-export,
+.import-backup {
+  border: 1px solid #476974;
+  border-radius: 8px;
+  background: #18303b;
+  color: #edf8fa;
+  padding: 8px 12px;
+  font-size: 13px;
+  line-height: 1.3;
+  cursor: pointer;
+  transition:
+    background-color 180ms var(--motion-standard-easing),
+    border-color 180ms var(--motion-standard-easing);
+}
+.setup-tools-button {
+  width: 100%;
+  margin-top: 6px;
+}
+.series-export {
+  margin-bottom: 12px;
+}
+@media (min-width: 901px) and (max-height: 800px) {
+  .app.setup-mode .setup-main {
+    padding-block: 10px;
+  }
+  .app.setup-mode .setup-card {
+    padding: 12px 18px;
+    row-gap: 7px;
+  }
+  .app.setup-mode .setup-title-row {
+    min-height: 36px;
+    height: 36px;
+    margin: 0;
+  }
+  .app.setup-mode .setup-title-row h2 {
+    margin-block: 2px;
+    font-size: 20px;
+  }
+  .app.setup-mode .resume-card {
+    min-height: 44px;
+    padding-block: 5px;
+  }
+  .app.setup-mode .setup-field {
+    padding: 5px 10px;
+  }
+  .app.setup-mode .setup-field .field-hint {
+    margin-block: 4px 0;
+  }
+  .app.setup-mode .setup-field legend {
+    margin-bottom: 3px;
+  }
+  .app.setup-mode .mode-option {
+    min-height: 46px;
+    padding-block: 5px;
+  }
+  .app.setup-mode .single-match-format {
+    min-height: 36px;
+  }
+  .app.setup-mode .team-name-settings {
+    padding-top: 6px;
+  }
+  .app.setup-mode .setup-tools-button {
+    margin-top: 0;
+    padding-block: 6px;
+  }
+  .app.setup-mode .setup-footnote {
+    margin: 0;
+  }
+}
+.tools-dialog {
+  width: min(760px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+}
+.draft-tools {
+  display: grid;
+  gap: 20px;
+}
+.draft-tools section + section {
+  border-top: 1px solid #385460;
+  padding-top: 16px;
+}
+.draft-tools h3 {
+  font-size: 16px;
+  margin: 0 0 8px;
+  color: #f2fafb;
+}
+.draft-tools p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #b9d0d5;
+}
+.tools-actions,
+.preset-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 8px 0;
+}
+.preset-row strong {
+  flex: 1;
+  min-width: 100px;
+  overflow-wrap: anywhere;
+}
+.draft-tools input[type="search"] {
+  width: 100%;
+  padding: 9px;
+  background: #10242d;
+  color: #fff;
+  border: 1px solid #476974;
+  border-radius: 8px;
+}
+.restriction-list {
+  max-height: 220px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 12px 0;
+}
+.restriction-list label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #edf8fa;
+}
+.restriction-list input {
+  accent-color: #69cad9;
+  width: 16px;
+  height: 16px;
+}
+.import-backup {
+  position: relative;
+}
+.import-backup input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.import-backup:focus-within {
+  outline: 2px solid #69cad9;
+  outline-offset: 2px;
+}
+.draft-tools button:hover,
+.setup-tools-button:hover,
+.series-export:hover {
+  background: #245061;
+  border-color: #69cad9;
+}
+.draft-tools button:disabled,
+.series-export:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+@media (max-width: 680px) {
+  :root {
+    --decision-action-width: 176px;
+    --decision-action-font-size: 12px;
+  }
+  .app:not(.setup-mode) .header-phase-title > strong {
+    font-size: 10px;
+  }
+  .app:not(.setup-mode) .header-instruction {
+    font-size: 11px;
+  }
+  .restriction-list {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

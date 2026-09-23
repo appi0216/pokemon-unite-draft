@@ -513,8 +513,8 @@ dialog {
   mask-image: none;
   transform: translateX(5%);
   transition:
-    opacity 520ms ease,
-    transform 520ms ease;
+    opacity 520ms var(--motion-standard-easing),
+    transform 520ms var(--motion-standard-easing);
 }
 
 .app.orange:not(.draft-complete) .phase-banner::before {

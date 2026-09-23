@@ -17,6 +17,71 @@ import {
 } from "../src/domain/draft.ts";
 const ids = Array.from({ length: 80 }, (_, i) => `p${i}`);
 import { turnSeconds } from "../src/domain/timer.ts";
+import { parseBackup } from "../src/domain/backup.ts";
+
+test("history preserves names and tournament restrictions across games and reload", () => {
+  const names = {
+    purple: "Old purple",
+    orange: "Old orange",
+    trainers: Array.from({ length: 10 }, (_, i) => "Player " + i),
+  };
+  const d = finishDraft({ ...createDraft(), names, restricted: [ids[79]] });
+  const next = { ...nextGame(d), names: { ...names, purple: "New purple" } };
+  assert.equal(next.history[0].names?.purple, "Old purple");
+  assert.equal(
+    draftFromPastGame(next.history[0]).names?.trainers[0],
+    "Player 0",
+  );
+  assert.deepEqual(restoreDraft(JSON.parse(JSON.stringify(next)), ids), next);
+  assert.equal(choose(next, ids[79], ids), next);
+  let picks = next;
+  for (let i = 0; i < 6; i++) picks = choose(picks, null, ids);
+  assert.equal(choose(picks, ids[79], ids), picks);
+  assert.equal(restoreDraft({ ...next, restricted: ["unknown"] }, ids), null);
+});
+
+test("backup accepts versioned complete data and rejects malformed names and presets", () => {
+  const settings = {
+    purple: "A",
+    orange: "B",
+    trainers: Array(10).fill("Trainer"),
+    seconds: 0,
+    sound: false,
+  };
+  const backup = {
+    format: "unite-draft-backup",
+    version: 1,
+    draft: createDraft(),
+    settings,
+    started: false,
+    presets: [],
+  };
+  assert.deepEqual(
+    parseBackup(JSON.stringify(backup), ids).draft,
+    createDraft(),
+  );
+  assert.throws(() =>
+    parseBackup(JSON.stringify({ ...backup, version: 2 }), ids),
+  );
+  assert.throws(() =>
+    parseBackup(
+      JSON.stringify({ ...backup, settings: { ...settings, trainers: [] } }),
+      ids,
+    ),
+  );
+  assert.throws(() =>
+    parseBackup(JSON.stringify({ ...backup, presets: [{ name: "A" }] }), ids),
+  );
+  assert.throws(() =>
+    parseBackup(
+      JSON.stringify({
+        ...backup,
+        draft: { ...backup.draft, names: { purple: 2 } },
+      }),
+      ids,
+    ),
+  );
+});
 
 const finishDraft = (draft: ReturnType<typeof createDraft>) => {
   let finished = draft;

@@ -70,7 +70,7 @@
 
 .sort-trigger > svg {
   color: #8fb2ba;
-  transition: transform 160ms ease;
+  transition: transform 160ms var(--motion-standard-easing);
 }
 
 .sort-select.open .sort-trigger {
@@ -96,7 +96,7 @@
   box-shadow:
     0 14px 30px #02080c80,
     inset 0 1px #ffffff0d;
-  animation: sort-menu-in 140ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation: sort-menu-in 140ms var(--motion-standard-easing);
 }
 
 .sort-menu button {
@@ -1832,98 +1832,10 @@ dialog.review-dialog {
   }
 }
 
-/* Unified motion language: a responsive cubic Bézier curve across both screens. */
-:root {
-  --motion-apple: cubic-bezier(0.22, 1, 0.36, 1);
-  --motion-apple-gentle: cubic-bezier(0.33, 1, 0.68, 1);
-  --motion-fast: 180ms;
-  --motion-standard: 320ms;
-  --motion-emphasis: 520ms;
-}
-
-*,
-*::before,
-*::after {
-  transition-timing-function: var(--motion-apple);
-  animation-timing-function: var(--motion-apple-gentle);
-}
-
-:where(
-  button,
-  a,
-  input,
-  select,
-  summary,
-  .pokemon-card,
-  .player-slot,
-  .ban-slot,
-  .used-card,
-  .mode-option,
-  .side-option,
-  .setup-card,
-  .team-panel,
-  .pokemon-browser,
-  .progress-step,
-  .past-draft-team,
-  .past-draft-picks article
-) {
-  transition-property:
-    transform, background-color, border-color, color, box-shadow, opacity,
-    filter;
-  transition-duration: var(--motion-standard);
-  transition-timing-function: var(--motion-apple);
-}
-
-:where(button, a, input, select, summary) {
-  transition-duration: var(--motion-fast);
-}
-
-:where(.modal-backdrop, .result-backdrop, .review-dialog) {
-  animation-timing-function: var(--motion-apple);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
 /* Use the former composition row as breathing room between team sections. */
 .app:not(.setup-mode) .team-panel {
   grid-template-rows: 36px 16px clamp(54px, 8dvh, 72px) 16px minmax(0, 1fr);
   row-gap: 8px;
-}
-
-/* One sizing contract for the decision and every completion action. */
-.app:not(.setup-mode) .decision-main {
-  --decision-action-width: 210px;
-  --decision-action-height: 38px;
-  --decision-action-font-size: 13px;
-}
-
-.app:not(.setup-mode)
-  .decision-main
-  > :is(.confirm-button, .complete-button, .next-game, .final-image-action) {
-  box-sizing: border-box;
-  flex: 0 0 auto;
-  width: var(--decision-action-width);
-  min-width: var(--decision-action-width);
-  max-width: var(--decision-action-width);
-  height: var(--decision-action-height);
-  min-height: var(--decision-action-height);
-  padding: 0 20px;
-  font-size: var(--decision-action-font-size);
-  line-height: 1;
-}
-
-@media (max-width: 680px) {
-  .app:not(.setup-mode) .decision-main {
-    --decision-action-width: 176px;
-    --decision-action-font-size: 12px;
-  }
 }
 
 /* Keep review cards at a stable density and make PICK the visual priority. */

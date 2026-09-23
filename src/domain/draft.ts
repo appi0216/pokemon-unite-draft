@@ -3,13 +3,29 @@ export type Phase = "ban" | "pick";
 export type BestOf = 3 | 5 | 7;
 export type Action = { team: Team; phase: Phase; pokemon: string | null };
 export type Step = { team: Team; phase: Phase; count: number };
+export type Names = { purple: string; orange: string; trainers: string[] };
+export function validNames(v: unknown): v is Names {
+  if (!v || typeof v !== "object") return false;
+  const n = v as Names;
+  return (
+    [n.purple, n.orange].every(
+      (x) => typeof x === "string" && x.length <= 100,
+    ) &&
+    Array.isArray(n.trainers) &&
+    n.trainers.length === 10 &&
+    n.trainers.every((x) => typeof x === "string" && x.length <= 100)
+  );
+}
 export type PastGame = {
+  names?: Names;
   game: number;
   first?: Team;
   bans?: { team: Team; pokemon: string | null }[];
   picks: { team: Team; pokemon: string }[];
 };
 export type Draft = {
+  names?: Names;
+  restricted?: string[];
   first: Team;
   actions: Action[];
   excluded: string[];
@@ -60,6 +76,7 @@ export const createDraft = (
   bestOf,
 });
 export function unavailable(draft: Draft, id: string, team?: Team) {
+  if (draft.restricted?.includes(id)) return true;
   if (draft.actions.some((a) => a.pokemon === id)) return true;
 
   const step = currentStep(draft);
@@ -129,6 +146,7 @@ export function reviewableGames(draft: Draft): PastGame[] {
     ...games,
     {
       game: draft.game,
+      ...(draft.names ? { names: draft.names } : {}),
       first: draft.first,
       bans: draft.actions
         .filter((action) => action.phase === "ban")
@@ -148,6 +166,7 @@ export function draftFromPastGame(
   allStar = false,
 ): Draft {
   return {
+    ...(past.names ? { names: past.names } : {}),
     first: past.first ?? past.bans?.[0]?.team ?? "purple",
     actions: [
       ...(past.bans ?? []).map(({ team, pokemon }) => ({
@@ -172,6 +191,7 @@ export function draftFromPastGame(
 function completedGame(draft: Draft): PastGame {
   return {
     game: draft.game,
+    ...(draft.names ? { names: draft.names } : {}),
     first: draft.first,
     bans: draft.actions
       .filter((action) => action.phase === "ban")
@@ -198,6 +218,8 @@ export function nextGame(draft: Draft, first?: Team): Draft {
     return {
       ...createDraft(first ?? draft.first),
       game: draft.game + 1,
+      ...(draft.names ? { names: draft.names } : {}),
+      ...(draft.restricted ? { restricted: draft.restricted } : {}),
       history: [...draft.history, completedGame(draft)].slice(-5),
     };
   }
@@ -208,6 +230,8 @@ export function nextGame(draft: Draft, first?: Team): Draft {
   return {
     ...draft,
     game: draft.game + 1,
+    ...(draft.names ? { names: draft.names } : {}),
+    ...(draft.restricted ? { restricted: draft.restricted } : {}),
     first: first ?? opposite(draft.first),
     actions: [],
     excluded: draft.allStar ? [...new Set([...draft.excluded, ...played])] : [],
@@ -244,6 +268,14 @@ export function restoreDraft(
 ): Draft | null {
   if (!value || typeof value !== "object") return null;
   const v = value as Draft;
+  if (v.names !== undefined && !validNames(v.names)) return null;
+  if (
+    v.restricted !== undefined &&
+    (!Array.isArray(v.restricted) ||
+      v.restricted.some((id) => !validIds.includes(id)) ||
+      new Set(v.restricted).size !== v.restricted.length)
+  )
+    return null;
   const bestOf = v.bestOf ?? (v.game > 3 ? 5 : 3);
   if (bestOf !== 3 && bestOf !== 5 && bestOf !== 7) return null;
   if (
@@ -279,6 +311,7 @@ export function restoreDraft(
       past.picks.length !== 10
     )
       return null;
+    if (past.names !== undefined && !validNames(past.names)) return null;
     lastGame = past.game;
     if (past.first !== undefined && !["purple", "orange"].includes(past.first))
       return null;
@@ -316,8 +349,10 @@ export function restoreDraft(
     if (past.picks.filter((p) => p.team === "orange").length !== 5) return null;
   }
   if (!v.allStar && (v.excluded.length || history.length > 5)) return null;
-  let draft = {
+  let draft: Draft = {
     ...createDraft(v.first, v.allStar, bestOf),
+    ...(v.names ? { names: v.names } : {}),
+    ...(v.restricted ? { restricted: v.restricted } : {}),
     excluded: v.excluded,
     game: v.game,
     history,

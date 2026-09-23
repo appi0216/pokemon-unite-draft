@@ -37,7 +37,8 @@
     auto;
   opacity: 0.72;
   transform: perspective(900px) rotateX(10deg) rotateZ(-2deg);
-  animation: setup-grid-drift 18s ease-in-out infinite alternate;
+  animation: setup-grid-drift 18s var(--motion-ambient-easing) infinite
+    alternate;
 }
 
 .app.setup-mode::after {
@@ -53,12 +54,12 @@
     transparent
   );
   transform: skewX(-14deg);
-  animation: setup-light-sweep 14s ease-in-out infinite;
+  animation: setup-light-sweep 14s var(--motion-ambient-easing) infinite;
 }
 
 .setup-intro,
 .setup-card {
-  animation: setup-reveal 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: setup-reveal 620ms var(--motion-standard-easing) both;
 }
 
 .setup-card {
@@ -94,9 +95,9 @@
 
 .showcase-card {
   transition:
-    transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 250ms ease,
-    box-shadow 250ms ease;
+    transform 450ms var(--motion-standard-easing),
+    border-color 250ms var(--motion-standard-easing),
+    box-shadow 250ms var(--motion-standard-easing);
 }
 
 .setup-art:hover .showcase-0 {
@@ -116,10 +117,10 @@
 .timer-options button,
 .resume-card {
   transition:
-    transform 180ms ease,
-    background-color 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
+    transform 180ms var(--motion-standard-easing),
+    background-color 180ms var(--motion-standard-easing),
+    border-color 180ms var(--motion-standard-easing),
+    box-shadow 180ms var(--motion-standard-easing);
 }
 
 .mode-option:hover,
@@ -143,9 +144,9 @@
   background-size: 180% 100%;
   background-position: 0 0;
   transition:
-    transform 180ms ease,
-    box-shadow 180ms ease,
-    background-position 450ms ease;
+    transform 180ms var(--motion-standard-easing),
+    box-shadow 180ms var(--motion-standard-easing),
+    background-position 450ms var(--motion-standard-easing);
 }
 
 .start-draft-button::before {
@@ -160,7 +161,7 @@
     transparent 70%
   );
   transform: translateX(-110%);
-  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 650ms var(--motion-standard-easing);
 }
 
 .start-draft-button:hover {
@@ -173,7 +174,7 @@
 }
 
 .start-draft-button > svg {
-  transition: transform 180ms ease;
+  transition: transform 180ms var(--motion-standard-easing);
 }
 
 .start-draft-button:hover > svg {

@@ -1,6 +1,40 @@
 import type { Draft, Team } from "./domain/draft";
 import { byId, roles } from "./data/roster";
 import measurements from "./data/portrait-layout.json";
+import { draftFromPastGame } from "./domain/draft";
+import type { PastGame, Names, BestOf } from "./domain/draft";
+
+export async function createSeriesImage(
+  games: PastGame[],
+  bestOf: BestOf,
+  fallback: Names,
+): Promise<string> {
+  if (!games.length) throw new Error("No games");
+  const columns = Math.min(2, games.length);
+  const canvas = document.createElement("canvas");
+  canvas.width = columns * 800;
+  canvas.height = Math.ceil(games.length / columns) * 590;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("Canvas unavailable");
+  ctx.fillStyle = "#07171f";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  for (let i = 0; i < games.length; i++) {
+    const img = new Image();
+    img.src = await createResultImage(
+      draftFromPastGame(games[i], bestOf, true),
+      games[i].names ?? fallback,
+    );
+    await img.decode();
+    ctx.drawImage(
+      img,
+      (i % columns) * 800,
+      Math.floor(i / columns) * 590,
+      800,
+      590,
+    );
+  }
+  return canvas.toDataURL("image/png");
+}
 
 const palette = {
   background: "#07171f",

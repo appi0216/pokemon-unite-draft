@@ -24,10 +24,15 @@
     linear-gradient(#9bcfff09 1px, transparent 1px),
     linear-gradient(90deg, #9bcfff09 1px, transparent 1px);
   background-size: 58px 58px;
-  -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 72%);
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    #000 20%,
+    transparent 72%
+  );
   mask-image: radial-gradient(ellipse at center, #000 20%, transparent 72%);
   transform: perspective(900px) rotateX(8deg) rotateZ(-1.5deg);
-  animation: draft-grid-drift 22s ease-in-out infinite alternate;
+  animation: draft-grid-drift 22s var(--motion-ambient-easing) infinite
+    alternate;
 }
 
 .app:not(.setup-mode)::after {
@@ -36,9 +41,15 @@
   left: -26%;
   width: 28%;
   opacity: 0.55;
-  background: linear-gradient(90deg, transparent, #72d8e612, #efb36d0d, transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #72d8e612,
+    #efb36d0d,
+    transparent
+  );
   transform: skewX(-16deg);
-  animation: draft-light-sweep 16s ease-in-out infinite;
+  animation: draft-light-sweep 16s var(--motion-ambient-easing) infinite;
 }
 
 .app:not(.setup-mode) > .app-header,
@@ -61,13 +72,19 @@
   isolation: isolate;
   overflow: hidden;
   background:
-    linear-gradient(112deg, color-mix(in srgb, var(--side) 11%, transparent), transparent 37%),
+    linear-gradient(
+      112deg,
+      color-mix(in srgb, var(--side) 11%, transparent),
+      transparent 37%
+    ),
     linear-gradient(145deg, #202d34f7, #151f25f8 56%, #1b272df7);
   border-color: color-mix(in srgb, var(--side) 28%, var(--surface-border));
   box-shadow:
     0 18px 48px #00000035,
     inset 0 1px #ffffff0d;
-  transition: border-color 280ms ease, box-shadow 280ms ease;
+  transition:
+    border-color 280ms var(--motion-standard-easing),
+    box-shadow 280ms var(--motion-standard-easing);
 }
 
 .phase-banner::before {
@@ -90,10 +107,16 @@
   z-index: -1;
   inset: 0 18% auto;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--side), #8edfff, transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--side),
+    #8edfff,
+    transparent
+  );
   opacity: 0.82;
   transform-origin: center;
-  animation: phase-line-breathe 3.8s ease-in-out infinite;
+  animation: phase-line-breathe 3.8s var(--motion-ambient-easing) infinite;
 }
 
 .phase-label {
@@ -131,16 +154,16 @@
 
 .timeline-step .step-node {
   transition:
-    transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 240ms ease,
-    border-color 240ms ease,
-    box-shadow 240ms ease;
+    transform 240ms var(--motion-standard-easing),
+    background-color 240ms var(--motion-standard-easing),
+    border-color 240ms var(--motion-standard-easing),
+    box-shadow 240ms var(--motion-standard-easing);
 }
 
 .timeline-step.current .step-node {
   transform: translateY(-2px) scale(1.08);
   border-color: color-mix(in srgb, var(--side) 82%, white 18%);
-  animation: current-step-pulse 2.2s ease-in-out infinite;
+  animation: current-step-pulse 2.2s var(--motion-ambient-easing) infinite;
 }
 
 .timeline-step.done .step-node {
@@ -148,7 +171,11 @@
 }
 
 .timeline-step:not(:last-child)::after {
-  background: linear-gradient(90deg, color-mix(in srgb, var(--side) 24%, var(--surface-border)), var(--surface-border));
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--side) 24%, var(--surface-border)),
+    var(--surface-border)
+  );
 }
 
 /* Apply the same material language to the three work areas. */
@@ -156,8 +183,7 @@
 .team-panel,
 .team-history {
   background:
-    linear-gradient(155deg, #202b32f2, #151f25f5 62%),
-    var(--surface-panel);
+    linear-gradient(155deg, #202b32f2, #151f25f5 62%), var(--surface-panel);
   border-color: #81709255;
   box-shadow:
     0 18px 44px #0000002e,
@@ -188,9 +214,9 @@
 .selection-panel,
 .team-panel {
   transition:
-    border-color 260ms ease,
-    box-shadow 260ms ease,
-    transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+    border-color 260ms var(--motion-standard-easing),
+    box-shadow 260ms var(--motion-standard-easing),
+    transform 260ms var(--motion-standard-easing);
 }
 
 .team-panel.team-active {
@@ -207,10 +233,10 @@
 
 .pokemon-card {
   transition:
-    transform 170ms cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 170ms ease,
-    box-shadow 170ms ease,
-    filter 170ms ease;
+    transform 170ms var(--motion-standard-easing),
+    border-color 170ms var(--motion-standard-easing),
+    box-shadow 170ms var(--motion-standard-easing),
+    filter 170ms var(--motion-standard-easing);
 }
 
 .pokemon-card:not(:disabled):hover {
@@ -228,9 +254,9 @@
   overflow: hidden;
   background-size: 180% 100%;
   transition:
-    transform 180ms ease,
-    box-shadow 180ms ease,
-    background-position 420ms ease;
+    transform 180ms var(--motion-standard-easing),
+    box-shadow 180ms var(--motion-standard-easing),
+    background-position 420ms var(--motion-standard-easing);
 }
 
 .confirm-button:not(:disabled):hover,
@@ -243,24 +269,57 @@
 }
 
 @keyframes draft-grid-drift {
-  from { transform: perspective(900px) rotateX(8deg) rotateZ(-1.5deg) translate3d(-1%, -1%, 0); }
-  to { transform: perspective(900px) rotateX(8deg) rotateZ(-1.5deg) translate3d(2%, 1.5%, 0); }
+  from {
+    transform: perspective(900px) rotateX(8deg) rotateZ(-1.5deg)
+      translate3d(-1%, -1%, 0);
+  }
+  to {
+    transform: perspective(900px) rotateX(8deg) rotateZ(-1.5deg)
+      translate3d(2%, 1.5%, 0);
+  }
 }
 
 @keyframes draft-light-sweep {
-  0%, 18% { transform: translate3d(0, 0, 0) skewX(-16deg); opacity: 0; }
-  38%, 55% { opacity: 0.55; }
-  78%, 100% { transform: translate3d(560%, 0, 0) skewX(-16deg); opacity: 0; }
+  0%,
+  18% {
+    transform: translate3d(0, 0, 0) skewX(-16deg);
+    opacity: 0;
+  }
+  38%,
+  55% {
+    opacity: 0.55;
+  }
+  78%,
+  100% {
+    transform: translate3d(560%, 0, 0) skewX(-16deg);
+    opacity: 0;
+  }
 }
 
 @keyframes phase-line-breathe {
-  0%, 100% { opacity: 0.42; transform: scaleX(0.84); }
-  50% { opacity: 0.9; transform: scaleX(1); }
+  0%,
+  100% {
+    opacity: 0.42;
+    transform: scaleX(0.84);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scaleX(1);
+  }
 }
 
 @keyframes current-step-pulse {
-  0%, 100% { box-shadow: 0 0 0 3px color-mix(in srgb, var(--side) 16%, transparent), 0 0 10px color-mix(in srgb, var(--side) 16%, transparent); }
-  50% { box-shadow: 0 0 0 5px color-mix(in srgb, var(--side) 8%, transparent), 0 0 20px color-mix(in srgb, var(--side) 36%, transparent); }
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 3px color-mix(in srgb, var(--side) 16%, transparent),
+      0 0 10px color-mix(in srgb, var(--side) 16%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 0 5px color-mix(in srgb, var(--side) 8%, transparent),
+      0 0 20px color-mix(in srgb, var(--side) 36%, transparent);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

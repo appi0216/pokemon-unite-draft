@@ -27,6 +27,7 @@ type Props = {
   onChange: (values: SetupValues) => void;
   onStart: () => void;
   onResume: () => void;
+  onTools: () => void;
   hasSaved: boolean;
   progress: number;
   game: number;
@@ -37,6 +38,7 @@ export default function SetupScreen({
   onChange,
   onStart,
   onResume,
+  onTools,
   hasSaved,
   progress,
   game,
@@ -45,9 +47,7 @@ export default function SetupScreen({
   return (
     <main className="setup-main">
       <section className="setup-intro">
-        <span className="section-kicker">
-          YOUR DRAFT ROOM
-        </span>
+        <span className="section-kicker">YOUR DRAFT ROOM</span>
         <h1>
           勝負は、
           <br />
@@ -251,6 +251,9 @@ export default function SetupScreen({
             </div>
           </div>
         </details>
+        <button className="setup-tools-button" onClick={onTools}>
+          プリセット・大会制限・バックアップ
+        </button>
         <button className="start-draft-button" onClick={onStart}>
           <span>{hasSaved ? "新しいドラフトを開始" : "ドラフトを開始"}</span>
           <ArrowRight size={19} />

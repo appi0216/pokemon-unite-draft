@@ -47,10 +47,10 @@ button svg {
 }
 button {
   transition:
-    background 0.18s,
-    box-shadow 0.18s,
-    border-color 0.18s,
-    transform 0.18s;
+    background 0.18s var(--motion-standard-easing),
+    box-shadow 0.18s var(--motion-standard-easing),
+    border-color 0.18s var(--motion-standard-easing),
+    transform 0.18s var(--motion-standard-easing);
 }
 button:not(:disabled):active {
   transform: translateY(1px);
@@ -656,7 +656,7 @@ fieldset {
   width: 2px;
   height: 7px;
   background: var(--side);
-  animation: bars 1s infinite;
+  animation: bars 1s var(--motion-ambient-easing) infinite;
 }
 .selecting-bars i:nth-child(2) {
   height: 12px;
@@ -918,7 +918,7 @@ fieldset {
   top: 0;
   width: 96%;
   height: auto;
-  transition: transform 0.2s;
+  transition: transform 0.2s var(--motion-standard-easing);
 }
 .pokemon-card:not(:disabled):hover {
   border-color: var(--role);

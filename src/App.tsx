@@ -1,8 +1,15 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import Portrait from "./components/Portrait";
+import DraftTools from "./components/DraftTools";
+import {
+  parseBackup,
+  downloadBlob,
+  PRESETS_KEY,
+  readPresets,
+} from "./domain/backup";
 import SetupScreen from "./components/SetupScreen";
-import { createResultImage } from "./result-image";
+import { createSeriesImage, createResultImage } from "./result-image";
 import TeamHistory from "./components/TeamHistory";
 import {
   ArrowLeftRight,
@@ -27,6 +34,7 @@ import {
   SkipForward,
   Trophy,
   Undo2,
+  Redo2,
   UserRound,
   Volume2,
   VolumeX,
@@ -142,7 +150,37 @@ function Modal({
 }
 function App() {
   const [initial] = useState(load);
-  const [draft, setDraft] = useState<Draft>(initial.draft);
+  const [draft, updateDraft] = useState<Draft>(initial.draft);
+  const [redoStack, setRedoStack] = useState<Draft[]>([]);
+  const setDraft = (value: Draft | ((d: Draft) => Draft)) => {
+    setRedoStack([]);
+    updateDraft(value);
+  };
+  const undoDraft = () => {
+    if (!draft.actions.length) return;
+    setRedoStack((stack) => [...stack, draft]);
+    updateDraft(undo(draft));
+    setSelected(null);
+    setSwapFrom(null);
+    setRunning(false);
+  };
+  const redoDraft = () => {
+    const previous = redoStack.at(-1);
+    if (!previous) return;
+    updateDraft(previous);
+    setRedoStack((stack) => stack.slice(0, -1));
+    setSelected(null);
+    setSwapFrom(null);
+    setRunning(false);
+  };
+  const [toolsOpen, setToolsOpen] = useState(false);
+  const [restrictions, setRestrictions] = useState<string[]>(
+    initial.draft.restricted ?? [],
+  );
+  const [pendingBackup, setPendingBackup] = useState<ReturnType<
+    typeof parseBackup
+  > | null>(null);
+  const [seriesBusy, setSeriesBusy] = useState(false);
   const [settings, setSettings] = useState<Settings>(initial.settings);
   const [started, setStarted] = useState(initial.started);
   const [screen, setScreen] = useState<"setup" | "draft">(
@@ -202,6 +240,17 @@ function App() {
   const bans = draft.actions.filter((a) => a.phase === "ban");
   const picks = draft.actions.filter((a) => a.phase === "pick");
   const reviewGames = useMemo(() => reviewableGames(draft), [draft]);
+  useEffect(() => {
+    if (!draft.names)
+      updateDraft((current) => ({
+        ...current,
+        names: {
+          purple: settings.purple,
+          orange: settings.orange,
+          trainers: [...settings.trainers],
+        },
+      }));
+  }, [draft.names, settings]);
   const promptAllStar =
     firstPrompt === "start" ? draftSettings.allStar : draft.allStar;
   const promptGame =
@@ -236,6 +285,11 @@ function App() {
       !running ||
       complete ||
       modal ||
+      firstPrompt ||
+      reviewOpen ||
+      resultImage ||
+      toolsOpen ||
+      pendingBackup ||
       screen === "setup" ||
       settings.seconds === 0
     )
@@ -245,7 +299,18 @@ function App() {
       1000,
     );
     return () => clearInterval(id);
-  }, [running, complete, modal, screen, settings.seconds]);
+  }, [
+    running,
+    complete,
+    modal,
+    firstPrompt,
+    reviewOpen,
+    resultImage,
+    toolsOpen,
+    pendingBackup,
+    screen,
+    settings.seconds,
+  ]);
   useEffect(() => {
     if (remaining === 0 && running && settings.seconds > 0) {
       setRunning(false);
@@ -350,6 +415,10 @@ function App() {
       if (
         screen === "draft" &&
         !modal &&
+        !firstPrompt &&
+        !reviewOpen &&
+        !toolsOpen &&
+        !pendingBackup &&
         rewindTarget === null &&
         !resultImage &&
         !editing &&
@@ -378,9 +447,14 @@ function App() {
           setRunning(!running);
           return;
         }
+        if (e.key.toLowerCase() === "y" && redoStack.length) {
+          e.preventDefault();
+          redoDraft();
+          return;
+        }
         if (e.key.toLowerCase() === "u" && draft.actions.length) {
           e.preventDefault();
-          setDraft(undo(draft));
+          undoDraft();
           setSelected(null);
           setSwapFrom(null);
           setRunning(false);
@@ -389,6 +463,11 @@ function App() {
       }
       if (
         e.key === "Enter" &&
+        !firstPrompt &&
+        !reviewOpen &&
+        !resultImage &&
+        !toolsOpen &&
+        !pendingBackup &&
         selected &&
         !modal &&
         rewindTarget === null &&
@@ -428,7 +507,15 @@ function App() {
       ),
     };
     setSettings(next);
-    setDraft(createDraft(first, draftSettings.allStar, draftSettings.bestOf));
+    setDraft({
+      ...createDraft(first, draftSettings.allStar, draftSettings.bestOf),
+      names: {
+        purple: next.purple,
+        orange: next.orange,
+        trainers: [...next.trainers],
+      },
+      restricted: [...restrictions],
+    });
     setStarted(true);
     setReviewGame(null);
     setSelected(null);
@@ -452,7 +539,7 @@ function App() {
   const exportResult = async () => {
     setExporting(true);
     try {
-      setResultImage(await createResultImage(draft, settings));
+      setResultImage(await createResultImage(draft, draft.names ?? settings));
     } catch {
       setNotice("画像を作成できませんでした。もう一度お試しください。");
     } finally {
@@ -463,7 +550,7 @@ function App() {
     setExportingHistory(past.game);
     try {
       const archived = draftFromPastGame(past, draft.bestOf, draft.allStar);
-      const image = await createResultImage(archived, settings);
+      const image = await createResultImage(archived, past.names ?? settings);
       const blob = await fetch(image).then((response) => response.blob());
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
@@ -755,6 +842,7 @@ function App() {
           onChange={setDraftSettings}
           onStart={() => setFirstPrompt("start")}
           onResume={resumeDraft}
+          onTools={() => setToolsOpen(true)}
           hasSaved={started}
           progress={draft.actions.length}
           game={draft.game}
@@ -1206,11 +1294,13 @@ function App() {
                             <Ban size={25} />
                           )}
                           <span>
-                            {old
-                              ? "前の試合"
-                              : action?.phase === "pick"
-                                ? "PICK"
-                                : "BAN"}
+                            {draft.restricted?.includes(p.id)
+                              ? "大会制限"
+                              : old
+                                ? "前の試合"
+                                : action?.phase === "pick"
+                                  ? "PICK"
+                                  : "BAN"}
                           </span>
                         </span>
                       )}
@@ -1259,6 +1349,12 @@ function App() {
           </section>
           <section className="decision-bar">
             <div className="utility-actions">
+              {redoStack.length > 0 && (
+                <button className="subtle-button" onClick={redoDraft}>
+                  <Redo2 size={16} />
+                  <span>やり直す</span>
+                </button>
+              )}
               {reviewGames.length > 0 && (
                 <button
                   className="subtle-button review-history-button"
@@ -1272,7 +1368,7 @@ function App() {
                 className="subtle-button"
                 disabled={!draft.actions.length}
                 onClick={() => {
-                  setDraft(undo(draft));
+                  undoDraft();
                   setSelected(null);
                   setSwapFrom(null);
                   setRunning(false);
@@ -1302,7 +1398,7 @@ function App() {
                     disabled={exporting}
                   >
                     <Download size={18} />
-                    {exporting ? "画像を作成中…" : "結果を画像で保存"}
+                    {exporting ? "画像を作成中…" : "結果画像を確認"}
                   </button>
                   <button
                     className={
@@ -1422,7 +1518,7 @@ function App() {
             }
           >
             <Download size={18} />
-            PNG画像を保存
+            画像を保存
           </a>
           <p className="field-hint">画像を長押しして保存することもできます。</p>
         </Modal>
@@ -1435,6 +1531,105 @@ function App() {
             <X size={15} />
           </button>
         </div>
+      )}
+      {toolsOpen && (
+        <Modal
+          title="チーム・大会設定とバックアップ"
+          className="tools-dialog"
+          onClose={() => setToolsOpen(false)}
+        >
+          <DraftTools
+            values={draftSettings}
+            onChange={setDraftSettings}
+            restricted={restrictions}
+            onRestricted={setRestrictions}
+            report={setNotice}
+            onExport={() =>
+              downloadBlob(
+                new Blob(
+                  [
+                    JSON.stringify(
+                      {
+                        format: "unite-draft-backup",
+                        version: 1,
+                        draft,
+                        settings,
+                        started,
+                        presets: readPresets(),
+                      },
+                      null,
+                      2,
+                    ),
+                  ],
+                  { type: "application/json" },
+                ),
+                "unite-draft-backup.json",
+              )
+            }
+            onImport={async (file) => {
+              try {
+                if (file.size > 2_000_000) throw new Error("Too large");
+                const backup = parseBackup(await file.text(), ids);
+                setPendingBackup(backup);
+                setToolsOpen(false);
+              } catch {
+                setNotice(
+                  "対応するバックアップではありません。データは変更していません。",
+                );
+              }
+            }}
+          />
+        </Modal>
+      )}
+      {pendingBackup && (
+        <Modal
+          title="バックアップを読み込みますか？"
+          onClose={() => setPendingBackup(null)}
+        >
+          <p>
+            現在の進行状況・履歴・設定・プリセットを置き換えます。必要なデータは先にバックアップしてください。
+          </p>
+          <div className="modal-buttons">
+            <button onClick={() => setPendingBackup(null)}>キャンセル</button>
+            <button
+              onClick={() => {
+                try {
+                  localStorage.setItem(
+                    PRESETS_KEY,
+                    JSON.stringify(pendingBackup.presets),
+                  );
+                  setDraft(pendingBackup.draft);
+                  setSettings(pendingBackup.settings);
+                  setStarted(pendingBackup.started);
+                  setDraftSettings({
+                    ...pendingBackup.settings,
+                    allStar: pendingBackup.draft.allStar,
+                    bestOf: pendingBackup.draft.bestOf,
+                  });
+                  setRestrictions(pendingBackup.draft.restricted ?? []);
+                  setSelected(null);
+                  setSwapFrom(null);
+                  setQuery("");
+                  setRole("all");
+                  setRunning(false);
+                  setReviewGame(null);
+                  setReviewOpen(false);
+                  setFirstPrompt(null);
+                  setResultImage(null);
+                  setScreen(pendingBackup.started ? "draft" : "setup");
+                  setPendingBackup(null);
+                  setNotice("バックアップを読み込みました。");
+                } catch {
+                  setNotice(
+                    "読み込みできませんでした。保存領域をご確認ください。",
+                  );
+                }
+              }}
+            >
+              読み込む
+            </button>
+          </div>
+        </Modal>
       )}
       {modal === "reset" && (
         <Modal title="ドラフトをリセット" onClose={() => setModal(null)}>
@@ -1493,6 +1688,8 @@ function App() {
                   } else if (firstPrompt === "reset") {
                     setDraft({
                       ...createDraft(team, draft.allStar, draft.bestOf),
+                      names: draft.names,
+                      restricted: draft.restricted,
                       game: draft.game,
                       history: draft.history,
                       excluded: draft.excluded,
@@ -1528,6 +1725,32 @@ function App() {
           onClose={() => setReviewOpen(false)}
           className="review-dialog"
         >
+          {draft.allStar && reviewGames.length > 0 && (
+            <button
+              className="series-export"
+              disabled={seriesBusy}
+              onClick={async () => {
+                setSeriesBusy(true);
+                try {
+                  const image = await createSeriesImage(
+                    reviewGames,
+                    draft.bestOf,
+                    settings,
+                  );
+                  downloadBlob(
+                    await fetch(image).then((r) => r.blob()),
+                    "unite-draft-series.png",
+                  );
+                } catch {
+                  setNotice("シリーズ画像を作成できませんでした。");
+                } finally {
+                  setSeriesBusy(false);
+                }
+              }}
+            >
+              {seriesBusy ? "画像を作成中…" : "全試合の画像を保存"}
+            </button>
+          )}
           <div className="past-games-review">
             {reviewGames.map((past) => {
               const first = past.first ?? past.bans?.[0]?.team;
@@ -1552,7 +1775,7 @@ function App() {
                     <span>
                       {exportingHistory === past.game
                         ? "画像を作成中…"
-                        : "PNGをダウンロード"}
+                        : "画像を保存"}
                       <Download size={14} />
                     </span>
                   </button>
@@ -1560,7 +1783,7 @@ function App() {
                     {(["purple", "orange"] as Team[]).map((team) => (
                       <section key={team} className={team}>
                         <h4>
-                          {teamName(team)}
+                          {past.names?.[team] ?? teamName(team)}
                           <span className={`review-order ${team}`}>
                             {first
                               ? first === team
@@ -1655,8 +1878,8 @@ function App() {
             <h3>キーボード操作</h3>
             <p>
               矢印：ポケモンを選択 ／ Enter：確定 ／ /：検索 ／ Esc：選択解除 ／
-              P：タイマー停止・再開 ／
-              U：1つ戻す。文字入力中はショートカットを無効にします。
+              P：タイマー停止・再開 ／ U：1つ戻す ／
+              Y：やり直す。文字入力中はショートカットを無効にします。
             </p>
             <p>
               1台の端末で両チームを操作する、大会形式のドラフト練習ツールです。ポケモンを選び、中央のボタンで確定してください。

@@ -321,13 +321,22 @@
 /* Use the available history canvas without making a single result oversized. */
 dialog.review-dialog.multi-game {
   width: min(94vw, 1320px);
+  height: calc(100dvh - 28px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 dialog.review-dialog.single-game {
   width: min(680px, calc(100vw - 28px));
 }
 .review-dialog.multi-game .past-games-review {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: start;
+  overscroll-behavior: contain;
 }
 .review-dialog.single-game .past-games-review {
   grid-template-columns: minmax(0, 1fr);

@@ -624,14 +624,6 @@ function App() {
             );
           })}
         </div>
-        <div className="team-composition">
-          {(Object.keys(roles) as Role[]).map((r) => (
-            <span key={r} title={`${roles[r]}型`} className={r}>
-              <i />
-              {ownPicks.filter((a) => byId.get(a.pokemon!)?.role === r).length}
-            </span>
-          ))}
-        </div>
       </aside>
     );
   }

@@ -1891,6 +1891,12 @@ dialog.review-dialog {
   }
 }
 
+/* Use the former composition row as breathing room between team sections. */
+.app:not(.setup-mode) .team-panel {
+  grid-template-rows: 36px 16px clamp(54px, 8dvh, 72px) 16px minmax(0, 1fr);
+  row-gap: 8px;
+}
+
 /* Keep review cards at a stable density and make PICK the visual priority. */
 .review-dialog .past-games-review {
   grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 600px));

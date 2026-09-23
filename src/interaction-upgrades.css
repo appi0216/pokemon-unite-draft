@@ -2134,7 +2134,7 @@ dialog.review-dialog {
 }
 
 /* Archived All-Star games open as a read-only completed draft screen. */
-.past-game-open {
+.past-game-download {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2147,21 +2147,25 @@ dialog.review-dialog {
   font: inherit;
   text-align: left;
 }
-.past-game-open > span:first-child {
+.past-game-download > span:first-child {
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 1px;
 }
-.past-game-open > span:last-child {
+.past-game-download > span:last-child {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   color: #79d8e5;
   font-size: 9px;
 }
-.past-game-open:hover > span:last-child,
-.past-game-open:focus-visible > span:last-child {
+.past-game-download:hover > span:last-child,
+.past-game-download:focus-visible > span:last-child {
   color: #e9fcff;
+}
+.past-game-download:disabled {
+  cursor: wait;
+  opacity: 0.68;
 }
 .past-draft-screen {
   display: grid;

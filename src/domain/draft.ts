@@ -141,8 +141,12 @@ export function reviewableGames(draft: Draft): PastGame[] {
   return draft.allStar ? reviewable : reviewable.slice(-5);
 }
 
-/** Rebuild a completed, read-only standard draft for the history viewer. */
-export function draftFromPastGame(past: PastGame, bestOf: BestOf = 3): Draft {
+/** Rebuild a completed draft so a past result can be exported as an image. */
+export function draftFromPastGame(
+  past: PastGame,
+  bestOf: BestOf = 3,
+  allStar = false,
+): Draft {
   return {
     first: past.first ?? past.bans?.[0]?.team ?? "purple",
     actions: [
@@ -159,7 +163,7 @@ export function draftFromPastGame(past: PastGame, bestOf: BestOf = 3): Draft {
     ],
     excluded: [],
     game: past.game,
-    allStar: false,
+    allStar,
     history: [],
     bestOf,
   };

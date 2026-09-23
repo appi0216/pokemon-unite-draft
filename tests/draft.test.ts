@@ -222,15 +222,17 @@ test("standard draft keeps only the five most recent completed results", () => {
   assert.equal(unavailable(draft, ids[6], draft.first), false);
 });
 
-test("standard history rebuilds the original completed draft without history state", () => {
+test("history rebuilds complete standard and All-Star drafts for PNG export", () => {
   const completed = finishDraft(createDraft("orange"));
   const past = reviewableGames(completed)[0];
-  const restoredView = draftFromPastGame(past);
-  assert.equal(currentStep(restoredView), null);
-  assert.equal(restoredView.first, "orange");
-  assert.deepEqual(restoredView.actions, completed.actions);
-  assert.deepEqual(restoredView.history, []);
-  assert.deepEqual(restoredView.excluded, []);
+  const standard = draftFromPastGame(past);
+  const allStar = draftFromPastGame(past, 5, true);
+  assert.equal(currentStep(standard), null);
+  assert.deepEqual(standard.actions, completed.actions);
+  assert.equal(standard.allStar, false);
+  assert.equal(allStar.allStar, true);
+  assert.equal(allStar.bestOf, 5);
+  assert.equal(allStar.game, past.game);
 });
 
 test("next game accepts an independently selected first team", () => {

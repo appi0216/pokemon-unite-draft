@@ -37,6 +37,7 @@ import { byId, ids, normalize, pokemon, roles } from "./data/roster";
 import type { Role } from "./data/roster";
 import {
   choose,
+  changeFirst,
   createDraft,
   currentStep,
   nextGame,
@@ -48,7 +49,7 @@ import {
   unavailable,
   undo,
 } from "./domain/draft";
-import type { Draft, Team } from "./domain/draft";
+import type { Draft, PastGame, Team } from "./domain/draft";
 import { turnSeconds } from "./domain/timer";
 
 const STORAGE = "unite-draft.v1";
@@ -141,7 +142,10 @@ function App() {
     "purple" | "roster" | "orange"
   >("roster");
   const [rewindTarget, setRewindTarget] = useState<number | null>(null);
-  const [firstPrompt, setFirstPrompt] = useState<"start" | "next" | null>(null);
+  const [firstPrompt, setFirstPrompt] = useState<
+    "start" | "next" | "undo" | "reset" | null
+  >(null);
+  const [reviewGame, setReviewGame] = useState<PastGame | null>(null);
   const pokemonGrid = useRef<HTMLDivElement>(null);
   const [running, setRunning] = useState(false);
   const [remaining, setRemaining] = useState(() =>
@@ -344,10 +348,7 @@ function App() {
         }
         if (e.key.toLowerCase() === "u" && draft.actions.length) {
           e.preventDefault();
-          setDraft(undo(draft));
-          setSelected(null);
-          setSwapFrom(null);
-          setRunning(false);
+          setFirstPrompt("undo");
           return;
         }
       }
@@ -807,6 +808,7 @@ function App() {
                   name={teamName("purple")}
                   history={draft.history}
                   active={!complete && step?.team === "purple"}
+                  onReview={setReviewGame}
                 />
               )}
               {renderTeamPanel("purple")}
@@ -1096,11 +1098,13 @@ function App() {
               <div className="selection-footer">
                 <span>{visible.length}体を表示</span>
                 <span className="keyboard-hint">矢印で選択 · Enterで確定</span>
-                <span>
-                  <i className="legend-dot" />
-                  選択中 <Ban size={12} />
-                  使用不可
-                </span>
+                {!hideUsed && (
+                  <span>
+                    <Check size={12} />
+                    選択中 <Ban size={12} />
+                    使用不可
+                  </span>
+                )}
               </div>
             </section>
             <div className="team-side orange">
@@ -1111,6 +1115,7 @@ function App() {
                   name={teamName("orange")}
                   history={draft.history}
                   active={!complete && step?.team === "orange"}
+                  onReview={setReviewGame}
                 />
               )}
             </div>
@@ -1120,12 +1125,7 @@ function App() {
               <button
                 className="subtle-button"
                 disabled={!draft.actions.length}
-                onClick={() => {
-                  setDraft(undo(draft));
-                  setSelected(null);
-                  setSwapFrom(null);
-                  setRunning(false);
-                }}
+                onClick={() => setFirstPrompt("undo")}
               >
                 <Undo2 size={17} />
                 <span>1つ戻す</span>
@@ -1299,12 +1299,8 @@ function App() {
             <button
               className="modal-primary"
               onClick={() => {
-                setDraft(createDraft(draft.first, draft.allStar, draft.bestOf));
-                setSelected(null);
-                setSwapFrom(null);
-                setRunning(false);
-                setRemaining(turnSeconds(settings.seconds > 0, "ban"));
                 setModal(null);
+                setFirstPrompt("reset");
               }}
             >
               リセットする
@@ -1314,7 +1310,7 @@ function App() {
       )}
       {firstPrompt && (
         <Modal
-          title={`GAME ${String(firstPrompt === "next" ? draft.game + 1 : 1).padStart(2, "0")} の先攻チーム`}
+          title={`GAME ${String(firstPrompt === "next" ? draft.game + 1 : firstPrompt === "start" || firstPrompt === "reset" ? 1 : draft.game).padStart(2, "0")} の先攻チーム`}
           onClose={() => setFirstPrompt(null)}
         >
           <p className="first-prompt-copy">この試合で最初にBANするチームを選択してください。</p>
@@ -1326,7 +1322,7 @@ function App() {
                 onClick={() => {
                   if (firstPrompt === "start") {
                     startDraft(team);
-                  } else {
+                  } else if (firstPrompt === "next") {
                     setDraft(nextGame(draft, team));
                     setSelected(null);
                     setSwapFrom(null);
@@ -1337,6 +1333,17 @@ function App() {
                     setRemaining(turnSeconds(settings.seconds > 0, "ban"));
                     setRunning(settings.seconds > 0);
                     window.scrollTo({ top: 0, behavior: "instant" });
+                  } else if (firstPrompt === "reset") {
+                    setDraft(createDraft(team, draft.allStar, draft.bestOf));
+                    setSelected(null);
+                    setSwapFrom(null);
+                    setRunning(false);
+                    setRemaining(turnSeconds(settings.seconds > 0, "ban"));
+                  } else {
+                    setDraft(changeFirst(undo(draft), team, ids));
+                    setSelected(null);
+                    setSwapFrom(null);
+                    setRunning(false);
                   }
                   setFirstPrompt(null);
                 }}
@@ -1348,6 +1355,33 @@ function App() {
                 </span>
                 <span>先攻</span>
               </button>
+            ))}
+          </div>
+        </Modal>
+      )}
+      {reviewGame && (
+        <Modal
+          title={`GAME ${String(reviewGame.game).padStart(2, "0")} の振り返り`}
+          onClose={() => setReviewGame(null)}
+        >
+          <div className="past-game-review">
+            {(["purple", "orange"] as Team[]).map((team) => (
+              <section key={team} className={team}>
+                <h3>{teamName(team)}</h3>
+                <div>
+                  {reviewGame.picks
+                    .filter((pick) => pick.team === team)
+                    .map((pick) => {
+                      const p = byId.get(pick.pokemon)!;
+                      return (
+                        <article key={p.id}>
+                          <Portrait p={p} />
+                          <span>{p.name}</span>
+                        </article>
+                      );
+                    })}
+                </div>
+              </section>
             ))}
           </div>
         </Modal>

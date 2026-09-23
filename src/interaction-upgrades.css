@@ -1660,3 +1660,62 @@
 @media (max-width: 680px) {
   .app:not(.setup-mode) .header-phase.is-complete .header-phase-title { left: -22px; }
 }
+
+.history-game-button {
+  width: 100%;
+  padding: 1px 2px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 800;
+  text-align: left;
+}
+.history-game-button:hover,
+.history-game-button:focus-visible {
+  color: var(--history-color);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--history-color) 55%, transparent);
+}
+.past-game-review {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.past-game-review > section {
+  --review-color: var(--purple);
+  padding: 12px;
+  border: 1px solid color-mix(in srgb, var(--review-color) 45%, var(--surface-border));
+  border-radius: 14px;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--review-color) 15%, var(--surface-control)), var(--surface-control));
+}
+.past-game-review > section.orange { --review-color: var(--orange); }
+.past-game-review h3 {
+  margin: 0 0 10px;
+  color: var(--review-color);
+  font-size: 13px;
+  text-align: center;
+}
+.past-game-review section > div {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 5px;
+}
+.past-game-review article {
+  min-width: 0;
+  text-align: center;
+}
+.past-game-review article .portrait {
+  width: 100%;
+  aspect-ratio: 1;
+}
+.past-game-review article span {
+  display: block;
+  margin-top: 3px;
+  overflow-wrap: anywhere;
+  color: var(--text-secondary);
+  font-size: 8px;
+  line-height: 1.2;
+}
+@media (max-width: 680px) {
+  .past-game-review { grid-template-columns: 1fr; }
+}

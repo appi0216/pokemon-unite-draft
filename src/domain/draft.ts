@@ -112,6 +112,21 @@ export const undo = (draft: Draft): Draft => ({
   ...draft,
   actions: draft.actions.slice(0, -1),
 });
+
+export function changeFirst(
+  draft: Draft,
+  first: Team,
+  validIds: readonly string[],
+): Draft {
+  if (draft.first === first) return draft;
+  let changed: Draft = { ...draft, first, actions: [] };
+  for (const action of draft.actions) {
+    const next = choose(changed, action.pokemon, validIds);
+    if (next === changed) break;
+    changed = next;
+  }
+  return changed;
+}
 export function rewindToStep(draft: Draft, index: number): Draft {
   const sequence = steps(draft.first);
   if (!Number.isInteger(index) || index < 0 || index >= sequence.length)

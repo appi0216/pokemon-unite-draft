@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   choose,
+  changeFirst,
   createDraft,
   currentStep,
   nextGame,
@@ -208,6 +209,16 @@ test("next game accepts an independently selected first team", () => {
   d = finishDraft(createDraft("purple", true, 3));
   assert.equal(nextGame(d, "purple").first, "purple");
   assert.equal(nextGame(d, "orange").first, "orange");
+});
+
+test("changing first team safely replays the remaining actions", () => {
+  let d = createDraft("purple");
+  for (let i = 0; i < 8; i++) d = choose(d, ids[i], ids);
+  const changed = changeFirst(d, "orange", ids);
+  assert.equal(changed.first, "orange");
+  assert.equal(changed.actions.length, d.actions.length);
+  assert.equal(changed.actions[0].team, "orange");
+  assert.equal(restoreDraft(changed, ids)?.actions.length, d.actions.length);
 });
 test("All-Star records each team's final picks across games and restores ownership", () => {
   let d = createDraft("purple", true);

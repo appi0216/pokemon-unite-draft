@@ -772,6 +772,85 @@
   }
 }
 
+/* BAN tiles stay square when the team column grows on wide/fullscreen layouts. */
+.app:not(.setup-mode) .ban-slots {
+  align-items: center;
+  justify-items: center;
+}
+
+.app:not(.setup-mode) .ban-slot {
+  width: min(100%, 72px);
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
+
+.app:not(.setup-mode) .ban-image {
+  width: calc(100% - 4px);
+  height: auto;
+  aspect-ratio: 1 / 1;
+  inset: 2px auto auto 2px;
+}
+
+/* History and team return to separate cards. */
+.allstar-arena > .team-side.purple,
+.allstar-arena > .team-side.orange {
+  gap: 6px !important;
+}
+
+.allstar-arena > .team-side.purple > .team-history,
+.allstar-arena > .team-side.purple > .team-panel,
+.allstar-arena > .team-side.orange > .team-panel,
+.allstar-arena > .team-side.orange > .team-history {
+  border: 1px solid #506975;
+  border-radius: 14px;
+}
+
+/* Match the roster controls to the compact scale used by the team panels. */
+.app:not(.setup-mode) .selection-top h2 {
+  font-size: 13px;
+}
+
+.app:not(.setup-mode) .selection-top > div > svg {
+  width: 15px;
+  height: 15px;
+}
+
+.app:not(.setup-mode) .roster-count {
+  padding: 1px 5px;
+  font-size: 9px;
+}
+
+.app:not(.setup-mode) .sort-trigger {
+  min-height: 27px;
+  padding-block: 3px;
+  font-size: 10px;
+}
+
+.app:not(.setup-mode) .search-field {
+  height: 31px;
+  font-size: 10px;
+}
+
+.app:not(.setup-mode) .search-field > svg {
+  width: 15px;
+  height: 15px;
+}
+
+.app:not(.setup-mode) .search-field input,
+.app:not(.setup-mode) .hide-used,
+.app:not(.setup-mode) .role-tabs button {
+  font-size: 9px;
+}
+
+.app:not(.setup-mode) .role-tabs button {
+  min-height: 24px;
+  padding-block: 4px;
+}
+
+.app:not(.setup-mode) .pokemon-grid {
+  margin-top: 6px;
+}
+
 /* Join each All-Star history rail to its team; spacing belongs at the outer edge. */
 .allstar-arena > .team-side.purple,
 .allstar-arena > .team-side.orange {

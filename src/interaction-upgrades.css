@@ -771,3 +771,50 @@
     min-height: 32px;
   }
 }
+
+/* The active instruction is anchored to the physical center of the viewport. */
+.app:not(.setup-mode) .header-phase {
+  position: static;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.app:not(.setup-mode) .header-phase-divider {
+  display: none;
+}
+
+.app:not(.setup-mode) .header-instruction {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  width: min(44vw, 680px);
+  padding-inline: 12px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.app:not(.setup-mode) .header-timer {
+  grid-column: 3;
+  justify-self: end;
+  margin-left: auto;
+}
+
+@media (max-width: 900px) {
+  .app:not(.setup-mode) .header-instruction {
+    width: min(42vw, 420px);
+  }
+}
+
+@media (max-width: 680px) {
+  .app:not(.setup-mode) .header-phase {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .app:not(.setup-mode) .header-instruction {
+    width: 48vw;
+    padding-inline: 4px;
+  }
+
+  .app:not(.setup-mode) .header-timer {
+    padding-left: 5px;
+  }
+}

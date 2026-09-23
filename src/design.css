@@ -1340,7 +1340,7 @@ fieldset {
     radial-gradient(ellipse at 100% 0%, #f5e9dd5c, transparent 45%), #f7f7fa;
 }
 .setup-mode .header-center,
-.setup-mode .header-actions > .icon-button:first-of-type {
+.setup-mode .header-actions > .fullscreen-button {
   display: none;
 }
 .app .setup-main {
@@ -2358,7 +2358,7 @@ dialog > p {
   .header-actions {
     gap: 2px;
   }
-  .header-actions > .icon-button:first-of-type {
+  .header-actions > .fullscreen-button {
     display: none;
   }
   .setup-return-button {

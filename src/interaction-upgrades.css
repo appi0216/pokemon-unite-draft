@@ -751,7 +751,7 @@
     gap: 4px;
   }
 
-  .app:not(.setup-mode) .header-actions .icon-button:first-of-type {
+  .app:not(.setup-mode) .header-actions .fullscreen-button {
     display: none;
   }
 

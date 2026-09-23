@@ -822,8 +822,18 @@ function App() {
         </div>
         <div className="header-actions">
           {screen === "setup" && <span className="snapshot">2026.09.18</span>}
+          {screen === "draft" && reviewGames.length > 0 && (
+            <button
+              className="icon-button review-history-button"
+              title="試合履歴"
+              aria-label="試合履歴"
+              onClick={() => setReviewOpen(true)}
+            >
+              <HistoryIcon size={18} />
+            </button>
+          )}
           <button
-            className="icon-button"
+            className="icon-button fullscreen-button"
             title="画面を広げる"
             aria-label="全画面表示"
             onClick={() => {
@@ -1374,15 +1384,6 @@ function App() {
           </section>
           <section className="decision-bar">
             <div className="utility-actions">
-              {reviewGames.length > 0 && (
-                <button
-                  className="subtle-button review-history-button"
-                  onClick={() => setReviewOpen(true)}
-                >
-                  <HistoryIcon size={16} />
-                  <span>試合履歴</span>
-                </button>
-              )}
               <button
                 className="subtle-button"
                 disabled={!draft.actions.length}

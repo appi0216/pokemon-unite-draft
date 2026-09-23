@@ -206,6 +206,8 @@ function App() {
   const [reviewGame, setReviewGame] = useState<PastGame | null>(null);
   const [exportingHistory, setExportingHistory] = useState<number | null>(null);
   const pokemonGrid = useRef<HTMLDivElement>(null);
+  const completionAction = useRef<HTMLButtonElement>(null);
+  const keyboardNavigation = useRef(false);
   const [running, setRunning] = useState(false);
   const [remaining, setRemaining] = useState(() =>
     turnSeconds(settings.seconds > 0, currentStep(draft)?.phase || "ban"),
@@ -327,6 +329,10 @@ function App() {
     if (complete) setRunning(false);
   }, [complete]);
   useEffect(() => {
+    if (!complete || !keyboardNavigation.current || screen !== "draft") return;
+    requestAnimationFrame(() => completionAction.current?.focus());
+  }, [complete, screen]);
+  useEffect(() => {
     if (!notice) return;
     const id = setTimeout(() => setNotice(""), 5500);
     return () => clearTimeout(id);
@@ -427,6 +433,21 @@ function App() {
         !e.altKey &&
         !e.repeat
       ) {
+        if (
+          !complete &&
+          ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key) &&
+          !(e.target instanceof Element && e.target.closest(".pokemon-grid"))
+        ) {
+          const first = pokemonGrid.current?.querySelector<HTMLButtonElement>(
+            ".pokemon-card:not(:disabled)",
+          );
+          if (first) {
+            e.preventDefault();
+            keyboardNavigation.current = true;
+            first.focus();
+          }
+          return;
+        }
         if (e.key === "/") {
           e.preventDefault();
           document
@@ -717,6 +738,9 @@ function App() {
   return (
     <div
       className={`app ${activeTeam} ${visuallyComplete ? "draft-complete" : ""} ${screen === "setup" ? "setup-mode" : ""}`}
+      onPointerDown={() => {
+        keyboardNavigation.current = false;
+      }}
     >
       <header className="app-header">
         <a
@@ -1190,6 +1214,7 @@ function App() {
                     e.preventDefault();
                     e.stopPropagation();
                     if (e.repeat) return;
+                    keyboardNavigation.current = true;
                     confirm();
                     requestAnimationFrame(() => {
                       const next = Array.from(
@@ -1349,12 +1374,6 @@ function App() {
           </section>
           <section className="decision-bar">
             <div className="utility-actions">
-              {redoStack.length > 0 && (
-                <button className="subtle-button" onClick={redoDraft}>
-                  <Redo2 size={16} />
-                  <span>やり直す</span>
-                </button>
-              )}
               {reviewGames.length > 0 && (
                 <button
                   className="subtle-button review-history-button"
@@ -1376,6 +1395,14 @@ function App() {
               >
                 <Undo2 size={17} />
                 <span>1つ戻す</span>
+              </button>
+              <button
+                className="subtle-button"
+                disabled={!redoStack.length}
+                onClick={redoDraft}
+              >
+                <Redo2 size={16} />
+                <span>1つ進む</span>
               </button>
               <button
                 className="subtle-button"
@@ -1401,6 +1428,7 @@ function App() {
                     {exporting ? "画像を作成中…" : "結果画像を確認"}
                   </button>
                   <button
+                    ref={completionAction}
                     className={
                       draft.allStar && draft.game >= draft.bestOf
                         ? "confirm-button"
@@ -1878,8 +1906,8 @@ function App() {
             <h3>キーボード操作</h3>
             <p>
               矢印：ポケモンを選択 ／ Enter：確定 ／ /：検索 ／ Esc：選択解除 ／
-              P：タイマー停止・再開 ／ U：1つ戻す ／
-              Y：やり直す。文字入力中はショートカットを無効にします。
+              P：タイマー停止・再開 ／ U：1つ戻す ／ Y：1つ進む。
+              文字入力中はショートカットを無効にします。
             </p>
             <p>
               1台の端末で両チームを操作する、大会形式のドラフト練習ツールです。ポケモンを選び、中央のボタンで確定してください。

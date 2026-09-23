@@ -432,14 +432,23 @@ dialog.review-dialog.single-game {
   align-items: end;
 }
 .app:not(.setup-mode) .decision-main {
-  position: relative;
-  gap: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 14px var(--decision-action-height);
+  align-content: end;
+  justify-items: center;
+  gap: 6px;
+  min-height: 58px;
 }
 .app:not(.setup-mode) .decision-main .selected-description {
-  position: absolute;
-  right: 0;
-  bottom: calc(var(--decision-action-height) + 8px);
-  left: 0;
+  position: static;
+  width: 100%;
+  min-height: 14px;
+  max-height: 14px;
+  overflow: hidden;
+  line-height: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   pointer-events: none;
 }
 .app:not(.setup-mode) .utility-actions,

@@ -1450,22 +1450,25 @@ function App() {
             </div>
             <div className="decision-main">
               {complete ? (
-                <button
-                  ref={completionAction}
-                  className="confirm-button completion-next"
-                  onClick={() => {
-                    if (draft.allStar && draft.game >= draft.bestOf) {
-                      openSetup();
-                      return;
-                    }
-                    setFirstPrompt("next");
-                  }}
-                >
-                  {draft.allStar && draft.game >= draft.bestOf
-                    ? "準備画面へ戻る"
-                    : "次の試合"}
-                  <ArrowRight size={16} />
-                </button>
+                <>
+                  <div className="selected-description" aria-hidden="true" />
+                  <button
+                    ref={completionAction}
+                    className="confirm-button completion-next"
+                    onClick={() => {
+                      if (draft.allStar && draft.game >= draft.bestOf) {
+                        openSetup();
+                        return;
+                      }
+                      setFirstPrompt("next");
+                    }}
+                  >
+                    {draft.allStar && draft.game >= draft.bestOf
+                      ? "準備画面へ戻る"
+                      : "次の試合"}
+                    <ArrowRight size={16} />
+                  </button>
+                </>
               ) : (
                 <>
                   <div className="selected-description">

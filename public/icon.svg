@@ -1,11 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <linearGradient id="purple" x1="12" y1="12" x2="43" y2="49" gradientUnits="userSpaceOnUse"><stop stop-color="#d2baff"/><stop offset="1" stop-color="#8362d9"/></linearGradient>
-    <linearGradient id="orange" x1="50" y1="50" x2="23" y2="15" gradientUnits="userSpaceOnUse"><stop stop-color="#ffcf86"/><stop offset="1" stop-color="#de9347"/></linearGradient>
-  </defs>
-  <rect x="1" y="1" width="62" height="62" rx="17" fill="#12232e" stroke="#507985"/>
-  <path d="M12 24 23 13h19l-7 7H26l-7 7v10l8 8h9l-7 7h-6L12 41Z" fill="url(#purple)"/>
-  <path d="m52 40-11 11H22l7-7h9l7-7V27l-8-8h-9l7-7h6l11 11Z" fill="url(#orange)"/>
-  <path d="m32 25 7 7-7 7-7-7Z" fill="#a0edf1"/>
-  <path d="M7 30v-7l6-6M57 34v7l-6 6" fill="none" stroke="#79d8e5" stroke-width="1.5" stroke-linecap="round" opacity=".65"/>
+  <rect width="64" height="64" rx="16" fill="#403b54"/>
+  <!-- Ground platform: a shallow edge, broad rim, and inset scoring surface. -->
+  <ellipse cx="32" cy="41.5" rx="24" ry="15.6" fill="#515465"/>
+  <ellipse cx="32" cy="40" rx="24" ry="15.6" fill="#858999"/>
+  <ellipse cx="32" cy="40" rx="20.5" ry="13.325" fill="#765f4c"/>
+  <ellipse cx="32" cy="39.5" rx="20" ry="13" fill="#b5946c"/>
+  <ellipse cx="32" cy="39.5" rx="8" ry="5.2" fill="none" stroke="#d1b286" stroke-width="1" opacity=".55"/>
+  <path d="M9.5 40h3M51.5 40h3M32 26v2M32 52v2" fill="none" stroke="#d7d4d9" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Two flat-shaded annuli give the floating hoop depth without thickening its top. -->
+  <path fill="#9d754d" fill-rule="evenodd" d="M44 19.5a12 7.8 0 1 0-24 0a12 7.8 0 1 0 24 0ZM41 19.5a9 5.85 0 1 0-18 0a9 5.85 0 1 0 18 0Z"/>
+  <path fill="#d8b383" fill-rule="evenodd" d="M44 17.5a12 7.8 0 1 0-24 0a12 7.8 0 1 0 24 0ZM41 17.5a9 5.85 0 1 0-18 0a9 5.85 0 1 0 18 0Z"/>
 </svg>

@@ -1842,3 +1842,35 @@ dialog.review-dialog {
 .app:not(.setup-mode) .utility-actions > .review-history-button {
   color: color-mix(in srgb, var(--purple) 55%, #d9edf0);
 }
+
+/* Review uses equal square artwork for BAN and PICK, without captions. */
+.past-game-review .review-ban-list article,
+.past-game-review .review-pick-list article {
+  display: grid;
+  place-items: center;
+  grid-template-rows: none;
+  min-height: 54px;
+}
+.past-game-review .review-ban-list article .portrait,
+.past-game-review .review-pick-list article .portrait,
+.past-game-review .review-ban-list .review-skip-mark {
+  width: min(100%, 52px);
+  height: auto;
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+.past-game-review .review-skip-mark {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--surface-border);
+  border-radius: 9px;
+  background: var(--surface-control);
+  color: var(--text-tertiary);
+  font-size: 18px;
+  line-height: 1;
+}
+.past-game-review .review-ban-list article .portrait,
+.past-game-review .review-pick-list article .portrait,
+.past-game-review .review-ban-list .review-skip-mark {
+  width: min(100%, 45px);
+}

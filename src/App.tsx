@@ -1400,10 +1400,11 @@ function App() {
                             const p = ban?.pokemon ? byId.get(ban.pokemon) : null;
                             return (
                               <article key={`${team}-ban-${index}`}>
-                                {p ? <Portrait p={p} /> : <Ban size={18} />}
-                                <span>
-                                  {p?.name ?? (ban ? "スキップ" : "記録なし")}
-                                </span>
+                                {p ? (
+                                  <Portrait p={p} />
+                                ) : (
+                                  <span className="review-skip-mark" aria-label={ban ? "BANスキップ" : "BAN記録なし"}>—</span>
+                                )}
                               </article>
                             );
                           })}
@@ -1417,7 +1418,6 @@ function App() {
                             return (
                               <article key={p.id}>
                                 <Portrait p={p} />
-                                <span>{p.name}</span>
                               </article>
                             );
                           })}

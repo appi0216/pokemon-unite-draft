@@ -1874,3 +1874,12 @@ dialog.review-dialog {
 .past-game-review .review-ban-list .review-skip-mark {
   width: min(100%, 45px);
 }
+
+/* BAN skip in review is the same bare dash used by the draft BAN slots. */
+.past-game-review .review-skip-mark {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-tertiary);
+}

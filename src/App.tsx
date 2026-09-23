@@ -135,6 +135,8 @@ function App() {
   const [exporting, setExporting] = useState(false);
   const [resultImage, setResultImage] = useState<string | null>(null);
   const [sort, setSort] = useState("name");
+  const [sortOpen, setSortOpen] = useState(false);
+  const sortMenu = useRef<HTMLDivElement>(null);
   const [compactView, setCompactView] = useState<
     "purple" | "roster" | "orange"
   >("roster");
@@ -172,6 +174,14 @@ function App() {
   );
   const bans = draft.actions.filter((a) => a.phase === "ban");
   const picks = draft.actions.filter((a) => a.phase === "pick");
+  useEffect(() => {
+    if (!sortOpen) return;
+    const close = (event: PointerEvent) => {
+      if (!sortMenu.current?.contains(event.target as Node)) setSortOpen(false);
+    };
+    addEventListener("pointerdown", close);
+    return () => removeEventListener("pointerdown", close);
+  }, [sortOpen]);
   useEffect(() => {
     try {
       localStorage.setItem(
@@ -315,6 +325,7 @@ function App() {
         }
         if (e.key === "Escape") {
           e.preventDefault();
+          setSortOpen(false);
           setSelected(null);
           (document.activeElement as HTMLElement)?.blur();
           return;
@@ -806,17 +817,73 @@ function App() {
                   <h2>ポケモンを選択</h2>
                   <span className="roster-count">{pokemon.length}</span>
                 </div>
-                <label className="sort-select">
-                  <select
+                <div
+                  className={`sort-select ${sortOpen ? "open" : ""}`}
+                  ref={sortMenu}
+                  onKeyDown={(event) => {
+                    if (
+                      !sortOpen ||
+                      !["ArrowDown", "ArrowUp"].includes(event.key)
+                    )
+                      return;
+                    event.preventDefault();
+                    const options = Array.from(
+                      event.currentTarget.querySelectorAll<HTMLButtonElement>(
+                        ".sort-menu button",
+                      ),
+                    );
+                    const current = options.indexOf(
+                      document.activeElement as HTMLButtonElement,
+                    );
+                    const delta = event.key === "ArrowDown" ? 1 : -1;
+                    const next =
+                      current < 0
+                        ? event.key === "ArrowDown"
+                          ? 0
+                          : options.length - 1
+                        : (current + delta + options.length) % options.length;
+                    options[next]?.focus();
+                  }}
+                >
+                  <button
+                    type="button"
+                    className="sort-trigger"
                     aria-label="ポケモンの並び順"
-                    value={sort}
-                    onChange={(e) => setSort(e.target.value)}
+                    aria-haspopup="listbox"
+                    aria-expanded={sortOpen}
+                    onClick={() => setSortOpen(!sortOpen)}
                   >
-                    <option value="name">名前順</option>
-                    <option value="new">新しい順</option>
-                  </select>
-                  <ChevronDown size={13} />
-                </label>
+                    <span>{sort === "name" ? "名前順" : "新しい順"}</span>
+                    <ChevronDown size={13} />
+                  </button>
+                  {sortOpen && (
+                    <div
+                      className="sort-menu"
+                      role="listbox"
+                      aria-label="並び順"
+                    >
+                      {[
+                        ["name", "名前順"],
+                        ["new", "新しい順"],
+                      ].map(([value, label]) => (
+                        <button
+                          type="button"
+                          role="option"
+                          aria-selected={sort === value}
+                          className={sort === value ? "selected" : ""}
+                          key={value}
+                          onClick={() => {
+                            setSort(value);
+                            setSortOpen(false);
+                          }}
+                        >
+                          <span>{label}</span>
+                          {sort === value && <Check size={13} />}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
               <div className="roster-tools">
                 <label className="search-field">

@@ -40,29 +40,104 @@
 }
 
 .search-field input,
-.search-field input:focus,
-.sort-select select,
-.sort-select select:focus,
-.sort-select select:active {
+.search-field input:focus {
   background: transparent;
   color: #e9f4f6;
   outline: none;
 }
 
-.sort-select select {
-  color-scheme: dark;
+.sort-select {
+  position: relative;
+  z-index: 12;
+}
+
+.sort-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 92px;
+  min-height: 30px;
+  padding: 5px 8px 5px 10px;
+  border: 1px solid #3c525d;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #202e36, #19262d);
+  color: #e9f4f6;
+  font-size: 11px;
+  font-weight: 600;
+  box-shadow: inset 0 1px #ffffff08;
+}
+
+.sort-trigger > svg {
+  color: #8fb2ba;
+  transition: transform 160ms ease;
+}
+
+.sort-select.open .sort-trigger {
+  border-color: #66bdc9;
+  box-shadow:
+    inset 0 0 0 1px #66bdc933,
+    0 0 0 3px #53b8c41c;
+}
+
+.sort-select.open .sort-trigger > svg {
+  transform: rotate(180deg);
+}
+
+.sort-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  width: 132px;
+  padding: 5px;
+  border: 1px solid #45606b;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #ffffff08, transparent 40%), #17262e;
+  box-shadow:
+    0 14px 30px #02080c80,
+    inset 0 1px #ffffff0d;
+  animation: sort-menu-in 140ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sort-menu button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 31px;
+  padding: 6px 8px;
   border: 1px solid transparent;
   border-radius: 7px;
-  padding: 5px 20px 5px 7px;
+  background: transparent;
+  color: #a9c0c6;
+  font-size: 11px;
+  text-align: left;
 }
 
-.sort-select select:focus-visible {
-  border-color: #587681;
-  box-shadow: 0 0 0 3px #53b8c417;
+.sort-menu button:hover,
+.sort-menu button:focus-visible {
+  outline: none;
+  border-color: #46636d;
+  background: #243841;
+  color: #f0fafb;
 }
 
-.sort-select > svg {
-  right: 6px;
+.sort-menu button.selected {
+  border-color: #5aaab6;
+  background: linear-gradient(135deg, #2e5964, #263f49);
+  color: #f4feff;
+}
+
+.sort-menu button.selected > svg {
+  color: #87e0e9;
+  filter: drop-shadow(0 0 5px #72d5e166);
+}
+
+@keyframes sort-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
 }
 
 .phase-game {
@@ -77,7 +152,8 @@
 .side-options button > span:nth-child(2),
 .single-match-format strong,
 .search-field input,
-.sort-select select,
+.sort-trigger,
+.sort-menu button,
 .hide-used,
 .role-tabs button,
 .subtle-button,

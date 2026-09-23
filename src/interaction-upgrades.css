@@ -3,27 +3,6 @@
   display: none;
 }
 
-.roster-selection-status {
-  max-width: min(230px, 35vw);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  padding: 4px 8px;
-  border: 1px solid #5a7480;
-  border-radius: 7px;
-  background: #263942;
-  color: #e1f6f8;
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.roster-selection-status.ban,
-.selection-action-label.ban {
-  border-color: #9b795c;
-  background: #3b302b;
-  color: #ffd5a9;
-}
-
 .pokemon-grid .pokemon-card.is-selected {
   border-color: #a6e8ef;
   box-shadow:
@@ -32,27 +11,17 @@
     0 0 18px #6ad0df38;
 }
 
-.selected-description {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  flex-wrap: wrap;
+.app:not(.setup-mode) .timeline-step > span:last-child {
+  font-size: 9px;
 }
 
-.selection-action-label {
-  padding: 2px 6px;
-  border: 1px solid #5a7480;
-  border-radius: 5px;
-  background: #263942;
-  color: #dcf7fa;
+.app:not(.setup-mode) .pokemon-card .pokemon-name,
+.app:not(.setup-mode) .selection-footer {
   font-size: 10px;
-  font-weight: 700;
 }
 
-.selected-description strong {
-  margin-right: 0;
-  color: #f4fcfd;
+.app:not(.setup-mode) .app-footer {
+  font-size: 9px;
 }
 
 @media (max-width: 820px) {
@@ -105,6 +74,14 @@
     font-size: 9px;
   }
 
+  .app:not(.setup-mode) .role-tabs button {
+    font-size: 10px;
+  }
+
+  .app:not(.setup-mode) .trainer {
+    font-size: 9px;
+  }
+
   .draft-arena,
   .allstar-arena {
     grid-template-columns: minmax(0, 1fr) !important;
@@ -126,10 +103,6 @@
   .draft-arena.compact-view-orange > .selection-panel,
   .draft-arena.compact-view-orange > .team-side.purple {
     display: none !important;
-  }
-
-  .roster-selection-status {
-    max-width: 30vw;
   }
 }
 
@@ -163,5 +136,82 @@
   .draft-arena,
   .allstar-arena {
     grid-template-rows: minmax(520px, 1fr) !important;
+  }
+}
+
+@media (max-width: 619px) and (min-height: 640px) {
+  .app:not(.setup-mode) {
+    height: 100dvh;
+    min-height: 0;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    overflow: hidden;
+  }
+
+  .app:not(.setup-mode) > .draft-main {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .app:not(.setup-mode) .phase-banner,
+  .app:not(.setup-mode) .compact-view-tabs,
+  .app:not(.setup-mode) .decision-bar {
+    flex: 0 0 auto;
+  }
+
+  .app:not(.setup-mode) .phase-banner {
+    margin-bottom: 7px;
+  }
+
+  .app:not(.setup-mode) .phase-banner > .timeline {
+    min-height: 34px;
+    padding-top: 2px;
+  }
+
+  .app:not(.setup-mode) .draft-arena,
+  .app:not(.setup-mode) .allstar-arena {
+    flex: 1 1 auto;
+    min-height: 0;
+    grid-template-rows: minmax(0, 1fr) !important;
+  }
+
+  .app:not(.setup-mode) .decision-bar {
+    min-height: 0;
+    padding-block: 3px;
+  }
+
+  .app:not(.setup-mode) .utility-actions .subtle-button {
+    padding-block: 5px;
+  }
+
+  .app:not(.setup-mode) .team-panel {
+    grid-template-rows: 28px 12px 38px 14px minmax(0, 1fr) 12px;
+    gap: 2px;
+    padding-block: 6px;
+  }
+
+  .app:not(.setup-mode) .player-list {
+    grid-template-rows: repeat(5, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .app:not(.setup-mode) .player-slot {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 619px) and (min-height: 640px) and (max-height: 679px) {
+  .app:not(.setup-mode) .player-info {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .app:not(.setup-mode) .player-info .trainer {
+    margin-top: 0;
+    line-height: 1;
   }
 }

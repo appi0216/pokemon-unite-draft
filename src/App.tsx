@@ -798,15 +798,6 @@ function App() {
                   <Grid2X2 size={17} />
                   <h2>ポケモンを選択</h2>
                   <span className="roster-count">{pokemon.length}</span>
-                  {selectedPokemon && !complete && (
-                    <span
-                      className={`roster-selection-status ${phase}`}
-                      aria-live="polite"
-                    >
-                      {phase === "ban" ? "BAN候補" : "PICK候補"} ·{" "}
-                      {selectedPokemon.name}
-                    </span>
-                  )}
                 </div>
                 <label className="sort-select">
                   <select
@@ -1122,13 +1113,11 @@ function App() {
                   <div className="selected-description">
                     {selectedPokemon ? (
                       <>
-                        <span className={`selection-action-label ${phase}`}>
-                          {phase === "ban" ? "BAN候補" : "PICK候補"}
-                        </span>
                         <strong>{selectedPokemon.name}</strong>
                         <span>
-                          {roles[selectedPokemon.role]}型を
-                          {phase === "ban" ? "使用禁止" : "選出"}
+                          {phase === "ban"
+                            ? "を使用禁止にします"
+                            : "を選出します"}
                         </span>
                       </>
                     ) : (
@@ -1259,19 +1248,9 @@ function App() {
       )}
       {rewindTarget !== null && (
         <Modal
-          title="このターンに戻りますか？"
+          title={`この${schedule[rewindTarget].phase === "ban" ? "BAN" : "PICK"}フェーズに戻りますか？`}
           onClose={() => setRewindTarget(null)}
         >
-          <p>
-            第{rewindTarget + 1}区間の
-            {teamName(schedule[rewindTarget].team)}
-            {schedule[rewindTarget].phase === "ban" ? "のBAN" : "のPICK"}
-            に戻ります。以降に確定した
-            <strong>
-              {draft.actions.length - stageStarts[rewindTarget]}件
-            </strong>
-            のBAN・PICKを取り消します。
-          </p>
           <div className="modal-buttons">
             <button
               className="modal-secondary"
@@ -1293,7 +1272,7 @@ function App() {
                 setRewindTarget(null);
               }}
             >
-              このターンに戻る
+              戻る
             </button>
           </div>
         </Modal>

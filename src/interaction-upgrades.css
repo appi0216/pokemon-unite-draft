@@ -1801,3 +1801,44 @@ dialog.review-dialog {
     max-height: calc(100dvh - 104px);
   }
 }
+
+/* Keep review cards at a stable density and make PICK the visual priority. */
+.review-dialog .past-games-review {
+  grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 600px));
+  justify-content: center;
+}
+.review-dialog .past-game-review-card {
+  width: 100%;
+  max-width: 600px;
+}
+.past-game-review .review-ban-list article {
+  display: grid;
+  grid-template-rows: 30px auto;
+  place-items: center;
+  min-width: 0;
+}
+.past-game-review .review-ban-list article .portrait,
+.past-game-review .review-ban-list article > svg {
+  width: 30px;
+  height: 30px;
+  aspect-ratio: 1;
+}
+.past-game-review .review-ban-list article span {
+  font-size: 7px;
+}
+.past-game-review .review-pick-list {
+  gap: 7px;
+}
+.past-game-review .review-pick-list article .portrait {
+  width: 100%;
+  max-width: 72px;
+  margin-inline: auto;
+}
+.past-game-review .review-pick-list article span {
+  margin-top: 5px;
+  font-size: 9px;
+  font-weight: 700;
+}
+.app:not(.setup-mode) .utility-actions > .review-history-button {
+  color: color-mix(in srgb, var(--purple) 55%, #d9edf0);
+}

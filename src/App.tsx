@@ -663,16 +663,6 @@ function App() {
         </div>
         <div className="header-actions">
           {screen === "setup" && <span className="snapshot">2026.09.18</span>}
-          {screen === "draft" && draft.allStar && draft.history.length > 0 && (
-            <button
-              className="icon-button review-history-button"
-              title="これまでの試合を振り返る"
-              aria-label="これまでの試合を振り返る"
-              onClick={() => setReviewOpen(true)}
-            >
-              <HistoryIcon size={18} />
-            </button>
-          )}
           <button
             className="icon-button"
             title="画面を広げる"
@@ -824,7 +814,6 @@ function App() {
                   name={teamName("purple")}
                   history={draft.history}
                   active={!complete && step?.team === "purple"}
-                  onReview={() => setReviewOpen(true)}
                 />
               )}
               {renderTeamPanel("purple")}
@@ -1131,13 +1120,21 @@ function App() {
                   name={teamName("orange")}
                   history={draft.history}
                   active={!complete && step?.team === "orange"}
-                onReview={() => setReviewOpen(true)}
                 />
               )}
             </div>
           </section>
           <section className="decision-bar">
             <div className="utility-actions">
+              {draft.allStar && draft.history.length > 0 && (
+                <button
+                  className="subtle-button review-history-button"
+                  onClick={() => setReviewOpen(true)}
+                >
+                  <HistoryIcon size={16} />
+                  <span>試合履歴</span>
+                </button>
+              )}
               <button
                 className="subtle-button"
                 disabled={!draft.actions.length}
@@ -1396,18 +1393,20 @@ function App() {
                       <h4>{teamName(team)}</h4>
                       <strong>BAN</strong>
                       <div className="review-ban-list">
-                        {(past.bans ?? [])
-                          .filter((ban) => ban.team === team)
-                          .map((ban, index) => {
-                            const p = ban.pokemon ? byId.get(ban.pokemon) : null;
+                        {(past.bans
+                          ? past.bans.filter((ban) => ban.team === team)
+                          : Array.from({ length: 3 }, () => null)
+                        ).map((ban, index) => {
+                            const p = ban?.pokemon ? byId.get(ban.pokemon) : null;
                             return (
                               <article key={`${team}-ban-${index}`}>
                                 {p ? <Portrait p={p} /> : <Ban size={18} />}
-                                <span>{p?.name ?? "スキップ"}</span>
+                                <span>
+                                  {p?.name ?? (ban ? "スキップ" : "記録なし")}
+                                </span>
                               </article>
                             );
                           })}
-                        {!past.bans && <small>記録なし</small>}
                       </div>
                       <strong>PICK</strong>
                       <div className="review-pick-list">

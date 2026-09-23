@@ -8,13 +8,11 @@ export default function TeamHistory({
   name,
   history,
   active,
-  onReview,
 }: {
   team: Team;
   name: string;
   history: PastGame[];
   active: boolean;
-  onReview: () => void;
 }) {
   return (
     <aside
@@ -38,13 +36,7 @@ export default function TeamHistory({
               key={past.game}
               aria-label={`GAME ${past.game}`}
             >
-              <button
-                type="button"
-                className="history-game-button"
-                onClick={onReview}
-              >
-                GAME {String(past.game).padStart(2, "0")}
-              </button>
+              <h3>GAME {String(past.game).padStart(2, "0")}</h3>
               <div className="history-pokemon">
                 {past.picks
                   .filter((p) => p.team === team)

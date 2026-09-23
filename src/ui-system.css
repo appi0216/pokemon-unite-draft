@@ -1,4 +1,18 @@
 /* Shared motion and control metrics. Component rules reference these tokens. */
+.app-header .brand img {
+  border-radius: 10px;
+  box-shadow: 0 0 14px #79d8e51a;
+}
+.setup-mode .app-header .brand > span {
+  font-weight: 850;
+  letter-spacing: 0.4px;
+  color: #edfaff;
+}
+.setup-mode .app-header .brand-light {
+  color: #90dbe5;
+  font-weight: 650;
+  letter-spacing: 1.2px;
+}
 :root {
   --motion-standard-easing: cubic-bezier(0.22, 1, 0.36, 1);
   --motion-ambient-easing: cubic-bezier(0.45, 0, 0.55, 1);
@@ -267,7 +281,7 @@
 .setup-mode .timer-options button small,
 .setup-mode .field-hint,
 .setup-mode .setup-footnote {
-  font-size: 9.5px;
+  font-size: 11px;
   line-height: 1.35;
 }
 
@@ -283,6 +297,34 @@
 }
 .setup-mode .mode-option {
   padding-inline: 8px;
+}
+
+.rules-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.rules-table caption {
+  text-align: left;
+  color: var(--text-secondary);
+  padding-bottom: 8px;
+}
+.rules-table th,
+.rules-table td {
+  padding: 10px;
+  border-bottom: 1px solid var(--surface-border);
+  text-align: left;
+  vertical-align: top;
+}
+.rules-table th {
+  color: var(--text-primary);
+}
+.rules-table td {
+  color: var(--text-secondary);
+}
+.rules-table th[scope="row"] {
+  width: 100px;
 }
 
 .setup-card.has-saved-draft .resume-card {
@@ -327,6 +369,33 @@
 }
 
 /* Neutral utilities use cyan; team colors remain reserved for team identity. */
+.allstar-arena .team-history .history-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  text-align: center;
+}
+.allstar-arena .team-history .history-heading > span {
+  margin: 0;
+  align-self: center;
+}
+.app:not(.setup-mode) .review-history-button.history-result-ready {
+  border-color: #79d8e5;
+  background: #245361;
+  color: #effdff;
+  box-shadow: 0 0 12px #68cbd74d;
+  animation: history-result-glow 1.8s var(--motion-standard-easing) 3;
+}
+@keyframes history-result-glow {
+  50% { box-shadow: 0 0 22px #68cbd799; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .app:not(.setup-mode) .review-history-button.history-result-ready {
+    animation: none;
+  }
+}
 .app:not(.setup-mode) .review-history-button {
   color: #79d8e5;
 }
@@ -432,13 +501,25 @@ dialog.review-dialog.single-game {
   align-items: end;
 }
 .app:not(.setup-mode) .decision-main {
+  /* Keep all state-independent geometry here; never collapse the caption row. */
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: 14px var(--decision-action-height);
   align-content: end;
   justify-items: center;
   gap: 6px;
+  min-width: 0;
   min-height: 58px;
+}
+.app:not(.setup-mode) .decision-main > .confirm-button {
+  /* Keep the action anchored even when a resized viewport moves it under the pointer. */
+  transform: none;
+}
+@media (max-width: 680px) {
+  .app:not(.setup-mode) .decision-main {
+    flex: 0 0 100%;
+    order: 0;
+  }
 }
 .app:not(.setup-mode) .decision-main .selected-description {
   position: static;
@@ -484,5 +565,12 @@ dialog.review-dialog.single-game {
 @media (max-width: 700px) {
   .setup-mode .mode-options {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 619px) and (min-height: 520px) {
+  .app:not(.setup-mode) > .draft-main {
+    /* hidden still scrolls on focus; only the roster/history should scroll. */
+    overflow: clip;
   }
 }

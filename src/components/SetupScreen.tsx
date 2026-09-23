@@ -148,7 +148,7 @@ export default function SetupScreen({
               >
                 <Sparkles size={21} />
                 <strong>オールスター</strong>
-                <small>過去の選出は両チームで再使用不可</small>
+                <small>両チームの選出が再使用不可</small>
                 {values.allStar && !values.fearless && (
                   <Check className="option-check" size={15} />
                 )}
@@ -163,7 +163,7 @@ export default function SetupScreen({
               >
                 <Shield size={21} />
                 <strong>フィアレス</strong>
-                <small>自チームの過去の選出は再使用不可</small>
+                <small>自チームの選出が再使用不可</small>
                 {values.allStar && values.fearless && (
                   <Check className="option-check" size={15} />
                 )}
@@ -230,7 +230,7 @@ export default function SetupScreen({
               ))}
             </div>
             <p className="field-hint">
-              あり：BANは各15秒で自動スキップ、PICKは各ターン20秒です。
+              あり：BAN 15秒／PICK 20秒。BANは時間切れでスキップ。
             </p>
           </fieldset>
         </div>

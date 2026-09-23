@@ -1,4 +1,3 @@
-import { History } from "lucide-react";
 import type { PastGame, Team } from "../domain/draft";
 import { byId } from "../data/roster";
 import Portrait from "./Portrait";
@@ -20,7 +19,6 @@ export default function TeamHistory({
       aria-label={`${name}の過去の選出`}
     >
       <div className="history-heading">
-        <History size={13} />
         <strong>選択済</strong>
         <span>{history.length * 5}</span>
       </div>

@@ -121,11 +121,6 @@
     line-height: 1.3;
     margin-top: 2px;
   }
-  .decision-main:has(.complete-button),
-  .decision-main:has(.final-image-action) {
-    flex-direction: row;
-    justify-content: center;
-  }
   .decision-main > .complete-button,
   .decision-main > .next-game {
     min-width: 0;

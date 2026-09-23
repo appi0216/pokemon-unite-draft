@@ -173,17 +173,6 @@
 }
 
 @media (min-height: 640px) {
-  .app:not(.setup-mode) .decision-main {
-    min-height: 66px;
-    justify-content: flex-end;
-  }
-
-  .app.draft-complete .decision-main {
-    flex-direction: row;
-    align-items: flex-end;
-    gap: 7px;
-  }
-
   .app.draft-complete .decision-main > .complete-button,
   .app.draft-complete .decision-main > .next-game,
   .app.draft-complete .decision-main > .confirm-button {
@@ -843,10 +832,6 @@
   gap: 12px;
 }
 
-.app:not(.setup-mode) .decision-main {
-  gap: 3px;
-}
-
 .app:not(.setup-mode) .selected-description {
   min-height: 13px;
   font-size: 10px;
@@ -1449,10 +1434,6 @@
   min-height: 60px;
   padding-block: 4px;
   gap: 12px;
-}
-
-.app:not(.setup-mode) .decision-main {
-  gap: 3px;
 }
 
 .app:not(.setup-mode) .selected-description {
@@ -2061,12 +2042,6 @@ dialog.review-dialog {
 }
 
 /* Completion actions match the primary BAN/PICK decision button exactly. */
-.app.draft-complete .decision-main {
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
 .app.draft-complete .decision-main > .complete-button,
 .app.draft-complete .decision-main > .next-game,
 .app.draft-complete .decision-main > .final-image-action,

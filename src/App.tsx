@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import Portrait from "./components/Portrait";
 import DraftTools from "./components/DraftTools";
@@ -13,7 +13,6 @@ import { createSeriesImage, createResultImage } from "./result-image";
 import TeamHistory from "./components/TeamHistory";
 import {
   ArrowLeftRight,
-  ArrowRight,
   Ban,
   Check,
   ChevronDown,
@@ -123,6 +122,7 @@ function Modal({
   children: ReactNode;
   className?: string;
 }) {
+  const headingId = useId();
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     const d = ref.current;
@@ -132,6 +132,7 @@ function Modal({
   return (
     <dialog
       ref={ref}
+      aria-labelledby={headingId}
       className={className}
       onCancel={onClose}
       onClick={(e) => {
@@ -139,7 +140,7 @@ function Modal({
       }}
     >
       <div className="modal-heading">
-        <h2>{title}</h2>
+        <h2 id={headingId}>{title}</h2>
         <button className="icon-button" onClick={onClose} aria-label="閉じる">
           <X />
         </button>
@@ -849,9 +850,9 @@ function App() {
           {screen === "setup" && <span className="snapshot">2026.09.18</span>}
           {screen === "draft" && reviewGames.length > 0 && (
             <button
-              className="icon-button review-history-button"
-              title="試合履歴"
-              aria-label="試合履歴"
+              className={`icon-button review-history-button${complete ? " history-result-ready" : ""}`}
+              title="試合履歴・画像保存"
+              aria-label="試合履歴・画像保存"
               onClick={() => setReviewOpen(true)}
             >
               <HistoryIcon size={18} />
@@ -1319,7 +1320,9 @@ function App() {
                     ? draft.history.some((game) =>
                         game.picks.some(
                           (pick) =>
-                            pick.team === activeTeam && pick.pokemon === p.id,
+                            (draft.seriesRule === "all-star" ||
+                              pick.team === activeTeam) &&
+                            pick.pokemon === p.id,
                         ),
                       )
                     : draft.excluded.includes(p.id);
@@ -1367,7 +1370,7 @@ function App() {
                             {draft.restricted?.includes(p.id)
                               ? "大会制限"
                               : old
-                                ? "前の試合"
+                                ? "過去の選出"
                                 : action?.phase === "pick"
                                   ? "PICK"
                                   : "BAN"}
@@ -1395,7 +1398,11 @@ function App() {
               </div>
               <div className="selection-footer">
                 <span>{visible.length}体を表示</span>
-                <span className="keyboard-hint">矢印で選択 · Enterで確定</span>
+                <span className="keyboard-hint">
+                  {complete
+                    ? "選出の交換はチーム内の枠を2つ選択"
+                    : "矢印で選択 · Enterで確定"}
+                </span>
                 {!hideUsed && (
                   <span>
                     <Check size={12} />
@@ -1466,7 +1473,6 @@ function App() {
                     {draft.allStar && draft.game >= draft.bestOf
                       ? "準備画面へ戻る"
                       : "次の試合"}
-                    <ArrowRight size={16} />
                   </button>
                 </>
               ) : (
@@ -1494,7 +1500,6 @@ function App() {
                     disabled={!selected}
                     onClick={confirm}
                   >
-                    {phase === "ban" ? <Ban size={18} /> : <Check size={21} />}
                     <span>{phase === "ban" ? "使用禁止にする" : "決定"}</span>
                   </button>
                 </>
@@ -1914,9 +1919,42 @@ function App() {
               矢印：ポケモンを選択 ／ Enter：確定 ／ /：検索 ／ Esc：選択解除 ／
               P：タイマー停止・再開 ／ U：1つ戻す ／ Y：1つ進む。
               文字入力中はショートカットを無効にします。
+              先攻選択：左右キーでチーム・閉じるへ移動、Enterで決定、Escで閉じます。
             </p>
             <p>
               1台の端末で両チームを操作する、大会形式のドラフト練習ツールです。ポケモンを選び、中央のボタンで確定してください。
+            </p>
+            <h3>ドラフト形式の違い</h3>
+            <table className="rules-table">
+              <caption>過去の試合で選出したポケモンの扱い</caption>
+              <thead>
+                <tr>
+                  <th scope="col">形式</th>
+                  <th scope="col">次の試合での制限</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">通常</th>
+                  <td>持ち越しなし。毎試合すべて選び直せます。</td>
+                </tr>
+                <tr>
+                  <th scope="row">オールスター</th>
+                  <td>両チームの過去の選出は、両チームともBAN・PICK不可。</td>
+                </tr>
+                <tr>
+                  <th scope="row">フィアレス</th>
+                  <td>
+                    自チームの過去の選出のみPICK不可。相手は使用可能です。
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              過去のBANは持ち越しません。フィアレスのBAN中は「選択可能のみ」で、相手が過去に選出し再使用できないポケモンも非表示にします。
+            </p>
+            <p>
+              結果画像は右上の「試合履歴・画像保存」から保存できます。シリーズでは全試合を1枚にまとめることもできます。
             </p>
             <h3>大会モード · 各チーム3 BAN</h3>
             <p>

@@ -1908,7 +1908,7 @@ dialog.review-dialog {
   .decision-main
   > :is(.confirm-button, .complete-button, .next-game, .final-image-action) {
   box-sizing: border-box;
-  flex: 0 0 var(--decision-action-width);
+  flex: 0 0 auto;
   width: var(--decision-action-width);
   min-width: var(--decision-action-width);
   max-width: var(--decision-action-width);

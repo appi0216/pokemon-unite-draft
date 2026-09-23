@@ -475,9 +475,11 @@ function App() {
                 ) : (
                   <Ban size={23} />
                 )}
-                <span className="ban-slot-label">
-                  {shown?.name || (active ? "選択中" : `BAN ${i + 1}`)}
-                </span>
+                {!shown && !action && (
+                  <span className="ban-slot-label">
+                    {active ? "選択中" : `BAN ${i + 1}`}
+                  </span>
+                )}
               </div>
             );
           })}
@@ -593,32 +595,23 @@ function App() {
             height="34"
             alt=""
           />
-          <span>
-            UNITE<span className="brand-light"> DRAFT</span>
-            <small>
-              {screen === "draft"
-                ? `${draft.allStar ? `オールスター · BO${draft.bestOf}` : "通常ドラフト"} · GAME ${String(draft.game).padStart(2, "0")}`
-                : "ドラフトシミュレーター"}
-            </small>
-          </span>
+          {screen === "setup" && (
+            <span>
+              UNITE<span className="brand-light"> DRAFT</span>
+              <small>ドラフトシミュレーター</small>
+            </span>
+          )}
         </a>
         <div className="header-center">
           {screen === "draft" ? (
             <div className="header-phase" aria-live="polite">
               <div className="header-phase-title">
-                <span>
+                <strong>
                   {complete
                     ? "DRAFT COMPLETE"
                     : phase === "ban"
                       ? "BAN PHASE"
                       : "PICK PHASE"}
-                </span>
-                <strong>
-                  {complete
-                    ? "ドラフト完了"
-                    : phase === "ban"
-                      ? "使用禁止フェーズ"
-                      : "選択フェーズ"}
                 </strong>
               </div>
               <span className="header-phase-divider" />
@@ -715,6 +708,10 @@ function App() {
             aria-label="ドラフトの進行状況"
           >
             <section className="timeline" aria-label="BAN・PICKの順番">
+              <span className="timeline-meta">
+                {draft.allStar ? `ALL-STAR · BO${draft.bestOf}` : "STANDARD"}
+                <b>GAME {String(draft.game).padStart(2, "0")}</b>
+              </span>
               <div className="timeline-label">
                 <span className="eyebrow">DRAFT ORDER</span>
                 <span>進行順</span>

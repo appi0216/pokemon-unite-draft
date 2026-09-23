@@ -851,6 +851,113 @@
   margin-top: 6px;
 }
 
+/* Minimal draft header: icon, phase, centered instruction, timer, utilities. */
+.app:not(.setup-mode) .app-header {
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  padding-inline: clamp(12px, 2vw, 28px);
+}
+
+.app:not(.setup-mode) .brand {
+  width: 40px;
+}
+
+.app:not(.setup-mode) .brand img {
+  width: 34px;
+  height: 34px;
+}
+
+.app:not(.setup-mode) .header-phase-title {
+  min-width: 94px;
+  padding-right: clamp(10px, 1.2vw, 18px);
+}
+
+.app:not(.setup-mode) .header-phase-title > strong {
+  margin: 0;
+  color: color-mix(in srgb, var(--side) 72%, #eaf8fa);
+  font-size: clamp(10px, 0.9vw, 13px);
+  letter-spacing: 1.2px;
+}
+
+.app:not(.setup-mode) .setup-return-button {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.app:not(.setup-mode) .setup-return-button > span {
+  display: none;
+}
+
+/* Draft mode and game move from the header into the progress navigator. */
+.timeline-only .timeline {
+  position: relative;
+}
+
+.timeline-meta {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: #7f9ba4;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 1;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+.timeline-meta b {
+  color: #dce9eb;
+  font-size: 9px;
+}
+
+.timeline-only .timeline-stages {
+  margin-inline: 92px;
+}
+
+/* Filled BAN slots contain only the artwork and the confirmed-ban mark. */
+.app:not(.setup-mode) .ban-slot.filled .ban-image,
+.app:not(.setup-mode) .ban-slot.preview .ban-image {
+  width: calc(100% - 6px);
+  inset: 3px auto auto 3px;
+}
+
+.app:not(.setup-mode) .ban-slot > .ban-mark {
+  right: 4px;
+  bottom: 4px;
+}
+
+@media (max-width: 900px) {
+  .app:not(.setup-mode) .app-header {
+    grid-template-columns: 36px minmax(0, 1fr) auto;
+  }
+
+  .timeline-meta {
+    display: none;
+  }
+
+  .timeline-only .timeline-stages {
+    margin-inline: 0;
+  }
+}
+
+@media (max-width: 680px) {
+  .app:not(.setup-mode) .header-phase-title {
+    min-width: 72px;
+  }
+
+  .app:not(.setup-mode) .header-phase-title > strong {
+    font-size: 9px;
+    letter-spacing: 0.7px;
+  }
+}
+
 /* Join each All-Star history rail to its team; spacing belongs at the outer edge. */
 .allstar-arena > .team-side.purple,
 .allstar-arena > .team-side.orange {

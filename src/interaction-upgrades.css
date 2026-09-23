@@ -1832,6 +1832,65 @@ dialog.review-dialog {
   }
 }
 
+/* Unified motion language: a responsive cubic Bézier curve across both screens. */
+:root {
+  --motion-apple: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-apple-gentle: cubic-bezier(0.33, 1, 0.68, 1);
+  --motion-fast: 180ms;
+  --motion-standard: 320ms;
+  --motion-emphasis: 520ms;
+}
+
+*,
+*::before,
+*::after {
+  transition-timing-function: var(--motion-apple);
+  animation-timing-function: var(--motion-apple-gentle);
+}
+
+:where(
+  button,
+  a,
+  input,
+  select,
+  summary,
+  .pokemon-card,
+  .player-slot,
+  .ban-slot,
+  .used-card,
+  .mode-option,
+  .side-option,
+  .setup-card,
+  .team-panel,
+  .pokemon-browser,
+  .progress-step,
+  .past-draft-team,
+  .past-draft-picks article
+) {
+  transition-property:
+    transform, background-color, border-color, color, box-shadow, opacity,
+    filter;
+  transition-duration: var(--motion-standard);
+  transition-timing-function: var(--motion-apple);
+}
+
+:where(button, a, input, select, summary) {
+  transition-duration: var(--motion-fast);
+}
+
+:where(.modal-backdrop, .result-backdrop, .review-dialog) {
+  animation-timing-function: var(--motion-apple);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 /* Keep review cards at a stable density and make PICK the visual priority. */
 .review-dialog .past-games-review {
   grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 600px));

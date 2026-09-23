@@ -220,6 +220,7 @@ test("All-Star records each team's final picks across games and restores ownersh
   d = nextGame(d);
   assert.equal(d.history.length, 1);
   assert.equal(d.history[0].game, 1);
+  assert.equal(d.history[0].first, "purple");
   assert.deepEqual(d.history[0].picks, firstPicks);
   assert.deepEqual(
     d.history[0].bans?.map((ban) => ban.pokemon),

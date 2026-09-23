@@ -5,7 +5,7 @@ import measurements from "./data/portrait-layout.json";
 /** Render from draft data so the PNG is complete at any viewport or scroll position. */
 export async function createResultImage(
   draft: Draft,
-  names: Record<Team, string>,
+  names: Record<Team, string> & { trainers?: string[] },
 ): Promise<string> {
   const canvas = document.createElement("canvas");
   canvas.width = 1600;
@@ -104,6 +104,15 @@ export async function createResultImage(
         portrait(p.id, x + 82, y + 1, 96);
         text(p.name, x + 201, y + 42, 26, color, 450);
         text(`${roles[p.role]}型`, x + 202, y + 76, 17, "#89778f", 450);
+        text(
+          names.trainers?.[team === "purple" ? i : i + 5] ??
+            `Trainer ${team === "purple" ? i + 1 : i + 6}`,
+          x + 500,
+          y + 76,
+          15,
+          "#89778f",
+          175,
+        );
       });
   }
   text("非公式ファンメイドツール · Pokémon UNITE", 60, 1132, 17, "#92849b");

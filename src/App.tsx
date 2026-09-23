@@ -58,12 +58,15 @@ type Settings = {
   orange: string;
   seconds: number;
   sound: boolean;
+  trainers: string[];
 };
+const defaultTrainers = Array.from({ length: 10 }, (_, i) => `Trainer ${i + 1}`);
 const defaults: Settings = {
   purple: "パープルチーム",
   orange: "オレンジチーム",
   seconds: 0,
   sound: false,
+  trainers: defaultTrainers,
 };
 function load() {
   try {
@@ -81,7 +84,15 @@ function load() {
         typeof s.orange === "string" &&
         [0, 20, 30, 45, 60].includes(s.seconds) &&
         typeof s.sound === "boolean"
-          ? (s as Settings)
+          ? {
+              ...s,
+              trainers:
+                Array.isArray(s.trainers) &&
+                s.trainers.length === 10 &&
+                s.trainers.every((name: unknown) => typeof name === "string")
+                  ? s.trainers
+                  : defaultTrainers,
+            }
           : defaults,
     };
   } catch {
@@ -393,6 +404,9 @@ function App() {
       orange: draftSettings.orange.trim() || defaults.orange,
       seconds: draftSettings.seconds,
       sound: settings.sound,
+      trainers: draftSettings.trainers.map(
+        (name, index) => name.trim() || defaultTrainers[index],
+      ),
     };
     setSettings(next);
     setDraft(
@@ -557,7 +571,7 @@ function App() {
                   )}
                   <span className="trainer">
                     <UserRound size={12} />
-                    Trainer {team === "purple" ? i + 1 : i + 6}
+                    {settings.trainers[team === "purple" ? i : i + 5]}
                   </span>
                 </div>
                 {active ? (
@@ -1368,7 +1382,11 @@ function App() {
               >
                 <span className="side-dot" />
                 <span>
-                  <strong>{teamName(team)}</strong>
+                  <strong>
+                    {firstPrompt === "start"
+                      ? draftSettings[team].trim() || defaults[team]
+                      : teamName(team)}
+                  </strong>
                   <small>{team === "purple" ? "左側・パープル" : "右側・オレンジ"}</small>
                 </span>
                 <span>先攻</span>
@@ -1384,13 +1402,20 @@ function App() {
           className="review-dialog"
         >
           <div className="past-games-review">
-            {draft.history.map((past) => (
+            {draft.history.map((past) => {
+              const first = past.first ?? past.bans?.[0]?.team;
+              return (
               <section className="past-game-review-card" key={past.game}>
                 <h3>GAME {String(past.game).padStart(2, "0")}</h3>
                 <div className="past-game-review">
                   {(["purple", "orange"] as Team[]).map((team) => (
                     <section key={team} className={team}>
-                      <h4>{teamName(team)}</h4>
+                      <h4>
+                        {teamName(team)}
+                        <span className={`review-order ${team}`}>
+                          {first ? (first === team ? "先攻" : "後攻") : "順番記録なし"}
+                        </span>
+                      </h4>
                       <strong>BAN</strong>
                       <div className="review-ban-list">
                         {(past.bans
@@ -1426,7 +1451,8 @@ function App() {
                   ))}
                 </div>
               </section>
-            ))}
+              );
+            })}
           </div>
         </Modal>
       )}

@@ -5,6 +5,7 @@ export type Action = { team: Team; phase: Phase; pokemon: string | null };
 export type Step = { team: Team; phase: Phase; count: number };
 export type PastGame = {
   game: number;
+  first?: Team;
   bans?: { team: Team; pokemon: string | null }[];
   picks: { team: Team; pokemon: string }[];
 };
@@ -141,6 +142,7 @@ export function nextGame(draft: Draft, first?: Team): Draft {
       ...draft.history,
       {
         game: draft.game,
+        first: draft.first,
         bans: draft.actions
           .filter((a) => a.phase === "ban")
           .map((a) => ({ team: a.team, pokemon: a.pokemon })),
@@ -217,6 +219,8 @@ export function restoreDraft(
     )
       return null;
     lastGame = past.game;
+    if (past.first !== undefined && !["purple", "orange"].includes(past.first))
+      return null;
     if (past.bans !== undefined) {
       if (
         !Array.isArray(past.bans) ||

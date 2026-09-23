@@ -18,6 +18,7 @@ export type SetupValues = {
   orange: string;
   seconds: number;
   sound: boolean;
+  trainers: string[];
   allStar: boolean;
   bestOf: BestOf;
 };
@@ -208,7 +209,7 @@ export default function SetupScreen({
         </div>
         <details className="team-name-settings">
           <summary>
-            チーム名を変更
+            チーム・Trainer名を変更
             <ChevronRight size={14} />
           </summary>
           <div>
@@ -232,6 +233,22 @@ export default function SetupScreen({
                 }
               />
             </label>
+            <div className="trainer-name-settings">
+              {values.trainers.map((trainer, index) => (
+                <label key={index}>
+                  Trainer {index + 1}
+                  <input
+                    value={trainer}
+                    maxLength={20}
+                    onChange={(e) => {
+                      const trainers = [...values.trainers];
+                      trainers[index] = e.target.value;
+                      onChange({ ...values, trainers });
+                    }}
+                  />
+                </label>
+              ))}
+            </div>
           </div>
         </details>
         <button className="start-draft-button" onClick={onStart}>

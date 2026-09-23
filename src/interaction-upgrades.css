@@ -1883,3 +1883,31 @@ dialog.review-dialog {
   box-shadow: none;
   color: var(--text-tertiary);
 }
+
+/* Team and trainer identity editing stays compact until expanded. */
+.team-name-settings .trainer-name-settings {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 10px;
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px solid var(--surface-border);
+}
+.review-order {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  padding: 2px 6px;
+  border: 1px solid color-mix(in srgb, var(--review-color) 42%, var(--surface-border));
+  border-radius: 999px;
+  color: var(--review-color);
+  font-size: 8px;
+  font-weight: 800;
+  vertical-align: middle;
+}
+@media (max-width: 680px) {
+  .team-name-settings .trainer-name-settings {
+    grid-template-columns: 1fr;
+  }
+}

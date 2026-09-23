@@ -7,6 +7,7 @@ import {
   nextGame,
   redundantAllStarBan,
   rewindToStep,
+  reviewableGames,
   restoreDraft,
   steps,
   swap,
@@ -239,6 +240,35 @@ test("All-Star records each team's final picks across games and restores ownersh
   const corrupt = JSON.parse(JSON.stringify(d));
   corrupt.history[0].picks[0].team = "unknown";
   assert.equal(restoreDraft(corrupt, ids), null);
+});
+
+test("completed current All-Star game is reviewable until undo or reset", () => {
+  let draft = finishDraft(createDraft("purple", true, 3));
+  assert.deepEqual(
+    reviewableGames(draft).map((game) => game.game),
+    [1],
+  );
+  assert.equal(reviewableGames(draft)[0].bans?.length, 6);
+  assert.equal(reviewableGames(draft)[0].picks.length, 10);
+
+  draft = undo(draft);
+  assert.deepEqual(reviewableGames(draft), []);
+
+  draft = finishDraft(createDraft("purple", true, 3));
+  draft = nextGame(draft, "orange");
+  assert.deepEqual(
+    reviewableGames(draft).map((game) => game.game),
+    [1],
+  );
+  draft = finishDraft(draft);
+  assert.deepEqual(
+    reviewableGames(draft).map((game) => game.game),
+    [1, 2],
+  );
+  assert.equal(
+    new Set(reviewableGames(draft).map((game) => game.game)).size,
+    2,
+  );
 });
 test("legacy saves keep bans from prior picks without inventing team history", () => {
   let d = createDraft("purple", true);

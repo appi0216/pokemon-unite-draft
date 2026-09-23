@@ -43,13 +43,14 @@ import {
   nextGame,
   redundantAllStarBan,
   rewindToStep,
+  reviewableGames,
   restoreDraft,
   steps,
   swap,
   unavailable,
   undo,
 } from "./domain/draft";
-import type { Draft, Team } from "./domain/draft";
+import type { Draft, PastGame, Team } from "./domain/draft";
 import { turnSeconds } from "./domain/timer";
 
 const STORAGE = "unite-draft.v1";
@@ -60,7 +61,10 @@ type Settings = {
   sound: boolean;
   trainers: string[];
 };
-const defaultTrainers = Array.from({ length: 10 }, (_, i) => `Trainer ${i + 1}`);
+const defaultTrainers = Array.from(
+  { length: 10 },
+  (_, i) => `Trainer ${i + 1}`,
+);
 const defaults: Settings = {
   purple: "パープルチーム",
   orange: "オレンジチーム",
@@ -160,6 +164,7 @@ function App() {
     "start" | "next" | "reset" | null
   >(null);
   const [reviewOpen, setReviewOpen] = useState(false);
+  const [reviewGame, setReviewGame] = useState<PastGame | null>(null);
   const pokemonGrid = useRef<HTMLDivElement>(null);
   const [running, setRunning] = useState(false);
   const [remaining, setRemaining] = useState(() =>
@@ -182,6 +187,8 @@ function App() {
   const step = currentStep(draft);
   const stageIndex = step?.index ?? 12;
   const complete = !step;
+  const showingPastGame = reviewGame !== null;
+  const visuallyComplete = complete || showingPastGame;
   const phase = step?.phase || "pick";
   const duration = turnSeconds(settings.seconds > 0, phase);
   const activeTeam = step?.team || draft.first;
@@ -192,6 +199,7 @@ function App() {
   );
   const bans = draft.actions.filter((a) => a.phase === "ban");
   const picks = draft.actions.filter((a) => a.phase === "pick");
+  const reviewGames = useMemo(() => reviewableGames(draft), [draft]);
   useEffect(() => {
     if (!sortOpen) return;
     const close = (event: PointerEvent) => {
@@ -389,6 +397,7 @@ function App() {
   const teamName = (team: Team) => settings[team];
   const openSetup = () => {
     setRunning(false);
+    setReviewGame(null);
     setSelected(null);
     setDraftSettings({
       ...settings,
@@ -409,14 +418,9 @@ function App() {
       ),
     };
     setSettings(next);
-    setDraft(
-      createDraft(
-        first,
-        draftSettings.allStar,
-        draftSettings.bestOf,
-      ),
-    );
+    setDraft(createDraft(first, draftSettings.allStar, draftSettings.bestOf));
     setStarted(true);
+    setReviewGame(null);
     setSelected(null);
     setSwapFrom(null);
     setQuery("");
@@ -431,6 +435,7 @@ function App() {
   const resumeDraft = () => {
     setRemaining(duration);
     setRunning(false);
+    setReviewGame(null);
     setScreen("draft");
     window.scrollTo({ top: 0, behavior: "instant" });
   };
@@ -467,9 +472,7 @@ function App() {
           </span>
         </div>
         <div className="bans-heading">
-          <span>
-            使用禁止
-          </span>
+          <span>使用禁止</span>
           <span>{ownBans.length} / 3</span>
         </div>
         <div className="ban-slots">
@@ -602,7 +605,7 @@ function App() {
   }
   return (
     <div
-      className={`app ${activeTeam} ${complete ? "draft-complete" : ""} ${screen === "setup" ? "setup-mode" : ""}`}
+      className={`app ${activeTeam} ${visuallyComplete ? "draft-complete" : ""} ${screen === "setup" ? "setup-mode" : ""}`}
     >
       <header className="app-header">
         <a
@@ -629,10 +632,13 @@ function App() {
         </a>
         <div className="header-center">
           {screen === "draft" ? (
-            <div className={`header-phase ${complete ? "is-complete" : ""}`} aria-live="polite">
+            <div
+              className={`header-phase ${visuallyComplete ? "is-complete" : ""}`}
+              aria-live="polite"
+            >
               <div className="header-phase-title">
                 <strong>
-                  {complete
+                  {visuallyComplete
                     ? "DRAFT COMPLETE"
                     : phase === "ban"
                       ? "BAN PHASE"
@@ -641,11 +647,13 @@ function App() {
               </div>
               <span className="header-phase-divider" />
               <strong className="header-instruction">
-                {complete
-                  ? "両チームの選出が完了しました。味方の枠を2つ選ぶと、ポケモンを交換できます。"
-                  : `${teamName(activeTeam)}が${phase === "ban" ? "使用禁止にする" : "使用する"}ポケモンを選択中`}
+                {showingPastGame
+                  ? `GAME ${String(reviewGame.game).padStart(2, "0")} の終了時点を表示中`
+                  : complete
+                    ? "両チームの選出が完了しました。味方の枠を2つ選ぶと、ポケモンを交換できます。"
+                    : `${teamName(activeTeam)}が${phase === "ban" ? "使用禁止にする" : "使用する"}ポケモンを選択中`}
               </strong>
-              {settings.seconds > 0 && !complete && (
+              {settings.seconds > 0 && !visuallyComplete && (
                 <div
                   className={`header-timer ${remaining <= 5 ? "urgent" : ""}`}
                   aria-label="ターンの残り時間"
@@ -726,6 +734,76 @@ function App() {
           game={draft.game}
           savedAllStar={draft.allStar}
         />
+      ) : showingPastGame ? (
+        <main className="draft-main past-draft-screen">
+          <section className="past-draft-heading">
+            <span>ALL-STAR · BO{draft.bestOf}</span>
+            <strong>GAME {String(reviewGame.game).padStart(2, "0")}</strong>
+            <span>終了時点</span>
+          </section>
+          <section
+            className="past-draft-teams"
+            aria-label={`GAME ${reviewGame.game}の終了結果`}
+          >
+            {(["purple", "orange"] as Team[]).map((team) => {
+              const first = reviewGame.first ?? reviewGame.bans?.[0]?.team;
+              const teamBans =
+                reviewGame.bans?.filter((ban) => ban.team === team) ?? [];
+              const teamPicks = reviewGame.picks.filter(
+                (pick) => pick.team === team,
+              );
+              return (
+                <section className={`past-draft-team ${team}`} key={team}>
+                  <header>
+                    <span className="team-emblem">
+                      <Shield size={21} />
+                    </span>
+                    <h2>{teamName(team)}</h2>
+                    <span className="order-label">
+                      {first ? (first === team ? "先攻" : "後攻") : "順番不明"}
+                    </span>
+                  </header>
+                  <h3>使用禁止</h3>
+                  <div className="past-draft-bans">
+                    {Array.from({ length: 3 }, (_, index) => {
+                      const ban = teamBans[index];
+                      const p = ban?.pokemon ? byId.get(ban.pokemon) : null;
+                      return (
+                        <div key={index}>
+                          {p ? <Portrait p={p} /> : <span>—</span>}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <h3>選出ポケモン</h3>
+                  <div className="past-draft-picks">
+                    {teamPicks.map((pick, index) => {
+                      const p = byId.get(pick.pokemon)!;
+                      return (
+                        <article key={p.id}>
+                          <span>{String(index + 1).padStart(2, "0")}</span>
+                          <Portrait p={p} />
+                          <div>
+                            <strong>{p.name}</strong>
+                            <small>{roles[p.role]}型</small>
+                          </div>
+                        </article>
+                      );
+                    })}
+                  </div>
+                </section>
+              );
+            })}
+          </section>
+          <div className="past-draft-return">
+            <button
+              className="confirm-button"
+              onClick={() => setReviewGame(null)}
+            >
+              現在の試合へ戻る
+            </button>
+          </div>
+        </main>
       ) : (
         <main className="draft-main">
           <section
@@ -1140,7 +1218,7 @@ function App() {
           </section>
           <section className="decision-bar">
             <div className="utility-actions">
-              {draft.allStar && draft.history.length > 0 && (
+              {draft.allStar && reviewGames.length > 0 && (
                 <button
                   className="subtle-button review-history-button"
                   onClick={() => setReviewOpen(true)}
@@ -1345,7 +1423,9 @@ function App() {
           title={`GAME ${String(firstPrompt === "next" ? draft.game + 1 : firstPrompt === "start" ? 1 : draft.game).padStart(2, "0")} の先攻チーム`}
           onClose={() => setFirstPrompt(null)}
         >
-          <p className="first-prompt-copy">この試合で最初にBANするチームを選択してください。</p>
+          <p className="first-prompt-copy">
+            この試合で最初にBANするチームを選択してください。
+          </p>
           <div className="first-prompt-options">
             {(["purple", "orange"] as Team[]).map((team) => (
               <button
@@ -1387,7 +1467,9 @@ function App() {
                       ? draftSettings[team].trim() || defaults[team]
                       : teamName(team)}
                   </strong>
-                  <small>{team === "purple" ? "左側・パープル" : "右側・オレンジ"}</small>
+                  <small>
+                    {team === "purple" ? "左側・パープル" : "右側・オレンジ"}
+                  </small>
                 </span>
                 <span>先攻</span>
               </button>
@@ -1402,55 +1484,82 @@ function App() {
           className="review-dialog"
         >
           <div className="past-games-review">
-            {draft.history.map((past) => {
+            {reviewGames.map((past) => {
               const first = past.first ?? past.bans?.[0]?.team;
               return (
-              <section className="past-game-review-card" key={past.game}>
-                <h3>GAME {String(past.game).padStart(2, "0")}</h3>
-                <div className="past-game-review">
-                  {(["purple", "orange"] as Team[]).map((team) => (
-                    <section key={team} className={team}>
-                      <h4>
-                        {teamName(team)}
-                        <span className={`review-order ${team}`}>
-                          {first ? (first === team ? "先攻" : "後攻") : "順番記録なし"}
-                        </span>
-                      </h4>
-                      <strong>BAN</strong>
-                      <div className="review-ban-list">
-                        {(past.bans
-                          ? past.bans.filter((ban) => ban.team === team)
-                          : Array.from({ length: 3 }, () => null)
-                        ).map((ban, index) => {
-                            const p = ban?.pokemon ? byId.get(ban.pokemon) : null;
+                <section className="past-game-review-card" key={past.game}>
+                  <button
+                    type="button"
+                    className="past-game-open"
+                    onClick={() => {
+                      setReviewGame(past);
+                      setReviewOpen(false);
+                      setRunning(false);
+                      window.scrollTo({ top: 0, behavior: "instant" });
+                    }}
+                  >
+                    <span>GAME {String(past.game).padStart(2, "0")}</span>
+                    <span>
+                      終了画面を表示 <ArrowRight size={14} />
+                    </span>
+                  </button>
+                  <div className="past-game-review">
+                    {(["purple", "orange"] as Team[]).map((team) => (
+                      <section key={team} className={team}>
+                        <h4>
+                          {teamName(team)}
+                          <span className={`review-order ${team}`}>
+                            {first
+                              ? first === team
+                                ? "先攻"
+                                : "後攻"
+                              : "順番記録なし"}
+                          </span>
+                        </h4>
+                        <strong>BAN</strong>
+                        <div className="review-ban-list">
+                          {(past.bans
+                            ? past.bans.filter((ban) => ban.team === team)
+                            : Array.from({ length: 3 }, () => null)
+                          ).map((ban, index) => {
+                            const p = ban?.pokemon
+                              ? byId.get(ban.pokemon)
+                              : null;
                             return (
                               <article key={`${team}-ban-${index}`}>
                                 {p ? (
                                   <Portrait p={p} />
                                 ) : (
-                                  <span className="review-skip-mark" aria-label={ban ? "BANスキップ" : "BAN記録なし"}>—</span>
+                                  <span
+                                    className="review-skip-mark"
+                                    aria-label={
+                                      ban ? "BANスキップ" : "BAN記録なし"
+                                    }
+                                  >
+                                    —
+                                  </span>
                                 )}
                               </article>
                             );
                           })}
-                      </div>
-                      <strong>PICK</strong>
-                      <div className="review-pick-list">
-                        {past.picks
-                          .filter((pick) => pick.team === team)
-                          .map((pick) => {
-                            const p = byId.get(pick.pokemon)!;
-                            return (
-                              <article key={p.id}>
-                                <Portrait p={p} />
-                              </article>
-                            );
-                          })}
-                      </div>
-                    </section>
-                  ))}
-                </div>
-              </section>
+                        </div>
+                        <strong>PICK</strong>
+                        <div className="review-pick-list">
+                          {past.picks
+                            .filter((pick) => pick.team === team)
+                            .map((pick) => {
+                              const p = byId.get(pick.pokemon)!;
+                              return (
+                                <article key={p.id}>
+                                  <Portrait p={p} />
+                                </article>
+                              );
+                            })}
+                        </div>
+                      </section>
+                    ))}
+                  </div>
+                </section>
               );
             })}
           </div>

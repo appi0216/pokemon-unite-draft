@@ -115,6 +115,35 @@ export const undo = (draft: Draft): Draft => ({
   actions: draft.actions.slice(0, -1),
 });
 
+/**
+ * Games available in the review UI. The completed current All-Star game is
+ * derived instead of persisted, so undo/reset removes it without touching
+ * the safely stored results of earlier games.
+ */
+export function reviewableGames(draft: Draft): PastGame[] {
+  const games = [...draft.history];
+  if (
+    !draft.allStar ||
+    currentStep(draft) ||
+    games.some((game) => game.game === draft.game)
+  )
+    return games;
+
+  return [
+    ...games,
+    {
+      game: draft.game,
+      first: draft.first,
+      bans: draft.actions
+        .filter((action) => action.phase === "ban")
+        .map(({ team, pokemon }) => ({ team, pokemon })),
+      picks: draft.actions
+        .filter((action) => action.phase === "pick" && action.pokemon)
+        .map(({ team, pokemon }) => ({ team, pokemon: pokemon! })),
+    },
+  ];
+}
+
 export function rewindToStep(draft: Draft, index: number): Draft {
   const sequence = steps(draft.first);
   if (!Number.isInteger(index) || index < 0 || index >= sequence.length)

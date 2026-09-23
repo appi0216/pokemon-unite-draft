@@ -550,15 +550,15 @@ function App() {
                         ? "ポケモンを選択中"
                         : "選択待ち"}
                   </span>
-                  <span className="trainer">
-                    <UserRound size={12} />
-                    Trainer {team === "purple" ? i + 1 : i + 6}
-                  </span>
                   {shown && (
                     <span className={`role-text ${shown.role}`}>
                       {roles[shown.role]}型
                     </span>
                   )}
+                  <span className="trainer">
+                    <UserRound size={12} />
+                    Trainer {team === "purple" ? i + 1 : i + 6}
+                  </span>
                 </div>
                 {active ? (
                   <span className="selecting-bars">

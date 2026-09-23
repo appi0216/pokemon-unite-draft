@@ -190,8 +190,6 @@ function App() {
   const [query, setQuery] = useState("");
   const [role, setRole] = useState<Role | "all">("all");
   const [hideUsed, setHideUsed] = useState(true);
-  const [exporting, setExporting] = useState(false);
-  const [resultImage, setResultImage] = useState<string | null>(null);
   const [sort, setSort] = useState("name");
   const [sortOpen, setSortOpen] = useState(false);
   const sortMenu = useRef<HTMLDivElement>(null);
@@ -207,6 +205,7 @@ function App() {
   const [exportingHistory, setExportingHistory] = useState<number | null>(null);
   const pokemonGrid = useRef<HTMLDivElement>(null);
   const completionAction = useRef<HTMLButtonElement>(null);
+  const firstTeamOption = useRef<HTMLButtonElement>(null);
   const keyboardNavigation = useRef(false);
   const [running, setRunning] = useState(false);
   const [remaining, setRemaining] = useState(() =>
@@ -291,7 +290,6 @@ function App() {
       modal ||
       firstPrompt ||
       reviewOpen ||
-      resultImage ||
       toolsOpen ||
       pendingBackup ||
       screen === "setup" ||
@@ -309,7 +307,6 @@ function App() {
     modal,
     firstPrompt,
     reviewOpen,
-    resultImage,
     toolsOpen,
     pendingBackup,
     screen,
@@ -334,6 +331,10 @@ function App() {
     if (!complete || !keyboardNavigation.current || screen !== "draft") return;
     requestAnimationFrame(() => completionAction.current?.focus());
   }, [complete, screen]);
+  useEffect(() => {
+    if (!firstPrompt) return;
+    requestAnimationFrame(() => firstTeamOption.current?.focus());
+  }, [firstPrompt]);
   useEffect(() => {
     if (!notice) return;
     const id = setTimeout(() => setNotice(""), 5500);
@@ -428,7 +429,6 @@ function App() {
         !toolsOpen &&
         !pendingBackup &&
         rewindTarget === null &&
-        !resultImage &&
         !editing &&
         !e.ctrlKey &&
         !e.metaKey &&
@@ -488,7 +488,6 @@ function App() {
         e.key === "Enter" &&
         !firstPrompt &&
         !reviewOpen &&
-        !resultImage &&
         !toolsOpen &&
         !pendingBackup &&
         selected &&
@@ -564,16 +563,6 @@ function App() {
     setReviewGame(null);
     setScreen("draft");
     window.scrollTo({ top: 0, behavior: "instant" });
-  };
-  const exportResult = async () => {
-    setExporting(true);
-    try {
-      setResultImage(await createResultImage(draft, draft.names ?? settings));
-    } catch {
-      setNotice("画像を作成できませんでした。もう一度お試しください。");
-    } finally {
-      setExporting(false);
-    }
   };
   const downloadPastResult = async (past: PastGame) => {
     setExportingHistory(past.game);
@@ -1438,40 +1427,22 @@ function App() {
             </div>
             <div className="decision-main">
               {complete ? (
-                <>
-                  <button
-                    className={
-                      draft.allStar && draft.game >= draft.bestOf
-                        ? "next-game final-image-action"
-                        : "confirm-button complete-button"
+                <button
+                  ref={completionAction}
+                  className="confirm-button completion-next"
+                  onClick={() => {
+                    if (draft.allStar && draft.game >= draft.bestOf) {
+                      openSetup();
+                      return;
                     }
-                    onClick={exportResult}
-                    disabled={exporting}
-                  >
-                    <Download size={18} />
-                    {exporting ? "画像を作成中…" : "結果画像を確認"}
-                  </button>
-                  <button
-                    ref={completionAction}
-                    className={
-                      draft.allStar && draft.game >= draft.bestOf
-                        ? "confirm-button"
-                        : "next-game"
-                    }
-                    onClick={() => {
-                      if (draft.allStar && draft.game >= draft.bestOf) {
-                        openSetup();
-                        return;
-                      }
-                      setFirstPrompt("next");
-                    }}
-                  >
-                    {draft.allStar && draft.game >= draft.bestOf
-                      ? "準備画面へ戻る"
-                      : "次の試合"}
-                    <ArrowRight size={16} />
-                  </button>
-                </>
+                    setFirstPrompt("next");
+                  }}
+                >
+                  {draft.allStar && draft.game >= draft.bestOf
+                    ? "準備画面へ戻る"
+                    : "次の試合"}
+                  <ArrowRight size={16} />
+                </button>
               ) : (
                 <>
                   <div className="selected-description">
@@ -1553,28 +1524,6 @@ function App() {
           </button>
         </div>
       </footer>
-      {resultImage && (
-        <Modal title="ドラフト結果の画像" onClose={() => setResultImage(null)}>
-          <img
-            className="result-image-preview"
-            src={resultImage}
-            alt="両チームのBANとPICKの結果"
-          />
-          <a
-            className="image-download"
-            href={resultImage}
-            download={
-              draft.allStar
-                ? `unite-draft-bo${draft.bestOf}-game-${draft.game}.png`
-                : "unite-draft.png"
-            }
-          >
-            <Download size={18} />
-            画像を保存
-          </a>
-          <p className="field-hint">画像を長押しして保存することもできます。</p>
-        </Modal>
-      )}
       {notice && (
         <div className="toast" role="status">
           <Info size={17} />
@@ -1668,7 +1617,6 @@ function App() {
                   setReviewGame(null);
                   setReviewOpen(false);
                   setFirstPrompt(null);
-                  setResultImage(null);
                   setScreen(pendingBackup.started ? "draft" : "setup");
                   setPendingBackup(null);
                   setNotice("バックアップを読み込みました。");
@@ -1724,6 +1672,7 @@ function App() {
               <button
                 key={team}
                 className={team}
+                ref={team === "purple" ? firstTeamOption : undefined}
                 onClick={() => {
                   if (firstPrompt === "start") {
                     startDraft(team);

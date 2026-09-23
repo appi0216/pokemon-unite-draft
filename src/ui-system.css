@@ -25,6 +25,25 @@
   line-height: 1;
   text-align: center;
 }
+
+.app.draft-complete .decision-main > .completion-next {
+  border-color: #69cbd8;
+  background: linear-gradient(145deg, #327d8b, #245967);
+  color: #f4fdff;
+  box-shadow:
+    inset 0 1px #ffffff26,
+    0 8px 22px #07161d66,
+    0 0 22px #62cedd24;
+}
+.app.draft-complete .decision-main > .completion-next:hover,
+.app.draft-complete .decision-main > .completion-next:focus-visible {
+  border-color: #8ce4ed;
+  background: linear-gradient(145deg, #3b909f, #286675);
+  box-shadow:
+    inset 0 1px #ffffff32,
+    0 9px 26px #07161d73,
+    0 0 28px #62cedd38;
+}
 .app:not(.setup-mode)
   :is(
     .selected-description,

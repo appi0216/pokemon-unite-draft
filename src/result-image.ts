@@ -164,7 +164,7 @@ export async function createResultImage(
       x + 604,
       221,
       20,
-      color,
+      palette.text,
       80,
       750,
     );
@@ -173,8 +173,8 @@ export async function createResultImage(
       .filter((a) => a.team === team && a.phase === "ban")
       .forEach((a, i) => {
         const size = 142;
-        const bx = x + 62 + i * 218;
-        box(bx, 309, size, size, palette.raised, `${color}75`, 16);
+        const bx = x + 147 + i * size;
+        box(bx, 309, size, size, palette.raised, `${color}75`, 12);
         if (a.pokemon) {
           portrait(a.pokemon, bx + 26, 310, 90);
           banMark(bx + 117, 329, 22, "#f29a9a");

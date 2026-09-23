@@ -772,6 +772,261 @@
   }
 }
 
+/* The live instruction follows the physical viewport, including fullscreen. */
+.app:not(.setup-mode) .header-instruction {
+  position: fixed;
+  z-index: 12;
+  top: 30px;
+  left: 50vw;
+  width: min(44vw, 680px);
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 900px) {
+  .app:not(.setup-mode) .header-instruction {
+    width: min(48vw, 430px);
+  }
+}
+
+@media (max-width: 680px) {
+  .app:not(.setup-mode) .header-instruction {
+    width: 50vw;
+  }
+}
+
+/* Final layout pass: center live copy on the viewport and reclaim arena height. */
+.app:not(.setup-mode) .header-center {
+  inset: 0;
+}
+
+.app:not(.setup-mode) .header-phase {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 44vw) minmax(0, 1fr);
+  width: 100%;
+  padding-inline: clamp(64px, 9vw, 150px);
+}
+
+.app:not(.setup-mode) .header-phase-title {
+  justify-self: end;
+}
+
+.app:not(.setup-mode) .header-instruction {
+  justify-self: stretch;
+  text-align: center;
+}
+
+.app:not(.setup-mode) .header-timer {
+  justify-self: start;
+}
+
+.app:not(.setup-mode) .bans-heading > span:first-child {
+  gap: 0;
+}
+
+.app:not(.setup-mode) .ban-slots {
+  isolation: isolate;
+  overflow: visible;
+}
+
+.app:not(.setup-mode) .ban-slot {
+  align-self: center;
+  max-height: 100%;
+}
+
+.app:not(.setup-mode) .trainer {
+  margin: 0;
+  line-height: 1;
+}
+
+.app:not(.setup-mode) .decision-bar {
+  min-height: 64px;
+  padding-block: 5px;
+  gap: 12px;
+}
+
+.app:not(.setup-mode) .decision-main {
+  gap: 3px;
+}
+
+.app:not(.setup-mode) .selected-description {
+  min-height: 13px;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.app:not(.setup-mode) .utility-actions,
+.app:not(.setup-mode) .decision-extra {
+  gap: 7px;
+}
+
+.app:not(.setup-mode) .subtle-button {
+  min-height: 34px;
+  padding: 0 10px;
+  justify-content: center;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.app:not(.setup-mode) .confirm-button,
+.app:not(.setup-mode) .next-game,
+.app:not(.setup-mode) .complete-button,
+.app:not(.setup-mode) .final-image-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 210px;
+  height: 38px;
+  padding: 0 20px;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .app:not(.setup-mode) .header-phase {
+    grid-template-columns: minmax(0, 1fr) minmax(250px, 48vw) minmax(0, 1fr);
+    padding-inline: 48px 118px;
+  }
+
+  .app:not(.setup-mode) .decision-bar {
+    min-height: 58px;
+  }
+}
+
+@media (max-width: 680px) {
+  .app:not(.setup-mode) .header-phase {
+    grid-template-columns: minmax(0, 1fr) minmax(210px, 50vw) minmax(0, 1fr);
+    padding-inline: 42px 104px;
+  }
+
+  .app:not(.setup-mode) .confirm-button,
+  .app:not(.setup-mode) .next-game,
+  .app:not(.setup-mode) .complete-button,
+  .app:not(.setup-mode) .final-image-action {
+    min-width: 176px;
+    font-size: 12px;
+  }
+}
+
+/* Keep the three live-status groups balanced around the viewport center. */
+.app:not(.setup-mode) .app-header {
+  position: relative;
+}
+
+.app:not(.setup-mode) .header-center {
+  position: absolute;
+  inset: 0 clamp(112px, 11vw, 176px) 0 clamp(54px, 6vw, 92px);
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.app:not(.setup-mode) .header-phase {
+  --header-status-gap: clamp(12px, 1.5vw, 24px);
+  --header-instruction-width: min(44vw, 620px);
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(82px, 1fr) var(--header-instruction-width) minmax(82px, 1fr);
+  gap: var(--header-status-gap);
+  width: min(1040px, 100%);
+  align-items: center;
+  pointer-events: auto;
+}
+
+.app:not(.setup-mode) .header-phase-title {
+  grid-column: 1;
+  justify-self: end;
+  min-width: 0;
+  padding-right: 0;
+}
+
+.app:not(.setup-mode) .header-phase-title::after,
+.app:not(.setup-mode) .header-timer::before {
+  display: none;
+}
+
+.app:not(.setup-mode) .header-instruction {
+  position: static;
+  grid-column: 2;
+  width: auto;
+  padding-inline: 0;
+  transform: none;
+}
+
+.app:not(.setup-mode) .header-timer {
+  grid-column: 3;
+  justify-self: start;
+  margin-left: 0;
+}
+
+/* Names remain fully readable as cards contract. */
+.app:not(.setup-mode) .player-info {
+  overflow: visible;
+}
+
+.app:not(.setup-mode) .player-name,
+.app:not(.setup-mode) .filled .player-name {
+  overflow: visible;
+  font-size: clamp(9px, 0.72vw, 12px);
+  line-height: 1.15;
+  text-overflow: clip;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.app:not(.setup-mode) .pokemon-card {
+  container-type: inline-size;
+}
+
+.app:not(.setup-mode) .pokemon-card .pokemon-name {
+  height: 22px;
+  padding-inline: 2px;
+  overflow: visible;
+  font-size: clamp(7px, 10cqw, 11px);
+  line-height: 22px;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .app:not(.setup-mode) .header-center {
+    inset-inline: 46px 118px;
+  }
+
+  .app:not(.setup-mode) .header-phase {
+    --header-instruction-width: min(48vw, 420px);
+    --header-status-gap: 8px;
+    grid-template-columns: minmax(64px, 1fr) var(--header-instruction-width) minmax(64px, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .app:not(.setup-mode) .header-center {
+    inset-inline: 42px 104px;
+  }
+
+  .app:not(.setup-mode) .header-phase {
+    --header-instruction-width: min(46vw, 310px);
+    --header-status-gap: 5px;
+    grid-template-columns: minmax(48px, 1fr) var(--header-instruction-width) minmax(48px, 1fr);
+  }
+
+  .app:not(.setup-mode) .header-phase-title > strong,
+  .app:not(.setup-mode) .header-instruction {
+    font-size: 8px;
+  }
+
+  .app:not(.setup-mode) .header-timer {
+    padding: 3px;
+    gap: 2px;
+  }
+
+  .app:not(.setup-mode) .header-timer > svg {
+    display: none;
+  }
+}
+
 /* BAN tiles stay square when the team column grows on wide/fullscreen layouts. */
 .app:not(.setup-mode) .ban-slots {
   align-items: center;
@@ -1111,4 +1366,171 @@
   .app:not(.setup-mode) .header-timer {
     padding-left: 5px;
   }
+}
+
+/* Authoritative responsive layout overrides. Keep this block last. */
+.app:not(.setup-mode) .header-center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.app:not(.setup-mode) .header-phase {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 44vw) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(12px, 1.5vw, 24px);
+  width: 100%;
+  padding-inline: clamp(64px, 9vw, 150px);
+  pointer-events: auto;
+}
+
+.app:not(.setup-mode) .header-phase-title {
+  position: static;
+  grid-column: 1;
+  justify-self: end;
+  min-width: 0;
+  padding: 0;
+}
+
+.app:not(.setup-mode) .header-phase-title::after,
+.app:not(.setup-mode) .header-timer::before,
+.app:not(.setup-mode) .header-phase-divider {
+  display: none;
+}
+
+.app:not(.setup-mode) .header-instruction {
+  position: static;
+  grid-column: 2;
+  justify-self: stretch;
+  width: auto;
+  padding: 0;
+  overflow: visible;
+  transform: none;
+  text-align: center;
+  text-overflow: clip;
+}
+
+.app:not(.setup-mode) .header-timer {
+  grid-column: 3;
+  justify-self: start;
+  margin: 0;
+}
+
+.app:not(.setup-mode) .bans-heading > span:first-child {
+  gap: 0;
+}
+
+.app:not(.setup-mode) .ban-slots {
+  align-items: center;
+  overflow: visible;
+}
+
+.app:not(.setup-mode) .ban-slot {
+  align-self: center;
+  max-height: 100%;
+}
+
+.app:not(.setup-mode) .trainer {
+  margin: 0;
+  line-height: 1;
+}
+
+.app:not(.setup-mode) .decision-bar {
+  min-height: 60px;
+  padding-block: 4px;
+  gap: 12px;
+}
+
+.app:not(.setup-mode) .decision-main {
+  gap: 3px;
+}
+
+.app:not(.setup-mode) .selected-description {
+  min-height: 12px;
+  font-size: 10px;
+  line-height: 1.15;
+}
+
+.app:not(.setup-mode) .subtle-button {
+  min-height: 34px;
+  padding: 0 10px;
+  justify-content: center;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.app:not(.setup-mode) .confirm-button,
+.app:not(.setup-mode) .next-game,
+.app:not(.setup-mode) .complete-button,
+.app:not(.setup-mode) .final-image-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 210px;
+  height: 38px;
+  padding: 0 20px;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .app:not(.setup-mode) .header-phase {
+    grid-template-columns: minmax(0, 1fr) minmax(250px, 48vw) minmax(0, 1fr);
+    gap: 8px;
+    padding-inline: 48px 118px;
+  }
+}
+
+@media (max-width: 680px) {
+  .app:not(.setup-mode) .header-phase {
+    grid-template-columns: minmax(0, 1fr) minmax(210px, 50vw) minmax(0, 1fr);
+    gap: 5px;
+    padding-inline: 42px 104px;
+  }
+
+  .app:not(.setup-mode) .header-phase-title > strong,
+  .app:not(.setup-mode) .header-instruction {
+    font-size: 8px;
+  }
+
+  .app:not(.setup-mode) .confirm-button,
+  .app:not(.setup-mode) .next-game,
+  .app:not(.setup-mode) .complete-button,
+  .app:not(.setup-mode) .final-image-action {
+    min-width: 176px;
+    font-size: 12px;
+  }
+}
+
+/* Viewport-centered instruction; intentionally final in cascade. */
+.app:not(.setup-mode) .header-instruction {
+  position: fixed;
+  z-index: 12;
+  top: 30px;
+  left: 50vw;
+  width: min(44vw, 680px);
+  transform: translate(-50%, -50%);
+}
+@media (max-width: 900px) {
+  .app:not(.setup-mode) .header-instruction { width: min(48vw, 430px); }
+}
+@media (max-width: 680px) {
+  .app:not(.setup-mode) .header-instruction { width: 50vw; }
+}
+/* Fixed positioning inherits the scaled app transform; absolute keeps the true header center. */
+.app:not(.setup-mode) .header-instruction {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.app:not(.setup-mode) .header-instruction {
+  grid-column: auto;
 }

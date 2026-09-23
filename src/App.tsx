@@ -442,7 +442,6 @@ function App() {
         </div>
         <div className="bans-heading">
           <span>
-            <Ban size={13} />
             使用禁止
           </span>
           <span>{ownBans.length} / 3</span>
@@ -620,7 +619,7 @@ function App() {
                   ? "両チームの選出が完了しました。味方の枠を2つ選ぶと、ポケモンを交換できます。"
                   : `${teamName(activeTeam)}が${phase === "ban" ? "使用禁止にする" : "使用する"}ポケモンを選択`}
               </strong>
-              {settings.seconds > 0 && (
+              {settings.seconds > 0 && !complete && (
                 <div
                   className={`header-timer ${remaining <= 5 ? "urgent" : ""}`}
                   aria-label="ターンの残り時間"

@@ -21,13 +21,13 @@ export default function TeamHistory({
     >
       <div className="history-heading">
         <History size={13} />
-        <strong>使用済み</strong>
+        <strong>選択済</strong>
         <span>{history.length * 5}</span>
       </div>
       <div
         className="history-scroll"
         tabIndex={0}
-        aria-label={`${name}の使用済みポケモン一覧`}
+        aria-label={`${name}の選択済ポケモン一覧`}
       >
         {history.length > 0 &&
           history.map((past) => (
@@ -46,7 +46,7 @@ export default function TeamHistory({
                       <div
                         className="history-pokemon-item"
                         key={p.id}
-                        title={`${p.name} · GAME ${past.game}で使用済み`}
+                        title={`${p.name} · GAME ${past.game}で選択済`}
                       >
                         <Portrait p={p} />
                       </div>

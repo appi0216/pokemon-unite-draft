@@ -14,7 +14,7 @@ export default function TeamHistory({
   name: string;
   history: PastGame[];
   active: boolean;
-  onReview: (game: PastGame) => void;
+  onReview: () => void;
 }) {
   return (
     <aside
@@ -41,7 +41,7 @@ export default function TeamHistory({
               <button
                 type="button"
                 className="history-game-button"
-                onClick={() => onReview(past)}
+                onClick={onReview}
               >
                 GAME {String(past.game).padStart(2, "0")}
               </button>

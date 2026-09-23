@@ -2,7 +2,6 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   choose,
-  changeFirst,
   createDraft,
   currentStep,
   nextGame,
@@ -211,15 +210,6 @@ test("next game accepts an independently selected first team", () => {
   assert.equal(nextGame(d, "orange").first, "orange");
 });
 
-test("changing first team safely replays the remaining actions", () => {
-  let d = createDraft("purple");
-  for (let i = 0; i < 8; i++) d = choose(d, ids[i], ids);
-  const changed = changeFirst(d, "orange", ids);
-  assert.equal(changed.first, "orange");
-  assert.equal(changed.actions.length, d.actions.length);
-  assert.equal(changed.actions[0].team, "orange");
-  assert.equal(restoreDraft(changed, ids)?.actions.length, d.actions.length);
-});
 test("All-Star records each team's final picks across games and restores ownership", () => {
   let d = createDraft("purple", true);
   for (let i = 0; i < 16; i++) d = choose(d, ids[i], ids);
@@ -228,7 +218,13 @@ test("All-Star records each team's final picks across games and restores ownersh
     .filter((a) => a.phase === "pick")
     .map(({ team, pokemon }) => ({ team, pokemon }));
   d = nextGame(d);
-  assert.deepEqual(d.history, [{ game: 1, picks: firstPicks }]);
+  assert.equal(d.history.length, 1);
+  assert.equal(d.history[0].game, 1);
+  assert.deepEqual(d.history[0].picks, firstPicks);
+  assert.deepEqual(
+    d.history[0].bans?.map((ban) => ban.pokemon),
+    ids.slice(0, 6),
+  );
   assert.deepEqual(
     d.history[0].picks.filter((p) => p.team === "purple").map((p) => p.pokemon),
     [ids[14], ids[9], ids[10], ids[13], ids[6]],

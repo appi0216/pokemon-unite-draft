@@ -5,6 +5,7 @@ export type Action = { team: Team; phase: Phase; pokemon: string | null };
 export type Step = { team: Team; phase: Phase; count: number };
 export type PastGame = {
   game: number;
+  bans?: { team: Team; pokemon: string | null }[];
   picks: { team: Team; pokemon: string }[];
 };
 export type Draft = {
@@ -113,20 +114,6 @@ export const undo = (draft: Draft): Draft => ({
   actions: draft.actions.slice(0, -1),
 });
 
-export function changeFirst(
-  draft: Draft,
-  first: Team,
-  validIds: readonly string[],
-): Draft {
-  if (draft.first === first) return draft;
-  let changed: Draft = { ...draft, first, actions: [] };
-  for (const action of draft.actions) {
-    const next = choose(changed, action.pokemon, validIds);
-    if (next === changed) break;
-    changed = next;
-  }
-  return changed;
-}
 export function rewindToStep(draft: Draft, index: number): Draft {
   const sequence = steps(draft.first);
   if (!Number.isInteger(index) || index < 0 || index >= sequence.length)
@@ -154,6 +141,9 @@ export function nextGame(draft: Draft, first?: Team): Draft {
       ...draft.history,
       {
         game: draft.game,
+        bans: draft.actions
+          .filter((a) => a.phase === "ban")
+          .map((a) => ({ team: a.team, pokemon: a.pokemon })),
         picks: draft.actions
           .filter((a) => a.phase === "pick" && a.pokemon)
           .map((a) => ({ team: a.team, pokemon: a.pokemon! })),
@@ -227,6 +217,23 @@ export function restoreDraft(
     )
       return null;
     lastGame = past.game;
+    if (past.bans !== undefined) {
+      if (
+        !Array.isArray(past.bans) ||
+        past.bans.length !== 6 ||
+        past.bans.some(
+          (ban) =>
+            !ban ||
+            !["purple", "orange"].includes(ban.team) ||
+            (ban.pokemon !== null &&
+              (typeof ban.pokemon !== "string" ||
+                !validIds.includes(ban.pokemon))),
+        ) ||
+        past.bans.filter((ban) => ban.team === "purple").length !== 3 ||
+        past.bans.filter((ban) => ban.team === "orange").length !== 3
+      )
+        return null;
+    }
     for (const pick of past.picks) {
       if (
         !pick ||

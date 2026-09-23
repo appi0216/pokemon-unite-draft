@@ -1719,3 +1719,53 @@
 @media (max-width: 680px) {
   .past-game-review { grid-template-columns: 1fr; }
 }
+
+.past-games-review {
+  display: grid;
+  gap: 14px;
+  max-height: min(68dvh, 720px);
+  padding-right: 4px;
+  overflow-y: auto;
+}
+.past-game-review-card {
+  padding: 12px;
+  border: 1px solid var(--surface-border);
+  border-radius: 15px;
+  background: color-mix(in srgb, var(--surface-raised) 78%, transparent);
+}
+.past-game-review-card > h3 {
+  margin: 0 0 10px;
+  color: var(--text-primary);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.past-game-review h4 {
+  margin: 0 0 8px;
+  color: var(--review-color);
+  font-size: 12px;
+  text-align: center;
+}
+.past-game-review section > strong {
+  display: block;
+  margin: 7px 0 4px;
+  color: var(--text-tertiary);
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+.past-game-review .review-ban-list,
+.past-game-review .review-pick-list {
+  display: grid;
+  gap: 5px;
+}
+.past-game-review .review-ban-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.past-game-review .review-pick-list {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.past-game-review .review-ban-list > small {
+  grid-column: 1 / -1;
+  padding: 10px;
+  color: var(--text-tertiary);
+  text-align: center;
+}

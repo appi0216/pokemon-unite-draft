@@ -1955,3 +1955,23 @@ dialog.review-dialog {
   dialog.review-dialog { padding: 10px; }
   .review-dialog .past-games-review { max-height: calc(100dvh - 82px); }
 }
+
+/* Remove the legacy purple tint from setup highlights. */
+.setup-mode .art-badge {
+  border-color: #5fcddd42;
+  background: linear-gradient(135deg, #12242ccf, #17242ac7);
+  color: #d9f4f6;
+  box-shadow: 0 0 18px #55c8d91f, inset 0 1px #ffffff0a;
+}
+.setup-mode .art-badge svg {
+  color: #e3ae6c;
+}
+.setup-mode .setup-features {
+  color: #a9c5cb;
+}
+.setup-mode .setup-features > span:first-child svg {
+  color: #68d2df;
+}
+.setup-mode .setup-features > span:last-child svg {
+  color: #e3ae6c;
+}

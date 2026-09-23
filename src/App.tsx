@@ -656,6 +656,13 @@ function App() {
                   : phase === "ban"
                     ? "BAN PHASE"
                     : "PICK PHASE"}
+                {draft.allStar && (
+                  <span className="phase-game">
+                    {" "}
+                    · GAME {String(draft.game).padStart(2, "0")} / BO
+                    {draft.bestOf}
+                  </span>
+                )}
               </span>
               <h1>
                 {complete

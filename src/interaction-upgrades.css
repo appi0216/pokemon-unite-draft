@@ -24,6 +24,78 @@
   font-size: 9px;
 }
 
+/* Form controls keep the same dark material while focused or opened. */
+.search-field,
+.search-field:focus-within {
+  background: linear-gradient(145deg, #202e36, #19262d);
+  border-color: #3c525d;
+  color: #b5c7cd;
+}
+
+.search-field:focus-within {
+  border-color: #66bdc9;
+  box-shadow:
+    inset 0 0 0 1px #66bdc933,
+    0 0 0 3px #53b8c41c;
+}
+
+.search-field input,
+.search-field input:focus,
+.sort-select select,
+.sort-select select:focus,
+.sort-select select:active {
+  background: transparent;
+  color: #e9f4f6;
+  outline: none;
+}
+
+.sort-select select {
+  color-scheme: dark;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  padding: 5px 20px 5px 7px;
+}
+
+.sort-select select:focus-visible {
+  border-color: #587681;
+  box-shadow: 0 0 0 3px #53b8c417;
+}
+
+.sort-select > svg {
+  right: 6px;
+}
+
+.phase-game {
+  color: #b9d7dc;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+}
+
+/* Shared type scale for interactive controls across setup and draft. */
+.mode-option strong,
+.timer-options button,
+.side-options button > span:nth-child(2),
+.single-match-format strong,
+.search-field input,
+.sort-select select,
+.hide-used,
+.role-tabs button,
+.subtle-button,
+.setup-return-button {
+  font-size: 11px;
+}
+
+.mode-option small,
+.timer-options button small,
+.side-options small,
+.single-match-format small,
+.field-hint,
+.setup-footnote,
+.selection-footer,
+.app-footer {
+  font-size: 9px;
+}
+
 @media (min-height: 640px) {
   .app:not(.setup-mode) .decision-main {
     min-height: 66px;

@@ -660,60 +660,60 @@ function App() {
       ) : (
         <main className="draft-main">
           <section className="phase-banner" aria-label="ドラフトの進行状況">
-            <div className="phase-label">
-              <span className="eyebrow">
-                {complete
-                  ? "DRAFT COMPLETE"
-                  : phase === "ban"
-                    ? "BAN PHASE"
-                    : "PICK PHASE"}
-                {draft.allStar && (
-                  <span className="phase-game">
-                    {" "}
-                    · GAME {String(draft.game).padStart(2, "0")} / BO
-                    {draft.bestOf}
-                  </span>
-                )}
-              </span>
-              <h1>
-                {complete
-                  ? "ドラフト完了"
-                  : phase === "ban"
-                    ? "使用禁止フェーズ"
-                    : "選択フェーズ"}
-              </h1>
-            </div>
-            <div className="phase-message" aria-live="polite">
-              <div>
-                <strong>
+            <div className="phase-summary">
+              <div className="phase-label">
+                <span className="eyebrow">
                   {complete
-                    ? "両チームの選出が完了しました。味方の枠を2つ選ぶと、ポケモンを交換できます。"
-                    : `${teamName(activeTeam)}が${phase === "ban" ? "使用禁止にする" : "使用する"}ポケモンを選択`}
-                </strong>
+                    ? "DRAFT COMPLETE"
+                    : phase === "ban"
+                      ? "BAN PHASE"
+                      : "PICK PHASE"}
+                </span>
+                <h1>
+                  {complete
+                    ? "ドラフト完了"
+                    : phase === "ban"
+                      ? "使用禁止フェーズ"
+                      : "選択フェーズ"}
+                </h1>
               </div>
-            </div>
-            {settings.seconds > 0 && (
-              <div
-                className={`timer ${remaining <= 5 && settings.seconds > 0 ? "urgent" : ""}`}
-                aria-label="ターンの残り時間"
-              >
+              <div className="phase-message" aria-live="polite">
                 <div>
-                  <Clock3 size={18} />
-                  <strong>{String(remaining).padStart(2, "0")}</strong>
-                  <button
-                    className="timer-button"
-                    aria-label={running ? "タイマーを停止" : "タイマーを開始"}
-                    disabled={complete || settings.seconds === 0}
-                    onClick={() => {
-                      if (remaining === 0) setRemaining(duration);
-                      setRunning(!running);
-                    }}
-                  >
-                    {running ? <Pause size={16} /> : <Play size={16} />}
-                  </button>
+                  <strong>
+                    {complete
+                      ? "両チームの選出が完了しました。味方の枠を2つ選ぶと、ポケモンを交換できます。"
+                      : `${teamName(activeTeam)}が${phase === "ban" ? "使用禁止にする" : "使用する"}ポケモンを選択`}
+                  </strong>
                 </div>
               </div>
-            )}
+              <span className="phase-game" aria-label={`${draft.game}試合目`}>
+                <small>GAME</small>
+                <strong>{String(draft.game).padStart(2, "0")}</strong>
+                {draft.allStar && <em>/ BO{draft.bestOf}</em>}
+              </span>
+              {settings.seconds > 0 && (
+                <div
+                  className={`timer ${remaining <= 5 && settings.seconds > 0 ? "urgent" : ""}`}
+                  aria-label="ターンの残り時間"
+                >
+                  <div>
+                    <Clock3 size={18} />
+                    <strong>{String(remaining).padStart(2, "0")}</strong>
+                    <button
+                      className="timer-button"
+                      aria-label={running ? "タイマーを停止" : "タイマーを開始"}
+                      disabled={complete || settings.seconds === 0}
+                      onClick={() => {
+                        if (remaining === 0) setRemaining(duration);
+                        setRunning(!running);
+                      }}
+                    >
+                      {running ? <Pause size={16} /> : <Play size={16} />}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
             <section className="timeline" aria-label="BAN・PICKの順番">
               <div className="timeline-label">
                 <span className="eyebrow">DRAFT ORDER</span>

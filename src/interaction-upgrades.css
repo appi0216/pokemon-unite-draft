@@ -1911,3 +1911,47 @@ dialog.review-dialog {
     grid-template-columns: 1fr;
   }
 }
+
+/* Denser review presentation with larger artwork. */
+dialog.review-dialog {
+  padding: clamp(12px, 1.4vw, 20px);
+}
+.review-dialog .modal-heading {
+  margin-bottom: 12px;
+}
+.review-dialog .past-games-review {
+  gap: 10px;
+  max-height: calc(100dvh - 96px);
+}
+.review-dialog .past-game-review-card {
+  padding: 8px;
+}
+.review-dialog .past-game-review-card > h3 {
+  margin-bottom: 6px;
+}
+.review-dialog .past-game-review {
+  gap: 8px;
+}
+.review-dialog .past-game-review > section {
+  padding: 8px;
+}
+.past-game-review h4,
+.past-game-review .review-order {
+  color: #f4fbfc;
+}
+.past-game-review .review-order {
+  border-color: #ffffff42;
+}
+.past-game-review .review-ban-list article,
+.past-game-review .review-pick-list article {
+  min-height: 60px;
+}
+.past-game-review .review-ban-list article .portrait,
+.past-game-review .review-pick-list article .portrait,
+.past-game-review .review-ban-list .review-skip-mark {
+  width: min(100%, 52px);
+}
+@media (max-width: 760px) {
+  dialog.review-dialog { padding: 10px; }
+  .review-dialog .past-games-review { max-height: calc(100dvh - 82px); }
+}

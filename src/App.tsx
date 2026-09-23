@@ -1397,7 +1397,7 @@ function App() {
       )}
       {reviewOpen && (
         <Modal
-          title="これまでのドラフト"
+          title="試合履歴"
           onClose={() => setReviewOpen(false)}
           className="review-dialog"
         >

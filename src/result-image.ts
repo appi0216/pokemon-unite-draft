@@ -55,6 +55,20 @@ export async function createResultImage(
     ctx.fillStyle = color;
     ctx.fillText(value, x, y, max);
   };
+  const centeredText = (
+    value: string,
+    x: number,
+    y: number,
+    size: number,
+    color: string,
+    max: number,
+    weight = 600,
+  ) => {
+    ctx.save();
+    ctx.textAlign = "center";
+    text(value, x, y, size, color, max, weight);
+    ctx.restore();
+  };
   const box = (
     x: number,
     y: number,
@@ -86,6 +100,19 @@ export async function createResultImage(
       (size * m.width) / 100,
       (size * m.width) / 100,
     );
+  };
+  const banMark = (x: number, y: number, size: number, color: string) => {
+    ctx.save();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.arc(x, y, size / 2, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x - size * 0.34, y - size * 0.34);
+    ctx.lineTo(x + size * 0.34, y + size * 0.34);
+    ctx.stroke();
+    ctx.restore();
   };
 
   ctx.fillStyle = palette.background;
@@ -129,15 +156,8 @@ export async function createResultImage(
   for (const [index, team] of (["purple", "orange"] as const).entries()) {
     const x = 60 + index * 760;
     const color = team === "purple" ? palette.purple : palette.orange;
-    const teamFill = ctx.createLinearGradient(x, 154, x, 1088);
-    teamFill.addColorStop(0, palette.surface);
-    teamFill.addColorStop(0.68, palette.surface);
-    teamFill.addColorStop(1, `${color}3d`);
-    box(x, 154, 720, 934, teamFill, `${color}b8`, 24);
-    const headerFill = ctx.createLinearGradient(x + 22, 0, x + 698, 0);
-    headerFill.addColorStop(0, `${color}52`);
-    headerFill.addColorStop(1, palette.raised);
-    box(x + 22, 176, 676, 74, headerFill, `${color}b5`, 16);
+    box(x, 154, 720, 934, palette.surface, `${color}b8`, 24);
+    box(x + 22, 176, 676, 74, `${color}38`, `${color}b5`, 16);
     text(names[team], x + 42, 223, 29, palette.text, 535, 750);
     text(
       draft.first === team ? "先攻" : "後攻",
@@ -152,16 +172,20 @@ export async function createResultImage(
     draft.actions
       .filter((a) => a.team === team && a.phase === "ban")
       .forEach((a, i) => {
-        const bx = x + 26 + i * 226;
-        box(bx, 309, 216, 142, palette.raised, `${color}75`, 16);
-        if (a.pokemon) portrait(a.pokemon, bx + 64, 310, 90);
-        text(
+        const size = 142;
+        const bx = x + 62 + i * 218;
+        box(bx, 309, size, size, palette.raised, `${color}75`, 16);
+        if (a.pokemon) {
+          portrait(a.pokemon, bx + 26, 310, 90);
+          banMark(bx + 117, 329, 22, "#f29a9a");
+        }
+        centeredText(
           a.pokemon ? byId.get(a.pokemon)!.name : "—",
-          bx + 12,
+          bx + size / 2,
           432,
           18,
           a.pokemon ? palette.secondary : palette.muted,
-          192,
+          size - 16,
           650,
         );
       });
@@ -172,11 +196,7 @@ export async function createResultImage(
         const y = 516 + i * 109;
         const p = byId.get(a.pokemon!)!;
         const roleColor = palette[p.role];
-        const cardFill = ctx.createLinearGradient(x + 26, y, x + 694, y);
-        cardFill.addColorStop(0, `${color}32`);
-        cardFill.addColorStop(0.48, palette.raised);
-        cardFill.addColorStop(1, "#11262f");
-        box(x + 26, y, 668, 98, cardFill, `${color}90`, 16);
+        box(x + 26, y, 668, 98, palette.raised, `${color}90`, 16);
         ctx.fillStyle = roleColor;
         ctx.fillRect(x + 26, y + 18, 4, 62);
         text(

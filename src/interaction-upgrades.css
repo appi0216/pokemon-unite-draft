@@ -1981,3 +1981,38 @@ dialog.review-dialog {
   color: #9eb7bf !important;
   border-top-color: #55717b !important;
 }
+
+/* Replace the remaining legacy setup and utility accents. */
+.setup-mode .setup-intro .section-kicker {
+  color: #79d8e5;
+}
+.setup-mode .setup-intro > p {
+  color: #a9bbc2;
+}
+.setup-mode .mode-option > svg:first-child {
+  color: #68d2df;
+}
+.setup-mode .mode-option:last-child > svg:first-child {
+  color: #e3ae6c;
+}
+.app:not(.setup-mode) .hide-used input {
+  accent-color: #62cedd;
+}
+.app-footer,
+.app-footer .footer-link,
+.app-footer button,
+.app-footer span {
+  color: #8faab2;
+}
+.app-footer svg {
+  color: #68cbd7;
+}
+.setup-mode .app-footer,
+.setup-mode .app-footer .footer-link,
+.setup-mode .app-footer button,
+.setup-mode .app-footer span {
+  color: #8faab2;
+}
+.setup-mode .app-footer svg {
+  color: #68cbd7;
+}

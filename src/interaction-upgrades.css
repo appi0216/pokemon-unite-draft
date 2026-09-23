@@ -1897,6 +1897,35 @@ dialog.review-dialog {
   row-gap: 8px;
 }
 
+/* One sizing contract for the decision and every completion action. */
+.app:not(.setup-mode) .decision-main {
+  --decision-action-width: 210px;
+  --decision-action-height: 38px;
+  --decision-action-font-size: 13px;
+}
+
+.app:not(.setup-mode)
+  .decision-main
+  > :is(.confirm-button, .complete-button, .next-game, .final-image-action) {
+  box-sizing: border-box;
+  flex: 0 0 var(--decision-action-width);
+  width: var(--decision-action-width);
+  min-width: var(--decision-action-width);
+  max-width: var(--decision-action-width);
+  height: var(--decision-action-height);
+  min-height: var(--decision-action-height);
+  padding: 0 20px;
+  font-size: var(--decision-action-font-size);
+  line-height: 1;
+}
+
+@media (max-width: 680px) {
+  .app:not(.setup-mode) .decision-main {
+    --decision-action-width: 176px;
+    --decision-action-font-size: 12px;
+  }
+}
+
 /* Keep review cards at a stable density and make PICK the visual priority. */
 .review-dialog .past-games-review {
   grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 600px));

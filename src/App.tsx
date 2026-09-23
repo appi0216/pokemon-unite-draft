@@ -223,6 +223,7 @@ function App() {
   const [draftSettings, setDraftSettings] = useState({
     ...settings,
     allStar: draft.allStar,
+    fearless: draft.seriesRule === "fearless",
     bestOf: draft.bestOf,
   });
   const [deferredInstall, setDeferredInstall] = useState<Event | null>(null);
@@ -234,6 +235,7 @@ function App() {
   const phase = step?.phase || "pick";
   const duration = turnSeconds(settings.seconds > 0, phase);
   const activeTeam = step?.team || draft.first;
+  const seriesLabel = draft.seriesRule === "all-star" ? "ALL-STAR" : "FEARLESS";
   const selectedPokemon = selected ? byId.get(selected) : undefined;
   const schedule = steps(draft.first);
   const stageStarts = schedule.map((_, index) =>
@@ -512,6 +514,7 @@ function App() {
     setDraftSettings({
       ...settings,
       allStar: draft.allStar,
+      fearless: draft.seriesRule === "fearless",
       bestOf: draft.bestOf,
     });
     setScreen("setup");
@@ -529,7 +532,12 @@ function App() {
     };
     setSettings(next);
     setDraft({
-      ...createDraft(first, draftSettings.allStar, draftSettings.bestOf),
+      ...createDraft(
+        first,
+        draftSettings.allStar,
+        draftSettings.bestOf,
+        draftSettings.fearless ? "fearless" : "all-star",
+      ),
       names: {
         purple: next.purple,
         orange: next.orange,
@@ -570,7 +578,12 @@ function App() {
   const downloadPastResult = async (past: PastGame) => {
     setExportingHistory(past.game);
     try {
-      const archived = draftFromPastGame(past, draft.bestOf, draft.allStar);
+      const archived = draftFromPastGame(
+        past,
+        draft.bestOf,
+        draft.allStar,
+        draft.seriesRule,
+      );
       const image = await createResultImage(archived, past.names ?? settings);
       const blob = await fetch(image).then((response) => response.blob());
       const url = URL.createObjectURL(blob);
@@ -880,13 +893,21 @@ function App() {
           hasSaved={started}
           progress={draft.actions.length}
           game={draft.game}
-          savedAllStar={draft.allStar}
+          savedMode={
+            draft.allStar
+              ? draft.seriesRule === "all-star"
+                ? "all-star"
+                : "fearless"
+              : "standard"
+          }
         />
       ) : showingPastGame ? (
         <main className="draft-main past-draft-screen">
           <section className="past-draft-heading">
             <span>
-              {draft.allStar ? `ALL-STAR · BO${draft.bestOf}` : "STANDARD"}
+              {draft.allStar
+                ? `${seriesLabel} · BO${draft.bestOf}`
+                : "STANDARD"}
             </span>
             <strong>
               {draft.allStar
@@ -973,7 +994,9 @@ function App() {
           >
             <section className="timeline" aria-label="BAN・PICKの順番">
               <span className="timeline-meta">
-                {draft.allStar ? `ALL-STAR · BO${draft.bestOf}` : "STANDARD"}
+                {draft.allStar
+                  ? `${seriesLabel} · BO${draft.bestOf}`
+                  : "STANDARD"}
                 {draft.allStar && (
                   <b>GAME {String(draft.game).padStart(2, "0")}</b>
                 )}
@@ -1633,6 +1656,7 @@ function App() {
                   setDraftSettings({
                     ...pendingBackup.settings,
                     allStar: pendingBackup.draft.allStar,
+                    fearless: pendingBackup.draft.seriesRule === "fearless",
                     bestOf: pendingBackup.draft.bestOf,
                   });
                   setRestrictions(pendingBackup.draft.restricted ?? []);
@@ -1716,7 +1740,12 @@ function App() {
                     window.scrollTo({ top: 0, behavior: "instant" });
                   } else if (firstPrompt === "reset") {
                     setDraft({
-                      ...createDraft(team, draft.allStar, draft.bestOf),
+                      ...createDraft(
+                        team,
+                        draft.allStar,
+                        draft.bestOf,
+                        draft.seriesRule,
+                      ),
                       names: draft.names,
                       restricted: draft.restricted,
                       game: draft.game,
@@ -1765,6 +1794,7 @@ function App() {
                     reviewGames,
                     draft.bestOf,
                     settings,
+                    draft.seriesRule,
                   );
                   downloadBlob(
                     await fetch(image).then((r) => r.blob()),

@@ -1,6 +1,7 @@
 export type Team = "purple" | "orange";
 export type Phase = "ban" | "pick";
 export type BestOf = 3 | 5 | 7;
+export type SeriesRule = "all-star" | "fearless";
 export type Action = { team: Team; phase: Phase; pokemon: string | null };
 export type Step = { team: Team; phase: Phase; count: number };
 export type Names = { purple: string; orange: string; trainers: string[] };
@@ -31,6 +32,7 @@ export type Draft = {
   excluded: string[];
   game: number;
   allStar: boolean;
+  seriesRule: SeriesRule;
   history: PastGame[];
   bestOf: BestOf;
 };
@@ -66,9 +68,11 @@ export const createDraft = (
   first: Team = "purple",
   allStar = false,
   bestOf: BestOf = 3,
+  seriesRule: SeriesRule = "fearless",
 ): Draft => ({
   first,
   allStar,
+  seriesRule,
   actions: [],
   excluded: [],
   game: 1,
@@ -79,13 +83,25 @@ export function unavailable(draft: Draft, id: string, team?: Team) {
   if (draft.restricted?.includes(id)) return true;
   if (draft.actions.some((a) => a.pokemon === id)) return true;
 
+  if (!draft.allStar) return false;
+
+  // Official All-Star: every Pokémon picked by either team is unavailable to
+  // both teams during all later BAN and PICK phases.
+  if (draft.seriesRule === "all-star")
+    return (
+      draft.excluded.includes(id) ||
+      draft.history.some((game) =>
+        game.picks.some((pick) => pick.pokemon === id),
+      )
+    );
+
   const step = currentStep(draft);
   if (step?.phase !== "pick") return false;
   const pickingTeam = team ?? step.team;
 
-  // Current All-Star saves retain the owner of every past pick. A Pokémon is
+  // Fearless saves retain the owner of every past pick. A Pokémon is
   // therefore unavailable only to the team that used it in an earlier game.
-  if (draft.allStar && draft.history.length)
+  if (draft.history.length)
     return draft.history.some((game) =>
       game.picks.some(
         (pick) => pick.team === pickingTeam && pick.pokemon === id,
@@ -94,13 +110,18 @@ export function unavailable(draft: Draft, id: string, team?: Team) {
 
   // Saved drafts from before team ownership was recorded have no way to tell
   // who used a Pokémon. Keep their former, global restriction intact.
-  return draft.allStar && draft.excluded.includes(id);
+  return draft.excluded.includes(id);
 }
 
-/** Filter-only hint: banning a Pokémon the opponent already used has no value. */
+/** Fearless-only hint: banning a Pokémon the opponent already used has no value. */
 export function redundantAllStarBan(draft: Draft, id: string, team?: Team) {
   const step = currentStep(draft);
-  if (!draft.allStar || step?.phase !== "ban") return false;
+  if (
+    !draft.allStar ||
+    draft.seriesRule !== "fearless" ||
+    step?.phase !== "ban"
+  )
+    return false;
   const opponent = opposite(team ?? step.team);
   return draft.history.some((game) =>
     game.picks.some((pick) => pick.team === opponent && pick.pokemon === id),
@@ -164,6 +185,7 @@ export function draftFromPastGame(
   past: PastGame,
   bestOf: BestOf = 3,
   allStar = false,
+  seriesRule: SeriesRule = "fearless",
 ): Draft {
   return {
     ...(past.names ? { names: past.names } : {}),
@@ -183,6 +205,7 @@ export function draftFromPastGame(
     excluded: [],
     game: past.game,
     allStar,
+    seriesRule,
     history: [],
     bestOf,
   };
@@ -287,6 +310,10 @@ export function restoreDraft(
     typeof v.allStar !== "boolean"
   )
     return null;
+  const seriesRule: SeriesRule =
+    v.seriesRule === "all-star" || v.seriesRule === "fearless"
+      ? v.seriesRule
+      : "fearless";
   if (
     v.excluded.some((id) => typeof id !== "string" || !validIds.includes(id)) ||
     new Set(v.excluded).size !== v.excluded.length
@@ -300,6 +327,7 @@ export function restoreDraft(
     purple: new Set<string>(),
     orange: new Set<string>(),
   };
+  const usedGlobally = new Set<string>();
   let lastGame = 0;
   for (const past of history) {
     if (
@@ -340,17 +368,20 @@ export function restoreDraft(
         !validIds.includes(pick.pokemon) ||
         (v.allStar &&
           (!v.excluded.includes(pick.pokemon) ||
-            usedByTeam[pick.team].has(pick.pokemon)))
+            (seriesRule === "all-star"
+              ? usedGlobally.has(pick.pokemon)
+              : usedByTeam[pick.team].has(pick.pokemon))))
       )
         return null;
       usedByTeam[pick.team].add(pick.pokemon);
+      usedGlobally.add(pick.pokemon);
     }
     if (past.picks.filter((p) => p.team === "purple").length !== 5) return null;
     if (past.picks.filter((p) => p.team === "orange").length !== 5) return null;
   }
   if (!v.allStar && (v.excluded.length || history.length > 5)) return null;
   let draft: Draft = {
-    ...createDraft(v.first, v.allStar, bestOf),
+    ...createDraft(v.first, v.allStar, bestOf, seriesRule),
     ...(v.names ? { names: v.names } : {}),
     ...(v.restricted ? { restricted: v.restricted } : {}),
     excluded: v.excluded,

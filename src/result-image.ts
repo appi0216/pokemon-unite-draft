@@ -2,12 +2,13 @@ import type { Draft, Team } from "./domain/draft";
 import { byId, roles } from "./data/roster";
 import measurements from "./data/portrait-layout.json";
 import { draftFromPastGame } from "./domain/draft";
-import type { PastGame, Names, BestOf } from "./domain/draft";
+import type { PastGame, Names, BestOf, SeriesRule } from "./domain/draft";
 
 export async function createSeriesImage(
   games: PastGame[],
   bestOf: BestOf,
   fallback: Names,
+  seriesRule: SeriesRule = "fearless",
 ): Promise<string> {
   if (!games.length) throw new Error("No games");
   const columns = Math.min(2, games.length);
@@ -21,7 +22,7 @@ export async function createSeriesImage(
   for (let i = 0; i < games.length; i++) {
     const img = new Image();
     img.src = await createResultImage(
-      draftFromPastGame(games[i], bestOf, true),
+      draftFromPastGame(games[i], bestOf, true, seriesRule),
       games[i].names ?? fallback,
     );
     await img.decode();
@@ -174,7 +175,7 @@ export async function createResultImage(
   text("UNITE DRAFT", 60, 76, 36, palette.text, 500, 750);
   text(
     draft.allStar
-      ? `ALL-STAR · BO${draft.bestOf} · GAME ${String(draft.game).padStart(2, "0")}`
+      ? `${draft.seriesRule === "all-star" ? "ALL-STAR" : "FEARLESS"} · BO${draft.bestOf} · GAME ${String(draft.game).padStart(2, "0")}`
       : "DRAFT RESULT",
     60,
     117,

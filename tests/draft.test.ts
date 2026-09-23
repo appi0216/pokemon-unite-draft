@@ -211,7 +211,7 @@ test("rewinding a progress step removes later choices but keeps prior games", ()
   assert.equal(currentStep(fromComplete)?.index, 11);
   assert.deepEqual(fromComplete.history, d.history);
 });
-test("All-Star locks prior picks only for the team that used them", () => {
+test("Fearless locks prior picks only for the team that used them", () => {
   let d = createDraft("purple", true);
   for (let i = 0; i < 16; i++) d = choose(d, ids[i], ids);
   d = nextGame(d);
@@ -233,6 +233,22 @@ test("All-Star locks prior picks only for the team that used them", () => {
   d = nextGame(d);
   assert.equal(d.excluded.length, 19);
   assert.equal(nextGame(d), d);
+});
+test("official All-Star locks every prior pick for both teams in BAN and PICK", () => {
+  let d = createDraft("purple", true, 3, "all-star");
+  for (let i = 0; i < 16; i++) d = choose(d, ids[i], ids);
+  d = nextGame(d, "orange");
+
+  for (const team of ["purple", "orange"] as const) {
+    assert.equal(unavailable(d, ids[6], team), true);
+    assert.equal(unavailable(d, ids[15], team), true);
+  }
+  assert.equal(choose(d, ids[6], ids), d);
+  assert.equal(redundantAllStarBan(d, ids[6], "orange"), false);
+
+  for (let i = 0; i < 6; i++) d = choose(d, null, ids);
+  assert.equal(choose(d, ids[6], ids), d);
+  assert.equal(choose(d, ids[16], ids).actions.length, 7);
 });
 test("available-only BAN filter excludes the opponent's past picks for each team", () => {
   let d = createDraft("purple", true);
@@ -310,7 +326,7 @@ test("next game accepts an independently selected first team", () => {
   assert.equal(nextGame(d, "orange").first, "orange");
 });
 
-test("All-Star records each team's final picks across games and restores ownership", () => {
+test("Fearless records each team's final picks across games and restores ownership", () => {
   let d = createDraft("purple", true);
   for (let i = 0; i < 16; i++) d = choose(d, ids[i], ids);
   d = swap(d, "purple", 0, 4);
@@ -374,7 +390,9 @@ test("legacy saves keep bans from prior picks without inventing team history", (
   for (let i = 0; i < 16; i++) d = choose(d, ids[i], ids);
   d = nextGame(d);
   const { history, ...legacy } = d;
+  delete (legacy as Partial<typeof legacy>).seriesRule;
   const restored = restoreDraft(legacy, ids)!;
+  assert.equal(restored.seriesRule, "fearless");
   assert.deepEqual(restored.history, []);
   assert.deepEqual(restored.excluded, ids.slice(6, 16));
   let pickStep = restored;

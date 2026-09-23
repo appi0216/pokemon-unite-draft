@@ -20,6 +20,7 @@ export type SetupValues = {
   sound: boolean;
   trainers: string[];
   allStar: boolean;
+  fearless: boolean;
   bestOf: BestOf;
 };
 type Props = {
@@ -31,7 +32,7 @@ type Props = {
   hasSaved: boolean;
   progress: number;
   game: number;
-  savedAllStar: boolean;
+  savedMode: "standard" | "all-star" | "fearless";
 };
 export default function SetupScreen({
   values,
@@ -42,7 +43,7 @@ export default function SetupScreen({
   hasSaved,
   progress,
   game,
-  savedAllStar,
+  savedMode,
 }: Props) {
   return (
     <main className="setup-main">
@@ -107,9 +108,11 @@ export default function SetupScreen({
                 {progress === 16 ? "前回の結果を見る" : "続きから再開"}
               </strong>
               <small>
-                {savedAllStar
+                {savedMode === "all-star"
                   ? `オールスター · GAME ${String(game).padStart(2, "0")} · `
-                  : "通常ドラフト · "}
+                  : savedMode === "fearless"
+                    ? `フィアレス · GAME ${String(game).padStart(2, "0")} · `
+                    : "通常ドラフト · "}
                 {progress} / 16 選択済み
               </small>
             </span>
@@ -124,7 +127,9 @@ export default function SetupScreen({
                 className={`mode-option ${!values.allStar ? "chosen" : ""}`}
                 type="button"
                 aria-pressed={!values.allStar}
-                onClick={() => onChange({ ...values, allStar: false })}
+                onClick={() =>
+                  onChange({ ...values, allStar: false, fearless: false })
+                }
               >
                 <Swords size={21} />
                 <strong>通常ドラフト</strong>
@@ -134,15 +139,34 @@ export default function SetupScreen({
                 )}
               </button>
               <button
-                className={`mode-option ${values.allStar ? "chosen" : ""}`}
+                className={`mode-option ${values.allStar && !values.fearless ? "chosen" : ""}`}
                 type="button"
-                aria-pressed={values.allStar}
-                onClick={() => onChange({ ...values, allStar: true })}
+                aria-pressed={values.allStar && !values.fearless}
+                onClick={() =>
+                  onChange({ ...values, allStar: true, fearless: false })
+                }
               >
                 <Sparkles size={21} />
                 <strong>オールスター</strong>
+                <small>過去の選出は両チームで再使用不可</small>
+                {values.allStar && !values.fearless && (
+                  <Check className="option-check" size={15} />
+                )}
+              </button>
+              <button
+                className={`mode-option ${values.allStar && values.fearless ? "chosen" : ""}`}
+                type="button"
+                aria-pressed={values.allStar && values.fearless}
+                onClick={() =>
+                  onChange({ ...values, allStar: true, fearless: true })
+                }
+              >
+                <Shield size={21} />
+                <strong>フィアレス</strong>
                 <small>自チームの過去の選出は再使用不可</small>
-                {values.allStar && <Check className="option-check" size={15} />}
+                {values.allStar && values.fearless && (
+                  <Check className="option-check" size={15} />
+                )}
               </button>
             </div>
           </fieldset>

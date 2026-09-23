@@ -259,6 +259,13 @@
   font-size: 11.5px;
 }
 
+.setup-mode .mode-options {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.setup-mode .mode-option {
+  padding-inline: 8px;
+}
+
 .setup-card.has-saved-draft .resume-card {
   min-height: 50px;
   border-color: #69c7d4;
@@ -432,6 +439,12 @@ dialog.review-dialog.single-game {
 
 @media (max-width: 900px) {
   .review-dialog.multi-game .past-games-review {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .setup-mode .mode-options {
     grid-template-columns: minmax(0, 1fr);
   }
 }

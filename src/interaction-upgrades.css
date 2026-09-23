@@ -24,6 +24,26 @@
   font-size: 9px;
 }
 
+@media (min-height: 640px) {
+  .app:not(.setup-mode) .decision-main {
+    min-height: 66px;
+    justify-content: flex-end;
+  }
+
+  .app.draft-complete .decision-main {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 7px;
+  }
+
+  .app.draft-complete .decision-main > .complete-button,
+  .app.draft-complete .decision-main > .next-game,
+  .app.draft-complete .decision-main > .confirm-button {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
 @media (max-width: 820px) {
   .compact-view-tabs {
     display: grid;
@@ -80,6 +100,13 @@
 
   .app:not(.setup-mode) .trainer {
     font-size: 9px;
+  }
+
+  .app.draft-complete .decision-main > button {
+    height: 43px;
+    padding-inline: 6px;
+    font-size: clamp(9px, 1.8vw, 11px);
+    line-height: 1.15;
   }
 
   .draft-arena,
@@ -162,6 +189,8 @@
   }
 
   .app:not(.setup-mode) .phase-banner {
+    height: 123px;
+    min-height: 123px;
     margin-bottom: 7px;
   }
 
@@ -178,6 +207,7 @@
   }
 
   .app:not(.setup-mode) .decision-bar {
+    height: 116px;
     min-height: 0;
     padding-block: 3px;
   }

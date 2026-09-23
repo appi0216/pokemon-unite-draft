@@ -1769,3 +1769,35 @@
   color: var(--text-tertiary);
   text-align: center;
 }
+
+/* The complete All-Star review scales with the available viewport. */
+dialog.review-dialog {
+  width: clamp(720px, 86vw, 1280px);
+  max-width: calc(100vw - 28px);
+  max-height: calc(100dvh - 28px);
+  padding: clamp(16px, 2vw, 28px);
+}
+.review-dialog .past-games-review {
+  grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 1fr));
+  max-height: calc(100dvh - 130px);
+  gap: clamp(10px, 1.2vw, 16px);
+}
+.review-history-button {
+  color: color-mix(in srgb, var(--purple) 55%, #d9edf0);
+}
+.review-history-button:hover,
+.review-history-button:focus-visible {
+  color: #eefcff;
+  box-shadow: 0 0 16px #7bd7e62b;
+}
+@media (max-width: 760px) {
+  dialog.review-dialog {
+    width: calc(100vw - 16px);
+    max-width: none;
+    max-height: calc(100dvh - 16px);
+    padding: 14px;
+  }
+  .review-dialog .past-games-review {
+    max-height: calc(100dvh - 104px);
+  }
+}

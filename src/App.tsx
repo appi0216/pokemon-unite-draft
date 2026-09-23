@@ -22,6 +22,7 @@ import {
   RotateCcw,
   Search,
   House,
+  History as HistoryIcon,
   Shield,
   SkipForward,
   Trophy,
@@ -91,10 +92,12 @@ function Modal({
   title,
   onClose,
   children,
+  className = "",
 }: {
   title: string;
   onClose: () => void;
   children: ReactNode;
+  className?: string;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -105,6 +108,7 @@ function Modal({
   return (
     <dialog
       ref={ref}
+      className={className}
       onCancel={onClose}
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
@@ -659,6 +663,16 @@ function App() {
         </div>
         <div className="header-actions">
           {screen === "setup" && <span className="snapshot">2026.09.18</span>}
+          {screen === "draft" && draft.allStar && draft.history.length > 0 && (
+            <button
+              className="icon-button review-history-button"
+              title="これまでの試合を振り返る"
+              aria-label="これまでの試合を振り返る"
+              onClick={() => setReviewOpen(true)}
+            >
+              <HistoryIcon size={18} />
+            </button>
+          )}
           <button
             className="icon-button"
             title="画面を広げる"
@@ -1296,8 +1310,8 @@ function App() {
         <Modal title="ドラフトをリセット" onClose={() => setModal(null)}>
           <p>
             {draft.allStar
-              ? "現在のBAN・PICKと過去の選出を消去し、オールスタードラフトを最初からやり直します。"
-              : "現在のBAN・PICKを消去し、ドラフトを最初からやり直します。"}
+              ? `GAME ${String(draft.game).padStart(2, "0")} のBAN・PICKだけを消去し、同じ試合を最初からやり直します。過去の試合結果は残ります。`
+              : "現在のBAN・PICKを消去し、この試合を最初からやり直します。"}
           </p>
           <div className="modal-buttons">
             <button className="modal-secondary" onClick={() => setModal(null)}>
@@ -1370,6 +1384,7 @@ function App() {
         <Modal
           title="これまでのドラフト"
           onClose={() => setReviewOpen(false)}
+          className="review-dialog"
         >
           <div className="past-games-review">
             {draft.history.map((past) => (

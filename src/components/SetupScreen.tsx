@@ -46,7 +46,7 @@ export default function SetupScreen({
     <main className="setup-main">
       <section className="setup-intro">
         <span className="section-kicker">
-          <span /> YOUR DRAFT ROOM
+          YOUR DRAFT ROOM
         </span>
         <h1>
           勝負は、

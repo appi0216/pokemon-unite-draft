@@ -927,9 +927,9 @@
   --header-instruction-width: min(44vw, 620px);
   position: relative;
   display: grid;
-  grid-template-columns: minmax(82px, 1fr) var(
-      --header-instruction-width
-    ) minmax(82px, 1fr);
+  grid-template-columns:
+    minmax(82px, 1fr) var(--header-instruction-width)
+    minmax(82px, 1fr);
   gap: var(--header-status-gap);
   width: min(1040px, 100%);
   align-items: center;
@@ -999,9 +999,9 @@
   .app:not(.setup-mode) .header-phase {
     --header-instruction-width: min(48vw, 420px);
     --header-status-gap: 8px;
-    grid-template-columns: minmax(64px, 1fr) var(
-        --header-instruction-width
-      ) minmax(64px, 1fr);
+    grid-template-columns:
+      minmax(64px, 1fr) var(--header-instruction-width)
+      minmax(64px, 1fr);
   }
 }
 
@@ -1013,9 +1013,9 @@
   .app:not(.setup-mode) .header-phase {
     --header-instruction-width: min(46vw, 310px);
     --header-status-gap: 5px;
-    grid-template-columns: minmax(48px, 1fr) var(
-        --header-instruction-width
-      ) minmax(48px, 1fr);
+    grid-template-columns:
+      minmax(48px, 1fr) var(--header-instruction-width)
+      minmax(48px, 1fr);
   }
 
   .app:not(.setup-mode) .header-phase-title > strong,
@@ -2222,6 +2222,12 @@ dialog.review-dialog {
   color: #f2fafb;
   font-size: 16px;
 }
+.past-draft-team .team-emblem,
+.past-draft-team .order-label {
+  border-color: color-mix(in srgb, var(--side) 34%, transparent);
+  background: color-mix(in srgb, var(--side) 16%, #15242b);
+  color: var(--side);
+}
 .past-draft-team > h3 {
   margin: 0;
   color: #a9c0c6;
@@ -2289,6 +2295,11 @@ dialog.review-dialog {
 .past-draft-return {
   display: flex;
   justify-content: center;
+  gap: 10px;
+}
+.past-draft-return > button {
+  width: 210px;
+  min-height: 40px;
 }
 @media (max-width: 760px) {
   .past-draft-screen {

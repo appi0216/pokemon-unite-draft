@@ -648,7 +648,7 @@ function App() {
               <span className="header-phase-divider" />
               <strong className="header-instruction">
                 {showingPastGame
-                  ? `GAME ${String(reviewGame.game).padStart(2, "0")} の終了時点を表示中`
+                  ? `GAME${String(reviewGame.game).padStart(2, "0")} - ドラフト結果を表示中`
                   : complete
                     ? "両チームの選出が完了しました。味方の枠を2つ選ぶと、ポケモンを交換できます。"
                     : `${teamName(activeTeam)}が${phase === "ban" ? "使用禁止にする" : "使用する"}ポケモンを選択中`}
@@ -797,10 +797,17 @@ function App() {
           </section>
           <div className="past-draft-return">
             <button
+              className="subtle-button"
+              onClick={() => setReviewOpen(true)}
+            >
+              <HistoryIcon size={16} />
+              試合履歴に戻る
+            </button>
+            <button
               className="confirm-button"
               onClick={() => setReviewGame(null)}
             >
-              現在の試合へ戻る
+              閉じる
             </button>
           </div>
         </main>

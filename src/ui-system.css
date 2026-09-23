@@ -235,3 +235,203 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Final usability pass: readable labels, explicit primary actions and shared controls. */
+.app:not(.setup-mode) .pokemon-card .pokemon-name {
+  min-height: 23px;
+  padding-inline: 3px;
+  font-size: clamp(9.5px, 0.72vw, 11px);
+  line-height: 1.12;
+}
+
+.setup-mode .mode-option small,
+.setup-mode .timer-options button small,
+.setup-mode .field-hint,
+.setup-mode .setup-footnote {
+  font-size: 9.5px;
+  line-height: 1.35;
+}
+
+.setup-mode .mode-option strong,
+.setup-mode .timer-options button,
+.setup-mode .single-match-format strong,
+.setup-mode .team-name-settings summary {
+  font-size: 11.5px;
+}
+
+.setup-card.has-saved-draft .resume-card {
+  min-height: 50px;
+  border-color: #69c7d4;
+  background:
+    linear-gradient(110deg, transparent 10%, #ffffff0b 48%, transparent 78%),
+    linear-gradient(135deg, #286f80, #274f62 62%, #394d59);
+  color: #f1fbfc;
+  box-shadow:
+    inset 0 1px #ffffff1f,
+    0 8px 22px #0710154d,
+    0 0 20px #62cedd16;
+}
+.setup-card.has-saved-draft .resume-card strong {
+  color: #f1fbfc;
+  font-size: 13px;
+}
+.setup-card.has-saved-draft .resume-card small,
+.setup-card.has-saved-draft .resume-card > svg {
+  color: #bcd8dd;
+}
+.setup-card.has-saved-draft .resume-card:hover,
+.setup-card.has-saved-draft .resume-card:focus-visible {
+  border-color: #92e0e8;
+  background:
+    linear-gradient(110deg, transparent 10%, #ffffff12 48%, transparent 78%),
+    linear-gradient(135deg, #328698, #2d6175 62%, #465b68);
+}
+.setup-card.has-saved-draft .start-draft-button {
+  border-color: #48626d;
+  background: linear-gradient(145deg, #25343c, #1a282f);
+  color: #bdd0d4;
+  box-shadow: inset 0 1px #ffffff0b;
+}
+.setup-card.has-saved-draft .start-draft-button:hover,
+.setup-card.has-saved-draft .start-draft-button:focus-visible {
+  border-color: #6d929d;
+  background: linear-gradient(145deg, #2b3c45, #1e2e36);
+  color: #edf8fa;
+  box-shadow: inset 0 1px #ffffff10;
+}
+
+/* Neutral utilities use cyan; team colors remain reserved for team identity. */
+.app:not(.setup-mode) .review-history-button {
+  color: #79d8e5;
+}
+.app:not(.setup-mode) .review-history-button:hover,
+.app:not(.setup-mode) .review-history-button:focus-visible {
+  color: #effdff;
+  border-color: #68cbd7;
+  box-shadow: 0 0 16px #68cbd72b;
+}
+
+/* Use the available history canvas without making a single result oversized. */
+dialog.review-dialog.multi-game {
+  width: min(94vw, 1320px);
+}
+dialog.review-dialog.single-game {
+  width: min(680px, calc(100vw - 28px));
+}
+.review-dialog.multi-game .past-games-review {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+.review-dialog.single-game .past-games-review {
+  grid-template-columns: minmax(0, 1fr);
+}
+.review-dialog .past-game-review-card {
+  max-width: none;
+}
+
+/* Tournament restrictions share the same control language as the draft filters. */
+.draft-tools input[type="search"]:focus {
+  outline: 0;
+  border-color: #69cad9;
+  box-shadow: 0 0 0 3px #62cedd16;
+}
+.restriction-list {
+  padding: 10px 4px 10px 0;
+  scrollbar-color: #5d7f8a #14252d;
+  scrollbar-width: thin;
+}
+.restriction-list label {
+  min-height: 30px;
+  padding: 5px 8px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: #17283080;
+  transition:
+    background-color 160ms var(--motion-standard-easing),
+    border-color 160ms var(--motion-standard-easing);
+}
+.restriction-list label:hover {
+  border-color: #476974;
+  background: #20343d;
+}
+.restriction-list input[type="checkbox"] {
+  appearance: none;
+  display: grid;
+  place-items: center;
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  border: 1px solid #68828b;
+  border-radius: 4px;
+  background: #10242d;
+}
+.restriction-list input[type="checkbox"]::after {
+  content: "";
+  width: 8px;
+  height: 4px;
+  border-left: 2px solid #effdff;
+  border-bottom: 2px solid #effdff;
+  opacity: 0;
+  transform: translateY(-1px) rotate(-45deg) scale(0.7);
+  transition:
+    opacity 140ms var(--motion-standard-easing),
+    transform 140ms var(--motion-standard-easing);
+}
+.restriction-list input[type="checkbox"]:checked {
+  border-color: #77d5df;
+  background: #337f8d;
+  box-shadow: 0 0 10px #62cedd2b;
+}
+.restriction-list input[type="checkbox"]:checked::after {
+  opacity: 1;
+  transform: translateY(-1px) rotate(-45deg) scale(1);
+}
+.restriction-list input[type="checkbox"]:focus-visible {
+  outline: 2px solid #79d8e5;
+  outline-offset: 2px;
+}
+
+/* Align the bottom action buttons on one baseline. */
+.app:not(.setup-mode) .decision-bar {
+  align-items: end;
+}
+.app:not(.setup-mode) .decision-main {
+  position: relative;
+  gap: 0;
+}
+.app:not(.setup-mode) .decision-main .selected-description {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 4px);
+  left: 0;
+}
+.app:not(.setup-mode) .utility-actions,
+.app:not(.setup-mode) .decision-extra {
+  align-items: end;
+  padding-bottom: 2px;
+}
+
+@media (min-width: 701px) and (max-height: 820px) {
+  .setup-mode .setup-art {
+    height: 210px;
+  }
+  .setup-mode .showcase-card {
+    top: 22px;
+    height: 166px;
+    aspect-ratio: auto;
+  }
+  .setup-mode .showcase-1 {
+    top: 0;
+  }
+  .setup-mode .art-badge {
+    bottom: 0;
+    padding-block: 7px;
+  }
+}
+
+@media (max-width: 900px) {
+  .review-dialog.multi-game .past-games-review {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

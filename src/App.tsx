@@ -1752,7 +1752,7 @@ function App() {
         <Modal
           title="試合履歴"
           onClose={() => setReviewOpen(false)}
-          className="review-dialog"
+          className={`review-dialog ${reviewGames.length === 1 ? "single-game" : "multi-game"}`}
         >
           {draft.allStar && reviewGames.length > 0 && (
             <button

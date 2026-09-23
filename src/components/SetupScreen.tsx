@@ -84,7 +84,10 @@ export default function SetupScreen({
           </span>
         </div>
       </section>
-      <section className="setup-card" aria-labelledby="setup-title">
+      <section
+        className={`setup-card ${hasSaved ? "has-saved-draft" : ""}`}
+        aria-labelledby="setup-title"
+      >
         <div className="setup-title-row">
           <div>
             <span className="section-kicker">MATCH SETUP</span>
@@ -138,7 +141,7 @@ export default function SetupScreen({
               >
                 <Sparkles size={21} />
                 <strong>オールスター</strong>
-                <small>過去の選出を持ち越して禁止</small>
+                <small>自チームの過去の選出は再使用不可</small>
                 {values.allStar && <Check className="option-check" size={15} />}
               </button>
             </div>

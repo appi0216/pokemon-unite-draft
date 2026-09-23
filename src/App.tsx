@@ -141,6 +141,7 @@ function App() {
     "purple" | "roster" | "orange"
   >("roster");
   const [rewindTarget, setRewindTarget] = useState<number | null>(null);
+  const [firstPrompt, setFirstPrompt] = useState<"start" | "next" | null>(null);
   const pokemonGrid = useRef<HTMLDivElement>(null);
   const [running, setRunning] = useState(false);
   const [remaining, setRemaining] = useState(() =>
@@ -156,7 +157,6 @@ function App() {
   } | null>(null);
   const [draftSettings, setDraftSettings] = useState({
     ...settings,
-    first: "purple" as Team,
     allStar: draft.allStar,
     bestOf: draft.bestOf,
   });
@@ -374,14 +374,13 @@ function App() {
     setSelected(null);
     setDraftSettings({
       ...settings,
-      first: "purple",
       allStar: draft.allStar,
       bestOf: draft.bestOf,
     });
     setScreen("setup");
     window.scrollTo({ top: 0, behavior: "instant" });
   };
-  const startDraft = () => {
+  const startDraft = (first: Team) => {
     const next = {
       purple: draftSettings.purple.trim() || defaults.purple,
       orange: draftSettings.orange.trim() || defaults.orange,
@@ -391,7 +390,7 @@ function App() {
     setSettings(next);
     setDraft(
       createDraft(
-        draftSettings.first,
+        first,
         draftSettings.allStar,
         draftSettings.bestOf,
       ),
@@ -609,7 +608,7 @@ function App() {
         </a>
         <div className="header-center">
           {screen === "draft" ? (
-            <div className="header-phase" aria-live="polite">
+            <div className={`header-phase ${complete ? "is-complete" : ""}`} aria-live="polite">
               <div className="header-phase-title">
                 <strong>
                   {complete
@@ -699,7 +698,7 @@ function App() {
         <SetupScreen
           values={draftSettings}
           onChange={setDraftSettings}
-          onStart={startDraft}
+          onStart={() => setFirstPrompt("start")}
           onResume={resumeDraft}
           hasSaved={started}
           progress={draft.actions.length}
@@ -1165,17 +1164,7 @@ function App() {
                         openSetup();
                         return;
                       }
-                      const next = nextGame(draft);
-                      setDraft(next);
-                      setSelected(null);
-                      setSwapFrom(null);
-                      setQuery("");
-                      setRole("all");
-                      setHideUsed(true);
-                      setNotice("");
-                      setRemaining(turnSeconds(settings.seconds > 0, "ban"));
-                      setRunning(settings.seconds > 0);
-                      window.scrollTo({ top: 0, behavior: "instant" });
+                      setFirstPrompt("next");
                     }}
                   >
                     {draft.allStar && draft.game >= draft.bestOf
@@ -1320,6 +1309,46 @@ function App() {
             >
               リセットする
             </button>
+          </div>
+        </Modal>
+      )}
+      {firstPrompt && (
+        <Modal
+          title={`GAME ${String(firstPrompt === "next" ? draft.game + 1 : 1).padStart(2, "0")} の先攻チーム`}
+          onClose={() => setFirstPrompt(null)}
+        >
+          <p className="first-prompt-copy">この試合で最初にBANするチームを選択してください。</p>
+          <div className="first-prompt-options">
+            {(["purple", "orange"] as Team[]).map((team) => (
+              <button
+                key={team}
+                className={team}
+                onClick={() => {
+                  if (firstPrompt === "start") {
+                    startDraft(team);
+                  } else {
+                    setDraft(nextGame(draft, team));
+                    setSelected(null);
+                    setSwapFrom(null);
+                    setQuery("");
+                    setRole("all");
+                    setHideUsed(true);
+                    setNotice("");
+                    setRemaining(turnSeconds(settings.seconds > 0, "ban"));
+                    setRunning(settings.seconds > 0);
+                    window.scrollTo({ top: 0, behavior: "instant" });
+                  }
+                  setFirstPrompt(null);
+                }}
+              >
+                <span className="side-dot" />
+                <span>
+                  <strong>{teamName(team)}</strong>
+                  <small>{team === "purple" ? "左側・パープル" : "右側・オレンジ"}</small>
+                </span>
+                <span>先攻</span>
+              </button>
+            ))}
           </div>
         </Modal>
       )}

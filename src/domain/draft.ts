@@ -122,9 +122,9 @@ export function rewindToStep(draft: Draft, index: number): Draft {
   if (actionCount >= draft.actions.length) return draft;
   return { ...draft, actions: draft.actions.slice(0, actionCount) };
 }
-export function nextGame(draft: Draft): Draft {
+export function nextGame(draft: Draft, first?: Team): Draft {
   if (currentStep(draft)) return draft;
-  if (!draft.allStar) return createDraft(draft.first);
+  if (!draft.allStar) return createDraft(first ?? draft.first);
   if (draft.game >= draft.bestOf) return draft;
   const played = draft.actions
     .filter((a) => a.phase === "pick" && a.pokemon)
@@ -132,7 +132,7 @@ export function nextGame(draft: Draft): Draft {
   return {
     ...draft,
     game: draft.game + 1,
-    first: opposite(draft.first),
+    first: first ?? opposite(draft.first),
     actions: [],
     excluded: draft.allStar ? [...new Set([...draft.excluded, ...played])] : [],
     history: [

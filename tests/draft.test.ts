@@ -16,6 +16,12 @@ import {
 const ids = Array.from({ length: 80 }, (_, i) => `p${i}`);
 import { turnSeconds } from "../src/domain/timer.ts";
 
+const finishDraft = (draft: ReturnType<typeof createDraft>) => {
+  let finished = draft;
+  for (let i = 0; i < 16; i++) finished = choose(finished, ids[i], ids);
+  return finished;
+};
+
 test("timer follows six BAN turns and shared two-pick turns", () => {
   let d = createDraft();
   for (let i = 0; i < 6; i++) {
@@ -192,6 +198,16 @@ test("normal next game clears bans/picks; swapping only within completed team", 
   let right = createDraft("orange");
   for (let i = 0; i < 16; i++) right = choose(right, ids[i], ids);
   assert.deepEqual(nextGame(right), createDraft("orange"));
+});
+
+test("next game accepts an independently selected first team", () => {
+  let d = finishDraft(createDraft("purple"));
+  assert.equal(nextGame(d, "orange").first, "orange");
+  assert.equal(nextGame(d, "purple").first, "purple");
+
+  d = finishDraft(createDraft("purple", true, 3));
+  assert.equal(nextGame(d, "purple").first, "purple");
+  assert.equal(nextGame(d, "orange").first, "orange");
 });
 test("All-Star records each team's final picks across games and restores ownership", () => {
   let d = createDraft("purple", true);

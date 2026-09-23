@@ -1580,3 +1580,83 @@
   border-color: color-mix(in srgb, var(--orange) 86%, #f3cba5);
   color: #fff;
 }
+
+/* Per-game first-team chooser and collision-free completion header. */
+.app:not(.setup-mode) .header-phase.is-complete .header-phase-title {
+  position: absolute;
+  left: clamp(48px, 14vw, 220px);
+  justify-self: auto;
+}
+.app:not(.setup-mode) .header-phase.is-complete .header-instruction {
+  width: min(36vw, 480px);
+}
+.first-prompt-copy {
+  margin: 0 0 14px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+.first-prompt-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.first-prompt-options > button {
+  --choice: var(--purple);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 70px;
+  padding: 12px 14px;
+  border: 1px solid color-mix(in srgb, var(--choice) 48%, var(--surface-border));
+  border-radius: 13px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--choice) 18%, var(--surface-control)), var(--surface-control));
+  color: var(--text-primary);
+  text-align: left;
+}
+.first-prompt-options > button.orange { --choice: var(--orange); }
+.first-prompt-options > button:hover,
+.first-prompt-options > button:focus-visible {
+  border-color: var(--choice);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--choice) 24%, transparent);
+}
+.first-prompt-options .side-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--choice);
+  box-shadow: 0 0 12px var(--choice);
+}
+.first-prompt-options strong,
+.first-prompt-options small {
+  display: block;
+}
+.first-prompt-options small {
+  margin-top: 3px;
+  color: var(--text-secondary);
+  font-size: 9px;
+}
+.first-prompt-options > button > span:last-child {
+  color: var(--choice);
+  font-size: 11px;
+  font-weight: 800;
+}
+@media (max-width: 680px) {
+  .app:not(.setup-mode) .header-phase.is-complete .header-phase-title {
+    left: 42px;
+  }
+  .app:not(.setup-mode) .header-phase.is-complete .header-instruction {
+    width: 43vw;
+  }
+  .first-prompt-options { grid-template-columns: 1fr; }
+}
+.app:not(.setup-mode) .header-phase.is-complete .header-phase-title {
+  grid-column: auto;
+  transform: none;
+}
+.app:not(.setup-mode) .header-phase.is-complete .header-phase-title {
+  left: -36px;
+}
+@media (max-width: 680px) {
+  .app:not(.setup-mode) .header-phase.is-complete .header-phase-title { left: -22px; }
+}

@@ -1,5 +1,4 @@
 import {
-  ArrowLeftRight,
   ArrowRight,
   Check,
   ChevronRight,
@@ -10,7 +9,7 @@ import {
   Sparkles,
   Swords,
 } from "lucide-react";
-import type { BestOf, Team } from "../domain/draft";
+import type { BestOf } from "../domain/draft";
 import { byId } from "../data/roster";
 import Portrait from "./Portrait";
 
@@ -19,7 +18,6 @@ export type SetupValues = {
   orange: string;
   seconds: number;
   sound: boolean;
-  first: Team;
   allStar: boolean;
   bestOf: BestOf;
 };
@@ -204,32 +202,8 @@ export default function SetupScreen({
               ))}
             </div>
             <p className="field-hint">
-              あり：BANは各15秒、PICKは各ターン20秒。時間切れ後は手動で確定できます。
+              あり：BANは各15秒で自動スキップ、PICKは各ターン20秒です。
             </p>
-          </fieldset>
-          <fieldset className="setup-field first-team-field">
-            <legend>
-              <ArrowLeftRight size={15} />
-              先攻チーム
-            </legend>
-            <div className="side-options">
-              {(["purple", "orange"] as Team[]).map((team) => (
-                <button
-                  type="button"
-                  key={team}
-                  className={`${team} ${values.first === team ? "chosen" : ""}`}
-                  aria-pressed={values.first === team}
-                  onClick={() => onChange({ ...values, first: team })}
-                >
-                  <span className="side-dot" />
-                  <span>
-                    {team === "purple" ? "左側" : "右側"}
-                    <small>{team === "purple" ? "パープル" : "オレンジ"}</small>
-                  </span>
-                  {values.first === team && <Check size={16} />}
-                </button>
-              ))}
-            </div>
           </fieldset>
         </div>
         <details className="team-name-settings">
@@ -267,8 +241,7 @@ export default function SetupScreen({
         <p className="setup-footnote">
           {hasSaved
             ? "新しく開始すると、保存中のドラフトを置き換えます。"
-            : (values.first === "purple" ? "左側" : "右側") +
-              "のチームが先攻。準備ができたら開始しましょう。"}
+            : "開始時に、この試合の先攻チームを選択します。"}
         </p>
       </section>
     </main>

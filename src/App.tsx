@@ -595,19 +595,70 @@ function App() {
           />
           <span>
             UNITE<span className="brand-light"> DRAFT</span>
-            <small>ドラフトシミュレーター</small>
+            <small>
+              {screen === "draft"
+                ? `${draft.allStar ? `オールスター · BO${draft.bestOf}` : "通常ドラフト"} · GAME ${String(draft.game).padStart(2, "0")}`
+                : "ドラフトシミュレーター"}
+            </small>
           </span>
         </a>
         <div className="header-center">
-          <Trophy size={15} />
-          <span>
-            {draft.allStar ? "オールスタードラフト" : "大会・カスタム練習"}
-          </span>
-          <span className="header-divider" />
-          <span>3 BAN / 5 PICK</span>
+          {screen === "draft" ? (
+            <div className="header-phase" aria-live="polite">
+              <div className="header-phase-title">
+                <span>
+                  {complete
+                    ? "DRAFT COMPLETE"
+                    : phase === "ban"
+                      ? "BAN PHASE"
+                      : "PICK PHASE"}
+                </span>
+                <strong>
+                  {complete
+                    ? "ドラフト完了"
+                    : phase === "ban"
+                      ? "使用禁止フェーズ"
+                      : "選択フェーズ"}
+                </strong>
+              </div>
+              <span className="header-phase-divider" />
+              <strong className="header-instruction">
+                {complete
+                  ? "両チームの選出が完了しました。味方の枠を2つ選ぶと、ポケモンを交換できます。"
+                  : `${teamName(activeTeam)}が${phase === "ban" ? "使用禁止にする" : "使用する"}ポケモンを選択`}
+              </strong>
+              {settings.seconds > 0 && (
+                <div
+                  className={`header-timer ${remaining <= 5 ? "urgent" : ""}`}
+                  aria-label="ターンの残り時間"
+                >
+                  <Clock3 size={14} />
+                  <strong>{String(remaining).padStart(2, "0")}</strong>
+                  <button
+                    className="timer-button"
+                    aria-label={running ? "タイマーを停止" : "タイマーを開始"}
+                    disabled={complete}
+                    onClick={() => {
+                      if (remaining === 0) setRemaining(duration);
+                      setRunning(!running);
+                    }}
+                  >
+                    {running ? <Pause size={13} /> : <Play size={13} />}
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <>
+              <Trophy size={15} />
+              <span>大会・カスタム練習</span>
+              <span className="header-divider" />
+              <span>3 BAN / 5 PICK</span>
+            </>
+          )}
         </div>
         <div className="header-actions">
-          <span className="snapshot">2026.09.18</span>
+          {screen === "setup" && <span className="snapshot">2026.09.18</span>}
           <button
             className="icon-button"
             title="画面を広げる"
@@ -659,61 +710,10 @@ function App() {
         />
       ) : (
         <main className="draft-main">
-          <section className="phase-banner" aria-label="ドラフトの進行状況">
-            <div className="phase-summary">
-              <div className="phase-label">
-                <span className="eyebrow">
-                  {complete
-                    ? "DRAFT COMPLETE"
-                    : phase === "ban"
-                      ? "BAN PHASE"
-                      : "PICK PHASE"}
-                </span>
-                <h1>
-                  {complete
-                    ? "ドラフト完了"
-                    : phase === "ban"
-                      ? "使用禁止フェーズ"
-                      : "選択フェーズ"}
-                </h1>
-              </div>
-              <div className="phase-message" aria-live="polite">
-                <div>
-                  <strong>
-                    {complete
-                      ? "両チームの選出が完了しました。味方の枠を2つ選ぶと、ポケモンを交換できます。"
-                      : `${teamName(activeTeam)}が${phase === "ban" ? "使用禁止にする" : "使用する"}ポケモンを選択`}
-                  </strong>
-                </div>
-              </div>
-              <span className="phase-game" aria-label={`${draft.game}試合目`}>
-                <small>GAME</small>
-                <strong>{String(draft.game).padStart(2, "0")}</strong>
-                {draft.allStar && <em>/ BO{draft.bestOf}</em>}
-              </span>
-              {settings.seconds > 0 && (
-                <div
-                  className={`timer ${remaining <= 5 && settings.seconds > 0 ? "urgent" : ""}`}
-                  aria-label="ターンの残り時間"
-                >
-                  <div>
-                    <Clock3 size={18} />
-                    <strong>{String(remaining).padStart(2, "0")}</strong>
-                    <button
-                      className="timer-button"
-                      aria-label={running ? "タイマーを停止" : "タイマーを開始"}
-                      disabled={complete || settings.seconds === 0}
-                      onClick={() => {
-                        if (remaining === 0) setRemaining(duration);
-                        setRunning(!running);
-                      }}
-                    >
-                      {running ? <Pause size={16} /> : <Play size={16} />}
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
+          <section
+            className="phase-banner timeline-only"
+            aria-label="ドラフトの進行状況"
+          >
             <section className="timeline" aria-label="BAN・PICKの順番">
               <div className="timeline-label">
                 <span className="eyebrow">DRAFT ORDER</span>
@@ -1239,6 +1239,7 @@ function App() {
         <span>
           非公式ファンメイドツール<span className="footer-divider">·</span>©
           Pokémon / Nintendo / Creatures / GAME FREAK / TiMi
+          <span className="footer-divider">·</span>2026.09.18
         </span>
         <div>
           <button className="footer-link" onClick={() => setModal("info")}>

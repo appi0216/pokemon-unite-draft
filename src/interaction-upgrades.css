@@ -570,3 +570,204 @@
     min-height: 104px;
   }
 }
+
+/* Draft status lives in the global header; the former banner becomes a slim timeline. */
+.app:not(.setup-mode) .app-header {
+  display: grid;
+  grid-template-columns: minmax(190px, auto) minmax(320px, 1fr) auto;
+  gap: clamp(12px, 2vw, 30px);
+}
+
+.app:not(.setup-mode) .header-center {
+  display: flex;
+  min-width: 0;
+  justify-content: center;
+}
+
+.header-phase {
+  --side: var(--team);
+  display: grid;
+  grid-template-columns: auto 1px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(10px, 1.4vw, 20px);
+  width: min(760px, 100%);
+  min-width: 0;
+}
+
+.header-phase-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 126px;
+  line-height: 1.05;
+  text-align: center;
+}
+
+.header-phase-title > span {
+  color: color-mix(in srgb, var(--side) 68%, #a9c9d0);
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.header-phase-title > strong {
+  margin-top: 3px;
+  color: #f4fbfc;
+  font-size: clamp(13px, 1.15vw, 17px);
+  white-space: nowrap;
+}
+
+.header-phase-divider {
+  align-self: stretch;
+  margin-block: 5px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    color-mix(in srgb, var(--side) 52%, #53717c),
+    transparent
+  );
+}
+
+.header-instruction {
+  min-width: 0;
+  overflow: hidden;
+  color: #e1edef;
+  font-size: clamp(10px, 0.95vw, 13px);
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header-timer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 5px 4px 8px;
+  border: 1px solid color-mix(in srgb, var(--side) 46%, #49616b);
+  border-radius: 9px;
+  background: #101b21b8;
+  color: #dfecee;
+  box-shadow: inset 0 1px #ffffff0a;
+}
+
+.header-timer > strong {
+  min-width: 20px;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.header-timer .timer-button {
+  width: 24px;
+  height: 24px;
+}
+
+.header-timer.urgent {
+  border-color: #ef6f69;
+  color: #ffbbb7;
+  box-shadow: 0 0 16px #ef6f6938;
+}
+
+.app:not(.setup-mode) .phase-banner.timeline-only {
+  display: block;
+  height: auto;
+  min-height: 0;
+  margin-bottom: 7px;
+  padding: 5px clamp(12px, 2vw, 24px);
+}
+
+.app:not(.setup-mode) .phase-banner.timeline-only > .timeline {
+  min-height: 36px;
+  padding: 0;
+  border-top: 0;
+}
+
+.timeline-only::after {
+  inset: 0 28% auto;
+}
+
+.app:not(.setup-mode) .brand small {
+  color: color-mix(in srgb, var(--team) 48%, #a8bec5);
+  letter-spacing: 0.75px;
+}
+
+@media (max-width: 900px) {
+  .app:not(.setup-mode) .app-header {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 10px;
+  }
+
+  .header-phase {
+    grid-template-columns: auto 1px minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+
+  .header-phase-title {
+    min-width: 108px;
+  }
+
+  .header-instruction {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 680px) {
+  .app:not(.setup-mode) .app-header {
+    padding-inline: 10px;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 6px;
+  }
+
+  .app:not(.setup-mode) .brand > span,
+  .app:not(.setup-mode) .setup-return-button > span,
+  .header-phase-title > span,
+  .header-phase-divider {
+    display: none;
+  }
+
+  .app:not(.setup-mode) .brand img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header-phase {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 5px;
+  }
+
+  .header-phase-title {
+    min-width: 82px;
+  }
+
+  .header-phase-title > strong {
+    font-size: 12px;
+  }
+
+  .header-instruction {
+    font-size: 9px;
+  }
+
+  .app:not(.setup-mode) .header-actions {
+    gap: 4px;
+  }
+
+  .app:not(.setup-mode) .header-actions .icon-button:first-of-type {
+    display: none;
+  }
+
+  .app:not(.setup-mode) .setup-return-button {
+    width: 32px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .app:not(.setup-mode) .phase-banner.timeline-only {
+    height: auto;
+    min-height: 0;
+    padding-block: 4px;
+  }
+
+  .app:not(.setup-mode) .phase-banner.timeline-only > .timeline {
+    min-height: 32px;
+  }
+}

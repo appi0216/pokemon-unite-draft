@@ -9,7 +9,7 @@ const pokemon = JSON.parse(
 const files = [
   "/",
   "/index.html",
-  "/icon.svg",
+  "/icon.png",
   "/icon-192.png",
   "/icon-512.png",
   "/manifest.webmanifest",

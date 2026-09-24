@@ -779,7 +779,7 @@ function App() {
           }}
         >
           <img
-            src={`${import.meta.env.BASE_URL}icon.svg`}
+            src={`${import.meta.env.BASE_URL}icon.png`}
             width="34"
             height="34"
             alt=""

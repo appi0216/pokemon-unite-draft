@@ -56,7 +56,7 @@ await fs.writeFile(
   JSON.stringify(roster.map((p) => p.image)),
 );
 for (const size of [192, 512])
-  await sharp("public/icon.svg")
+  await sharp("public/icon.png")
     .resize(size, size)
     .png()
     .toFile(`public/icon-${size}.png`);

@@ -1,0 +1,1430 @@
+/* Adaptive workspace: one primary action, quiet surfaces, familiar controls. */
+:root {
+  color-scheme: dark;
+  color: #f6f5f8;
+  background: #111114;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif;
+  font-size: 16px;
+  --purple: #b39aff;
+  --orange: #ffba76;
+  --surface: #1c1c20;
+  --surface-control: #26262c;
+  --surface-border: #3c3b44;
+  --text-primary: #f6f5f8;
+  --text-secondary: #b2b1bd;
+  --muted: #b2b1bd;
+}
+html,
+body,
+#root {
+  min-height: 100%;
+}
+body {
+  min-width: 280px;
+}
+button,
+input,
+select {
+  font-size: 1rem;
+}
+button,
+a,
+summary {
+  touch-action: manipulation;
+}
+button {
+  min-height: 44px;
+}
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #d5c6ff;
+  outline-offset: 3px;
+}
+[hidden] {
+  display: none !important;
+}
+.app {
+  min-height: 100dvh;
+  height: auto;
+  max-height: none;
+  background: #111114;
+  color: var(--text-primary);
+  overflow: visible;
+}
+.app::before,
+.app::after,
+.phase-banner::before,
+.phase-banner::after,
+.team-panel::before,
+.team-panel::after,
+.selection-panel::before,
+.selection-panel::after,
+.decision-bar::before,
+.decision-bar::after {
+  display: none;
+}
+.app-header {
+  padding: max(8px, env(safe-area-inset-top))
+    max(16px, env(safe-area-inset-right)) 8px
+    max(16px, env(safe-area-inset-left));
+  height: auto;
+  min-height: 64px;
+  gap: 16px;
+  background: #1c1c20ef;
+  border-bottom: 1px solid #ffffff0d;
+  box-shadow: none;
+}
+.app-header .brand {
+  min-width: 44px;
+  min-height: 44px;
+  gap: 10px;
+  font-size: 17px;
+}
+.app-header .brand img {
+  width: 36px;
+  height: 36px;
+  box-shadow: none;
+}
+.app-header .brand > span,
+.app-header .brand-light {
+  color: #f6f5f8;
+  letter-spacing: -0.3px;
+}
+.brand small {
+  display: none;
+}
+.header-center {
+  position: static;
+  inset: auto;
+  transform: none;
+  display: flex;
+  width: auto;
+  min-width: 0;
+  flex: 1;
+  justify-content: flex-start;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+.setup-mode .header-center {
+  justify-content: center;
+}
+.header-phase {
+  position: static;
+  inset: auto;
+  transform: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  width: auto;
+  min-height: 44px;
+  height: auto;
+  padding: 0;
+}
+.header-phase-title {
+  position: static;
+  inset: auto;
+  transform: none;
+  padding: 0;
+  flex: 0 0 auto;
+}
+.header-phase-title::before,
+.header-phase-title::after {
+  display: none;
+}
+.header-phase-title > strong {
+  font-size: 14px;
+  color: var(--team);
+  letter-spacing: 1px;
+}
+.header-phase-divider {
+  height: 18px;
+  background: #55535e;
+}
+.header-instruction {
+  position: static;
+  inset: auto;
+  transform: none;
+  width: auto;
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--text-primary);
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+.header-timer {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+}
+.header-actions {
+  position: static;
+  inset: auto;
+  width: auto;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.icon-button,
+.timer-button,
+.sound-button,
+.setup-return-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: none;
+}
+.icon-button:hover,
+.setup-return-button:hover,
+.sound-button:hover {
+  background: #ffffff10;
+  color: white;
+}
+.icon-button svg,
+.setup-return-button svg {
+  width: 21px;
+  height: 21px;
+}
+.setup-return-button span {
+  display: none;
+}
+.app > .draft-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  max-width: 1800px;
+  min-height: 0;
+  height: auto;
+  margin: 0 auto;
+  padding: 12px max(16px, env(safe-area-inset-right)) 0
+    max(16px, env(safe-area-inset-left));
+  gap: 12px;
+  overflow: visible;
+}
+.progress-disclosure {
+  flex: 0 0 auto;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+.progress-disclosure > summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 44px;
+  cursor: pointer;
+  padding: 4px 12px;
+  border-radius: 12px;
+  list-style: none;
+  background: #1c1c20;
+}
+.progress-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+.progress-disclosure[open] > summary > svg {
+  transform: rotate(180deg);
+}
+.progress-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  max-width: 400px;
+}
+.progress-dots i {
+  height: 5px;
+  border-radius: 4px;
+  flex: 1;
+  background: #43424c;
+}
+.progress-dots i.done.purple,
+.progress-dots i.current.purple {
+  background: var(--purple);
+}
+.progress-dots i.done.orange,
+.progress-dots i.current.orange {
+  background: var(--orange);
+}
+.progress-dots i.current {
+  outline: 2px solid #eee;
+  outline-offset: 2px;
+}
+.phase-banner {
+  padding: 8px 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+  min-height: 0;
+}
+.phase-banner > .timeline {
+  padding: 0;
+  min-height: 0;
+  border: 0;
+  background: none;
+  display: block;
+}
+.timeline-meta,
+.timeline-label {
+  display: none;
+}
+.timeline-stages {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 5px;
+}
+.timeline-step {
+  flex: 1 0 46px;
+  min-height: 52px;
+  padding: 5px;
+  border-radius: 8px;
+}
+.timeline-step > span:last-child {
+  font-size: 10px;
+}
+.timeline-step::before,
+.timeline-step::after,
+.timeline-separator {
+  display: none;
+}
+.timeline-step .step-node {
+  width: 24px;
+  height: 24px;
+  animation: none;
+  box-shadow: none;
+}
+.compact-view-tabs {
+  display: none;
+}
+.draft-arena {
+  display: grid;
+  grid-template-columns: minmax(210px, 0.85fr) minmax(340px, 2.2fr) minmax(
+      210px,
+      0.85fr
+    );
+  grid-template-rows: minmax(500px, calc(100dvh - 270px));
+  min-height: 0;
+  height: auto;
+  gap: 14px;
+}
+.team-side {
+  min-width: 0;
+  min-height: 0;
+}
+@layer adaptive-layout {
+  .draft-arena,
+  .allstar-arena {
+    grid-template-rows: minmax(500px, calc(100dvh - 270px)) !important;
+  }
+  .allstar-arena > .team-side {
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px !important;
+  }
+}
+.team-panel {
+  display: grid;
+  grid-template-rows: auto auto 62px auto minmax(0, 1fr);
+  flex: 1;
+  height: 100%;
+  min-height: 0;
+  padding: 14px;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid #34323d;
+  border-radius: 18px;
+  box-shadow: none;
+}
+.team-panel.orange {
+  background: var(--surface);
+  border-color: #34323d;
+}
+.team-panel.team-active {
+  border-color: var(--side);
+  box-shadow: inset 0 3px var(--side);
+}
+.team-heading {
+  gap: 8px;
+  height: auto;
+  min-height: 38px;
+}
+.team-heading h2 {
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  color: #f6f5f8;
+}
+.team-emblem {
+  width: 30px;
+  height: 32px;
+  background: none;
+}
+.order-label {
+  font-size: 11px;
+  border: 0;
+  background: #ffffff09;
+  color: var(--side);
+}
+.bans-heading,
+.picks-heading {
+  font-size: 11px;
+  color: #b2b1bd;
+}
+.picks-heading > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.ban-slots {
+  gap: 8px;
+}
+.ban-slot,
+.ban-slot.filled {
+  border: 1px solid #3c3b44;
+  background: #26262c;
+  border-radius: 10px;
+}
+.ban-slot.active {
+  border-color: var(--side);
+  background: #302b39;
+  box-shadow: inset 0 0 0 1px var(--side);
+}
+.ban-image {
+  position: absolute;
+  inset: 0;
+}
+.ban-image .portrait {
+  width: 62px;
+  height: 62px;
+  top: 50%;
+  left: 50%;
+}
+.ban-slot-label {
+  font-size: 10px;
+  color: #b2b1bd;
+}
+.player-list {
+  grid-template-rows: repeat(5, minmax(56px, 1fr));
+  gap: 7px;
+  overflow: auto;
+}
+.player-slot,
+.player-slot.filled {
+  display: flex;
+  width: 100%;
+  min-height: 56px;
+  padding: 4px 8px 4px 4px;
+  border: 1px solid #3c3b44;
+  border-radius: 12px;
+  background: #26262c;
+  color: #b2b1bd;
+  box-shadow: none;
+}
+.player-slot.active,
+.player-slot.swapping {
+  border-color: var(--side);
+  box-shadow: inset 3px 0 var(--side);
+  background: color-mix(in srgb, var(--side) 12%, #26262c);
+}
+.player-number {
+  font-size: 10px;
+  left: 6px;
+  top: 5px;
+  color: #b2b1bd;
+}
+.player-portrait,
+.player-portrait.has-pokemon {
+  flex: 0 0 58px;
+  container-type: normal;
+  align-self: stretch;
+}
+.player-portrait > .portrait {
+  width: 58px;
+  height: 58px;
+}
+.player-name,
+.active .player-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f6f5f8;
+}
+.player-info .role-text {
+  font-size: 10px;
+  line-height: 1.5;
+}
+.trainer {
+  font-size: 11px;
+  color: #b2b1bd;
+}
+.selecting-bars {
+  display: none;
+}
+.player-check {
+  color: var(--side);
+}
+.allstar-arena .team-history {
+  order: 2;
+  flex: 0 0 90px;
+  height: 90px;
+  margin: 0;
+  background: #1c1c20;
+  border-radius: 12px;
+  border: 1px solid #3c3b44;
+}
+.allstar-arena .history-scroll {
+  display: flex;
+  overflow: auto;
+}
+.allstar-arena .history-pokemon {
+  grid-template-columns: repeat(5, 34px);
+}
+.allstar-arena .history-heading {
+  font-size: 11px;
+}
+.selection-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  padding: 14px;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid #34323d;
+  border-radius: 18px;
+  box-shadow: none;
+  overflow: hidden;
+}
+.selection-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  padding: 0;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+.selection-top > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.selection-top h2 {
+  font-size: 16px;
+  font-weight: 650;
+}
+.roster-count {
+  font-size: 12px;
+  color: #b2b1bd;
+  background: transparent;
+  padding: 0;
+}
+.sort-trigger {
+  min-height: 44px;
+  font-size: 12px;
+  background: #26262c;
+  color: #b2b1bd;
+  border: 0;
+  border-radius: 10px;
+}
+.sort-menu {
+  background: #2e2d35;
+  border-color: #55515f;
+}
+.sort-menu button {
+  font-size: 14px;
+  min-height: 44px;
+  color: #f6f5f8;
+}
+.sort-menu button.selected {
+  background: #514170;
+  border-color: var(--purple);
+}
+.roster-tools {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  flex: 0 0 auto;
+}
+.search-field,
+.search-field:focus-within {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid #45434e;
+  border-radius: 12px;
+  background: #26262c;
+  box-shadow: none;
+  color: #b2b1bd;
+}
+.search-field input,
+.search-field input:focus {
+  height: 42px;
+  font-size: 16px;
+  color: #f6f5f8;
+}
+.search-field input::placeholder {
+  color: #b2b1bd;
+}
+.search-field button {
+  width: 44px;
+  min-width: 44px;
+  color: #ddd;
+}
+.filter-toggle {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  flex: 0 0 44px;
+  border-radius: 12px;
+  background: #26262c;
+  color: #b2b1bd;
+}
+.filter-toggle.selected {
+  background: #493a64;
+  color: #eee4ff;
+}
+.filter-active-dot {
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  background: var(--purple);
+  border-radius: 50%;
+}
+.roster-filters {
+  flex: 0 0 auto;
+  padding: 0 2px;
+}
+.hide-used {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 13px;
+  color: #b2b1bd;
+  gap: 10px;
+}
+.hide-used input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--purple);
+}
+.role-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  padding: 0;
+  gap: 6px;
+  overflow: visible;
+  margin: 0;
+}
+.role-tabs button {
+  flex: 1 0 auto;
+  min-height: 44px;
+  padding: 8px 10px;
+  font-size: 12px;
+  background: #26262c;
+  color: #b2b1bd;
+  border: 1px solid #45434e;
+  border-radius: 10px;
+}
+.role-tabs button.selected {
+  background: #493a64;
+  color: #f6f5f8;
+  border-color: var(--purple);
+}
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
+  grid-auto-rows: max-content;
+  align-content: start;
+  flex: 1;
+  min-height: 100px;
+  height: auto;
+  gap: 8px;
+  overflow: auto;
+  padding: 4px;
+  margin: -4px;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+.pokemon-grid .pokemon-card {
+  width: 100%;
+  height: auto;
+  min-height: 104px;
+  aspect-ratio: auto;
+  padding: 4px 3px 7px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #45404e;
+  border-radius: 12px;
+  background: linear-gradient(
+    150deg,
+    color-mix(in srgb, var(--role) 15%, #28262f),
+    #25242b
+  );
+  box-shadow: none;
+  transform: none;
+  overflow: hidden;
+}
+.pokemon-card::before,
+.pokemon-card::after {
+  display: none;
+}
+.pokemon-card > .portrait {
+  position: relative;
+  inset: auto;
+  transform: none;
+  width: 76px;
+  height: 76px;
+  flex: 0 0 76px;
+  margin: 0;
+  filter: none;
+}
+.pokemon-card .pokemon-name {
+  position: static;
+  display: block;
+  width: 100%;
+  padding: 0 1px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  font-size: 11px;
+  line-height: 1.35;
+  min-height: 15px;
+  color: #f6f5f8;
+  background: none;
+  letter-spacing: 0;
+}
+.pokemon-card .card-role-stripe {
+  width: 3px;
+  height: 18px;
+  left: 0;
+  top: 13px;
+  bottom: auto;
+  opacity: 0.9;
+  border-radius: 0 3px 3px 0;
+}
+.pokemon-grid .pokemon-card.is-selected {
+  border-color: var(--team);
+  box-shadow: inset 0 0 0 2px var(--team);
+  background: color-mix(in srgb, var(--team) 15%, #28262f);
+}
+.pokemon-card .selected-check {
+  background: var(--team);
+  color: #1b1526;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  box-shadow: none;
+}
+.pokemon-card.unavailable {
+  opacity: 0.5;
+}
+.selection-footer {
+  min-height: 20px;
+  padding: 0;
+  font-size: 11px;
+  color: #b2b1bd;
+  border: 0;
+  flex-shrink: 0;
+}
+.keyboard-hint {
+  display: none;
+}
+.decision-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 15;
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 1.6fr) 1fr;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 76px;
+  height: auto;
+  margin: 0;
+  padding: 10px 12px max(10px, env(safe-area-inset-bottom));
+  background: #202025f5;
+  backdrop-filter: blur(20px);
+  border: 1px solid #3c3b44;
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 -5px 24px #0003;
+}
+.utility-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+.subtle-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 10px;
+  font-size: 13px;
+  background: transparent;
+  color: #c2c0cd;
+  border: 0;
+  border-radius: 10px;
+}
+.utility-actions .subtle-button {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+}
+.utility-actions .subtle-button span {
+  display: none;
+}
+.subtle-button:not(:disabled):hover {
+  background: #ffffff10;
+}
+.decision-main {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  min-width: 0;
+  width: 100%;
+  height: auto;
+}
+.selected-description {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  gap: 6px;
+  min-width: 0;
+  padding: 0;
+  text-align: left;
+  font-size: 13px;
+  color: #b2b1bd;
+}
+.selected-description strong {
+  font-size: 13px;
+  color: #f6f5f8;
+  overflow-wrap: anywhere;
+}
+.selected-description > .portrait {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+}
+.decision-main > .confirm-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 128px;
+  width: 128px;
+  min-width: 128px;
+  max-width: none;
+  height: 48px;
+  min-height: 48px;
+  gap: 8px;
+  padding: 10px 16px;
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 700;
+  background: var(--team);
+  color: #191322;
+  border: 0;
+  border-radius: 14px;
+  box-shadow: none;
+}
+.decision-main > .confirm-button:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--team) 85%, white);
+  box-shadow: none;
+}
+.decision-main > .confirm-button:disabled {
+  background: #42404a;
+  color: #b2b1bd;
+  opacity: 1;
+}
+.decision-extra {
+  justify-self: end;
+  min-width: 0;
+}
+.game-counter {
+  font-size: 12px;
+}
+.app-footer {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 44px;
+  height: auto;
+  padding: 4px max(16px, env(safe-area-inset-right))
+    max(8px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  font-size: 11px;
+  color: #b2b1bd;
+  background: #111114;
+  border: 0;
+}
+.app-footer > div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #b2b1bd;
+}
+.connection {
+  font-size: 11px;
+  color: #b2b1bd;
+}
+dialog {
+  padding: 20px;
+  width: min(560px, calc(100vw - 24px));
+  max-width: calc(100vw - 24px);
+  max-height: calc(
+    100dvh - max(24px, env(safe-area-inset-top)) -
+      max(24px, env(safe-area-inset-bottom))
+  );
+  background: #222227;
+  border: 1px solid #4d4a57;
+  border-radius: 22px;
+  color: #f6f5f8;
+  box-shadow: 0 24px 80px #0008;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+dialog::backdrop {
+  background: #0008;
+  backdrop-filter: blur(5px);
+}
+.modal-heading {
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.modal-heading h2 {
+  font-size: 19px;
+  color: #f6f5f8;
+}
+.modal-heading .icon-button {
+  background: #313037;
+  color: #d7d4df;
+}
+dialog > p,
+.info-content p,
+.draft-tools p {
+  font-size: 14px;
+  color: #c2bfcb;
+  line-height: 1.7;
+}
+.info-content h3 {
+  font-size: 16px;
+  color: #f6f5f8;
+}
+.info-content a {
+  font-size: 14px;
+  color: #ccb8ff;
+  overflow-wrap: anywhere;
+}
+.rules-table {
+  width: 100%;
+  table-layout: fixed;
+  font-size: 13px;
+}
+.rules-table th,
+.rules-table td {
+  padding: 8px;
+  overflow-wrap: anywhere;
+}
+.modal-primary,
+.image-download {
+  min-height: 44px;
+  font-size: 15px;
+  background: #b39aff;
+  border: 0;
+  color: #1b1526;
+  box-shadow: none;
+}
+.modal-secondary,
+.draft-tools button,
+.series-export,
+.import-backup {
+  min-height: 44px;
+  font-size: 14px;
+  background: #35323e;
+  border: 1px solid #55505f;
+  color: #f6f5f8;
+}
+.first-prompt-options {
+  display: flex;
+  gap: 12px;
+}
+.first-prompt-options button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 8px;
+  min-height: 100px;
+  padding: 16px 12px;
+  border-radius: 16px;
+  background: #31293e;
+  border: 1px solid #b39aff;
+  color: #d7c6ff;
+}
+.first-prompt-options button.orange {
+  background: #392e25;
+  border-color: #ffba76;
+  color: #ffca96;
+}
+.first-prompt-options button strong {
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+.first-prompt-options button small,
+.first-prompt-options button > span:last-child {
+  display: none;
+}
+.first-prompt-copy {
+  margin: 4px 0 16px;
+}
+.draft-tools input[type="search"] {
+  font-size: 16px;
+  min-height: 44px;
+  background: #26262c;
+}
+.restriction-list label {
+  min-height: 44px;
+  font-size: 13px;
+}
+.review-dialog {
+  width: min(860px, calc(100vw - 24px));
+}
+.past-draft-screen {
+  overflow: visible;
+}
+.past-draft-heading h1 {
+  font-size: 24px;
+}
+.toast {
+  max-width: calc(100vw - 32px);
+  bottom: max(100px, env(safe-area-inset-bottom));
+  font-size: 14px;
+}
+@media (hover: hover) {
+  .pokemon-card:not(:disabled):hover {
+    border-color: #bbb0cf;
+    box-shadow: none;
+    transform: none;
+  }
+  .pokemon-card:not(:disabled):hover > .portrait {
+    transform: none;
+  }
+}
+@media (max-width: 1000px) {
+  .app > .draft-main {
+    padding-inline: max(10px, env(safe-area-inset-left))
+      max(10px, env(safe-area-inset-right));
+    gap: 8px;
+  }
+  .draft-arena {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  @layer adaptive-layout {
+    .draft-arena,
+    .allstar-arena {
+      grid-template-columns: minmax(0, 1fr) !important;
+      grid-template-rows: minmax(330px, calc(100dvh - 340px)) !important;
+    }
+    .draft-arena > .team-side,
+    .draft-arena > .selection-panel {
+      grid-column: 1 !important;
+      grid-row: 1 !important;
+    }
+    .draft-arena.compact-view-roster > .team-side,
+    .draft-arena.compact-view-purple > .selection-panel,
+    .draft-arena.compact-view-purple > .team-side.orange,
+    .draft-arena.compact-view-orange > .selection-panel,
+    .draft-arena.compact-view-orange > .team-side.purple {
+      display: none !important;
+    }
+  }
+  .compact-view-tabs {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 70px minmax(0, 1fr);
+    gap: 6px;
+    flex: 0 0 auto;
+    padding: 4px;
+    height: auto;
+    min-height: 76px;
+    border: 0;
+    border-radius: 14px;
+    background: #1c1c20;
+  }
+  .compact-view-tabs button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+    min-height: 68px;
+    padding: 4px 8px;
+    gap: 3px;
+    background: transparent;
+    color: #b2b1bd;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+  .compact-view-tabs button.selected {
+    background: #35323e;
+    border-color: #6d617f;
+    color: #f6f5f8;
+  }
+  .compact-view-tabs .purple.selected {
+    border-color: var(--purple);
+    background: #382f48;
+  }
+  .compact-view-tabs .orange.selected {
+    border-color: var(--orange);
+    background: #413326;
+  }
+  .compact-team-name {
+    display: block;
+    max-width: 100%;
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .compact-turn-label {
+    display: inline;
+    margin-left: 5px;
+    padding: 0;
+    font-size: 9px;
+    color: var(--team);
+    background: none;
+  }
+  .compact-picks {
+    display: flex;
+    gap: 3px;
+  }
+  .compact-picks > span {
+    display: grid;
+    place-items: center;
+    width: clamp(15px, calc((100vw - 175px) / 10), 22px);
+    height: 22px;
+    border-radius: 5px;
+    background: #ffffff09;
+  }
+  .compact-picks .portrait {
+    width: 25px;
+    height: 25px;
+  }
+  .compact-ban-count {
+    font-size: 9px;
+    color: #b2b1bd;
+  }
+  .team-panel {
+    grid-template-rows: auto auto 54px auto minmax(0, 1fr);
+    height: 100%;
+  }
+  .team-panel .player-list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-rows: minmax(90px, 1fr);
+  }
+  .player-slot,
+  .player-slot.filled {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px;
+    text-align: center;
+    gap: 0;
+  }
+  .player-portrait,
+  .player-portrait.has-pokemon {
+    flex: 1 0 60px;
+    height: 60px;
+    min-height: 60px;
+  }
+  .player-info {
+    flex: 0 0 auto;
+  }
+  .player-name,
+  .active .player-name {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    font-size: 12px;
+  }
+  .player-check,
+  .slot-dash {
+    display: none;
+  }
+  .trainer {
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 10px;
+  }
+  .decision-bar {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 6px;
+    padding-inline: 8px;
+    min-height: 76px;
+  }
+  .decision-main {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    gap: 8px;
+  }
+  .decision-extra {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+  }
+  .decision-extra:empty {
+    display: none;
+  }
+  .decision-extra .subtle-button {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+  .selected-description > .portrait {
+    display: none;
+  }
+  .decision-main > .confirm-button {
+    flex-basis: 110px;
+    width: 110px;
+    min-width: 110px;
+  }
+}
+@media (max-width: 600px) {
+  .app-header {
+    gap: 8px;
+    padding-inline: max(10px, env(safe-area-inset-left))
+      max(10px, env(safe-area-inset-right));
+  }
+  .setup-mode .header-center {
+    display: none;
+  }
+  .header-phase {
+    gap: 4px 8px;
+  }
+  .header-phase-title > strong {
+    font-size: 12px;
+  }
+  .header-instruction {
+    font-size: 12px;
+  }
+  .header-phase-divider {
+    display: none;
+  }
+  .header-timer {
+    font-size: 14px;
+  }
+  .fullscreen-button {
+    display: none;
+  }
+  .header-actions {
+    gap: 0;
+  }
+  .app:not(.setup-mode)
+    .header-actions
+    > .icon-button[aria-label="使い方・ルール"] {
+    display: none;
+  }
+  .progress-disclosure > summary {
+    gap: 8px;
+    padding-inline: 10px;
+    font-size: 11px;
+  }
+  .progress-dots {
+    gap: 4px;
+  }
+  .selection-panel {
+    padding: 10px;
+    gap: 8px;
+    border-radius: 14px;
+  }
+  .pokemon-grid {
+    grid-template-columns: repeat(auto-fill, minmax(77px, 1fr));
+    gap: 6px;
+  }
+  .pokemon-grid .pokemon-card {
+    min-height: 98px;
+  }
+  .pokemon-card > .portrait {
+    width: 68px;
+    height: 68px;
+    flex-basis: 68px;
+  }
+  .decision-bar {
+    gap: 0 8px;
+    grid-template-columns: 132px minmax(0, 1fr);
+  }
+  .utility-actions {
+    gap: 0;
+  }
+  .utility-actions .subtle-button {
+    width: 44px;
+    min-width: 44px;
+    padding: 8px;
+  }
+  .decision-main {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+  .selected-description {
+    min-height: 20px;
+    font-size: 11px;
+    justify-content: center;
+    text-align: center;
+  }
+  .selected-description strong {
+    font-size: 11px;
+  }
+  .decision-main > .confirm-button {
+    flex: 0 0 auto;
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+  }
+  .decision-extra .subtle-button {
+    padding: 4px;
+  }
+  .app-footer {
+    font-size: 10px;
+    padding-top: 4px;
+  }
+  .app-footer > span {
+    display: none;
+  }
+  .app-footer > div {
+    width: 100%;
+    justify-content: space-between;
+    gap: 4px;
+  }
+  .connection {
+    font-size: 10px;
+  }
+  .team-panel .player-list {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .team-panel .player-slot {
+    flex: 0 0 56px;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+  }
+  .team-panel .player-portrait {
+    flex: 0 0 56px;
+    min-height: 48px;
+    height: 48px;
+  }
+  .team-panel .player-info {
+    flex: 1;
+  }
+  .team-panel .role-text {
+    display: none;
+  }
+  .team-panel .trainer {
+    justify-content: flex-start;
+  }
+  dialog {
+    padding: 16px;
+    border-radius: 18px;
+  }
+  .first-prompt-options {
+    flex-direction: column;
+  }
+  .first-prompt-options button {
+    min-height: 72px;
+  }
+  .past-draft-teams {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .past-draft-return {
+    flex-wrap: wrap;
+  }
+}
+@media (max-height: 550px) and (min-width: 601px) {
+  .app-header {
+    min-height: 52px;
+    padding-block: 4px;
+  }
+  .progress-disclosure > summary {
+    min-height: 44px;
+  }
+  @layer adaptive-layout {
+    .draft-arena,
+    .allstar-arena {
+      grid-template-rows: 360px !important;
+    }
+  }
+  .decision-bar {
+    position: sticky;
+  }
+}
+@layer adaptive-layout {
+  .draft-arena:has(.roster-filters:not([hidden])) {
+    grid-template-rows: minmax(520px, calc(100dvh - 270px)) !important;
+  }
+}
+@media (display-mode: standalone) {
+  .app-header {
+    padding-top: max(12px, env(safe-area-inset-top));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media (prefers-contrast: more) {
+  :root {
+    --surface-border: #8d879d;
+    --text-secondary: #ddd9e6;
+  }
+  .pokemon-grid .pokemon-card,
+  .player-slot,
+  .selection-panel {
+    border-color: #8d879d;
+  }
+}

@@ -493,5 +493,20 @@
     "width": 87.36,
     "left": 7.79,
     "top": 7.58
+  },
+  "toxtricity": {
+    "width": 89.143,
+    "left": 4.786,
+    "top": 6.286
+  },
+  "jolteon": {
+    "width": 91,
+    "left": 3.625,
+    "top": 3.625
+  },
+  "flareon": {
+    "width": 87.799,
+    "left": 8.211,
+    "top": 4.623
   }
 }

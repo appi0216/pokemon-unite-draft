@@ -3,6 +3,8 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import vm from "node:vm";
 
+const roster = JSON.parse(await fs.readFile("src/data/pokemon.json", "utf8"));
+
 for (const base of ["/", "/pokemon-unite-draft/"])
   test(`offline assets stay inside ${base}`, async () => {
     const listeners = {};
@@ -32,7 +34,13 @@ for (const base of ["/", "/pokemon-unite-draft/"])
             for (const path of paths)
               data.set(key(path), await fetchAsset(path));
           },
-          match: async (request) => data.get(key(request))?.clone(),
+          // Static files can be served with Vary: Origin (e.g. Vite preview).
+          // Precache GETs have no Origin; module/script CORS GETs do.
+          match: async (request, options) => {
+            if (request.mode === "cors" && !options?.ignoreVary)
+              return undefined;
+            return data.get(key(request))?.clone();
+          },
         };
       },
     };
@@ -83,5 +91,8 @@ for (const base of ["/", "/pokemon-unite-draft/"])
       `https://draft.test${base}asset-manifest.json`,
       "cors",
     );
-    assert.equal((await manifest.json()).length, 99);
+    assert.deepEqual(
+      (await manifest.json()).sort(),
+      roster.map((pokemon) => pokemon.image).sort(),
+    );
   });

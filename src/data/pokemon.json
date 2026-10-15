@@ -492,7 +492,7 @@
     "order": 55,
     "image": "/pokemon/iinteleon.webp",
     "source": "https://www.pokemonunite.jp/wp-content/uploads/inteleon-1.png",
-    "detail": "https://www.pokemonunite.jp/ja/pokemon/iinteleon/"
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/inteleon/"
   },
   {
     "id": "mewtwox",
@@ -889,5 +889,32 @@
     "image": "/pokemon/morpeko.webp",
     "source": "https://www.pokemonunite.jp/wp-content/uploads/Morpeko.png",
     "detail": "https://www.pokemonunite.jp/ja/pokemon/morpeko/"
+  },
+  {
+    "id": "toxtricity",
+    "name": "ストリンダー",
+    "role": "attack",
+    "order": 100,
+    "image": "/pokemon/toxtricity.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/Toxtricity.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/toxtricity/"
+  },
+  {
+    "id": "jolteon",
+    "name": "サンダース",
+    "role": "speed",
+    "order": 101,
+    "image": "/pokemon/jolteon.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/_pda/Jolteon.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/jolteon/"
+  },
+  {
+    "id": "flareon",
+    "name": "ブースター",
+    "role": "balance",
+    "order": 102,
+    "image": "/pokemon/flareon.webp",
+    "source": "https://www.pokemonunite.jp/wp-content/uploads/_pda/Flareon.png",
+    "detail": "https://www.pokemonunite.jp/ja/pokemon/flareon/"
   }
 ]

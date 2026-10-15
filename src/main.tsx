@@ -1,15 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import "./design.css";
-import "./refinement.css";
-import "./theme.css";
-import "./layout-finish.css";
-import "./setup-experience.css";
-import "./draft-experience.css";
-import "./interface-polish.css";
-import "./interaction-upgrades.css";
-import "./ui-system.css";
+import "./legacy.css";
+import "./adaptive-ui.css";
+import "./setup-refresh.css";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />

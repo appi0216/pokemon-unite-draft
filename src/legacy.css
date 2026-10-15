@@ -1,0 +1,11 @@
+/* Keep result/export and older saved-state views while migrating shared UI. */
+@layer adaptive-layout, legacy;
+@import "./design.css" layer(legacy);
+@import "./refinement.css" layer(legacy);
+@import "./theme.css" layer(legacy);
+@import "./layout-finish.css" layer(legacy);
+@import "./setup-experience.css" layer(legacy);
+@import "./draft-experience.css" layer(legacy);
+@import "./interface-polish.css" layer(legacy);
+@import "./interaction-upgrades.css" layer(legacy);
+@import "./ui-system.css" layer(legacy);

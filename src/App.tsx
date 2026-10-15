@@ -27,6 +27,7 @@ import {
   Play,
   RotateCcw,
   Search,
+  SlidersHorizontal,
   House,
   History as HistoryIcon,
   Shield,
@@ -193,6 +194,7 @@ function App() {
   const [hideUsed, setHideUsed] = useState(true);
   const [sort, setSort] = useState("name");
   const [sortOpen, setSortOpen] = useState(false);
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const sortMenu = useRef<HTMLDivElement>(null);
   const [compactView, setCompactView] = useState<
     "purple" | "roster" | "orange"
@@ -445,6 +447,11 @@ function App() {
         e.target instanceof HTMLElement &&
         (e.target.isContentEditable ||
           !!e.target.closest("input, textarea, select"));
+      const interactive =
+        e.target instanceof Element &&
+        !!e.target.closest(
+          "button, a[href], summary, input, textarea, select, [role='button'], [role='tab'], [contenteditable]",
+        );
       if (
         screen === "draft" &&
         !modal &&
@@ -518,9 +525,10 @@ function App() {
         !modal &&
         rewindTarget === null &&
         screen === "draft" &&
-        !(e.target instanceof HTMLInputElement) &&
-        !(e.target instanceof HTMLButtonElement) &&
-        !(e.target instanceof HTMLSelectElement)
+        !editing &&
+        !interactive &&
+        !e.defaultPrevented &&
+        !e.repeat
       ) {
         e.preventDefault();
         confirm();
@@ -628,9 +636,6 @@ function App() {
             <Shield size={21} />
           </span>
           <div>
-            <span className="eyebrow">
-              {team === "purple" ? "PURPLE" : "ORANGE"} TEAM
-            </span>
             <h2>{teamName(team)}</h2>
           </div>
           <span className="order-label">
@@ -638,7 +643,9 @@ function App() {
           </span>
         </div>
         <div className="bans-heading">
-          <span>使用禁止</span>
+          <span>
+            <Ban size={14} /> BAN
+          </span>
           <span>{ownBans.length} / 3</span>
         </div>
         <div className="ban-slots">
@@ -679,7 +686,9 @@ function App() {
           })}
         </div>
         <div className="picks-heading">
-          <span>選出ポケモン</span>
+          <span>
+            <Check size={14} /> PICK
+          </span>
           <span>{ownPicks.length} / 5</span>
         </div>
         <div className="player-list">
@@ -727,21 +736,20 @@ function App() {
                 </div>
                 <div className="player-info">
                   <span className="player-name">
-                    {shown
-                      ? shown.name
-                      : active
-                        ? "ポケモンを選択中"
-                        : "選択待ち"}
+                    {shown ? shown.name : active ? "選択中" : "—"}
                   </span>
                   {shown && (
                     <span className={`role-text ${shown.role}`}>
                       {roles[shown.role]}型
                     </span>
                   )}
-                  <span className="trainer">
-                    <UserRound size={12} />
-                    {settings.trainers[team === "purple" ? i : i + 5]}
-                  </span>
+                  {settings.trainers[team === "purple" ? i : i + 5] !==
+                    defaultTrainers[team === "purple" ? i : i + 5] && (
+                    <span className="trainer">
+                      <UserRound size={12} />
+                      {settings.trainers[team === "purple" ? i : i + 5]}
+                    </span>
+                  )}
                 </div>
                 {active ? (
                   <span className="selecting-bars">
@@ -799,22 +807,18 @@ function App() {
             >
               <div className="header-phase-title">
                 <strong>
-                  {visuallyComplete
-                    ? "DRAFT COMPLETE"
-                    : phase === "ban"
-                      ? "BAN PHASE"
-                      : "PICK PHASE"}
+                  {visuallyComplete ? "完了" : phase === "ban" ? "BAN" : "PICK"}
                 </strong>
               </div>
               <span className="header-phase-divider" />
               <strong className="header-instruction">
                 {showingPastGame
                   ? draft.allStar
-                    ? `GAME${String(reviewGame.game).padStart(2, "0")} - ドラフト結果を表示中`
-                    : "ドラフト結果を表示中"
+                    ? `GAME ${reviewGame.game}`
+                    : "ドラフト結果"
                   : complete
-                    ? "両チームの選出が完了しました。味方の枠を2つ選ぶと、ポケモンを交換できます。"
-                    : `${teamName(activeTeam)}が${phase === "ban" ? "使用禁止にする" : "使用する"}ポケモンを選択中`}
+                    ? "同じチームの2枠で交換"
+                    : teamName(activeTeam)}
               </strong>
               {settings.seconds > 0 && !visuallyComplete && (
                 <div
@@ -839,15 +843,11 @@ function App() {
             </div>
           ) : (
             <>
-              <Trophy size={15} />
-              <span>大会・カスタム練習</span>
-              <span className="header-divider" />
               <span>3 BAN / 5 PICK</span>
             </>
           )}
         </div>
         <div className="header-actions">
-          {screen === "setup" && <span className="snapshot">2026.09.18</span>}
           {screen === "draft" && reviewGames.length > 0 && (
             <button
               className={`icon-button review-history-button${complete ? " history-result-ready" : ""}`}
@@ -1001,58 +1001,77 @@ function App() {
         </main>
       ) : (
         <main className="draft-main">
-          <section
-            className="phase-banner timeline-only"
-            aria-label="ドラフトの進行状況"
-          >
-            <section className="timeline" aria-label="BAN・PICKの順番">
-              <span className="timeline-meta">
+          <details className="progress-disclosure">
+            <summary>
+              <span>
                 {draft.allStar
-                  ? `${seriesLabel} · BO${draft.bestOf}`
-                  : "STANDARD"}
-                {draft.allStar && (
-                  <b>GAME {String(draft.game).padStart(2, "0")}</b>
-                )}
+                  ? `${seriesLabel} · ${draft.game} / ${draft.bestOf}`
+                  : "ドラフト"}
               </span>
-              <div className="timeline-label">
-                <span className="eyebrow">DRAFT ORDER</span>
-                <span>進行順</span>
-              </div>
-              <div className="timeline-stages">
+              <span className="progress-dots" aria-hidden="true">
                 {schedule.map((s, i) => (
-                  <button
+                  <i
                     key={i}
-                    type="button"
-                    className={`timeline-step ${s.team} ${i === stageIndex ? "current" : ""} ${i < stageIndex ? "done" : ""}`}
-                    disabled={stageStarts[i] >= draft.actions.length}
-                    title={
-                      stageStarts[i] < draft.actions.length
-                        ? `${teamName(s.team)}の${s.phase === "ban" ? "BAN" : "PICK"}ターンに戻る（以降の選出を取り消します）`
-                        : `${teamName(s.team)} ${s.phase.toUpperCase()} ${s.count}体`
-                    }
-                    aria-label={`第${i + 1}区間 ${teamName(s.team)}の${s.phase === "ban" ? "BAN" : "PICK"} ${s.count}体のターン${stageStarts[i] < draft.actions.length ? "に戻る" : ""}`}
-                    aria-current={i === stageIndex ? "step" : undefined}
-                    onClick={() => setRewindTarget(i)}
-                  >
-                    {i === 6 && <span className="timeline-separator" />}
-                    <span className="step-node">
-                      {i < stageIndex ? (
-                        <Check size={13} />
-                      ) : s.phase === "ban" ? (
-                        <Ban size={12} />
-                      ) : (
-                        s.count
-                      )}
-                    </span>
-                    <span>
-                      {s.phase.toUpperCase()}
-                      {s.phase === "pick" && s.count === 2 ? " ×2" : ""}
-                    </span>
-                  </button>
+                    className={`${s.team} ${i < stageIndex ? "done" : ""} ${i === stageIndex ? "current" : ""}`}
+                  />
                 ))}
-              </div>
+              </span>
+              <span>{draft.actions.length} / 16</span>
+              <ChevronDown size={16} />
+            </summary>
+            <section
+              className="phase-banner timeline-only"
+              aria-label="ドラフトの進行状況"
+            >
+              <section className="timeline" aria-label="BAN・PICKの順番">
+                <span className="timeline-meta">
+                  {draft.allStar
+                    ? `${seriesLabel} · BO${draft.bestOf}`
+                    : "STANDARD"}
+                  {draft.allStar && (
+                    <b>GAME {String(draft.game).padStart(2, "0")}</b>
+                  )}
+                </span>
+                <div className="timeline-label">
+                  <span className="eyebrow">DRAFT ORDER</span>
+                  <span>進行順</span>
+                </div>
+                <div className="timeline-stages">
+                  {schedule.map((s, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      className={`timeline-step ${s.team} ${i === stageIndex ? "current" : ""} ${i < stageIndex ? "done" : ""}`}
+                      disabled={stageStarts[i] >= draft.actions.length}
+                      title={
+                        stageStarts[i] < draft.actions.length
+                          ? `${teamName(s.team)}の${s.phase === "ban" ? "BAN" : "PICK"}ターンに戻る（以降の選出を取り消します）`
+                          : `${teamName(s.team)} ${s.phase.toUpperCase()} ${s.count}体`
+                      }
+                      aria-label={`第${i + 1}区間 ${teamName(s.team)}の${s.phase === "ban" ? "BAN" : "PICK"} ${s.count}体のターン${stageStarts[i] < draft.actions.length ? "に戻る" : ""}`}
+                      aria-current={i === stageIndex ? "step" : undefined}
+                      onClick={() => setRewindTarget(i)}
+                    >
+                      {i === 6 && <span className="timeline-separator" />}
+                      <span className="step-node">
+                        {i < stageIndex ? (
+                          <Check size={13} />
+                        ) : s.phase === "ban" ? (
+                          <Ban size={12} />
+                        ) : (
+                          s.count
+                        )}
+                      </span>
+                      <span>
+                        {s.phase.toUpperCase()}
+                        {s.phase === "pick" && s.count === 2 ? " ×2" : ""}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </section>
             </section>
-          </section>
+          </details>
           {draft.allStar &&
             draft.excluded.some(
               (id) =>
@@ -1087,9 +1106,38 @@ function App() {
                 aria-current={compactView === view ? "page" : undefined}
                 onClick={() => setCompactView(view)}
               >
-                {view === "roster" ? "ポケモン一覧" : teamName(view)}
-                {view !== "roster" && !complete && step?.team === view && (
-                  <span className="compact-turn-label">ターン</span>
+                {view === "roster" ? (
+                  <>
+                    <Grid2X2 size={20} />
+                    <span>一覧</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="compact-team-name">
+                      {teamName(view)}
+                      {!complete && step?.team === view && (
+                        <span className="compact-turn-label">●</span>
+                      )}
+                    </span>
+                    <span className="compact-picks" aria-hidden="true">
+                      {[0, 1, 2, 3, 4].map((i) => {
+                        const id = picks.filter((p) => p.team === view)[i]
+                          ?.pokemon;
+                        return (
+                          <span key={i}>
+                            {id ? (
+                              <Portrait p={byId.get(id)!} eager />
+                            ) : (
+                              <UserRound size={12} />
+                            )}
+                          </span>
+                        );
+                      })}
+                    </span>
+                    <span className="compact-ban-count">
+                      BAN {bans.filter((b) => b.team === view).length}/3
+                    </span>
+                  </>
                 )}
               </button>
             ))}
@@ -1113,7 +1161,7 @@ function App() {
               <div className="selection-top">
                 <div>
                   <Grid2X2 size={17} />
-                  <h2>ポケモンを選択</h2>
+                  <h2>ポケモン</h2>
                   <span className="roster-count">{pokemon.length}</span>
                 </div>
                 <div
@@ -1203,6 +1251,24 @@ function App() {
                     </button>
                   )}
                 </label>
+                <button
+                  className={`filter-toggle ${filtersOpen ? "selected" : ""}`}
+                  aria-label="絞り込み"
+                  aria-expanded={filtersOpen}
+                  aria-controls="roster-filters"
+                  onClick={() => setFiltersOpen(!filtersOpen)}
+                >
+                  <SlidersHorizontal size={20} />
+                  {(role !== "all" || !hideUsed) && (
+                    <span className="filter-active-dot" />
+                  )}
+                </button>
+              </div>
+              <div
+                id="roster-filters"
+                className="roster-filters"
+                hidden={!filtersOpen}
+              >
                 <label className="hide-used">
                   <input
                     type="checkbox"
@@ -1219,26 +1285,26 @@ function App() {
                   />
                   <span>選択可能のみ</span>
                 </label>
-              </div>
-              <div className="role-tabs" aria-label="バトルスタイル">
-                <button
-                  className={role === "all" ? "selected" : ""}
-                  onClick={() => setRole("all")}
-                  aria-pressed={role === "all"}
-                >
-                  すべて
-                </button>
-                {(Object.keys(roles) as Role[]).map((r) => (
+                <div className="role-tabs" aria-label="バトルスタイル">
                   <button
-                    key={r}
-                    className={`${r} ${role === r ? "selected" : ""}`}
-                    onClick={() => setRole(r)}
-                    aria-pressed={role === r}
+                    className={role === "all" ? "selected" : ""}
+                    onClick={() => setRole("all")}
+                    aria-pressed={role === "all"}
                   >
-                    <i />
-                    {roles[r]}
+                    すべて
                   </button>
-                ))}
+                  {(Object.keys(roles) as Role[]).map((r) => (
+                    <button
+                      key={r}
+                      className={`${r} ${role === r ? "selected" : ""}`}
+                      onClick={() => setRole(r)}
+                      aria-pressed={role === r}
+                    >
+                      <i />
+                      {roles[r]}
+                    </button>
+                  ))}
+                </div>
               </div>
               <div
                 className="pokemon-grid"
@@ -1428,6 +1494,8 @@ function App() {
             <div className="utility-actions">
               <button
                 className="subtle-button"
+                aria-label="1つ戻す"
+                title="1つ戻す"
                 disabled={!draft.actions.length}
                 onClick={() => {
                   undoDraft();
@@ -1441,6 +1509,8 @@ function App() {
               </button>
               <button
                 className="subtle-button"
+                aria-label="1つ進む"
+                title="1つ進む"
                 disabled={!redoStack.length}
                 onClick={redoDraft}
               >
@@ -1449,6 +1519,8 @@ function App() {
               </button>
               <button
                 className="subtle-button"
+                aria-label="リセット"
+                title="リセット"
                 onClick={() => setModal("reset")}
               >
                 <RotateCcw size={16} />
@@ -1458,7 +1530,10 @@ function App() {
             <div className="decision-main">
               {complete ? (
                 <>
-                  <div className="selected-description" aria-hidden="true" />
+                  <div className="selected-description">
+                    <Check size={20} />
+                    <strong>選出完了</strong>
+                  </div>
                   <button
                     ref={completionAction}
                     className="confirm-button completion-next"
@@ -1471,7 +1546,7 @@ function App() {
                     }}
                   >
                     {draft.allStar && draft.game >= draft.bestOf
-                      ? "準備画面へ戻る"
+                      ? "ホーム"
                       : "次の試合"}
                   </button>
                 </>
@@ -1480,19 +1555,11 @@ function App() {
                   <div className="selected-description">
                     {selectedPokemon ? (
                       <>
+                        <Portrait p={selectedPokemon} eager />
                         <strong>{selectedPokemon.name}</strong>
-                        <span>
-                          {phase === "ban"
-                            ? "を使用禁止にします"
-                            : "を選出します"}
-                        </span>
                       </>
                     ) : (
-                      <span>
-                        {phase === "ban"
-                          ? "使用禁止にするポケモンを選んでください"
-                          : "使用するポケモンを選んでください"}
-                      </span>
+                      <span>ポケモンを選択</span>
                     )}
                   </div>
                   <button
@@ -1500,7 +1567,8 @@ function App() {
                     disabled={!selected}
                     onClick={confirm}
                   >
-                    <span>{phase === "ban" ? "使用禁止にする" : "決定"}</span>
+                    {phase === "ban" ? <Ban size={18} /> : <Check size={18} />}
+                    <span>{phase === "ban" ? "BAN" : "PICK"}</span>
                   </button>
                 </>
               )}
@@ -1509,13 +1577,14 @@ function App() {
               {step?.phase === "ban" ? (
                 <button
                   className="subtle-button"
+                  aria-label="BANをスキップ"
                   onClick={() => {
                     setDraft(choose(draft, null, ids));
                     setSelected(null);
                   }}
                 >
                   <SkipForward size={16} />
-                  BANをスキップ
+                  <span>スキップ</span>
                 </button>
               ) : draft.allStar ? (
                 <span className="game-counter">
@@ -1528,15 +1597,11 @@ function App() {
         </main>
       )}
       <footer className="app-footer">
-        <span>
-          非公式ファンメイドツール<span className="footer-divider">·</span>©
-          Pokémon / Nintendo / Creatures / GAME FREAK / TiMi
-          <span className="footer-divider">·</span>2026.09.18
-        </span>
+        <span>非公式ツール · © Pokémon</span>
         <div>
           <button className="footer-link" onClick={() => setModal("info")}>
             <Info size={13} />
-            ルール・データについて
+            このアプリについて
           </button>
           <span className="connection">
             <Wifi size={13} />
@@ -1695,9 +1760,7 @@ function App() {
           }
           onClose={() => setFirstPrompt(null)}
         >
-          <p className="first-prompt-copy">
-            この試合で最初にBANするチームを選択してください。
-          </p>
+          <p className="first-prompt-copy">最初にBANするのは？</p>
           <div className="first-prompt-options">
             {(["purple", "orange"] as Team[]).map((team) => (
               <button
@@ -1966,7 +2029,7 @@ function App() {
             <p>
               ランクマッチや通常カスタムの投票式BANは対象外です。ミュウツーX・Yとメガシンカの別ライセンスはそれぞれ選択できます。
             </p>
-            <h3>公式掲載データ · 2026年9月18日確認</h3>
+            <h3>公式掲載データ · 2026年10月15日確認</h3>
             <p>
               公式サイト掲載の{pokemon.length}
               枠を収録。未掲載の参戦予告ポケモン、大会ごとの使用制限は含みません。画像は公式素材をWebP化し、このアプリ内から読み込みます。
@@ -2012,6 +2075,8 @@ function App() {
               公式：オールスタードラフト・画面資料 ↗
             </a>
             <p className="form-note">
+              © Pokémon / Nintendo / Creatures / GAME FREAK / TiMi。
+              <br />
               Pokémon
               UNITE公式アプリではありません。画面構成を参考にした練習用再現で、対戦への接続やゲームの操作は行いません。
             </p>

@@ -4,6 +4,7 @@ import App from "./App";
 import "./legacy.css";
 import "./adaptive-ui.css";
 import "./setup-refresh.css";
+import "./workspace-layout.css";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />

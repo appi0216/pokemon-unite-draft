@@ -71,7 +71,7 @@ for (const [engineName, engine] of Object.entries({ chromium, webkit })) {
         "Role filter empty",
       );
       await page.locator(".role-tabs button").first().click();
-      await page.getByRole("button", { name: "絞り込み", exact: true }).click();
+      await page.locator(".filter-dialog .modal-primary").click();
       result.checks.push("role-filters");
       const firstCard = page.locator(".pokemon-card:not(:disabled)").first();
       await firstCard.focus();

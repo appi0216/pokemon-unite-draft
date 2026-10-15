@@ -13,6 +13,7 @@ import { createSeriesImage, createResultImage } from "./result-image";
 import TeamHistory from "./components/TeamHistory";
 import {
   ArrowLeftRight,
+  ArrowDownWideNarrow,
   Ban,
   Check,
   ChevronDown,
@@ -1201,7 +1202,7 @@ function App() {
                     onClick={() => setSortOpen(!sortOpen)}
                   >
                     <span>{sort === "name" ? "名前順" : "新しい順"}</span>
-                    <ChevronDown size={13} />
+                    <ArrowDownWideNarrow size={18} />
                   </button>
                   {sortOpen && (
                     <div
@@ -1255,6 +1256,7 @@ function App() {
                   className={`filter-toggle ${filtersOpen ? "selected" : ""}`}
                   aria-label="絞り込み"
                   aria-expanded={filtersOpen}
+                  aria-haspopup="dialog"
                   aria-controls="roster-filters"
                   onClick={() => setFiltersOpen(!filtersOpen)}
                 >
@@ -1264,48 +1266,58 @@ function App() {
                   )}
                 </button>
               </div>
-              <div
-                id="roster-filters"
-                className="roster-filters"
-                hidden={!filtersOpen}
-              >
-                <label className="hide-used">
-                  <input
-                    type="checkbox"
-                    checked={hideUsed}
-                    onChange={(e) => {
-                      setHideUsed(e.target.checked);
-                      if (
-                        e.target.checked &&
-                        selected &&
-                        redundantAllStarBan(draft, selected, activeTeam)
-                      )
-                        setSelected(null);
-                    }}
-                  />
-                  <span>選択可能のみ</span>
-                </label>
-                <div className="role-tabs" aria-label="バトルスタイル">
+              {filtersOpen && (
+                <Modal
+                  title="絞り込み"
+                  className="filter-dialog"
+                  onClose={() => setFiltersOpen(false)}
+                >
+                  <div id="roster-filters" className="roster-filters">
+                    <label className="hide-used">
+                      <input
+                        type="checkbox"
+                        checked={hideUsed}
+                        onChange={(e) => {
+                          setHideUsed(e.target.checked);
+                          if (
+                            e.target.checked &&
+                            selected &&
+                            redundantAllStarBan(draft, selected, activeTeam)
+                          )
+                            setSelected(null);
+                        }}
+                      />
+                      <span>選択可能のみ</span>
+                    </label>
+                    <div className="role-tabs" aria-label="バトルスタイル">
+                      <button
+                        className={role === "all" ? "selected" : ""}
+                        onClick={() => setRole("all")}
+                        aria-pressed={role === "all"}
+                      >
+                        すべて
+                      </button>
+                      {(Object.keys(roles) as Role[]).map((r) => (
+                        <button
+                          key={r}
+                          className={`${r} ${role === r ? "selected" : ""}`}
+                          onClick={() => setRole(r)}
+                          aria-pressed={role === r}
+                        >
+                          <i />
+                          {roles[r]}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                   <button
-                    className={role === "all" ? "selected" : ""}
-                    onClick={() => setRole("all")}
-                    aria-pressed={role === "all"}
+                    className="modal-primary"
+                    onClick={() => setFiltersOpen(false)}
                   >
-                    すべて
+                    {visible.length}体を表示
                   </button>
-                  {(Object.keys(roles) as Role[]).map((r) => (
-                    <button
-                      key={r}
-                      className={`${r} ${role === r ? "selected" : ""}`}
-                      onClick={() => setRole(r)}
-                      aria-pressed={role === r}
-                    >
-                      <i />
-                      {roles[r]}
-                    </button>
-                  ))}
-                </div>
-              </div>
+                </Modal>
+              )}
               <div
                 className="pokemon-grid"
                 ref={pokemonGrid}
@@ -1977,6 +1989,25 @@ function App() {
       {modal === "info" && (
         <Modal title="使い方・ルールについて" onClose={() => setModal(null)}>
           <div className="info-content">
+            <div className="info-preferences">
+              <span className="connection">
+                <Wifi size={16} />
+                {!online
+                  ? "オフライン"
+                  : cacheReady
+                    ? "オフライン利用可能"
+                    : "自動保存"}
+              </span>
+              <button
+                className="subtle-button"
+                onClick={() =>
+                  setSettings({ ...settings, sound: !settings.sound })
+                }
+              >
+                {settings.sound ? <Volume2 size={18} /> : <VolumeX size={18} />}
+                操作音：{settings.sound ? "オン" : "オフ"}
+              </button>
+            </div>
             <h3>キーボード操作</h3>
             <p>
               矢印：ポケモンを選択 ／ Enter：確定 ／ /：検索 ／ Esc：選択解除 ／

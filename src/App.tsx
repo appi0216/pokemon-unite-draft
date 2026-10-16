@@ -234,7 +234,8 @@ function App() {
   const [remaining, setRemaining] = useState(() =>
     turnSeconds(settings.seconds > 0, currentStep(draft)?.phase || "ban"),
   );
-  const [modal, setModal] = useState<"info" | "reset" | null>(null);
+  const [modal, setModal] = useState<"info" | "reset" | "replace" | null>(null);
+  const [storageOk, setStorageOk] = useState(true);
   const { online, offline } = usePwaStatus();
   const cacheReady = offline === "ready";
   const [notice, setNotice] = useState("");
@@ -298,7 +299,9 @@ function App() {
         STORAGE,
         JSON.stringify({ draft, settings, started }),
       );
+      setStorageOk(true);
     } catch {
+      setStorageOk(false);
       setNotice("自動保存が利用できません。この画面では引き続き操作できます。");
     }
   }, [draft, settings, started]);
@@ -913,7 +916,20 @@ function App() {
             aria-label="使い方・ルール"
             onClick={() => setModal("info")}
           >
-            <CircleHelp size={19} />
+            {storageOk ? (
+              <CircleHelp size={19} />
+            ) : (
+              <span
+                role="alert"
+                style={{
+                  fontSize: "0.6875rem",
+                  color: "#ffd28a",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                未保存
+              </span>
+            )}
           </button>
           {screen === "draft" && (
             <button
@@ -931,7 +947,9 @@ function App() {
         <SetupScreen
           values={draftSettings}
           onChange={setDraftSettings}
-          onStart={() => setFirstPrompt("start")}
+          onStart={() =>
+            started ? setModal("replace") : setFirstPrompt("start")
+          }
           onResume={resumeDraft}
           onTools={() => setToolsOpen(true)}
           hasSaved={started}
@@ -1686,11 +1704,13 @@ function App() {
           </button>
           <span className="connection">
             <Wifi size={13} />
-            {!online
-              ? "オフライン"
-              : cacheReady
-                ? "オフライン利用可能"
-                : "自動保存"}
+            {!storageOk
+              ? "未保存"
+              : !online
+                ? "オフライン"
+                : cacheReady
+                  ? "オフライン利用可能"
+                  : "自動保存"}
           </span>
           <button
             className="sound-button"
@@ -1805,6 +1825,31 @@ function App() {
               }}
             >
               読み込む
+            </button>
+          </div>
+        </Modal>
+      )}
+      {modal === "replace" && (
+        <Modal title="新しいドラフトを開始" onClose={() => setModal(null)}>
+          <p>
+            保存済みのドラフトと試合履歴を置き換えます。必要な記録は先にバックアップしてください。
+          </p>
+          <div className="modal-buttons">
+            <button
+              className="modal-secondary"
+              autoFocus
+              onClick={() => setModal(null)}
+            >
+              キャンセル
+            </button>
+            <button
+              className="modal-primary"
+              onClick={() => {
+                setModal(null);
+                setFirstPrompt("start");
+              }}
+            >
+              新しく開始
             </button>
           </div>
         </Modal>
@@ -2058,6 +2103,11 @@ function App() {
       {modal === "info" && (
         <Modal title="使い方・ルールについて" onClose={() => setModal(null)}>
           <div className="info-content">
+            {!storageOk && (
+              <p role="alert">
+                自動保存できていません。画面を閉じる前に、ホームの「その他の設定」からバックアップを保存してください。
+              </p>
+            )}
             <p>
               <a href={`${import.meta.env.BASE_URL}v2/`}>
                 新規デザイン版「Draft 02」を開く
@@ -2066,11 +2116,13 @@ function App() {
             <div className="info-preferences">
               <span className="connection">
                 <Wifi size={16} />
-                {!online
-                  ? "オフライン"
-                  : cacheReady
-                    ? "オフライン利用可能"
-                    : "自動保存"}
+                {!storageOk
+                  ? "未保存"
+                  : !online
+                    ? "オフライン"
+                    : cacheReady
+                      ? "オフライン利用可能"
+                      : "自動保存"}
               </span>
               <button
                 className="subtle-button"

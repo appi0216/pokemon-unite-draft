@@ -43,7 +43,17 @@ for (const engine of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
         const inspect = async (state, fit = false) => {
           await page.waitForTimeout(200);
           await page.waitForFunction(() =>
-            [...document.images].every((i) => i.complete),
+            [...document.images].every((i) => {
+              const r = i.getBoundingClientRect();
+              // Offscreen lazy images need not load until the user scrolls.
+              return (
+                !r.width ||
+                !r.height ||
+                r.bottom <= 0 ||
+                r.top >= innerHeight ||
+                i.complete
+              );
+            }),
           );
           const metrics = await page.evaluate(() => {
             const visible = (e) =>

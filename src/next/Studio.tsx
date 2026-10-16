@@ -228,6 +228,7 @@ export default function Studio() {
   const [pane, setPane] = useState<"roster" | "teams">("roster");
   const [sheet, setSheet] = useState<
     | "start"
+    | "replace"
     | "next"
     | "settings"
     | "filters"
@@ -362,6 +363,7 @@ export default function Studio() {
       setStorageOk(true);
     } catch {
       setStorageOk(false);
+      setNotice("自動保存できません。画面を閉じる前に記録を保存してください。");
     }
   }, [draft, timer]);
   useEffect(() => {
@@ -550,7 +552,20 @@ export default function Studio() {
             aria-label="使い方"
             onClick={() => setSheet("help")}
           >
-            <BookOpen size={21} />
+            {storageOk ? (
+              <BookOpen size={21} />
+            ) : (
+              <span
+                role="alert"
+                style={{
+                  fontSize: "0.6875rem",
+                  color: "var(--accent)",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                未保存
+              </span>
+            )}
           </button>
           {!home && (
             <button
@@ -634,7 +649,10 @@ export default function Studio() {
               <span>チーム名</span>
               <ChevronRight size={18} />
             </button>
-            <button className="primary begin" onClick={() => setSheet("start")}>
+            <button
+              className="primary begin"
+              onClick={() => setSheet(draft ? "replace" : "start")}
+            >
               対戦を準備
               <ArrowRight size={19} />
             </button>
@@ -882,6 +900,7 @@ export default function Studio() {
                 <button
                   className="icon"
                   aria-label="1つ戻す"
+                  title="1つ戻す（U）"
                   disabled={!count}
                   onClick={back}
                 >
@@ -890,6 +909,7 @@ export default function Studio() {
                 <button
                   className="icon redo"
                   aria-label="1つ進む"
+                  title="1つ進む（Y）"
                   disabled={!redo.length}
                   onClick={forward}
                 >
@@ -898,6 +918,7 @@ export default function Studio() {
                 <button
                   className="icon"
                   aria-label="その他の操作"
+                  title="その他の操作"
                   onClick={() => setSheet("actions")}
                 >
                   <Ellipsis size={22} />
@@ -961,6 +982,19 @@ export default function Studio() {
             <X size={17} />
           </button>
         </div>
+      )}
+      {sheet === "replace" && (
+        <Sheet title="新しいドラフトを開始" close={() => setSheet(null)}>
+          <p>
+            保存済みのドラフトと試合履歴を置き換えます。必要な記録は先に保存してください。
+          </p>
+          <div className="action-list">
+            <button autoFocus onClick={() => setSheet(null)}>
+              キャンセル
+            </button>
+            <button onClick={() => setSheet("start")}>新しく開始</button>
+          </div>
+        </Sheet>
       )}
       {(sheet === "start" || sheet === "next") && (
         <Sheet title="先攻を選択" close={() => setSheet(null)}>
@@ -1163,6 +1197,11 @@ export default function Studio() {
       {sheet === "help" && (
         <Sheet title="Draft 02" close={() => setSheet(null)}>
           <div className="help-copy">
+            {!storageOk && (
+              <p role="alert">
+                自動保存できていません。画面を閉じる前に、チーム画面の履歴から「記録を保存」を選んでください。
+              </p>
+            )}
             <p>ポケモンを選び、「使用禁止」「選択」で決定します。</p>
             <p>
               使用禁止6匹 → 選択10

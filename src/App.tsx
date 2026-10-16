@@ -11,12 +11,17 @@ import {
 import SetupScreen from "./components/SetupScreen";
 import { createSeriesImage, createResultImage } from "./result-image";
 import TeamHistory from "./components/TeamHistory";
+import useRosterPages from "./components/useRosterPages";
+import { AppInstallPanel } from "./pwa/AppInstallPanel";
+import { usePwaStatus } from "./pwa/runtime";
 import {
   ArrowLeftRight,
   ArrowDownWideNarrow,
   Ban,
   Check,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   CircleHelp,
   Clock3,
   Download,
@@ -73,7 +78,7 @@ type Settings = {
 };
 const defaultTrainers = Array.from(
   { length: 10 },
-  (_, i) => `Trainer ${i + 1}`,
+  (_, i) => `トレーナー ${i + 1}`,
 );
 const defaults: Settings = {
   purple: "パープルチーム",
@@ -138,7 +143,15 @@ function Modal({
       className={className}
       onCancel={onClose}
       onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
+        const rect = e.currentTarget.getBoundingClientRect();
+        if (
+          e.target === e.currentTarget &&
+          (e.clientX < rect.left ||
+            e.clientX > rect.right ||
+            e.clientY < rect.top ||
+            e.clientY > rect.bottom)
+        )
+          onClose();
       }}
     >
       <div className="modal-heading">
@@ -207,7 +220,13 @@ function App() {
   const [reviewOpen, setReviewOpen] = useState(false);
   const [reviewGame, setReviewGame] = useState<PastGame | null>(null);
   const [exportingHistory, setExportingHistory] = useState<number | null>(null);
-  const pokemonGrid = useRef<HTMLDivElement>(null);
+  const rosterLayout = useRosterPages(
+    screen === "draft" && !reviewGame,
+    compactView,
+  );
+  const pokemonGrid = rosterLayout.ref;
+  const [rosterPage, setRosterPage] = useState(0);
+  const pageFocus = useRef<"first" | "last" | null>(null);
   const completionAction = useRef<HTMLButtonElement>(null);
   const firstTeamOption = useRef<HTMLButtonElement>(null);
   const keyboardNavigation = useRef(false);
@@ -216,8 +235,8 @@ function App() {
     turnSeconds(settings.seconds > 0, currentStep(draft)?.phase || "ban"),
   );
   const [modal, setModal] = useState<"info" | "reset" | null>(null);
-  const [online, setOnline] = useState(navigator.onLine);
-  const [cacheReady, setCacheReady] = useState(false);
+  const { online, offline } = usePwaStatus();
+  const cacheReady = offline === "ready";
   const [notice, setNotice] = useState("");
   const [swapFrom, setSwapFrom] = useState<{
     team: Team;
@@ -229,7 +248,6 @@ function App() {
     fearless: draft.seriesRule === "fearless",
     bestOf: draft.bestOf,
   });
-  const [deferredInstall, setDeferredInstall] = useState<Event | null>(null);
   const step = currentStep(draft);
   const stageIndex = step?.index ?? 12;
   const complete = !step;
@@ -322,7 +340,7 @@ function App() {
       if (phase === "ban") {
         setDraft((current) => choose(current, null, ids));
         setSelected(null);
-        setNotice("制限時間になったため、BANをスキップしました。");
+        setNotice("制限時間になったため、使用禁止投票をスキップしました。");
       } else {
         setNotice("制限時間になりました。ポケモンを選んで確定してください。");
       }
@@ -367,30 +385,6 @@ function App() {
     const id = setTimeout(() => setNotice(""), 5500);
     return () => clearTimeout(id);
   }, [notice]);
-  useEffect(() => {
-    const update = () => setOnline(navigator.onLine);
-    const install = (e: Event) => {
-      e.preventDefault();
-      setDeferredInstall(e);
-    };
-    const sw = (e: MessageEvent) => {
-      if (e.data?.type === "OFFLINE_READY") setCacheReady(true);
-    };
-    addEventListener("online", update);
-    addEventListener("offline", update);
-    addEventListener("beforeinstallprompt", install);
-    navigator.serviceWorker?.addEventListener("message", sw);
-    if ("serviceWorker" in navigator && import.meta.env.PROD)
-      navigator.serviceWorker.ready
-        .then((r) => r.active?.postMessage({ type: "CHECK_OFFLINE" }))
-        .catch(() => {});
-    return () => {
-      removeEventListener("online", update);
-      removeEventListener("offline", update);
-      removeEventListener("beforeinstallprompt", install);
-      navigator.serviceWorker?.removeEventListener("message", sw);
-    };
-  }, []);
   const visible = useMemo(
     () =>
       pokemon
@@ -409,6 +403,36 @@ function App() {
         ),
     [role, hideUsed, draft, query, sort],
   );
+  const pageCount = Math.max(1, Math.ceil(visible.length / rosterLayout.size));
+  const currentPage = Math.min(rosterPage, pageCount - 1);
+  const pageStart = currentPage * rosterLayout.size;
+  const pagePokemon = visible.slice(pageStart, pageStart + rosterLayout.size);
+  useEffect(() => {
+    setRosterPage(0);
+    setSelected(null);
+  }, [query, role, sort, hideUsed]);
+  useEffect(() => {
+    if (!selected) return;
+    const index = visible.findIndex((p) => p.id === selected);
+    if (index >= 0) setRosterPage(Math.floor(index / rosterLayout.size));
+  }, [rosterLayout.size]);
+  useEffect(() => {
+    if (!pageFocus.current) return;
+    const cards = pokemonGrid.current?.querySelectorAll<HTMLButtonElement>(
+      ".pokemon-card:not(:disabled)",
+    );
+    const target =
+      pageFocus.current === "last" ? cards?.[cards.length - 1] : cards?.[0];
+    pageFocus.current = null;
+    target?.focus();
+  }, [currentPage, rosterLayout.size]);
+  const goToRosterPage = (page: number, focus?: "first" | "last") => {
+    if (page < 0 || page >= pageCount || page === currentPage) return;
+    pageFocus.current = focus ?? null;
+    setSelected(null);
+    setRosterPage(page);
+    if (pokemonGrid.current) pokemonGrid.current.scrollTop = 0;
+  };
   const confirm = () => {
     if (
       !selected ||
@@ -456,6 +480,7 @@ function App() {
       if (
         screen === "draft" &&
         !modal &&
+        !filtersOpen &&
         !firstPrompt &&
         !reviewOpen &&
         !toolsOpen &&
@@ -524,6 +549,7 @@ function App() {
         !pendingBackup &&
         selected &&
         !modal &&
+        !filtersOpen &&
         rewindTarget === null &&
         screen === "draft" &&
         !editing &&
@@ -645,7 +671,7 @@ function App() {
         </div>
         <div className="bans-heading">
           <span>
-            <Ban size={14} /> BAN
+            <Ban size={14} /> 使用禁止
           </span>
           <span>{ownBans.length} / 3</span>
         </div>
@@ -663,7 +689,7 @@ function App() {
               <div
                 key={i}
                 className={`ban-slot ${active ? "active" : ""} ${action ? "filled" : ""} ${preview && !p ? "preview" : ""}`}
-                aria-label={`BAN ${i + 1}: ${shown?.name || (action ? "スキップ" : "未選択")}`}
+                aria-label={`使用禁止 ${i + 1}: ${shown?.name || (action ? "スキップ" : "未選択")}`}
               >
                 {shown ? (
                   <>
@@ -679,7 +705,7 @@ function App() {
                 )}
                 {!shown && !action && (
                   <span className="ban-slot-label">
-                    {active ? "選択中" : `BAN ${i + 1}`}
+                    {active ? "選択中" : `使用禁止 ${i + 1}`}
                   </span>
                 )}
               </div>
@@ -688,7 +714,7 @@ function App() {
         </div>
         <div className="picks-heading">
           <span>
-            <Check size={14} /> PICK
+            <Check size={14} /> 選択
           </span>
           <span>{ownPicks.length} / 5</span>
         </div>
@@ -741,7 +767,7 @@ function App() {
                   </span>
                   {shown && (
                     <span className={`role-text ${shown.role}`}>
-                      {roles[shown.role]}型
+                      {roles[shown.role]}
                     </span>
                   )}
                   {settings.trainers[team === "purple" ? i : i + 5] !==
@@ -808,14 +834,18 @@ function App() {
             >
               <div className="header-phase-title">
                 <strong>
-                  {visuallyComplete ? "完了" : phase === "ban" ? "BAN" : "PICK"}
+                  {visuallyComplete
+                    ? "完了"
+                    : phase === "ban"
+                      ? "使用禁止"
+                      : "選択"}
                 </strong>
               </div>
               <span className="header-phase-divider" />
               <strong className="header-instruction">
                 {showingPastGame
                   ? draft.allStar
-                    ? `GAME ${reviewGame.game}`
+                    ? `第${reviewGame.game}試合`
                     : "ドラフト結果"
                   : complete
                     ? "同じチームの2枠で交換"
@@ -844,7 +874,7 @@ function App() {
             </div>
           ) : (
             <>
-              <span>3 BAN / 5 PICK</span>
+              <span>使用禁止 3匹 / 選択 5匹</span>
             </>
           )}
         </div>
@@ -924,15 +954,13 @@ function App() {
                 : "STANDARD"}
             </span>
             <strong>
-              {draft.allStar
-                ? `GAME ${String(reviewGame.game).padStart(2, "0")}`
-                : "ドラフト結果"}
+              {draft.allStar ? `第${reviewGame.game}試合` : "ドラフト結果"}
             </strong>
             <span>終了時点</span>
           </section>
           <section
             className="past-draft-teams"
-            aria-label={`GAME ${reviewGame.game}の終了結果`}
+            aria-label={`第${reviewGame.game}試合の終了結果`}
           >
             {(["purple", "orange"] as Team[]).map((team) => {
               const first = reviewGame.first ?? reviewGame.bans?.[0]?.team;
@@ -964,7 +992,7 @@ function App() {
                       );
                     })}
                   </div>
-                  <h3>選出ポケモン</h3>
+                  <h3>選択したポケモン</h3>
                   <div className="past-draft-picks">
                     {teamPicks.map((pick, index) => {
                       const p = byId.get(pick.pokemon)!;
@@ -974,7 +1002,7 @@ function App() {
                           <Portrait p={p} />
                           <div>
                             <strong>{p.name}</strong>
-                            <small>{roles[p.role]}型</small>
+                            <small>{roles[p.role]}</small>
                           </div>
                         </article>
                       );
@@ -1003,7 +1031,9 @@ function App() {
       ) : (
         <main className="draft-main">
           <details className="progress-disclosure">
-            <summary>
+            <summary
+              aria-label={`ドラフトの進行状況 ${draft.actions.length} / 16`}
+            >
               <span>
                 {draft.allStar
                   ? `${seriesLabel} · ${draft.game} / ${draft.bestOf}`
@@ -1024,14 +1054,12 @@ function App() {
               className="phase-banner timeline-only"
               aria-label="ドラフトの進行状況"
             >
-              <section className="timeline" aria-label="BAN・PICKの順番">
+              <section className="timeline" aria-label="使用禁止・選択の順番">
                 <span className="timeline-meta">
                   {draft.allStar
                     ? `${seriesLabel} · BO${draft.bestOf}`
                     : "STANDARD"}
-                  {draft.allStar && (
-                    <b>GAME {String(draft.game).padStart(2, "0")}</b>
-                  )}
+                  {draft.allStar && <b>第{draft.game}試合</b>}
                 </span>
                 <div className="timeline-label">
                   <span className="eyebrow">DRAFT ORDER</span>
@@ -1046,10 +1074,10 @@ function App() {
                       disabled={stageStarts[i] >= draft.actions.length}
                       title={
                         stageStarts[i] < draft.actions.length
-                          ? `${teamName(s.team)}の${s.phase === "ban" ? "BAN" : "PICK"}ターンに戻る（以降の選出を取り消します）`
-                          : `${teamName(s.team)} ${s.phase.toUpperCase()} ${s.count}体`
+                          ? `${teamName(s.team)}の${s.phase === "ban" ? "使用禁止" : "選択"}ターンに戻る（以降の選出を取り消します）`
+                          : `${teamName(s.team)} ${s.phase === "ban" ? "使用禁止" : "選択"} ${s.count}匹`
                       }
-                      aria-label={`第${i + 1}区間 ${teamName(s.team)}の${s.phase === "ban" ? "BAN" : "PICK"} ${s.count}体のターン${stageStarts[i] < draft.actions.length ? "に戻る" : ""}`}
+                      aria-label={`第${i + 1}区間 ${teamName(s.team)}の${s.phase === "ban" ? "使用禁止" : "選択"} ${s.count}匹のターン${stageStarts[i] < draft.actions.length ? "に戻る" : ""}`}
                       aria-current={i === stageIndex ? "step" : undefined}
                       onClick={() => setRewindTarget(i)}
                     >
@@ -1136,7 +1164,7 @@ function App() {
                       })}
                     </span>
                     <span className="compact-ban-count">
-                      BAN {bans.filter((b) => b.team === view).length}/3
+                      使用禁止 {bans.filter((b) => b.team === view).length}/3
                     </span>
                   </>
                 )}
@@ -1314,15 +1342,19 @@ function App() {
                     className="modal-primary"
                     onClick={() => setFiltersOpen(false)}
                   >
-                    {visible.length}体を表示
+                    {visible.length}匹を表示
                   </button>
                 </Modal>
               )}
               <div
                 className="pokemon-grid"
+                id="pokemon-collection"
                 ref={pokemonGrid}
-                key={`${role}-${sort}`}
-                aria-label="ポケモン選択。矢印キーで移動、Enterで確定"
+                style={{
+                  gridTemplateColumns: `repeat(${rosterLayout.columns}, minmax(0, 1fr))`,
+                  gridTemplateRows: `repeat(${rosterLayout.rows}, minmax(calc(56px + 2.8rem), 1fr))`,
+                }}
+                aria-label="ポケモン選択。矢印キーで移動、Enterで確定、Page Up・Page Downでページ移動"
                 onKeyDown={(e) => {
                   const current = (
                     e.target as HTMLElement
@@ -1334,6 +1366,14 @@ function App() {
                     ),
                   );
                   const index = cards.indexOf(current);
+                  if (e.key === "PageDown" || e.key === "PageUp") {
+                    e.preventDefault();
+                    goToRosterPage(
+                      currentPage + (e.key === "PageDown" ? 1 : -1),
+                      e.key === "PageDown" ? "first" : "last",
+                    );
+                    return;
+                  }
                   if (e.key === "Enter") {
                     e.preventDefault();
                     e.stopPropagation();
@@ -1388,10 +1428,14 @@ function App() {
                         );
                       })[0];
                   }
-                  target?.focus();
+                  if (target) target.focus();
+                  else if (e.key === "ArrowRight" || e.key === "ArrowDown")
+                    goToRosterPage(currentPage + 1, "first");
+                  else if (e.key === "ArrowLeft" || e.key === "ArrowUp")
+                    goToRosterPage(currentPage - 1, "last");
                 }}
               >
-                {visible.map((p, i) => {
+                {pagePokemon.map((p, i) => {
                   const used = unavailable(draft, p.id, activeTeam);
                   const action = draft.actions.find((a) => a.pokemon === p.id);
                   const old = draft.history.length
@@ -1412,19 +1456,19 @@ function App() {
                       tabIndex={
                         p.id ===
                         (selected &&
-                        visible.some(
+                        pagePokemon.some(
                           (v) =>
                             v.id === selected &&
                             !unavailable(draft, v.id, activeTeam),
                         )
                           ? selected
-                          : visible.find(
+                          : pagePokemon.find(
                               (v) => !unavailable(draft, v.id, activeTeam),
                             )?.id)
                           ? 0
                           : -1
                       }
-                      aria-label={`${p.name} ${roles[p.role]}型${used ? " 選択不可" : ""}`}
+                      aria-label={`${p.name} ${roles[p.role]}${used ? " 選択不可" : ""}`}
                       aria-pressed={selected === p.id}
                       onClick={() => setSelected(p.id)}
                       onFocus={() => setSelected(p.id)}
@@ -1450,8 +1494,8 @@ function App() {
                               : old
                                 ? "過去の選出"
                                 : action?.phase === "pick"
-                                  ? "PICK"
-                                  : "BAN"}
+                                  ? "選択"
+                                  : "使用禁止"}
                           </span>
                         </span>
                       )}
@@ -1475,19 +1519,44 @@ function App() {
                 )}
               </div>
               <div className="selection-footer">
-                <span>{visible.length}体を表示</span>
-                <span className="keyboard-hint">
-                  {complete
-                    ? "選出の交換はチーム内の枠を2つ選択"
-                    : "矢印で選択 · Enterで確定"}
+                <span className="roster-range">
+                  {visible.length
+                    ? `${pageStart + 1}–${Math.min(pageStart + rosterLayout.size, visible.length)} / ${visible.length}匹`
+                    : "0匹"}
                 </span>
-                {!hideUsed && (
-                  <span>
-                    <Check size={12} />
-                    選択中 <Ban size={12} />
-                    使用不可
+                <nav
+                  className="roster-pagination"
+                  aria-label="ポケモン一覧のページ"
+                >
+                  <button
+                    type="button"
+                    className="icon-button"
+                    aria-label="前のページ"
+                    aria-controls="pokemon-collection"
+                    disabled={currentPage === 0}
+                    onClick={() => goToRosterPage(currentPage - 1)}
+                  >
+                    <ChevronLeft size={20} />
+                  </button>
+                  <span
+                    role="status"
+                    aria-live="polite"
+                    aria-atomic="true"
+                    aria-label={`${currentPage + 1} / ${pageCount}ページ`}
+                  >
+                    {currentPage + 1} / {pageCount}
                   </span>
-                )}
+                  <button
+                    type="button"
+                    className="icon-button"
+                    aria-label="次のページ"
+                    aria-controls="pokemon-collection"
+                    disabled={currentPage === pageCount - 1}
+                    onClick={() => goToRosterPage(currentPage + 1)}
+                  >
+                    <ChevronRight size={20} />
+                  </button>
+                </nav>
               </div>
             </section>
             <div className="team-side orange">
@@ -1544,7 +1613,7 @@ function App() {
                 <>
                   <div className="selected-description">
                     <Check size={20} />
-                    <strong>選出完了</strong>
+                    <strong>選択完了</strong>
                   </div>
                   <button
                     ref={completionAction}
@@ -1578,9 +1647,10 @@ function App() {
                     className="confirm-button"
                     disabled={!selected}
                     onClick={confirm}
+                    aria-label={`${selectedPokemon?.name ?? "ポケモン"}の${phase === "ban" ? "使用禁止" : "選択"}を決定`}
                   >
                     {phase === "ban" ? <Ban size={18} /> : <Check size={18} />}
-                    <span>{phase === "ban" ? "BAN" : "PICK"}</span>
+                    <span>決定</span>
                   </button>
                 </>
               )}
@@ -1589,7 +1659,7 @@ function App() {
               {step?.phase === "ban" ? (
                 <button
                   className="subtle-button"
-                  aria-label="BANをスキップ"
+                  aria-label="使用禁止投票をスキップ"
                   onClick={() => {
                     setDraft(choose(draft, null, ids));
                     setSelected(null);
@@ -1600,8 +1670,7 @@ function App() {
                 </button>
               ) : draft.allStar ? (
                 <span className="game-counter">
-                  <Flag size={15} /> GAME {String(draft.game).padStart(2, "0")}{" "}
-                  / BO{draft.bestOf}
+                  <Flag size={15} /> 第{draft.game}試合 / BO{draft.bestOf}
                 </span>
               ) : null}
             </div>
@@ -1744,8 +1813,8 @@ function App() {
         <Modal title="ドラフトをリセット" onClose={() => setModal(null)}>
           <p>
             {draft.allStar
-              ? `GAME ${String(draft.game).padStart(2, "0")} のBAN・PICKだけを消去し、同じ試合を最初からやり直します。過去の試合結果は残ります。`
-              : "現在のBAN・PICKを消去し、この試合を最初からやり直します。"}
+              ? `第${draft.game}試合 の使用禁止・選択だけを消去し、同じ試合を最初からやり直します。過去の試合結果は残ります。`
+              : "現在の使用禁止・選択を消去し、この試合を最初からやり直します。"}
           </p>
           <div className="modal-buttons">
             <button className="modal-secondary" onClick={() => setModal(null)}>
@@ -1766,13 +1835,11 @@ function App() {
       {firstPrompt && (
         <Modal
           title={
-            promptAllStar
-              ? `GAME ${String(promptGame).padStart(2, "0")} の先攻チーム`
-              : "先攻チーム"
+            promptAllStar ? `第${promptGame}試合 の先攻チーム` : "先攻チーム"
           }
           onClose={() => setFirstPrompt(null)}
         >
-          <p className="first-prompt-copy">最初にBANするのは？</p>
+          <p className="first-prompt-copy">先攻チームを選択</p>
           <div className="first-prompt-options">
             {(["purple", "orange"] as Team[]).map((team) => (
               <button
@@ -1879,7 +1946,7 @@ function App() {
                   >
                     <span>
                       {draft.allStar
-                        ? `GAME ${String(past.game).padStart(2, "0")}`
+                        ? `第${past.game}試合`
                         : gamesAgo === 0
                           ? "最新のドラフト"
                           : gamesAgo === 1
@@ -1906,7 +1973,7 @@ function App() {
                               : "順番記録なし"}
                           </span>
                         </h4>
-                        <strong>BAN</strong>
+                        <strong>使用禁止</strong>
                         <div className="review-ban-list">
                           {(past.bans
                             ? past.bans.filter((ban) => ban.team === team)
@@ -1923,7 +1990,9 @@ function App() {
                                   <span
                                     className="review-skip-mark"
                                     aria-label={
-                                      ban ? "BANスキップ" : "BAN記録なし"
+                                      ban
+                                        ? "使用禁止スキップ"
+                                        : "使用禁止記録なし"
                                     }
                                   >
                                     —
@@ -1933,7 +2002,7 @@ function App() {
                             );
                           })}
                         </div>
-                        <strong>PICK</strong>
+                        <strong>選択</strong>
                         <div className="review-pick-list">
                           {past.picks
                             .filter((pick) => pick.team === team)
@@ -1957,7 +2026,7 @@ function App() {
       )}
       {rewindTarget !== null && (
         <Modal
-          title={`この${schedule[rewindTarget].phase === "ban" ? "BAN" : "PICK"}フェーズに戻りますか？`}
+          title={`この${schedule[rewindTarget].phase === "ban" ? "使用禁止" : "選択"}フェーズに戻りますか？`}
           onClose={() => setRewindTarget(null)}
         >
           <div className="modal-buttons">
@@ -2013,6 +2082,7 @@ function App() {
                 操作音：{settings.sound ? "オン" : "オフ"}
               </button>
             </div>
+            <AppInstallPanel />
             <h3>キーボード操作</h3>
             <p>
               矢印：ポケモンを選択 ／ Enter：確定 ／ /：検索 ／ Esc：選択解除 ／
@@ -2038,32 +2108,34 @@ function App() {
                   <td>持ち越しなし。毎試合すべて選び直せます。</td>
                 </tr>
                 <tr>
-                  <th scope="row">オールスター</th>
-                  <td>両チームの過去の選出は、両チームともBAN・PICK不可。</td>
+                  <th scope="row">オールスタードラフト</th>
+                  <td>
+                    両チームの過去の選出は、両チームとも使用禁止・選択不可。
+                  </td>
                 </tr>
                 <tr>
-                  <th scope="row">フィアレス</th>
+                  <th scope="row">フィアレス（独自ルール）</th>
                   <td>
-                    自チームの過去の選出のみPICK不可。相手は使用可能です。
+                    自チームの過去の選出のみ選択不可。相手は使用可能です。
                   </td>
                 </tr>
               </tbody>
             </table>
             <p>
-              過去のBANは持ち越しません。フィアレスのBAN中は「選択可能のみ」で、相手が過去に選出し再使用できないポケモンも非表示にします。
+              過去の使用禁止は持ち越しません。フィアレスの使用禁止中は「選択可能のみ」で、相手が過去に選出し再使用できないポケモンも非表示にします。
             </p>
             <p>
               結果画像は右上の「試合履歴・画像保存」から保存できます。シリーズでは全試合を1枚にまとめることもできます。
             </p>
-            <h3>大会モード · 各チーム3 BAN</h3>
+            <h3>大会モード · 各チーム3匹を使用禁止</h3>
             <p>
-              BAN：先攻 → 後攻を3回繰り返します。
+              使用禁止：先攻 → 後攻を3回繰り返します。
               <br />
-              PICK：先攻1 → 後攻2 → 先攻2 → 後攻2 → 先攻2 →
-              後攻1。2体選ぶターンはタイマーを共有します。
+              選択：先攻1 → 後攻2 → 先攻2 → 後攻2 → 先攻2 →
+              後攻1。2匹選ぶターンはタイマーを共有します。
             </p>
             <p>
-              ランクマッチや通常カスタムの投票式BANは対象外です。ミュウツーX・Yとメガシンカの別ライセンスはそれぞれ選択できます。
+              ランクマッチや通常カスタムの投票式使用禁止は対象外です。ミュウツーX・Yとメガシンカの別ライセンスはそれぞれ選択できます。
             </p>
             <h3>公式掲載データ · 2026年10月15日確認</h3>
             <p>
@@ -2074,20 +2146,6 @@ function App() {
             <p>
               進行状況はこのブラウザーに自動保存されます。「オフライン利用可能」の表示後は、再読み込みもオフラインで利用できます。iPhoneはSafariの共有メニューから「ホーム画面に追加」を選べます。
             </p>
-            {deferredInstall && (
-              <button
-                className="modal-secondary"
-                onClick={async () => {
-                  const e = deferredInstall as Event & {
-                    prompt: () => Promise<void>;
-                  };
-                  await e.prompt();
-                  setDeferredInstall(null);
-                }}
-              >
-                アプリをインストール
-              </button>
-            )}
             <h3>参照資料</h3>
             <a
               href="https://www.pokemonunite.jp/ja/pokemon/"

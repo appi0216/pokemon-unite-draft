@@ -2,6 +2,8 @@
   "id": "./",
   "name": "UNITE DRAFT — ドラフト練習",
   "short_name": "UNITE DRAFT",
+  "description": "ポケモンユナイトのドラフト練習。使用禁止とポケモン選択をシミュレーション。",
+  "categories": ["games", "utilities"],
   "lang": "ja",
   "start_url": "./",
   "scope": "./",
@@ -19,7 +21,13 @@
       "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

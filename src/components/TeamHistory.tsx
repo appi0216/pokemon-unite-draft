@@ -32,9 +32,9 @@ export default function TeamHistory({
             <section
               className="history-game"
               key={past.game}
-              aria-label={`GAME ${past.game}`}
+              aria-label={`第${past.game}試合`}
             >
-              <h3>GAME {String(past.game).padStart(2, "0")}</h3>
+              <h3>第{past.game}試合</h3>
               <div className="history-pokemon">
                 {past.picks
                   .filter((p) => p.team === team)
@@ -44,7 +44,7 @@ export default function TeamHistory({
                       <div
                         className="history-pokemon-item"
                         key={p.id}
-                        title={`${p.name} · GAME ${past.game}で選択済`}
+                        title={`${p.name} · 第${past.game}試合で選択済`}
                       >
                         <Portrait p={p} />
                       </div>

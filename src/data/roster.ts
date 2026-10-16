@@ -16,11 +16,11 @@ export const pokemon: Pokemon[] = (data as Pokemon[]).map((p) => ({
 export const ids = pokemon.map((p) => p.id);
 export const byId = new Map(pokemon.map((p) => [p.id, p]));
 export const roles: Record<Role, string> = {
-  attack: "アタック",
-  balance: "バランス",
-  defense: "ディフェンス",
-  speed: "スピード",
-  support: "サポート",
+  attack: "アタック型",
+  balance: "バランス型",
+  defense: "ディフェンス型",
+  speed: "スピード型",
+  support: "サポート型",
 };
 export const normalize = (s: string) =>
   s
@@ -28,4 +28,3 @@ export const normalize = (s: string) =>
     .toLowerCase()
     .replace(/[ぁ-ゖ]/g, (c) => String.fromCharCode(c.charCodeAt(0) + 0x60))
     .replace(/\s/g, "");
-

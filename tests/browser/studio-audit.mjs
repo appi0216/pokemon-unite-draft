@@ -37,7 +37,9 @@ for (const engine of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
     };
     const metric = async (state) => {
       // Newly mounted roster images can still be downloading after navigation.
-      await page.waitForFunction(() => [...document.images].every(image => image.complete));
+      await page.waitForFunction(() =>
+        [...document.images].every((image) => image.complete),
+      );
       const m = await page.evaluate(() => {
         const rect = (s) => {
           let e = document.querySelector(s);
@@ -134,7 +136,11 @@ for (const engine of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
         .getByRole("button", { name: "対戦を準備", exact: true })
         .click();
       await page.locator(".first-choice button").first().click();
-      assert((await page.locator(".creature").count()) === 102, "Roster count");
+      assert(
+        (await page.locator(".collection").getAttribute("data-total")) ===
+          "102",
+        "Roster count",
+      );
       await metric("draft");
       await page.getByRole("searchbox").fill("ピカチュウ");
       assert((await page.locator(".creature").count()) === 1, "Search");
@@ -144,7 +150,7 @@ for (const engine of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
       await page.locator(".role-picker button").nth(1).click();
       assert((await page.locator(".creature").count()) < 102, "Role");
       await page.locator(".role-picker button").first().click();
-      await page.getByRole("button", { name: "102体を表示" }).click();
+      await page.getByRole("button", { name: "102匹を表示" }).click();
       result.checks.push("filters-search");
       await page.evaluate(
         () => (document.documentElement.style.fontSize = "32px"),
@@ -173,7 +179,8 @@ for (const engine of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
       assert((await read()).game === 2, "Next game");
       if (mode === "オールスター")
         assert(
-          (await page.locator(".creature").count()) === 92,
+          (await page.locator(".collection").getAttribute("data-total")) ===
+            "92",
           "All-Star restriction",
         );
       await page.emulateMedia({ colorScheme: "dark" });

@@ -87,9 +87,9 @@ export default function DraftTools({
         ))}
       </section>
       <section>
-        <h3>大会の使用不可ポケモン · {restricted.length}体</h3>
+        <h3>大会の使用不可ポケモン · {restricted.length}匹</h3>
         <p>
-          新しく開始するドラフトのBAN・PICK候補から除外します。進行中の試合は変更しません。
+          新しく開始するドラフトの使用禁止・選択候補から除外します。進行中の試合は変更しません。
         </p>
         <input
           type="search"

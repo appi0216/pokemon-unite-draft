@@ -12,7 +12,7 @@ function assert(value, message) {
 }
 for (const [engineName, engine] of Object.entries({ chromium, webkit })) {
   const browser = await engine.launch({ headless: true });
-  for (const mode of ["通常ドラフト", "オールスター", "フィアレス"]) {
+  for (const mode of ["通常ドラフト", "オールスタードラフト", "フィアレス"]) {
     const context = await browser.newContext({
       viewport: { width: 390, height: 844 },
       hasTouch: true,
@@ -49,7 +49,7 @@ for (const [engineName, engine] of Object.entries({ chromium, webkit })) {
       if (mode !== "通常ドラフト")
         assert(
           saved.draft.seriesRule ===
-            (mode === "オールスター" ? "all-star" : "fearless"),
+            (mode === "オールスタードラフト" ? "all-star" : "fearless"),
           "Draft format seriesRule mismatch",
         );
       result.checks.push("format");

@@ -149,11 +149,9 @@ for (const engineName of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
         process.env.AUDIT_URL || "http://127.0.0.1:5174/pokemon-unite-draft/",
         { waitUntil: "networkidle" },
       );
-      const names = page
-        .locator("details")
-        .filter({
-          has: page.locator("summary", { hasText: "チーム・プレイヤー名" }),
-        });
+      const names = page.locator("details").filter({
+        has: page.locator("summary", { hasText: "チーム・トレーナー名" }),
+      });
       await names.locator("summary").click();
       await names
         .locator("input")

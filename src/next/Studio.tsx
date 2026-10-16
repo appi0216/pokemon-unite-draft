@@ -1,5 +1,12 @@
-import { useEffect, useId, useMemo, useRef, useState } from "react";
-import type { ReactNode } from "react";
+import {
+  useEffect,
+  useId,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import type { CSSProperties, ReactNode } from "react";
 import {
   ArrowRight,
   CircleMinus,
@@ -10,6 +17,7 @@ import {
   Repeat2,
   Ban,
   Check,
+  ChevronLeft,
   ChevronRight,
   Download,
   Ellipsis,
@@ -43,13 +51,14 @@ import {
 } from "../domain/draft";
 import type { BestOf, Draft, Team } from "../domain/draft";
 import { turnSeconds } from "../domain/timer";
+import { AppInstallPanel } from "../pwa/AppInstallPanel";
 
 const STORE = "unite-draft.studio.v2";
 const teams: Team[] = ["purple", "orange"];
 const initialNames = {
   purple: "パープル",
   orange: "オレンジ",
-  trainers: Array.from({ length: 10 }, (_, i) => `Player ${i + 1}`),
+  trainers: Array.from({ length: 10 }, (_, i) => `トレーナー${i + 1}`),
 };
 type Mode = "standard" | "all-star" | "fearless";
 const modes = [
@@ -57,19 +66,19 @@ const modes = [
     id: "standard" as Mode,
     name: "通常",
     icon: Target,
-    detail: "1試合ずつ選出",
+    detail: "1試合ずつ選択",
   },
   {
     id: "all-star" as Mode,
-    name: "オールスター",
+    name: "オールスタードラフト",
     icon: Layers,
-    detail: "過去の選出を両チームで制限",
+    detail: "過去の選択を両チームで制限",
   },
   {
     id: "fearless" as Mode,
     name: "フィアレス",
     icon: Repeat2,
-    detail: "自チームの過去の選出を制限",
+    detail: "自チームの過去の選択を制限",
   },
 ];
 function load() {
@@ -143,6 +152,60 @@ function Art({ p, className = "" }: { p?: Pokemon; className?: string }) {
     </span>
   );
 }
+// Measure the actual collection area and the tallest translated card. Pagination
+// adapts to viewport, text size and split-screen changes without shrinking text.
+function useCollectionPages(active: boolean) {
+  const gridRef = useRef<HTMLDivElement>(null);
+  const measureRef = useRef<HTMLDivElement>(null);
+  const [layout, setLayout] = useState({
+    columns: 3,
+    rows: 1,
+    cardHeight: 116,
+  });
+  useLayoutEffect(() => {
+    if (!active) return;
+    const grid = gridRef.current;
+    const probe = measureRef.current;
+    if (!grid || !probe) return;
+    let frame = 0;
+    const measure = () => {
+      if (!grid.clientWidth || !grid.clientHeight) return;
+      const style = getComputedStyle(grid);
+      const columns = style.gridTemplateColumns.split(" ").length;
+      const gap = parseFloat(style.rowGap) || 0;
+      const width =
+        grid.clientWidth -
+        parseFloat(style.paddingLeft) -
+        parseFloat(style.paddingRight);
+      const height =
+        grid.clientHeight -
+        parseFloat(style.paddingTop) -
+        parseFloat(style.paddingBottom);
+      probe.style.width = `${(width - gap * (columns - 1)) / columns}px`;
+      const cardHeight = Math.ceil(probe.getBoundingClientRect().height);
+      const rows = Math.max(1, Math.floor((height + gap) / (cardHeight + gap)));
+      setLayout((previous) =>
+        previous.columns === columns &&
+        previous.rows === rows &&
+        previous.cardHeight === cardHeight
+          ? previous
+          : { columns, rows, cardHeight },
+      );
+    };
+    const observer = new ResizeObserver(() => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(measure);
+    });
+    observer.observe(grid);
+    observer.observe(probe);
+    measure();
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+    };
+  }, [active]);
+  return { gridRef, measureRef, ...layout, size: layout.columns * layout.rows };
+}
 export default function Studio() {
   const [saved] = useState(load);
   const [draft, setDraft] = useState<Draft | null>(saved.draft);
@@ -161,6 +224,7 @@ export default function Studio() {
   const [role, setRole] = useState<Role | "all">("all");
   const [available, setAvailable] = useState(true);
   const [newest, setNewest] = useState(false);
+  const [page, setPage] = useState(0);
   const [pane, setPane] = useState<"roster" | "teams">("roster");
   const [sheet, setSheet] = useState<
     | "start"
@@ -181,6 +245,8 @@ export default function Studio() {
   const [storageOk, setStorageOk] = useState(true);
   const [online, setOnline] = useState(navigator.onLine);
   const searchRef = useRef<HTMLInputElement>(null);
+  const pageFocus = useRef<"first" | "last" | null>(null);
+  const collection = useCollectionPages(!home);
   const step = draft ? currentStep(draft) : null;
   const complete = Boolean(draft && !step);
   const active = step?.team || "purple";
@@ -203,6 +269,41 @@ export default function Studio() {
         ),
     [role, query, available, draft, newest],
   );
+  const pages = Math.max(1, Math.ceil(visible.length / collection.size));
+  const currentPage = Math.min(page, pages - 1);
+  const pageStart = currentPage * collection.size;
+  const pagePokemon = visible.slice(pageStart, pageStart + collection.size);
+  useEffect(() => {
+    setPage(0);
+    setSelected(null);
+  }, [query, role, available, newest]);
+  useEffect(() => {
+    if (!selected) return;
+    const index = visible.findIndex((p) => p.id === selected);
+    if (index >= 0) setPage(Math.floor(index / collection.size));
+  }, [collection.size]);
+  useEffect(() => {
+    setPage((previous) => Math.min(previous, pages - 1));
+  }, [pages]);
+  useEffect(() => {
+    if (!pageFocus.current) return;
+    const cards =
+      collection.gridRef.current?.querySelectorAll<HTMLButtonElement>(
+        ".creature:not(:disabled)",
+      );
+    const next =
+      pageFocus.current === "last" ? cards?.[cards.length - 1] : cards?.[0];
+    next?.focus({ preventScroll: true });
+    if (next?.dataset.id) setSelected(next.dataset.id);
+    pageFocus.current = null;
+  }, [currentPage, collection.size]);
+  const turnPage = (next: number, focus?: "first" | "last") => {
+    if (next < 0 || next >= pages || next === currentPage) return;
+    pageFocus.current = focus || null;
+    setPage(next);
+    setSelected(null);
+    collection.gridRef.current?.scrollTo(0, 0);
+  };
   const commit = (value: Draft) => {
     setDraft(value);
     setRedo([]);
@@ -251,6 +352,7 @@ export default function Studio() {
     setPane("roster");
     setQuery("");
     setRole("all");
+    setPage(0);
     setRunning(timer);
     setSeconds(turnSeconds(timer, "ban"));
   };
@@ -287,8 +389,8 @@ export default function Studio() {
     setRunning(false);
     if (currentStep(draft)?.phase === "ban") {
       commit(choose(draft, null, ids));
-      setNotice("時間切れ：BANをスキップ");
-    } else setNotice("時間切れ：選択して確定してください");
+      setNotice("時間切れ：使用禁止をスキップ");
+    } else setNotice("時間切れ：選択して決定してください");
   }, [seconds, running, timer]);
   useEffect(() => {
     if (complete) setRunning(false);
@@ -334,7 +436,7 @@ export default function Studio() {
       <section
         key={team}
         className={`team-card ${team}`}
-        aria-label={`${view.names?.[team] || label(team)}の選出`}
+        aria-label={`${view.names?.[team] || label(team)}の選択`}
       >
         <header>
           <span className="team-dot" />
@@ -350,7 +452,7 @@ export default function Studio() {
               className="ban-token"
               key={i}
               title={
-                bans[i]?.pokemon ? byId.get(bans[i].pokemon!)?.name : "BAN"
+                bans[i]?.pokemon ? byId.get(bans[i].pokemon!)?.name : "使用禁止"
               }
             >
               {bans[i]?.pokemon ? (
@@ -377,12 +479,12 @@ export default function Studio() {
                       commit(swap(draft, team, swapping.index, i));
                     } else setSwapping({ team, index: i });
                   }}
-                  aria-label={`${label(team)} ${i + 1}枠 ${p?.name || "未選出"}${canSwap ? " 入れ替え" : ""}`}
+                  aria-label={`${label(team)} ${i + 1}枠 ${p?.name || "未選択"}${p ? ` ${roles[p.role]}` : ""}${canSwap ? " 入れ替え" : ""}`}
                 >
                   <span className="slot-number">{i + 1}</span>
                   <Art p={p} />
                   <span className="slot-name">
-                    {p?.name || "未選出"}
+                    {p?.name || "未選択"}
                     {p && <small>{roles[p.role]}</small>}
                   </span>
                   {p && <Check size={14} />}
@@ -421,10 +523,10 @@ export default function Studio() {
               ) : (
                 <Check size={15} />
               )}{" "}
-              {complete ? "完了" : phase.toUpperCase()}
+              {complete ? "完了" : phase === "ban" ? "使用禁止" : "選択"}
             </span>
             <strong title={label(active)}>
-              {complete ? `GAME ${draft.game}` : label(active)}
+              {complete ? `第${draft.game}試合` : label(active)}
             </strong>
             <span className="turn-count">{count}/16</span>
           </div>
@@ -468,12 +570,8 @@ export default function Studio() {
         <main className="welcome">
           <div className="welcome-heading">
             <span className="eyebrow">POKÉMON UNITE</span>
-            <h1>
-              次の一戦を、
-              <br />
-              ここから。
-            </h1>
-            <p>選んで、チームをつくる。</p>
+            <h1>ドラフトモード</h1>
+            <p>次のバトルを準備</p>
           </div>
           <section className="session-card" aria-label="ドラフトの準備">
             <fieldset className="mode-picker">
@@ -484,6 +582,7 @@ export default function Studio() {
                     key={m.id}
                     className={mode === m.id ? "chosen" : ""}
                     aria-pressed={mode === m.id}
+                    aria-description={m.detail}
                     onClick={() => setMode(m.id)}
                   >
                     <m.icon size={23} />
@@ -514,7 +613,7 @@ export default function Studio() {
             )}
             <div className="form-row">
               <label htmlFor="timer-option">
-                ターンタイマー<small>BAN 15秒 · PICK 20秒</small>
+                ターンタイマー<small>使用禁止 15秒 · 選択 20秒</small>
               </label>
               <button
                 id="timer-option"
@@ -542,13 +641,13 @@ export default function Studio() {
             {draft && (
               <button className="resume" onClick={() => setHome(false)}>
                 <Play size={17} />
-                続きから · GAME {draft.game}
+                続きから · 第{draft.game}試合
                 <span>{count}/16</span>
               </button>
             )}
           </section>
           <footer className="welcome-footer">
-            <span>102 Pokémon · 非公式ツール</span>
+            <span>102匹のポケモン · 非公式ツール</span>
             <a href={import.meta.env.BASE_URL}>現行版へ</a>
           </footer>
         </main>
@@ -575,7 +674,11 @@ export default function Studio() {
                   </span>
                 </button>
               </nav>
-              <section className="collection" aria-label="ポケモン一覧">
+              <section
+                className="collection"
+                aria-label="ポケモン一覧"
+                data-total={visible.length}
+              >
                 <div className="collection-toolbar">
                   <label className="search">
                     <Search size={19} />
@@ -608,9 +711,18 @@ export default function Studio() {
                   <span className="result-count">{visible.length}</span>
                 </div>
                 <div
+                  ref={collection.gridRef}
                   className="collection-grid"
+                  data-columns={collection.columns}
+                  style={
+                    {
+                      "--page-rows": collection.rows,
+                      "--card-height": `${collection.cardHeight}px`,
+                    } as CSSProperties
+                  }
                   role="group"
                   aria-label="ポケモンを選択"
+                  id="studio-collection"
                   onKeyDown={(e) => {
                     const card = (
                       e.target as HTMLElement
@@ -622,6 +734,14 @@ export default function Studio() {
                       ),
                     );
                     const i = cards.indexOf(card);
+                    if (e.key === "PageDown" || e.key === "PageUp") {
+                      e.preventDefault();
+                      turnPage(
+                        currentPage + (e.key === "PageDown" ? 1 : -1),
+                        e.key === "PageDown" ? "first" : "last",
+                      );
+                      return;
+                    }
                     const cols = getComputedStyle(
                       e.currentTarget,
                     ).gridTemplateColumns.split(" ").length;
@@ -637,6 +757,17 @@ export default function Studio() {
                               : 0;
                     if (delta) {
                       e.preventDefault();
+                      if (
+                        i + delta >= cards.length &&
+                        currentPage < pages - 1
+                      ) {
+                        turnPage(currentPage + 1, "first");
+                        return;
+                      }
+                      if (i + delta < 0 && currentPage > 0) {
+                        turnPage(currentPage - 1, "last");
+                        return;
+                      }
                       const next =
                         cards[
                           Math.max(0, Math.min(cards.length - 1, i + delta))
@@ -646,7 +777,7 @@ export default function Studio() {
                     }
                   }}
                 >
-                  {visible.map((p) => (
+                  {pagePokemon.map((p) => (
                     <button
                       key={p.id}
                       data-id={p.id}
@@ -683,8 +814,54 @@ export default function Studio() {
                     </div>
                   )}
                 </div>
+                <nav className="collection-pages" aria-label="ポケモンのページ">
+                  <button
+                    className="icon"
+                    aria-label="前のページ"
+                    aria-controls="studio-collection"
+                    disabled={currentPage === 0}
+                    onClick={() => turnPage(currentPage - 1)}
+                  >
+                    <ChevronLeft size={20} />
+                  </button>
+                  <span role="status" aria-live="polite">
+                    <b>
+                      {currentPage + 1}
+                      <span> / {pages}</span>
+                    </b>
+                    <small>
+                      {visible.length
+                        ? `${pageStart + 1}–${pageStart + pagePokemon.length}`
+                        : "0"}{" "}
+                      / {visible.length}匹
+                    </small>
+                  </span>
+                  <button
+                    className="icon"
+                    aria-label="次のページ"
+                    aria-controls="studio-collection"
+                    disabled={currentPage + 1 >= pages}
+                    onClick={() => turnPage(currentPage + 1)}
+                  >
+                    <ChevronRight size={20} />
+                  </button>
+                </nav>
+                <div
+                  className="collection-measure"
+                  ref={collection.measureRef}
+                  aria-hidden="true"
+                >
+                  <span className="art" />
+                  <span className="measure-names">
+                    {pokemon.map((p) => (
+                      <span className="creature-name" key={p.id}>
+                        {p.name}
+                      </span>
+                    ))}
+                  </span>
+                </div>
               </section>
-              <aside className="lineups" aria-label="両チームの選出">
+              <aside className="lineups" aria-label="両チームの選択">
                 <div className="lineups-heading">
                   <h2>チーム</h2>
                   <button
@@ -729,12 +906,12 @@ export default function Studio() {
               <div className="selection-summary" aria-live="polite">
                 {picked && <Art p={picked} />}
                 <span>
-                  {complete ? "選出完了" : picked?.name || "ポケモンを選択"}
+                  {complete ? "選択完了" : picked?.name || "ポケモンを選択"}
                   <small>
                     {complete
                       ? "チーム画面で入れ替えできます"
                       : step?.remaining === 2
-                        ? "このターンは2体選出"
+                        ? "このターンは2匹選択"
                         : ""}
                   </small>
                 </span>
@@ -759,12 +936,12 @@ export default function Studio() {
                 ) : phase === "ban" ? (
                   <>
                     <CircleMinus size={18} />
-                    除外する
+                    使用禁止
                   </>
                 ) : (
                   <>
                     <UserPlus size={19} />
-                    選出する
+                    選択
                   </>
                 )}
                 {complete && <ArrowRight size={18} />}
@@ -868,7 +1045,7 @@ export default function Studio() {
             新しい順
           </label>
           <button className="primary wide" onClick={() => setSheet(null)}>
-            {visible.length}体を表示
+            {visible.length}匹を表示
           </button>
         </Sheet>
       )}
@@ -893,7 +1070,7 @@ export default function Studio() {
               }}
             >
               <SkipForward />
-              BANをスキップ
+              使用禁止をスキップ
             </button>
             <button onClick={() => setSheet("history")}>
               <History />
@@ -911,7 +1088,7 @@ export default function Studio() {
           title="この試合をリセットしますか？"
           close={() => setSheet(null)}
         >
-          <p>この試合のBANとPICKを取り消します。</p>
+          <p>この試合の使用禁止とポケモンの選択を取り消します。</p>
           <div className="sheet-actions">
             <button className="secondary" onClick={() => setSheet(null)}>
               キャンセル
@@ -936,7 +1113,7 @@ export default function Studio() {
             {draft &&
               reviewableGames(draft).map((g) => (
                 <section key={g.game}>
-                  <h3>GAME {g.game}</h3>
+                  <h3>第{g.game}試合</h3>
                   {teams.map((t) => (
                     <div className={`history-team ${t}`} key={t}>
                       <strong>{g.names?.[t] || label(t)}</strong>
@@ -958,7 +1135,7 @@ export default function Studio() {
                 </section>
               ))}
             {(!draft || !reviewableGames(draft).length) && (
-              <p>選出が完了するとここに表示されます。</p>
+              <p>選択が完了するとここに表示されます。</p>
             )}
           </div>
           {draft && (
@@ -986,12 +1163,19 @@ export default function Studio() {
       {sheet === "help" && (
         <Sheet title="Draft 02" close={() => setSheet(null)}>
           <div className="help-copy">
-            <p>ポケモンを選び、「除外する」「選出する」で確定します。</p>
+            <p>ポケモンを選び、「使用禁止」「選択」で決定します。</p>
             <p>
-              6 BAN → 10
-              PICK。PICK順は1・2・2・2・2・1体。完了後はチームの2枠を選んで入れ替えできます。
+              使用禁止6匹 → 選択10
+              匹。選択順は1・2・2・2・2・1匹。完了後はチームの2枠を選んで入れ替えできます。
             </p>
-            <p>矢印キーで選択、Uで戻す、Yで進む、/で検索。</p>
+            <p>
+              矢印キーで選択、Page Up /
+              Downでページ切り替え、Uで戻す、Yで進む、/で検索。
+            </p>
+            <p>
+              フィアレスは独自ルールです。自分のチームが前の試合で選んだポケモンを使用できません。
+            </p>
+            <AppInstallPanel />
             <p>
               {online ? "オンライン" : "オフライン"} ·{" "}
               {storageOk ? "自動保存中" : "自動保存を利用できません"}

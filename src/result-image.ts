@@ -175,8 +175,8 @@ export async function createResultImage(
   text("UNITE DRAFT", 60, 76, 36, palette.text, 500, 750);
   text(
     draft.allStar
-      ? `${draft.seriesRule === "all-star" ? "ALL-STAR" : "FEARLESS"} · BO${draft.bestOf} · GAME ${String(draft.game).padStart(2, "0")}`
-      : "DRAFT RESULT",
+      ? `${draft.seriesRule === "all-star" ? "オールスタードラフト" : "フィアレス"} · BO${draft.bestOf} · 第${draft.game}試合`
+      : "ドラフト結果",
     60,
     117,
     20,
@@ -184,7 +184,7 @@ export async function createResultImage(
     600,
     700,
   );
-  text("3 BAN / 5 PICK", 1250, 80, 24, palette.secondary, 300, 700);
+  text("使用禁止 3匹 / 選択 5匹", 1190, 80, 24, palette.secondary, 350, 700);
   ctx.fillStyle = palette.cyan;
   ctx.fillRect(60, 137, 1480, 2);
 
@@ -203,7 +203,7 @@ export async function createResultImage(
       80,
       750,
     );
-    text("BAN · 使用禁止", x + 30, 291, 18, palette.secondary, 240, 700);
+    text("使用禁止ポケモン", x + 30, 291, 18, palette.secondary, 240, 700);
     draft.actions
       .filter((a) => a.team === team && a.phase === "ban")
       .forEach((a, i) => {
@@ -225,7 +225,7 @@ export async function createResultImage(
           650,
         );
       });
-    text("PICK · 選出ポケモン", x + 30, 496, 18, palette.secondary, 260, 700);
+    text("選択したポケモン", x + 30, 496, 18, palette.secondary, 260, 700);
     draft.actions
       .filter((a) => a.team === team && a.phase === "pick")
       .forEach((a, i) => {
@@ -246,10 +246,10 @@ export async function createResultImage(
         );
         portrait(p.id, x + 82, y + 1, 96);
         text(p.name, x + 201, y + 30, 23, palette.text, 465, 750);
-        text(`${roles[p.role]}型`, x + 202, y + 56, 16, roleColor, 465, 700);
+        text(roles[p.role], x + 202, y + 56, 16, roleColor, 465, 700);
         text(
           names.trainers?.[team === "purple" ? i : i + 5] ??
-            `Trainer ${team === "purple" ? i + 1 : i + 6}`,
+            `トレーナー ${team === "purple" ? i + 1 : i + 6}`,
           x + 202,
           y + 82,
           15,

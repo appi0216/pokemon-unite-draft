@@ -39,7 +39,7 @@ type Props = {
 
 const modes = [
   { id: "standard", label: "通常", icon: Swords },
-  { id: "all-star", label: "オールスター", icon: Sparkles },
+  { id: "all-star", label: "オールスタードラフト", icon: Sparkles },
   { id: "fearless", label: "フィアレス", icon: Shield },
 ] as const;
 
@@ -67,7 +67,7 @@ export default function SetupScreen({
         <header className="setup-refresh-heading">
           <div>
             <h1 id="setup-title">ドラフトの準備</h1>
-            <p>3 BAN · 5 PICK</p>
+            <p>使用禁止 3匹 · 選択 5匹</p>
           </div>
           <div className="setup-portraits" aria-hidden="true">
             {["gengar", "pikachu", "megalucario"].map((id) => {
@@ -177,7 +177,7 @@ export default function SetupScreen({
             <summary>
               <span className="setup-row-label">
                 <Users size={20} aria-hidden="true" />
-                チーム・プレイヤー名
+                チーム・トレーナー名
               </span>
               <ChevronRight
                 className="setup-disclosure-arrow"
@@ -204,7 +204,7 @@ export default function SetupScreen({
                     .slice(teamIndex * 5, teamIndex * 5 + 5)
                     .map((trainer, slot) => (
                       <label key={slot}>
-                        プレイヤー {slot + 1}
+                        トレーナー {slot + 1}
                         <input
                           type="text"
                           value={trainer}
@@ -254,13 +254,13 @@ export default function SetupScreen({
                   <dd>前の試合の選出を持ち越しません。</dd>
                 </div>
                 <div>
-                  <dt>オールスター</dt>
+                  <dt>オールスタードラフト</dt>
                   <dd>
                     それまでの試合で両チームが選んだポケモンは、再使用できません。
                   </dd>
                 </div>
                 <div>
-                  <dt>フィアレス</dt>
+                  <dt>フィアレス（独自ルール）</dt>
                   <dd>
                     それまでの試合で自分のチームが選んだポケモンは、再使用できません。
                   </dd>
@@ -274,7 +274,7 @@ export default function SetupScreen({
                 <div>
                   <dt>制限時間</dt>
                   <dd>
-                    BANは15秒、PICKは20秒。BANは時間切れでスキップします。
+                    使用禁止は15秒、選択は20秒。使用禁止は時間切れでスキップします。
                   </dd>
                 </div>
               </dl>

@@ -1,5 +1,7 @@
 # UNITE DRAFT
 
+**[新規デザイン版「Draft 02」を開く](https://appi0216.github.io/pokemon-unite-draft/v2/)** — Apple HIG / Material Designを基準に、画面・ボタン・アイコン・配色を独立して設計した別バージョンです。ルールとポケモンデータを共有し、保存データは現行版と分離しています。[設計と検証](docs/V2-DESIGN.md)
+
 ポケモンユナイトの大会形式ドラフトを、1台で両チーム分操作できる非公式Webシミュレーターです。2026年10月15日時点の公式掲載102枠を収録しています（[確認資料](docs/ROSTER-SOURCES.md)）。
 
 **[シミュレーターを開く](https://appi0216.github.io/pokemon-unite-draft/)**

@@ -4,7 +4,10 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   base: "/pokemon-unite-draft/",
-  build: { target: "es2022" },
+  build: {
+    target: "es2022",
+    rollupOptions: { input: { main: "index.html", studio: "v2/index.html" } },
+  },
   server: { port: 5173, strictPort: true },
   preview: { port: 4173, strictPort: true },
 });

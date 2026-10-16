@@ -1,7 +1,11 @@
 import fs from "node:fs/promises";
 import { createHash } from "node:crypto";
 const index = await fs.readFile("dist/index.html", "utf8");
-const version = createHash("sha256").update(index).digest("hex").slice(0, 12);
+const studio = await fs.readFile("dist/v2/index.html", "utf8");
+const version = createHash("sha256")
+  .update(index + studio)
+  .digest("hex")
+  .slice(0, 12);
 const assets = await fs.readdir("dist/assets");
 const pokemon = JSON.parse(
   await fs.readFile("dist/asset-manifest.json", "utf8"),
@@ -9,6 +13,8 @@ const pokemon = JSON.parse(
 const files = [
   "/",
   "/index.html",
+  "/v2/index.html",
+  "/v2/manifest.webmanifest",
   "/icon.png",
   "/icon-192.png",
   "/icon-512.png",
@@ -26,7 +32,7 @@ const FILES=${JSON.stringify(files)}.map(path=>BASE+path.replace(/^\\//,""));
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{for(const key of await caches.keys()){if(key.startsWith(PREFIX)&&key!==CACHE)await caches.delete(key);}await self.clients.claim();for(const client of await self.clients.matchAll())client.postMessage({type:'OFFLINE_READY'});})()));
 self.addEventListener('message',event=>{if(event.data?.type==='CHECK_OFFLINE')event.source?.postMessage({type:'OFFLINE_READY'});});
-self.addEventListener('fetch',event=>{const url=new URL(event.request.url);if(event.request.method!=='GET'||url.origin!==self.location.origin||!url.pathname.startsWith(BASE))return;event.respondWith((async()=>{const cache=await caches.open(CACHE);if(event.request.mode==='navigate'){try{const response=await fetch(event.request);if(response.ok)return response;}catch{}return await cache.match(BASE+'index.html');}return await cache.match(event.request,{ignoreVary:true})||fetch(event.request);})());});
+self.addEventListener('fetch',event=>{const url=new URL(event.request.url);if(event.request.method!=='GET'||url.origin!==self.location.origin||!url.pathname.startsWith(BASE))return;event.respondWith((async()=>{const cache=await caches.open(CACHE);if(event.request.mode==='navigate'){try{const response=await fetch(event.request);if(response.ok)return response;}catch{}return await cache.match(BASE+(url.pathname.startsWith(BASE+'v2/')?'v2/index.html':'index.html'));}return await cache.match(event.request,{ignoreVary:true})||fetch(event.request);})());});
 `;
 await fs.writeFile("dist/sw.js", sw);
 console.log("Offline cache prepared:", files.length, "files,", version);

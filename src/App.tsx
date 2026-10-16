@@ -1989,6 +1989,11 @@ function App() {
       {modal === "info" && (
         <Modal title="使い方・ルールについて" onClose={() => setModal(null)}>
           <div className="info-content">
+            <p>
+              <a href={`${import.meta.env.BASE_URL}v2/`}>
+                新規デザイン版「Draft 02」を開く
+              </a>
+            </p>
             <div className="info-preferences">
               <span className="connection">
                 <Wifi size={16} />

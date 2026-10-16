@@ -82,6 +82,11 @@ for (const base of ["/", "/pokemon-unite-draft/"])
       );
     const html = await request(`https://draft.test${base}`, "navigate");
     assert.match(await html.text(), /UNITE DRAFT/);
+    const studioHtml = await request(
+      `https://draft.test${base}v2/`,
+      "navigate",
+    );
+    assert.match(await studioHtml.text(), /Draft 02/);
     const image = await request(
       `https://draft.test${base}pokemon/pikachu.webp`,
       "cors",

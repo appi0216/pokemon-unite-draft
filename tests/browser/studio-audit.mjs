@@ -36,6 +36,8 @@ for (const engine of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
       if (!v) throw Error(m);
     };
     const metric = async (state) => {
+      // Newly mounted roster images can still be downloading after navigation.
+      await page.waitForFunction(() => [...document.images].every(image => image.complete));
       const m = await page.evaluate(() => {
         const rect = (s) => {
           let e = document.querySelector(s);

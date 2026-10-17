@@ -1,4 +1,212 @@
 /* Layout owns space; controls never float over the roster. */
+/* Shared dialog controls use the current palette, including older settings. */
+dialog {
+  font-family: inherit;
+}
+dialog button svg {
+  flex: none;
+}
+.search-field > svg {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+}
+.search-field:focus-within {
+  outline: 2px solid #b39aff;
+  outline-offset: 2px;
+  border-color: #b39aff;
+}
+.search-field input:focus,
+.search-field input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+.sort-trigger > svg {
+  color: inherit;
+}
+.sort-select.open .sort-trigger {
+  color: #dfd2ff;
+  box-shadow: 0 0 0 2px #b39aff;
+}
+.sort-menu button:hover,
+.sort-menu button:focus-visible {
+  background: #45404f;
+  border-color: #b39aff;
+  color: #f6f5f8;
+}
+.sort-menu button.selected > svg {
+  color: #dfd2ff;
+  filter: none;
+}
+.review-history-button.history-result-ready {
+  background: #342b42;
+  color: #dfd2ff;
+  border-color: #b39aff;
+  box-shadow: none;
+  animation: none;
+}
+.review-history-button:hover,
+.review-history-button:focus-visible {
+  color: #eadfff;
+  border-color: #b39aff;
+  box-shadow: none;
+}
+.past-game-review-card {
+  background: #29272e;
+  border-color: #45404e;
+}
+.past-game-download {
+  min-height: 44px;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-radius: 10px;
+}
+.past-game-download > span:first-child {
+  font-size: 0.875rem;
+  letter-spacing: normal;
+}
+.past-game-download > span:last-child {
+  font-size: 0.8125rem;
+  color: #ccb8ff;
+}
+.past-game-download:hover > span:last-child,
+.past-game-download:focus-visible > span:last-child {
+  color: #eadfff;
+}
+dialog .dialog-notice {
+  padding: 10px 12px;
+  border: 1px solid #76628e;
+  border-radius: 12px;
+  background: #342b42;
+  color: #eadfff;
+}
+.modal-heading h2 {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.modal-heading > .icon-button {
+  flex: 0 0 44px;
+}
+.modal-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.modal-buttons > button {
+  min-width: 0;
+  width: 100%;
+  overflow-wrap: anywhere;
+}
+.modal-primary,
+.modal-secondary,
+.draft-tools button,
+.import-backup,
+.series-export {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  line-height: 1.45;
+}
+.draft-tools {
+  --tools-line: #55505f;
+}
+.draft-tools section + section {
+  border-color: var(--tools-line);
+}
+.draft-tools input[type="search"] {
+  border-color: var(--tools-line);
+}
+.draft-tools button:hover:not(:disabled),
+.series-export:hover:not(:disabled),
+.import-backup:hover {
+  background: #45404f;
+  border-color: #b39aff;
+  color: #f6f5f8;
+}
+.draft-tools button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.draft-tools :is(button, input):focus-visible,
+.import-backup:focus-within {
+  outline: 3px solid #b39aff;
+  outline-offset: 2px;
+}
+.restriction-list input {
+  flex: none;
+  accent-color: #b39aff;
+}
+.restriction-list label {
+  background: #29272e;
+  border-color: #45404e;
+  color: #f6f5f8;
+}
+.restriction-list label:hover {
+  background: #35323e;
+  border-color: #b39aff;
+}
+.restriction-list input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  flex-basis: 20px;
+  background: #222227;
+  border-color: #8e879a;
+}
+.restriction-list input[type="checkbox"]:checked {
+  background: #b39aff;
+  border-color: #b39aff;
+  box-shadow: none;
+}
+.restriction-list input[type="checkbox"]:checked::after {
+  border-color: #1b1526;
+}
+.restriction-list input[type="checkbox"]:focus-visible {
+  outline-color: #b39aff;
+}
+.preset-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 12px 0;
+  border-bottom: 1px solid var(--tools-line);
+}
+.preset-row strong {
+  grid-column: 1/-1;
+  min-width: 0;
+}
+.preset-row button {
+  padding-inline: 6px;
+}
+.tools-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+}
+.import-backup {
+  min-height: 44px;
+  text-align: center;
+}
+.pokemon-grid .empty-results {
+  grid-area: 1/1/-1/-1;
+  min-height: 0;
+  gap: 8px;
+  padding: 8px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+.empty-results button {
+  min-height: 44px;
+  background: #35323e;
+  border: 1px solid #55505f;
+  color: #f6f5f8;
+}
+@media (max-width: 400px) {
+  .restriction-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
 .app:has(.draft-arena) {
   height: 100dvh;
   min-height: 100dvh;
@@ -548,7 +756,7 @@
     padding: 8px;
   }
   .draft-main:has(.progress-disclosure[open]) {
-    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    grid-template-rows: auto auto minmax(min-content, 1fr) auto;
   }
   .draft-main:has(.progress-disclosure[open]) .progress-disclosure {
     grid-area: 1 / 1 / 2 / -1;

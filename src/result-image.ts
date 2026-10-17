@@ -17,7 +17,7 @@ export async function createSeriesImage(
   canvas.height = Math.ceil(games.length / columns) * 590;
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("Canvas unavailable");
-  ctx.fillStyle = "#07171f";
+  ctx.fillStyle = palette.background;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   for (let i = 0; i < games.length; i++) {
     const img = new Image();
@@ -38,16 +38,16 @@ export async function createSeriesImage(
 }
 
 const palette = {
-  background: "#07171f",
-  surface: "#10242d",
-  raised: "#162d36",
-  border: "#31515b",
-  cyan: "#69cad9",
-  text: "#f2f8fa",
-  secondary: "#a9bec4",
-  muted: "#789098",
-  purple: "#7952e8",
-  orange: "#e89748",
+  background: "#111114",
+  surface: "#1c1c20",
+  raised: "#29272e",
+  border: "#45404e",
+  accent: "#b39aff",
+  text: "#f6f5f8",
+  secondary: "#c2bfcb",
+  muted: "#a29bab",
+  purple: "#b39aff",
+  orange: "#ffba76",
   attack: "#f16c56",
   balance: "#b778cf",
   defense: "#94c85a",
@@ -153,11 +153,11 @@ export async function createResultImage(
   ctx.fillStyle = palette.background;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   const glow = ctx.createRadialGradient(800, 0, 80, 800, 0, 980);
-  glow.addColorStop(0, "rgba(72, 190, 211, 0.15)");
-  glow.addColorStop(1, "rgba(7, 23, 31, 0)");
+  glow.addColorStop(0, "rgba(179, 154, 255, 0.12)");
+  glow.addColorStop(1, "rgba(17, 17, 20, 0)");
   ctx.fillStyle = glow;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.strokeStyle = "rgba(105, 202, 217, 0.035)";
+  ctx.strokeStyle = "rgba(179, 154, 255, 0.035)";
   ctx.lineWidth = 1;
   for (let x = 0; x <= canvas.width; x += 64) {
     ctx.beginPath();
@@ -180,12 +180,12 @@ export async function createResultImage(
     60,
     117,
     20,
-    palette.cyan,
+    palette.accent,
     600,
     700,
   );
   text("使用禁止 3匹 / 選択 5匹", 1190, 80, 24, palette.secondary, 350, 700);
-  ctx.fillStyle = palette.cyan;
+  ctx.fillStyle = palette.accent;
   ctx.fillRect(60, 137, 1480, 2);
 
   for (const [index, team] of (["purple", "orange"] as const).entries()) {

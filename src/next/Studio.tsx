@@ -988,11 +988,17 @@ export default function Studio() {
           <p>
             保存済みのドラフトと試合履歴を置き換えます。必要な記録は先に保存してください。
           </p>
-          <div className="action-list">
-            <button autoFocus onClick={() => setSheet(null)}>
+          <div className="sheet-actions">
+            <button
+              className="secondary"
+              autoFocus
+              onClick={() => setSheet(null)}
+            >
               キャンセル
             </button>
-            <button onClick={() => setSheet("start")}>新しく開始</button>
+            <button className="primary" onClick={() => setSheet("start")}>
+              新しく開始
+            </button>
           </div>
         </Sheet>
       )}

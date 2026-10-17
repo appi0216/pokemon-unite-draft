@@ -123,11 +123,13 @@ function Modal({
   onClose,
   children,
   className = "",
+  notice = "",
 }: {
   title: string;
   onClose: () => void;
   children: ReactNode;
   className?: string;
+  notice?: string;
 }) {
   const headingId = useId();
   const ref = useRef<HTMLDialogElement>(null);
@@ -160,6 +162,11 @@ function Modal({
           <X />
         </button>
       </div>
+      {notice && (
+        <p className="dialog-notice" role="status">
+          {notice}
+        </p>
+      )}
       {children}
     </dialog>
   );
@@ -1110,7 +1117,7 @@ function App() {
                         )}
                       </span>
                       <span>
-                        {s.phase.toUpperCase()}
+                        {s.phase === "ban" ? "使用禁止" : "選択"}
                         {s.phase === "pick" && s.count === 2 ? " ×2" : ""}
                       </span>
                     </button>
@@ -1370,7 +1377,9 @@ function App() {
                 ref={pokemonGrid}
                 style={{
                   gridTemplateColumns: `repeat(${rosterLayout.columns}, minmax(0, 1fr))`,
-                  gridTemplateRows: `repeat(${rosterLayout.rows}, minmax(calc(56px + 2.8rem), 1fr))`,
+                  gridTemplateRows: visible.length
+                    ? `repeat(${rosterLayout.rows}, minmax(calc(56px + 2.8rem), 1fr))`
+                    : "minmax(0, 1fr)",
                 }}
                 aria-label="ポケモン選択。矢印キーで移動、Enterで確定、Page Up・Page Downでページ移動"
                 onKeyDown={(e) => {
@@ -1721,7 +1730,7 @@ function App() {
           </button>
         </div>
       </footer>
-      {notice && (
+      {notice && !toolsOpen && !pendingBackup && !reviewOpen && (
         <div className="toast" role="status">
           <Info size={17} />
           {notice}
@@ -1734,6 +1743,7 @@ function App() {
         <Modal
           title="チーム・大会設定とバックアップ"
           className="tools-dialog"
+          notice={notice}
           onClose={() => setToolsOpen(false)}
         >
           <DraftTools
@@ -1768,6 +1778,7 @@ function App() {
               try {
                 if (file.size > 2_000_000) throw new Error("Too large");
                 const backup = parseBackup(await file.text(), ids);
+                setNotice("");
                 setPendingBackup(backup);
                 setToolsOpen(false);
               } catch {
@@ -1782,14 +1793,21 @@ function App() {
       {pendingBackup && (
         <Modal
           title="バックアップを読み込みますか？"
+          notice={notice}
           onClose={() => setPendingBackup(null)}
         >
           <p>
             現在の進行状況・履歴・設定・プリセットを置き換えます。必要なデータは先にバックアップしてください。
           </p>
           <div className="modal-buttons">
-            <button onClick={() => setPendingBackup(null)}>キャンセル</button>
             <button
+              className="modal-secondary"
+              onClick={() => setPendingBackup(null)}
+            >
+              キャンセル
+            </button>
+            <button
+              className="modal-primary"
               onClick={() => {
                 try {
                   localStorage.setItem(
@@ -1947,6 +1965,7 @@ function App() {
       {reviewOpen && (
         <Modal
           title="試合履歴"
+          notice={notice}
           onClose={() => setReviewOpen(false)}
           className={`review-dialog ${reviewGames.length === 1 ? "single-game" : "multi-game"}`}
         >

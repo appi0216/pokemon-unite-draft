@@ -745,6 +745,7 @@ dialog .dialog-notice {
   }
   .decision-main {
     grid-area: 1 / 3;
+    min-height: 0;
   }
   .decision-main .selected-description,
   .decision-main .confirm-button > svg {

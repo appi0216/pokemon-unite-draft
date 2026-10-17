@@ -100,6 +100,18 @@ for (const name of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
             });
           const d = document.querySelector("dialog[open]");
           const overlap = [];
+          if (!d) {
+            const bar = document.querySelector(".decision-bar,.command-bar");
+            if (bar && visible(bar)) {
+              const bounds = bar.getBoundingClientRect();
+              for (const button of bar.querySelectorAll("button")) {
+                if (!visible(button)) continue;
+                const r = button.getBoundingClientRect();
+                if (r.top < bounds.top - 2 || r.bottom > bounds.bottom + 2)
+                  overlap.push(["control outside action bar", label(button)]);
+              }
+            }
+          }
           if (!d)
             for (const group of [
               [".selection-panel", ".decision-bar"],

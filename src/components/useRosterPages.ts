@@ -16,13 +16,22 @@ export default function useRosterPages(active: boolean, view: string) {
       const gap = parseFloat(css.columnGap) || 6;
       const width = grid.clientWidth - 8;
       const height = grid.clientHeight - 8;
+      const compact = window.matchMedia(
+        "(max-width: 1000px) and (orientation: landscape)",
+      ).matches;
       const columns = Math.max(
         1,
-        Math.floor((width + gap) / (Math.max(84, 5.25 * font) + gap)),
+        Math.floor(
+          (width + gap) /
+            (Math.max(compact ? 44 : 56, (compact ? 2.75 : 3.5) * font) + gap),
+        ),
       );
       const rows = Math.max(
         1,
-        Math.floor((height + gap) / (56 + 2.8 * font + gap)),
+        Math.floor(
+          (height + gap) /
+            (Math.max(compact ? 44 : 56, (compact ? 2.75 : 3.5) * font) + gap),
+        ),
       );
       const size = columns * rows;
       setLayout((before) =>

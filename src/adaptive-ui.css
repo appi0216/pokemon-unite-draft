@@ -413,20 +413,27 @@ select:focus-visible {
 }
 .ban-image {
   position: absolute;
-  inset: 0;
+  inset: 3px;
+  width: auto;
+  height: auto;
+  aspect-ratio: auto;
+  display: grid;
+  place-items: center;
+  container-type: size;
 }
 .ban-image .portrait {
-  width: 62px;
-  height: 62px;
-  top: 50%;
-  left: 50%;
+  position: static;
+  inset: auto;
+  transform: none;
+  width: min(100cqw, 100cqh);
+  height: min(100cqw, 100cqh);
 }
 .ban-slot-label {
   font-size: 0.625rem;
   color: #b2b1bd;
 }
 .player-list {
-  grid-template-rows: repeat(5, minmax(56px, 1fr));
+  grid-template-rows: repeat(5, minmax(min-content, 1fr));
   gap: 7px;
   overflow: auto;
 }
@@ -456,13 +463,24 @@ select:focus-visible {
 }
 .player-portrait,
 .player-portrait.has-pokemon {
-  flex: 0 0 58px;
-  container-type: normal;
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 0 0 48px;
+  width: 48px;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  height: auto;
+  container-type: size;
   align-self: stretch;
 }
 .player-portrait > .portrait {
-  width: 58px;
-  height: 58px;
+  position: static;
+  inset: auto;
+  transform: none;
+  width: min(100cqw, 100cqh, 58px);
+  height: min(100cqw, 100cqh, 58px);
 }
 .player-name,
 .active .player-name {
@@ -1163,7 +1181,7 @@ dialog > p,
   }
   .team-panel .player-list {
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    grid-template-rows: minmax(90px, 1fr);
+    grid-template-rows: minmax(min-content, 1fr);
   }
   .player-slot,
   .player-slot.filled {

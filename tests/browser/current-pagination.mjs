@@ -109,6 +109,16 @@ for (const [name, engine] of Object.entries({ chromium, webkit })) {
         const grid = document.querySelector(".pokemon-grid"),
           bar = document.querySelector(".decision-bar");
         const cards = [...document.querySelectorAll(".pokemon-card")];
+        const isVisible = (selector) =>
+          !!document.querySelector(selector)?.getClientRects().length;
+        const panels = [
+          ".team-side.purple",
+          ".selection-panel",
+          ".team-side.orange",
+        ];
+        const panelBoxes = panels.map((selector) =>
+          document.querySelector(selector).getBoundingClientRect(),
+        );
         return {
           width: innerWidth,
           height: innerHeight,
@@ -120,9 +130,26 @@ for (const [name, engine] of Object.entries({ chromium, webkit })) {
           cards: cards.length,
           clipped: cards.some((c) => c.scrollHeight > c.clientHeight + 2),
           pager: document.querySelector(".roster-pagination").textContent,
+          portraitTabs: [".purple", ".roster", ".orange"].every((part) =>
+            isVisible(`.compact-view-tabs ${part}`),
+          ),
+          threeColumns:
+            panels.every(isVisible) &&
+            panelBoxes[0].right <= panelBoxes[1].left + 1 &&
+            panelBoxes[1].right <= panelBoxes[2].left + 1,
         };
       });
       layouts.push(state);
+      if (width <= 1000 && height >= width)
+        assert(
+          state.portraitTabs,
+          "Portrait must retain all three top view switches",
+        );
+      if (width > height)
+        assert(
+          state.threeColumns,
+          "Landscape must retain left team, roster, right team",
+        );
       assert(
         state.bodyWidth <= width + 1,
         `Horizontal overflow ${width}x${height}`,

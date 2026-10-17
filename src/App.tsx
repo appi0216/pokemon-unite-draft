@@ -747,7 +747,7 @@ function App() {
                 key={i}
                 className={`player-slot ${active ? "active" : ""} ${p ? "filled" : ""} ${swapping ? "swapping" : ""}`}
                 disabled={!complete}
-                aria-label={`${teamName(team)} ${i + 1}番: ${p?.name || "未選択"}${complete ? " 交換する" : ""}`}
+                aria-label={`${teamName(team)} ${i + 1}番: ${shown?.name || "未選択"}${preview ? " 選択中" : complete ? " 交換する" : ""}`}
                 onClick={() => {
                   if (!swapFrom) {
                     setSwapFrom({ team, index: i });
@@ -1378,7 +1378,7 @@ function App() {
                 style={{
                   gridTemplateColumns: `repeat(${rosterLayout.columns}, minmax(0, 1fr))`,
                   gridTemplateRows: visible.length
-                    ? `repeat(${rosterLayout.rows}, minmax(calc(56px + 2.8rem), 1fr))`
+                    ? `repeat(${rosterLayout.rows}, minmax(0, 1fr))`
                     : "minmax(0, 1fr)",
                 }}
                 aria-label="ポケモン選択。矢印キーで移動、Enterで確定、Page Up・Page Downでページ移動"
@@ -1502,7 +1502,6 @@ function App() {
                     >
                       <span className="card-role-stripe" />
                       <Portrait p={p} eager={i < 24} />
-                      <span className="pokemon-name">{p.name}</span>
                       {selected === p.id && (
                         <span className="selected-check">
                           <Check size={14} />
@@ -1664,7 +1663,6 @@ function App() {
                     {selectedPokemon ? (
                       <>
                         <Portrait p={selectedPokemon} eager />
-                        <strong>{selectedPokemon.name}</strong>
                       </>
                     ) : (
                       <span>ポケモンを選択</span>

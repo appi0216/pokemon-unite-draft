@@ -14,7 +14,7 @@ for (const name of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
   for (const [width, height] of JSON.parse(
     process.env.AUDIT_SIZES || "[[320,568],[667,375],[1280,800]]",
   ))
-    for (const v2 of (process.env.AUDIT_VERSIONS || "current,v2")
+    for (const v2 of (process.env.AUDIT_VERSIONS || "current")
       .split(",")
       .map((v) => v === "v2")) {
       const context = await browser.newContext({
@@ -436,5 +436,6 @@ if (
   )
 )
   process.exitCode = 1;
+
 
 

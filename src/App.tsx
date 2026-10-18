@@ -2002,11 +2002,7 @@ function App() {
                 自動保存できていません。画面を閉じると変更内容が失われる可能性があります。ブラウザーの保存領域をご確認ください。
               </p>
             )}
-            <p>
-              <a href={`${import.meta.env.BASE_URL}v2/`}>
-                新規デザイン版「Draft 02」を開く
-              </a>
-            </p>
+
             <div className="info-preferences">
               <span className="connection">
                 <Wifi size={16} />
@@ -2127,6 +2123,7 @@ function App() {
   );
 }
 export default App;
+
 
 
 

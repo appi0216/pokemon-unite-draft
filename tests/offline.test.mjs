@@ -115,7 +115,7 @@ function environment(base) {
 }
 
 for (const base of ["/", "/pokemon-unite-draft/"]) {
-  test(`complete cache serves both versions offline at ${base}`, async () => {
+  test(`complete cache serves the current version offline at ${base}`, async () => {
     const env = environment(base);
     await env.lifecycle("install");
     assert.equal(
@@ -125,20 +125,15 @@ for (const base of ["/", "/pokemon-unite-draft/"]) {
     );
     await env.lifecycle("activate");
     assert.equal(env.messages.at(-1).type, "OFFLINE_READY");
-    assert.ok([...env.stores.values()][0].size >= 115);
+    assert.ok([...env.stores.values()][0].size >= roster.length + 5);
+    assert.equal((await fs.readdir("dist")).includes("v2"), false);
     env.setOffline(true);
     assert.match(
       await (await env.request("", "navigate")).text(),
       /UNITE DRAFT/,
     );
-    assert.match(
-      await (await env.request("v2/", "navigate")).text(),
-      /Draft 02/,
-    );
-    assert.match(
-      await (await env.request("v2", "navigate")).text(),
-      /Draft 02/,
-    );
+
+
     assert.ok(
       (await (await env.request("pokemon/pikachu.webp")).arrayBuffer())
         .byteLength > 100,
@@ -149,9 +144,9 @@ for (const base of ["/", "/pokemon-unite-draft/"]) {
     );
     for (const route of [
       "manifest.webmanifest",
-      "v2/manifest.webmanifest",
+
       "apple-touch-icon.png",
-      "v2/icon-maskable-512.png",
+
     ])
       assert.ok((await env.request(route)).ok);
   });
@@ -201,9 +196,9 @@ test("image-only releases invalidate the cache and generated sw does not hash it
     await fs.rm(directory, { recursive: true, force: true });
   }
 });
-test("both manifests have independent identity, unrestricted orientation and opaque safe icons", async () => {
+test("the manifest has its own identity, unrestricted orientation and opaque safe icons", async () => {
   const ids = [];
-  for (const folder of ["public", "public/v2"]) {
+  for (const folder of ["public"]) {
     const manifest = JSON.parse(
       await fs.readFile(`${folder}/manifest.webmanifest`, "utf8"),
     );
@@ -232,5 +227,7 @@ test("both manifests have independent identity, unrestricted orientation and opa
     const apple = await sharp(`${folder}/apple-touch-icon.png`).metadata();
     assert.equal(apple.width, 180);
   }
-  assert.notEqual(ids[0], ids[1]);
+  assert.equal(ids.length, 1);
 });
+
+

@@ -16,7 +16,7 @@ self.addEventListener('install',event=>event.waitUntil(prepare()));
 // Updates wait for all app tabs/windows to close. Never replace a live draft.
 self.addEventListener('activate',event=>event.waitUntil((async()=>{if(!await cacheReady())throw Error('Incomplete offline cache');for(const key of await caches.keys()){if(key.startsWith(PREFIX)&&key!==CACHE)await caches.delete(key);}await self.clients.claim();await broadcast();})()));
 self.addEventListener('message',event=>{if(event.data?.type==='CHECK_OFFLINE')event.waitUntil(status(event.source));if(event.data?.type==='REPAIR_OFFLINE')event.waitUntil((async()=>{try{await prepare();}catch{}await status(event.source);})());});
-self.addEventListener('fetch',event=>{const url=new URL(event.request.url);if(event.request.method!=='GET'||url.origin!==self.location.origin||!url.pathname.startsWith(BASE))return;event.respondWith((async()=>{const cache=await caches.open(CACHE);if(event.request.mode==='navigate'){const route=url.pathname.slice(BASE.length);const page=route===''||route==='index.html'?'index.html':route==='v2'||route==='v2/'||route==='v2/index.html'?'v2/index.html':null;if(page){const saved=await cache.match(BASE+page,{ignoreVary:true});if(saved)return saved;}}return await cache.match(event.request,{ignoreVary:true})||fetch(event.request);})().catch(()=>new Response("Offline",{status:503,headers:{"Content-Type":"text/plain; charset=utf-8"}})));});
+self.addEventListener('fetch',event=>{const url=new URL(event.request.url);if(event.request.method!=='GET'||url.origin!==self.location.origin||!url.pathname.startsWith(BASE))return;event.respondWith((async()=>{const cache=await caches.open(CACHE);if(event.request.mode==='navigate'){const route=url.pathname.slice(BASE.length);const page=route===''||route==='index.html'?'index.html':null;if(page){const saved=await cache.match(BASE+page,{ignoreVary:true});if(saved)return saved;}}return await cache.match(event.request,{ignoreVary:true})||fetch(event.request);})().catch(()=>new Response("Offline",{status:503,headers:{"Content-Type":"text/plain; charset=utf-8"}})));});
 `;
 
 export async function createOfflineBundle(directory) {
@@ -66,3 +66,4 @@ if (
     bundle.version,
   );
 }
+

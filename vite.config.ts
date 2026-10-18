@@ -6,8 +6,9 @@ export default defineConfig({
   base: "/pokemon-unite-draft/",
   build: {
     target: "es2022",
-    rollupOptions: { input: { main: "index.html", studio: "v2/index.html" } },
+    rollupOptions: { input: { main: "index.html" } },
   },
   server: { port: 5173, strictPort: true },
   preview: { port: 4173, strictPort: true },
 });
+

@@ -1,6 +1,5 @@
 # UNITE DRAFT
 
-**[新規デザイン版「Draft 02」を開く](https://appi0216.github.io/pokemon-unite-draft/v2/)** — Apple HIG / Material Designを基準に、画面・ボタン・アイコン・配色を独立して設計した別バージョンです。ルールとポケモンデータを共有し、保存データは現行版と分離しています。[設計と検証](docs/V2-DESIGN.md)
 
 ポケモンユナイトの大会形式ドラフトを、1台で両チーム分操作できる非公式Webシミュレーターです。2026年10月15日時点の公式掲載102枠を収録しています（[確認資料](docs/ROSTER-SOURCES.md)）。
 
@@ -77,4 +76,5 @@ React・TypeScript・Viteによる静的サイトで、サーバーやアカウ�
 - [公式：オールスタードラフト](https://www.pokemonunite.jp/ja/topics/battle/20260415-1/)
 
 各画像の元URLは[`src/data/pokemon.json`](src/data/pokemon.json)に記録しています。ポケモンおよび画像等の権利は各権利者に帰属します。本アプリは公式アプリではありません。
+
 

@@ -238,6 +238,7 @@ function App() {
   );
   const [modal, setModal] = useState<"info" | "reset" | "replace" | null>(null);
   const [storageOk, setStorageOk] = useState(true);
+  const [saveAttempt, setSaveAttempt] = useState(0);
   const { online, offline } = usePwaStatus();
   const cacheReady = offline === "ready";
   const [notice, setNotice] = useState("");
@@ -306,7 +307,16 @@ function App() {
       setStorageOk(false);
       setNotice("自動保存が利用できません。この画面では引き続き操作できます。");
     }
-  }, [draft, settings, started]);
+  }, [draft, settings, started, saveAttempt]);
+  useEffect(() => {
+    if (storageOk) return;
+    const warn = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = "";
+    };
+    window.addEventListener("beforeunload", warn);
+    return () => window.removeEventListener("beforeunload", warn);
+  }, [storageOk]);
   useEffect(() => {
     setRemaining(duration);
   }, [stageIndex, draft.game, duration]);
@@ -2000,6 +2010,7 @@ function App() {
             {!storageOk && (
               <p role="alert">
                 自動保存できていません。画面を閉じると変更内容が失われる可能性があります。ブラウザーの保存領域をご確認ください。
+                <button type="button" onClick={() => setSaveAttempt(value => value + 1)}>保存を再試行</button>
               </p>
             )}
 

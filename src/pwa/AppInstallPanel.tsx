@@ -1,5 +1,5 @@
 import { Download, RefreshCw, Smartphone, WifiOff } from "lucide-react";
-import { installApp, retryOffline, usePwaStatus } from "./runtime";
+import { checkForUpdates, installApp, retryOffline, usePwaStatus } from "./runtime";
 import "./install.css";
 
 export function AppInstallPanel() {
@@ -72,9 +72,16 @@ export function AppInstallPanel() {
           </button>
         )}
       </div>
+      <p className="pwa-note">利用中の版：{__BUILD_ID__}</p>
+      <button type="button" onClick={() => void checkForUpdates()} disabled={!status.online || status.updateCheck === "checking"}>
+        <RefreshCw size={16} aria-hidden="true" />更新を確認
+      </button>
+      <p className="pwa-note" role="status">
+        {!status.online ? "オフラインのため更新を確認できません。" : status.updateCheck === "checking" ? "更新を確認中…" : status.updateCheck === "failed" ? "更新を確認できませんでした。通信を確認して再試行してください。" : status.updateCheck === "checked" && !status.updateReady ? "更新を確認しました。新しい版が準備されると案内します。" : ""}
+      </p>
       {status.updateReady && (
         <p className="pwa-note">
-          更新があります。このアプリのタブとウインドウをすべて閉じ、開き直すと反映されます。
+          更新があります。「未保存」と表示されている場合は保存を再試行してください。保存後、このアプリのタブとウインドウをすべて閉じ、開き直すと反映されます。
         </p>
       )}
       <p className="pwa-note">

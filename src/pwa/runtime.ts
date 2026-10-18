@@ -12,6 +12,7 @@ type PwaStatus = {
   installRequested: boolean;
   installed: boolean;
   updateReady: boolean;
+  updateCheck: "idle" | "checking" | "checked" | "failed";
 };
 const standalone = () =>
   window.matchMedia("(display-mode: standalone)").matches ||
@@ -28,6 +29,7 @@ let state: PwaStatus = {
   installRequested: false,
   installed: false,
   updateReady: false,
+  updateCheck: "idle",
 };
 let prompt: InstallEvent | undefined;
 let registration: ServiceWorkerRegistration | undefined;
@@ -113,6 +115,22 @@ export async function retryOffline() {
     if (state.offline !== "ready") update({ offline: "unavailable" });
   }
 }
+export async function checkForUpdates() {
+  if (state.updateCheck === "checking") return;
+  if (!navigator.onLine || state.offline === "unsupported") {
+    update({ updateCheck: "failed" });
+    return;
+  }
+  update({ updateCheck: "checking" });
+  try {
+    if (!registration) await register();
+    if (!registration) throw new Error("Registration unavailable");
+    await registration.update();
+    update({ updateCheck: "checked", updateReady: Boolean(registration.waiting) });
+  } catch {
+    update({ updateCheck: "failed" });
+  }
+}
 export async function installApp() {
   const event = prompt;
   if (!event) return;
@@ -162,7 +180,7 @@ export function registerAppWorker() {
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
       checkOffline();
-      void registration?.update().catch(() => {});
+      void checkForUpdates();
     }
   });
   if (document.readyState === "complete") void register();

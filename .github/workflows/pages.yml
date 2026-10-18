@@ -32,3 +32,5 @@ jobs:
           path: dist
       - id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346
+      - name: Verify published build
+        run: node scripts/verify-publication.mjs

@@ -1907,3 +1907,24 @@ dialog .dialog-notice {
   .app:not(.setup-mode) .header-actions { grid-column: 3; grid-row: 1; }
  }
 }
+
+/* Keep application chrome visible; only the content region scrolls. */
+@layer adaptive-layout {
+ html, body, #root { height:100%; min-height:0 !important; }
+ body { overflow:hidden !important; }
+ .app[class] { height:100dvh !important; min-height:0 !important; max-height:100dvh; display:flex !important; flex-direction:column !important; overflow:hidden !important; }
+ .app[class] > .app-header { position:relative !important; top:auto !important; flex:0 0 auto !important; min-height:44px !important; padding-block:max(2px,env(safe-area-inset-top)) 2px !important; }
+ .app[class] > .setup-main.setup-refresh { flex:1 1 0 !important; min-height:0 !important; overflow-y:auto !important; overscroll-behavior:contain; }
+ .app[class] > .draft-main { flex:1 1 0 !important; min-height:0 !important; height:auto !important; overflow:hidden !important; }
+ .app[class] > .app-footer { display:flex !important; position:relative !important; flex:0 0 auto !important; min-height:32px !important; margin:0 !important; padding:2px max(8px,env(safe-area-inset-right)) max(2px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left)) !important; justify-content:center; gap:8px; font-size:clamp(.625rem,1.3vw,.75rem); }
+ .app[class] > .app-footer > span { display:none; }
+ .app[class] .app-footer > div { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:clamp(6px,2vw,20px); }
+ .app[class] .app-footer :is(button,span) { font-size:inherit !important; }
+ .app[class] .decision-bar { flex-shrink:0 !important; }
+}
+.app .setup-portrait:nth-child(n) { border:0; }
+@layer adaptive-layout {
+ .app[class] > .draft-main:has(.draft-arena) { display:flex !important; flex-direction:column !important; }
+ .app[class] .draft-arena { flex:1 1 0 !important; min-height:0 !important; height:auto !important; overflow:hidden; }
+ .app[class] .decision-bar { position:relative !important; bottom:auto !important; margin-top:0 !important; }
+}

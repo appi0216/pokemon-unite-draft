@@ -762,25 +762,11 @@
 }
 
 /* The live instruction follows the physical viewport, including fullscreen. */
-.app:not(.setup-mode) .header-instruction {
-  position: fixed;
-  z-index: 12;
-  top: 30px;
-  left: 50vw;
-  width: min(44vw, 680px);
-  transform: translate(-50%, -50%);
-}
 
 @media (max-width: 900px) {
-  .app:not(.setup-mode) .header-instruction {
-    width: min(48vw, 430px);
-  }
 }
 
 @media (max-width: 680px) {
-  .app:not(.setup-mode) .header-instruction {
-    width: 50vw;
-  }
 }
 
 /* Final layout pass: center live copy on the viewport and reclaim arena height. */
@@ -807,23 +793,9 @@
   justify-self: start;
 }
 
-.app:not(.setup-mode) .bans-heading > span:first-child {
-  gap: 0;
-}
-
 .app:not(.setup-mode) .ban-slots {
   isolation: isolate;
   overflow: visible;
-}
-
-.app:not(.setup-mode) .ban-slot {
-  align-self: center;
-  max-height: 100%;
-}
-
-.app:not(.setup-mode) .trainer {
-  margin: 0;
-  line-height: 1;
 }
 
 .app:not(.setup-mode) .decision-bar {
@@ -843,31 +815,6 @@
   gap: 7px;
 }
 
-.app:not(.setup-mode) .subtle-button {
-  min-height: 34px;
-  padding: 0 10px;
-  justify-content: center;
-  font-size: 11px;
-  line-height: 1;
-}
-
-.app:not(.setup-mode) .confirm-button,
-.app:not(.setup-mode) .next-game,
-.app:not(.setup-mode) .complete-button,
-.app:not(.setup-mode) .final-image-action {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 210px;
-  height: 38px;
-  padding: 0 20px;
-  gap: 7px;
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1;
-  text-align: center;
-}
-
 @media (max-width: 900px) {
   .app:not(.setup-mode) .header-phase {
     grid-template-columns: minmax(0, 1fr) minmax(250px, 48vw) minmax(0, 1fr);
@@ -883,14 +830,6 @@
   .app:not(.setup-mode) .header-phase {
     grid-template-columns: minmax(0, 1fr) minmax(210px, 50vw) minmax(0, 1fr);
     padding-inline: 42px 104px;
-  }
-
-  .app:not(.setup-mode) .confirm-button,
-  .app:not(.setup-mode) .next-game,
-  .app:not(.setup-mode) .complete-button,
-  .app:not(.setup-mode) .final-image-action {
-    min-width: 176px;
-    font-size: 12px;
   }
 }
 
@@ -1001,11 +940,6 @@
     grid-template-columns:
       minmax(48px, 1fr) var(--header-instruction-width)
       minmax(48px, 1fr);
-  }
-
-  .app:not(.setup-mode) .header-phase-title > strong,
-  .app:not(.setup-mode) .header-instruction {
-    font-size: 8px;
   }
 
   .app:not(.setup-mode) .header-timer {

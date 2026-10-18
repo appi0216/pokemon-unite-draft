@@ -1,0 +1,1619 @@
+[
+  {
+    "selector": "|:root",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 2
+      },
+      {
+        "file": "src/theme.css",
+        "line": 2
+      },
+      {
+        "file": "src/theme.css",
+        "line": 255
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 2
+      },
+      {
+        "file": "src/ui-system.css",
+        "line": 16
+      }
+    ]
+  },
+  {
+    "selector": "|.app",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 82
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 7
+      }
+    ]
+  },
+  {
+    "selector": "|.app-header",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 109
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 10
+      }
+    ]
+  },
+  {
+    "selector": "|.phase-banner",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 219
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 35
+      },
+      {
+        "file": "src/theme.css",
+        "line": 164
+      },
+      {
+        "file": "src/layout-finish.css",
+        "line": 15
+      },
+      {
+        "file": "src/draft-experience.css",
+        "line": 69
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 494
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 560
+      }
+    ]
+  },
+  {
+    "selector": "|.phase-label",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 231
+      },
+      {
+        "file": "src/theme.css",
+        "line": 179
+      },
+      {
+        "file": "src/draft-experience.css",
+        "line": 122
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 525
+      }
+    ]
+  },
+  {
+    "selector": "|.phase-label > .eyebrow",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 236
+      },
+      {
+        "file": "src/theme.css",
+        "line": 182
+      }
+    ]
+  },
+  {
+    "selector": "|.phase-label h1",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 241
+      },
+      {
+        "file": "src/theme.css",
+        "line": 186
+      }
+    ]
+  },
+  {
+    "selector": "|.phase-message",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 247
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 539
+      }
+    ]
+  },
+  {
+    "selector": "|.phase-message div > span",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 275
+      },
+      {
+        "file": "src/theme.css",
+        "line": 190
+      }
+    ]
+  },
+  {
+    "selector": "|.timer",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 281
+      },
+      {
+        "file": "src/theme.css",
+        "line": 201
+      }
+    ]
+  },
+  {
+    "selector": "|.timer > div",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 292
+      },
+      {
+        "file": "src/theme.css",
+        "line": 204
+      }
+    ]
+  },
+  {
+    "selector": "|.timer-button",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 310
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 54
+      }
+    ]
+  },
+  {
+    "selector": "|.timer.urgent strong",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 319
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 51
+      }
+    ]
+  },
+  {
+    "selector": "|.team-panel",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 335
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 24
+      }
+    ]
+  },
+  {
+    "selector": "|.team-panel.orange",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 350
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 27
+      }
+    ]
+  },
+  {
+    "selector": "|.team-panel.team-active",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 356
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 30
+      },
+      {
+        "file": "src/draft-experience.css",
+        "line": 222
+      }
+    ]
+  },
+  {
+    "selector": "|.team-heading .eyebrow",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 382
+      },
+      {
+        "file": "src/theme.css",
+        "line": 197
+      }
+    ]
+  },
+  {
+    "selector": "|.team-heading h2",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 388
+      },
+      {
+        "file": "src/theme.css",
+        "line": 194
+      }
+    ]
+  },
+  {
+    "selector": "|.bans-heading > span:last-child,\n.picks-heading > span:last-child",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 419
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 748
+      }
+    ]
+  },
+  {
+    "selector": "|.ban-slot.active",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 448
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 260
+      }
+    ]
+  },
+  {
+    "selector": "|.ban-slot.filled .ban-slot-label",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 481
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 100
+      }
+    ]
+  },
+  {
+    "selector": "|.ban-slot > .ban-mark",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 485
+      },
+      {
+        "file": "src/theme.css",
+        "line": 424
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 282
+      }
+    ]
+  },
+  {
+    "selector": "|.player-slot",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 510
+      },
+      {
+        "file": "src/design.css",
+        "line": 3145
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 288
+      }
+    ]
+  },
+  {
+    "selector": "|.player-slot.active",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 530
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 309
+      }
+    ]
+  },
+  {
+    "selector": "|.player-portrait,\n.player-portrait.has-pokemon",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 552
+      },
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 1183
+      }
+    ]
+  },
+  {
+    "selector": "|.selection-panel",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 709
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 20
+      }
+    ]
+  },
+  {
+    "selector": "|.sort-select",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 750
+      },
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 49
+      }
+    ]
+  },
+  {
+    "selector": "|.search-field:focus-within",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 791
+      },
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 35
+      }
+    ]
+  },
+  {
+    "selector": "|.search-field input::placeholder",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 804
+      },
+      {
+        "file": "src/theme.css",
+        "line": 376
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 219
+      }
+    ]
+  },
+  {
+    "selector": "|.role-tabs button",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 837
+      },
+      {
+        "file": "src/theme.css",
+        "line": 428
+      }
+    ]
+  },
+  {
+    "selector": "|.pokemon-grid",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 866
+      },
+      {
+        "file": "src/layout-finish.css",
+        "line": 24
+      }
+    ]
+  },
+  {
+    "selector": "|.pokemon-card",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 883
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 65
+      },
+      {
+        "file": "src/theme.css",
+        "line": 437
+      },
+      {
+        "file": "src/draft-experience.css",
+        "line": 234
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 344
+      }
+    ]
+  },
+  {
+    "selector": "|.pokemon-card:not(:disabled):hover",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 923
+      },
+      {
+        "file": "src/draft-experience.css",
+        "line": 242
+      }
+    ]
+  },
+  {
+    "selector": "|.pokemon-name",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 940
+      },
+      {
+        "file": "src/theme.css",
+        "line": 445
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 354
+      }
+    ]
+  },
+  {
+    "selector": "|.pokemon-card.is-selected",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 958
+      },
+      {
+        "file": "src/theme.css",
+        "line": 449
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 360
+      }
+    ]
+  },
+  {
+    "selector": "|.pokemon-card.unavailable .pokemon-name",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 984
+      },
+      {
+        "file": "src/theme.css",
+        "line": 454
+      }
+    ]
+  },
+  {
+    "selector": "|.used-overlay",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 987
+      },
+      {
+        "file": "src/theme.css",
+        "line": 457
+      }
+    ]
+  },
+  {
+    "selector": "|.confirm-button",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1089
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 753
+      }
+    ]
+  },
+  {
+    "selector": "|.confirm-button:disabled",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1110
+      },
+      {
+        "file": "src/theme.css",
+        "line": 461
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 372
+      }
+    ]
+  },
+  {
+    "selector": "|.next-game",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1135
+      },
+      {
+        "file": "src/theme.css",
+        "line": 466
+      }
+    ]
+  },
+  {
+    "selector": "|.timeline-label",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1157
+      },
+      {
+        "file": "src/layout-finish.css",
+        "line": 18
+      }
+    ]
+  },
+  {
+    "selector": "|.timeline-stages",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1172
+      },
+      {
+        "file": "src/layout-finish.css",
+        "line": 21
+      }
+    ]
+  },
+  {
+    "selector": "|.timeline-step",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1179
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 601
+      }
+    ]
+  },
+  {
+    "selector": "|.step-node",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1192
+      },
+      {
+        "file": "src/theme.css",
+        "line": 470
+      }
+    ]
+  },
+  {
+    "selector": "|.timeline-step.current .step-node",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1211
+      },
+      {
+        "file": "src/theme.css",
+        "line": 479
+      },
+      {
+        "file": "src/draft-experience.css",
+        "line": 163
+      }
+    ]
+  },
+  {
+    "selector": "|.timeline-step.current > span:last-child",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1217
+      },
+      {
+        "file": "src/theme.css",
+        "line": 484
+      }
+    ]
+  },
+  {
+    "selector": "|.timeline-step.done .step-node",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1221
+      },
+      {
+        "file": "src/theme.css",
+        "line": 475
+      },
+      {
+        "file": "src/draft-experience.css",
+        "line": 169
+      }
+    ]
+  },
+  {
+    "selector": "|.app .setup-main",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1339
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 122
+      }
+    ]
+  },
+  {
+    "selector": "|.setup-intro > .section-kicker",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1348
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 132
+      }
+    ]
+  },
+  {
+    "selector": "|.setup-intro h1",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1362
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 136
+      },
+      {
+        "file": "src/setup-experience.css",
+        "line": 92
+      }
+    ]
+  },
+  {
+    "selector": "|.setup-intro h1 > span",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1370
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 143
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 38
+      }
+    ]
+  },
+  {
+    "selector": "|.setup-intro > p",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1373
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 149
+      }
+    ]
+  },
+  {
+    "selector": "|.setup-art",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1379
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 154
+      }
+    ]
+  },
+  {
+    "selector": "|.art-orbit",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1385
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 159
+      }
+    ]
+  },
+  {
+    "selector": "|.showcase-card",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1397
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 163
+      },
+      {
+        "file": "src/setup-experience.css",
+        "line": 96
+      }
+    ]
+  },
+  {
+    "selector": "|.showcase-0",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1417
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 177
+      }
+    ]
+  },
+  {
+    "selector": "|.showcase-1",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1422
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 181
+      }
+    ]
+  },
+  {
+    "selector": "|.showcase-2",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1430
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 187
+      }
+    ]
+  },
+  {
+    "selector": "|.showcase-index",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1435
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 214
+      }
+    ]
+  },
+  {
+    "selector": "|.showcase-name",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1443
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 206
+      }
+    ]
+  },
+  {
+    "selector": "|.art-badge",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1454
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 220
+      }
+    ]
+  },
+  {
+    "selector": "|.setup-features",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1474
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 226
+      }
+    ]
+  },
+  {
+    "selector": "|.setup-card",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1487
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 230
+      },
+      {
+        "file": "src/setup-experience.css",
+        "line": 65
+      }
+    ]
+  },
+  {
+    "selector": "|.setup-title-row .section-kicker",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1504
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 243
+      }
+    ]
+  },
+  {
+    "selector": "|.setup-title-row h2",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1509
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 238
+      }
+    ]
+  },
+  {
+    "selector": "|.setup-field",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1525
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 60
+      }
+    ]
+  },
+  {
+    "selector": "|.setup-field legend",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1528
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 247
+      }
+    ]
+  },
+  {
+    "selector": "|.mode-option",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1542
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 250
+      }
+    ]
+  },
+  {
+    "selector": "|.mode-option strong",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1559
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 255
+      }
+    ]
+  },
+  {
+    "selector": "|.mode-option.chosen",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1573
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 263
+      }
+    ]
+  },
+  {
+    "selector": "|.timer-options button",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1602
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 274
+      },
+      {
+        "file": "src/theme.css",
+        "line": 379
+      }
+    ]
+  },
+  {
+    "selector": "|.timer-options button.chosen",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1616
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 277
+      }
+    ]
+  },
+  {
+    "selector": "|.side-options button.chosen",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1648
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 115
+      }
+    ]
+  },
+  {
+    "selector": "|.team-name-settings",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1676
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 129
+      }
+    ]
+  },
+  {
+    "selector": "|.start-draft-button",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1718
+      },
+      {
+        "file": "src/refinement.css",
+        "line": 282
+      },
+      {
+        "file": "src/setup-experience.css",
+        "line": 140
+      }
+    ]
+  },
+  {
+    "selector": "|.start-draft-button:hover",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1733
+      },
+      {
+        "file": "src/setup-experience.css",
+        "line": 167
+      }
+    ]
+  },
+  {
+    "selector": "|dialog::backdrop",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1794
+      },
+      {
+        "file": "src/theme.css",
+        "line": 520
+      }
+    ]
+  },
+  {
+    "selector": "|.form-note",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 1863
+      },
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 1938
+      }
+    ]
+  },
+  {
+    "selector": "@media (max-width: 900px)|.pokemon-grid",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 2176
+      },
+      {
+        "file": "src/layout-finish.css",
+        "line": 220
+      }
+    ]
+  },
+  {
+    "selector": "@media (max-width: 680px)|.pokemon-grid",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 2556
+      },
+      {
+        "file": "src/layout-finish.css",
+        "line": 231
+      }
+    ]
+  },
+  {
+    "selector": "|.team-history",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 2903
+      },
+      {
+        "file": "src/theme.css",
+        "line": 399
+      }
+    ]
+  },
+  {
+    "selector": "|.team-history.orange",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 2914
+      },
+      {
+        "file": "src/theme.css",
+        "line": 402
+      },
+      {
+        "file": "src/draft-experience.css",
+        "line": 197
+      }
+    ]
+  },
+  {
+    "selector": "|.history-pokemon-item",
+    "entries": [
+      {
+        "file": "src/design.css",
+        "line": 2961
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 327
+      }
+    ]
+  },
+  {
+    "selector": "|.app.setup-mode",
+    "entries": [
+      {
+        "file": "src/refinement.css",
+        "line": 105
+      },
+      {
+        "file": "src/setup-experience.css",
+        "line": 7
+      }
+    ]
+  },
+  {
+    "selector": "@media (max-width: 700px)|.app .setup-main",
+    "entries": [
+      {
+        "file": "src/refinement.css",
+        "line": 313
+      },
+      {
+        "file": "src/setup-experience.css",
+        "line": 414
+      }
+    ]
+  },
+  {
+    "selector": "@media (max-width: 700px)|.setup-intro h1",
+    "entries": [
+      {
+        "file": "src/refinement.css",
+        "line": 319
+      },
+      {
+        "file": "src/setup-experience.css",
+        "line": 425
+      }
+    ]
+  },
+  {
+    "selector": "@media (max-width: 700px)|.setup-card",
+    "entries": [
+      {
+        "file": "src/refinement.css",
+        "line": 340
+      },
+      {
+        "file": "src/setup-experience.css",
+        "line": 430
+      }
+    ]
+  },
+  {
+    "selector": "@media (max-width: 700px)|.setup-title-row h2",
+    "entries": [
+      {
+        "file": "src/refinement.css",
+        "line": 344
+      },
+      {
+        "file": "src/setup-experience.css",
+        "line": 443
+      }
+    ]
+  },
+  {
+    "selector": "|.role-tabs button.selected:not(:first-child)",
+    "entries": [
+      {
+        "file": "src/theme.css",
+        "line": 23
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 237
+      }
+    ]
+  },
+  {
+    "selector": "@media (min-width: 901px) and (min-height: 760px)|.phase-banner",
+    "entries": [
+      {
+        "file": "src/theme.css",
+        "line": 66
+      },
+      {
+        "file": "src/layout-finish.css",
+        "line": 145
+      }
+    ]
+  },
+  {
+    "selector": "@media (min-width: 901px) and (min-height: 760px)|.team-panel",
+    "entries": [
+      {
+        "file": "src/theme.css",
+        "line": 78
+      },
+      {
+        "file": "src/layout-finish.css",
+        "line": 178
+      }
+    ]
+  },
+  {
+    "selector": "@media (min-width: 901px) and (min-height: 760px)|.player-portrait > .portrait",
+    "entries": [
+      {
+        "file": "src/theme.css",
+        "line": 89
+      },
+      {
+        "file": "src/layout-finish.css",
+        "line": 189
+      }
+    ]
+  },
+  {
+    "selector": "@media (min-width: 901px) and (min-height: 760px)|.player-info .player-name",
+    "entries": [
+      {
+        "file": "src/theme.css",
+        "line": 115
+      },
+      {
+        "file": "src/layout-finish.css",
+        "line": 194
+      }
+    ]
+  },
+  {
+    "selector": "@media (min-width: 901px) and (min-height: 760px)|.player-info .role-text",
+    "entries": [
+      {
+        "file": "src/theme.css",
+        "line": 119
+      },
+      {
+        "file": "src/layout-finish.css",
+        "line": 197
+      }
+    ]
+  },
+  {
+    "selector": "|.pokemon-grid .pokemon-card.is-selected",
+    "entries": [
+      {
+        "file": "src/theme.css",
+        "line": 130
+      },
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 6
+      }
+    ]
+  },
+  {
+    "selector": "|.ban-slot-label,\n.ban-slot.filled .ban-slot-label",
+    "entries": [
+      {
+        "file": "src/theme.css",
+        "line": 419
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 275
+      }
+    ]
+  },
+  {
+    "selector": "|.pokemon-grid,\n.history-scroll",
+    "entries": [
+      {
+        "file": "src/theme.css",
+        "line": 523
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 379
+      }
+    ]
+  },
+  {
+    "selector": "|.phase-banner > .timeline",
+    "entries": [
+      {
+        "file": "src/layout-finish.css",
+        "line": 2
+      },
+      {
+        "file": "src/draft-experience.css",
+        "line": 150
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 566
+      }
+    ]
+  },
+  {
+    "selector": "|.allstar-arena > .team-side.purple,\n.allstar-arena > .team-side.orange",
+    "entries": [
+      {
+        "file": "src/layout-finish.css",
+        "line": 341
+      },
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 975
+      },
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 1142
+      }
+    ]
+  },
+  {
+    "selector": "|.setup-card::before",
+    "entries": [
+      {
+        "file": "src/setup-experience.css",
+        "line": 77
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 27
+      }
+    ]
+  },
+  {
+    "selector": "|.mode-option:hover,\n.side-options button:hover,\n.resume-card:hover",
+    "entries": [
+      {
+        "file": "src/setup-experience.css",
+        "line": 126
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 83
+      }
+    ]
+  },
+  {
+    "selector": "|.app:not(.setup-mode) .app-header",
+    "entries": [
+      {
+        "file": "src/draft-experience.css",
+        "line": 62
+      },
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 564
+      },
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 837
+      },
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 1035
+      }
+    ]
+  },
+  {
+    "selector": "|.phase-banner::before",
+    "entries": [
+      {
+        "file": "src/draft-experience.css",
+        "line": 90
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 503
+      }
+    ]
+  },
+  {
+    "selector": "|.phase-label::before",
+    "entries": [
+      {
+        "file": "src/draft-experience.css",
+        "line": 126
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 556
+      }
+    ]
+  },
+  {
+    "selector": "|.selection-panel,\n.team-panel,\n.team-history",
+    "entries": [
+      {
+        "file": "src/draft-experience.css",
+        "line": 182
+      },
+      {
+        "file": "src/interface-polish.css",
+        "line": 450
+      }
+    ]
+  },
+  {
+    "selector": "@media (max-width: 619px) and (min-height: 520px)|.app:not(.setup-mode) > .draft-main",
+    "entries": [
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 315
+      },
+      {
+        "file": "src/ui-system.css",
+        "line": 572
+      }
+    ]
+  },
+  {
+    "selector": "|.app:not(.setup-mode) .decision-bar",
+    "entries": [
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 801
+      },
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 1367
+      },
+      {
+        "file": "src/ui-system.css",
+        "line": 500
+      }
+    ]
+  },
+  {
+    "selector": "|.app:not(.setup-mode) .utility-actions,\n.app:not(.setup-mode) .decision-extra",
+    "entries": [
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 813
+      },
+      {
+        "file": "src/ui-system.css",
+        "line": 535
+      }
+    ]
+  },
+  {
+    "selector": "|.app:not(.setup-mode) .pokemon-card .pokemon-name",
+    "entries": [
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 908
+      },
+      {
+        "file": "src/ui-system.css",
+        "line": 273
+      }
+    ]
+  },
+  {
+    "selector": "@media (max-width: 680px)|.app:not(.setup-mode) .header-phase-title > strong",
+    "entries": [
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 1135
+      },
+      {
+        "file": "src/ui-system.css",
+        "line": 252
+      }
+    ]
+  },
+  {
+    "selector": "@media (max-width: 680px)|.app:not(.setup-mode) .header-instruction",
+    "entries": [
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 1286
+      },
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 1448
+      },
+      {
+        "file": "src/ui-system.css",
+        "line": 255
+      }
+    ]
+  },
+  {
+    "selector": "|.app:not(.setup-mode) .subtle-button",
+    "entries": [
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 1379
+      },
+      {
+        "file": "src/ui-system.css",
+        "line": 78
+      }
+    ]
+  },
+  {
+    "selector": "|.review-dialog .past-game-review-card",
+    "entries": [
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 1761
+      },
+      {
+        "file": "src/interaction-upgrades.css",
+        "line": 1878
+      },
+      {
+        "file": "src/ui-system.css",
+        "line": 432
+      }
+    ]
+  }
+]

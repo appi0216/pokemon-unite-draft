@@ -1,0 +1,667 @@
+[
+  {
+    "file": "src/design.css",
+    "ruleCount": 611,
+    "exactDuplicateRules": [],
+    "repeatedSelectors": [
+      {
+        "selector": "|button",
+        "count": 2,
+        "lines": [
+          37,
+          48
+        ]
+      },
+      {
+        "selector": "|button:disabled",
+        "count": 2,
+        "lines": [
+          42,
+          73
+        ]
+      },
+      {
+        "selector": "|.draft-arena",
+        "count": 2,
+        "lines": [
+          323,
+          3133
+        ]
+      },
+      {
+        "selector": "|.player-list",
+        "count": 2,
+        "lines": [
+          502,
+          3142
+        ]
+      },
+      {
+        "selector": "|.player-slot",
+        "count": 2,
+        "lines": [
+          510,
+          3145
+        ]
+      },
+      {
+        "selector": "|.player-portrait > .portrait",
+        "count": 2,
+        "lines": [
+          562,
+          3136
+        ]
+      },
+      {
+        "selector": "@media (min-width: 1600px)|.player-portrait > .portrait",
+        "count": 2,
+        "lines": [
+          1888,
+          3205
+        ]
+      },
+      {
+        "selector": "@media (max-width: 680px)|.draft-arena",
+        "count": 2,
+        "lines": [
+          2413,
+          3221
+        ]
+      },
+      {
+        "selector": "@media (max-width: 680px)|.player-list",
+        "count": 2,
+        "lines": [
+          2466,
+          3230
+        ]
+      },
+      {
+        "selector": "@media (max-width: 680px)|.player-slot",
+        "count": 2,
+        "lines": [
+          2469,
+          3233
+        ]
+      },
+      {
+        "selector": "@media (max-width: 680px)|.player-portrait,\n  .player-portrait.has-pokemon",
+        "count": 2,
+        "lines": [
+          2474,
+          3240
+        ]
+      },
+      {
+        "selector": "@media (max-width: 680px)|.player-portrait > .portrait",
+        "count": 2,
+        "lines": [
+          2478,
+          3236
+        ]
+      },
+      {
+        "selector": "@media (max-width: 370px)|.player-portrait,\n  .player-portrait.has-pokemon",
+        "count": 2,
+        "lines": [
+          2769,
+          3250
+        ]
+      },
+      {
+        "selector": "@media (max-width: 370px)|.player-portrait > .portrait",
+        "count": 2,
+        "lines": [
+          2773,
+          3246
+        ]
+      },
+      {
+        "selector": "@media (max-width: 1299px)|.history-scroll",
+        "count": 2,
+        "lines": [
+          3051,
+          3111
+        ]
+      },
+      {
+        "selector": "@media (max-width: 1299px)|.history-game",
+        "count": 2,
+        "lines": [
+          3057,
+          3114
+        ]
+      },
+      {
+        "selector": "@media (max-width: 1299px)|.history-game + .history-game",
+        "count": 2,
+        "lines": [
+          3060,
+          3127
+        ]
+      },
+      {
+        "selector": "@media (max-width: 1299px)|.history-pokemon",
+        "count": 2,
+        "lines": [
+          3071,
+          3119
+        ]
+      },
+      {
+        "selector": "@media (max-width: 1299px)|.history-pokemon-item .portrait",
+        "count": 2,
+        "lines": [
+          3078,
+          3122
+        ]
+      },
+      {
+        "selector": "@media (max-width: 680px)|.allstar-arena",
+        "count": 2,
+        "lines": [
+          3106,
+          3224
+        ]
+      }
+    ]
+  },
+  {
+    "file": "src/refinement.css",
+    "ruleCount": 71,
+    "exactDuplicateRules": [],
+    "repeatedSelectors": []
+  },
+  {
+    "file": "src/theme.css",
+    "ruleCount": 91,
+    "exactDuplicateRules": [],
+    "repeatedSelectors": [
+      {
+        "selector": "|:root",
+        "count": 2,
+        "lines": [
+          2,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "file": "src/layout-finish.css",
+    "ruleCount": 74,
+    "exactDuplicateRules": [],
+    "repeatedSelectors": []
+  },
+  {
+    "file": "src/setup-experience.css",
+    "ruleCount": 80,
+    "exactDuplicateRules": [],
+    "repeatedSelectors": []
+  },
+  {
+    "file": "src/draft-experience.css",
+    "ruleCount": 41,
+    "exactDuplicateRules": [],
+    "repeatedSelectors": []
+  },
+  {
+    "file": "src/interface-polish.css",
+    "ruleCount": 96,
+    "exactDuplicateRules": [],
+    "repeatedSelectors": [
+      {
+        "selector": "|.phase-banner",
+        "count": 2,
+        "lines": [
+          494,
+          560
+        ]
+      }
+    ]
+  },
+  {
+    "file": "src/interaction-upgrades.css",
+    "ruleCount": 371,
+    "exactDuplicateRules": [
+      {
+        "line": 765,
+        "selector": ".app:not(.setup-mode) .header-instruction",
+        "context": "",
+        "kept": 1500
+      },
+      {
+        "line": 775,
+        "selector": ".app:not(.setup-mode) .header-instruction",
+        "context": "@media (max-width: 900px)",
+        "kept": 1509
+      },
+      {
+        "line": 781,
+        "selector": ".app:not(.setup-mode) .header-instruction",
+        "context": "@media (max-width: 680px)",
+        "kept": 1514
+      },
+      {
+        "line": 810,
+        "selector": ".app:not(.setup-mode) .bans-heading > span:first-child",
+        "context": "",
+        "kept": 1414
+      },
+      {
+        "line": 819,
+        "selector": ".app:not(.setup-mode) .ban-slot",
+        "context": "",
+        "kept": 1423
+      },
+      {
+        "line": 824,
+        "selector": ".app:not(.setup-mode) .trainer",
+        "context": "",
+        "kept": 1428
+      },
+      {
+        "line": 846,
+        "selector": ".app:not(.setup-mode) .subtle-button",
+        "context": "",
+        "kept": 1445
+      },
+      {
+        "line": 854,
+        "selector": ".app:not(.setup-mode) .confirm-button,\n.app:not(.setup-mode) .next-game,\n.app:not(.setup-mode) .complete-button,\n.app:not(.setup-mode) .final-image-action",
+        "context": "",
+        "kept": 1453
+      },
+      {
+        "line": 888,
+        "selector": ".app:not(.setup-mode) .confirm-button,\n  .app:not(.setup-mode) .next-game,\n  .app:not(.setup-mode) .complete-button,\n  .app:not(.setup-mode) .final-image-action",
+        "context": "@media (max-width: 680px)",
+        "kept": 1490
+      },
+      {
+        "line": 1006,
+        "selector": ".app:not(.setup-mode) .header-phase-title > strong,\n  .app:not(.setup-mode) .header-instruction",
+        "context": "@media (max-width: 680px)",
+        "kept": 1485
+      }
+    ],
+    "repeatedSelectors": [
+      {
+        "selector": "|.phase-game",
+        "count": 2,
+        "lines": [
+          143,
+          448
+        ]
+      },
+      {
+        "selector": "@media (max-width: 619px) and (min-height: 520px)|.app:not(.setup-mode) .phase-banner",
+        "count": 2,
+        "lines": [
+          328,
+          557
+        ]
+      },
+      {
+        "selector": "|.app:not(.setup-mode) .app-header",
+        "count": 3,
+        "lines": [
+          564,
+          898,
+          1101
+        ]
+      },
+      {
+        "selector": "|.app:not(.setup-mode) .header-center",
+        "count": 4,
+        "lines": [
+          570,
+          787,
+          902,
+          1363
+        ]
+      },
+      {
+        "selector": "@media (max-width: 900px)|.app:not(.setup-mode) .app-header",
+        "count": 2,
+        "lines": [
+          684,
+          1183
+        ]
+      },
+      {
+        "selector": "|.app:not(.setup-mode) .header-instruction",
+        "count": 8,
+        "lines": [
+          765,
+          801,
+          936,
+          1325,
+          1396,
+          1500,
+          1519,
+          1525
+        ]
+      },
+      {
+        "selector": "@media (max-width: 900px)|.app:not(.setup-mode) .header-instruction",
+        "count": 3,
+        "lines": [
+          775,
+          1342,
+          1509
+        ]
+      },
+      {
+        "selector": "@media (max-width: 680px)|.app:not(.setup-mode) .header-instruction",
+        "count": 3,
+        "lines": [
+          781,
+          1352,
+          1514
+        ]
+      },
+      {
+        "selector": "|.app:not(.setup-mode) .header-phase",
+        "count": 5,
+        "lines": [
+          791,
+          910,
+          1316,
+          1371,
+          1536
+        ]
+      },
+      {
+        "selector": "|.app:not(.setup-mode) .header-phase-title",
+        "count": 6,
+        "lines": [
+          797,
+          924,
+          1115,
+          1255,
+          1382,
+          1541
+        ]
+      },
+      {
+        "selector": "|.app:not(.setup-mode) .header-timer",
+        "count": 6,
+        "lines": [
+          806,
+          944,
+          1279,
+          1335,
+          1408,
+          1545
+        ]
+      },
+      {
+        "selector": "|.app:not(.setup-mode) .bans-heading > span:first-child",
+        "count": 2,
+        "lines": [
+          810,
+          1414
+        ]
+      },
+      {
+        "selector": "|.app:not(.setup-mode) .ban-slots",
+        "count": 3,
+        "lines": [
+          814,
+          1022,
+          1418
+        ]
+      },
+      {
+        "selector": "|.app:not(.setup-mode) .ban-slot",
+        "count": 3,
+        "lines": [
+          819,
+          1027,
+          1423
+        ]
+      },
+      {
+        "selector": "|.app:not(.setup-mode) .trainer",
+        "count": 2,
+        "lines": [
+          824,
+          1428
+        ]
+      },
+      {
+        "selector": "|.app:not(.setup-mode) .decision-bar",
+        "count": 2,
+        "lines": [
+          829,
+          1433
+        ]
+      },
+      {
+        "selector": "|.app:not(.setup-mode) .selected-description",
+        "count": 2,
+        "lines": [
+          835,
+          1439
+        ]
+      },
+      {
+        "selector": "|.app:not(.setup-mode) .subtle-button",
+        "count": 2,
+        "lines": [
+          846,
+          1445
+        ]
+      },
+      {
+        "selector": "|.app:not(.setup-mode) .confirm-button,\n.app:not(.setup-mode) .next-game,\n.app:not(.setup-mode) .complete-button,\n.app:not(.setup-mode) .final-image-action",
+        "count": 2,
+        "lines": [
+          854,
+          1453
+        ]
+      },
+      {
+        "selector": "@media (max-width: 900px)|.app:not(.setup-mode) .header-phase",
+        "count": 4,
+        "lines": [
+          872,
+          984,
+          1471,
+          1550
+        ]
+      },
+      {
+        "selector": "@media (max-width: 680px)|.app:not(.setup-mode) .header-phase",
+        "count": 5,
+        "lines": [
+          883,
+          998,
+          1348,
+          1479,
+          1557
+        ]
+      },
+      {
+        "selector": "@media (max-width: 680px)|.app:not(.setup-mode) .confirm-button,\n  .app:not(.setup-mode) .next-game,\n  .app:not(.setup-mode) .complete-button,\n  .app:not(.setup-mode) .final-image-action",
+        "count": 2,
+        "lines": [
+          888,
+          1490
+        ]
+      },
+      {
+        "selector": "|.app:not(.setup-mode) .header-phase-title::after,\n.app:not(.setup-mode) .header-timer::before",
+        "count": 2,
+        "lines": [
+          931,
+          1260
+        ]
+      },
+      {
+        "selector": "@media (max-width: 680px)|.app:not(.setup-mode) .header-phase-title > strong,\n  .app:not(.setup-mode) .header-instruction",
+        "count": 2,
+        "lines": [
+          1006,
+          1485
+        ]
+      },
+      {
+        "selector": "@media (max-width: 680px)|.app:not(.setup-mode) .header-timer",
+        "count": 3,
+        "lines": [
+          1011,
+          1306,
+          1357
+        ]
+      },
+      {
+        "selector": "|.allstar-arena > .team-side.purple,\n.allstar-arena > .team-side.orange",
+        "count": 2,
+        "lines": [
+          1041,
+          1208
+        ]
+      },
+      {
+        "selector": "|.timeline-meta",
+        "count": 2,
+        "lines": [
+          1144,
+          2107
+        ]
+      },
+      {
+        "selector": "|.timeline-meta b",
+        "count": 2,
+        "lines": [
+          1161,
+          2112
+        ]
+      },
+      {
+        "selector": "@media (max-width: 680px)|.app:not(.setup-mode) .header-phase-title",
+        "count": 2,
+        "lines": [
+          1197,
+          1302
+        ]
+      },
+      {
+        "selector": "|.app:not(.setup-mode) .header-phase.is-complete .header-phase-title",
+        "count": 3,
+        "lines": [
+          1576,
+          1652,
+          1656
+        ]
+      },
+      {
+        "selector": "@media (max-width: 680px)|.app:not(.setup-mode) .header-phase.is-complete .header-phase-title",
+        "count": 2,
+        "lines": [
+          1642,
+          1660
+        ]
+      },
+      {
+        "selector": "|.past-game-review .review-pick-list",
+        "count": 2,
+        "lines": [
+          1774,
+          1846
+        ]
+      },
+      {
+        "selector": "|dialog.review-dialog",
+        "count": 2,
+        "lines": [
+          1785,
+          1934
+        ]
+      },
+      {
+        "selector": "|.review-dialog .past-games-review",
+        "count": 3,
+        "lines": [
+          1791,
+          1823,
+          1940
+        ]
+      },
+      {
+        "selector": "@media (max-width: 760px)|dialog.review-dialog",
+        "count": 2,
+        "lines": [
+          1805,
+          1973
+        ]
+      },
+      {
+        "selector": "@media (max-width: 760px)|.review-dialog .past-games-review",
+        "count": 2,
+        "lines": [
+          1811,
+          1976
+        ]
+      },
+      {
+        "selector": "|.review-dialog .past-game-review-card",
+        "count": 2,
+        "lines": [
+          1827,
+          1944
+        ]
+      },
+      {
+        "selector": "|.past-game-review .review-ban-list article,\n.past-game-review .review-pick-list article",
+        "count": 2,
+        "lines": [
+          1864,
+          1963
+        ]
+      },
+      {
+        "selector": "|.past-game-review .review-ban-list article .portrait,\n.past-game-review .review-pick-list article .portrait,\n.past-game-review .review-ban-list .review-skip-mark",
+        "count": 3,
+        "lines": [
+          1871,
+          1889,
+          1967
+        ]
+      },
+      {
+        "selector": "|.past-game-review .review-skip-mark",
+        "count": 2,
+        "lines": [
+          1879,
+          1896
+        ]
+      }
+    ]
+  },
+  {
+    "file": "src/ui-system.css",
+    "ruleCount": 99,
+    "exactDuplicateRules": [],
+    "repeatedSelectors": [
+      {
+        "selector": "|.restriction-list",
+        "count": 2,
+        "lines": [
+          201,
+          442
+        ]
+      },
+      {
+        "selector": "|.restriction-list label",
+        "count": 2,
+        "lines": [
+          209,
+          447
+        ]
+      }
+    ]
+  }
+]

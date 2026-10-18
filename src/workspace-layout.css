@@ -1969,3 +1969,30 @@ dialog .dialog-notice {
 .app.setup-mode .setup-mode-choice>span { font-size:var(--home-font); }
 .app.setup-mode .setup-mode-choice>svg { width:clamp(16px,4dvh,24px); height:clamp(16px,4dvh,24px); }
 .app.setup-mode .setup-main.setup-refresh { padding-block:clamp(6px,2dvh,24px); }
+
+/* Dialog controls scale with viewport height as well as width. */
+.app dialog { max-width:calc(100vw - 24px); max-height:calc(100dvh - 24px); padding:clamp(12px,min(3vw,4dvh),24px); font-size:clamp(.75rem,min(2.4vw,3.3dvh),1rem); }
+.app .modal-heading { gap:clamp(6px,2dvh,16px); margin-bottom:clamp(8px,2dvh,20px); }
+.app .modal-heading h2 { font-size:clamp(1rem,min(3vw,4.5dvh),1.35rem); }
+.app .first-prompt-copy { font-size:inherit; margin-block:clamp(6px,2dvh,18px); }
+.app .first-prompt-options { gap:clamp(6px,1.5vw,12px); }
+.app .first-prompt-options button { min-height:44px; height:clamp(44px,16dvh,100px); padding:clamp(8px,2dvh,20px); font-size:inherit; }
+.app .pokemon-grid .skip-card { background:linear-gradient(145deg,var(--surface-control),var(--surface)); border:1px solid var(--surface-border); color:var(--text-secondary,#b2b1bd); }
+.app .pokemon-grid .skip-card svg { width:clamp(18px,3vw,26px); height:clamp(18px,3vw,26px); stroke-width:1.8; }
+@layer adaptive-layout {
+ .app .pokemon-grid .pokemon-card:focus-visible { outline:2px solid var(--team,var(--purple)) !important; outline-offset:-3px !important; box-shadow:none !important; }
+ .app .first-prompt-options button:focus-visible { outline:2px solid currentColor !important; outline-offset:-4px !important; box-shadow:none !important; }
+}
+.app .review-dialog { width:min(900px,calc(100vw - 24px)); }
+.app .past-games-review { min-height:0; overflow:auto; }
+.app .past-game-review-card { padding:clamp(6px,1.5dvh,16px); margin-bottom:clamp(6px,1.5dvh,16px); }
+.app .past-game-review { gap:clamp(4px,1vw,12px); }
+.app .past-game-review > section { min-width:0; padding:clamp(5px,1.5vw,14px); }
+.app .review-dialog :is(button,h3,strong) { font-size:inherit; }
+.app .review-dialog .portrait { width:clamp(24px,min(7vw,10dvh),58px); height:clamp(24px,min(7vw,10dvh),58px); max-width:100%; }
+.app :is(.review-ban-list,.review-pick-list) { gap:clamp(2px,1vw,10px); }
+.app .review-dialog .past-game-download { padding:clamp(4px,1dvh,12px); min-height:36px; }
+.app dialog .modal-heading>.icon-button { width:clamp(32px,8dvh,44px); height:clamp(32px,8dvh,44px); min-height:32px; flex-basis:clamp(32px,8dvh,44px); }
+@media(max-width:480px) {
+ .app .past-game-review { grid-template-columns:minmax(0,1fr); }
+}

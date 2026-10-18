@@ -1458,7 +1458,7 @@ function App() {
                     goToRosterPage(currentPage - 1, "last");
                 }}
               >
-                {skipSlot === 1 && currentPage === 0 && <button type="button" className="pokemon-card skip-card" aria-label="使用禁止投票をスキップ" title="スキップ" onClick={() => { setDraft(choose(draft, null, ids)); setSelected(null); }}><SkipForward aria-hidden="true" /></button>}
+                {skipSlot === 1 && currentPage === 0 && <button type="button" className="pokemon-card skip-card" onFocus={() => setSelected(null)} aria-label="使用禁止投票をスキップ" title="スキップ" onClick={() => { setDraft(choose(draft, null, ids)); setSelected(null); }}><SkipForward aria-hidden="true" /></button>}
                 {pagePokemon.map((p, i) => {
                   const used = unavailable(draft, p.id, activeTeam);
                   const action = draft.actions.find((a) => a.pokemon === p.id);
@@ -2127,6 +2127,7 @@ function App() {
   );
 }
 export default App;
+
 
 
 

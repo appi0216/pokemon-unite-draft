@@ -69,16 +69,20 @@ test("all local portraits decode as 208px transparent WebP images", async () => 
   assert.equal(stats.outputBytes, outputBytes);
 });
 
-test("optical portraits preserve vertical silhouettes and enlarge wide Reshiram", async () => {
-  assert.ok(layout.reshiram.width > 125);
+test("all 102 portraits preserve every visible pixel on all four sides", async () => {
   for (const p of roster) {
     const {data,info} = await sharp(new URL(`../public${p.image}`,import.meta.url).pathname.replace(/^\/([A-Za-z]:)/,'$1')).ensureAlpha().raw().toBuffer({resolveWithObject:true});
-    let top=info.height, bottom=0;
+    let top=info.height, bottom=0, left=info.width, right=0;
     for(let y=0;y<info.height;y++) for(let x=0;x<info.width;x++) {
-      if(data[(y*info.width+x)*4+3]>32) { top=Math.min(top,y); bottom=Math.max(bottom,y+1); }
+      if(data[(y*info.width+x)*4+3]>0) {
+        top=Math.min(top,y); bottom=Math.max(bottom,y+1);
+        left=Math.min(left,x); right=Math.max(right,x+1);
+      }
     }
     const box=layout[p.id];
     assert.ok(box.top + top/info.height*box.width >= 1.9, `${p.id}: top cropped`);
     assert.ok(box.top + bottom/info.height*box.width <= 98.1, `${p.id}: bottom cropped`);
+    assert.ok(box.left + left/info.width*box.width >= 1.9, `${p.id}: left cropped`);
+    assert.ok(box.left + right/info.width*box.width <= 98.1, `${p.id}: right cropped`);
   }
 });

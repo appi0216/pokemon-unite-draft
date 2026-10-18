@@ -101,6 +101,7 @@ export default function DraftTools({
         <div className="restriction-list">
           {pokemon
             .filter((p) => normalize(p.name).includes(normalize(query)))
+            .sort((a, b) => b.order - a.order)
             .map((p) => (
               <label key={p.id}>
                 <input

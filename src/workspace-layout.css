@@ -1813,3 +1813,22 @@ dialog .dialog-notice {
 .app:not(.setup-mode) :is(.header-timer, .compact-view-tabs .roster, .progress-toggle) {
   font-size: var(--control-font);
 }
+/* Distinct BAN/PICK groups preserve the existing team-colored turn markers. */
+.app .progress-dots { gap: clamp(8px, 1.5vw, 16px); max-width: 460px; }
+.app .progress-phase { display:flex; align-items:center; gap:clamp(2px,.45vw,6px); flex:1; min-width:0; padding-block:4px; opacity:.65; }
+.app .progress-phase.active { opacity:1; }
+.app .progress-phase > svg { flex:none; width:clamp(10px,1.2vw,14px); height:clamp(10px,1.2vw,14px); }
+.app .progress-phase.pick { border-left:1px solid var(--surface-border); padding-left:clamp(8px,1.5vw,16px); }
+.app .progress-phase.ban i { border-radius:1px; }
+.app .progress-phase.pick i { border-radius:50%; height:clamp(5px,.65vw,8px); }
+.app .selection-footer { justify-content:center; border-top:1px solid var(--surface-border); }
+.app .roster-pagination { margin-inline:0; width:100%; justify-content:center; gap:clamp(8px,2vw,20px); }
+.app .roster-pagination > span { display:grid; text-align:center; min-width:5.5rem; line-height:1.4; }
+.app .roster-pagination b { font-size:var(--control-font); font-weight:600; }
+.app .roster-pagination b span { color:var(--text-secondary, #b2b1bd); }
+.app .roster-pagination .roster-range { font-size:clamp(.625rem,.5rem + .3vw,.75rem); color:var(--text-secondary, #b2b1bd); }
+.app .progress-disclosure .progress-dots { display:flex; min-width:0; }
+@media (max-width:600px) {
+  .app .progress-disclosure > summary { flex-wrap:wrap; }
+  .app .progress-disclosure .progress-dots { order:4; flex-basis:100%; max-width:none; }
+}

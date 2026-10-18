@@ -589,6 +589,8 @@ function App() {
     window.scrollTo({ top: 0, behavior: "instant" });
   };
   const startDraft = (first: Team) => {
+    setRosterPage(0);
+    pageFocus.current = null;
     const next = {
       purple: draftSettings.purple.trim() || defaults.purple,
       orange: draftSettings.orange.trim() || defaults.orange,
@@ -1065,11 +1067,16 @@ function App() {
                   : "ドラフト"}
               </span>
               <span className="progress-dots" aria-hidden="true">
-                {schedule.map((s, i) => (
+                {(["ban", "pick"] as const).map((kind) => (
+                  <span className={`progress-phase ${kind} ${phase === kind && !complete ? "active" : ""}`} key={kind}>
+                    {kind === "ban" ? <Ban size={12} /> : <Check size={12} />}
+                    {schedule.map((s, i) => s.phase === kind && (
                   <i
                     key={i}
                     className={`${s.team} ${i < stageIndex ? "done" : ""} ${i === stageIndex ? "current" : ""}`}
                   />
+                    ))}
+                  </span>
                 ))}
               </span>
               <span>{draft.actions.length} / 16</span>
@@ -1545,11 +1552,6 @@ function App() {
                 )}
               </div>
               <div className="selection-footer">
-                <span className="roster-range">
-                  {visible.length
-                    ? `${pageStart + 1}–${Math.min(pageStart + rosterLayout.size, visible.length)} / ${visible.length}匹`
-                    : "0匹"}
-                </span>
                 <nav
                   className="roster-pagination"
                   aria-label="ポケモン一覧のページ"
@@ -1570,7 +1572,7 @@ function App() {
                     aria-atomic="true"
                     aria-label={`${currentPage + 1} / ${pageCount}ページ`}
                   >
-                    {currentPage + 1} / {pageCount}
+                    <b>{currentPage + 1}<span> / {pageCount}</span></b>
                   </span>
                   <button
                     type="button"
@@ -1898,6 +1900,8 @@ function App() {
                   if (firstPrompt === "start") {
                     startDraft(team);
                   } else if (firstPrompt === "next") {
+                    setRosterPage(0);
+                    pageFocus.current = null;
                     setDraft(nextGame(draft, team));
                     setSelected(null);
                     setSwapFrom(null);

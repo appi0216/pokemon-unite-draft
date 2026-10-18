@@ -237,6 +237,9 @@ for (const name of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
             .getByRole("button", { name: "左チームを保存", exact: true })
             .click();
           await modal("tools");
+          const restrictionNames = await page.locator('.restriction-list label').allTextContents();
+          if (restrictionNames.slice(0, 3).map(s => s.trim()).join(',') !== 'ブースター,サンダース,ストリンダー')
+            throw new Error('Tournament restrictions must be newest first');
           await page.locator("input[type=file]").setInputFiles({
             name: "invalid.json",
             mimeType: "application/json",

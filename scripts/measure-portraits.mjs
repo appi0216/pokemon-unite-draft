@@ -14,7 +14,7 @@ for (const p of roster) {
   let area = 0;
   for (let y = 0; y < info.height; y++)
     for (let x = 0; x < info.width; x++) {
-      if (data[(y * info.width + x) * 4 + 3] > 32) {
+      if (data[(y * info.width + x) * 4 + 3] > 0) {
         area += data[(y * info.width + x) * 4 + 3] / 255;
         left = Math.min(left, x);
         top = Math.min(top, y);
@@ -24,12 +24,12 @@ for (const p of roster) {
     }
   const widthRatio = (right - left + 1) / info.width;
   const heightRatio = (bottom - top + 1) / info.height;
-  // Optical sizing: preserve head/feet, but allow wide wings/tails to be
-  // cropped inside the portrait like the official selection thumbnails.
+  // Optical sizing must never crop wings, tails or antialiased edge pixels.
+  // Constrain both axes, leaving a 2% safety margin on every side.
   const scale = Math.max(
     0.84 / Math.max(widthRatio, heightRatio),
     Math.min(Math.sqrt(0.48 / (area / (info.width * info.height))),
-      0.96 / heightRatio, 1.3 / widthRatio),
+      0.96 / heightRatio, 0.96 / widthRatio),
   );
   layout[p.id] = {
     width: +(scale * 100).toFixed(3),
@@ -48,5 +48,5 @@ await fs.writeFile(
   JSON.stringify(layout, null, 2) + "\n",
 );
 console.log(
-  `Measured ${roster.length} portraits; normalized optical area with safe vertical framing.`,
+  `Measured ${roster.length} portraits; normalized optical area with safe framing on all four sides.`,
 );

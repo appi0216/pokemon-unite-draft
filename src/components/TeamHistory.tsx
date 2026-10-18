@@ -27,7 +27,7 @@ export default function TeamHistory({team,name,history,active}: {
   const current = Math.min(page,pages-1);
   return <aside className={`team-history ${team} ${active ? "turn-active" : ""}`} data-games={history.length} aria-label={`${name}の過去の選出`}>
     <div className="history-heading"><strong>選択済</strong><span>{history.length*5}</span></div>
-    <div className="history-scroll" ref={content} aria-label={`${name}の選択済ポケモン一覧`}>
+    <div className="history-scroll" ref={content} style={{ gridTemplateRows: `repeat(${capacity}, minmax(0, 1fr))` }} aria-label={`${name}の選択済ポケモン一覧`}>
       {history.slice(current*capacity,(current+1)*capacity).map(past =>
         <section className="history-game" key={past.game} aria-label={`第${past.game}試合`}>
           <h3>第{past.game}試合</h3>
@@ -44,4 +44,5 @@ export default function TeamHistory({team,name,history,active}: {
     </nav>
   </aside>;
 }
+
 

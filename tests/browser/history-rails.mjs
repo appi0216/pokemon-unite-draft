@@ -11,7 +11,7 @@ for(const [engine,launcher] of Object.entries({chromium,webkit})) {
  const browser=await launcher.launch();
  for(const rule of ['all-star','fearless']) for(const size of [[320,568],[390,844],[667,375],[1523,800]]) {
   let draft=createDraft('purple',true,7,rule);
-  for(let game=0;game<6;game++) {
+  for(let game=0;game<5;game++) {
    while(currentStep(draft)) {
     const p=roster.find(p=>!unavailable(draft,p.id,currentStep(draft).team));
     draft=choose(draft,p.id,ids);
@@ -28,9 +28,12 @@ for(const [engine,launcher] of Object.entries({chromium,webkit})) {
    const rail=page.locator(`.team-history.${team}`);
    await rail.waitFor({state:'visible'});
    await page.waitForTimeout(150);
-   const seen=[];
+   const seen=[]; let firstHeight;
    for(let n=0;n<6;n++) {
     const games=rail.locator('.history-game');
+    const height=(await games.first().boundingBox()).height;
+    firstHeight ??= height;
+    assert(Math.abs(height-firstHeight)<1,'partial page must retain full-page game height');
     for(let i=0;i<await games.count();i++) {
      assert.equal(await games.nth(i).locator('.portrait').count(),5);
      seen.push(await games.nth(i).getAttribute('aria-label'));
@@ -40,8 +43,8 @@ for(const [engine,launcher] of Object.entries({chromium,webkit})) {
     if(await next.isDisabled())break;
     await next.click();
    }
-   assert.equal(seen.length,6);
-   assert.equal(new Set(seen).size,6);
+   assert.equal(seen.length,5);
+   assert.equal(new Set(seen).size,5);
    assert(await page.locator(`.team-side.${team} .team-panel`).isVisible());
    assert(await rail.locator('.history-scroll').evaluate(e=>e.scrollHeight<=e.clientHeight+1),'history must not scroll');
    await page.screenshot({path:`${out}/${engine}-${rule}-${size.join('x')}-${team}.png`});
@@ -56,9 +59,10 @@ for(const [engine,launcher] of Object.entries({chromium,webkit})) {
   await page.waitForTimeout(100);
   const end=await expanded.locator('.portrait:visible').last().boundingBox(), viewport=await expanded.boundingBox();
   assert(end.y+end.height<=viewport.y+viewport.height+1,'200% last portrait unreachable');
-  console.log(`${engine} ${rule} ${size}: both 30-item rails PASS`);
+  console.log(`${engine} ${rule} ${size}: both 25-item rails with stable page heights PASS`);
   await page.close();
  }
  await browser.close();
 }
+
 

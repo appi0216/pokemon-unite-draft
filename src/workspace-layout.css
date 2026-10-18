@@ -1881,7 +1881,7 @@ dialog .dialog-notice {
 
 /* History pages always contain complete games in a single outer column. */
 .app .allstar-arena { --history-rail: clamp(60px, 4.5vw, 76px); }
-.app .allstar-arena .team-history .history-scroll { overflow: hidden; padding: 3px; display: flex; flex-direction: column; gap: 6px; }
+.app .allstar-arena .team-history .history-scroll { overflow: hidden; padding: 3px; display: grid; gap: 6px; }
 .app .allstar-arena .team-history .history-game { flex: 1; min-height: 0; display: flex; flex-direction: column; margin: 0; padding: 0; }
 .app .allstar-arena .team-history .history-game h3 { flex: none; font-size: 10px; line-height: 16px; margin: 0; }
 .app .allstar-arena .team-history .history-pokemon { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0,1fr); grid-template-rows: repeat(5,minmax(0,1fr)); gap: 3px; }
@@ -1894,3 +1894,4 @@ dialog .dialog-notice {
 @layer adaptive-layout {
  .app .allstar-arena .team-history .history-pokemon { grid-template-columns: minmax(0,1fr) !important; }
 }
+

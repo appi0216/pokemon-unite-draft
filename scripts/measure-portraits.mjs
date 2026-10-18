@@ -11,18 +11,26 @@ for (const p of roster) {
     top = info.height,
     right = 0,
     bottom = 0;
+  let area = 0;
   for (let y = 0; y < info.height; y++)
     for (let x = 0; x < info.width; x++) {
       if (data[(y * info.width + x) * 4 + 3] > 32) {
+        area += data[(y * info.width + x) * 4 + 3] / 255;
         left = Math.min(left, x);
         top = Math.min(top, y);
         right = Math.max(right, x);
         bottom = Math.max(bottom, y);
       }
     }
-  const scale =
-    0.84 /
-    Math.max((right - left + 1) / info.width, (bottom - top + 1) / info.height);
+  const widthRatio = (right - left + 1) / info.width;
+  const heightRatio = (bottom - top + 1) / info.height;
+  // Optical sizing: preserve head/feet, but allow wide wings/tails to be
+  // cropped inside the portrait like the official selection thumbnails.
+  const scale = Math.max(
+    0.84 / Math.max(widthRatio, heightRatio),
+    Math.min(Math.sqrt(0.48 / (area / (info.width * info.height))),
+      0.96 / heightRatio, 1.3 / widthRatio),
+  );
   layout[p.id] = {
     width: +(scale * 100).toFixed(3),
     left: +(
@@ -40,5 +48,5 @@ await fs.writeFile(
   JSON.stringify(layout, null, 2) + "\n",
 );
 console.log(
-  `Measured ${roster.length} portraits; normalized silhouette extent to 84% of its square.`,
+  `Measured ${roster.length} portraits; normalized optical area with safe vertical framing.`,
 );

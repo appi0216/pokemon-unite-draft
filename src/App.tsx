@@ -1637,10 +1637,6 @@ function App() {
             <div className="decision-main">
               {complete ? (
                 <>
-                  <div className="selected-description">
-                    <Check size={20} />
-                    <strong>選択完了</strong>
-                  </div>
                   <button
                     ref={completionAction}
                     className="confirm-button completion-next"

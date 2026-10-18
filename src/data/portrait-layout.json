@@ -1,512 +1,512 @@
 {
   "pikachu": {
-    "width": 107.19,
-    "left": -9.006,
-    "top": 0.528
+    "width": 124.8,
+    "left": -18.7,
+    "top": -7.6
   },
   "charizard": {
-    "width": 97.067,
-    "left": 0.533,
-    "top": 3.567
+    "width": 114.103,
+    "left": -8.149,
+    "top": -4.583
   },
   "snorlax": {
-    "width": 90.062,
-    "left": 4.536,
-    "top": 5.186
+    "width": 115.324,
+    "left": -8.216,
+    "top": -7.385
   },
   "crustle": {
-    "width": 111.287,
-    "left": -8.318,
-    "top": -4.306
+    "width": 116.748,
+    "left": -11.18,
+    "top": -6.971
   },
   "greninja": {
-    "width": 103.385,
-    "left": -3.183,
-    "top": 1.538
+    "width": 118.154,
+    "left": -10.781,
+    "top": -5.385
   },
   "lucario": {
-    "width": 102.175,
-    "left": -0.351,
-    "top": 0.14
+    "width": 116.772,
+    "left": -7.544,
+    "top": -6.982
   },
   "venusaur": {
-    "width": 89.6,
-    "left": 4.985,
-    "top": 3.908
+    "width": 138.667,
+    "left": -19.667,
+    "top": -21.333
   },
   "talonflame": {
-    "width": 112,
-    "left": -10.577,
-    "top": -3.308
+    "width": 128,
+    "left": -19.231,
+    "top": -10.923
   },
   "eldegoss": {
-    "width": 109.2,
-    "left": -4.337,
-    "top": -4.075
+    "width": 117.53,
+    "left": -8.483,
+    "top": -8.2
   },
   "mrmime": {
-    "width": 95.475,
-    "left": 2.033,
-    "top": 2.033
+    "width": 126.918,
+    "left": -13.764,
+    "top": -13.764
   },
   "zeraora": {
-    "width": 99.273,
-    "left": -1.545,
-    "top": -0.352
+    "width": 137.71,
+    "left": -21.503,
+    "top": -19.848
   },
   "cinderace": {
-    "width": 95.475,
-    "left": 1.803,
-    "top": 2.033
+    "width": 109.115,
+    "left": -5.082,
+    "top": -4.82
   },
   "gengar": {
-    "width": 94.957,
-    "left": 5.717,
-    "top": 6.63
+    "width": 107.963,
+    "left": -0.348,
+    "top": 0.69
   },
   "ninetales": {
-    "width": 90.528,
-    "left": 4.083,
-    "top": 5.824
+    "width": 119.325,
+    "left": -10.523,
+    "top": -8.228
   },
   "machamp": {
-    "width": 93.433,
-    "left": 3.059,
-    "top": 3.059
+    "width": 106.781,
+    "left": -3.647,
+    "top": -3.647
   },
   "cramorant": {
-    "width": 94.957,
-    "left": 0.696,
-    "top": 2.522
+    "width": 108.522,
+    "left": -6.348,
+    "top": -4.261
   },
   "wigglytuff": {
-    "width": 91.476,
-    "left": 8,
-    "top": 4.042
+    "width": 104.545,
+    "left": 2,
+    "top": -2.524
   },
   "slowbro": {
-    "width": 94.957,
-    "left": 2.522,
-    "top": 1.152
+    "width": 117.241,
+    "left": -8.62,
+    "top": -10.311
   },
   "absol": {
-    "width": 96.53,
-    "left": -0.354,
-    "top": 3.359
+    "width": 110.32,
+    "left": -7.547,
+    "top": -3.304
   },
   "garchomp": {
-    "width": 91,
-    "left": 1.656,
-    "top": 2.75
+    "width": 104,
+    "left": -5.25,
+    "top": -4
   },
   "gardevoir": {
-    "width": 92.936,
-    "left": 5.096,
-    "top": 3.532
+    "width": 106.213,
+    "left": -1.319,
+    "top": -3.106
   },
   "blissey": {
-    "width": 95.475,
-    "left": 2.033,
-    "top": -1.639
+    "width": 109.249,
+    "left": -4.887,
+    "top": -9.089
   },
   "blastoise": {
-    "width": 91.958,
-    "left": 5.789,
-    "top": 2.032
+    "width": 99.827,
+    "left": 2.006,
+    "top": -2.073
   },
   "mamoswine": {
-    "width": 96,
-    "left": 2.462,
-    "top": 5.923
+    "width": 118.982,
+    "left": -8.919,
+    "top": -4.629
   },
   "sylveon": {
-    "width": 94.443,
-    "left": 1.189,
-    "top": 3.005
+    "width": 107.935,
+    "left": -5.784,
+    "top": -3.708
   },
   "greedent": {
-    "width": 91,
-    "left": 6.25,
-    "top": 6.688
+    "width": 97.616,
+    "left": 3.069,
+    "top": 3.539
   },
   "decidueye": {
-    "width": 87.799,
-    "left": 7.789,
-    "top": 6.734
+    "width": 100.342,
+    "left": 1.759,
+    "top": 0.553
   },
   "tsareena": {
-    "width": 91,
-    "left": 3.188,
-    "top": 6.688
+    "width": 117.188,
+    "left": -10.284,
+    "top": -5.777
   },
   "dragonite": {
-    "width": 93.433,
-    "left": 2.16,
-    "top": 5.08
+    "width": 117.459,
+    "left": -10.141,
+    "top": -6.471
   },
   "trevenant": {
-    "width": 87.36,
-    "left": 6.74,
-    "top": 8
+    "width": 99.84,
+    "left": 0.56,
+    "top": 2
   },
   "aegislash": {
-    "width": 90.062,
-    "left": 5.402,
-    "top": 5.835
+    "width": 104,
+    "left": -1.5,
+    "top": -1
   },
   "hoopa": {
-    "width": 90.062,
-    "left": 4.969,
-    "top": 6.701
+    "width": 110.349,
+    "left": -5.175,
+    "top": -3.053
   },
   "duraludon": {
-    "width": 98.157,
-    "left": -0.494,
-    "top": 2.809
+    "width": 111.975,
+    "left": -7.602,
+    "top": -3.834
   },
   "azumarill": {
-    "width": 95.475,
-    "left": -0.951,
-    "top": 2.033
+    "width": 109.115,
+    "left": -8.23,
+    "top": -4.82
   },
   "espeon": {
-    "width": 92.444,
-    "left": 3.556,
-    "top": 3.556
+    "width": 105.651,
+    "left": -3.079,
+    "top": -3.079
   },
   "delphox": {
-    "width": 88.69,
-    "left": 4.802,
-    "top": 5.442
+    "width": 101.36,
+    "left": -1.655,
+    "top": -0.924
   },
   "glaceon": {
-    "width": 86.925,
-    "left": 4.239,
-    "top": 5.075
+    "width": 99.343,
+    "left": -2.299,
+    "top": -1.343
   },
   "buzzwole": {
-    "width": 91.958,
-    "left": 3.137,
-    "top": 2.695
+    "width": 105.095,
+    "left": -3.558,
+    "top": -4.063
   },
   "tyranitar": {
-    "width": 99.84,
-    "left": -0.4,
-    "top": -0.16
+    "width": 112.081,
+    "left": -6.579,
+    "top": -6.31
   },
   "mew": {
-    "width": 102.175,
-    "left": -1.333,
-    "top": -2.807
+    "width": 116.772,
+    "left": -8.667,
+    "top": -10.351
   },
   "dodrio": {
-    "width": 93.935,
-    "left": 2.806,
-    "top": 3.032
+    "width": 107.355,
+    "left": -3.935,
+    "top": -3.677
   },
   "scizor": {
-    "width": 91.958,
-    "left": 0.705,
-    "top": 4.463
+    "width": 105.095,
+    "left": -6.337,
+    "top": -2.042
   },
   "clefable": {
-    "width": 91.958,
-    "left": 3.137,
-    "top": 5.347
+    "width": 107.336,
+    "left": -4.7,
+    "top": -2.12
   },
   "zoroark": {
-    "width": 86.925,
-    "left": 9.463,
-    "top": 7.164
+    "width": 99.343,
+    "left": 3.672,
+    "top": 1.045
   },
   "sableye": {
-    "width": 104,
-    "left": 1.5,
-    "top": -0.25
+    "width": 125.585,
+    "left": -8.566,
+    "top": -10.679
   },
   "urshifu": {
-    "width": 91.958,
-    "left": 1.811,
-    "top": 4.021
+    "width": 105.095,
+    "left": -5.074,
+    "top": -2.547
   },
   "dragapult": {
-    "width": 94.443,
-    "left": -0.173,
-    "top": 1.643
+    "width": 115.422,
+    "left": -11.318,
+    "top": -9.098
   },
   "comfey": {
-    "width": 91.476,
-    "left": 6.901,
-    "top": 4.042
+    "width": 104.545,
+    "left": 0.743,
+    "top": -2.524
   },
   "zacian": {
-    "width": 89.143,
-    "left": 5.429,
-    "top": 3.714
+    "width": 121.098,
+    "left": -10.549,
+    "top": -12.878
   },
   "goodra": {
-    "width": 94.443,
-    "left": 2.324,
-    "top": 2.551
+    "width": 107.935,
+    "left": -4.486,
+    "top": -4.227
   },
   "lapras": {
-    "width": 88.69,
-    "left": 0.538,
-    "top": 7.147
+    "width": 101.36,
+    "left": -6.528,
+    "top": 1.025
   },
   "chandelure": {
-    "width": 95.475,
-    "left": 0.656,
-    "top": 2.721
+    "width": 116.093,
+    "left": -10,
+    "top": -7.488
   },
   "umbreon": {
-    "width": 92.444,
-    "left": 4,
-    "top": 4
+    "width": 105.651,
+    "left": -2.571,
+    "top": -2.571
   },
   "leafeon": {
-    "width": 110.582,
-    "left": -12.203,
-    "top": -9.013
+    "width": 134.919,
+    "left": -25.892,
+    "top": -22
   },
   "iinteleon": {
-    "width": 86.925,
-    "left": 6.537,
-    "top": 6.328
+    "width": 99.343,
+    "left": 0.328,
+    "top": 0.09
   },
   "mewtwox": {
-    "width": 86.495,
-    "left": 1.139,
-    "top": 5.505
+    "width": 98.851,
+    "left": -5.842,
+    "top": -0.851
   },
   "mewtwoy": {
-    "width": 86.495,
-    "left": 1.139,
-    "top": 5.505
+    "width": 98.851,
+    "left": -5.842,
+    "top": -0.851
   },
   "blaziken": {
-    "width": 91.476,
-    "left": 3.602,
-    "top": 4.482
+    "width": 111.553,
+    "left": -6.581,
+    "top": -5.508
   },
   "mimikyu": {
-    "width": 87.36,
-    "left": 8.63,
-    "top": 6.32
+    "width": 99.84,
+    "left": 2.72,
+    "top": 0.08
   },
   "meowscarada": {
-    "width": 92.936,
-    "left": -1.606,
-    "top": 3.532
+    "width": 106.213,
+    "left": -8.979,
+    "top": -3.106
   },
   "metagross": {
-    "width": 99.273,
-    "left": 1.795,
-    "top": -5.602
+    "width": 143.585,
+    "left": -19.722,
+    "top": -30.422
   },
   "gyarados": {
-    "width": 85.229,
-    "left": 4.927,
-    "top": 8
+    "width": 97.405,
+    "left": -1.512,
+    "top": 2
   },
   "miraidon": {
-    "width": 86.925,
-    "left": 7.373,
-    "top": 6.746
+    "width": 99.343,
+    "left": 1.284,
+    "top": 0.567
   },
   "falinks": {
-    "width": 99.273,
-    "left": -4.409,
-    "top": -3.693
+    "width": 115.422,
+    "left": -13.26,
+    "top": -12.428
   },
   "ceruledge": {
-    "width": 87.799,
-    "left": 5.467,
-    "top": 4.201
+    "width": 119.569,
+    "left": -10.647,
+    "top": -12.371
   },
   "ho-oh": {
-    "width": 87.799,
-    "left": 5.889,
-    "top": 6.312
+    "width": 100.342,
+    "left": -0.412,
+    "top": 0.07
   },
   "armarouge": {
-    "width": 87.799,
-    "left": 5.256,
-    "top": 6.734
+    "width": 100.342,
+    "left": -1.136,
+    "top": 0.553
   },
   "darkrai": {
-    "width": 88.242,
-    "left": 4.394,
-    "top": 7.152
+    "width": 100.848,
+    "left": -2.121,
+    "top": 1.03
   },
   "psyduck": {
-    "width": 91.958,
-    "left": 4.463,
-    "top": 4.021
+    "width": 104.355,
+    "left": -1.676,
+    "top": -2.177
   },
   "tinkaton": {
-    "width": 91,
-    "left": 5.156,
-    "top": 5.813
+    "width": 104,
+    "left": -1.25,
+    "top": -0.5
   },
   "galarianrapidash": {
-    "width": 97.067,
-    "left": -0.867,
-    "top": 4.733
+    "width": 110.933,
+    "left": -8.133,
+    "top": -1.733
   },
   "suicune": {
-    "width": 89.6,
-    "left": 4.985,
-    "top": 8.215
+    "width": 121.756,
+    "left": -11.171,
+    "top": -6.78
   },
   "alolanraichu": {
-    "width": 99.273,
-    "left": 3.705,
-    "top": 5.136
+    "width": 113.455,
+    "left": -2.909,
+    "top": -1.273
   },
   "alcremie": {
-    "width": 101.581,
-    "left": -3.233,
-    "top": 2.14
+    "width": 116.093,
+    "left": -10.837,
+    "top": -4.698
   },
   "latios": {
-    "width": 91.476,
-    "left": 3.602,
-    "top": 9.099
+    "width": 141.571,
+    "left": -21.806,
+    "top": -13.298
   },
   "latias": {
-    "width": 91.958,
-    "left": 5.347,
-    "top": 4.684
+    "width": 135.837,
+    "left": -15.959,
+    "top": -16.939
   },
   "pawmot": {
-    "width": 94.443,
-    "left": 1.189,
-    "top": 1.643
+    "width": 107.935,
+    "left": -5.784,
+    "top": -5.265
   },
   "empoleon": {
-    "width": 87.799,
-    "left": 10.111,
-    "top": 5.889
+    "width": 100.342,
+    "left": 4.412,
+    "top": -0.412
   },
   "megalucario": {
-    "width": 90.528,
-    "left": 5.824,
-    "top": 4.083
+    "width": 103.461,
+    "left": -0.487,
+    "top": -2.477
   },
   "megacharizardx": {
-    "width": 90.062,
-    "left": -0.443,
-    "top": 5.402
+    "width": 102.928,
+    "left": -7.649,
+    "top": -0.969
   },
   "dhelmise": {
-    "width": 92.444,
-    "left": 4,
-    "top": 3.556
+    "width": 105.651,
+    "left": -2.571,
+    "top": -3.079
   },
   "vaporeon": {
-    "width": 90.528,
-    "left": 6.912,
-    "top": 4.953
+    "width": 103.461,
+    "left": 0.756,
+    "top": -1.482
   },
   "megagyarados": {
-    "width": 93.935,
-    "left": 3.032,
-    "top": 3.258
+    "width": 107.935,
+    "left": -3.968,
+    "top": -3.708
   },
   "megacharizardy": {
-    "width": 91.476,
-    "left": 4.042,
-    "top": 2.283
+    "width": 124.025,
+    "left": -12.311,
+    "top": -14.696
   },
   "meowth": {
-    "width": 97.067,
-    "left": 2.867,
-    "top": 1.933
+    "width": 110.933,
+    "left": -3.867,
+    "top": -4.933
   },
   "sirfetchd": {
-    "width": 96,
-    "left": 6.615,
-    "top": 8
+    "width": 109.714,
+    "left": 0.418,
+    "top": 2
   },
   "zapdos": {
-    "width": 90.062,
-    "left": 3.67,
-    "top": 5.835
+    "width": 102.928,
+    "left": -2.948,
+    "top": -0.474
   },
   "moltres": {
-    "width": 86.925,
-    "left": 6.328,
-    "top": 8.209
+    "width": 105.095,
+    "left": -2.8,
+    "top": -0.526
   },
   "articuno": {
-    "width": 91.476,
-    "left": 4.702,
-    "top": 4.921
+    "width": 104.545,
+    "left": -1.77,
+    "top": -1.518
   },
   "typhlosion": {
-    "width": 87.36,
-    "left": 8.63,
-    "top": 5.9
+    "width": 99.84,
+    "left": 2.72,
+    "top": -0.4
   },
   "feraligatr": {
-    "width": 90.528,
-    "left": 4.083,
-    "top": 4.736
+    "width": 108.787,
+    "left": -5.178,
+    "top": -4.393
   },
   "meganium": {
-    "width": 90.528,
-    "left": 1.472,
-    "top": 4.083
+    "width": 103.461,
+    "left": -5.461,
+    "top": -2.477
   },
   "skeledirge": {
-    "width": 89.6,
-    "left": 6.277,
-    "top": 5.846
+    "width": 102.4,
+    "left": 0.031,
+    "top": -0.462
   },
   "quaquaval": {
-    "width": 87.36,
-    "left": 6.11,
-    "top": 6.32
+    "width": 99.84,
+    "left": -0.16,
+    "top": 0.08
   },
   "yveltal": {
-    "width": 84.406,
-    "left": 7.594,
-    "top": 12.261
+    "width": 121.756,
+    "left": -11.171,
+    "top": -4.439
   },
   "palkia": {
-    "width": 87.799,
-    "left": 7.578,
-    "top": 7.156
+    "width": 100.342,
+    "left": 1.518,
+    "top": 1.035
   },
   "reshiram": {
-    "width": 86.495,
-    "left": 5.505,
-    "top": 5.297
+    "width": 133.861,
+    "left": -18.861,
+    "top": -19.183
   },
   "solgaleo": {
-    "width": 91.476,
-    "left": 3.602,
-    "top": 4.042
+    "width": 103.119,
+    "left": -2.303,
+    "top": -1.807
   },
   "morpeko": {
-    "width": 87.36,
-    "left": 7.79,
-    "top": 7.58
+    "width": 99.84,
+    "left": 1.76,
+    "top": 1.52
   },
   "toxtricity": {
-    "width": 89.143,
-    "left": 4.786,
-    "top": 6.286
+    "width": 101.878,
+    "left": -1.673,
+    "top": 0.041
   },
   "jolteon": {
-    "width": 91,
-    "left": 3.625,
-    "top": 3.625
+    "width": 104,
+    "left": -3,
+    "top": -3
   },
   "flareon": {
-    "width": 87.799,
-    "left": 8.211,
-    "top": 4.623
+    "width": 100.342,
+    "left": 2.241,
+    "top": -1.859
   }
 }

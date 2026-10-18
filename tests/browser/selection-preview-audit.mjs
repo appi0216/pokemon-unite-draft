@@ -56,6 +56,8 @@ for (const engine of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
             inner.top >= outer.top - tolerance &&
             inner.bottom <= outer.bottom + tolerance;
           const issues = [];
+          if (document.querySelector('.decision-main .selected-description'))
+            issues.push('Footer contains an unnecessary selection description');
           const artworkSize = parseFloat(
             getComputedStyle(document.querySelector(".app")).getPropertyValue(
               "--pokemon-art-size",

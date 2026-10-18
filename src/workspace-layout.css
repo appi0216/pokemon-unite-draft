@@ -1,4 +1,7 @@
 /* Layout owns space; controls never float over the roster. */
+.app .portrait {
+  overflow: hidden;
+}
 /* Shared dialog controls use the current palette, including older settings. */
 dialog {
   font-family: inherit;

@@ -1,0 +1,20 @@
+/* Shared sizing contract. Keep viewport sizing and touch minimums here. */
+.app {
+ --ui-control-size:clamp(30px,min(5vw,8dvh),48px);
+ --ui-control-font:clamp(.6875rem,min(1.7vw,2.9dvh),.9375rem);
+ --ui-control-icon:clamp(13px,min(2.5vw,4dvh),22px);
+ --ui-gap:clamp(2px,min(.8vw,1dvh),8px);
+ --ui-action-padding:clamp(8px,2dvh,16px);
+ --ui-focus-width:2px;
+}
+@media(pointer:coarse) { .app { --ui-control-size:44px; } }
+/* Role surfaces are shared by the home illustrations and roster cards. */
+.app :is(.pokemon-card,.setup-portrait).attack { --panel-role:var(--attack); }
+.app :is(.pokemon-card,.setup-portrait).balance { --panel-role:var(--balance); }
+.app :is(.pokemon-card,.setup-portrait).defense { --panel-role:var(--defense); }
+.app :is(.pokemon-card,.setup-portrait).speed { --panel-role:var(--speed); }
+.app :is(.pokemon-card,.setup-portrait).support { --panel-role:var(--support); }
+.app :is(.pokemon-card,.setup-portrait) {
+ --role-surface:linear-gradient(145deg,color-mix(in srgb,var(--panel-role) 46%,var(--surface-control)),color-mix(in srgb,var(--panel-role) 28%,var(--surface)));
+ --role-border:color-mix(in srgb,var(--panel-role) 62%,var(--surface-border));
+}

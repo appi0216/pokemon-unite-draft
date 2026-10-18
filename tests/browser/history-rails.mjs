@@ -43,7 +43,7 @@ for(const [engine,launcher] of Object.entries({chromium,webkit})) {
     assert(await rail.locator('.history-scroll').evaluate(e=>e.scrollHeight<=e.clientHeight+1),'page must not scroll');
     const next=rail.getByRole('button',{name:'選択済の次のページ'});
     if(await next.isDisabled())break;
-    await rail.locator('.history-scroll').evaluate(el=>{
+    if(n % 2 === 0) { await rail.locator('.history-scroll').focus(); await page.keyboard.press('PageDown'); } else await rail.locator('.history-scroll').evaluate(el=>{
       const touchEvent=(name,props)=>Object.assign(new Event(name,{bubbles:true}),{touches:props.touches,changedTouches:props.changedTouches||[]});
       const touch=(x)=>({identifier:1,target:el,clientX:x,clientY:150});
       el.dispatchEvent(touchEvent('touchstart',{bubbles:true,touches:[touch(100)]}));
@@ -65,6 +65,7 @@ for(const [engine,launcher] of Object.entries({chromium,webkit})) {
   const expanded=page.locator('.team-history.orange .history-scroll');
   await expanded.evaluate(e=>e.scrollTop=e.scrollHeight);
   await page.waitForTimeout(100);
+  await page.screenshot({path:out+'/text200.png'});
   const end=await expanded.locator('.portrait:visible').last().boundingBox(), viewport=await expanded.boundingBox();
   assert(end.y+end.height<=viewport.y+viewport.height+1,'200% last portrait unreachable');
   console.log(`${engine} ${rule} ${size}: both 25-item rails with stable page heights PASS`);
@@ -72,6 +73,9 @@ for(const [engine,launcher] of Object.entries({chromium,webkit})) {
  }
  await browser.close();
 }
+
+
+
 
 
 

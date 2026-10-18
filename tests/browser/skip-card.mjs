@@ -21,8 +21,20 @@ for(const engine of [chromium,webkit]) {
  }
  assert.equal(labels.length,102); assert.equal(new Set(labels).size,102);
  while(!await page.getByRole('button',{name:'前のページ',exact:true}).isDisabled())await page.getByRole('button',{name:'前のページ',exact:true}).click();
- for(let i=0;i<6;i++)await page.locator('.skip-card').click();
+ const count=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('unite-draft.v1')).draft.actions.length);
+ await page.locator('.skip-card').click();
+ assert.equal(await count(),0,'skip selection must not commit');
+ await page.keyboard.press('Escape');
+ assert.equal(await page.locator('.is-selected.skip-card').count(),0);
+ await page.locator('.skip-card').focus();
+ await page.keyboard.press('Enter');
+ assert.equal(await count(),1,'keyboard confirm must commit once');
+ await page.getByRole('button',{name:'1つ戻す',exact:true}).click();
+ assert.equal(await count(),0,'skip can be undone');
+ for(let i=0;i<6;i++) { await page.locator('.skip-card').click(); await page.getByRole('button',{name:'使用禁止のスキップを決定',exact:true}).click(); }
  assert.equal(await page.locator('.skip-card').count(),0);
  console.log(engine.name(),'102 cards, first skip, six bans to picks PASS');
  await browser.close();
 }
+
+

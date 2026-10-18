@@ -29,7 +29,7 @@ export default function TeamHistory({team,name,history,active}: {
   const swipe = useSwipePages(direction => setPage(Math.max(0, Math.min(pages - 1, current + direction))));
   return <aside className={`team-history ${team} ${active ? "turn-active" : ""}`} data-games={history.length} aria-label={`${name}の過去の選出`}>
     <div className="history-heading"><strong>選択済</strong><span>{history.length*5}</span></div>
-    <div className="history-scroll" {...swipe} ref={content} style={{ gridTemplateRows: `repeat(${capacity}, minmax(0, 1fr))` }} aria-label={`${name}の選択済ポケモン一覧`}>
+    <div className="history-scroll" tabIndex={0} onKeyDown={e => { const direction = e.key === "PageDown" ? 1 : e.key === "PageUp" ? -1 : 0; if (direction) { e.preventDefault(); setPage(Math.max(0, Math.min(pages - 1, current + direction))); } }} {...swipe} ref={content} style={{ gridTemplateRows: `repeat(${capacity}, minmax(0, 1fr))` }} aria-label={`${name}の選択済ポケモン一覧`}>
       {history.slice(current*capacity,(current+1)*capacity).map(past =>
         <section className="history-game" key={past.game} aria-label={`第${past.game}試合`}>
           <h3>第{past.game}試合</h3>
@@ -46,6 +46,7 @@ export default function TeamHistory({team,name,history,active}: {
     </nav>
   </aside>;
 }
+
 
 
 

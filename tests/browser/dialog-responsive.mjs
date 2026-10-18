@@ -16,7 +16,7 @@ for(const engine of [chromium,webkit]) {
   const cards=page.locator('.pokemon-card');
   await cards.nth(1).focus();
   await page.keyboard.press('ArrowLeft');
-  assert.equal(await page.locator('.pokemon-card.is-selected').count(),0);
+  assert.equal(await page.locator('.pokemon-card.is-selected:not(.skip-card)').count(),0);
   assert.equal(await cards.first().evaluate(e=>getComputedStyle(e).outlineOffset),'-3px');
   await page.getByRole('button',{name:'試合履歴・画像保存',exact:true}).click();
   for(const font of ['16px','32px']) {
@@ -36,4 +36,5 @@ for(const engine of [chromium,webkit]) {
  }
  await browser.close();
 }
+
 

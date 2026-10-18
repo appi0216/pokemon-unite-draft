@@ -444,7 +444,7 @@ function App() {
       (hideUsed && redundantAllStarBan(draft, selected, activeTeam))
     )
       return;
-    const result = choose(draft, selected, ids);
+    const result = choose(draft, selected === "__skip__" ? null : selected, ids);
     if (result === draft) return;
     setDraft(result);
     setSelected(null);
@@ -1396,7 +1396,7 @@ function App() {
                     );
                     return;
                   }
-                  if (current.classList.contains("skip-card") && (e.key === "Enter" || e.key === " ")) { e.stopPropagation(); return; }
+
                   if (e.key === "Enter") {
                     e.preventDefault();
                     e.stopPropagation();
@@ -1458,7 +1458,7 @@ function App() {
                     goToRosterPage(currentPage - 1, "last");
                 }}
               >
-                {skipSlot === 1 && currentPage === 0 && <button type="button" className="pokemon-card skip-card" onFocus={() => setSelected(null)} aria-label="使用禁止投票をスキップ" title="スキップ" onClick={() => { setDraft(choose(draft, null, ids)); setSelected(null); }}><SkipForward aria-hidden="true" /></button>}
+                {skipSlot === 1 && currentPage === 0 && <button type="button" className={`pokemon-card skip-card ${selected === "__skip__" ? "is-selected" : ""}`} aria-pressed={selected === "__skip__"} onFocus={() => setSelected("__skip__")} aria-label="使用禁止投票をスキップ" title="スキップ" onClick={() => setSelected("__skip__")}><SkipForward aria-hidden="true" /></button>}
                 {pagePokemon.map((p, i) => {
                   const used = unavailable(draft, p.id, activeTeam);
                   const action = draft.actions.find((a) => a.pokemon === p.id);
@@ -1651,7 +1651,7 @@ function App() {
                     className="confirm-button"
                     disabled={!selected}
                     onClick={confirm}
-                    aria-label={`${selectedPokemon?.name ?? "ポケモン"}の${phase === "ban" ? "使用禁止" : "選択"}を決定`}
+                    aria-label={selected === "__skip__" ? "使用禁止のスキップを決定" : `${selectedPokemon?.name ?? "ポケモン"}の${phase === "ban" ? "使用禁止" : "選択"}を決定`}
                   >
                     {phase === "ban" ? <Ban size={18} /> : <Check size={18} />}
                     <span>決定</span>
@@ -2123,6 +2123,7 @@ function App() {
   );
 }
 export default App;
+
 
 
 

@@ -1,0 +1,86 @@
+/* One viewport-aware scale for all surrounding controls, not just portraits. */
+@layer adaptive-layout {
+ .app:not(.setup-mode) {
+  --chrome-size:var(--ui-control-size);
+  --chrome-font:var(--ui-control-font);
+  --chrome-icon:var(--ui-control-icon);
+  --chrome-gap:var(--ui-gap);
+  --control-size:var(--chrome-size) !important;
+  --control-visual:var(--chrome-size) !important;
+  --control-font:var(--chrome-font) !important;
+  --control-icon:var(--chrome-icon) !important;
+  --control-visual-inset:0px !important;
+ }
+ .app:not(.setup-mode) > .app-header { min-height:var(--chrome-size) !important; gap:var(--chrome-gap) !important; }
+ .app:not(.setup-mode) :is(.header-phase,.header-instruction,.header-phase-title,.progress-toggle) { font-size:var(--chrome-font) !important; }
+ .app:not(.setup-mode) :is(.app-header .icon-button,.header-timer,.search-field,.search-field input,.sort-trigger,.filter-toggle,.roster-pagination button,.decision-bar .subtle-button,.decision-main>.confirm-button) { min-height:var(--chrome-size) !important; height:var(--chrome-size) !important; padding-block:0 !important; font-size:var(--chrome-font) !important; }
+ .app:not(.setup-mode) :is(.app-header .icon-button,.sort-trigger,.filter-toggle,.roster-pagination button) { min-width:var(--chrome-size) !important; width:var(--chrome-size) !important; flex-basis:var(--chrome-size) !important; }
+ .app:not(.setup-mode) :is(.app-header,.search-field,.sort-trigger,.filter-toggle,.roster-pagination,.decision-bar) svg { width:var(--chrome-icon) !important; height:var(--chrome-icon) !important; }
+ .app:not(.setup-mode) :is(.selection-footer,.decision-bar,.progress-toggle) { min-height:0 !important; padding-block:var(--chrome-gap) !important; }
+ .app:not(.setup-mode) .decision-main>.confirm-button { min-width:clamp(76px,13vw,128px) !important; }
+ .app:not(.setup-mode) .roster-pagination { gap:var(--chrome-gap) !important; }
+ .app:not(.setup-mode) .roster-pagination>span { min-width:3.5em !important; font-size:var(--chrome-font) !important; }
+ .app:not(.setup-mode) > .app-footer { min-height:0 !important; font-size:clamp(.625rem,min(1.5vw,2.6dvh),.75rem) !important; }
+ .app:not(.setup-mode) .app-footer :is(button,.connection) { min-height:0 !important; height:auto !important; padding-block:3px !important; }
+
+}
+.app .skip-card { display:grid; place-items:center; background:var(--surface-control); color:var(--text-secondary); }
+
+.app.setup-mode { --home-gap:clamp(8px,2dvh,24px); --home-font:clamp(.75rem,min(2vw,3.3dvh),1rem); }
+.app.setup-mode .setup-refresh-card { gap:var(--home-gap); padding:clamp(12px,3dvh,28px); }
+.app.setup-mode .setup-refresh-heading h1 { font-size:clamp(1rem,min(4vw,5dvh),1.6rem); }
+.app.setup-mode .setup-portrait:nth-child(n) { width:clamp(32px,10dvh,58px); height:clamp(32px,10dvh,58px); }
+.app.setup-mode .setup-refresh :is(button,summary,legend,label,.setup-row-label) { font-size:var(--home-font); }
+.app.setup-mode .setup-resume { min-height:44px; padding:clamp(8px,2dvh,18px); gap:var(--home-gap); }
+.app.setup-mode .setup-mode-choice { min-height:44px; padding:clamp(8px,2dvh,18px); gap:clamp(4px,1dvh,10px); }
+.app.setup-mode .setup-mode-choice>span { font-size:var(--home-font); }
+.app.setup-mode .setup-mode-choice>svg { width:clamp(16px,4dvh,24px); height:clamp(16px,4dvh,24px); }
+.app.setup-mode .setup-main.setup-refresh { padding-block:clamp(6px,2dvh,24px); }
+
+/* Dialog controls scale with viewport height as well as width. */
+.app dialog { max-width:calc(100vw - 24px); max-height:calc(100dvh - 24px); padding:clamp(12px,min(3vw,4dvh),24px); font-size:clamp(.75rem,min(2.4vw,3.3dvh),1rem); }
+.app .modal-heading { gap:clamp(6px,2dvh,16px); margin-bottom:clamp(8px,2dvh,20px); }
+.app .modal-heading h2 { font-size:clamp(1rem,min(3vw,4.5dvh),1.35rem); }
+.app .first-prompt-copy { font-size:inherit; margin-block:clamp(6px,2dvh,18px); }
+.app .first-prompt-options { gap:clamp(6px,1.5vw,12px); }
+.app .first-prompt-options button { min-height:44px; height:clamp(44px,16dvh,100px); padding:clamp(8px,2dvh,20px); font-size:inherit; }
+.app .pokemon-grid .skip-card { background:linear-gradient(145deg,var(--surface-control),var(--surface)); border:1px solid var(--surface-border); color:var(--text-secondary,#b2b1bd); }
+.app .pokemon-grid .skip-card svg { width:clamp(18px,3vw,26px); height:clamp(18px,3vw,26px); stroke-width:1.8; }
+@layer adaptive-layout {
+ .app .pokemon-grid .pokemon-card:focus-visible { outline:var(--ui-focus-width) solid var(--team,var(--purple)) !important; outline-offset:-3px !important; box-shadow:none !important; }
+ .app .first-prompt-options button:focus-visible { outline:var(--ui-focus-width) solid currentColor !important; outline-offset:-4px !important; box-shadow:none !important; }
+}
+.app .review-dialog { width:min(900px,calc(100vw - 24px)); }
+.app .past-games-review { min-height:0; overflow:auto; }
+.app .past-game-review-card { padding:clamp(6px,1.5dvh,16px); margin-bottom:clamp(6px,1.5dvh,16px); }
+.app .past-game-review { gap:clamp(4px,1vw,12px); }
+.app .past-game-review > section { min-width:0; padding:clamp(5px,1.5vw,14px); }
+.app .review-dialog :is(button,h3,strong) { font-size:inherit; }
+.app .review-dialog .portrait { width:clamp(24px,min(7vw,10dvh),58px); height:clamp(24px,min(7vw,10dvh),58px); max-width:100%; }
+.app :is(.review-ban-list,.review-pick-list) { gap:clamp(2px,1vw,10px); }
+.app .review-dialog .past-game-download { padding:clamp(4px,1dvh,12px); min-height:36px; }
+.app dialog .modal-heading>.icon-button { width:clamp(32px,8dvh,44px); height:clamp(32px,8dvh,44px); min-height:32px; flex-basis:clamp(32px,8dvh,44px); }
+
+
+/* Keep both teams side by side, including short and narrow displays. */
+@layer adaptive-layout {
+ .app .past-game-review { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:clamp(4px,1.2vw,12px) !important; }
+ .app .past-game-review>section { min-width:0 !important; padding:clamp(4px,1vw,12px) !important; }
+ .app .past-game-review :is(h4,strong) { font-size:clamp(.625rem,1.8vw,.875rem) !important; overflow-wrap:anywhere; }
+ .app .past-game-review h4 { display:flex; flex-wrap:wrap; justify-content:center; gap:4px; }
+ .app .past-game-review .review-ban-list { display:grid !important; grid-template-columns:repeat(3,minmax(0,1fr)) !important; }
+ .app .past-game-review .review-pick-list { display:grid !important; grid-template-columns:repeat(5,minmax(0,1fr)) !important; }
+ .app .past-game-review :is(.review-ban-list,.review-pick-list) article { min-width:0 !important; padding:0 !important; }
+ .app .past-game-review .portrait { width:100% !important; height:auto !important; aspect-ratio:1; max-width:clamp(28px,10dvh,58px) !important; margin-inline:auto; }
+ .app dialog .modal-buttons { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(6px,2vw,12px); }
+ .app dialog .modal-buttons button { min-width:0; padding:var(--ui-action-padding); font-size:inherit; white-space:normal; }
+ .app dialog { overflow:auto; }
+}
+
+
+
+/* Preserve readable history rows when text enlargement consumes the viewport. */
+@layer adaptive-layout {
+ .app .allstar-arena > .team-side:has(.history-game) { overflow:auto !important; }
+ .app .allstar-arena > .team-side > .team-history { min-height:calc(6rem + 100px) !important; }
+}

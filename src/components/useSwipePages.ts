@@ -6,8 +6,10 @@ export default function useSwipePages(onSwipe: (direction: number) => void) {
   const suppressUntil = useRef(0);
   return {
     onTouchStart(e: TouchEvent) {
+      suppressUntil.current = 0;
       start.current = e.touches.length === 1 ? {x:e.touches[0].clientX,y:e.touches[0].clientY} : null;
     },
+    onTouchMove(e: TouchEvent) { if (e.touches.length !== 1) start.current = null; },
     onTouchCancel() { start.current = null; },
     onTouchEnd(e: TouchEvent) {
       const origin=start.current;
@@ -25,3 +27,4 @@ export default function useSwipePages(onSwipe: (direction: number) => void) {
     },
   };
 }
+

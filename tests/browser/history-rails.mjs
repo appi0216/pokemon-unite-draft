@@ -27,28 +27,22 @@ for(const [engine,launcher] of Object.entries({chromium,webkit})) {
    if(await tab.isVisible())await tab.click();
    const rail=page.locator(`.team-history.${team}`);
    await rail.waitFor({state:'visible'});
-   assert.equal(await rail.locator('.portrait').count(),30);
-   if(size[0]<=1000) {
-    const panel=page.locator(`.team-side.${team} .team-panel`);
-    assert(await panel.isVisible());
-    const footer=await page.locator('.decision-bar').boundingBox();
-    await rail.locator('.history-toggle').click();
-    assert(!await panel.isVisible());
-    await page.waitForTimeout(200);
-
-    for(let game=0;game<6;game++) {
-     const portraits=rail.locator('.history-game[data-current="true"] .portrait');
-     assert.equal(await portraits.count(),5);
-     for(const box of await portraits.evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect();return {w:r.width,h:r.height}})))
-      assert(box.w>=28 && box.h>=28,`history portrait too small ${JSON.stringify(box)}`);
-     if(game<5)await rail.getByRole('button',{name:'次の試合の選択済み'}).click();
+   await page.waitForTimeout(150);
+   const seen=[];
+   for(let n=0;n<6;n++) {
+    const games=rail.locator('.history-game');
+    for(let i=0;i<await games.count();i++) {
+     assert.equal(await games.nth(i).locator('.portrait').count(),5);
+     seen.push(await games.nth(i).getAttribute('aria-label'));
     }
-    const after=await page.locator('.decision-bar').boundingBox();
-    assert(Math.abs(footer.y-after.y)<1,'footer moved on expansion');
-    await rail.locator('.history-toggle').click();
-    assert(await panel.isVisible(),'close must restore team');
-    await rail.locator('.history-toggle').click();
+    assert(await rail.locator('.history-scroll').evaluate(e=>e.scrollHeight<=e.clientHeight+1),'page must not scroll');
+    const next=rail.getByRole('button',{name:'選択済の次のページ'});
+    if(await next.isDisabled())break;
+    await next.click();
    }
+   assert.equal(seen.length,6);
+   assert.equal(new Set(seen).size,6);
+   assert(await page.locator(`.team-side.${team} .team-panel`).isVisible());
    assert(await rail.locator('.history-scroll').evaluate(e=>e.scrollHeight<=e.clientHeight+1),'history must not scroll');
    await page.screenshot({path:`${out}/${engine}-${rule}-${size.join('x')}-${team}.png`});
   }
@@ -67,3 +61,4 @@ for(const [engine,launcher] of Object.entries({chromium,webkit})) {
  }
  await browser.close();
 }
+

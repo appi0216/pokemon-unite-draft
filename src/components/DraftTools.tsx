@@ -8,16 +8,12 @@ export default function DraftTools({
   onChange,
   restricted,
   onRestricted,
-  onExport,
-  onImport,
   report,
 }: {
   values: SetupValues;
   onChange: (v: SetupValues) => void;
   restricted: string[];
   onRestricted: (ids: string[]) => void;
-  onExport: () => void;
-  onImport: (file: File) => void;
   report: (message: string) => void;
 }) {
   const [presets, setPresets] = useState(readPresets);
@@ -123,27 +119,8 @@ export default function DraftTools({
           制限をすべて解除
         </button>
       </section>
-      <section>
-        <h3>バックアップ</h3>
-        <p>
-          現在の進行状況・試合履歴・保存済み設定・プリセットを保存します。準備画面の未確定の変更は含みません。
-        </p>
-        <div className="tools-actions">
-          <button onClick={onExport}>バックアップを保存</button>
-          <label className="import-backup">
-            バックアップを読み込む
-            <input
-              type="file"
-              accept=".json,application/json"
-              onChange={(e) => {
-                const file = e.target.files?.[0];
-                if (file) onImport(file);
-                e.target.value = "";
-              }}
-            />
-          </label>
-        </div>
-      </section>
+
     </div>
   );
 }
+

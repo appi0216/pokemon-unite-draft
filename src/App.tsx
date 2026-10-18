@@ -4,10 +4,7 @@ import type { ReactNode } from "react";
 import Portrait from "./components/Portrait";
 import DraftTools from "./components/DraftTools";
 import {
-  parseBackup,
   downloadBlob,
-  PRESETS_KEY,
-  readPresets,
 } from "./domain/backup";
 import SetupScreen from "./components/SetupScreen";
 import { createSeriesImage, createResultImage } from "./result-image";
@@ -201,9 +198,6 @@ function App() {
   const [restrictions, setRestrictions] = useState<string[]>(
     initial.draft.restricted ?? [],
   );
-  const [pendingBackup, setPendingBackup] = useState<ReturnType<
-    typeof parseBackup
-  > | null>(null);
   const [seriesBusy, setSeriesBusy] = useState(false);
   const [settings, setSettings] = useState<Settings>(initial.settings);
   const [started, setStarted] = useState(initial.started);
@@ -324,7 +318,6 @@ function App() {
       firstPrompt ||
       reviewOpen ||
       toolsOpen ||
-      pendingBackup ||
       screen === "setup" ||
       settings.seconds === 0
     )
@@ -341,7 +334,6 @@ function App() {
     firstPrompt,
     reviewOpen,
     toolsOpen,
-    pendingBackup,
     screen,
     settings.seconds,
   ]);
@@ -496,7 +488,6 @@ function App() {
         !firstPrompt &&
         !reviewOpen &&
         !toolsOpen &&
-        !pendingBackup &&
         rewindTarget === null &&
         !editing &&
         !e.ctrlKey &&
@@ -558,7 +549,6 @@ function App() {
         !firstPrompt &&
         !reviewOpen &&
         !toolsOpen &&
-        !pendingBackup &&
         selected &&
         !modal &&
         !filtersOpen &&
@@ -1714,7 +1704,7 @@ function App() {
           </button>
         </div>
       </footer>
-      {notice && !toolsOpen && !pendingBackup && !reviewOpen && (
+      {notice && !toolsOpen && !reviewOpen && (
         <div className="toast" role="status">
           <Info size={17} />
           {notice}
@@ -1725,7 +1715,7 @@ function App() {
       )}
       {toolsOpen && (
         <Modal
-          title="チーム・大会設定とバックアップ"
+          title="チーム・大会設定"
           className="tools-dialog"
           notice={notice}
           onClose={() => setToolsOpen(false)}
@@ -1736,105 +1726,13 @@ function App() {
             restricted={restrictions}
             onRestricted={setRestrictions}
             report={setNotice}
-            onExport={() =>
-              downloadBlob(
-                new Blob(
-                  [
-                    JSON.stringify(
-                      {
-                        format: "unite-draft-backup",
-                        version: 1,
-                        draft,
-                        settings,
-                        started,
-                        presets: readPresets(),
-                      },
-                      null,
-                      2,
-                    ),
-                  ],
-                  { type: "application/json" },
-                ),
-                "unite-draft-backup.json",
-              )
-            }
-            onImport={async (file) => {
-              try {
-                if (file.size > 2_000_000) throw new Error("Too large");
-                const backup = parseBackup(await file.text(), ids);
-                setNotice("");
-                setPendingBackup(backup);
-                setToolsOpen(false);
-              } catch {
-                setNotice(
-                  "対応するバックアップではありません。データは変更していません。",
-                );
-              }
-            }}
           />
-        </Modal>
-      )}
-      {pendingBackup && (
-        <Modal
-          title="バックアップを読み込みますか？"
-          notice={notice}
-          onClose={() => setPendingBackup(null)}
-        >
-          <p>
-            現在の進行状況・履歴・設定・プリセットを置き換えます。必要なデータは先にバックアップしてください。
-          </p>
-          <div className="modal-buttons">
-            <button
-              className="modal-secondary"
-              onClick={() => setPendingBackup(null)}
-            >
-              キャンセル
-            </button>
-            <button
-              className="modal-primary"
-              onClick={() => {
-                try {
-                  localStorage.setItem(
-                    PRESETS_KEY,
-                    JSON.stringify(pendingBackup.presets),
-                  );
-                  setDraft(pendingBackup.draft);
-                  setSettings(pendingBackup.settings);
-                  setStarted(pendingBackup.started);
-                  setDraftSettings({
-                    ...pendingBackup.settings,
-                    allStar: pendingBackup.draft.allStar,
-                    fearless: pendingBackup.draft.seriesRule === "fearless",
-                    bestOf: pendingBackup.draft.bestOf,
-                  });
-                  setRestrictions(pendingBackup.draft.restricted ?? []);
-                  setSelected(null);
-                  setSwapFrom(null);
-                  setQuery("");
-                  setRole("all");
-                  setRunning(false);
-                  setReviewGame(null);
-                  setReviewOpen(false);
-                  setFirstPrompt(null);
-                  setScreen(pendingBackup.started ? "draft" : "setup");
-                  setPendingBackup(null);
-                  setNotice("バックアップを読み込みました。");
-                } catch {
-                  setNotice(
-                    "読み込みできませんでした。保存領域をご確認ください。",
-                  );
-                }
-              }}
-            >
-              読み込む
-            </button>
-          </div>
         </Modal>
       )}
       {modal === "replace" && (
         <Modal title="新しいドラフトを開始" onClose={() => setModal(null)}>
           <p>
-            保存済みのドラフトと試合履歴を置き換えます。必要な記録は先にバックアップしてください。
+            保存済みのドラフトと試合履歴を置き換えます。この操作は取り消せません。
           </p>
           <div className="modal-buttons">
             <button
@@ -2110,7 +2008,7 @@ function App() {
           <div className="info-content">
             {!storageOk && (
               <p role="alert">
-                自動保存できていません。画面を閉じる前に、ホームの「その他の設定」からバックアップを保存してください。
+                自動保存できていません。画面を閉じると変更内容が失われる可能性があります。ブラウザーの保存領域をご確認ください。
               </p>
             )}
             <p>
@@ -2238,4 +2136,5 @@ function App() {
   );
 }
 export default App;
+
 

@@ -505,3 +505,24 @@
     outline: 1px solid ButtonText;
   }
 }
+
+/* Shared role palette and fluid setup sizing. */
+.setup-portrait.speed { --panel-role: var(--speed); }
+.setup-portrait.attack { --panel-role: var(--attack); }
+.setup-portrait.balance { --panel-role: var(--balance); }
+.setup-portrait:nth-child(n) {
+ background: linear-gradient(145deg,color-mix(in srgb,var(--panel-role) 46%,var(--surface-control)),color-mix(in srgb,var(--panel-role) 28%,var(--surface)));
+ border-color: color-mix(in srgb,var(--panel-role) 62%,var(--surface-border));
+ width: clamp(36px,9vw,58px); height: clamp(36px,9vw,58px);
+}
+.app.setup-mode .setup-main.setup-refresh { padding: clamp(10px,3vw,32px) max(10px,env(safe-area-inset-right)) clamp(10px,3vw,32px) max(10px,env(safe-area-inset-left)); }
+.setup-refresh-card { padding: clamp(12px,3vw,28px); gap: clamp(12px,2.5vw,24px); }
+.setup-refresh-heading { flex-wrap: wrap; }
+.setup-refresh .setup-portraits { display: flex; }
+.setup-refresh :is(input,button,summary) { max-width: 100%; }
+.setup-refresh :is(.setup-row-label,.setup-mode-choice,.setup-resume-copy) { min-width: 0; overflow-wrap: anywhere; }
+@media(max-height:500px) and (orientation:landscape) {
+ .app.setup-mode .setup-main.setup-refresh { max-width: 900px; }
+ .setup-refresh-card { gap:12px; }
+ .setup-mode-choice { min-height:52px; padding:8px; }
+}

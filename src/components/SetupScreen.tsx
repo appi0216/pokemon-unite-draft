@@ -67,13 +67,13 @@ export default function SetupScreen({
         <header className="setup-refresh-heading">
           <div>
             <h1 id="setup-title">ドラフトの準備</h1>
-            <p>使用禁止 3匹 · 選択 5匹</p>
+
           </div>
           <div className="setup-portraits" aria-hidden="true">
             {["gengar", "pikachu", "megalucario"].map((id) => {
               const pokemon = byId.get(id);
               return pokemon ? (
-                <span className="setup-portrait" key={id}>
+                <span className={`setup-portrait ${pokemon.role}`} key={id}>
                   <Portrait p={pokemon} eager />
                 </span>
               ) : null;
@@ -226,7 +226,7 @@ export default function SetupScreen({
             type="button"
             className="setup-settings-button"
             onClick={onTools}
-            aria-label="その他の設定：プリセット・大会制限・バックアップ"
+            aria-label="その他の設定：プリセット・大会制限"
           >
             <span className="setup-row-label">
               <Settings2 size={20} aria-hidden="true" />
@@ -301,3 +301,4 @@ export default function SetupScreen({
     </main>
   );
 }
+

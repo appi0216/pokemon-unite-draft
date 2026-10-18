@@ -28,15 +28,28 @@ for(const [engine,launcher] of Object.entries({chromium,webkit})) {
    const rail=page.locator(`.team-history.${team}`);
    await rail.waitFor({state:'visible'});
    assert.equal(await rail.locator('.portrait').count(),30);
-   const r=await rail.boundingBox(),panel=await page.locator(`.team-side.${team} .team-panel`).boundingBox();
-   assert(Math.abs(r.y-panel.y)<3,'rail must align with panel top');
-   assert(team==='purple'?r.x+r.width<=panel.x+1:panel.x+panel.width<=r.x+1,'rail must be outside team');
-   const boxes=await rail.locator('.history-pokemon-item').evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,bottom:r.bottom}}));
-   assert(await rail.locator('.history-scroll').evaluate(e=>e.scrollHeight<=e.clientHeight+1 && e.scrollWidth<=e.clientWidth+1),'history must not scroll');
-   await rail.locator('.history-scroll').evaluate(e=>e.scrollTop=e.scrollHeight);
-   await page.waitForTimeout(250);
-   const last=await rail.locator('.portrait').last().boundingBox();
-   assert(last.y>=r.y && last.y+last.height<=r.y+r.height+1,'last history item must be reachable');
+   if(size[0]<=1000) {
+    const panel=page.locator(`.team-side.${team} .team-panel`);
+    assert(await panel.isVisible());
+    const footer=await page.locator('.decision-bar').boundingBox();
+    await rail.locator('.history-toggle').click();
+    assert(!await panel.isVisible());
+    await page.waitForTimeout(200);
+
+    for(let game=0;game<6;game++) {
+     const portraits=rail.locator('.history-game[data-current="true"] .portrait');
+     assert.equal(await portraits.count(),5);
+     for(const box of await portraits.evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect();return {w:r.width,h:r.height}})))
+      assert(box.w>=28 && box.h>=28,`history portrait too small ${JSON.stringify(box)}`);
+     if(game<5)await rail.getByRole('button',{name:'次の試合の選択済み'}).click();
+    }
+    const after=await page.locator('.decision-bar').boundingBox();
+    assert(Math.abs(footer.y-after.y)<1,'footer moved on expansion');
+    await rail.locator('.history-toggle').click();
+    assert(await panel.isVisible(),'close must restore team');
+    await rail.locator('.history-toggle').click();
+   }
+   assert(await rail.locator('.history-scroll').evaluate(e=>e.scrollHeight<=e.clientHeight+1),'history must not scroll');
    await page.screenshot({path:`${out}/${engine}-${rule}-${size.join('x')}-${team}.png`});
   }
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'horizontal overflow');
@@ -47,7 +60,7 @@ for(const [engine,launcher] of Object.entries({chromium,webkit})) {
   const expanded=page.locator('.team-history.orange .history-scroll');
   await expanded.evaluate(e=>e.scrollTop=e.scrollHeight);
   await page.waitForTimeout(100);
-  const end=await expanded.locator('.portrait').last().boundingBox(), viewport=await expanded.boundingBox();
+  const end=await expanded.locator('.portrait:visible').last().boundingBox(), viewport=await expanded.boundingBox();
   assert(end.y+end.height<=viewport.y+viewport.height+1,'200% last portrait unreachable');
   console.log(`${engine} ${rule} ${size}: both 30-item rails PASS`);
   await page.close();

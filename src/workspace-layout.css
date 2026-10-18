@@ -1917,3 +1917,53 @@ dialog .dialog-notice {
  .app .allstar-arena .history-pokemon-item { padding:0; border:0; }
  .app .allstar-arena .history-game h3 { font-size:.5rem; }
 }
+.history-toggle,.history-game-nav { display:none; }
+@media(max-width:1000px), (max-height:600px) {
+ @layer adaptive-layout {
+  .app .draft-arena.allstar-arena[class] > .team-side:has(.history-game) {
+   grid-template-columns:minmax(0,1fr) !important;
+   grid-template-rows:auto minmax(0,1fr) !important;
+  }
+ }
+ .app .allstar-arena > .team-side:has(.history-game) > .team-history {
+  grid-column:1; grid-row:1; height:auto;
+ }
+ .app .allstar-arena > .team-side:has(.history-game) > .team-panel {
+  grid-column:1; grid-row:2; min-height:0;
+ }
+ .app .allstar-arena .team-history .history-toggle {
+  display:block; width:100%; min-height:32px; padding:4px; font-size:.75rem;
+  color:inherit; background:var(--surface-control); border:1px solid var(--surface-border); border-radius:8px;
+ }
+ .app .allstar-arena .team-history .history-heading { display:none; }
+ .app .allstar-arena .team-history[data-open="false"] .history-scroll { display:none; }
+ .app .allstar-arena > .team-side:has(.team-history[data-open="true"]) > .team-panel { display:none; }
+ .app .allstar-arena > .team-side > .team-history[data-open="true"] { grid-row:1 / -1; }
+ .app .allstar-arena .team-history[data-open="true"] .history-game-nav {
+  display:flex; justify-content:space-between; align-items:center; flex:none; font-size:.6875rem; gap:2px;
+ }
+ .app .history-game-nav button { min-width:28px; min-height:32px; padding:0; font-size:1.25rem; }
+ .app .allstar-arena .team-history[data-open="true"] .history-scroll { display:flex; padding:4px; }
+ .app .allstar-arena .history-game[data-current="false"] { display:none; }
+ .app .allstar-arena .history-game[data-current="true"] { flex:1; }
+ .app .allstar-arena .history-game h3 { display:none; }
+ .app .allstar-arena .history-pokemon { grid-template-columns:repeat(2,minmax(0,1fr)) !important; grid-template-rows:repeat(3,minmax(0,1fr)); }
+ .app .allstar-arena .history-pokemon-item .portrait { width:min(100cqw,100cqh,72px); height:min(100cqw,100cqh,72px); max-width:72px; }
+}
+@media(max-width:1000px), (max-height:600px) {
+ @layer adaptive-layout {
+  .app .draft-arena.allstar-arena[class] > .team-side:is(.purple,.orange):has(.history-game) { grid-template-columns:minmax(0,1fr) !important; }
+ }
+ .app .allstar-arena .team-history .history-pokemon { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+}
+@media(max-width:1000px), (max-height:600px) {
+ @layer adaptive-layout {
+  .app .allstar-arena .team-history .history-pokemon { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+ }
+}
+@media(max-width:1000px), (max-height:600px) {
+ @layer adaptive-layout {
+  .app .draft-arena.allstar-arena[class] > .team-side:is(.purple,.orange):has(.history-game) { grid-template-rows:32px minmax(0,1fr) !important; }
+ }
+ .app .allstar-arena > .team-side > .team-history[data-open="false"] { min-height:32px; }
+}

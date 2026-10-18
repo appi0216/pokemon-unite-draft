@@ -16,6 +16,7 @@ export default function TeamHistory({
   return (
     <aside
       className={`team-history ${team} ${active ? "turn-active" : ""}`}
+      data-games={history.length}
       aria-label={`${name}の過去の選出`}
     >
       <div className="history-heading">

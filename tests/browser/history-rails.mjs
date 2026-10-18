@@ -32,7 +32,7 @@ for(const [engine,launcher] of Object.entries({chromium,webkit})) {
    assert(Math.abs(r.y-panel.y)<3,'rail must align with panel top');
    assert(team==='purple'?r.x+r.width<=panel.x+1:panel.x+panel.width<=r.x+1,'rail must be outside team');
    const boxes=await rail.locator('.history-pokemon-item').evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,bottom:r.bottom}}));
-   for(let i=1;i<boxes.length;i++)assert(boxes[i].y>=boxes[i-1].bottom-1,'history must be vertical');
+   assert(await rail.locator('.history-scroll').evaluate(e=>e.scrollHeight<=e.clientHeight+1 && e.scrollWidth<=e.clientWidth+1),'history must not scroll');
    await rail.locator('.history-scroll').evaluate(e=>e.scrollTop=e.scrollHeight);
    await page.waitForTimeout(250);
    const last=await rail.locator('.portrait').last().boundingBox();

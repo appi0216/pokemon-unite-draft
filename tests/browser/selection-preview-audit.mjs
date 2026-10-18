@@ -56,11 +56,7 @@ for (const engine of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
             inner.top >= outer.top - tolerance &&
             inner.bottom <= outer.bottom + tolerance;
           const issues = [];
-          for (const kind of ['ban', 'pick']) {
-            const group = document.querySelector(`.progress-phase.${kind}`);
-            if (!visible(group) || !group.getBoundingClientRect().width)
-              issues.push(`Phase group hidden: ${kind}`);
-          }
+
           if (document.querySelector('.decision-main .selected-description'))
             issues.push('Footer contains an unnecessary selection description');
           const artworkSize = parseFloat(

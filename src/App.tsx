@@ -1067,16 +1067,11 @@ function App() {
                   : "ドラフト"}
               </span>
               <span className="progress-dots" aria-hidden="true">
-                {(["ban", "pick"] as const).map((kind) => (
-                  <span className={`progress-phase ${kind} ${phase === kind && !complete ? "active" : ""}`} key={kind}>
-                    {kind === "ban" ? <Ban size={12} /> : <Check size={12} />}
-                    {schedule.map((s, i) => s.phase === kind && (
+                {schedule.map((s, i) => (
                   <i
                     key={i}
                     className={`${s.team} ${i < stageIndex ? "done" : ""} ${i === stageIndex ? "current" : ""}`}
                   />
-                    ))}
-                  </span>
                 ))}
               </span>
               <span>{draft.actions.length} / 16</span>

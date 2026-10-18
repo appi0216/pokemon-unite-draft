@@ -878,7 +878,7 @@ function App() {
             </div>
           ) : (
             <>
-              <span>使用禁止 3匹 / 選択 5匹</span>
+              
             </>
           )}
         </div>
@@ -2136,5 +2136,6 @@ function App() {
   );
 }
 export default App;
+
 
 

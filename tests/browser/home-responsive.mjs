@@ -9,6 +9,7 @@ for(const engine of [chromium,webkit]) {
   assert.equal(await page.locator('.setup-portrait:visible').count(),3);
   assert.equal(await page.getByText('使用禁止 3匹 · 選択 5匹',{exact:true}).count(),0);
   await page.screenshot({path:".artifacts/home-view-"+engine.name()+"-"+width+".png",fullPage:true});
+  assert.equal(await page.getByText('使用禁止 3匹 / 選択 5匹',{exact:true}).count(),0);
   for(const font of ['16px','32px']) {
    await page.evaluate(f=>document.documentElement.style.fontSize=f,font);
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'home horizontal overflow');
@@ -23,4 +24,5 @@ for(const engine of [chromium,webkit]) {
  }
  await browser.close();
 }
+
 

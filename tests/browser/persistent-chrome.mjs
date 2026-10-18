@@ -2,7 +2,7 @@ import {createRequire} from 'node:module';
 import assert from 'node:assert/strict';
 const {chromium,webkit}=createRequire(import.meta.url)('playwright');
 for(const engine of [chromium,webkit]) {
- const browser=await engine.launch();
+ const browser=await engine.launch(); const measurements=[];
  for(const [width,height] of [[320,568],[390,844],[667,375],[844,390],[1440,900]]) {
   const page=await browser.newPage({viewport:{width,height}});
   await page.goto(process.env.AUDIT_URL||'http://127.0.0.1:5174/pokemon-unite-draft/');
@@ -19,6 +19,7 @@ for(const engine of [chromium,webkit]) {
   await page.locator('.setup-start').click();
   await page.locator('.first-prompt-options button').first().click();
   await check();
+  measurements.push({width, size:await page.locator(".search-field").evaluate(e=>e.getBoundingClientRect().height)});
   const decision=await page.locator('.decision-bar').boundingBox();
   const footer=await page.locator('.app-footer').boundingBox();
   assert(decision.y+decision.height<=footer.y+1,'decision overlaps footer');
@@ -26,5 +27,9 @@ for(const engine of [chromium,webkit]) {
   await page.close();
   console.log(engine.name(),width,height,'chrome PASS');
  }
+ assert(measurements.find(m=>m.width===667).size < measurements.find(m=>m.width===1440).size,"controls must shrink with viewport");
+ console.log(measurements);
  await browser.close();
 }
+
+

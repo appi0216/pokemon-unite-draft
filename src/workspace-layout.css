@@ -1928,3 +1928,32 @@ dialog .dialog-notice {
  .app[class] .draft-arena { flex:1 1 0 !important; min-height:0 !important; height:auto !important; overflow:hidden; }
  .app[class] .decision-bar { position:relative !important; bottom:auto !important; margin-top:0 !important; }
 }
+
+/* One viewport-aware scale for all surrounding controls, not just portraits. */
+@layer adaptive-layout {
+ .app:not(.setup-mode) {
+  --chrome-size:clamp(30px,min(5vw,8dvh),48px);
+  --chrome-font:clamp(.6875rem,min(1.7vw,2.9dvh),.9375rem);
+  --chrome-icon:clamp(13px,min(2.5vw,4dvh),22px);
+  --chrome-gap:clamp(2px,min(.8vw,1dvh),8px);
+  --control-size:var(--chrome-size) !important;
+  --control-visual:var(--chrome-size) !important;
+  --control-font:var(--chrome-font) !important;
+  --control-icon:var(--chrome-icon) !important;
+  --control-visual-inset:0px !important;
+ }
+ .app:not(.setup-mode) > .app-header { min-height:var(--chrome-size) !important; gap:var(--chrome-gap) !important; }
+ .app:not(.setup-mode) :is(.header-phase,.header-instruction,.header-phase-title,.progress-toggle) { font-size:var(--chrome-font) !important; }
+ .app:not(.setup-mode) :is(.app-header .icon-button,.header-timer,.search-field,.search-field input,.sort-trigger,.filter-toggle,.roster-pagination button,.decision-bar .subtle-button,.decision-main>.confirm-button) { min-height:var(--chrome-size) !important; height:var(--chrome-size) !important; padding-block:0 !important; font-size:var(--chrome-font) !important; }
+ .app:not(.setup-mode) :is(.app-header .icon-button,.sort-trigger,.filter-toggle,.roster-pagination button) { min-width:var(--chrome-size) !important; width:var(--chrome-size) !important; flex-basis:var(--chrome-size) !important; }
+ .app:not(.setup-mode) :is(.app-header,.search-field,.sort-trigger,.filter-toggle,.roster-pagination,.decision-bar) svg { width:var(--chrome-icon) !important; height:var(--chrome-icon) !important; }
+ .app:not(.setup-mode) :is(.selection-footer,.decision-bar,.progress-toggle) { min-height:0 !important; padding-block:var(--chrome-gap) !important; }
+ .app:not(.setup-mode) .decision-main>.confirm-button { min-width:clamp(76px,13vw,128px) !important; }
+ .app:not(.setup-mode) .roster-pagination { gap:var(--chrome-gap) !important; }
+ .app:not(.setup-mode) .roster-pagination>span { min-width:3.5em !important; font-size:var(--chrome-font) !important; }
+ .app:not(.setup-mode) > .app-footer { min-height:0 !important; font-size:clamp(.625rem,min(1.5vw,2.6dvh),.75rem) !important; }
+ .app:not(.setup-mode) .app-footer :is(button,.connection) { min-height:0 !important; height:auto !important; padding-block:3px !important; }
+ @media(pointer:coarse) {
+  .app:not(.setup-mode) { --chrome-size:44px; }
+ }
+}

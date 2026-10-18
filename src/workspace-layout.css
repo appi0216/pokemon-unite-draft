@@ -1895,3 +1895,15 @@ dialog .dialog-notice {
  .app .allstar-arena .team-history .history-pokemon { grid-template-columns: minmax(0,1fr) !important; }
 }
 
+
+.app .pokemon-grid, .app .history-scroll { touch-action: pan-y pinch-zoom; }
+@layer adaptive-layout {
+ .app:not(.setup-mode) .app-header { display: grid !important; grid-template-columns: minmax(44px,1fr) minmax(0,auto) minmax(44px,1fr) !important; }
+ .app:not(.setup-mode) .header-center { justify-self: center !important; justify-content: center !important; text-align: center; min-width: 0; }
+ .app:not(.setup-mode) .header-phase { justify-content: center !important; text-align: center; flex-wrap: wrap; }
+ .app:not(.setup-mode) .header-actions { justify-self: end; }
+ @media(max-width:600px) {
+  .app:not(.setup-mode) .header-center { grid-column: 1 / -1; grid-row: 2; width: 100%; }
+  .app:not(.setup-mode) .header-actions { grid-column: 3; grid-row: 1; }
+ }
+}

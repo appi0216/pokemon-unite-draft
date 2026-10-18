@@ -28,6 +28,8 @@ for(const [engine,launcher] of Object.entries({chromium,webkit})) {
    const rail=page.locator(`.team-history.${team}`);
    await rail.waitFor({state:'visible'});
    await page.waitForTimeout(150);
+   const head=await page.locator('.header-center').boundingBox();
+   assert(Math.abs(head.x+head.width/2-size[0]/2)<3,'header must be centered');
    const seen=[]; let firstHeight;
    for(let n=0;n<6;n++) {
     const games=rail.locator('.history-game');
@@ -41,7 +43,13 @@ for(const [engine,launcher] of Object.entries({chromium,webkit})) {
     assert(await rail.locator('.history-scroll').evaluate(e=>e.scrollHeight<=e.clientHeight+1),'page must not scroll');
     const next=rail.getByRole('button',{name:'選択済の次のページ'});
     if(await next.isDisabled())break;
-    await next.click();
+    await rail.locator('.history-scroll').evaluate(el=>{
+      const touchEvent=(name,props)=>Object.assign(new Event(name,{bubbles:true}),{touches:props.touches,changedTouches:props.changedTouches||[]});
+      const touch=(x)=>({identifier:1,target:el,clientX:x,clientY:150});
+      el.dispatchEvent(touchEvent('touchstart',{bubbles:true,touches:[touch(100)]}));
+      el.dispatchEvent(touchEvent('touchend',{bubbles:true,touches:[],changedTouches:[touch(40)]}));
+    });
+    await page.waitForTimeout(50);
    }
    assert.equal(seen.length,5);
    assert.equal(new Set(seen).size,5);
@@ -64,5 +72,7 @@ for(const [engine,launcher] of Object.entries({chromium,webkit})) {
  }
  await browser.close();
 }
+
+
 
 

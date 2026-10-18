@@ -1,3 +1,4 @@
+import useSwipePages from "./components/useSwipePages";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import Portrait from "./components/Portrait";
@@ -443,6 +444,7 @@ function App() {
     setRosterPage(page);
     if (pokemonGrid.current) pokemonGrid.current.scrollTop = 0;
   };
+  const rosterSwipe = useSwipePages(direction => goToRosterPage(currentPage + direction));
   const confirm = () => {
     if (
       !selected ||
@@ -1375,7 +1377,7 @@ function App() {
               )}
               <div
                 className="pokemon-grid"
-                id="pokemon-collection"
+                id="pokemon-collection" {...rosterSwipe}
                 ref={pokemonGrid}
                 style={{
                   gridTemplateColumns: `repeat(${rosterLayout.columns}, minmax(0, 1fr))`,
@@ -2236,3 +2238,4 @@ function App() {
   );
 }
 export default App;
+

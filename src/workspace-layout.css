@@ -1729,3 +1729,84 @@ dialog .dialog-notice {
     --control-size: max(44px, clamp(44px, calc(36px + 1vw), 52px));
   }
 }
+/* Visual density follows the available width AND height. Hit boxes remain separate. */
+.app:not(.setup-mode) {
+  --control-size: 44px;
+  --control-visual: clamp(30px, min(calc(24px + 2vw), 9vh), 44px);
+  --control-icon: clamp(14px, min(calc(11px + 1vw), 4.2vh), 22px);
+  --control-font: clamp(.75rem, min(calc(.64rem + .4vw), calc(.6rem + 1vh)), 1rem);
+  --control-radius: clamp(6px, min(1.4vw, 2vh), 12px);
+  --control-inset: clamp(6px, 1vw, 14px);
+  --control-visual-inset: calc((44px - var(--control-visual)) / 2);
+}
+.app:not(.setup-mode) :is(.search-field, .sort-trigger, .filter-toggle, .roster-pagination button, .decision-main > .confirm-button) {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+.app:not(.setup-mode) :is(.search-field, .sort-trigger, .filter-toggle, .roster-pagination button, .decision-main > .confirm-button)::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  inset: var(--control-visual-inset);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--control-radius);
+  background: var(--surface-control);
+}
+.app:not(.setup-mode) .search-field::before {
+  inset-inline: 0;
+}
+.app:not(.setup-mode) .search-field:focus-within::before {
+  border-color: var(--purple);
+}
+.app:not(.setup-mode) .filter-toggle.selected::before,
+.app:not(.setup-mode) .sort-select.open .sort-trigger::before {
+  background: #493a64;
+  border-color: var(--purple);
+}
+.app:not(.setup-mode) .decision-main > .confirm-button::before {
+  background: var(--team);
+  border: 0;
+}
+.app:not(.setup-mode) .decision-main > .confirm-button:disabled::before {
+  background: #42404a;
+}
+@media (hover: hover) {
+  .app:not(.setup-mode) :is(.sort-trigger, .filter-toggle, .roster-pagination button):hover:not(:disabled)::before {
+    background: color-mix(in srgb, var(--surface-control) 85%, white);
+  }
+  .app:not(.setup-mode) .decision-main > .confirm-button:hover:not(:disabled)::before {
+    background: color-mix(in srgb, var(--team) 85%, white);
+  }
+}
+.app:not(.setup-mode) .filter-toggle {
+  flex-basis: var(--control-size);
+}
+.app:not(.setup-mode) :is(.sort-trigger, .filter-toggle, .roster-pagination button) {
+  height: var(--control-size);
+  aspect-ratio: auto;
+}
+@media (min-width: 1001px) {
+  .app:not(.setup-mode) .sort-trigger {
+    width: max-content;
+    min-width: max-content;
+    max-width: none;
+    white-space: nowrap;
+  }
+}
+.app:not(.setup-mode) .filter-active-dot {
+  top: calc(var(--control-visual-inset) + 4px);
+  right: calc(var(--control-visual-inset) + 4px);
+}
+.app:not(.setup-mode) .search-field > button svg,
+.app:not(.setup-mode) .header-timer svg,
+.app:not(.setup-mode) .compact-view-tabs .roster svg {
+  width: var(--control-icon);
+  height: var(--control-icon);
+}
+.app:not(.setup-mode) :is(.header-timer, .compact-view-tabs .roster, .progress-toggle) {
+  font-size: var(--control-font);
+}

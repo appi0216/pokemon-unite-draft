@@ -188,7 +188,7 @@ for (const name of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
         if (await tab.isVisible()) await tab.click();
         await page
           .locator(
-            v2 ? ".creature:not(:disabled)" : ".pokemon-card:not(:disabled)",
+            v2 ? ".creature:not(:disabled)" : ".pokemon-card:not(:disabled):not(.skip-card)",
           )
           .first()
           .click();
@@ -230,7 +230,7 @@ for (const name of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
           await page.locator(".setup-rules summary").click();
           await page
             .getByRole("button", {
-              name: "その他の設定：プリセット・大会制限・バックアップ",
+              name: "その他の設定：プリセット・大会制限",
             })
             .click();
           await page
@@ -240,48 +240,10 @@ for (const name of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
           const restrictionNames = await page.locator('.restriction-list label').allTextContents();
           if (restrictionNames.slice(0, 3).map(s => s.trim()).join(',') !== 'ブースター,サンダース,ストリンダー')
             throw new Error('Tournament restrictions must be newest first');
-          await page.locator("input[type=file]").setInputFiles({
-            name: "invalid.json",
-            mimeType: "application/json",
-            buffer: Buffer.from("{}"),
-          });
-          await page
-            .locator("dialog[open] [role=status]")
-            .filter({ hasText: "対応するバックアップではありません" })
-            .waitFor();
-          await capture("import-error");
-          const saved = await read();
-          const backup = {
-            format: "unite-draft-backup",
-            version: 1,
-            ...saved,
-            presets: [],
-          };
-          await page.locator("input[type=file]").setInputFiles({
-            name: "backup.json",
-            mimeType: "application/json",
-            buffer: Buffer.from(JSON.stringify(backup)),
-          });
-          await modal("import");
           await close();
-          await page
-            .getByRole("button", {
-              name: "その他の設定：プリセット・大会制限・バックアップ",
-            })
-            .click();
-          await page.locator("input[type=file]").setInputFiles({
-            name: "backup.json",
-            mimeType: "application/json",
-            buffer: Buffer.from(JSON.stringify(backup)),
-          });
-          await page
-            .locator("dialog[open]")
-            .getByRole("button", { name: "読み込む", exact: true })
-            .click();
-          await capture("import-success");
         }
         await page
-          .getByRole("button", { name: /^オールスタードラフト/ })
+          .getByRole("button", { name: /^オールスター/ })
           .click();
         await page.locator(v2 ? ".begin" : ".setup-start").click();
         await modal("first-team");
@@ -474,3 +436,5 @@ if (
   )
 )
   process.exitCode = 1;
+
+

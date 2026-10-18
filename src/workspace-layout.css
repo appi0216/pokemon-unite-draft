@@ -1996,3 +1996,18 @@ dialog .dialog-notice {
 @media(max-width:480px) {
  .app .past-game-review { grid-template-columns:minmax(0,1fr); }
 }
+
+/* Keep both teams side by side, including short and narrow displays. */
+@layer adaptive-layout {
+ .app .past-game-review { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:clamp(4px,1.2vw,12px) !important; }
+ .app .past-game-review>section { min-width:0 !important; padding:clamp(4px,1vw,12px) !important; }
+ .app .past-game-review :is(h4,strong) { font-size:clamp(.625rem,1.8vw,.875rem) !important; overflow-wrap:anywhere; }
+ .app .past-game-review h4 { display:flex; flex-wrap:wrap; justify-content:center; gap:4px; }
+ .app .past-game-review .review-ban-list { display:grid !important; grid-template-columns:repeat(3,minmax(0,1fr)) !important; }
+ .app .past-game-review .review-pick-list { display:grid !important; grid-template-columns:repeat(5,minmax(0,1fr)) !important; }
+ .app .past-game-review :is(.review-ban-list,.review-pick-list) article { min-width:0 !important; padding:0 !important; }
+ .app .past-game-review .portrait { width:100% !important; height:auto !important; aspect-ratio:1; max-width:clamp(28px,10dvh,58px) !important; margin-inline:auto; }
+ .app dialog .modal-buttons { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(6px,2vw,12px); }
+ .app dialog .modal-buttons button { min-width:0; padding:clamp(8px,2dvh,16px); font-size:inherit; white-space:normal; }
+ .app dialog { overflow:auto; }
+}

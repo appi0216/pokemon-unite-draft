@@ -22,6 +22,8 @@ for(const engine of [chromium,webkit]) {
   for(const font of ['16px','32px']) {
    await page.evaluate(f=>document.documentElement.style.fontSize=f,font);
    const dialog=page.locator('dialog[open]');
+   const teams=await page.locator(".past-game-review").first().locator(":scope > section").evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width}}));
+   assert(Math.abs(teams[0].y-teams[1].y)<1 && teams[1].x>=teams[0].x+teams[0].w,"teams must stay side by side");
    const box=await dialog.boundingBox();
    assert(box.x>=0 && box.y>=0 && box.x+box.width<=width+1 && box.y+box.height<=height+1,'dialog outside viewport');
    assert(await dialog.evaluate(e=>e.scrollWidth<=e.clientWidth+1),'horizontal overflow');
@@ -34,3 +36,4 @@ for(const engine of [chromium,webkit]) {
  }
  await browser.close();
 }
+

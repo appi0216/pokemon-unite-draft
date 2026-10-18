@@ -56,6 +56,32 @@ for (const engine of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
             inner.top >= outer.top - tolerance &&
             inner.bottom <= outer.bottom + tolerance;
           const issues = [];
+          const artworkSize = parseFloat(
+            getComputedStyle(document.querySelector(".app")).getPropertyValue(
+              "--pokemon-art-size",
+            ),
+          );
+          for (const item of document.querySelectorAll(
+            ".pokemon-card > .portrait,.player-portrait > .portrait",
+          )) {
+            if (
+              visible(item) &&
+              (Math.abs(rect(item).width - artworkSize) > 1 ||
+                Math.abs(rect(item).height - artworkSize) > 1)
+            )
+              issues.push(
+                "Roster and selected team artwork must share the responsive size",
+              );
+          }
+          for (const panel of document.querySelectorAll(
+            ".app-header,.decision-bar",
+          )) {
+            if (!visible(panel)) continue;
+            for (const control of panel.querySelectorAll("button")) {
+              if (visible(control) && !inside(rect(control), rect(panel)))
+                issues.push("Header/footer control outside its panel");
+            }
+          }
           const confirmButton = document.querySelector(
             ".decision-main .confirm-button",
           );
@@ -282,10 +308,8 @@ for (const engine of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
               issues.push(
                 "Selected Pokémon name should not be rendered at the confirmation boundary",
               );
-            if (!visible(portrait))
-              issues.push(
-                "Selected Pokémon portrait is hidden at the confirmation boundary",
-              );
+            if (visible(portrait))
+              issues.push("Footer must not show a Pokémon portrait");
             if (!inside(buttonBox, barBox))
               issues.push("Confirm button outside decision bar");
             if (buttonBox.width < 44 || buttonBox.height < 44)

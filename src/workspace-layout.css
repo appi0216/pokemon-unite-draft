@@ -1405,24 +1405,150 @@ dialog .dialog-notice {
 }
 
 /* Image-only choices retain accessible names and a consistent touch target. */
-.app .pokemon-grid .pokemon-card { min-height: 44px; padding: 4px; gap: 0; }
-.app .pokemon-grid .pokemon-card > .portrait {
-  width: clamp(28px, 4vw, 40px); height: clamp(28px, 4vw, 40px); flex: none;
+.app .pokemon-grid .pokemon-card {
+  min-height: 44px;
+  padding: 4px;
+  gap: 0;
 }
-.app .pokemon-grid { min-height: 56px; }
-.app .decision-main { gap: 2px; }
-.app .decision-main .selected-description > .portrait { width: 28px; height: 28px; flex-basis: 28px; }
-.app .decision-main .selected-description:has(> span:not(.portrait):only-child) { display: none; }
-.app .decision-bar { padding-block: clamp(3px, 1vh, 8px); }
+.app .pokemon-grid .pokemon-card > .portrait {
+  width: clamp(28px, 4vw, 40px);
+  height: clamp(28px, 4vw, 40px);
+  flex: none;
+}
+.app .pokemon-grid {
+  min-height: 56px;
+}
+.app .decision-main {
+  gap: 2px;
+}
+.app .decision-main .selected-description > .portrait {
+  width: 28px;
+  height: 28px;
+  flex-basis: 28px;
+}
+.app
+  .decision-main
+  .selected-description:has(> span:not(.portrait):only-child) {
+  display: none;
+}
+.app .decision-bar {
+  padding-block: clamp(3px, 1vh, 8px);
+}
 @media (max-width: 1000px) {
-  .app .selection-panel { grid-template-rows: auto minmax(56px, 1fr) auto; }
-  .app .app-header { padding-inline: max(6px, env(safe-area-inset-left)) max(6px, env(safe-area-inset-right)); }
-  .app .header-phase { font-size: clamp(.75rem, 2vw, 1rem); }
-  .app .decision-main > .confirm-button { padding: 8px 12px; min-height: 44px; font-size: clamp(.8125rem, 2vw, 1rem); }
+  .app .selection-panel {
+    grid-template-rows: auto minmax(56px, 1fr) auto;
+  }
+  .app .app-header {
+    padding-inline: max(6px, env(safe-area-inset-left))
+      max(6px, env(safe-area-inset-right));
+  }
+  .app .header-phase {
+    font-size: clamp(0.75rem, 2vw, 1rem);
+  }
+  .app .decision-main > .confirm-button {
+    padding: 8px 12px;
+    min-height: 44px;
+    font-size: clamp(0.8125rem, 2vw, 1rem);
+  }
 }
 @media (max-width: 1000px) and (orientation: landscape) {
-  .app .pokemon-grid { min-height: 44px; }
-  .app .selection-panel { grid-template-rows: auto minmax(44px, 1fr) auto; }
-  .app .pokemon-grid .pokemon-card > .portrait { width: 28px; height: 28px; }
-  .app .decision-main .selected-description > .portrait { width: 20px; height: 20px; flex-basis: 20px; }
+  .app .pokemon-grid {
+    min-height: 44px;
+  }
+  .app .selection-panel {
+    grid-template-rows: auto minmax(44px, 1fr) auto;
+  }
+  .app .pokemon-grid .pokemon-card > .portrait {
+    width: 28px;
+    height: 28px;
+  }
+  .app .decision-main .selected-description > .portrait {
+    width: 20px;
+    height: 20px;
+    flex-basis: 20px;
+  }
+}
+/* Roster and selected team artwork use the same responsive scale. */
+.app {
+  --pokemon-art-size: 56px;
+  --roster-cell-size: 66px;
+}
+@media (max-width: 1000px) {
+  .app {
+    --pokemon-art-size: 52px;
+    --roster-cell-size: 62px;
+  }
+}
+@media (max-width: 1000px) and (orientation: landscape) {
+  .app {
+    --pokemon-art-size: 32px;
+    --roster-cell-size: 44px;
+  }
+}
+.app .pokemon-grid .pokemon-card > .portrait,
+.app .team-panel .player-portrait {
+  width: var(--pokemon-art-size);
+  height: var(--pokemon-art-size);
+  min-height: var(--pokemon-art-size);
+  flex-basis: var(--pokemon-art-size);
+}
+.app .team-panel .player-portrait > .portrait {
+  width: 100%;
+  height: 100%;
+}
+.app .pokemon-grid .pokemon-card {
+  padding: 4px;
+}
+.app .pokemon-grid {
+  min-height: var(--roster-cell-size);
+}
+.app .decision-bar {
+  min-height: 0;
+}
+@media (max-width: 600px) and (orientation: portrait) {
+  .app .decision-bar {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    grid-template-rows: auto;
+    gap: 4px;
+  }
+  .app .decision-main {
+    grid-area: 1 / 2;
+  }
+  .app .utility-actions {
+    grid-area: 1 / 1;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  .app .decision-extra {
+    grid-area: 1 / 3;
+  }
+  .app .decision-extra .subtle-button span {
+    display: none;
+  }
+  .app .decision-extra .subtle-button {
+    width: 44px;
+    min-height: 44px;
+    padding: 0;
+  }
+  .app .utility-actions .subtle-button {
+    width: 44px;
+    min-height: 44px;
+    padding: 0;
+  }
+}
+@media (max-width: 600px) and (orientation: portrait) {
+  .app .decision-bar {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+  }
+  .app .decision-main {
+    grid-area: 1 / 1 / 2 / -1;
+  }
+  .app .utility-actions {
+    grid-area: 2 / 1;
+    flex-wrap: nowrap;
+  }
+  .app .decision-extra {
+    grid-area: 2 / 2;
+  }
 }

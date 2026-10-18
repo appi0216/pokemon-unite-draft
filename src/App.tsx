@@ -1659,15 +1659,6 @@ function App() {
                 </>
               ) : (
                 <>
-                  <div className="selected-description">
-                    {selectedPokemon ? (
-                      <>
-                        <Portrait p={selectedPokemon} eager />
-                      </>
-                    ) : (
-                      <span>ポケモンを選択</span>
-                    )}
-                  </div>
                   <button
                     className="confirm-button"
                     disabled={!selected}

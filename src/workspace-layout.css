@@ -1832,3 +1832,50 @@ dialog .dialog-notice {
   .app .progress-disclosure > summary { flex-wrap:wrap; }
   .app .progress-disclosure .progress-dots { order:4; flex-basis:100%; max-width:none; }
 }
+/* Series history occupies an outer rail, never the space below a team. */
+@layer adaptive-layout {
+  .app .draft-arena.allstar-arena[class] > .team-side:has(.history-game) {
+    display:grid !important;
+    grid-template-rows:minmax(0,1fr) !important;
+    gap:clamp(3px,.6vw,10px) !important;
+  }
+  .app .draft-arena.allstar-arena[class] > .team-side.purple:has(.history-game) {
+    grid-template-columns:var(--history-rail) minmax(0,1fr) !important;
+  }
+  .app .draft-arena.allstar-arena[class] > .team-side.orange:has(.history-game) {
+    grid-template-columns:minmax(0,1fr) var(--history-rail) !important;
+  }
+  @media(max-width:1000px) and (orientation:portrait) {
+    .app .draft-arena.allstar-arena.compact-view-roster > .team-side:has(.history-game),
+    .app .draft-arena.allstar-arena.compact-view-purple > .team-side.orange:has(.history-game),
+    .app .draft-arena.allstar-arena.compact-view-orange > .team-side.purple:has(.history-game) {
+      display:none !important;
+    }
+  }
+}
+.app .allstar-arena { --history-rail:clamp(44px,4vw,64px); }
+.app .allstar-arena > .team-side:has(.history-game) { overflow:hidden; }
+.app .allstar-arena > .team-side:has(.history-game) > :is(.team-panel,.team-history) {
+  grid-row:1; min-height:0; height:100%; min-width:0; margin:0;
+}
+.app .allstar-arena > .team-side.purple > .team-history,
+.app .allstar-arena > .team-side.orange > .team-panel { grid-column:1; }
+.app .allstar-arena > .team-side.purple > .team-panel,
+.app .allstar-arena > .team-side.orange > .team-history { grid-column:2; }
+.app .allstar-arena .team-history { display:flex; flex-direction:column; overflow:hidden; }
+.app .allstar-arena .history-heading { display:grid; justify-items:center; padding:4px 1px; gap:1px; font-size:clamp(.625rem,.5rem + .25vw,.75rem); }
+.app .allstar-arena .history-scroll { display:block; flex:1; min-height:0; overflow-x:hidden; overflow-y:auto; padding:3px; scroll-snap-type:y proximity; scrollbar-width:thin; }
+.app .allstar-arena .history-game { min-width:0; width:100%; }
+.app .allstar-arena .history-game + .history-game { margin-top:6px; padding:6px 0 0; border-left:0; border-top:1px solid var(--surface-border); }
+.app .allstar-arena .history-game h3 { text-align:center; font-size:clamp(.625rem,.5rem + .2vw,.75rem); margin:0 0 3px; overflow-wrap:anywhere; }
+.app .allstar-arena .history-pokemon-item { display:grid; place-items:center; padding:1px; }
+.app .allstar-arena .history-pokemon-item .portrait { width:100%; height:auto; max-width:52px; aspect-ratio:1; }
+@media(max-width:1000px) and (orientation:landscape) {
+  .app .allstar-arena { --history-rail:32px; }
+  .app .allstar-arena .history-heading strong { font-size:.5625rem; }
+}
+.app .allstar-arena .team-history:not(:has(.history-game)) { display:none; }
+.app .allstar-arena > .team-side:not(:has(.history-game)) > .team-panel { grid-column:1 / -1; }
+.app .allstar-arena > .team-side:has(.history-game) { contain:size; }
+.app .allstar-arena > .team-side:has(.history-game) > :is(.team-panel,.team-history) { height:auto; align-self:stretch; }
+.app .allstar-arena .history-scroll { scroll-snap-type:none; }

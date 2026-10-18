@@ -1555,19 +1555,177 @@ dialog .dialog-notice {
 
 /* Keep confirmation and history controls on one line when all targets fit. */
 @media (min-width: 400px) and (max-width: 600px) and (orientation: portrait) {
-  .app .decision-bar { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); grid-template-rows: auto; }
-  .app .decision-main { grid-area: 1 / 2; }
-  .app .utility-actions { grid-area: 1 / 1; }
-  .app .decision-extra { grid-area: 1 / 3; }
-  .app .decision-main > .confirm-button { min-width: 88px; }
+  .app .decision-bar {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    grid-template-rows: auto;
+  }
+  .app .decision-main {
+    grid-area: 1 / 2;
+  }
+  .app .utility-actions {
+    grid-area: 1 / 1;
+  }
+  .app .decision-extra {
+    grid-area: 1 / 3;
+  }
+  .app .decision-main > .confirm-button {
+    min-width: 88px;
+  }
 }
 @media (max-width: 1000px) {
-  .app .search-field { height: 44px; padding-inline: 8px; }
-  .app .search-field input { height: 42px; min-height: 42px; font-size: .8125rem; }
-  .app .search-field > svg { width: 16px; height: 16px; flex-basis: 16px; }
-  .app .sort-trigger, .app .filter-toggle, .app .roster-pagination button { width: 44px; height: 44px; min-height: 44px; padding: 12px; border-radius: 10px; }
-  .app .sort-trigger svg, .app .filter-toggle svg, .app .roster-pagination button svg { width: 16px; height: 16px; flex: none; }
-  .app .roster-pagination { gap: 4px; }
-  .app .roster-pagination > span { font-size: .75rem; min-width: 2.5em; }
-  .app .selection-footer { gap: 4px; }
+  .app .search-field {
+    height: 44px;
+    padding-inline: 8px;
+  }
+  .app .search-field input {
+    height: 42px;
+    min-height: 42px;
+    font-size: 0.8125rem;
+  }
+  .app .search-field > svg {
+    width: 16px;
+    height: 16px;
+    flex-basis: 16px;
+  }
+  .app .sort-trigger,
+  .app .filter-toggle,
+  .app .roster-pagination button {
+    width: 44px;
+    height: 44px;
+    min-height: 44px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+  .app .sort-trigger svg,
+  .app .filter-toggle svg,
+  .app .roster-pagination button svg {
+    width: 16px;
+    height: 16px;
+    flex: none;
+  }
+  .app .roster-pagination {
+    gap: 4px;
+  }
+  .app .roster-pagination > span {
+    font-size: 0.75rem;
+    min-width: 2.5em;
+  }
+  .app .selection-footer {
+    gap: 4px;
+  }
+}
+/* One responsive control scale across search, navigation and draft actions. */
+.app {
+  --control-size: clamp(44px, calc(36px + 1vw), 52px);
+  --control-icon: clamp(16px, calc(12px + 0.65vw), 22px);
+  --control-font: clamp(0.75rem, calc(0.64rem + 0.38vw), 1rem);
+  --caption-font: clamp(0.6875rem, calc(0.6rem + 0.25vw), 0.875rem);
+  --control-gap: clamp(3px, 0.65vw, 10px);
+  --control-radius: clamp(8px, 0.8vw, 14px);
+  --control-inset: clamp(6px, 1vw, 14px);
+}
+.app .search-field {
+  height: auto;
+  min-height: var(--control-size);
+  padding-inline: var(--control-inset);
+  border-radius: var(--control-radius);
+  gap: var(--control-gap);
+}
+.app .search-field input,
+.app .search-field input:focus {
+  height: auto;
+  min-height: calc(var(--control-size) - 2px);
+  font-size: var(--control-font);
+  line-height: 1.4;
+  width: 100%;
+}
+.app .search-field > svg {
+  width: var(--control-icon);
+  height: var(--control-icon);
+  flex-basis: var(--control-icon);
+}
+.app
+  :is(
+    .sort-trigger,
+    .filter-toggle,
+    .roster-pagination button,
+    .app-header .icon-button
+  ) {
+  width: var(--control-size);
+  height: auto;
+  min-height: var(--control-size);
+  min-width: var(--control-size);
+  padding: var(--control-gap);
+  border-radius: var(--control-radius);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.app
+  :is(
+    .sort-trigger,
+    .filter-toggle,
+    .roster-pagination button,
+    .app-header .icon-button,
+    .decision-bar button
+  )
+  svg {
+  width: var(--control-icon);
+  height: var(--control-icon);
+  flex: none;
+}
+.app .roster-pagination {
+  gap: var(--control-gap);
+}
+.app .roster-pagination > span {
+  font-size: var(--control-font);
+  line-height: 1.4;
+  min-width: 2.5em;
+}
+.app .roster-range {
+  font-size: var(--caption-font);
+}
+.app .selection-footer {
+  gap: var(--control-gap);
+  min-height: var(--control-size);
+}
+.app .decision-bar {
+  gap: var(--control-gap);
+  padding-block: clamp(3px, 0.8vh, 10px);
+}
+.app .decision-main > .confirm-button {
+  font-size: var(--control-font);
+  line-height: 1.4;
+  min-height: max(44px, var(--control-size));
+  padding: var(--control-gap) var(--control-inset);
+  border-radius: var(--control-radius);
+}
+.app .decision-bar .subtle-button {
+  font-size: var(--control-font);
+  min-height: var(--control-size);
+}
+.app .app-header {
+  gap: var(--control-gap);
+  padding-block: clamp(0px, 0.5vh, 6px);
+}
+.app .app-header :is(.phase-label, .active-team-name) {
+  font-size: var(--control-font);
+}
+@media (min-width: 1001px) {
+  .app .sort-trigger {
+    width: auto;
+    padding-inline: var(--control-inset);
+    gap: var(--control-gap);
+    font-size: var(--control-font);
+  }
+}
+@media (pointer: fine) and (max-height: 500px) {
+  .app {
+    --control-size: clamp(36px, 9vh, 44px);
+  }
+}
+@media (pointer: coarse) {
+  .app {
+    --control-size: max(44px, clamp(44px, calc(36px + 1vw), 52px));
+  }
 }

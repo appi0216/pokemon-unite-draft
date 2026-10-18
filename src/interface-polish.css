@@ -14,7 +14,6 @@
   --ui-amber-soft: #e4aa681d;
 }
 
-.setup-card,
 dialog {
   background:
     linear-gradient(145deg, #1d2930fa, #131d23fc 68%), var(--surface-panel);
@@ -24,113 +23,12 @@ dialog {
     inset 0 1px #ffffff0d;
 }
 
-.setup-card::before {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--ui-cyan),
-    #8fb5bf66,
-    var(--ui-amber),
-    transparent
-  );
-}
-
-.setup-intro h1 > span {
-  background: linear-gradient(105deg, #83e1e9 5%, #b5cfd3 48%, #efb779 96%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.setup-intro > .section-kicker > span,
-.setup-symbol,
-.option-check,
-.single-match-format strong,
-.resume-card strong {
-  color: var(--ui-cyan);
-}
-
-.setup-symbol,
 .resume-icon {
   background: linear-gradient(145deg, #233640, #19272f);
   border: 1px solid #42616f;
   box-shadow: inset 0 1px #ffffff0c;
 }
 
-.setup-field {
-  border-color: #394d58;
-  background: linear-gradient(145deg, #1b272ef0, #162128f2);
-}
-
-.setup-field legend,
-.setup-title-row .section-kicker {
-  color: #89aeb8;
-}
-
-.mode-option,
-.timer-options,
-.timer-options button,
-.side-options button,
-.single-match-format,
-.resume-card,
-.team-name-settings input {
-  background: linear-gradient(145deg, #233139, #1b282f);
-  border-color: #405660;
-  color: var(--text-secondary);
-  box-shadow: inset 0 1px #ffffff08;
-}
-
-.mode-option:hover,
-.side-options button:hover,
-.resume-card:hover {
-  border-color: #60808c;
-  background: linear-gradient(145deg, #293a43, #1e2d35);
-}
-
-.mode-option.chosen,
-.timer-options button.chosen,
-.resume-card:hover {
-  background:
-    linear-gradient(135deg, var(--ui-cyan-soft), transparent 70%),
-    linear-gradient(145deg, #263942, #1b2931);
-  border-color: #5799a7;
-  box-shadow:
-    inset 3px 0 var(--ui-cyan),
-    inset 0 1px #ffffff10,
-    0 8px 22px #00000024;
-}
-
-.mode-option.chosen strong,
-.mode-option.chosen > svg:first-child,
-.timer-options button.chosen {
-  color: #a7edf2;
-}
-
-.mode-option.chosen small,
-.field-hint,
-.setup-footnote {
-  color: #9cb1b8;
-}
-
-.side-options button.chosen {
-  background:
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--side) 18%, transparent),
-      transparent 74%
-    ),
-    linear-gradient(145deg, #243139, #1a272e);
-  border-color: color-mix(in srgb, var(--side) 76%, #8eb2ba 24%);
-  box-shadow:
-    inset 3px 0 var(--side),
-    inset 0 1px #ffffff0d;
-}
-
-.team-name-settings {
-  border-color: #354a55;
-}
-
-.team-name-settings input:focus,
 .search-field:focus-within {
   border-color: var(--ui-cyan);
   box-shadow: 0 0 0 3px #62cedd16;
@@ -351,12 +249,6 @@ dialog {
   box-shadow: inset 0 1px #ffffff09;
 }
 
-.pokemon-name {
-  color: #eef7f8;
-  background: linear-gradient(90deg, #111d23e8, #1c2930ed, #111d23e8);
-  border-top: 1px solid #ffffff0b;
-}
-
 .pokemon-card.is-selected {
   background: linear-gradient(
     145deg,
@@ -442,10 +334,6 @@ dialog {
   filter: drop-shadow(0 0 7px #62cedd4a);
 }
 
-.app-header .header-divider {
-  background: linear-gradient(180deg, transparent, #6f929f, transparent);
-}
-
 /* Lift work panels clearly above the darker arena background. */
 .selection-panel,
 .team-panel,
@@ -522,41 +410,6 @@ dialog {
   transform: translateX(0);
 }
 
-.phase-label {
-  grid-column: 1;
-  grid-row: 1;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0;
-  width: 100%;
-  min-width: 0;
-  padding: 0;
-  border: 0;
-  text-align: center;
-  align-items: center;
-}
-
-.phase-message {
-  grid-column: 1;
-  grid-row: 2;
-  width: 100%;
-  min-width: 0;
-  padding: 0;
-  justify-content: center;
-  text-align: center;
-}
-
-.phase-message > div {
-  flex-direction: column;
-  gap: 2px;
-  justify-content: center;
-  align-items: center;
-}
-
-.phase-label::before {
-  display: none;
-}
-
 .phase-banner {
   grid-template-columns: minmax(0, 1fr);
   row-gap: 2px;
@@ -592,10 +445,6 @@ dialog {
   --side: var(--ui-cyan);
   background: #202e36;
   border-color: var(--surface-border);
-}
-
-.draft-complete .phase-label > .eyebrow {
-  color: var(--accent-text);
 }
 
 .timeline-step {

@@ -115,7 +115,6 @@ fieldset {
   justify-content: space-between;
   gap: 20px;
   background: #ffffffbc;
-  backdrop-filter: blur(20px);
   border-bottom: 1px solid #dedee866;
 }
 .brand {
@@ -155,12 +154,6 @@ fieldset {
 }
 .header-center > svg {
   color: #9a7cce;
-}
-.header-divider {
-  height: 12px;
-  background: #dedde6;
-  width: 1px;
-  margin: 0 6px;
 }
 .header-center > span:last-child {
   font-size: 10px;
@@ -210,15 +203,13 @@ fieldset {
   margin: 0 auto;
   padding: 18px 28px 0;
 }
-.eyebrow,
-.section-kicker {
+.eyebrow {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 1.5px;
 }
 .phase-banner {
   display: flex;
-  align-items: center;
   gap: 24px;
   min-height: 76px;
   margin-bottom: 16px;
@@ -227,56 +218,6 @@ fieldset {
   border: 1px solid #fff;
   padding: 14px 20px;
   box-shadow: 0 4px 22px #26234003;
-}
-.phase-label {
-  border-right: 1px solid #e7e1ee;
-  min-width: 185px;
-  padding-right: 24px;
-}
-.phase-label > .eyebrow {
-  font-size: 9px;
-  letter-spacing: 1.8px;
-  color: var(--team);
-}
-.phase-label h1 {
-  font-size: 20px;
-  letter-spacing: -0.5px;
-  margin: 6px 0 0;
-  font-weight: 700;
-}
-.phase-message {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  flex: 1;
-  min-width: 0;
-}
-.team-tag {
-  display: grid;
-  place-items: center;
-  background: #ece4fc;
-  color: #7850d4;
-  height: 36px;
-  width: 36px;
-  flex-shrink: 0;
-  border-radius: 12px;
-}
-.team-tag.orange {
-  background: #fff0df;
-  color: #d58842;
-}
-.phase-message strong {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.5;
-  overflow-wrap: anywhere;
-}
-.phase-message div > span {
-  display: block;
-  font-size: 11px;
-  color: #9991a5;
-  margin-top: 5px;
 }
 .timer {
   min-width: 100px;
@@ -619,34 +560,6 @@ fieldset {
   font-size: 12px;
   color: #c9c1d0;
 }
-.pokeball-symbol {
-  display: block;
-  position: relative;
-  width: 27px;
-  height: 27px;
-  overflow: hidden;
-  border: 1.5px solid rgba(var(--side-rgb), 0.16);
-  border-radius: 50%;
-}
-.pokeball-symbol:before {
-  content: "";
-  position: absolute;
-  top: 11px;
-  width: 100%;
-  height: 1.5px;
-  background: rgba(var(--side-rgb), 0.16);
-}
-.pokeball-symbol:after {
-  content: "";
-  position: absolute;
-  left: 8px;
-  top: 8px;
-  width: 8px;
-  height: 8px;
-  background: #f8f5fb;
-  border: 1.5px solid rgba(var(--side-rgb), 0.22);
-  border-radius: 50%;
-}
 .selecting-bars {
   display: flex;
   align-items: center;
@@ -664,27 +577,6 @@ fieldset {
 }
 .selecting-bars i:nth-child(3) {
   animation-delay: 0.3s;
-}
-.team-composition {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  color: #aa9db6;
-  font-size: 10px;
-  min-height: 0;
-}
-.team-composition span {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-}
-.team-composition i {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--role);
-  opacity: 0.8;
 }
 .portrait {
   display: block;
@@ -712,7 +604,6 @@ fieldset {
   min-height: 0;
   min-width: 0;
   padding: 17px 17px 0;
-  background: #fff;
   border: 1px solid #ebe7f1;
   border-radius: 18px;
   box-shadow: 0 8px 32px #45316508;
@@ -750,7 +641,6 @@ fieldset {
 .sort-select {
   display: flex;
   align-items: center;
-  position: relative;
   flex-shrink: 0;
 }
 .sort-select select {
@@ -937,24 +827,6 @@ fieldset {
   opacity: 0.45;
   border-radius: 3px;
 }
-.pokemon-name {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 21px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 3px;
-  background: #ffffff7d;
-  color: #766481;
-  font-size: 10px;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 .pokemon-card.is-selected {
   border-color: #9b73da;
   box-shadow: 0 0 0 2px #a97ee5;
@@ -980,9 +852,6 @@ fieldset {
 .pokemon-card.unavailable > .portrait {
   opacity: 0.22;
   filter: grayscale(0.9);
-}
-.pokemon-card.unavailable .pokemon-name {
-  opacity: 0.4;
 }
 .used-overlay {
   position: absolute;
@@ -1019,12 +888,6 @@ fieldset {
 }
 .selection-footer svg {
   margin-left: 6px;
-}
-.legend-dot {
-  width: 6px;
-  height: 6px;
-  background: #a77cda;
-  border-radius: 50%;
 }
 .empty-results {
   grid-column: 1/-1;
@@ -1074,26 +937,12 @@ fieldset {
 .subtle-button:disabled {
   opacity: 0.38;
 }
-.selected-description {
-  min-height: 16px;
-  text-align: center;
-  color: #a58baf;
-  font-size: 11px;
-  line-height: 1.5;
-}
-.selected-description strong {
-  color: #705080;
-  font-weight: 700;
-  margin-right: 4px;
-}
 .confirm-button {
   min-width: 228px;
   height: 43px;
   padding: 0 32px;
   border-radius: 12px;
   display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 8px;
   background: linear-gradient(135deg, #a274de, #825cce);
   color: #fff;
@@ -1114,12 +963,6 @@ fieldset {
   box-shadow: none;
   opacity: 1;
 }
-.enter-hint {
-  position: absolute;
-  right: 16px;
-  font-size: 12px;
-  opacity: 0.5;
-}
 .decision-extra {
   display: flex;
   justify-content: flex-end;
@@ -1131,14 +974,6 @@ fieldset {
   align-items: center;
   gap: 6px;
   color: #a18aaf;
-}
-.next-game {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: #976fb8;
-  font-size: 12px;
-  background: transparent;
 }
 .timeline {
   display: flex;
@@ -1173,7 +1008,6 @@ fieldset {
   display: flex;
   justify-content: space-between;
   gap: 6px;
-  flex: 1;
   min-width: 0;
 }
 .timeline-step {
@@ -1209,8 +1043,6 @@ fieldset {
   white-space: nowrap;
 }
 .timeline-step.current .step-node {
-  background: var(--side);
-  color: #fff;
   border-color: var(--side);
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--side) 12%, #fff);
 }
@@ -1242,19 +1074,6 @@ fieldset {
   width: 1px;
   background: #eee5f1;
 }
-.progress-count {
-  font-size: 18px;
-  font-weight: 650;
-  color: #a083b6;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
-.progress-count small {
-  font-size: 10px;
-  font-weight: 400;
-  color: #c1abcd;
-  margin-left: 5px;
-}
 .app-footer {
   display: flex;
   justify-content: space-between;
@@ -1271,9 +1090,6 @@ fieldset {
   display: flex;
   align-items: center;
   gap: 16px;
-}
-.footer-divider {
-  margin: 0 7px;
 }
 .footer-link,
 .sound-button {
@@ -1345,310 +1161,6 @@ fieldset {
   padding: 44px 24px;
   flex: 1;
 }
-.setup-intro > .section-kicker {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  color: #aaa0b6;
-  font-size: 10px;
-  letter-spacing: 1.8px;
-}
-.setup-intro > .section-kicker > span {
-  width: 6px;
-  height: 6px;
-  background: #a77fdd;
-  border-radius: 50%;
-}
-.setup-intro h1 {
-  font-size: 39px;
-  line-height: 1.65;
-  letter-spacing: -1.6px;
-  font-weight: 700;
-  color: #353142;
-  margin: 18px 0 17px;
-}
-.setup-intro h1 > span {
-  color: #8d68be;
-}
-.setup-intro > p {
-  font-size: 13px;
-  line-height: 2;
-  color: #aaa0b1;
-  margin: 0;
-}
-.setup-art {
-  height: 272px;
-  position: relative;
-  margin: 15px -12px 12px;
-  isolation: isolate;
-}
-.art-orbit {
-  position: absolute;
-  left: 10%;
-  top: 15%;
-  width: 80%;
-  height: 70%;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, #ded1f550, transparent 66%);
-  border: 1px solid #e7dff380;
-  transform: rotate(-15deg);
-  z-index: -1;
-}
-.showcase-card {
-  position: absolute;
-  width: 148px;
-  height: 178px;
-  border-radius: 23px;
-  background: linear-gradient(145deg, #fffffffa, #f4ecfba0);
-  border: 1px solid #fff;
-  box-shadow:
-    0 15px 35px #79529c16,
-    inset 0 0 0 1px #fff5;
-  top: 56px;
-  overflow: hidden;
-}
-.showcase-card .portrait {
-  width: 146px;
-  height: 146px;
-  position: absolute;
-  top: 15px;
-  left: 0;
-}
-.showcase-0 {
-  left: 2%;
-  transform: rotate(-11deg);
-  background: linear-gradient(150deg, #f7f3ff, #e6dcf3);
-}
-.showcase-1 {
-  left: 32%;
-  top: 20px;
-  transform: rotate(1deg);
-  z-index: 2;
-  background: linear-gradient(150deg, #fffdf9, #f7ecd3);
-  box-shadow: 0 17px 40px #78529720;
-}
-.showcase-2 {
-  right: 0;
-  transform: rotate(11deg);
-  background: linear-gradient(150deg, #f5fbff, #dfe9f5);
-}
-.showcase-index {
-  position: absolute;
-  top: 13px;
-  left: 16px;
-  font-size: 10px;
-  letter-spacing: 1px;
-  color: #b9a9c7;
-}
-.showcase-name {
-  position: absolute;
-  bottom: 14px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: 11px;
-  font-weight: 600;
-  color: #a088af;
-  letter-spacing: 0.4px;
-}
-.art-badge {
-  position: absolute;
-  z-index: 3;
-  bottom: 13px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 9px 15px;
-  background: #fff9;
-  border: 1px solid #fff;
-  border-radius: 30px;
-  color: #a185b4;
-  font-size: 10px;
-  letter-spacing: 1px;
-  white-space: nowrap;
-  box-shadow: 0 4px 15px #664a7e09;
-  backdrop-filter: blur(14px);
-}
-.setup-features {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  justify-content: center;
-  color: #b19fbd;
-  font-size: 11px;
-}
-.setup-features > span {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-.setup-card {
-  background: #fff;
-  border: 1px solid #f1edf7;
-  border-radius: 25px;
-  padding: 30px 30px 23px;
-  box-shadow:
-    0 18px 65px #6951840d,
-    0 2px 10px #84679d03;
-  min-width: 0;
-}
-.setup-title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 25px;
-}
-.setup-title-row .section-kicker {
-  color: #c0aace;
-  font-size: 9px;
-  letter-spacing: 1.8px;
-}
-.setup-title-row h2 {
-  font-size: 23px;
-  font-weight: 650;
-  letter-spacing: -0.6px;
-  margin: 6px 0 0;
-  color: #4f3c60;
-}
-.setup-symbol {
-  display: grid;
-  place-items: center;
-  width: 43px;
-  height: 43px;
-  border-radius: 14px;
-  background: #f4eefb;
-  color: #ad87cc;
-}
-.setup-field {
-  margin-bottom: 22px;
-}
-.setup-field legend {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  color: #9680a5;
-  margin-bottom: 11px;
-  font-weight: 600;
-}
-.mode-options {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-.mode-option {
-  padding: 15px 13px 13px;
-  background: #fbf9fd;
-  border: 1px solid #eee7f5;
-  border-radius: 12px;
-  text-align: left;
-  position: relative;
-  min-width: 0;
-  color: #b4a3c0;
-}
-.mode-option > svg:first-child {
-  width: 20px;
-  height: 20px;
-  margin-bottom: 9px;
-  display: block;
-  color: #b7a1c9;
-}
-.mode-option strong {
-  display: block;
-  color: #a491b4;
-  font-size: 13px;
-  font-weight: 600;
-  white-space: nowrap;
-}
-.mode-option small {
-  display: block;
-  font-size: 10px;
-  color: #c1b3cc;
-  margin-top: 5px;
-  line-height: 1.5;
-}
-.mode-option.chosen {
-  border-color: #ae8bd3;
-  background: linear-gradient(145deg, #fbf7ff, #f1e9fa);
-  box-shadow: 0 0 0 1px #ad8bd32b;
-}
-.mode-option.chosen strong,
-.mode-option.chosen > svg:first-child {
-  color: #9873b9;
-}
-.mode-option.chosen small {
-  color: #af99c1;
-}
-.option-check {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  color: #a17bc3;
-}
-.mode-option:disabled {
-  opacity: 0.85;
-}
-.timer-options {
-  display: flex;
-  gap: 4px;
-  background: #f5f2f9;
-  border: 1px solid #f0ebf5;
-  padding: 4px;
-  border-radius: 10px;
-}
-.timer-options button {
-  flex: 1;
-  border-radius: 7px;
-  padding: 8px 2px;
-  background: transparent;
-  color: #ad9dbc;
-  font-size: 13px;
-  white-space: nowrap;
-}
-.timer-options button small {
-  font-size: 10px;
-  margin-left: 3px;
-  font-weight: 400;
-}
-.timer-options button.chosen {
-  background: #fff;
-  color: #9470ad;
-  box-shadow: 0 2px 7px #70528613;
-  font-weight: 700;
-}
-.field-hint {
-  font-size: 10px;
-  color: #c1b4cb;
-  margin: 8px 0 0;
-}
-.side-options {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-.side-options button {
-  --side: #ab86d7;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 11px 12px;
-  border: 1px solid #eee7f4;
-  border-radius: 10px;
-  background: #fcfafd;
-  text-align: left;
-  color: #b09abc;
-  min-width: 0;
-}
-.side-options button.orange {
-  --side: #ddb182;
-}
-.side-options button.chosen {
-  background: color-mix(in srgb, var(--side) 8%, #fff);
-  border-color: var(--side);
-}
 .side-dot {
   width: 8px;
   height: 8px;
@@ -1661,98 +1173,6 @@ fieldset {
   color: #a88cba;
   flex: 1;
 }
-.side-options small {
-  font-size: 10px;
-  color: #c3b1cf;
-  margin-left: 6px;
-}
-.side-options button > svg {
-  color: var(--side);
-  width: 14px;
-}
-.first-team-field {
-  margin-bottom: 14px;
-}
-.team-name-settings {
-  border-top: 1px solid #f1ebf6;
-  padding-top: 14px;
-  margin: 0 0 19px;
-}
-.team-name-settings summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #b6a1c5;
-  font-size: 11px;
-  cursor: pointer;
-  list-style: none;
-}
-.team-name-settings summary::-webkit-details-marker {
-  display: none;
-}
-.team-name-settings[open] summary > svg {
-  transform: rotate(90deg);
-}
-.team-name-settings > div {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 13px;
-}
-.team-name-settings label {
-  font-size: 10px;
-  color: #b8a1c8;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.team-name-settings input {
-  width: 100%;
-  padding: 9px;
-  border: 1px solid #e7dcef;
-  border-radius: 7px;
-  background: #fdfbff;
-  color: #9e7cb3;
-  font-size: 12px;
-}
-.start-draft-button {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 11px;
-  min-height: 46px;
-  border-radius: 11px;
-  background: linear-gradient(125deg, #a77ed2, #8f6abc);
-  color: #fff;
-  box-shadow: 0 5px 13px #9462c225;
-  font-size: 14px;
-  font-weight: 600;
-  border: 1px solid #a483c8;
-}
-.start-draft-button:hover {
-  box-shadow: 0 6px 19px #8860b63d;
-}
-.setup-footnote {
-  margin: 11px 0 0;
-  text-align: center;
-  font-size: 9px;
-  color: #c4b4d0;
-  line-height: 1.6;
-}
-.resume-card {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  width: 100%;
-  padding: 12px;
-  margin: -6px 0 22px;
-  background: #f5eefc;
-  border: 1px solid #e8daf4;
-  border-radius: 11px;
-  text-align: left;
-  color: #a583bb;
-}
 .resume-icon {
   width: 33px;
   height: 33px;
@@ -1764,17 +1184,6 @@ fieldset {
 }
 .resume-card > span:nth-child(2) {
   flex: 1;
-}
-.resume-card strong {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-}
-.resume-card small {
-  display: block;
-  font-size: 10px;
-  color: #baa3ca;
-  margin-top: 4px;
 }
 .setup-mode .app-footer {
   padding-top: 10px;
@@ -1899,14 +1308,8 @@ dialog > p {
   .role-text {
     font-size: 10px;
   }
-  .pokemon-name {
-    font-size: 12px;
-  }
   .role-tabs button {
     font-size: 12px;
-  }
-  .phase-message strong {
-    font-size: 16px;
   }
   .team-heading h2 {
     font-size: 16px;
@@ -1996,24 +1399,12 @@ dialog > p {
   .pokemon-grid {
     gap: 7px;
   }
-  .pokemon-name {
-    font-size: 9px;
-  }
   .role-tabs {
     gap: 3px;
   }
   .role-tabs button {
     font-size: 9px;
     padding: 6px 3px;
-  }
-  .phase-label {
-    min-width: 170px;
-  }
-  .phase-message strong {
-    font-size: 12px;
-  }
-  .phase-message div > span {
-    font-size: 10px;
   }
   .snapshot {
     display: none;
@@ -2027,9 +1418,6 @@ dialog > p {
   .subtle-button {
     font-size: 10px;
   }
-  .team-composition {
-    gap: 12px;
-  }
   .app-footer {
     padding-left: 20px;
     padding-right: 20px;
@@ -2038,23 +1426,6 @@ dialog > p {
     gap: 45px;
     max-width: 1030px;
     padding: 35px 30px;
-  }
-  .setup-intro h1 {
-    font-size: 35px;
-  }
-  .setup-card {
-    padding: 27px 24px 23px;
-  }
-  .showcase-card {
-    width: 134px;
-    height: 166px;
-  }
-  .showcase-card .portrait {
-    width: 132px;
-    height: 132px;
-  }
-  .setup-art {
-    height: 255px;
   }
 }
 @media (max-width: 900px) {
@@ -2072,22 +1443,6 @@ dialog > p {
     gap: 14px;
     padding: 13px 15px;
     min-height: 78px;
-  }
-  .phase-label {
-    min-width: 145px;
-    padding-right: 14px;
-  }
-  .phase-label h1 {
-    font-size: 17px;
-  }
-  .phase-message strong {
-    font-size: 11px;
-  }
-  .phase-message div > span {
-    font-size: 9px;
-  }
-  .team-tag {
-    display: none;
   }
   .timer {
     min-width: 72px;
@@ -2165,14 +1520,6 @@ dialog > p {
   .role-text {
     font-size: 7px;
   }
-  .team-composition {
-    gap: 8px;
-    font-size: 9px;
-  }
-  .team-composition i {
-    width: 4px;
-    height: 4px;
-  }
   .pokemon-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 7px;
@@ -2226,9 +1573,6 @@ dialog > p {
     min-width: 190px;
     font-size: 14px;
   }
-  .selected-description {
-    font-size: 10px;
-  }
   .decision-extra .subtle-button {
     font-size: 9px;
     gap: 3px;
@@ -2249,9 +1593,6 @@ dialog > p {
   .timeline-step {
     min-width: 20px;
   }
-  .progress-count {
-    font-size: 14px;
-  }
   .app-footer {
     flex-wrap: wrap;
     justify-content: center;
@@ -2266,68 +1607,6 @@ dialog > p {
     padding: 36px 25px;
     max-width: 900px;
     grid-template-columns: 0.82fr 1fr;
-  }
-  .setup-intro h1 {
-    font-size: 28px;
-  }
-  .setup-intro > p {
-    font-size: 11px;
-  }
-  .setup-intro > .section-kicker {
-    font-size: 8px;
-  }
-  .showcase-card {
-    width: 108px;
-    height: 138px;
-    top: 51px;
-    border-radius: 17px;
-  }
-  .showcase-card .portrait {
-    width: 108px;
-    height: 108px;
-    top: 16px;
-  }
-  .showcase-1 {
-    top: 24px;
-  }
-  .setup-art {
-    height: 220px;
-    margin-left: -7px;
-    margin-right: -7px;
-  }
-  .showcase-name {
-    font-size: 9px;
-    bottom: 12px;
-  }
-  .setup-features {
-    gap: 13px;
-    font-size: 9px;
-  }
-  .setup-features svg {
-    width: 13px;
-  }
-  .setup-card {
-    padding: 24px 20px 20px;
-  }
-  .setup-title-row h2 {
-    font-size: 21px;
-  }
-  .mode-option {
-    padding: 13px 10px;
-  }
-  .mode-option strong {
-    font-size: 12px;
-  }
-  .mode-option small {
-    font-size: 9px;
-  }
-  .side-options small {
-    font-size: 9px;
-    margin-left: 3px;
-  }
-  .side-options button {
-    padding: 10px 8px;
-    gap: 6px;
   }
 }
 @media (max-width: 680px) {
@@ -2372,31 +1651,6 @@ dialog > p {
     min-height: 107px;
     margin-bottom: 13px;
     border-radius: 14px;
-  }
-  .phase-label {
-    min-width: 0;
-    border: 0;
-    padding: 0;
-    flex: 1;
-  }
-  .phase-label h1 {
-    font-size: 18px;
-    margin-top: 4px;
-  }
-  .phase-label > .eyebrow {
-    font-size: 8px;
-  }
-  .phase-message {
-    order: 3;
-    flex-basis: 100%;
-    padding-top: 3px;
-  }
-  .phase-message strong {
-    font-size: 11px;
-  }
-  .phase-message div > span {
-    font-size: 9px;
-    margin-top: 3px;
   }
   .timer {
     position: absolute;
@@ -2495,21 +1749,6 @@ dialog > p {
     left: 4px;
     font-size: 7px;
   }
-  .pokeball-symbol {
-    width: 22px;
-    height: 22px;
-  }
-  .pokeball-symbol:before {
-    top: 9px;
-  }
-  .pokeball-symbol:after {
-    top: 6px;
-    left: 6px;
-  }
-  .team-composition {
-    gap: 9px;
-    font-size: 8px;
-  }
   .bans-heading,
   .picks-heading {
     font-size: 9px;
@@ -2557,10 +1796,6 @@ dialog > p {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 8px;
   }
-  .pokemon-name {
-    font-size: 10px;
-    height: 22px;
-  }
   .selection-footer {
     height: 31px;
     font-size: 9px;
@@ -2578,9 +1813,6 @@ dialog > p {
     height: 46px;
     font-size: 15px;
     border-radius: 12px;
-  }
-  .selected-description {
-    font-size: 11px;
   }
   .utility-actions {
     order: 1;
@@ -2632,13 +1864,6 @@ dialog > p {
   .timeline-separator {
     display: none;
   }
-  .progress-count {
-    font-size: 12px;
-  }
-  .progress-count small {
-    font-size: 8px;
-    margin-left: 2px;
-  }
   .app-footer {
     flex-direction: column;
     gap: 7px;
@@ -2662,85 +1887,9 @@ dialog > p {
     padding: 29px 18px;
     max-width: 450px;
   }
-  .setup-intro {
-    width: 100%;
-    text-align: center;
-  }
-  .setup-intro > .section-kicker {
-    justify-content: center;
-    font-size: 8px;
-    letter-spacing: 1.7px;
-  }
-  .setup-intro h1 {
-    font-size: 27px;
-    line-height: 1.55;
-    letter-spacing: -1px;
-    margin: 11px 0 10px;
-  }
-  .setup-intro h1 br {
-    display: none;
-  }
-  .setup-intro h1 > span {
-    display: block;
-  }
-  .setup-intro > p {
-    font-size: 11px;
-    line-height: 1.8;
-  }
-  .setup-art,
-  .setup-features {
-    display: none;
-  }
-  .setup-card {
-    width: 100%;
-    border-radius: 21px;
-    padding: 23px 22px 20px;
-    box-shadow: 0 12px 40px #6951840b;
-  }
-  .setup-title-row {
-    margin-bottom: 22px;
-  }
-  .setup-title-row h2 {
-    font-size: 21px;
-  }
-  .setup-field {
-    margin-bottom: 20px;
-  }
-  .mode-option {
-    padding: 14px 12px;
-  }
-  .mode-option strong {
-    font-size: 13px;
-  }
-  .mode-option small {
-    font-size: 9px;
-  }
-  .first-team-field {
-    margin-bottom: 14px;
-  }
-  .timer-options button {
-    padding: 9px 2px;
-  }
-  .side-options button {
-    padding: 11px;
-  }
-  .side-options small {
-    font-size: 10px;
-    margin-left: 5px;
-  }
-  .team-name-settings {
-    margin-bottom: 17px;
-  }
-  .start-draft-button {
-    min-height: 46px;
-    font-size: 14px;
-  }
   .setup-mode .app-footer {
     padding-top: 5px;
     padding-bottom: 18px;
-  }
-  .setup-footnote {
-    font-size: 9px;
   }
   .toast {
     bottom: 14px;
@@ -2778,9 +1927,6 @@ dialog > p {
   .filled .player-name {
     font-size: 9px;
   }
-  .team-composition {
-    gap: 7px;
-  }
   .role-tabs button {
     font-size: 8px;
     padding: 5px 2px;
@@ -2788,29 +1934,8 @@ dialog > p {
   .hide-used {
     font-size: 8px;
   }
-  .pokemon-name {
-    font-size: 9px;
-  }
-  .progress-count {
-    display: none;
-  }
   .app .setup-main {
     padding: 25px 14px;
-  }
-  .setup-card {
-    padding: 22px 17px 18px;
-  }
-  .setup-intro h1 {
-    font-size: 25px;
-  }
-  .mode-option strong {
-    font-size: 12px;
-  }
-  .mode-option small {
-    font-size: 8px;
-  }
-  .side-options small {
-    font-size: 9px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2823,46 +1948,21 @@ dialog > p {
   }
 }
 /* Maintain readable contrast while keeping the soft team palette. */
-.setup-intro > p,
-.setup-features,
-.field-hint,
-.setup-footnote,
-.resume-card small,
-.mode-option small,
-.side-options small {
-  color: #766a83;
-}
 .setup-field legend,
 .team-name-settings summary,
 .team-name-settings label,
 .side-options button > span:nth-child(2) {
   color: #665772;
 }
-.mode-option strong,
-.timer-options button,
-.team-name-settings input {
-  color: #544161;
-}
-.mode-option.chosen strong,
-.resume-card strong {
-  color: #7549a2;
-}
-.showcase-name,
-.art-badge {
-  color: #79638a;
-}
-.start-draft-button,
 .confirm-button,
 .modal-primary {
   background: linear-gradient(125deg, #8c60c7, #7547b0);
   border-color: #865abd;
 }
 .subtle-button,
-.selected-description,
 .sort-select select,
 .hide-used,
-.role-tabs button,
-.phase-message div > span {
+.role-tabs button {
   color: #73667e;
 }
 .role-tabs button.active {
@@ -2980,13 +2080,6 @@ dialog > p,
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.history-empty {
-  font-size: 9px;
-  line-height: 1.9;
-  text-align: center;
-  color: #8c7c99;
-  margin: 13px 0;
-}
 .legacy-history {
   background: #fff;
   border: 1px solid #eee4f3;
@@ -3082,13 +2175,6 @@ dialog > p,
   .history-pokemon-item > span {
     font-size: 7px;
   }
-  .history-empty {
-    margin: 4px;
-    font-size: 9px;
-  }
-  .history-empty br {
-    display: none;
-  }
 }
 @media (max-width: 680px) {
   .team-side.purple {
@@ -3145,59 +2231,6 @@ dialog > p,
 .player-slot {
   min-height: 58px;
 }
-.match-format-panels {
-  display: grid;
-}
-.match-format-panel {
-  grid-area: 1 / 1;
-  min-width: 0;
-}
-.match-format-panel[aria-hidden="true"] {
-  visibility: hidden;
-}
-.match-format-panels .series-options,
-.single-match-format {
-  min-height: 46px;
-}
-.single-match-format {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border: 1px solid #f0ebf5;
-  border-radius: 10px;
-  background: #f5f2f9;
-  color: #9470ad;
-  font-size: 13px;
-}
-.single-match-format small {
-  font-size: 10px;
-  font-weight: 400;
-}
-.series-options button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-.result-image-preview {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  border: 1px solid #e7dfef;
-}
-.image-download {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  background: #8052bb;
-  color: white;
-  border-radius: 10px;
-  padding: 13px;
-  margin-top: 16px;
-}
 dialog:has(.result-image-preview) {
   width: 820px;
 }
@@ -3251,9 +2284,6 @@ dialog:has(.result-image-preview) {
   .player-portrait.has-pokemon {
     flex-basis: 40px;
   }
-}
-.final-image-action {
-  order: 2;
 }
 .decision-main > .confirm-button {
   flex-shrink: 0;

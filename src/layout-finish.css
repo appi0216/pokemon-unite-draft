@@ -25,15 +25,9 @@
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 8px;
 }
-.pokemon-card .pokemon-name {
-  font-size: 9px;
-}
 .confirm-button,
-.next-game,
-.complete-button,
 .modal-primary,
 .modal-secondary,
-.image-download,
 .setup-return-button {
   border-radius: 12px;
   font-weight: 600;
@@ -132,14 +126,6 @@
 .allstar-arena .history-pokemon-item > span {
   font-size: 7px;
 }
-.allstar-arena .history-empty {
-  margin: 4px;
-  font-size: 9px;
-  white-space: nowrap;
-}
-.allstar-arena .history-empty br {
-  display: none;
-}
 
 @media (min-width: 901px) and (min-height: 760px) {
   .phase-banner {
@@ -152,23 +138,6 @@
   .phase-banner > .timeline {
     min-height: 40px;
     padding-top: 7px;
-  }
-
-  .phase-label,
-  .phase-message > div {
-    gap: 3px;
-  }
-
-  .phase-label h1 {
-    font-size: 18px;
-  }
-
-  .phase-message strong {
-    font-size: 13px;
-  }
-
-  .phase-message div > span {
-    font-size: 10px;
   }
 
   .draft-arena,
@@ -231,9 +200,6 @@
   .pokemon-grid {
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 5px;
-  }
-  .pokemon-card .pokemon-name {
-    font-size: 8px;
   }
   .subtle-button {
     padding: 7px;

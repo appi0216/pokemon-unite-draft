@@ -37,7 +37,21 @@ for (const name of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
       const key = v2 ? "unite-draft.studio.v2" : "unite-draft.v1";
       const read = () =>
         page.evaluate((k) => JSON.parse(localStorage.getItem(k)), key);
+      const matchedSelectors = new Set();
+      const observedSelectors = new Set();
       const capture = async (label) => {
+        const coverage = await page.evaluate(() => {
+          const seen=[],matched=[];
+          const walk=rules=>{for(const rule of rules){
+            if(rule.selectorText){seen.push(rule.selectorText);try{if(document.querySelector(rule.selectorText))matched.push(rule.selectorText);}catch{}}
+            if(rule.cssRules)walk(rule.cssRules);
+            if(rule.styleSheet)try{walk(rule.styleSheet.cssRules);}catch{}
+          }};
+          for(const sheet of document.styleSheets)try{walk(sheet.cssRules);}catch{}
+          return {seen,matched};
+        });
+        coverage.seen.forEach(s=>observedSelectors.add(s));
+        coverage.matched.forEach(s=>matchedSelectors.add(s));
         await page.waitForTimeout(120);
         await page.waitForFunction(() =>
           [...document.images].every((i) => {
@@ -415,6 +429,7 @@ for (const name of (process.env.AUDIT_ENGINES || "chromium,webkit").split(
         path.join(out, "results.json"),
         JSON.stringify(results, null, 2),
       );
+      await fs.writeFile(path.join(out, `${name}-${width}-${run.version}-selectors.json`),JSON.stringify({observed:[...observedSelectors],matched:[...matchedSelectors]},null,2));
       await context.close();
     }
   await browser.close();
@@ -436,6 +451,7 @@ if (
   )
 )
   process.exitCode = 1;
+
 
 
 

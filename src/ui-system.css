@@ -83,10 +83,8 @@
   font-size: 12px;
 }
 
-.setup-tools-button,
 .draft-tools button,
-.series-export,
-.import-backup {
+.series-export {
   border: 1px solid #476974;
   border-radius: 8px;
   background: #18303b;
@@ -99,59 +97,12 @@
     background-color 180ms var(--motion-standard-easing),
     border-color 180ms var(--motion-standard-easing);
 }
-.setup-tools-button {
-  width: 100%;
-  margin-top: 6px;
-}
 .series-export {
   margin-bottom: 12px;
 }
 @media (min-width: 901px) and (max-height: 800px) {
   .app.setup-mode .setup-main {
     padding-block: 10px;
-  }
-  .app.setup-mode .setup-card {
-    padding: 12px 18px;
-    row-gap: 7px;
-  }
-  .app.setup-mode .setup-title-row {
-    min-height: 36px;
-    height: 36px;
-    margin: 0;
-  }
-  .app.setup-mode .setup-title-row h2 {
-    margin-block: 2px;
-    font-size: 20px;
-  }
-  .app.setup-mode .resume-card {
-    min-height: 44px;
-    padding-block: 5px;
-  }
-  .app.setup-mode .setup-field {
-    padding: 5px 10px;
-  }
-  .app.setup-mode .setup-field .field-hint {
-    margin-block: 4px 0;
-  }
-  .app.setup-mode .setup-field legend {
-    margin-bottom: 3px;
-  }
-  .app.setup-mode .mode-option {
-    min-height: 46px;
-    padding-block: 5px;
-  }
-  .app.setup-mode .single-match-format {
-    min-height: 36px;
-  }
-  .app.setup-mode .team-name-settings {
-    padding-top: 6px;
-  }
-  .app.setup-mode .setup-tools-button {
-    margin-top: 0;
-    padding-block: 6px;
-  }
-  .app.setup-mode .setup-footnote {
-    margin: 0;
   }
 }
 .tools-dialog {
@@ -218,22 +169,7 @@
   width: 16px;
   height: 16px;
 }
-.import-backup {
-  position: relative;
-}
-.import-backup input {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  opacity: 0;
-  cursor: pointer;
-}
-.import-backup:focus-within {
-  outline: 2px solid #69cad9;
-  outline-offset: 2px;
-}
 .draft-tools button:hover,
-.setup-tools-button:hover,
 .series-export:hover {
   background: #245061;
   border-color: #69cad9;
@@ -277,28 +213,6 @@
   line-height: 1.12;
 }
 
-.setup-mode .mode-option small,
-.setup-mode .timer-options button small,
-.setup-mode .field-hint,
-.setup-mode .setup-footnote {
-  font-size: 11px;
-  line-height: 1.35;
-}
-
-.setup-mode .mode-option strong,
-.setup-mode .timer-options button,
-.setup-mode .single-match-format strong,
-.setup-mode .team-name-settings summary {
-  font-size: 11.5px;
-}
-
-.setup-mode .mode-options {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-.setup-mode .mode-option {
-  padding-inline: 8px;
-}
-
 .rules-table {
   width: 100%;
   border-collapse: collapse;
@@ -325,47 +239,6 @@
 }
 .rules-table th[scope="row"] {
   width: 100px;
-}
-
-.setup-card.has-saved-draft .resume-card {
-  min-height: 50px;
-  border-color: #69c7d4;
-  background:
-    linear-gradient(110deg, transparent 10%, #ffffff0b 48%, transparent 78%),
-    linear-gradient(135deg, #286f80, #274f62 62%, #394d59);
-  color: #f1fbfc;
-  box-shadow:
-    inset 0 1px #ffffff1f,
-    0 8px 22px #0710154d,
-    0 0 20px #62cedd16;
-}
-.setup-card.has-saved-draft .resume-card strong {
-  color: #f1fbfc;
-  font-size: 13px;
-}
-.setup-card.has-saved-draft .resume-card small,
-.setup-card.has-saved-draft .resume-card > svg {
-  color: #bcd8dd;
-}
-.setup-card.has-saved-draft .resume-card:hover,
-.setup-card.has-saved-draft .resume-card:focus-visible {
-  border-color: #92e0e8;
-  background:
-    linear-gradient(110deg, transparent 10%, #ffffff12 48%, transparent 78%),
-    linear-gradient(135deg, #328698, #2d6175 62%, #465b68);
-}
-.setup-card.has-saved-draft .start-draft-button {
-  border-color: #48626d;
-  background: linear-gradient(145deg, #25343c, #1a282f);
-  color: #bdd0d4;
-  box-shadow: inset 0 1px #ffffff0b;
-}
-.setup-card.has-saved-draft .start-draft-button:hover,
-.setup-card.has-saved-draft .start-draft-button:focus-visible {
-  border-color: #6d929d;
-  background: linear-gradient(145deg, #2b3c45, #1e2e36);
-  color: #edf8fa;
-  box-shadow: inset 0 1px #ffffff10;
 }
 
 /* Neutral utilities use cyan; team colors remain reserved for team identity. */
@@ -538,32 +411,8 @@ dialog.review-dialog.single-game {
   padding-bottom: 2px;
 }
 
-@media (min-width: 701px) and (max-height: 820px) {
-  .setup-mode .setup-art {
-    height: 210px;
-  }
-  .setup-mode .showcase-card {
-    top: 22px;
-    height: 166px;
-    aspect-ratio: auto;
-  }
-  .setup-mode .showcase-1 {
-    top: 0;
-  }
-  .setup-mode .art-badge {
-    bottom: 0;
-    padding-block: 7px;
-  }
-}
-
 @media (max-width: 900px) {
   .review-dialog.multi-game .past-games-review {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 700px) {
-  .setup-mode .mode-options {
     grid-template-columns: minmax(0, 1fr);
   }
 }

@@ -39,7 +39,7 @@ type Props = {
 
 const modes = [
   { id: "standard", label: "通常", icon: Swords },
-  { id: "all-star", label: "オールスタードラフト", icon: Sparkles },
+  { id: "all-star", label: "オールスター", icon: Sparkles },
   { id: "fearless", label: "フィアレス", icon: Shield },
 ] as const;
 
@@ -254,7 +254,7 @@ export default function SetupScreen({
                   <dd>前の試合の選出を持ち越しません。</dd>
                 </div>
                 <div>
-                  <dt>オールスタードラフト</dt>
+                  <dt>オールスター</dt>
                   <dd>
                     それまでの試合で両チームが選んだポケモンは、再使用できません。
                   </dd>
@@ -301,4 +301,5 @@ export default function SetupScreen({
     </main>
   );
 }
+
 

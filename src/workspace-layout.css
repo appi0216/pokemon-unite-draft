@@ -1957,3 +1957,15 @@ dialog .dialog-notice {
   .app:not(.setup-mode) { --chrome-size:44px; }
  }
 }
+.app .skip-card { display:grid; place-items:center; background:var(--surface-control); color:var(--text-secondary); }
+.app .skip-card svg { width:clamp(20px,4vw,32px); height:clamp(20px,4vw,32px); }
+.app.setup-mode { --home-gap:clamp(8px,2dvh,24px); --home-font:clamp(.75rem,min(2vw,3.3dvh),1rem); }
+.app.setup-mode .setup-refresh-card { gap:var(--home-gap); padding:clamp(12px,3dvh,28px); }
+.app.setup-mode .setup-refresh-heading h1 { font-size:clamp(1rem,min(4vw,5dvh),1.6rem); }
+.app.setup-mode .setup-portrait:nth-child(n) { width:clamp(32px,10dvh,58px); height:clamp(32px,10dvh,58px); }
+.app.setup-mode .setup-refresh :is(button,summary,legend,label,.setup-row-label) { font-size:var(--home-font); }
+.app.setup-mode .setup-resume { min-height:44px; padding:clamp(8px,2dvh,18px); gap:var(--home-gap); }
+.app.setup-mode .setup-mode-choice { min-height:44px; padding:clamp(8px,2dvh,18px); gap:clamp(4px,1dvh,10px); }
+.app.setup-mode .setup-mode-choice>span { font-size:var(--home-font); }
+.app.setup-mode .setup-mode-choice>svg { width:clamp(16px,4dvh,24px); height:clamp(16px,4dvh,24px); }
+.app.setup-mode .setup-main.setup-refresh { padding-block:clamp(6px,2dvh,24px); }

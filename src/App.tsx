@@ -406,10 +406,11 @@ function App() {
         ),
     [role, hideUsed, draft, query, sort],
   );
-  const pageCount = Math.max(1, Math.ceil(visible.length / rosterLayout.size));
+  const skipSlot = step?.phase === "ban" ? 1 : 0;
+  const pageCount = Math.max(1, Math.ceil((visible.length + skipSlot) / rosterLayout.size));
   const currentPage = Math.min(rosterPage, pageCount - 1);
   const pageStart = currentPage * rosterLayout.size;
-  const pagePokemon = visible.slice(pageStart, pageStart + rosterLayout.size);
+  const pagePokemon = visible.slice(Math.max(0,pageStart - skipSlot), Math.max(0,pageStart + rosterLayout.size - skipSlot));
   useEffect(() => {
     setRosterPage(0);
     setSelected(null);
@@ -417,7 +418,7 @@ function App() {
   useEffect(() => {
     if (!selected) return;
     const index = visible.findIndex((p) => p.id === selected);
-    if (index >= 0) setRosterPage(Math.floor(index / rosterLayout.size));
+    if (index >= 0) setRosterPage(Math.floor((index + skipSlot) / rosterLayout.size));
   }, [rosterLayout.size]);
   useEffect(() => {
     if (!pageFocus.current) return;
@@ -1248,7 +1249,7 @@ function App() {
                     aria-expanded={sortOpen}
                     onClick={() => setSortOpen(!sortOpen)}
                   >
-                    <span>{sort === "name" ? "名前順" : "新しい順"}</span>
+                    
                     <ArrowDownWideNarrow size={18} />
                   </button>
                   {sortOpen && (
@@ -1395,6 +1396,7 @@ function App() {
                     );
                     return;
                   }
+                  if (current.classList.contains("skip-card") && (e.key === "Enter" || e.key === " ")) { e.stopPropagation(); return; }
                   if (e.key === "Enter") {
                     e.preventDefault();
                     e.stopPropagation();
@@ -1456,6 +1458,7 @@ function App() {
                     goToRosterPage(currentPage - 1, "last");
                 }}
               >
+                {skipSlot === 1 && currentPage === 0 && <button type="button" className="pokemon-card skip-card" aria-label="使用禁止投票をスキップ" title="スキップ" onClick={() => { setDraft(choose(draft, null, ids)); setSelected(null); }}><SkipForward aria-hidden="true" /></button>}
                 {pagePokemon.map((p, i) => {
                   const used = unavailable(draft, p.id, activeTeam);
                   const action = draft.actions.find((a) => a.pokemon === p.id);
@@ -1657,19 +1660,7 @@ function App() {
               )}
             </div>
             <div className="decision-extra">
-              {step?.phase === "ban" ? (
-                <button
-                  className="subtle-button"
-                  aria-label="使用禁止投票をスキップ"
-                  onClick={() => {
-                    setDraft(choose(draft, null, ids));
-                    setSelected(null);
-                  }}
-                >
-                  <SkipForward size={16} />
-                  <span>スキップ</span>
-                </button>
-              ) : draft.allStar ? (
+              {draft.allStar ? (
                 <span className="game-counter">
                   <Flag size={15} /> 第{draft.game}試合 / BO{draft.bestOf}
                 </span>
@@ -2063,7 +2054,7 @@ function App() {
                   <td>持ち越しなし。毎試合すべて選び直せます。</td>
                 </tr>
                 <tr>
-                  <th scope="row">オールスタードラフト</th>
+                  <th scope="row">オールスター</th>
                   <td>
                     両チームの過去の選出は、両チームとも使用禁止・選択不可。
                   </td>
@@ -2121,7 +2112,7 @@ function App() {
               target="_blank"
               rel="noreferrer"
             >
-              公式：オールスタードラフト・画面資料 ↗
+              公式：オールスター・画面資料 ↗
             </a>
             <p className="form-note">
               © Pokémon / Nintendo / Creatures / GAME FREAK / TiMi。
@@ -2136,6 +2127,8 @@ function App() {
   );
 }
 export default App;
+
+
 
 
 

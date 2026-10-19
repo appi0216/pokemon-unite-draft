@@ -59,11 +59,6 @@
 .pokemon-card {
   border-radius: 13px;
 }
-@media (hover: hover) {
-  .pokemon-card:not(:disabled):hover {
-    box-shadow: 0 5px 16px #27223c18;
-  }
-}
 
 /* Images get a square inside the available area; labels have their own row. */
 .ban-image {

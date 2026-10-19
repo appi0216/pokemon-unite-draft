@@ -75,3 +75,7 @@ MOTION-DOMINANCE-DECISIONS.jsonに5宣言の対象・値を記録。reduce条件
 ## standaloneヘッダー余白の条件付き判定（2026-10-20）
 
 adaptive-ui.cssのdisplay-mode:standalone内.app-header padding-topは、現在のApp.tsxで常に.app[class]直下にあるheaderに一致。workspace-layout.cssのadaptive-layoutレイヤー内.app[class]>.app-header padding-block!importantが同じtopを優先する（現在の水平書字方向）。ただしレイヤー非対応環境ではそのブロックが無効となるため、この根拠だけで互換用指定の削除はしない。対応ブラウザー範囲と書字方向を固定するまではunproven-retained。今回アプリCSSの変更なし。
+
+## ホバーの旧影指定（2026-10-20）
+
+refinement.cssのhover:hover配下.pokemon-card:not(:disabled):hover box-shadowを削除。同条件・同セレクター・同優先度のadaptive-ui.cssのbox-shadow:noneが後から読み込まれるため常に後者が優先。現在の静的読み込み順が範囲。削除前公開版/削除後previewでChromium/WebKitのhover成立、boxShadow none・borderColor・transform noneが一致。build/offline6合格。1934ルール、CSS180.41KB。

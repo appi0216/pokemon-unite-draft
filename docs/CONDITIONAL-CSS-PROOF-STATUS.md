@@ -20,6 +20,8 @@
 
 ## 2026-10-19 更新と再発防止
 
+個別比較第2件：`.app .pokemon-grid .pokemon-card:focus-visible` は保持。キーボード入力後のフォーカスで条件成立を確認し、ルール除去でoutline-offsetが-3pxから-2pxに変化、復元で-3pxへ戻った（Chromium/WebKit）。表示差があるという証拠であり、ルール内の全宣言が個別に不可欠、または差が重大という意味ではない。
+
 個別比較第1件：`src/ui-tokens.css` の `@media(pointer:coarse) .app` は保持。390×844・タッチ条件で該当宣言だけを一時削除すると並び替えボタンが44pxから30pxへ変わり、復元で44pxに戻ることをChromium/WebKitで確認。`tests/browser/css-necessity.mjs` で再実行可能。これにより「どの状態でも不要」という仮説はこの1件について棄却できる。残りのルールを必要・不要と証明したわけではない。
 
 現行ソースに合わせて一覧を更新した。条件種別と過去の未一致集計への該当を追加。過去の未一致情報は現行状態での使用・不要判定ではない。入力ソースと過去集計のハッシュを保存し、`node scripts/inventory-conditional-css.mjs --check` で一覧の陳腐化を検出する。ハッシュは改行形式を正規化し、Windowsと公開環境で比較可能にした。

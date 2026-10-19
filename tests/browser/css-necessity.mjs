@@ -32,6 +32,26 @@ for(const engine of [chromium,webkit]) {
   assert(result.coarse);assert.equal(result.before.height,44);
   assert(result.removed.height<44);assert.deepEqual(result.before,result.restored);
   results.push({engine:engine.name(),status:'PASS',rule:'src/ui-tokens.css @media(pointer:coarse) .app',decision:'retain: removal changes a reachable touch-target height',...result});
+  await page.keyboard.press('Tab');
+  await page.locator('.pokemon-card:not(.skip-card)').first().focus();
+  const focus=await page.evaluate(()=>{
+   const el=document.activeElement;
+   if(!el.matches(':focus-visible'))throw Error('Keyboard focus-visible condition absent');
+   const measure=()=>({offset:getComputedStyle(el).outlineOffset,width:getComputedStyle(el).outlineWidth,style:getComputedStyle(el).outlineStyle});
+   const found=[];
+   function visit(rules){for(const r of rules){
+    if(r.selectorText==='.app .pokemon-grid .pokemon-card:focus-visible')found.push(r);
+    if(r.styleSheet)visit(r.styleSheet.cssRules);
+    if(r.cssRules)visit(r.cssRules);
+   }}
+   for(const sheet of document.styleSheets)visit(sheet.cssRules);
+   if(found.length!==1)throw Error(`Expected one final focus rule, got ${found.length}`);
+   const rule=found[0],css=rule.style.cssText,before=measure();let removed;
+   try{rule.style.cssText='';removed=measure();}finally{rule.style.cssText=css;}
+   return {before,removed,restored:measure()};
+  });
+  assert.equal(focus.before.offset,'-3px');assert.notDeepEqual(focus.before,focus.removed);assert.deepEqual(focus.before,focus.restored);
+  results.push({engine:engine.name(),status:'PASS',rule:'src/responsive-controls.css .app .pokemon-grid .pokemon-card:focus-visible',decision:'retain: removal changes visible keyboard focus',...focus});
  }finally{await browser.close();}
 }
 fs.mkdirSync('.artifacts/css-necessity',{recursive:true});

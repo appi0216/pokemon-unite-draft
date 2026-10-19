@@ -81893,8 +81893,8 @@
           ]
         }
       ],
-      "status": "unproven-retained",
-      "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
+      "status": "retain-observed-effect",
+      "reason": "tests/browser/css-necessity.mjs: keyboard focus matches; removing the rule changes outline offset from -3px to -2px in Chromium/WebKit, restoration returns -3px. Evidence of effect, not a claim that every declaration is individually essential."
     },
     {
       "id": 1240,

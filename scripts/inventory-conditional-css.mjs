@@ -26,6 +26,7 @@ for (const file of css) {
     // Include every rule: class/attribute states may be conditional even when
     // there is no media query or pseudo-class in the selector.
     const classes = [...new Set([...rule.selector.matchAll(/\.([a-zA-Z_][\w-]*)/g)].map(m => m[1]))];
+    const focusWitness = file === 'src/responsive-controls.css' && rule.selector === '.app .pokemon-grid .pokemon-card:focus-visible';
     entries.push({
       id: entries.length + 1, file, line: rule.source.start.line,
       selector: rule.selector, conditions,
@@ -36,8 +37,8 @@ for (const file of css) {
       historicalUnmatched: priorCoverage.unmatched.includes(rule.selector),
       declarations: rule.nodes.filter(n => n.type === 'decl').map(n => n.toString()),
       references: classes.map(name => ({ name, locations: lines.filter(l => l.text.includes(name)).map(({ file, line }) => ({ file, line })) })),
-      status: file === 'src/ui-tokens.css' && rule.selector === '.app' && conditions.some(c => /pointer\s*:\s*coarse/.test(c)) ? 'retain-observed-effect' : 'unproven-retained',
-      reason: file === 'src/ui-tokens.css' && rule.selector === '.app' && conditions.some(c => /pointer\s*:\s*coarse/.test(c))
+      status: focusWitness || (file === 'src/ui-tokens.css' && rule.selector === '.app' && conditions.some(c => /pointer\s*:\s*coarse/.test(c))) ? 'retain-observed-effect' : 'unproven-retained',
+      reason: focusWitness ? 'tests/browser/css-necessity.mjs: keyboard focus matches; removing the rule changes outline offset from -3px to -2px in Chromium/WebKit, restoration returns -3px. Evidence of effect, not a claim that every declaration is individually essential.' : file === 'src/ui-tokens.css' && rule.selector === '.app' && conditions.some(c => /pointer\s*:\s*coarse/.test(c))
         ? 'tests/browser/css-necessity.mjs: removing this declaration changes sort button height from 44px to 30px in Chromium/WebKit at 390x844 with coarse pointer; restoring returns 44px. This is a necessity witness, not a universal unusedness proof.'
         : 'Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states.',
     });

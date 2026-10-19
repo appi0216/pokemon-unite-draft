@@ -71,3 +71,7 @@ design.cssとui-system.cssのreduce配下の全要素・before・afterルール�
 ## 動き抑制の優先度による整理（2026-10-20）
 
 MOTION-DOMINANCE-DECISIONS.jsonに5宣言の対象・値を記録。reduce条件内の通常優先度のanimation/transition/transition-durationは、同条件の全要素・疑似要素に対するnone!importantに優先度で負けるため削除。通常のtransition-duration:.01msもimportant shorthandのduration:0に上書きされる。transform:noneは別の性質なので保持。現在のアプリの静的CSSを範囲とし、外部CSSOM操作は含めない。1935ルール、CSS180.50KB。build/offline6・cascade guard・両ブラウザーhome/draftのreduced-motion検証合格。
+
+## standaloneヘッダー余白の条件付き判定（2026-10-20）
+
+adaptive-ui.cssのdisplay-mode:standalone内.app-header padding-topは、現在のApp.tsxで常に.app[class]直下にあるheaderに一致。workspace-layout.cssのadaptive-layoutレイヤー内.app[class]>.app-header padding-block!importantが同じtopを優先する（現在の水平書字方向）。ただしレイヤー非対応環境ではそのブロックが無効となるため、この根拠だけで互換用指定の削除はしない。対応ブラウザー範囲と書字方向を固定するまではunproven-retained。今回アプリCSSの変更なし。

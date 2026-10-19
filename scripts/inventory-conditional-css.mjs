@@ -36,8 +36,10 @@ for (const file of css) {
       historicalUnmatched: priorCoverage.unmatched.includes(rule.selector),
       declarations: rule.nodes.filter(n => n.type === 'decl').map(n => n.toString()),
       references: classes.map(name => ({ name, locations: lines.filter(l => l.text.includes(name)).map(({ file, line }) => ({ file, line })) })),
-      status: 'unproven-retained',
-      reason: 'Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states.',
+      status: file === 'src/ui-tokens.css' && rule.selector === '.app' && conditions.some(c => /pointer\s*:\s*coarse/.test(c)) ? 'retain-observed-effect' : 'unproven-retained',
+      reason: file === 'src/ui-tokens.css' && rule.selector === '.app' && conditions.some(c => /pointer\s*:\s*coarse/.test(c))
+        ? 'tests/browser/css-necessity.mjs: removing this declaration changes sort button height from 44px to 30px in Chromium/WebKit at 390x844 with coarse pointer; restoring returns 44px. This is a necessity witness, not a universal unusedness proof.'
+        : 'Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states.',
     });
   });
 }

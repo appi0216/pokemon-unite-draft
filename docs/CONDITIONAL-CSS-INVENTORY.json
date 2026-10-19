@@ -98555,8 +98555,8 @@
           ]
         }
       ],
-      "status": "unproven-retained",
-      "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
+      "status": "retain-observed-effect",
+      "reason": "tests/browser/css-necessity.mjs: removing this declaration changes sort button height from 44px to 30px in Chromium/WebKit at 390x844 with coarse pointer; restoring returns 44px. This is a necessity witness, not a universal unusedness proof."
     },
     {
       "id": 1514,

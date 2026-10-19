@@ -76262,8 +76262,8 @@
           ]
         }
       ],
-      "status": "unproven-retained",
-      "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
+      "status": "retain-observed-effect",
+      "reason": "tests/browser/css-disabled.mjs: actual offline transition disables update button; removal changes opacity .5 to .48 and cursor default to pointer in Chromium/WebKit; restoration reverses both. Keep; effect witness only."
     },
     {
       "id": 1161,

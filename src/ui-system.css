@@ -249,11 +249,6 @@
 @keyframes history-result-glow {
   50% { box-shadow: 0 0 22px #68cbd799; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .app:not(.setup-mode) .review-history-button.history-result-ready {
-    animation: none;
-  }
-}
 .app:not(.setup-mode) .review-history-button {
   color: #79d8e5;
 }

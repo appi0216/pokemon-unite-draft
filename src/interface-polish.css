@@ -465,7 +465,6 @@ dialog {
 
 @media (prefers-reduced-motion: reduce) {
   .phase-banner::before {
-    transition: none;
     transform: none;
   }
 }

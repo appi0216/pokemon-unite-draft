@@ -291,19 +291,3 @@
       0 0 20px color-mix(in srgb, var(--side) 36%, transparent);
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .app:not(.setup-mode)::before,
-  .app:not(.setup-mode)::after,
-  .phase-banner::after,
-  .timeline-step.current .step-node {
-    animation: none;
-  }
-
-  .pokemon-card,
-  .selection-panel,
-  .team-panel,
-  .confirm-button {
-    transition-duration: 0.01ms;
-  }
-}

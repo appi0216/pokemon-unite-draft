@@ -487,13 +487,6 @@
     padding-block: 16px;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .setup-refresh *,
-  .setup-refresh *::before,
-  .setup-refresh *::after {
-    transition: none;
-  }
-}
 @media (forced-colors: active) {
   .setup-mode-choice[aria-pressed="true"],
   .setup-series-control button[aria-pressed="true"],

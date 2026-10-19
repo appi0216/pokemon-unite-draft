@@ -1,0 +1,30 @@
+{
+  "scope": "Current app styles; unlayered author !important global motion rule dominates these normal declarations in same reduced-motion condition. Transform is retained.",
+  "removed": [
+    {
+      "file": "src/draft-experience.css",
+      "selector": ".app:not(.setup-mode)::before,\n  .app:not(.setup-mode)::after,\n  .phase-banner::after,\n  .timeline-step.current .step-node",
+      "declaration": "animation: none"
+    },
+    {
+      "file": "src/draft-experience.css",
+      "selector": ".pokemon-card,\n  .selection-panel,\n  .team-panel,\n  .confirm-button",
+      "declaration": "transition-duration: 0.01ms"
+    },
+    {
+      "file": "src/interface-polish.css",
+      "selector": ".phase-banner::before",
+      "declaration": "transition: none"
+    },
+    {
+      "file": "src/ui-system.css",
+      "selector": ".app:not(.setup-mode) .review-history-button.history-result-ready",
+      "declaration": "animation: none"
+    },
+    {
+      "file": "src/setup-refresh.css",
+      "selector": ".setup-refresh *,\r\n  .setup-refresh *::before,\r\n  .setup-refresh *::after",
+      "declaration": "transition: none"
+    }
+  ]
+}

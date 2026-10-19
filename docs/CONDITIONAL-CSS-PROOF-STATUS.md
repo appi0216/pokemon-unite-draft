@@ -83,3 +83,7 @@ refinement.cssのhover:hover配下.pokemon-card:not(:disabled):hover box-shadow�
 ## 入力機器によるサイズ変数の範囲（2026-10-20）
 
 workspace-layout.cssのpointer:fine/max-height:500pxとpointer:coarseの--control-sizeを667×375・home/draft・Chromium/WebKitで個別除去復元。8比較のうちhome4件は変数文字列が変化し、draft4件は後方指定が優先して差なし。復元一致。変数の文字列差は最終寸法差を証明しないため両ルールともunproven-retainedを維持。ドラフトだけの上書き根拠でホーム共用指定を削除しない。tests/browser/css-pointer.mjsで再現可能。
+
+## 入力機器指定の実寸確認（2026-10-20）
+
+css-pointer.mjsにヘッダーボタン寸法を追加。667×375・fine pointer・homeで除去前36×36、除去後44×44、復元36×36をChromium/WebKitで確認。fine/短い画面ルールをretain-observed-effectへ変更。coarse側は今回の寸法差なしのため未証明保持のまま。

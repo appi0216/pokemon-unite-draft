@@ -117893,8 +117893,8 @@
           ]
         }
       ],
-      "status": "unproven-retained",
-      "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
+      "status": "retain-observed-effect",
+      "reason": "tests/browser/css-pointer.mjs: 667x375 fine pointer home header buttons change 36px to 44px on removal and restore to36px in both engines; retain. Draft override alone is not global unusedness."
     },
     {
       "id": 1852,

@@ -23,7 +23,7 @@
     "src/pwa/runtime.ts": "692443bd6a7962ee2b7d089f91f202ce1837880f00fe9fe881de333a45dabc55",
     "src/result-image.ts": "1e469cf292afdb1a939d4acb64bc30f7b2b529ce3420eea63a602c49ae2c244c",
     "src/vite-env.d.ts": "42e587602e654d15a990ea632bf3993ba9c18f3808b7f3079e57c4c0cdc06762",
-    "src/adaptive-ui.css": "c705175ea11a2c9b221ffb31fc61fc5874638876c25ce99f9bf7fbfec92be4a4",
+    "src/adaptive-ui.css": "0414e099efdc36af64db92dacd230fcbda7276c14cc2b0db3d4bbbe3079a0913",
     "src/design.css": "8aed49505a40d583f9b96154005f6f59de9539d884d06c42fcbdee8295367fd3",
     "src/draft-experience.css": "59a0afc1834d99fa4af21ffc0ab94e621d22c59061a98c15758bb57306e46b53",
     "src/interaction-upgrades.css": "7383a671a1d74300f2dd9ba8c2022e0a7786f08b4b37731d292ab32e8f293829",
@@ -12932,8 +12932,6 @@
       ],
       "historicalUnmatched": false,
       "declarations": [
-        "animation: none !important",
-        "transition: none !important",
         "scroll-behavior: auto !important"
       ],
       "references": [],
@@ -12943,7 +12941,7 @@
     {
       "id": 228,
       "file": "src/adaptive-ui.css",
-      "line": 1373,
+      "line": 1371,
       "selector": ":root",
       "conditions": [
         "@media (prefers-contrast: more)"
@@ -12964,7 +12962,7 @@
     {
       "id": 229,
       "file": "src/adaptive-ui.css",
-      "line": 1377,
+      "line": 1375,
       "selector": ".pokemon-grid .pokemon-card,\n  .player-slot,\n  .selection-panel",
       "conditions": [
         "@media (prefers-contrast: more)"

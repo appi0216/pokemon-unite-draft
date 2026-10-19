@@ -59,3 +59,7 @@ prefers-contrast: moreの成立を確認してドラフト初期画面で比較�
 ## 上記の枠線差なし判定を訂正（2026-10-20）
 
 前回は遷移途中の即時測定だった。除去・復元後300ms待機し、320/667/1440幅×初期/hover/選択/keyboard×Chromium/WebKitの24状態を再比較。枠線ルールを除去するとrgb(141,135,157)からrgb(60,59,68)などへ変化し、復元一致。48比較（各状態2ルール）すべて差あり。枠線ルールをretain-observed-effectに変更。rootは引き続き変数の効果のみで、画素への必要性未証明。全状態証明ではない。
+
+## 動き抑制の重複宣言削除（2026-10-20）
+
+main.tsxのimport順はadaptive-ui.css→setup-refresh.css→workspace-layout.css。adaptive-ui.cssとworkspace-layout.cssのprefers-reduced-motion: reduce内の全要素・before・afterセレクターは同じ。animation:none!importantとtransition:none!importantは同値・同優先度・同条件で後方のworkspace側が有効になるため、前方の2宣言だけ削除した。adaptive側のscroll-behavior:auto!importantは保持。現在の静的スタイルシート順を根拠とし、動的CSSOM削除や将来の読み込み順変更は範囲外。build/offline6件、Chromium/WebKitのhome/draftで全要素と疑似要素のanimationName none・transitionProperty noneを確認。tests/browser/reduced-motion.mjsで再現可能。

@@ -86885,8 +86885,8 @@
           ]
         }
       ],
-      "status": "unproven-retained",
-      "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
+      "status": "retain-observed-effect",
+      "reason": "tests/browser/css-forced-colors.mjs: forced-colors active; removal changes computed outlines for existing home selected controls/switch, restoration returns original in Chromium/WebKit. Effect witness for each rule, not every selector alternative or all states."
     },
     {
       "id": 1344,
@@ -86914,8 +86914,8 @@
           ]
         }
       ],
-      "status": "unproven-retained",
-      "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
+      "status": "retain-observed-effect",
+      "reason": "tests/browser/css-forced-colors.mjs: forced-colors active; removal changes computed outlines for existing home selected controls/switch, restoration returns original in Chromium/WebKit. Effect witness for each rule, not every selector alternative or all states."
     },
     {
       "id": 1345,

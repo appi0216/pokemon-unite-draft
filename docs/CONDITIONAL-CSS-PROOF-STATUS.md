@@ -47,3 +47,7 @@
 ## オフライン無効ボタンの保持根拠（2026-10-20）
 
 公開版の実際の通信切断で更新確認ボタンが無効化されることを確認。.pwa-panel button:disabled の一時除去によりopacity .5→.48、cursor default→pointer、復元で元へ戻ることをChromium/WebKitで確認した。tests/browser/css-disabled.mjsで再実行可能。この1ルールをretain-observed-effectへ分類し、CSSは削除しない。個々の宣言すべての不可欠性や、残りの全状態証明を主張するものではない。
+
+## 強制カラーの保持根拠（2026-10-20）
+
+setup-refresh.cssのforced-colors: active配下の2ルールを保持。ホームの選択中項目・スイッチに一致し、ルール除去でoutlineが変わり、復元で戻ることをChromium/WebKitで確認。tests/browser/css-forced-colors.mjsは実際のメディア条件成立を確認し、非対応を成功扱いしない。各ルールの効果の証拠であり、リスト内の全セレクターや全状態の必要性を証明しない。

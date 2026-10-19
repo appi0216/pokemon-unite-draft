@@ -34,12 +34,9 @@ dialog {
   box-shadow: 0 0 0 3px #62cedd16;
 }
 
-.start-draft-button,
+
 .confirm-button:not(:disabled),
-.modal-primary,
-.image-download,
-.next-game,
-.complete-button {
+.modal-primary {
   color: #f3fcfd;
   background:
     linear-gradient(110deg, transparent 10%, #ffffff0b 48%, transparent 78%),
@@ -51,11 +48,8 @@ dialog {
     0 0 18px #62cedd12;
 }
 
-.start-draft-button:hover,
-.confirm-button:not(:disabled):hover,
-.next-game:hover,
-.complete-button:hover,
-.image-download:hover {
+
+.confirm-button:not(:disabled):hover {
   border-color: #8be0e8;
   box-shadow:
     inset 0 1px #ffffff25,

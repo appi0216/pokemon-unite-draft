@@ -15,7 +15,7 @@
   font-size: 9px;
 }
 
-.app:not(.setup-mode) .pokemon-card .pokemon-name,
+
 .app:not(.setup-mode) .selection-footer {
   font-size: 10px;
 }
@@ -141,10 +141,7 @@
 }
 
 /* Shared type scale for interactive controls across setup and draft. */
-.mode-option strong,
-.timer-options button,
-.side-options button > span:nth-child(2),
-.single-match-format strong,
+
 .search-field input,
 .sort-trigger,
 .sort-menu button,
@@ -626,12 +623,6 @@
   padding-block: 5px;
 }
 
-.app:not(.setup-mode) .selected-description {
-  min-height: 13px;
-  font-size: 10px;
-  line-height: 1.2;
-}
-
 .app:not(.setup-mode) .utility-actions,
 .app:not(.setup-mode) .decision-extra {
   gap: 7px;
@@ -725,16 +716,6 @@
 
 .app:not(.setup-mode) .pokemon-card {
   container-type: inline-size;
-}
-
-.app:not(.setup-mode) .pokemon-card .pokemon-name {
-  height: 22px;
-  padding-inline: 2px;
-  overflow: visible;
-  font-size: clamp(7px, 10cqw, 11px);
-  line-height: 22px;
-  text-overflow: clip;
-  white-space: nowrap;
 }
 
 @media (max-width: 900px) {
@@ -1192,12 +1173,6 @@
   gap: 12px;
 }
 
-.app:not(.setup-mode) .selected-description {
-  min-height: 12px;
-  font-size: 10px;
-  line-height: 1.15;
-}
-
 .app:not(.setup-mode) .subtle-button {
   min-height: 34px;
   padding: 0 10px;
@@ -1206,10 +1181,7 @@
   line-height: 1;
 }
 
-.app:not(.setup-mode) .confirm-button,
-.app:not(.setup-mode) .next-game,
-.app:not(.setup-mode) .complete-button,
-.app:not(.setup-mode) .final-image-action {
+.app:not(.setup-mode) .confirm-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1243,10 +1215,7 @@
     font-size: 8px;
   }
 
-  .app:not(.setup-mode) .confirm-button,
-  .app:not(.setup-mode) .next-game,
-  .app:not(.setup-mode) .complete-button,
-  .app:not(.setup-mode) .final-image-action {
+  .app:not(.setup-mode) .confirm-button {
     min-width: 176px;
     font-size: 12px;
   }
@@ -1745,8 +1714,7 @@ dialog.review-dialog {
   font-size: 13px;
   line-height: 1;
 }
-.app.draft-complete .decision-main > .confirm-button:not(.final-image-action),
-.app.draft-complete .decision-main > .next-game:not(.final-image-action) {
+.app.draft-complete .decision-main > .confirm-button:not(.final-image-action) {
   order: 2;
 }
 @media (max-width: 680px) {

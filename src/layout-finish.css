@@ -34,8 +34,7 @@
   line-height: 1.4;
 }
 .confirm-button:not(:disabled),
-.modal-primary,
-.image-download {
+.modal-primary {
   background: linear-gradient(145deg, #705294, #523a73);
   border: 1px solid #9679b5;
   box-shadow:

@@ -726,20 +726,6 @@ select:focus-visible {
   margin: 0;
   filter: none;
 }
-.pokemon-card .pokemon-name {
-  position: static;
-  display: block;
-  width: 100%;
-  padding: 0 1px;
-  white-space: normal;
-  overflow-wrap: anywhere;
-  font-size: 0.6875rem;
-  line-height: 1.35;
-  min-height: 15px;
-  color: #f6f5f8;
-  background: none;
-  letter-spacing: 0;
-}
 .pokemon-card .card-role-stripe {
   width: 3px;
   height: 18px;
@@ -773,9 +759,6 @@ select:focus-visible {
   color: #b2b1bd;
   border: 0;
   flex-shrink: 0;
-}
-.keyboard-hint {
-  display: none;
 }
 .decision-bar {
   position: relative;
@@ -835,28 +818,6 @@ select:focus-visible {
   min-width: 0;
   width: 100%;
   height: auto;
-}
-.selected-description {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex: 1;
-  gap: 6px;
-  min-width: 0;
-  padding: 0;
-  text-align: left;
-  font-size: 0.8125rem;
-  color: #b2b1bd;
-}
-.selected-description strong {
-  font-size: 0.8125rem;
-  color: #f6f5f8;
-  overflow-wrap: anywhere;
-}
-.selected-description > .portrait {
-  width: 40px;
-  height: 40px;
-  flex: 0 0 40px;
 }
 .decision-main > .confirm-button {
   display: inline-flex;
@@ -986,8 +947,7 @@ dialog > p,
   padding: 8px;
   overflow-wrap: anywhere;
 }
-.modal-primary,
-.image-download {
+.modal-primary {
   min-height: 44px;
   font-size: 0.9375rem;
   background: #b39aff;
@@ -997,8 +957,7 @@ dialog > p,
 }
 .modal-secondary,
 .draft-tools button,
-.series-export,
-.import-backup {
+.series-export {
   min-height: 44px;
   font-size: 0.875rem;
   background: #35323e;
@@ -1238,9 +1197,6 @@ dialog > p,
     font-size: 0.6875rem;
     padding: 4px 8px;
   }
-  .selected-description > .portrait {
-    display: none;
-  }
   .decision-main > .confirm-button {
     flex-basis: 110px;
     width: 110px;
@@ -1323,15 +1279,6 @@ dialog > p,
     flex-direction: column;
     align-items: stretch;
     gap: 4px;
-  }
-  .selected-description {
-    min-height: 20px;
-    font-size: 0.6875rem;
-    justify-content: center;
-    text-align: center;
-  }
-  .selected-description strong {
-    font-size: 0.6875rem;
   }
   .decision-main > .confirm-button {
     flex: 0 0 auto;

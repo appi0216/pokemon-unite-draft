@@ -224,19 +224,8 @@ dialog {
 .info-content h3 {
   color: var(--text-primary);
 }
-.setup-field legend,
-.team-name-settings summary,
-.team-name-settings label,
-.side-options button > span:nth-child(2),
-.setup-title-row .section-kicker,
-.mode-option small,
-.mode-option.chosen small,
-.field-hint,
-.setup-footnote,
-.side-options small,
-.resume-card small,
+
 .subtle-button,
-.selected-description,
 .sort-select select,
 .hide-used,
 .role-tabs button,
@@ -253,7 +242,6 @@ dialog {
 .player-number,
 .role-text,
 .slot-dash,
-.history-empty,
 .history-pokemon-item > span,
 .app-footer,
 .footer-link,
@@ -370,9 +358,7 @@ dialog > p,
   color: var(--text-primary);
 }
 .timeline-step:not(:last-child):after,
-.timeline-separator,
-.header-divider,
-.footer-divider {
+.timeline-separator {
   background: var(--surface-border);
 }
 .history-heading,

@@ -63,11 +63,6 @@
     padding: clamp(18px, 3vh, 34px) 36px;
     grid-template-columns: minmax(360px, 0.96fr) minmax(560px, 1.04fr);
   }
-
-  .side-options button > span:nth-child(2) {
-    font-size: 10px;
-    white-space: nowrap;
-  }
 }
 
 @media (min-width: 701px) and (max-width: 1100px) {

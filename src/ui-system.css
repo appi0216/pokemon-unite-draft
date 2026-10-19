@@ -206,12 +206,6 @@
 }
 
 /* Final usability pass: readable labels, explicit primary actions and shared controls. */
-.app:not(.setup-mode) .pokemon-card .pokemon-name {
-  min-height: 23px;
-  padding-inline: 3px;
-  font-size: clamp(9.5px, 0.72vw, 11px);
-  line-height: 1.12;
-}
 
 .rules-table {
   width: 100%;
@@ -393,17 +387,6 @@ dialog.review-dialog.single-game {
     flex: 0 0 100%;
     order: 0;
   }
-}
-.app:not(.setup-mode) .decision-main .selected-description {
-  position: static;
-  width: 100%;
-  min-height: 14px;
-  max-height: 14px;
-  overflow: hidden;
-  line-height: 14px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  pointer-events: none;
 }
 .app:not(.setup-mode) .utility-actions,
 .app:not(.setup-mode) .decision-extra {

@@ -222,10 +222,7 @@
   filter: brightness(1.06);
 }
 
-.confirm-button:not(:disabled),
-.next-game,
-.complete-button,
-.image-download {
+.confirm-button:not(:disabled) {
   position: relative;
   overflow: hidden;
   background-size: 180% 100%;
@@ -235,10 +232,7 @@
     background-position 420ms var(--motion-standard-easing);
 }
 
-.confirm-button:not(:disabled):hover,
-.next-game:hover,
-.complete-button:hover,
-.image-download:hover {
+.confirm-button:not(:disabled):hover {
   transform: translateY(-2px);
   background-position: 100% 0;
   box-shadow: 0 9px 24px #00000038;

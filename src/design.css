@@ -1168,11 +1168,6 @@ fieldset {
   background: var(--side);
   flex-shrink: 0;
 }
-.side-options button > span:nth-child(2) {
-  font-size: 12px;
-  color: #a88cba;
-  flex: 1;
-}
 .resume-icon {
   width: 33px;
   height: 33px;
@@ -1181,9 +1176,6 @@ fieldset {
   color: #a479c3;
   display: grid;
   place-items: center;
-}
-.resume-card > span:nth-child(2) {
-  flex: 1;
 }
 .setup-mode .app-footer {
   padding-top: 10px;
@@ -1948,12 +1940,6 @@ dialog > p {
   }
 }
 /* Maintain readable contrast while keeping the soft team palette. */
-.setup-field legend,
-.team-name-settings summary,
-.team-name-settings label,
-.side-options button > span:nth-child(2) {
-  color: #665772;
-}
 .confirm-button,
 .modal-primary {
   background: linear-gradient(125deg, #8c60c7, #7547b0);
@@ -2230,9 +2216,6 @@ dialog > p,
 }
 .player-slot {
   min-height: 58px;
-}
-dialog:has(.result-image-preview) {
-  width: 820px;
 }
 @media (min-width: 1600px) {
   .player-portrait > .portrait {

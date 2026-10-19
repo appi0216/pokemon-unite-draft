@@ -23,6 +23,8 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
+      - name: Check CSS audit freshness
+        run: node scripts/inventory-conditional-css.mjs --check
       - run: npm test
       - run: npm run build
       - run: npm run test:offline

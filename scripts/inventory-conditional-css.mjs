@@ -1,0 +1,55 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import postcss from 'postcss';
+
+// An inventory, deliberately NOT an unused-CSS detector. Source references
+// and querySelector matches cannot establish cascade necessity or reachability.
+const walk = dir => fs.readdirSync(dir, { withFileTypes: true }).flatMap(e =>
+  e.isDirectory() ? walk(`${dir}/${e.name}`) : [`${dir}/${e.name}`]);
+const files = walk('src').sort();
+const sources = files.filter(f => /\.(tsx?|json)$/.test(f));
+const css = files.filter(f => f.endsWith('.css'));
+const entries = [];
+const priorCoverage = JSON.parse(fs.readFileSync('docs/LEGACY-CSS-RUNTIME-COVERAGE.json', 'utf8'));
+const hashes = {};
+for (const file of [...sources, ...css, 'docs/LEGACY-CSS-RUNTIME-COVERAGE.json']) {
+  hashes[file] = crypto.createHash('sha256').update(fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n')).digest('hex');
+}
+const lines = sources.flatMap(file => fs.readFileSync(file, 'utf8').split(/\r?\n/)
+  .map((text, index) => ({ file, line: index + 1, text })));
+for (const file of css) {
+  postcss.parse(fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n'), { from: file }).walkRules(rule => {
+    const conditions = [];
+    for (let p = rule.parent; p; p = p.parent) {
+      if (p.type === 'atrule') conditions.unshift(`@${p.name} ${p.params}`);
+    }
+    // Include every rule: class/attribute states may be conditional even when
+    // there is no media query or pseudo-class in the selector.
+    const classes = [...new Set([...rule.selector.matchAll(/\.([a-zA-Z_][\w-]*)/g)].map(m => m[1]))];
+    entries.push({
+      id: entries.length + 1, file, line: rule.source.start.line,
+      selector: rule.selector, conditions,
+      conditionKinds: [...new Set([
+        ...conditions.map(c => c.split(' ')[0]),
+        ...[...rule.selector.matchAll(/:{1,2}([\w-]+)/g)].map(m => `:${m[1]}`),
+      ])],
+      historicalUnmatched: priorCoverage.unmatched.includes(rule.selector),
+      declarations: rule.nodes.filter(n => n.type === 'decl').map(n => n.toString()),
+      references: classes.map(name => ({ name, locations: lines.filter(l => l.text.includes(name)).map(({ file, line }) => ({ file, line })) })),
+      status: 'unproven-retained',
+      reason: 'Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states.',
+    });
+  });
+}
+const report = { scope: 'All src CSS rules, including keyframe steps; lexical class extraction is not selector semantics.',
+  proofComplete: false, cssFiles: css.length, ruleCount: entries.length,
+  sourceHashes: hashes, entries };
+const destination = 'docs/CONDITIONAL-CSS-INVENTORY.json';
+const serialized = JSON.stringify(report, null, 2) + '\n';
+if (process.argv.includes('--check')) {
+  if (!fs.existsSync(destination) || fs.readFileSync(destination, 'utf8').replace(/\r\n/g, '\n') !== serialized) {
+    console.error('CSS inventory is stale. Regenerate and review it; regeneration is not a proof of unusedness.');
+    process.exitCode = 1;
+  }
+} else fs.writeFileSync(destination, serialized);
+console.log(JSON.stringify({ cssFiles: css.length, rules: entries.length, proofComplete: false }));

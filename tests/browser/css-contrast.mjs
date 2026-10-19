@@ -44,7 +44,8 @@ for(const engine of [chromium,webkit]) {
  }finally{await browser.close();}
 }
 for(const result of results)if(result.restored)assert.deepEqual(result.before,result.restored);
-assert(results.some(r=>r.status==='OBSERVED_EFFECT'));
+assert.equal(results.length,48,'Both engines must complete all 24 state comparisons for both rules');
+assert(results.every(r=>r.status==='OBSERVED_EFFECT' && r.matched>0),'Every reported rule must have a reachable effect');
 fs.mkdirSync('.artifacts/css-contrast',{recursive:true});
 fs.writeFileSync('.artifacts/css-contrast/results.json',JSON.stringify(results,null,2));
 console.log(results.map(({engine,selector,status,matched})=>({engine,selector,status,matched})));

@@ -29,7 +29,8 @@ for(const engine of [chromium,webkit]) {
  }finally{await browser.close();}
 }
 for(const result of results)if(result.restored)assert.deepEqual(result.before,result.restored);
-assert(results.some(r=>r.status==='OBSERVED_EFFECT'));
+assert.equal(results.length,4,'Two rules must be checked in each engine');
+assert(results.every(r=>r.status==='OBSERVED_EFFECT' && r.matched>0),'Unsupported or unobserved rules are not successful evidence');
 fs.mkdirSync('.artifacts/css-forced-colors',{recursive:true});
 fs.writeFileSync('.artifacts/css-forced-colors/results.json',JSON.stringify(results,null,2));
 console.log(results.map(({engine,selector,status,matched})=>({engine,selector,status,matched})));

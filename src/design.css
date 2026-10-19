@@ -1930,15 +1930,6 @@ dialog > p {
     padding: 25px 14px;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *:before,
-  *:after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-  }
-}
 /* Maintain readable contrast while keeping the soft team palette. */
 .confirm-button,
 .modal-primary {

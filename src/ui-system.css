@@ -195,15 +195,6 @@
     grid-template-columns: 1fr;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-  }
-}
 
 /* Final usability pass: readable labels, explicit primary actions and shared controls. */
 

@@ -6,6 +6,7 @@ for(const engine of [chromium,webkit]) {
  for(const [width,height] of [[320,568],[390,844],[667,375],[1440,900]]) {
   const page=await browser.newPage({viewport:{width,height}});
   await page.goto(process.env.AUDIT_URL||'http://127.0.0.1:5174/pokemon-unite-draft/');
+  await page.locator('.setup-portrait:visible').first().waitFor();
   assert.equal(await page.locator('.setup-portrait:visible').count(),3);
   assert.equal(await page.getByText('使用禁止 3匹 · 選択 5匹',{exact:true}).count(),0);
   await page.screenshot({path:".artifacts/home-view-"+engine.name()+"-"+width+".png",fullPage:true});

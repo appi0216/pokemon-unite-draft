@@ -13042,8 +13042,8 @@
           ]
         }
       ],
-      "status": "unproven-retained",
-      "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
+      "status": "retain-observed-effect",
+      "reason": "tests/browser/css-contrast.mjs: after 300ms transition settlement, removal changes border color in both engines, 3 sizes and 4 interaction states; restoration matches. Earlier immediate sampling false negative superseded."
     },
     {
       "id": 230,

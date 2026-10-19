@@ -51,3 +51,7 @@
 ## 強制カラーの保持根拠（2026-10-20）
 
 setup-refresh.cssのforced-colors: active配下の2ルールを保持。ホームの選択中項目・スイッチに一致し、ルール除去でoutlineが変わり、復元で戻ることをChromium/WebKitで確認。tests/browser/css-forced-colors.mjsは実際のメディア条件成立を確認し、非対応を成功扱いしない。各ルールの効果の証拠であり、リスト内の全セレクターや全状態の必要性を証明しない。
+
+## 高コントラストの限定比較（2026-10-20）
+
+prefers-contrast: moreの成立を確認してドラフト初期画面で比較。:rootルール除去で計算済みカスタムプロパティが変化したが、画素上の改善・不可欠性は未証明。パネル枠線ルールは一致38要素で今回観測したborderColorに差がなかった。どちらも削除しない。特に差なしは他の画面・入力状態・サイズでの不要性を意味しない。tests/browser/css-contrast.mjs、Chromium/WebKitで復元一致。既存のunproven-retained分類を維持する。

@@ -27,6 +27,8 @@ jobs:
         run: node scripts/inventory-conditional-css.mjs --check
       - name: Reject obsolete positive UI selectors
         run: node scripts/prune-proven-obsolete-css.mjs --check
+      - name: Check motion suppression cascade
+        run: node scripts/check-motion-cascade.mjs
       - run: npm test
       - run: npm run build
       - run: npm run test:offline

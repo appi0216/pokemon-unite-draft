@@ -79,3 +79,7 @@ adaptive-ui.cssのdisplay-mode:standalone内.app-header padding-topは、現在�
 ## ホバーの旧影指定（2026-10-20）
 
 refinement.cssのhover:hover配下.pokemon-card:not(:disabled):hover box-shadowを削除。同条件・同セレクター・同優先度のadaptive-ui.cssのbox-shadow:noneが後から読み込まれるため常に後者が優先。現在の静的読み込み順が範囲。削除前公開版/削除後previewでChromium/WebKitのhover成立、boxShadow none・borderColor・transform noneが一致。build/offline6合格。1934ルール、CSS180.41KB。
+
+## 入力機器によるサイズ変数の範囲（2026-10-20）
+
+workspace-layout.cssのpointer:fine/max-height:500pxとpointer:coarseの--control-sizeを667×375・home/draft・Chromium/WebKitで個別除去復元。8比較のうちhome4件は変数文字列が変化し、draft4件は後方指定が優先して差なし。復元一致。変数の文字列差は最終寸法差を証明しないため両ルールともunproven-retainedを維持。ドラフトだけの上書き根拠でホーム共用指定を削除しない。tests/browser/css-pointer.mjsで再現可能。

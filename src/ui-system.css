@@ -16,28 +16,6 @@
 :root {
   --motion-standard-easing: cubic-bezier(0.22, 1, 0.36, 1);
   --motion-ambient-easing: cubic-bezier(0.45, 0, 0.55, 1);
-  --decision-action-width: 210px;
-  --decision-action-height: 38px;
-  --decision-action-font-size: 13px;
-}
-
-.app:not(.setup-mode)
-  .decision-main
-  > :is(.confirm-button, .complete-button, .next-game, .final-image-action) {
-  box-sizing: border-box;
-  flex: 0 0 auto;
-  width: var(--decision-action-width);
-  min-width: var(--decision-action-width);
-  max-width: var(--decision-action-width);
-  height: var(--decision-action-height);
-  min-height: var(--decision-action-height);
-  padding: 0 16px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--decision-action-font-size);
-  line-height: 1;
-  text-align: center;
 }
 
 .app.draft-complete .decision-main > .completion-next {
@@ -181,10 +159,6 @@
 }
 
 @media (max-width: 680px) {
-  :root {
-    --decision-action-width: 176px;
-    --decision-action-font-size: 12px;
-  }
   .app:not(.setup-mode) .header-phase-title > strong {
     font-size: 10px;
   }
@@ -353,17 +327,6 @@ dialog.review-dialog.single-game {
 .app:not(.setup-mode) .decision-bar {
   align-items: end;
 }
-.app:not(.setup-mode) .decision-main {
-  /* Keep all state-independent geometry here; never collapse the caption row. */
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: 14px var(--decision-action-height);
-  align-content: end;
-  justify-items: center;
-  gap: 6px;
-  min-width: 0;
-  min-height: 58px;
-}
 .app:not(.setup-mode) .decision-main > .confirm-button {
   /* Keep the action anchored even when a resized viewport moves it under the pointer. */
   transform: none;
@@ -379,7 +342,6 @@ dialog.review-dialog.single-game {
   align-items: end;
   padding-bottom: 2px;
 }
-
 @media (max-width: 900px) {
   .review-dialog.multi-game .past-games-review {
     grid-template-columns: minmax(0, 1fr);

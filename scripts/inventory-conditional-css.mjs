@@ -18,6 +18,14 @@ for (const file of [...sources, ...css, 'docs/LEGACY-CSS-RUNTIME-COVERAGE.json']
 }
 const lines = sources.flatMap(file => fs.readFileSync(file, 'utf8').split(/\r?\n/)
   .map((text, index) => ({ file, line: index + 1, text })));
+const customPropertyLines = [...sources, ...css].flatMap(file => fs.readFileSync(file, 'utf8').split(/\r?\n/)
+  .map((text, index) => ({ file, line: index + 1, text })));
+const customPropertyNames = [...new Set(customPropertyLines.flatMap(({ text }) => [...text.matchAll(/--[\w-]+/g)].map(m => m[0])))].sort();
+const customPropertyReferences = customPropertyNames.map(name => ({
+  name,
+  locations: customPropertyLines.flatMap(({ file, line, text }) =>
+    [...text.matchAll(new RegExp(`(^|[^\\w-])${name}(?=$|[^\\w-])`, 'g'))].map(() => ({ file, line }))),
+}));
 for (const file of css) {
   postcss.parse(fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n'), { from: file }).walkRules(rule => {
     const conditions = [];
@@ -48,6 +56,10 @@ for (const file of css) {
       historicalUnmatched: priorCoverage.unmatched.includes(rule.selector),
       declarations: rule.nodes.filter(n => n.type === 'decl').map(n => n.toString()),
       references: classes.map(name => ({ name, locations: lines.filter(l => l.text.includes(name)).map(({ file, line }) => ({ file, line })) })),
+      customProperties: [...new Set(rule.nodes.filter(n => n.type === 'decl').flatMap(n => [
+        ...(n.prop.startsWith('--') ? [n.prop] : []),
+        ...[...n.value.matchAll(/var\((--[\w-]+)/g)].map(m => m[1]),
+      ]))],
       status: pwaFocusWitness || fineWitness || contrastWitness || forcedWitness || disabledWitness || focusWitness || (file === 'src/ui-tokens.css' && rule.selector === '.app' && conditions.some(c => /pointer\s*:\s*coarse/.test(c))) ? 'retain-observed-effect' : 'unproven-retained',
       reason: pwaFocusWitness ? 'tests/browser/css-pwa-focus.mjs: keyboard focus-visible confirmed; rule removal changes outline color in Chromium/WebKit and restoration matches. Effect witness, not each declaration necessity.' : fineWitness ? 'tests/browser/css-pointer.mjs: 667x375 fine pointer home header buttons change 36px to 44px on removal and restore to36px in both engines; retain. Draft override alone is not global unusedness.' : contrastWitness ? 'tests/browser/css-contrast.mjs: after 300ms transition settlement, removal changes border color in both engines, 3 sizes and 4 interaction states; restoration matches. Earlier immediate sampling false negative superseded.' : forcedWitness ? 'tests/browser/css-forced-colors.mjs: forced-colors active; removal changes computed outlines for existing home selected controls/switch, restoration returns original in Chromium/WebKit. Effect witness for each rule, not every selector alternative or all states.' : disabledWitness ? 'tests/browser/css-disabled.mjs: actual offline transition disables update button; removal changes opacity .5 to .48 and cursor default to pointer in Chromium/WebKit; restoration reverses both. Keep; effect witness only.' : focusWitness ? 'tests/browser/css-necessity.mjs: keyboard focus matches; removing the rule changes outline offset from -3px to -2px in Chromium/WebKit, restoration returns -3px. Evidence of effect, not a claim that every declaration is individually essential.' : file === 'src/ui-tokens.css' && rule.selector === '.app' && conditions.some(c => /pointer\s*:\s*coarse/.test(c))
         ? 'tests/browser/css-necessity.mjs: removing this declaration changes sort button height from 44px to 30px in Chromium/WebKit at 390x844 with coarse pointer; restoring returns 44px. This is a necessity witness, not a universal unusedness proof.'
@@ -57,7 +69,7 @@ for (const file of css) {
 }
 const report = { scope: 'All src CSS rules, including keyframe steps; lexical class extraction is not selector semantics.',
   proofComplete: false, cssFiles: css.length, ruleCount: entries.length, coverageSummary: summary,
-  sourceHashes: hashes, entries };
+  sourceHashes: hashes, customPropertyReferences, entries };
 const destination = 'docs/CONDITIONAL-CSS-INVENTORY.json';
 const serialized = JSON.stringify(report, null, 2) + '\n';
 if (process.argv.includes('--check')) {

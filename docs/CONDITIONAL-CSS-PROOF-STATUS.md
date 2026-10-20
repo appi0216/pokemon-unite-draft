@@ -114,4 +114,8 @@ check-exact-conditional-duplicates.mjsを14ファイルへ拡張。main.tsxの�
 
 ## 監査件数の構造化（2026-10-20）
 
-条件付きインベントリは全1929 CSSルールを含むため、全件を「条件付き」と数えるのは不正確。生成レポートへ測定可能な範囲を併記した: media条件724、cascade layer内63、keyframe step21、selector中に疑似状態/要素表記を含む439、属性selector46。分類は重複し得る。これらは到達可能性や不要性の証明ではない。特にクラス状態は字句条件に含まれず、supports/container等の現行件数0も将来や外部スタイルを保証しない。proofCompleteはfalseのまま。inventory --checkで再生成の一致を検査する。
+条件付きインベントリは全1926 CSSルールを含むため、全件を「条件付き」と数えるのは不正確。生成レポートへ測定可能な範囲を併記した: media条件723、cascade layer内63、keyframe step21、selector中に疑似状態/要素表記を含む436、属性selector46。分類は重複し得る。これらは到達可能性や不要性の証明ではない。特にクラス状態は字句条件に含まれず、supports/container等の現行件数0も将来や外部スタイルを保証しない。proofCompleteはfalseのまま。inventory --checkで再生成の一致を検査する。カスタムプロパティ名はルールごとの宣言一覧に加えて、TS/TSX/JSON/CSSを横断する境界一致の参照位置インデックスを保存する。これは文字列上の参照候補であり、値の展開やランタイム効果の証明ではない。
+
+## 旧ドラフト操作ボタンのレイアウト指定を削除（2026-10-20）
+
+現行JSXには`.decision-main`内の`.confirm-button`のみがあり、旧指定が対象にしていた`.complete-button`、`.next-game`、`.final-image-action`は存在しない。決定ボタンの幅/高さ/文字サイズを持つ3つのカスタムプロパティと、legacyのgrid配置規則を削除した。実際の画面DOMに旧規則を再注入して除去前後を比較する`tests/browser/css-legacy-button.mjs`を追加。Chromium/WebKit各5ビューポート×選択前後の20比較で、全アプリ要素の矩形と確認ボタンの計算済みスタイルに差がなく、復元も一致した。現在のJSX、通常のCSS読み込み、およびこの有限テスト範囲に限った根拠であり、将来のDOM、外部CSSOM、未対応ブラウザーまでの証明ではない。`scripts/check-legacy-decision-layout.mjs`で旧指定の再混入をCI検査する。インベントリは1926ルールに更新。残る条件付きCSSの全状態証明は未完了。

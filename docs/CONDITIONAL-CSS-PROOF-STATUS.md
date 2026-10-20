@@ -139,3 +139,7 @@ check-exact-conditional-duplicates.mjsを14ファイルへ拡張。main.tsxの�
 ## 狭幅で上書きされる旧team-panel行指定を削除（2026-10-20）
 
 `design.css`のmax-width:900px `.team-panel`にあった`grid-template-rows:41px 15px 51px 18px minmax(0,1fr) 18px`を削除した。旧指定は`legacy`レイヤー内だが、後から読み込まれる非レイヤー`workspace-layout.css`がmax-width:1000pxで同じ`.team-panel`に`auto auto 44px auto minmax(0,1fr)`を指定し、max-width:600pxではさらに後の`auto 44px auto minmax(0,1fr)`に置き換えるため、旧指定はどの該当幅でも勝てない。paddingと電話幅固有の行指定は保持。ブラウザー証人は旧値を同じmax-width:900pxルールに再挿入して除去・復元し、両ドラフトモードの2パネル、選択前後、Chromium/WebKit×320/390/600/601/800/900/901/1000pxで全`.app`要素の矩形とパネルの計算済み行を比較。64/64一致・復元一致（条件成立48、境界16）。`tests/browser/css-legacy-team-panel-rows.mjs`で再実行でき、CI guardは再混入、読み込み順変更、後段の広幅・電話幅指定の欠落を検査する。この証拠は現在の静的カスケードと列挙した幅・状態に限り、全条件付きCSSの証明完了を意味しない。
+
+## 狭幅で上書きされる旧team-panel paddingを削除（2026-10-20）
+
+同じ`design.css`のmax-width:900px `.team-panel`に残っていた`padding:10px 7px`も比較した。これは`legacy`レイヤーだが、後続の非レイヤー`workspace-layout.css`がmax-width:1000px・同じセレクターに`padding:10px`を指定し、さらに狭い条件に`clamp(3px, .7vw, 7px)`および`padding:3px`を指定するため、旧指定は勝てない。削除前のCSSOM比較は元ルールのpaddingを一時除去・復元し、Chromium/WebKit×320/390/600/601/800/900/901/1000px×通常/オールスター×選択前後で全`.app`要素矩形と2パネルの計算済みpaddingを64/64比較し、差・復元差なし。ブラウザー証人は`tests/browser/css-legacy-team-panel-padding.mjs`。ソースguardは旧paddingの再混入と広幅の勝者指定の欠落を検出する。現行のスタイル読み込み・有限の状態と幅の範囲での証拠に限る。

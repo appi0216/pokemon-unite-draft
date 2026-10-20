@@ -111,3 +111,7 @@ check-exact-conditional-duplicates.mjsを14ファイルへ拡張。main.tsxの�
 ## PWAのキーボードフォーカス（2026-10-20）
 
 .pwa-panel button:focus-visibleを保持。Tab入力後に更新確認ボタンへフォーカスし、疑似クラスの成立を確認。指定だけを除去するとoutline色がrgb(246,245,248)からrgb(213,198,255)に変わり、復元で戻ることを両ブラウザーで確認。css-pwa-focus.mjsで再現可能。retain-observed-effectへ分類するが、各宣言の不可欠性や色の優劣を証明したものではない。アプリCSS変更なし。
+
+## 監査件数の構造化（2026-10-20）
+
+条件付きインベントリは全1929 CSSルールを含むため、全件を「条件付き」と数えるのは不正確。生成レポートへ測定可能な範囲を併記した: media条件724、cascade layer内63、keyframe step21、selector中に疑似状態/要素表記を含む439、属性selector46。分類は重複し得る。これらは到達可能性や不要性の証明ではない。特にクラス状態は字句条件に含まれず、supports/container等の現行件数0も将来や外部スタイルを保証しない。proofCompleteはfalseのまま。inventory --checkで再生成の一致を検査する。

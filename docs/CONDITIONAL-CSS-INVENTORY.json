@@ -3,6 +3,13 @@
   "proofComplete": false,
   "cssFiles": 16,
   "ruleCount": 1929,
+  "coverageSummary": {
+    "mediaConstrainedRules": 724,
+    "layerNestedRules": 63,
+    "keyframeSteps": 21,
+    "pseudoSelectorRules": 439,
+    "attributeSelectorRules": 46
+  },
   "sourceHashes": {
     "src/App.tsx": "f326e925016a9f41931505d9ac549ce500ecc2a047f39fec8f4bdaf38f17d772",
     "src/components/DraftTools.tsx": "1ea4535e125ab818471ab92bb9b3b2f940ebdb2a477eee746b5de8d4a26a1cde",

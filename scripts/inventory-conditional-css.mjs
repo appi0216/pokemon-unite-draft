@@ -10,6 +10,7 @@ const files = walk('src').sort();
 const sources = files.filter(f => /\.(tsx?|json)$/.test(f));
 const css = files.filter(f => f.endsWith('.css'));
 const entries = [];
+const summary = { mediaConstrainedRules: 0, layerNestedRules: 0, keyframeSteps: 0, pseudoSelectorRules: 0, attributeSelectorRules: 0 };
 const priorCoverage = JSON.parse(fs.readFileSync('docs/LEGACY-CSS-RUNTIME-COVERAGE.json', 'utf8'));
 const hashes = {};
 for (const file of [...sources, ...css, 'docs/LEGACY-CSS-RUNTIME-COVERAGE.json']) {
@@ -32,6 +33,11 @@ for (const file of css) {
     const forcedWitness = file === 'src/setup-refresh.css' && conditions.some(c => c.includes('forced-colors: active'));
     const disabledWitness = file === 'src/pwa/install.css' && rule.selector === '.pwa-panel button:disabled';
     const focusWitness = file === 'src/responsive-controls.css' && rule.selector === '.app .pokemon-grid .pokemon-card:focus-visible';
+    if (conditions.some(c => c.startsWith('@media '))) summary.mediaConstrainedRules++;
+    if (conditions.some(c => c.startsWith('@layer '))) summary.layerNestedRules++;
+    if (conditions.some(c => c.startsWith('@keyframes '))) summary.keyframeSteps++;
+    if (rule.selector.includes(':') ) summary.pseudoSelectorRules++;
+    if (rule.selector.includes('[')) summary.attributeSelectorRules++;
     entries.push({
       id: entries.length + 1, file, line: rule.source.start.line,
       selector: rule.selector, conditions,
@@ -50,7 +56,7 @@ for (const file of css) {
   });
 }
 const report = { scope: 'All src CSS rules, including keyframe steps; lexical class extraction is not selector semantics.',
-  proofComplete: false, cssFiles: css.length, ruleCount: entries.length,
+  proofComplete: false, cssFiles: css.length, ruleCount: entries.length, coverageSummary: summary,
   sourceHashes: hashes, entries };
 const destination = 'docs/CONDITIONAL-CSS-INVENTORY.json';
 const serialized = JSON.stringify(report, null, 2) + '\n';

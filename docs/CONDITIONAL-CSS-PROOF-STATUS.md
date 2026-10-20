@@ -156,6 +156,8 @@ check-exact-conditional-duplicates.mjsを14ファイルへ拡張。main.tsxの�
 
 同じ`design.css`のmax-width:370px `.team-heading h2 {font-size:10px}`は`legacy`レイヤーの指定。直接読み込む非レイヤー`adaptive-ui.css`の同セレクター`font-size:.875rem`がレイヤー優先順で勝ち、当該幅でも計算値は14pxのまま。Chromium/WebKit×通常/オールスター×320/360/370/371/390/600縦/600横/601/800/1000px×フィルター選択前後の80状態で、見出し2個の計算済み文字サイズ・行高・矩形と全`.app`矩形を比較し差・復元差なし（24条件成立、56境界）。`tests/browser/css-legacy-tiny-team-heading.mjs`に元のmedia/レイヤー位置へ旧指定を再注入する証人を保存。縮小値だけでなく、後勝ちの共通値14pxをCI guardで保持する。
 
+同じmax-width:370pxの`.draft-arena {gap:10px}`も下位の`legacy`レイヤー指定で、非レイヤー`adaptive-ui.css`の同じ`.draft-arena {gap:14px}`が幅・向きにかかわらず後勝ちする。さらに`workspace-layout.css`は同領域により詳細な配置規則を持つ。Chromium/WebKit×通常/オールスター×10 viewport×フィルター選択前後の80状態で、旧値を元media/legacy位置に再注入して除去・復元し、全`.app`矩形と`.draft-arena` gap値/矩形を比較、80比較すべて一致（24条件成立、56境界）。`tests/browser/css-legacy-tiny-draft-arena-gap.mjs`に再現証人を保存し、CI guardで10pxの再混入を防ぎ14pxの共通指定を保持する。
+
 ## max-width:370pxのfilterボタン縮小を削除（2026-10-20）
 
 同じ`design.css`のmax-width:370pxにある`.role-tabs button`の`font-size:8px`/`padding:5px 2px`と`.hide-used`の`font-size:8px`を削除した。両方とも`legacy`レイヤー内だが、後から直接読み込む非レイヤー`adaptive-ui.css`が同じセレクターにroleボタン`font-size:.75rem`/`padding:8px 10px`、hide-used `font-size:.8125rem`を指定するため、縮小値は勝てない。モーダルを実際に開き、全roleボタンとhide-usedの寸法・`.app`全矩形を比較。Chromium/WebKit×通常/オールスター×320/360/370/371/390/600縦/600横/601/800/1000px×選択前後で80/80一致・復元一致（条件成立24、境界56）。選択後の状態はモーダルを閉じてポケモンを選んでから再度開いた。`tests/browser/css-legacy-tiny-filter-controls.mjs`に旧値の再注入比較を保存し、CI guardは旧縮小値の再混入と共通スタイルの保持を検査する。別の狭幅指定はこの結果から不要とは判断していない。

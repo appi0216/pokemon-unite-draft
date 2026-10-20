@@ -83,6 +83,8 @@ assert.equal(declarations('src/design.css', '.hide-used', '(max-width: 370px)', 
   'The overridden max-width:370px hide-used font size returned');
 assert.equal(declarations('src/design.css', '.team-heading h2', '(max-width: 370px)', 'font-size', '10px').length, 0,
   'The overridden max-width:370px team-heading font size returned');
+assert.equal(declarations('src/design.css', '.draft-arena', '(max-width: 370px)', 'gap', '10px').length, 0,
+  'The overridden max-width:370px draft-arena gap returned');
 assert.equal(declarationCount('src/adaptive-ui.css', '.role-tabs button', 'font-size', '0.75rem'), 1,
   'Keep the later unlayered role-button font size');
 assert.equal(declarationCount('src/adaptive-ui.css', '.role-tabs button', 'padding', '8px 10px'), 1,
@@ -91,6 +93,8 @@ assert.equal(declarationCount('src/adaptive-ui.css', '.hide-used', 'font-size', 
   'Keep the later unlayered hide-used font size');
 assert.equal(declarationCount('src/adaptive-ui.css', '.team-heading h2', 'font-size', '0.875rem'), 1,
   'Keep the unlayered team-heading font size');
+assert.equal(declarationCount('src/adaptive-ui.css', '.draft-arena', 'gap', '14px'), 1,
+  'Keep the unlayered draft-arena gap');
 assert.equal(declarations('src/design.css', '.team-panel', '(max-width: 1200px)', 'gap', '8px').length, 1,
   'Keep the broader legacy fallback');
 console.log('PASS: overridden narrow layered team-panel layout declarations are absent; unlayered winners and distinct fallbacks remain');

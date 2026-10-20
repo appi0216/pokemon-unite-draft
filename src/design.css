@@ -1887,9 +1887,6 @@ dialog > p {
   }
 }
 @media (max-width: 370px) {
-  .draft-arena {
-    gap: 10px;
-  }
   .team-heading .eyebrow {
     letter-spacing: 0.6px;
   }

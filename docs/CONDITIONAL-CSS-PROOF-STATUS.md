@@ -135,3 +135,7 @@ check-exact-conditional-duplicates.mjsを14ファイルへ拡張。main.tsxの�
 ## 狭幅でレイヤー指定を上書きする旧team-panel gapを削除（2026-10-20）
 
 `design.css`のmax-width:900px `.team-panel`から`gap:8px`だけを削除。これは`legacy`レイヤーにあり、main.tsxで後から読み込まれる非レイヤー`workspace-layout.css`がmax-width:1000pxで同じセレクターに`gap:4px`を指定し、max-width:600pxではさらに後の`gap:6px`を指定するため、900px以下で旧gapは勝てない。周辺のlegacy grid行・paddingとmax-width:1200pxの広域gapは維持。ブラウザー比較では削除前後に両ドラフトモードの実チームパネル2個（片側が非表示となる状態を含む）を使い、旧宣言をCSSOMの同じルール位置へ戻して除去し、全`.app`要素矩形と2パネルの計算済みgapを比較した。Chromium/WebKit×320/390/600/601/800/900/901/1000px×通常/オールスター×選択前後で64/64一致・復元一致、条件成立48比較と境界16比較。`tests/browser/css-legacy-team-panel-gap.mjs`で再現でき、`scripts/check-legacy-team-panel-gap.mjs`が対象宣言の再混入、import/layer順変更、広幅・電話幅の上書き指定欠落をCIで検出する。証拠は現在の静的cascade/importと列挙した2モード・画面幅に限定し、将来の外部CSSOM変更や全条件付きCSSの完了を意味しない。
+
+## 狭幅で上書きされる旧team-panel行指定を削除（2026-10-20）
+
+`design.css`のmax-width:900px `.team-panel`にあった`grid-template-rows:41px 15px 51px 18px minmax(0,1fr) 18px`を削除した。旧指定は`legacy`レイヤー内だが、後から読み込まれる非レイヤー`workspace-layout.css`がmax-width:1000pxで同じ`.team-panel`に`auto auto 44px auto minmax(0,1fr)`を指定し、max-width:600pxではさらに後の`auto 44px auto minmax(0,1fr)`に置き換えるため、旧指定はどの該当幅でも勝てない。paddingと電話幅固有の行指定は保持。ブラウザー証人は旧値を同じmax-width:900pxルールに再挿入して除去・復元し、両ドラフトモードの2パネル、選択前後、Chromium/WebKit×320/390/600/601/800/900/901/1000pxで全`.app`要素の矩形とパネルの計算済み行を比較。64/64一致・復元一致（条件成立48、境界16）。`tests/browser/css-legacy-team-panel-rows.mjs`で再実行でき、CI guardは再混入、読み込み順変更、後段の広幅・電話幅指定の欠落を検査する。この証拠は現在の静的カスケードと列挙した幅・状態に限り、全条件付きCSSの証明完了を意味しない。

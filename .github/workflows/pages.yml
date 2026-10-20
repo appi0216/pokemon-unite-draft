@@ -35,7 +35,7 @@ jobs:
         run: node scripts/check-narrow-decision-main-grid.mjs
       - name: Reject overridden narrow setup gap
         run: node scripts/check-setup-main-gap-cascade.mjs
-      - name: Reject overridden legacy team-panel gap
+      - name: Reject overridden legacy team-panel gap and rows
         run: node scripts/check-legacy-team-panel-gap.mjs
       - name: Reject identical conditional declarations
         run: node scripts/check-exact-conditional-duplicates.mjs

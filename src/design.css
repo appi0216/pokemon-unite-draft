@@ -1896,14 +1896,6 @@ dialog > p {
   .team-heading .eyebrow {
     letter-spacing: 0.6px;
   }
-  .player-portrait,
-  .player-portrait.has-pokemon {
-    flex-basis: 34px;
-  }
-  .player-portrait > .portrait {
-    width: 43px;
-    height: 43px;
-  }
   .player-name,
   .filled .player-name {
     font-size: 9px;

@@ -151,3 +151,5 @@ check-exact-conditional-duplicates.mjsを14ファイルへ拡張。main.tsxの�
 ## max-width:370pxで上書きされる旧team-panel paddingを削除（2026-10-20）
 
 `design.css`のmax-width:370px `.team-panel`にあった`padding:8px 5px`を削除。通常の`legacy`レイヤー指定は、後段の非レイヤー`workspace-layout.css` max-width:1000px `.team-panel {padding:10px}`に勝てず、より限定された後段の小画面・横画面規則が一致する場合はそれらにも負ける。削除前のブラウザー証人は元指定を除去・復元し、Chromium/WebKit×通常/オールスター×320/360/370/371/390/600縦/600横/601/800/1000px×選択前後=80比較を実施。条件成立24、境界56で全`.app`矩形と2パネルpaddingに差・復元差はなかった。削除後は`.team-heading h2`の直前へlegacy max-width:370pxルールを一時挿入する再現テスト`tests/browser/css-legacy-team-panel-370.mjs`を用意した。現行アプリ・静的カスケード・列挙した有限状態の根拠であり、全条件CSSの証明ではない。
+
+同じ`design.css`の最初のmax-width:370pxブロックにあったportraitの`flex-basis:34px`と子portraitの`width/height:43px`も後続の同じファイル内の別max-width:370pxブロックにある同じセレクターの`flex-basis:40px`/`width/height:40px`が後勝ちする。CSSOM比較は旧指定の同じ条件・元ルール位置で除去/復元し、実team-panel内のportrait配置矩形と計算済みbasis/寸法をChromium/WebKit×通常/オールスター×320/360/370/371/390/600縦/600横/601/800/1000px×選択前後の80状態で比較、32の条件成立と48境界で差なし。`tests/browser/css-legacy-tiny-portrait-sizing.mjs`に削除後の旧指定再注入証人を保存。役割名の文字サイズ指定は別物として保持し、width/height/basisの後続値40pxもCI guardで保持確認する。

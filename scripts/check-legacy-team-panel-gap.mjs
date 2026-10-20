@@ -6,7 +6,7 @@ function declarations(file, selector, media, property, value) {
   const root = postcss.parse(fs.readFileSync(file, 'utf8'), { from: file });
   const matches = [];
   root.walkRules(rule => {
-    if (rule.selector !== selector) return;
+    if (!(rule.selectors || [rule.selector]).includes(selector)) return;
     const conditions = [];
     for (let parent = rule.parent; parent && parent.type !== 'root'; parent = parent.parent) {
       if (parent.type === 'atrule') conditions.unshift(`${parent.name} ${parent.params}`);
@@ -53,6 +53,18 @@ assert.equal(declarations('src/design.css', '.team-panel', '(max-width: 680px)',
   'Keep the separate legacy max-width:680px radius');
 assert.equal(declarations('src/design.css', '.team-panel', '(max-width: 370px)', 'padding', '8px 5px').length, 0,
   'The overridden max-width:370px legacy padding returned');
+assert.equal(declarations('src/design.css', '.player-portrait', '(max-width: 370px)', 'flex-basis', '34px').length, 0,
+  'The superseded max-width:370px portrait flex-basis returned');
+assert.equal(declarations('src/design.css', '.player-portrait > .portrait', '(max-width: 370px)', 'width', '43px').length, 0,
+  'The superseded max-width:370px portrait width returned');
+assert.equal(declarations('src/design.css', '.player-portrait > .portrait', '(max-width: 370px)', 'height', '43px').length, 0,
+  'The superseded max-width:370px portrait height returned');
+assert.equal(declarations('src/design.css', '.player-portrait', '(max-width: 370px)', 'flex-basis', '40px').length, 1,
+  'Keep the later narrow portrait flex-basis winner');
+assert.equal(declarations('src/design.css', '.player-portrait > .portrait', '(max-width: 370px)', 'width', '40px').length, 1,
+  'Keep the later narrow portrait width winner');
+assert.equal(declarations('src/design.css', '.player-portrait > .portrait', '(max-width: 370px)', 'height', '40px').length, 1,
+  'Keep the later narrow portrait height winner');
 assert.equal(declarations('src/design.css', '.team-panel', '(max-width: 1200px)', 'gap', '8px').length, 1,
   'Keep the broader legacy fallback');
 console.log('PASS: overridden narrow layered team-panel layout declarations are absent; unlayered winners and distinct fallbacks remain');

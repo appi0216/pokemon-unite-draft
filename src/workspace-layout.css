@@ -640,10 +640,6 @@ dialog .dialog-notice {
   .decision-bar {
     grid-template-columns: minmax(0, 1fr) minmax(112px, 1fr);
   }
-  .decision-main {
-    grid-column: 2;
-    grid-row: 1 / 3;
-  }
   .decision-extra {
     grid-column: 1;
     grid-row: 2;

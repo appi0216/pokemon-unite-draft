@@ -2,9 +2,9 @@
   "scope": "All src CSS rules, including keyframe steps; lexical class extraction is not selector semantics.",
   "proofComplete": false,
   "cssFiles": 16,
-  "ruleCount": 1926,
+  "ruleCount": 1925,
   "coverageSummary": {
-    "mediaConstrainedRules": 723,
+    "mediaConstrainedRules": 722,
     "layerNestedRules": 63,
     "keyframeSteps": 21,
     "pseudoSelectorRules": 436,
@@ -45,7 +45,7 @@
     "src/theme.css": "99986c3d54e1d96817a923d63cee777f7743a2ff0a993f85ca429b61fa679fcd",
     "src/ui-system.css": "164f8952e8f061dc67d13f04b22abd77800635bc43412b9864084988c8bc4f8a",
     "src/ui-tokens.css": "8f219d3fbacc3c660808360b6607b9f4f31d7745bf3bab13c564d24795ae03c3",
-    "src/workspace-layout.css": "34f824a84e474baef8dda9e26de55891c60b2d91d73a572dcceff5dd2206c96d",
+    "src/workspace-layout.css": "b7347c7064b6051e87312132e8932d5f28033716db2f7457012b3a6ee4f01f94",
     "docs/LEGACY-CSS-RUNTIME-COVERAGE.json": "4a6b896ce1fd7bc8a256be3c3e91b82eaa3d5bc22d8bc97b95f07b076364bf5b"
   },
   "customPropertyReferences": [
@@ -113,11 +113,11 @@
       "locations": [
         {
           "file": "src/workspace-layout.css",
-          "line": 1519
+          "line": 1515
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1583
+          "line": 1579
         }
       ]
     },
@@ -279,68 +279,15 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1518
+          "line": 1514
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1535
+          "line": 1531
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1578
-        },
-        {
-          "file": "src/workspace-layout.css",
-          "line": 1594
-        },
-        {
-          "file": "src/workspace-layout.css",
-          "line": 1601
-        },
-        {
-          "file": "src/workspace-layout.css",
-          "line": 1609
-        },
-        {
-          "file": "src/workspace-layout.css",
-          "line": 1616
-        },
-        {
-          "file": "src/workspace-layout.css",
-          "line": 1634
-        },
-        {
-          "file": "src/workspace-layout.css",
-          "line": 1708
-        },
-        {
-          "file": "src/workspace-layout.css",
-          "line": 1713
-        }
-      ]
-    },
-    {
-      "name": "--control-gap",
-      "locations": [
-        {
-          "file": "src/workspace-layout.css",
-          "line": 1520
-        },
-        {
-          "file": "src/workspace-layout.css",
-          "line": 1529
-        },
-        {
-          "file": "src/workspace-layout.css",
-          "line": 1555
-        },
-        {
-          "file": "src/workspace-layout.css",
-          "line": 1575
-        },
-        {
-          "file": "src/workspace-layout.css",
-          "line": 1586
+          "line": 1574
         },
         {
           "file": "src/workspace-layout.css",
@@ -356,7 +303,60 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1615
+          "line": 1612
+        },
+        {
+          "file": "src/workspace-layout.css",
+          "line": 1630
+        },
+        {
+          "file": "src/workspace-layout.css",
+          "line": 1704
+        },
+        {
+          "file": "src/workspace-layout.css",
+          "line": 1709
+        }
+      ]
+    },
+    {
+      "name": "--control-gap",
+      "locations": [
+        {
+          "file": "src/workspace-layout.css",
+          "line": 1516
+        },
+        {
+          "file": "src/workspace-layout.css",
+          "line": 1525
+        },
+        {
+          "file": "src/workspace-layout.css",
+          "line": 1551
+        },
+        {
+          "file": "src/workspace-layout.css",
+          "line": 1571
+        },
+        {
+          "file": "src/workspace-layout.css",
+          "line": 1582
+        },
+        {
+          "file": "src/workspace-layout.css",
+          "line": 1586
+        },
+        {
+          "file": "src/workspace-layout.css",
+          "line": 1593
+        },
+        {
+          "file": "src/workspace-layout.css",
+          "line": 1601
+        },
+        {
+          "file": "src/workspace-layout.css",
+          "line": 1611
         }
       ]
     },
@@ -369,39 +369,39 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1517
+          "line": 1513
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1540
+          "line": 1536
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1541
+          "line": 1537
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1542
+          "line": 1538
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1570
+          "line": 1566
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1571
+          "line": 1567
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1633
+          "line": 1629
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1704
+          "line": 1700
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1705
+          "line": 1701
         }
       ]
     },
@@ -410,23 +410,23 @@
       "locations": [
         {
           "file": "src/workspace-layout.css",
-          "line": 1522
+          "line": 1518
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1527
+          "line": 1523
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1597
+          "line": 1593
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1614
+          "line": 1610
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1636
+          "line": 1632
         }
       ]
     },
@@ -435,27 +435,27 @@
       "locations": [
         {
           "file": "src/workspace-layout.css",
-          "line": 1521
+          "line": 1517
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1528
+          "line": 1524
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1556
+          "line": 1552
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1598
+          "line": 1594
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1635
+          "line": 1631
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1653
+          "line": 1649
         }
       ]
     },
@@ -468,59 +468,59 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1516
+          "line": 1512
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1526
+          "line": 1522
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1534
+          "line": 1530
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1551
+          "line": 1547
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1553
+          "line": 1549
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1554
+          "line": 1550
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1587
+          "line": 1583
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1596
+          "line": 1592
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1602
+          "line": 1598
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1621
+          "line": 1617
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1626
+          "line": 1622
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1631
+          "line": 1627
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1683
+          "line": 1679
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1686
+          "line": 1682
         }
       ]
     },
@@ -533,11 +533,11 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1632
+          "line": 1628
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1637
+          "line": 1633
         }
       ]
     },
@@ -550,19 +550,19 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1637
+          "line": 1633
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1651
+          "line": 1647
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1698
+          "line": 1694
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1699
+          "line": 1695
         }
       ]
     },
@@ -671,23 +671,23 @@
       "locations": [
         {
           "file": "src/workspace-layout.css",
-          "line": 1724
+          "line": 1720
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1727
+          "line": 1723
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1737
+          "line": 1733
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1755
+          "line": 1751
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1772
+          "line": 1768
         }
       ]
     },
@@ -1027,31 +1027,31 @@
       "locations": [
         {
           "file": "src/workspace-layout.css",
-          "line": 1370
+          "line": 1366
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1375
+          "line": 1371
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1381
+          "line": 1377
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1387
+          "line": 1383
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1388
+          "line": 1384
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1389
+          "line": 1385
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1390
+          "line": 1386
         }
       ]
     },
@@ -1203,15 +1203,15 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1660
+          "line": 1656
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1665
+          "line": 1661
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1768
+          "line": 1764
         }
       ]
     },
@@ -1378,7 +1378,7 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1766
+          "line": 1762
         }
       ]
     },
@@ -1395,7 +1395,7 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1765
+          "line": 1761
         }
       ]
     },
@@ -1408,19 +1408,19 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1371
+          "line": 1367
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1376
+          "line": 1372
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1382
+          "line": 1378
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1400
+          "line": 1396
         }
       ]
     },
@@ -2185,15 +2185,15 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1652
+          "line": 1648
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1710
+          "line": 1706
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1750
+          "line": 1746
         }
       ]
     },
@@ -2294,15 +2294,15 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1654
+          "line": 1650
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1676
+          "line": 1672
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1781
+          "line": 1777
         }
       ]
     },
@@ -2441,15 +2441,15 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1668
+          "line": 1664
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1679
+          "line": 1675
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1768
+          "line": 1764
         }
       ]
     },
@@ -2623,11 +2623,11 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1714
+          "line": 1710
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1715
+          "line": 1711
         }
       ]
     },
@@ -108203,37 +108203,6 @@
       "id": 1630,
       "file": "src/workspace-layout.css",
       "line": 643,
-      "selector": ".decision-main",
-      "conditions": [
-        "@media (max-width: 600px)"
-      ],
-      "conditionKinds": [
-        "@media"
-      ],
-      "historicalUnmatched": false,
-      "declarations": [
-        "grid-column: 2",
-        "grid-row: 1 / 3"
-      ],
-      "references": [
-        {
-          "name": "decision-main",
-          "locations": [
-            {
-              "file": "src/App.tsx",
-              "line": 1639
-            }
-          ]
-        }
-      ],
-      "customProperties": [],
-      "status": "unproven-retained",
-      "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
-    },
-    {
-      "id": 1631,
-      "file": "src/workspace-layout.css",
-      "line": 647,
       "selector": ".decision-extra",
       "conditions": [
         "@media (max-width: 600px)"
@@ -108262,9 +108231,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1632,
+      "id": 1631,
       "file": "src/workspace-layout.css",
-      "line": 651,
+      "line": 647,
       "selector": ".decision-extra .subtle-button",
       "conditions": [
         "@media (max-width: 600px)"
@@ -108317,9 +108286,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1633,
+      "id": 1632,
       "file": "src/workspace-layout.css",
-      "line": 656,
+      "line": 652,
       "selector": "*,\n  *::before,\n  *::after",
       "conditions": [
         "@media (prefers-reduced-motion: reduce)"
@@ -108340,9 +108309,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1634,
+      "id": 1633,
       "file": "src/workspace-layout.css",
-      "line": 665,
+      "line": 661,
       "selector": ".app:has(.draft-arena) > .draft-main",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108428,9 +108397,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1635,
+      "id": 1634,
       "file": "src/workspace-layout.css",
-      "line": 673,
+      "line": 669,
       "selector": ".progress-disclosure",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108458,9 +108427,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1636,
+      "id": 1635,
       "file": "src/workspace-layout.css",
-      "line": 676,
+      "line": 672,
       "selector": ".app:has(.compact-view-roster) > .draft-main",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108538,9 +108507,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1637,
+      "id": 1636,
       "file": "src/workspace-layout.css",
-      "line": 681,
+      "line": 677,
       "selector": ".progress-disclosure > summary",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108571,9 +108540,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1638,
+      "id": 1637,
       "file": "src/workspace-layout.css",
-      "line": 687,
+      "line": 683,
       "selector": ".progress-disclosure .progress-dots",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108610,9 +108579,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1639,
+      "id": 1638,
       "file": "src/workspace-layout.css",
-      "line": 690,
+      "line": 686,
       "selector": ".compact-view-tabs",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108640,9 +108609,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1640,
+      "id": 1639,
       "file": "src/workspace-layout.css",
-      "line": 693,
+      "line": 689,
       "selector": ".compact-team-name",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108671,9 +108640,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1641,
+      "id": 1640,
       "file": "src/workspace-layout.css",
-      "line": 697,
+      "line": 693,
       "selector": ".app:has(.draft-arena) .draft-arena",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108744,9 +108713,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1642,
+      "id": 1641,
       "file": "src/workspace-layout.css",
-      "line": 701,
+      "line": 697,
       "selector": ".decision-bar",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108774,9 +108743,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1643,
+      "id": 1642,
       "file": "src/workspace-layout.css",
-      "line": 707,
+      "line": 703,
       "selector": ".decision-bar",
       "conditions": [],
       "conditionKinds": [],
@@ -108801,9 +108770,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1644,
+      "id": 1643,
       "file": "src/workspace-layout.css",
-      "line": 711,
+      "line": 707,
       "selector": ".utility-actions",
       "conditions": [],
       "conditionKinds": [],
@@ -108828,9 +108797,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1645,
+      "id": 1644,
       "file": "src/workspace-layout.css",
-      "line": 715,
+      "line": 711,
       "selector": ".decision-extra",
       "conditions": [],
       "conditionKinds": [],
@@ -108856,9 +108825,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1646,
+      "id": 1645,
       "file": "src/workspace-layout.css",
-      "line": 720,
+      "line": 716,
       "selector": ".decision-main",
       "conditions": [],
       "conditionKinds": [],
@@ -108891,9 +108860,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1647,
+      "id": 1646,
       "file": "src/workspace-layout.css",
-      "line": 732,
+      "line": 728,
       "selector": ".decision-main > .confirm-button",
       "conditions": [],
       "conditionKinds": [],
@@ -108939,9 +108908,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1648,
+      "id": 1647,
       "file": "src/workspace-layout.css",
-      "line": 741,
+      "line": 737,
       "selector": ".compact-picks",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -108970,9 +108939,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1649,
+      "id": 1648,
       "file": "src/workspace-layout.css",
-      "line": 745,
+      "line": 741,
       "selector": ".compact-picks > span",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -109002,9 +108971,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1650,
+      "id": 1649,
       "file": "src/workspace-layout.css",
-      "line": 750,
+      "line": 746,
       "selector": ".compact-picks .portrait",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -109086,9 +109055,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1651,
+      "id": 1650,
       "file": "src/workspace-layout.css",
-      "line": 754,
+      "line": 750,
       "selector": ".compact-picks > span > svg",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -109117,9 +109086,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1652,
+      "id": 1651,
       "file": "src/workspace-layout.css",
-      "line": 758,
+      "line": 754,
       "selector": ".player-portrait,\n  .player-portrait.has-pokemon",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -109157,9 +109126,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1653,
+      "id": 1652,
       "file": "src/workspace-layout.css",
-      "line": 765,
+      "line": 761,
       "selector": ".decision-bar",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -109187,9 +109156,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1654,
+      "id": 1653,
       "file": "src/workspace-layout.css",
-      "line": 768,
+      "line": 764,
       "selector": ".app:has(.draft-arena) > .draft-main",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -109272,9 +109241,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1655,
+      "id": 1654,
       "file": "src/workspace-layout.css",
-      "line": 771,
+      "line": 767,
       "selector": ".compact-view-tabs",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -109304,9 +109273,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1656,
+      "id": 1655,
       "file": "src/workspace-layout.css",
-      "line": 776,
+      "line": 772,
       "selector": ".compact-view-tabs:has(.roster:not(.selected))",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -109594,9 +109563,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1657,
+      "id": 1656,
       "file": "src/workspace-layout.css",
-      "line": 779,
+      "line": 775,
       "selector": ".compact-view-tabs .roster.selected",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -109882,9 +109851,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1658,
+      "id": 1657,
       "file": "src/workspace-layout.css",
-      "line": 782,
+      "line": 778,
       "selector": ".compact-view-tabs button",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -109912,9 +109881,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1659,
+      "id": 1658,
       "file": "src/workspace-layout.css",
-      "line": 785,
+      "line": 781,
       "selector": ".compact-view-tabs button:not(.roster)",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -110072,9 +110041,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1660,
+      "id": 1659,
       "file": "src/workspace-layout.css",
-      "line": 788,
+      "line": 784,
       "selector": ".compact-picks",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -110102,9 +110071,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1661,
+      "id": 1660,
       "file": "src/workspace-layout.css",
-      "line": 791,
+      "line": 787,
       "selector": ".compact-picks > span",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -110133,9 +110102,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1662,
+      "id": 1661,
       "file": "src/workspace-layout.css",
-      "line": 795,
+      "line": 791,
       "selector": ".decision-main > .confirm-button",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -110181,9 +110150,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1663,
+      "id": 1662,
       "file": "src/workspace-layout.css",
-      "line": 801,
+      "line": 797,
       "selector": ".compact-view-tabs",
       "conditions": [
         "@media (max-width: 600px)"
@@ -110214,9 +110183,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1664,
+      "id": 1663,
       "file": "src/workspace-layout.css",
-      "line": 807,
+      "line": 803,
       "selector": ".compact-view-tabs button",
       "conditions": [
         "@media (max-width: 600px)"
@@ -110244,9 +110213,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1665,
+      "id": 1664,
       "file": "src/workspace-layout.css",
-      "line": 810,
+      "line": 806,
       "selector": ".compact-view-tabs .purple",
       "conditions": [
         "@media (max-width: 600px)"
@@ -110491,9 +110460,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1666,
+      "id": 1665,
       "file": "src/workspace-layout.css",
-      "line": 813,
+      "line": 809,
       "selector": ".compact-view-tabs .orange",
       "conditions": [
         "@media (max-width: 600px)"
@@ -110682,9 +110651,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1667,
+      "id": 1666,
       "file": "src/workspace-layout.css",
-      "line": 816,
+      "line": 812,
       "selector": ".compact-view-tabs .roster",
       "conditions": [
         "@media (max-width: 600px)"
@@ -110844,9 +110813,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1668,
+      "id": 1667,
       "file": "src/workspace-layout.css",
-      "line": 822,
+      "line": 818,
       "selector": ".compact-view-tabs .roster.selected",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111132,9 +111101,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1669,
+      "id": 1668,
       "file": "src/workspace-layout.css",
-      "line": 825,
+      "line": 821,
       "selector": ".compact-picks",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111162,9 +111131,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1670,
+      "id": 1669,
       "file": "src/workspace-layout.css",
-      "line": 828,
+      "line": 824,
       "selector": ".compact-picks > span",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111193,9 +111162,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1671,
+      "id": 1670,
       "file": "src/workspace-layout.css",
-      "line": 832,
+      "line": 828,
       "selector": ".decision-bar",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111226,9 +111195,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1672,
+      "id": 1671,
       "file": "src/workspace-layout.css",
-      "line": 838,
+      "line": 834,
       "selector": ".decision-main",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111257,9 +111226,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1673,
+      "id": 1672,
       "file": "src/workspace-layout.css",
-      "line": 842,
+      "line": 838,
       "selector": ".utility-actions",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111287,9 +111256,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1674,
+      "id": 1673,
       "file": "src/workspace-layout.css",
-      "line": 845,
+      "line": 841,
       "selector": ".decision-extra",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111318,9 +111287,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1675,
+      "id": 1674,
       "file": "src/workspace-layout.css",
-      "line": 849,
+      "line": 845,
       "selector": ".decision-main > .confirm-button",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111366,9 +111335,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1676,
+      "id": 1675,
       "file": "src/workspace-layout.css",
-      "line": 853,
+      "line": 849,
       "selector": ".selection-panel",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111396,9 +111365,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1677,
+      "id": 1676,
       "file": "src/workspace-layout.css",
-      "line": 856,
+      "line": 852,
       "selector": ".pokemon-grid",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111430,9 +111399,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1678,
+      "id": 1677,
       "file": "src/workspace-layout.css",
-      "line": 859,
+      "line": 855,
       "selector": ".decision-extra .subtle-button",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111485,9 +111454,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1679,
+      "id": 1678,
       "file": "src/workspace-layout.css",
-      "line": 862,
+      "line": 858,
       "selector": ".decision-extra .subtle-button span",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111540,9 +111509,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1680,
+      "id": 1679,
       "file": "src/workspace-layout.css",
-      "line": 865,
+      "line": 861,
       "selector": ".team-panel .player-list",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111582,9 +111551,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1681,
+      "id": 1680,
       "file": "src/workspace-layout.css",
-      "line": 871,
+      "line": 867,
       "selector": ".team-panel .player-slot",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111623,9 +111592,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1682,
+      "id": 1681,
       "file": "src/workspace-layout.css",
-      "line": 876,
+      "line": 872,
       "selector": ".player-slot,\n  .player-slot.filled",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111670,9 +111639,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1683,
+      "id": 1682,
       "file": "src/workspace-layout.css",
-      "line": 884,
+      "line": 880,
       "selector": ".player-portrait,\n  .player-portrait.has-pokemon",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111712,9 +111681,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1684,
+      "id": 1683,
       "file": "src/workspace-layout.css",
-      "line": 891,
+      "line": 887,
       "selector": ".player-info",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111742,9 +111711,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1685,
+      "id": 1684,
       "file": "src/workspace-layout.css",
-      "line": 897,
+      "line": 893,
       "selector": ".team-panel .player-list",
       "conditions": [],
       "conditionKinds": [],
@@ -111781,9 +111750,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1686,
+      "id": 1685,
       "file": "src/workspace-layout.css",
-      "line": 904,
+      "line": 900,
       "selector": ".team-panel .player-slot",
       "conditions": [],
       "conditionKinds": [],
@@ -111823,9 +111792,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1687,
+      "id": 1686,
       "file": "src/workspace-layout.css",
-      "line": 914,
+      "line": 910,
       "selector": ".team-panel .player-portrait",
       "conditions": [],
       "conditionKinds": [],
@@ -111862,9 +111831,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1688,
+      "id": 1687,
       "file": "src/workspace-layout.css",
-      "line": 921,
+      "line": 917,
       "selector": ".team-panel .player-info",
       "conditions": [],
       "conditionKinds": [],
@@ -111901,9 +111870,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1689,
+      "id": 1688,
       "file": "src/workspace-layout.css",
-      "line": 928,
+      "line": 924,
       "selector": ".team-panel .role-text",
       "conditions": [],
       "conditionKinds": [],
@@ -111936,9 +111905,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1690,
+      "id": 1689,
       "file": "src/workspace-layout.css",
-      "line": 931,
+      "line": 927,
       "selector": ".team-panel .player-check,\n.team-panel .slot-dash",
       "conditions": [],
       "conditionKinds": [],
@@ -111981,9 +111950,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1691,
+      "id": 1690,
       "file": "src/workspace-layout.css",
-      "line": 936,
+      "line": 932,
       "selector": ".team-panel .trainer",
       "conditions": [],
       "conditionKinds": [],
@@ -112148,9 +112117,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1692,
+      "id": 1691,
       "file": "src/workspace-layout.css",
-      "line": 940,
+      "line": 936,
       "selector": ".team-panel",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -112180,9 +112149,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1693,
+      "id": 1692,
       "file": "src/workspace-layout.css",
-      "line": 945,
+      "line": 941,
       "selector": ".team-panel .team-heading",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -112219,9 +112188,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1694,
+      "id": 1693,
       "file": "src/workspace-layout.css",
-      "line": 948,
+      "line": 944,
       "selector": ".team-panel .bans-heading",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -112258,9 +112227,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1695,
+      "id": 1694,
       "file": "src/workspace-layout.css",
-      "line": 951,
+      "line": 947,
       "selector": ".team-panel .player-list",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -112297,9 +112266,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1696,
+      "id": 1695,
       "file": "src/workspace-layout.css",
-      "line": 954,
+      "line": 950,
       "selector": ".team-panel .player-slot",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -112337,9 +112306,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1697,
+      "id": 1696,
       "file": "src/workspace-layout.css",
-      "line": 958,
+      "line": 954,
       "selector": ".team-panel .player-portrait",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -112379,9 +112348,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1698,
+      "id": 1697,
       "file": "src/workspace-layout.css",
-      "line": 969,
+      "line": 965,
       "selector": ".app .draft-arena[class]",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)",
@@ -112453,9 +112422,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1699,
+      "id": 1698,
       "file": "src/workspace-layout.css",
-      "line": 973,
+      "line": 969,
       "selector": ".app .draft-arena[class] > .team-side",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)",
@@ -112540,9 +112509,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1700,
+      "id": 1699,
       "file": "src/workspace-layout.css",
-      "line": 977,
+      "line": 973,
       "selector": ".app .draft-arena[class] > .team-side.purple",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)",
@@ -112843,9 +112812,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1701,
+      "id": 1700,
       "file": "src/workspace-layout.css",
-      "line": 980,
+      "line": 976,
       "selector": ".app .draft-arena[class] > .team-side.orange",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)",
@@ -113090,9 +113059,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1702,
+      "id": 1701,
       "file": "src/workspace-layout.css",
-      "line": 983,
+      "line": 979,
       "selector": ".app .draft-arena[class] > .selection-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)",
@@ -113174,9 +113143,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1703,
+      "id": 1702,
       "file": "src/workspace-layout.css",
-      "line": 989,
+      "line": 985,
       "selector": ".app:has(.draft-arena) > .draft-main",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113264,9 +113233,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1704,
+      "id": 1703,
       "file": "src/workspace-layout.css",
-      "line": 998,
+      "line": 994,
       "selector": ".app .compact-view-tabs",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113335,9 +113304,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1705,
+      "id": 1704,
       "file": "src/workspace-layout.css",
-      "line": 1001,
+      "line": 997,
       "selector": ".app .progress-disclosure",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113406,9 +113375,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1706,
+      "id": 1705,
       "file": "src/workspace-layout.css",
-      "line": 1004,
+      "line": 1000,
       "selector": ".app:has(.draft-arena) .draft-arena",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113480,9 +113449,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1707,
+      "id": 1706,
       "file": "src/workspace-layout.css",
-      "line": 1009,
+      "line": 1005,
       "selector": ".app .decision-bar",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113551,9 +113520,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1708,
+      "id": 1707,
       "file": "src/workspace-layout.css",
-      "line": 1012,
+      "line": 1008,
       "selector": ".team-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113584,9 +113553,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1709,
+      "id": 1708,
       "file": "src/workspace-layout.css",
-      "line": 1021,
+      "line": 1017,
       "selector": ".team-panel .team-heading",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113625,9 +113594,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1710,
+      "id": 1709,
       "file": "src/workspace-layout.css",
-      "line": 1026,
+      "line": 1022,
       "selector": ".team-heading h2",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113655,9 +113624,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1711,
+      "id": 1710,
       "file": "src/workspace-layout.css",
-      "line": 1029,
+      "line": 1025,
       "selector": ".team-emblem",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113689,9 +113658,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1712,
+      "id": 1711,
       "file": "src/workspace-layout.css",
-      "line": 1032,
+      "line": 1028,
       "selector": ".order-label",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113723,9 +113692,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1713,
+      "id": 1712,
       "file": "src/workspace-layout.css",
-      "line": 1035,
+      "line": 1031,
       "selector": ".team-panel .bans-heading,\n  .team-panel .picks-heading",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113773,9 +113742,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1714,
+      "id": 1713,
       "file": "src/workspace-layout.css",
-      "line": 1041,
+      "line": 1037,
       "selector": ".bans-heading svg,\n  .picks-heading svg",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113812,9 +113781,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1715,
+      "id": 1714,
       "file": "src/workspace-layout.css",
-      "line": 1045,
+      "line": 1041,
       "selector": ".ban-slots",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113842,9 +113811,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1716,
+      "id": 1715,
       "file": "src/workspace-layout.css",
-      "line": 1048,
+      "line": 1044,
       "selector": ".ban-slot",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113880,9 +113849,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1717,
+      "id": 1716,
       "file": "src/workspace-layout.css",
-      "line": 1051,
+      "line": 1047,
       "selector": ".ban-slot-label",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113910,9 +113879,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1718,
+      "id": 1717,
       "file": "src/workspace-layout.css",
-      "line": 1054,
+      "line": 1050,
       "selector": ".ban-slot > svg",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113949,9 +113918,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1719,
+      "id": 1718,
       "file": "src/workspace-layout.css",
-      "line": 1058,
+      "line": 1054,
       "selector": ".ban-mark",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113980,9 +113949,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1720,
+      "id": 1719,
       "file": "src/workspace-layout.css",
-      "line": 1062,
+      "line": 1058,
       "selector": ".team-panel .player-list",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114020,9 +113989,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1721,
+      "id": 1720,
       "file": "src/workspace-layout.css",
-      "line": 1066,
+      "line": 1062,
       "selector": ".team-panel .player-slot",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114061,9 +114030,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1722,
+      "id": 1721,
       "file": "src/workspace-layout.css",
-      "line": 1071,
+      "line": 1067,
       "selector": ".team-panel .player-portrait",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114103,9 +114072,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1723,
+      "id": 1722,
       "file": "src/workspace-layout.css",
-      "line": 1077,
+      "line": 1073,
       "selector": ".team-panel .player-info",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114142,9 +114111,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1724,
+      "id": 1723,
       "file": "src/workspace-layout.css",
-      "line": 1080,
+      "line": 1076,
       "selector": ".team-panel .player-name",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114182,9 +114151,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1725,
+      "id": 1724,
       "file": "src/workspace-layout.css",
-      "line": 1084,
+      "line": 1080,
       "selector": ".team-panel .role-text",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114222,9 +114191,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1726,
+      "id": 1725,
       "file": "src/workspace-layout.css",
-      "line": 1088,
+      "line": 1084,
       "selector": ".team-panel .player-number,\n  .team-panel .player-check,\n  .team-panel .slot-dash,\n  .team-panel .trainer",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114420,9 +114389,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1727,
+      "id": 1726,
       "file": "src/workspace-layout.css",
-      "line": 1094,
+      "line": 1090,
       "selector": ".team-panel .empty-pick-mark",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114460,9 +114429,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1728,
+      "id": 1727,
       "file": "src/workspace-layout.css",
-      "line": 1098,
+      "line": 1094,
       "selector": ".team-panel .empty-pick-mark svg",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114500,9 +114469,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1729,
+      "id": 1728,
       "file": "src/workspace-layout.css",
-      "line": 1102,
+      "line": 1098,
       "selector": ".team-panel .player-slot:not(:disabled)",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114541,9 +114510,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1730,
+      "id": 1729,
       "file": "src/workspace-layout.css",
-      "line": 1105,
+      "line": 1101,
       "selector": ".selection-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114573,9 +114542,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1731,
+      "id": 1730,
       "file": "src/workspace-layout.css",
-      "line": 1110,
+      "line": 1106,
       "selector": ".selection-panel .selection-top",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114612,9 +114581,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1732,
+      "id": 1731,
       "file": "src/workspace-layout.css",
-      "line": 1113,
+      "line": 1109,
       "selector": ".roster-toolbar",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114637,9 +114606,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1733,
+      "id": 1732,
       "file": "src/workspace-layout.css",
-      "line": 1116,
+      "line": 1112,
       "selector": ".search-field",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114668,9 +114637,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1734,
+      "id": 1733,
       "file": "src/workspace-layout.css",
-      "line": 1120,
+      "line": 1116,
       "selector": ".search-field input",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114699,9 +114668,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1735,
+      "id": 1734,
       "file": "src/workspace-layout.css",
-      "line": 1124,
+      "line": 1120,
       "selector": ".selection-footer",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114730,9 +114699,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1736,
+      "id": 1735,
       "file": "src/workspace-layout.css",
-      "line": 1128,
+      "line": 1124,
       "selector": ".roster-pagination",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114760,9 +114729,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1737,
+      "id": 1736,
       "file": "src/workspace-layout.css",
-      "line": 1131,
+      "line": 1127,
       "selector": ".roster-range",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114787,9 +114756,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1738,
+      "id": 1737,
       "file": "src/workspace-layout.css",
-      "line": 1138,
+      "line": 1134,
       "selector": ".pokemon-grid .pokemon-card > .portrait",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114909,9 +114878,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1739,
+      "id": 1738,
       "file": "src/workspace-layout.css",
-      "line": 1143,
+      "line": 1139,
       "selector": ".pokemon-grid .pokemon-card",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114977,9 +114946,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1740,
+      "id": 1739,
       "file": "src/workspace-layout.css",
-      "line": 1147,
+      "line": 1143,
       "selector": ".team-panel .team-heading h2",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -115017,9 +114986,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1741,
+      "id": 1740,
       "file": "src/workspace-layout.css",
-      "line": 1151,
+      "line": 1147,
       "selector": ".team-panel .team-heading > div",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -115056,9 +115025,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1742,
+      "id": 1741,
       "file": "src/workspace-layout.css",
-      "line": 1154,
+      "line": 1150,
       "selector": ".team-panel .team-heading",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -115095,9 +115064,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1743,
+      "id": 1742,
       "file": "src/workspace-layout.css",
-      "line": 1157,
+      "line": 1153,
       "selector": ".team-panel .order-label",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -115138,9 +115107,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1744,
+      "id": 1743,
       "file": "src/workspace-layout.css",
-      "line": 1162,
+      "line": 1158,
       "selector": ".app:has(.draft-arena) .app-header",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115221,9 +115190,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1745,
+      "id": 1744,
       "file": "src/workspace-layout.css",
-      "line": 1167,
+      "line": 1163,
       "selector": ".app .progress-disclosure > summary",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115293,9 +115262,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1746,
+      "id": 1745,
       "file": "src/workspace-layout.css",
-      "line": 1171,
+      "line": 1167,
       "selector": ".team-panel .team-heading",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115332,9 +115301,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1747,
+      "id": 1746,
       "file": "src/workspace-layout.css",
-      "line": 1174,
+      "line": 1170,
       "selector": ".team-panel .player-slot",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115371,9 +115340,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1748,
+      "id": 1747,
       "file": "src/workspace-layout.css",
-      "line": 1177,
+      "line": 1173,
       "selector": ".team-panel .player-portrait",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115413,9 +115382,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1749,
+      "id": 1748,
       "file": "src/workspace-layout.css",
-      "line": 1183,
+      "line": 1179,
       "selector": ".team-panel .player-list",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115452,9 +115421,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1750,
+      "id": 1749,
       "file": "src/workspace-layout.css",
-      "line": 1186,
+      "line": 1182,
       "selector": ".team-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115484,9 +115453,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1751,
+      "id": 1750,
       "file": "src/workspace-layout.css",
-      "line": 1191,
+      "line": 1187,
       "selector": ".team-panel .player-name",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115523,9 +115492,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1752,
+      "id": 1751,
       "file": "src/workspace-layout.css",
-      "line": 1194,
+      "line": 1190,
       "selector": ".team-panel .role-text",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115562,9 +115531,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1753,
+      "id": 1752,
       "file": "src/workspace-layout.css",
-      "line": 1197,
+      "line": 1193,
       "selector": ".selection-footer",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115592,9 +115561,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1754,
+      "id": 1753,
       "file": "src/workspace-layout.css",
-      "line": 1200,
+      "line": 1196,
       "selector": ".roster-range",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115617,9 +115586,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1755,
+      "id": 1754,
       "file": "src/workspace-layout.css",
-      "line": 1203,
+      "line": 1199,
       "selector": ".pokemon-grid",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115651,9 +115620,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1756,
+      "id": 1755,
       "file": "src/workspace-layout.css",
-      "line": 1206,
+      "line": 1202,
       "selector": ".selection-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115681,9 +115650,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1757,
+      "id": 1756,
       "file": "src/workspace-layout.css",
-      "line": 1211,
+      "line": 1207,
       "selector": ".app:has(.draft-arena) > .draft-main",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115767,9 +115736,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1758,
+      "id": 1757,
       "file": "src/workspace-layout.css",
-      "line": 1215,
+      "line": 1211,
       "selector": ".team-panel .player-slot",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115806,9 +115775,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1759,
+      "id": 1758,
       "file": "src/workspace-layout.css",
-      "line": 1218,
+      "line": 1214,
       "selector": ".decision-bar",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115836,9 +115805,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1760,
+      "id": 1759,
       "file": "src/workspace-layout.css",
-      "line": 1223,
+      "line": 1219,
       "selector": ".team-panel .picks-heading",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115875,9 +115844,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1761,
+      "id": 1760,
       "file": "src/workspace-layout.css",
-      "line": 1226,
+      "line": 1222,
       "selector": ".team-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115905,9 +115874,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1762,
+      "id": 1761,
       "file": "src/workspace-layout.css",
-      "line": 1231,
+      "line": 1227,
       "selector": ".app .compact-view-tabs",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -115977,9 +115946,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1763,
+      "id": 1762,
       "file": "src/workspace-layout.css",
-      "line": 1235,
+      "line": 1231,
       "selector": ".app .compact-view-tabs .purple",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -116265,9 +116234,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1764,
+      "id": 1763,
       "file": "src/workspace-layout.css",
-      "line": 1238,
+      "line": 1234,
       "selector": ".app .compact-view-tabs .roster",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -116467,9 +116436,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1765,
+      "id": 1764,
       "file": "src/workspace-layout.css",
-      "line": 1243,
+      "line": 1239,
       "selector": ".app .compact-view-tabs .orange",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -116699,9 +116668,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1766,
+      "id": 1765,
       "file": "src/workspace-layout.css",
-      "line": 1246,
+      "line": 1242,
       "selector": ".compact-picks",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -116729,9 +116698,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1767,
+      "id": 1766,
       "file": "src/workspace-layout.css",
-      "line": 1249,
+      "line": 1245,
       "selector": ".compact-picks > span",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -116760,9 +116729,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1768,
+      "id": 1767,
       "file": "src/workspace-layout.css",
-      "line": 1255,
+      "line": 1251,
       "selector": ".team-panel .bans-heading",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -116799,9 +116768,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1769,
+      "id": 1768,
       "file": "src/workspace-layout.css",
-      "line": 1258,
+      "line": 1254,
       "selector": ".team-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -116829,9 +116798,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1770,
+      "id": 1769,
       "file": "src/workspace-layout.css",
-      "line": 1261,
+      "line": 1257,
       "selector": ".team-panel .player-info",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -116868,9 +116837,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1771,
+      "id": 1770,
       "file": "src/workspace-layout.css",
-      "line": 1269,
+      "line": 1265,
       "selector": ".app .draft-arena[class]",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)",
@@ -116941,9 +116910,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1772,
+      "id": 1771,
       "file": "src/workspace-layout.css",
-      "line": 1273,
+      "line": 1269,
       "selector": ".pokemon-grid .pokemon-card > .portrait",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117062,9 +117031,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1773,
+      "id": 1772,
       "file": "src/workspace-layout.css",
-      "line": 1277,
+      "line": 1273,
       "selector": ".pokemon-grid .pokemon-card",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117131,9 +117100,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1774,
+      "id": 1773,
       "file": "src/workspace-layout.css",
-      "line": 1282,
+      "line": 1278,
       "selector": ".selection-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117161,9 +117130,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1775,
+      "id": 1774,
       "file": "src/workspace-layout.css",
-      "line": 1285,
+      "line": 1281,
       "selector": ".pokemon-grid",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117195,9 +117164,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1776,
+      "id": 1775,
       "file": "src/workspace-layout.css",
-      "line": 1288,
+      "line": 1284,
       "selector": ".pokemon-grid .empty-results",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117240,9 +117209,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1777,
+      "id": 1776,
       "file": "src/workspace-layout.css",
-      "line": 1293,
+      "line": 1289,
       "selector": ".pokemon-grid .empty-results > svg",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117283,9 +117252,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1778,
+      "id": 1777,
       "file": "src/workspace-layout.css",
-      "line": 1298,
+      "line": 1294,
       "selector": ".pokemon-grid",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117317,9 +117286,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1779,
+      "id": 1778,
       "file": "src/workspace-layout.css",
-      "line": 1301,
+      "line": 1297,
       "selector": ".pokemon-grid .pokemon-card > .portrait",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117438,9 +117407,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1780,
+      "id": 1779,
       "file": "src/workspace-layout.css",
-      "line": 1305,
+      "line": 1301,
       "selector": ".pokemon-grid .pokemon-card",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117505,9 +117474,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1781,
+      "id": 1780,
       "file": "src/workspace-layout.css",
-      "line": 1310,
+      "line": 1306,
       "selector": ".allstar-arena .team-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117545,9 +117514,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1782,
+      "id": 1781,
       "file": "src/workspace-layout.css",
-      "line": 1314,
+      "line": 1310,
       "selector": ".allstar-arena .team-history:not(:has(.history-game))",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117595,9 +117564,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1783,
+      "id": 1782,
       "file": "src/workspace-layout.css",
-      "line": 1320,
+      "line": 1316,
       "selector": ".app .pokemon-grid .pokemon-card",
       "conditions": [],
       "conditionKinds": [],
@@ -117701,9 +117670,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1784,
+      "id": 1783,
       "file": "src/workspace-layout.css",
-      "line": 1325,
+      "line": 1321,
       "selector": ".app .pokemon-grid .pokemon-card > .portrait",
       "conditions": [],
       "conditionKinds": [],
@@ -117860,9 +117829,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1785,
+      "id": 1784,
       "file": "src/workspace-layout.css",
-      "line": 1330,
+      "line": 1326,
       "selector": ".app .pokemon-grid",
       "conditions": [],
       "conditionKinds": [],
@@ -117931,9 +117900,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1786,
+      "id": 1785,
       "file": "src/workspace-layout.css",
-      "line": 1333,
+      "line": 1329,
       "selector": ".app .decision-main",
       "conditions": [],
       "conditionKinds": [],
@@ -117998,9 +117967,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1787,
+      "id": 1786,
       "file": "src/workspace-layout.css",
-      "line": 1336,
+      "line": 1332,
       "selector": ".app .decision-bar",
       "conditions": [],
       "conditionKinds": [],
@@ -118065,9 +118034,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1788,
+      "id": 1787,
       "file": "src/workspace-layout.css",
-      "line": 1340,
+      "line": 1336,
       "selector": ".app .selection-panel",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -118136,9 +118105,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1789,
+      "id": 1788,
       "file": "src/workspace-layout.css",
-      "line": 1343,
+      "line": 1339,
       "selector": ".app .app-header",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -118207,9 +118176,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1790,
+      "id": 1789,
       "file": "src/workspace-layout.css",
-      "line": 1347,
+      "line": 1343,
       "selector": ".app .header-phase",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -118286,9 +118255,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1791,
+      "id": 1790,
       "file": "src/workspace-layout.css",
-      "line": 1350,
+      "line": 1346,
       "selector": ".app .decision-main > .confirm-button",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -118376,9 +118345,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1792,
+      "id": 1791,
       "file": "src/workspace-layout.css",
-      "line": 1357,
+      "line": 1353,
       "selector": ".app .pokemon-grid",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -118451,9 +118420,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1793,
+      "id": 1792,
       "file": "src/workspace-layout.css",
-      "line": 1360,
+      "line": 1356,
       "selector": ".app .selection-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -118522,9 +118491,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1794,
+      "id": 1793,
       "file": "src/workspace-layout.css",
-      "line": 1363,
+      "line": 1359,
       "selector": ".app .pokemon-grid .pokemon-card > .portrait",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -118684,9 +118653,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1795,
+      "id": 1794,
       "file": "src/workspace-layout.css",
-      "line": 1369,
+      "line": 1365,
       "selector": ".app",
       "conditions": [],
       "conditionKinds": [],
@@ -118746,9 +118715,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1796,
+      "id": 1795,
       "file": "src/workspace-layout.css",
-      "line": 1374,
+      "line": 1370,
       "selector": ".app",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -118812,9 +118781,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1797,
+      "id": 1796,
       "file": "src/workspace-layout.css",
-      "line": 1380,
+      "line": 1376,
       "selector": ".app",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -118878,9 +118847,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1798,
+      "id": 1797,
       "file": "src/workspace-layout.css",
-      "line": 1385,
+      "line": 1381,
       "selector": ".app .pokemon-grid .pokemon-card > .portrait,\n.app .team-panel .player-portrait",
       "conditions": [],
       "conditionKinds": [],
@@ -119058,9 +119027,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1799,
+      "id": 1798,
       "file": "src/workspace-layout.css",
-      "line": 1392,
+      "line": 1388,
       "selector": ".app .team-panel .player-portrait > .portrait",
       "conditions": [],
       "conditionKinds": [],
@@ -119188,9 +119157,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1800,
+      "id": 1799,
       "file": "src/workspace-layout.css",
-      "line": 1396,
+      "line": 1392,
       "selector": ".app .pokemon-grid .pokemon-card",
       "conditions": [],
       "conditionKinds": [],
@@ -119292,9 +119261,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1801,
+      "id": 1800,
       "file": "src/workspace-layout.css",
-      "line": 1399,
+      "line": 1395,
       "selector": ".app .pokemon-grid",
       "conditions": [],
       "conditionKinds": [],
@@ -119365,9 +119334,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1802,
+      "id": 1801,
       "file": "src/workspace-layout.css",
-      "line": 1402,
+      "line": 1398,
       "selector": ".app .decision-bar",
       "conditions": [],
       "conditionKinds": [],
@@ -119432,9 +119401,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1803,
+      "id": 1802,
       "file": "src/workspace-layout.css",
-      "line": 1406,
+      "line": 1402,
       "selector": ".app .decision-bar",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -119505,9 +119474,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1804,
+      "id": 1803,
       "file": "src/workspace-layout.css",
-      "line": 1411,
+      "line": 1407,
       "selector": ".app .decision-main",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -119576,9 +119545,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1805,
+      "id": 1804,
       "file": "src/workspace-layout.css",
-      "line": 1414,
+      "line": 1410,
       "selector": ".app .utility-actions",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -119649,9 +119618,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1806,
+      "id": 1805,
       "file": "src/workspace-layout.css",
-      "line": 1419,
+      "line": 1415,
       "selector": ".app .decision-extra",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -119720,9 +119689,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1807,
+      "id": 1806,
       "file": "src/workspace-layout.css",
-      "line": 1422,
+      "line": 1418,
       "selector": ".app .decision-extra .subtle-button span",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -119816,9 +119785,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1808,
+      "id": 1807,
       "file": "src/workspace-layout.css",
-      "line": 1425,
+      "line": 1421,
       "selector": ".app .decision-extra .subtle-button",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -119914,9 +119883,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1809,
+      "id": 1808,
       "file": "src/workspace-layout.css",
-      "line": 1430,
+      "line": 1426,
       "selector": ".app .utility-actions .subtle-button",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -120012,9 +119981,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1810,
+      "id": 1809,
       "file": "src/workspace-layout.css",
-      "line": 1437,
+      "line": 1433,
       "selector": ".app .decision-bar",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -120084,9 +120053,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1811,
+      "id": 1810,
       "file": "src/workspace-layout.css",
-      "line": 1441,
+      "line": 1437,
       "selector": ".app .decision-main",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -120155,9 +120124,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1812,
+      "id": 1811,
       "file": "src/workspace-layout.css",
-      "line": 1444,
+      "line": 1440,
       "selector": ".app .utility-actions",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -120227,9 +120196,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1813,
+      "id": 1812,
       "file": "src/workspace-layout.css",
-      "line": 1448,
+      "line": 1444,
       "selector": ".app .decision-extra",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -120298,9 +120267,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1814,
+      "id": 1813,
       "file": "src/workspace-layout.css",
-      "line": 1455,
+      "line": 1451,
       "selector": ".app .decision-bar",
       "conditions": [
         "@media (min-width: 400px) and (max-width: 600px) and (orientation: portrait)"
@@ -120370,9 +120339,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1815,
+      "id": 1814,
       "file": "src/workspace-layout.css",
-      "line": 1459,
+      "line": 1455,
       "selector": ".app .decision-main",
       "conditions": [
         "@media (min-width: 400px) and (max-width: 600px) and (orientation: portrait)"
@@ -120441,9 +120410,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1816,
+      "id": 1815,
       "file": "src/workspace-layout.css",
-      "line": 1462,
+      "line": 1458,
       "selector": ".app .utility-actions",
       "conditions": [
         "@media (min-width: 400px) and (max-width: 600px) and (orientation: portrait)"
@@ -120512,9 +120481,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1817,
+      "id": 1816,
       "file": "src/workspace-layout.css",
-      "line": 1465,
+      "line": 1461,
       "selector": ".app .decision-extra",
       "conditions": [
         "@media (min-width: 400px) and (max-width: 600px) and (orientation: portrait)"
@@ -120583,9 +120552,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1818,
+      "id": 1817,
       "file": "src/workspace-layout.css",
-      "line": 1468,
+      "line": 1464,
       "selector": ".app .decision-main > .confirm-button",
       "conditions": [
         "@media (min-width: 400px) and (max-width: 600px) and (orientation: portrait)"
@@ -120671,9 +120640,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1819,
+      "id": 1818,
       "file": "src/workspace-layout.css",
-      "line": 1473,
+      "line": 1469,
       "selector": ".app .search-field",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -120743,9 +120712,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1820,
+      "id": 1819,
       "file": "src/workspace-layout.css",
-      "line": 1477,
+      "line": 1473,
       "selector": ".app .search-field input",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -120816,9 +120785,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1821,
+      "id": 1820,
       "file": "src/workspace-layout.css",
-      "line": 1482,
+      "line": 1478,
       "selector": ".app .search-field > svg",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -120889,9 +120858,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1822,
+      "id": 1821,
       "file": "src/workspace-layout.css",
-      "line": 1487,
+      "line": 1483,
       "selector": ".app .sort-trigger,\n  .app .filter-toggle,\n  .app .roster-pagination button",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -120982,9 +120951,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1823,
+      "id": 1822,
       "file": "src/workspace-layout.css",
-      "line": 1496,
+      "line": 1492,
       "selector": ".app .sort-trigger svg,\n  .app .filter-toggle svg,\n  .app .roster-pagination button svg",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -121073,9 +121042,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1824,
+      "id": 1823,
       "file": "src/workspace-layout.css",
-      "line": 1503,
+      "line": 1499,
       "selector": ".app .roster-pagination",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -121144,9 +121113,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1825,
+      "id": 1824,
       "file": "src/workspace-layout.css",
-      "line": 1506,
+      "line": 1502,
       "selector": ".app .roster-pagination > span",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -121216,9 +121185,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1826,
+      "id": 1825,
       "file": "src/workspace-layout.css",
-      "line": 1510,
+      "line": 1506,
       "selector": ".app .selection-footer",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -121287,9 +121256,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1827,
+      "id": 1826,
       "file": "src/workspace-layout.css",
-      "line": 1515,
+      "line": 1511,
       "selector": ".app",
       "conditions": [],
       "conditionKinds": [],
@@ -121359,9 +121328,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1828,
+      "id": 1827,
       "file": "src/workspace-layout.css",
-      "line": 1524,
+      "line": 1520,
       "selector": ".app .search-field",
       "conditions": [],
       "conditionKinds": [],
@@ -121435,9 +121404,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1829,
+      "id": 1828,
       "file": "src/workspace-layout.css",
-      "line": 1531,
+      "line": 1527,
       "selector": ".app .search-field input,\n.app .search-field input:focus",
       "conditions": [],
       "conditionKinds": [
@@ -121511,9 +121480,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1830,
+      "id": 1829,
       "file": "src/workspace-layout.css",
-      "line": 1539,
+      "line": 1535,
       "selector": ".app .search-field > svg",
       "conditions": [],
       "conditionKinds": [],
@@ -121582,9 +121551,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1831,
+      "id": 1830,
       "file": "src/workspace-layout.css",
-      "line": 1544,
+      "line": 1540,
       "selector": ".app\n  :is(\n    .sort-trigger,\n    .filter-toggle,\n    .roster-pagination button,\n    .app-header .icon-button\n  )",
       "conditions": [],
       "conditionKinds": [
@@ -121723,9 +121692,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1832,
+      "id": 1831,
       "file": "src/workspace-layout.css",
-      "line": 1561,
+      "line": 1557,
       "selector": ".app\n  :is(\n    .sort-trigger,\n    .filter-toggle,\n    .roster-pagination button,\n    .app-header .icon-button,\n    .decision-bar button\n  )\n  svg",
       "conditions": [],
       "conditionKinds": [
@@ -121865,9 +121834,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1833,
+      "id": 1832,
       "file": "src/workspace-layout.css",
-      "line": 1574,
+      "line": 1570,
       "selector": ".app .roster-pagination",
       "conditions": [],
       "conditionKinds": [],
@@ -121934,9 +121903,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1834,
+      "id": 1833,
       "file": "src/workspace-layout.css",
-      "line": 1577,
+      "line": 1573,
       "selector": ".app .roster-pagination > span",
       "conditions": [],
       "conditionKinds": [],
@@ -122005,9 +121974,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1835,
+      "id": 1834,
       "file": "src/workspace-layout.css",
-      "line": 1582,
+      "line": 1578,
       "selector": ".app .roster-range",
       "conditions": [],
       "conditionKinds": [],
@@ -122069,9 +122038,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1836,
+      "id": 1835,
       "file": "src/workspace-layout.css",
-      "line": 1585,
+      "line": 1581,
       "selector": ".app .selection-footer",
       "conditions": [],
       "conditionKinds": [],
@@ -122140,9 +122109,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1837,
+      "id": 1836,
       "file": "src/workspace-layout.css",
-      "line": 1589,
+      "line": 1585,
       "selector": ".app .decision-bar",
       "conditions": [],
       "conditionKinds": [],
@@ -122210,9 +122179,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1838,
+      "id": 1837,
       "file": "src/workspace-layout.css",
-      "line": 1593,
+      "line": 1589,
       "selector": ".app .decision-main > .confirm-button",
       "conditions": [],
       "conditionKinds": [],
@@ -122304,9 +122273,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1839,
+      "id": 1838,
       "file": "src/workspace-layout.css",
-      "line": 1600,
+      "line": 1596,
       "selector": ".app .decision-bar .subtle-button",
       "conditions": [],
       "conditionKinds": [],
@@ -122400,9 +122369,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1840,
+      "id": 1839,
       "file": "src/workspace-layout.css",
-      "line": 1604,
+      "line": 1600,
       "selector": ".app .app-header",
       "conditions": [],
       "conditionKinds": [],
@@ -122470,9 +122439,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1841,
+      "id": 1840,
       "file": "src/workspace-layout.css",
-      "line": 1608,
+      "line": 1604,
       "selector": ".app .app-header :is(.phase-label, .active-team-name)",
       "conditions": [],
       "conditionKinds": [
@@ -122549,9 +122518,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1842,
+      "id": 1841,
       "file": "src/workspace-layout.css",
-      "line": 1612,
+      "line": 1608,
       "selector": ".app .sort-trigger",
       "conditions": [
         "@media (min-width: 1001px)"
@@ -122627,9 +122596,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1843,
+      "id": 1842,
       "file": "src/workspace-layout.css",
-      "line": 1620,
+      "line": 1616,
       "selector": ".app",
       "conditions": [
         "@media (pointer: fine) and (max-height: 500px)"
@@ -122691,9 +122660,9 @@
       "reason": "tests/browser/css-pointer.mjs: 667x375 fine pointer home header buttons change 36px to 44px on removal and restore to36px in both engines; retain. Draft override alone is not global unusedness."
     },
     {
-      "id": 1844,
+      "id": 1843,
       "file": "src/workspace-layout.css",
-      "line": 1625,
+      "line": 1621,
       "selector": ".app",
       "conditions": [
         "@media (pointer: coarse)"
@@ -122755,9 +122724,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1845,
+      "id": 1844,
       "file": "src/workspace-layout.css",
-      "line": 1630,
+      "line": 1626,
       "selector": ".app:not(.setup-mode)",
       "conditions": [],
       "conditionKinds": [
@@ -122846,9 +122815,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1846,
+      "id": 1845,
       "file": "src/workspace-layout.css",
-      "line": 1639,
+      "line": 1635,
       "selector": ".app:not(.setup-mode) :is(.search-field, .sort-trigger, .filter-toggle, .roster-pagination button, .decision-main > .confirm-button)",
       "conditions": [],
       "conditionKinds": [
@@ -122990,9 +122959,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1847,
+      "id": 1846,
       "file": "src/workspace-layout.css",
-      "line": 1646,
+      "line": 1642,
       "selector": ".app:not(.setup-mode) :is(.search-field, .sort-trigger, .filter-toggle, .roster-pagination button, .decision-main > .confirm-button)::before",
       "conditions": [],
       "conditionKinds": [
@@ -123143,9 +123112,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1848,
+      "id": 1847,
       "file": "src/workspace-layout.css",
-      "line": 1656,
+      "line": 1652,
       "selector": ".app:not(.setup-mode) .search-field::before",
       "conditions": [],
       "conditionKinds": [
@@ -123230,9 +123199,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1849,
+      "id": 1848,
       "file": "src/workspace-layout.css",
-      "line": 1659,
+      "line": 1655,
       "selector": ".app:not(.setup-mode) .search-field:focus-within::before",
       "conditions": [],
       "conditionKinds": [
@@ -123320,9 +123289,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1850,
+      "id": 1849,
       "file": "src/workspace-layout.css",
-      "line": 1662,
+      "line": 1658,
       "selector": ".app:not(.setup-mode) .filter-toggle.selected::before,\n.app:not(.setup-mode) .sort-select.open .sort-trigger::before",
       "conditions": [],
       "conditionKinds": [
@@ -123582,9 +123551,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1851,
+      "id": 1850,
       "file": "src/workspace-layout.css",
-      "line": 1667,
+      "line": 1663,
       "selector": ".app:not(.setup-mode) .decision-main > .confirm-button::before",
       "conditions": [],
       "conditionKinds": [
@@ -123689,9 +123658,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1852,
+      "id": 1851,
       "file": "src/workspace-layout.css",
-      "line": 1671,
+      "line": 1667,
       "selector": ".app:not(.setup-mode) .decision-main > .confirm-button:disabled::before",
       "conditions": [],
       "conditionKinds": [
@@ -123794,9 +123763,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1853,
+      "id": 1852,
       "file": "src/workspace-layout.css",
-      "line": 1675,
+      "line": 1671,
       "selector": ".app:not(.setup-mode) :is(.sort-trigger, .filter-toggle, .roster-pagination button):hover:not(:disabled)::before",
       "conditions": [
         "@media (hover: hover)"
@@ -123907,9 +123876,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1854,
+      "id": 1853,
       "file": "src/workspace-layout.css",
-      "line": 1678,
+      "line": 1674,
       "selector": ".app:not(.setup-mode) .decision-main > .confirm-button:hover:not(:disabled)::before",
       "conditions": [
         "@media (hover: hover)"
@@ -124018,9 +123987,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1855,
+      "id": 1854,
       "file": "src/workspace-layout.css",
-      "line": 1682,
+      "line": 1678,
       "selector": ".app:not(.setup-mode) .filter-toggle",
       "conditions": [],
       "conditionKinds": [
@@ -124106,9 +124075,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1856,
+      "id": 1855,
       "file": "src/workspace-layout.css",
-      "line": 1685,
+      "line": 1681,
       "selector": ".app:not(.setup-mode) :is(.sort-trigger, .filter-toggle, .roster-pagination button)",
       "conditions": [],
       "conditionKinds": [
@@ -124214,9 +124183,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1857,
+      "id": 1856,
       "file": "src/workspace-layout.css",
-      "line": 1690,
+      "line": 1686,
       "selector": ".app:not(.setup-mode) .sort-trigger",
       "conditions": [
         "@media (min-width: 1001px)"
@@ -124306,9 +124275,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1858,
+      "id": 1857,
       "file": "src/workspace-layout.css",
-      "line": 1697,
+      "line": 1693,
       "selector": ".app:not(.setup-mode) .filter-active-dot",
       "conditions": [],
       "conditionKinds": [
@@ -124395,9 +124364,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1859,
+      "id": 1858,
       "file": "src/workspace-layout.css",
-      "line": 1701,
+      "line": 1697,
       "selector": ".app:not(.setup-mode) .search-field > button svg,\n.app:not(.setup-mode) .header-timer svg,\n.app:not(.setup-mode) .compact-view-tabs .roster svg",
       "conditions": [],
       "conditionKinds": [
@@ -124631,9 +124600,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1860,
+      "id": 1859,
       "file": "src/workspace-layout.css",
-      "line": 1707,
+      "line": 1703,
       "selector": ".app:not(.setup-mode) :is(.header-timer, .compact-view-tabs .roster, .progress-toggle)",
       "conditions": [],
       "conditionKinds": [
@@ -124862,9 +124831,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1861,
+      "id": 1860,
       "file": "src/workspace-layout.css",
-      "line": 1710,
+      "line": 1706,
       "selector": ".app .selection-footer",
       "conditions": [],
       "conditionKinds": [],
@@ -124932,9 +124901,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1862,
+      "id": 1861,
       "file": "src/workspace-layout.css",
-      "line": 1711,
+      "line": 1707,
       "selector": ".app .roster-pagination",
       "conditions": [],
       "conditionKinds": [],
@@ -125002,9 +124971,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1863,
+      "id": 1862,
       "file": "src/workspace-layout.css",
-      "line": 1712,
+      "line": 1708,
       "selector": ".app .roster-pagination > span",
       "conditions": [],
       "conditionKinds": [],
@@ -125072,9 +125041,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1864,
+      "id": 1863,
       "file": "src/workspace-layout.css",
-      "line": 1713,
+      "line": 1709,
       "selector": ".app .roster-pagination b",
       "conditions": [],
       "conditionKinds": [],
@@ -125142,9 +125111,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1865,
+      "id": 1864,
       "file": "src/workspace-layout.css",
-      "line": 1714,
+      "line": 1710,
       "selector": ".app .roster-pagination b span",
       "conditions": [],
       "conditionKinds": [],
@@ -125211,9 +125180,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1866,
+      "id": 1865,
       "file": "src/workspace-layout.css",
-      "line": 1715,
+      "line": 1711,
       "selector": ".app .roster-pagination .roster-range",
       "conditions": [],
       "conditionKinds": [],
@@ -125285,9 +125254,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1867,
+      "id": 1866,
       "file": "src/workspace-layout.css",
-      "line": 1718,
+      "line": 1714,
       "selector": ".app .draft-arena.allstar-arena[class] > .team-side:has(.history-game)",
       "conditions": [
         "@layer adaptive-layout"
@@ -125390,9 +125359,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1868,
+      "id": 1867,
       "file": "src/workspace-layout.css",
-      "line": 1723,
+      "line": 1719,
       "selector": ".app .draft-arena.allstar-arena[class] > .team-side.purple:has(.history-game)",
       "conditions": [
         "@layer adaptive-layout"
@@ -125712,9 +125681,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1869,
+      "id": 1868,
       "file": "src/workspace-layout.css",
-      "line": 1726,
+      "line": 1722,
       "selector": ".app .draft-arena.allstar-arena[class] > .team-side.orange:has(.history-game)",
       "conditions": [
         "@layer adaptive-layout"
@@ -125978,9 +125947,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1870,
+      "id": 1869,
       "file": "src/workspace-layout.css",
-      "line": 1730,
+      "line": 1726,
       "selector": ".app .draft-arena.allstar-arena.compact-view-roster > .team-side:has(.history-game),\n    .app .draft-arena.allstar-arena.compact-view-purple > .team-side.orange:has(.history-game),\n    .app .draft-arena.allstar-arena.compact-view-orange > .team-side.purple:has(.history-game)",
       "conditions": [
         "@layer adaptive-layout",
@@ -126473,9 +126442,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1871,
+      "id": 1870,
       "file": "src/workspace-layout.css",
-      "line": 1737,
+      "line": 1733,
       "selector": ".app .allstar-arena",
       "conditions": [],
       "conditionKinds": [],
@@ -126542,9 +126511,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1872,
+      "id": 1871,
       "file": "src/workspace-layout.css",
-      "line": 1738,
+      "line": 1734,
       "selector": ".app .allstar-arena > .team-side:has(.history-game)",
       "conditions": [],
       "conditionKinds": [
@@ -126633,9 +126602,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1873,
+      "id": 1872,
       "file": "src/workspace-layout.css",
-      "line": 1739,
+      "line": 1735,
       "selector": ".app .allstar-arena > .team-side:has(.history-game) > :is(.team-panel,.team-history)",
       "conditions": [],
       "conditionKinds": [
@@ -126747,9 +126716,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1874,
+      "id": 1873,
       "file": "src/workspace-layout.css",
-      "line": 1742,
+      "line": 1738,
       "selector": ".app .allstar-arena > .team-side.purple > .team-history,\n.app .allstar-arena > .team-side.orange > .team-panel",
       "conditions": [],
       "conditionKinds": [],
@@ -127223,9 +127192,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1875,
+      "id": 1874,
       "file": "src/workspace-layout.css",
-      "line": 1744,
+      "line": 1740,
       "selector": ".app .allstar-arena > .team-side.purple > .team-panel,\n.app .allstar-arena > .team-side.orange > .team-history",
       "conditions": [],
       "conditionKinds": [],
@@ -127699,9 +127668,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1876,
+      "id": 1875,
       "file": "src/workspace-layout.css",
-      "line": 1746,
+      "line": 1742,
       "selector": ".app .allstar-arena .team-history",
       "conditions": [],
       "conditionKinds": [],
@@ -127777,9 +127746,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1877,
+      "id": 1876,
       "file": "src/workspace-layout.css",
-      "line": 1747,
+      "line": 1743,
       "selector": ".app .allstar-arena .history-heading",
       "conditions": [],
       "conditionKinds": [],
@@ -127857,9 +127826,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1878,
+      "id": 1877,
       "file": "src/workspace-layout.css",
-      "line": 1748,
+      "line": 1744,
       "selector": ".app .allstar-arena .history-scroll",
       "conditions": [],
       "conditionKinds": [],
@@ -127940,9 +127909,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1879,
+      "id": 1878,
       "file": "src/workspace-layout.css",
-      "line": 1749,
+      "line": 1745,
       "selector": ".app .allstar-arena .history-game",
       "conditions": [],
       "conditionKinds": [],
@@ -128017,9 +127986,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1880,
+      "id": 1879,
       "file": "src/workspace-layout.css",
-      "line": 1750,
+      "line": 1746,
       "selector": ".app .allstar-arena .history-game + .history-game",
       "conditions": [],
       "conditionKinds": [],
@@ -128098,9 +128067,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1881,
+      "id": 1880,
       "file": "src/workspace-layout.css",
-      "line": 1751,
+      "line": 1747,
       "selector": ".app .allstar-arena .history-game h3",
       "conditions": [],
       "conditionKinds": [],
@@ -128177,9 +128146,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1882,
+      "id": 1881,
       "file": "src/workspace-layout.css",
-      "line": 1752,
+      "line": 1748,
       "selector": ".app .allstar-arena .history-pokemon-item",
       "conditions": [],
       "conditionKinds": [],
@@ -128255,9 +128224,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1883,
+      "id": 1882,
       "file": "src/workspace-layout.css",
-      "line": 1753,
+      "line": 1749,
       "selector": ".app .allstar-arena .history-pokemon-item .portrait",
       "conditions": [],
       "conditionKinds": [],
@@ -128387,9 +128356,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1884,
+      "id": 1883,
       "file": "src/workspace-layout.css",
-      "line": 1755,
+      "line": 1751,
       "selector": ".app .allstar-arena",
       "conditions": [
         "@media (max-width:1000px) and (orientation:landscape)"
@@ -128460,9 +128429,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1885,
+      "id": 1884,
       "file": "src/workspace-layout.css",
-      "line": 1756,
+      "line": 1752,
       "selector": ".app .allstar-arena .history-heading strong",
       "conditions": [
         "@media (max-width:1000px) and (orientation:landscape)"
@@ -128540,9 +128509,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1886,
+      "id": 1885,
       "file": "src/workspace-layout.css",
-      "line": 1758,
+      "line": 1754,
       "selector": ".app .allstar-arena .team-history:not(:has(.history-game))",
       "conditions": [],
       "conditionKinds": [
@@ -128628,9 +128597,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1887,
+      "id": 1886,
       "file": "src/workspace-layout.css",
-      "line": 1759,
+      "line": 1755,
       "selector": ".app .allstar-arena > .team-side:not(:has(.history-game)) > .team-panel",
       "conditions": [],
       "conditionKinds": [
@@ -128729,9 +128698,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1888,
+      "id": 1887,
       "file": "src/workspace-layout.css",
-      "line": 1760,
+      "line": 1756,
       "selector": ".app .allstar-arena > .team-side:has(.history-game)",
       "conditions": [],
       "conditionKinds": [
@@ -128820,9 +128789,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1889,
+      "id": 1888,
       "file": "src/workspace-layout.css",
-      "line": 1761,
+      "line": 1757,
       "selector": ".app .allstar-arena > .team-side:has(.history-game) > :is(.team-panel,.team-history)",
       "conditions": [],
       "conditionKinds": [
@@ -128931,9 +128900,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1890,
+      "id": 1889,
       "file": "src/workspace-layout.css",
-      "line": 1762,
+      "line": 1758,
       "selector": ".app .allstar-arena .history-scroll",
       "conditions": [],
       "conditionKinds": [],
@@ -129007,9 +128976,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1891,
+      "id": 1890,
       "file": "src/workspace-layout.css",
-      "line": 1764,
+      "line": 1760,
       "selector": ".app .pokemon-grid .pokemon-card",
       "conditions": [],
       "conditionKinds": [],
@@ -129115,9 +129084,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1892,
+      "id": 1891,
       "file": "src/workspace-layout.css",
-      "line": 1768,
+      "line": 1764,
       "selector": ".app .pokemon-grid .pokemon-card.is-selected",
       "conditions": [],
       "conditionKinds": [],
@@ -129236,9 +129205,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1893,
+      "id": 1892,
       "file": "src/workspace-layout.css",
-      "line": 1772,
+      "line": 1768,
       "selector": ".app .allstar-arena",
       "conditions": [],
       "conditionKinds": [],
@@ -129305,9 +129274,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1894,
+      "id": 1893,
       "file": "src/workspace-layout.css",
-      "line": 1773,
+      "line": 1769,
       "selector": ".app .allstar-arena .team-history .history-scroll",
       "conditions": [],
       "conditionKinds": [],
@@ -129393,9 +129362,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1895,
+      "id": 1894,
       "file": "src/workspace-layout.css",
-      "line": 1774,
+      "line": 1770,
       "selector": ".app .allstar-arena .team-history .history-game",
       "conditions": [],
       "conditionKinds": [],
@@ -129483,9 +129452,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1896,
+      "id": 1895,
       "file": "src/workspace-layout.css",
-      "line": 1775,
+      "line": 1771,
       "selector": ".app .allstar-arena .team-history .history-game h3",
       "conditions": [],
       "conditionKinds": [],
@@ -129571,9 +129540,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1897,
+      "id": 1896,
       "file": "src/workspace-layout.css",
-      "line": 1776,
+      "line": 1772,
       "selector": ".app .allstar-arena .team-history .history-pokemon",
       "conditions": [],
       "conditionKinds": [],
@@ -129665,9 +129634,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1898,
+      "id": 1897,
       "file": "src/workspace-layout.css",
-      "line": 1777,
+      "line": 1773,
       "selector": ".app .allstar-arena .team-history .history-pokemon-item",
       "conditions": [],
       "conditionKinds": [],
@@ -129752,9 +129721,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1899,
+      "id": 1898,
       "file": "src/workspace-layout.css",
-      "line": 1778,
+      "line": 1774,
       "selector": ".app .allstar-arena .team-history .history-pokemon-item .portrait",
       "conditions": [],
       "conditionKinds": [],
@@ -129894,9 +129863,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1900,
+      "id": 1899,
       "file": "src/workspace-layout.css",
-      "line": 1779,
+      "line": 1775,
       "selector": ".app .history-pagination",
       "conditions": [],
       "conditionKinds": [],
@@ -129965,9 +129934,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1901,
+      "id": 1900,
       "file": "src/workspace-layout.css",
-      "line": 1780,
+      "line": 1776,
       "selector": ".app .history-pagination span",
       "conditions": [],
       "conditionKinds": [],
@@ -130036,9 +130005,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1902,
+      "id": 1901,
       "file": "src/workspace-layout.css",
-      "line": 1781,
+      "line": 1777,
       "selector": ".app .history-pagination button",
       "conditions": [],
       "conditionKinds": [],
@@ -130112,9 +130081,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1903,
+      "id": 1902,
       "file": "src/workspace-layout.css",
-      "line": 1782,
+      "line": 1778,
       "selector": ".app .history-pagination button:disabled",
       "conditions": [],
       "conditionKinds": [
@@ -130181,9 +130150,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1904,
+      "id": 1903,
       "file": "src/workspace-layout.css",
-      "line": 1784,
+      "line": 1780,
       "selector": ".app .allstar-arena .team-history .history-pokemon",
       "conditions": [
         "@layer adaptive-layout"
@@ -130274,9 +130243,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1905,
+      "id": 1904,
       "file": "src/workspace-layout.css",
-      "line": 1788,
+      "line": 1784,
       "selector": ".app .pokemon-grid, .app .history-scroll",
       "conditions": [],
       "conditionKinds": [],
@@ -130354,9 +130323,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1906,
+      "id": 1905,
       "file": "src/workspace-layout.css",
-      "line": 1790,
+      "line": 1786,
       "selector": ".app:not(.setup-mode) .app-header",
       "conditions": [
         "@layer adaptive-layout"
@@ -130444,9 +130413,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1907,
+      "id": 1906,
       "file": "src/workspace-layout.css",
-      "line": 1791,
+      "line": 1787,
       "selector": ".app:not(.setup-mode) .header-center",
       "conditions": [
         "@layer adaptive-layout"
@@ -130536,9 +130505,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1908,
+      "id": 1907,
       "file": "src/workspace-layout.css",
-      "line": 1792,
+      "line": 1788,
       "selector": ".app:not(.setup-mode) .header-phase",
       "conditions": [
         "@layer adaptive-layout"
@@ -130635,9 +130604,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1909,
+      "id": 1908,
       "file": "src/workspace-layout.css",
-      "line": 1793,
+      "line": 1789,
       "selector": ".app:not(.setup-mode) .header-actions",
       "conditions": [
         "@layer adaptive-layout"
@@ -130724,9 +130693,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1910,
+      "id": 1909,
       "file": "src/workspace-layout.css",
-      "line": 1795,
+      "line": 1791,
       "selector": ".app:not(.setup-mode) .header-center",
       "conditions": [
         "@layer adaptive-layout",
@@ -130817,9 +130786,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1911,
+      "id": 1910,
       "file": "src/workspace-layout.css",
-      "line": 1796,
+      "line": 1792,
       "selector": ".app:not(.setup-mode) .header-actions",
       "conditions": [
         "@layer adaptive-layout",
@@ -130909,9 +130878,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1912,
+      "id": 1911,
       "file": "src/workspace-layout.css",
-      "line": 1802,
+      "line": 1798,
       "selector": "html, body, #root",
       "conditions": [
         "@layer adaptive-layout"
@@ -130930,9 +130899,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1913,
+      "id": 1912,
       "file": "src/workspace-layout.css",
-      "line": 1803,
+      "line": 1799,
       "selector": "body",
       "conditions": [
         "@layer adaptive-layout"
@@ -130950,9 +130919,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1914,
+      "id": 1913,
       "file": "src/workspace-layout.css",
-      "line": 1804,
+      "line": 1800,
       "selector": ".app[class]",
       "conditions": [
         "@layer adaptive-layout"
@@ -131017,9 +130986,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1915,
+      "id": 1914,
       "file": "src/workspace-layout.css",
-      "line": 1805,
+      "line": 1801,
       "selector": ".app[class] > .app-header",
       "conditions": [
         "@layer adaptive-layout"
@@ -131092,9 +131061,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1916,
+      "id": 1915,
       "file": "src/workspace-layout.css",
-      "line": 1806,
+      "line": 1802,
       "selector": ".app[class] > .setup-main.setup-refresh",
       "conditions": [
         "@layer adaptive-layout"
@@ -131187,9 +131156,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1917,
+      "id": 1916,
       "file": "src/workspace-layout.css",
-      "line": 1807,
+      "line": 1803,
       "selector": ".app[class] > .draft-main",
       "conditions": [
         "@layer adaptive-layout"
@@ -131265,9 +131234,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1918,
+      "id": 1917,
       "file": "src/workspace-layout.css",
-      "line": 1808,
+      "line": 1804,
       "selector": ".app[class] > .app-footer",
       "conditions": [
         "@layer adaptive-layout"
@@ -131344,9 +131313,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1919,
+      "id": 1918,
       "file": "src/workspace-layout.css",
-      "line": 1809,
+      "line": 1805,
       "selector": ".app[class] > .app-footer > span",
       "conditions": [
         "@layer adaptive-layout"
@@ -131415,9 +131384,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1920,
+      "id": 1919,
       "file": "src/workspace-layout.css",
-      "line": 1810,
+      "line": 1806,
       "selector": ".app[class] .app-footer > div",
       "conditions": [
         "@layer adaptive-layout"
@@ -131490,9 +131459,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1921,
+      "id": 1920,
       "file": "src/workspace-layout.css",
-      "line": 1811,
+      "line": 1807,
       "selector": ".app[class] .app-footer :is(button,span)",
       "conditions": [
         "@layer adaptive-layout"
@@ -131562,9 +131531,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1922,
+      "id": 1921,
       "file": "src/workspace-layout.css",
-      "line": 1812,
+      "line": 1808,
       "selector": ".app[class] .decision-bar",
       "conditions": [
         "@layer adaptive-layout"
@@ -131633,9 +131602,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1923,
+      "id": 1922,
       "file": "src/workspace-layout.css",
-      "line": 1814,
+      "line": 1810,
       "selector": ".app .setup-portrait:nth-child(n)",
       "conditions": [],
       "conditionKinds": [
@@ -131706,9 +131675,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1924,
+      "id": 1923,
       "file": "src/workspace-layout.css",
-      "line": 1816,
+      "line": 1812,
       "selector": ".app[class] > .draft-main:has(.draft-arena)",
       "conditions": [
         "@layer adaptive-layout"
@@ -131792,9 +131761,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1925,
+      "id": 1924,
       "file": "src/workspace-layout.css",
-      "line": 1817,
+      "line": 1813,
       "selector": ".app[class] .draft-arena",
       "conditions": [
         "@layer adaptive-layout"
@@ -131866,9 +131835,9 @@
       "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
     },
     {
-      "id": 1926,
+      "id": 1925,
       "file": "src/workspace-layout.css",
-      "line": 1818,
+      "line": 1814,
       "selector": ".app[class] .decision-bar",
       "conditions": [
         "@layer adaptive-layout"

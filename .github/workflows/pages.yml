@@ -31,6 +31,8 @@ jobs:
         run: node scripts/check-legacy-decision-layout.mjs
       - name: Reject restored narrow breakpoint duplicate
         run: node scripts/check-narrow-breakpoint-padding.mjs
+      - name: Reject overridden narrow decision placement
+        run: node scripts/check-narrow-decision-main-grid.mjs
       - name: Reject identical conditional declarations
         run: node scripts/check-exact-conditional-duplicates.mjs
       - name: Check motion suppression cascade

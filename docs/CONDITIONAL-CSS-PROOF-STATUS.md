@@ -123,3 +123,7 @@ check-exact-conditional-duplicates.mjsを14ファイルへ拡張。main.tsxの�
 ## 狭い画面幅で重複するteam-panel余白を削除（2026-10-20）
 
 `workspace-layout.css`の同じ`.team-panel`セレクターにある`@media (max-width: 600px)`内の`padding:10px`を削除。より広い`max-width:1000px`の同値指定が同じ非レイヤーカスケードで後にあり、600px以下の全幅を含む。狭い側の`gap:6px`とgrid行指定は異なるため保持した。Chromium/WebKitで狭い指定を一時注入して除去し、320/390/600/601/800/1000/1001pxの7幅×選択前後で全アプリ要素の矩形と両team-panelの計算済みpaddingを比較し、28/28一致・復元一致を確認。`tests/browser/css-narrow-team-padding.mjs`で再実行でき、CIは`check-narrow-breakpoint-padding.mjs`で狭いpaddingのみ再混入を防ぐ。この範囲は現行の静的カスケードと有限のブラウザー比較に限定し、全条件付きCSSの証明完了を意味しない。
+
+## 狭幅のdecision-main配置指定を削除（2026-10-20）
+
+`workspace-layout.css`の`@media (max-width: 600px)`内にあった`.decision-main { grid-column:2; grid-row:1 / 3; }`を削除。同じメディア条件・同じセレクターの後続ルールが`grid-area:1 / 1 / 2 / -1`を指定し、後続のショートハンドが両longhandを上書きする。より広いmax-width:1000pxの配置指定と、狭幅の後続配置は保持。現行ドラフトDOMに実在するdecision-mainを対象に、指定を除去・復元して全`.app`要素の矩形と計算済みgrid配置を比較した。Chromium/WebKit×320/390/600pxの縦画面と600px横画面、境界幅601/800/1000px×選択前後で28比較が一致し、復元も一致。`tests/browser/css-narrow-decision-main-grid.mjs`はソース指定が既にない場合、同じmax-width:600pxブロックの元位置（`.decision-extra`の直前）へ検証用に再注入して比較する。CIの`check-narrow-decision-main-grid.mjs`は削除対象の再混入を拒否し、後続の狭幅配置と広幅配置の保持を確認する。これは現在の静的CSS順と有限のブラウザー/画面状態での証拠で、全条件付きCSSの完了を意味しない。

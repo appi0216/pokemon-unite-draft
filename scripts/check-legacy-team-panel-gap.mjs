@@ -43,6 +43,14 @@ assert.equal(declarations('src/workspace-layout.css', '.team-panel', '(max-width
   'Keep the unlayered broad workspace grid-row winner');
 assert.equal(declarations('src/workspace-layout.css', '.team-panel', '(max-width: 600px)', 'grid-template-rows', 'auto 44px auto minmax(0, 1fr)').length, 1,
   'Keep the distinct unlayered phone grid-row override');
+assert.equal(declarations('src/design.css', '.team-panel', '(max-width: 680px)', 'grid-template-rows', '36px 14px 49px 15px minmax(0, 1fr) 18px').length, 0,
+  'The overridden max-width:680px legacy grid rows returned');
+assert.equal(declarations('src/design.css', '.team-panel', '(max-width: 680px)', 'gap', '7px').length, 0,
+  'The overridden max-width:680px legacy gap returned');
+assert.equal(declarations('src/design.css', '.team-panel', '(max-width: 680px)', 'padding', '10px 7px').length, 0,
+  'The overridden max-width:680px legacy padding returned');
+assert.equal(declarations('src/design.css', '.team-panel', '(max-width: 680px)', 'border-radius', '13px').length, 1,
+  'Keep the separate legacy max-width:680px radius');
 assert.equal(declarations('src/design.css', '.team-panel', '(max-width: 1200px)', 'gap', '8px').length, 1,
   'Keep the broader legacy fallback');
-console.log('PASS: narrow layered gap, rows and padding are absent; unlayered winners and distinct fallbacks remain');
+console.log('PASS: overridden narrow layered team-panel layout declarations are absent; unlayered winners and distinct fallbacks remain');

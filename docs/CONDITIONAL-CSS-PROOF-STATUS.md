@@ -143,3 +143,7 @@ check-exact-conditional-duplicates.mjsを14ファイルへ拡張。main.tsxの�
 ## 狭幅で上書きされる旧team-panel paddingを削除（2026-10-20）
 
 同じ`design.css`のmax-width:900px `.team-panel`に残っていた`padding:10px 7px`も比較した。これは`legacy`レイヤーだが、後続の非レイヤー`workspace-layout.css`がmax-width:1000px・同じセレクターに`padding:10px`を指定し、さらに狭い条件に`clamp(3px, .7vw, 7px)`および`padding:3px`を指定するため、旧指定は勝てない。削除前のCSSOM比較は元ルールのpaddingを一時除去・復元し、Chromium/WebKit×320/390/600/601/800/900/901/1000px×通常/オールスター×選択前後で全`.app`要素矩形と2パネルの計算済みpaddingを64/64比較し、差・復元差なし。ブラウザー証人は`tests/browser/css-legacy-team-panel-padding.mjs`。ソースguardは旧paddingの再混入と広幅の勝者指定の欠落を検出する。現行のスタイル読み込み・有限の状態と幅の範囲での証拠に限る。
+
+## max-width:680px旧team-panel行・gap・padding指定を削除（2026-10-20）
+
+`design.css`のmax-width:680px `.team-panel`から、固定grid行、`gap:7px`、`padding:10px 7px`を削除し、別用途の`border-radius:13px`は保持した。どの対象幅にも後段・非レイヤーの`workspace-layout.css` max-width:1000px `.team-panel`がgrid行・gap・paddingを指定し、max-width:600pxではgapとgrid行を専用値で上書きする。同じセレクターでもレイヤーの優先順位によりlegacy側の通常宣言は勝てない。ブラウザー証人では旧3宣言をCSSOMの元ルールへ再注入し、除去/復元を比較。Chromium/WebKit×通常/オールスター×320/390/600縦/600横/601/680/681/800/1000px×選択前後で、`.app`全要素矩形と2パネルの計算済み行・gap・padding・radiusが72/72一致・復元一致（条件成立48、境界24）。`tests/browser/css-legacy-team-panel-680.mjs`で再現可能。CI guardは旧値の再混入、後段の幅指定の欠落、半径保持を確認する。この証拠は列挙したDOM・状態・画面サイズ・現在のカスケードに限定する。

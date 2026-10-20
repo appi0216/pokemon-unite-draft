@@ -1670,9 +1670,6 @@ dialog > p {
     padding: 14px 12px 0;
   }
   .team-panel {
-    grid-template-rows: 36px 14px 49px 15px minmax(0, 1fr) 18px;
-    gap: 7px;
-    padding: 10px 7px;
     border-radius: 13px;
   }
   .team-heading h2 {

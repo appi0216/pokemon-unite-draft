@@ -40,8 +40,18 @@ for (const engine of [chromium, webkit]) {
           const targets = entries.filter(({ rule, ancestors }) =>
             rule.selectorText === '.team-panel' && exactNarrow(ancestors)
             && rule.style.getPropertyValue('padding') === '10px 7px');
-          if (targets.length !== 1) throw new Error(`Expected one legacy narrow team-panel rule, found ${targets.length}`);
-          const target = targets[0].rule;
+          let target = targets[0]?.rule;
+          let createdRule = false;
+          if (!target) {
+            const anchors = entries.filter(({ rule, ancestors }) => rule.selectorText === '.team-emblem'
+              && exactNarrow(ancestors) && ancestors.some(ancestor => ancestor.name === 'legacy'));
+            if (anchors.length !== 1) throw new Error(`Expected one legacy max-width:900px anchor, found ${anchors.length}`);
+            const mediaRule = [...anchors[0].ancestors].reverse().find(rule => rule.type === 4);
+            const index = [...mediaRule.cssRules].findIndex(rule => rule.selectorText === '.team-emblem');
+            mediaRule.insertRule('.team-panel {}', index);
+            target = mediaRule.cssRules[index];
+            createdRule = true;
+          }
           const original = target.style.getPropertyValue('gap');
           const priority = target.style.getPropertyPriority('gap');
           if (original && original !== '8px') throw new Error(`Unexpected historical gap ${original}`);
@@ -62,7 +72,7 @@ for (const engine of [chromium, webkit]) {
           if (injected) target.style.setProperty('gap', '8px');
           else target.style.setProperty('gap', original, priority);
           const restored = snapshot();
-          if (injected) target.style.removeProperty('gap');
+          if (createdRule) target.parentRule.deleteRule([...target.parentRule.cssRules].indexOf(target));
           return {
             unchanged: JSON.stringify(before) === JSON.stringify(removed),
             restored: JSON.stringify(before) === JSON.stringify(restored),

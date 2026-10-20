@@ -119,3 +119,7 @@ check-exact-conditional-duplicates.mjsを14ファイルへ拡張。main.tsxの�
 ## 旧ドラフト操作ボタンのレイアウト指定を削除（2026-10-20）
 
 現行JSXには`.decision-main`内の`.confirm-button`のみがあり、旧指定が対象にしていた`.complete-button`、`.next-game`、`.final-image-action`は存在しない。決定ボタンの幅/高さ/文字サイズを持つ3つのカスタムプロパティと、legacyのgrid配置規則を削除した。実際の画面DOMに旧規則を再注入して除去前後を比較する`tests/browser/css-legacy-button.mjs`を追加。Chromium/WebKit各5ビューポート×選択前後の20比較で、全アプリ要素の矩形と確認ボタンの計算済みスタイルに差がなく、復元も一致した。現在のJSX、通常のCSS読み込み、およびこの有限テスト範囲に限った根拠であり、将来のDOM、外部CSSOM、未対応ブラウザーまでの証明ではない。`scripts/check-legacy-decision-layout.mjs`で旧指定の再混入をCI検査する。インベントリは1926ルールに更新。残る条件付きCSSの全状態証明は未完了。
+
+## 狭い画面幅で重複するteam-panel余白を削除（2026-10-20）
+
+`workspace-layout.css`の同じ`.team-panel`セレクターにある`@media (max-width: 600px)`内の`padding:10px`を削除。より広い`max-width:1000px`の同値指定が同じ非レイヤーカスケードで後にあり、600px以下の全幅を含む。狭い側の`gap:6px`とgrid行指定は異なるため保持した。Chromium/WebKitで狭い指定を一時注入して除去し、320/390/600/601/800/1000/1001pxの7幅×選択前後で全アプリ要素の矩形と両team-panelの計算済みpaddingを比較し、28/28一致・復元一致を確認。`tests/browser/css-narrow-team-padding.mjs`で再実行でき、CIは`check-narrow-breakpoint-padding.mjs`で狭いpaddingのみ再混入を防ぐ。この範囲は現行の静的カスケードと有限のブラウザー比較に限定し、全条件付きCSSの証明完了を意味しない。

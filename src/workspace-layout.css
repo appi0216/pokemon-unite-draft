@@ -598,7 +598,6 @@ dialog .dialog-notice {
 }
 @media (max-width: 600px) {
   .team-panel {
-    padding: 10px;
     gap: 6px;
     grid-template-rows: auto 44px auto minmax(0, 1fr);
   }

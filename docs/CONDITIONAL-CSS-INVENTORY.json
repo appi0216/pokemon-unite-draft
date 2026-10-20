@@ -45,7 +45,7 @@
     "src/theme.css": "99986c3d54e1d96817a923d63cee777f7743a2ff0a993f85ca429b61fa679fcd",
     "src/ui-system.css": "164f8952e8f061dc67d13f04b22abd77800635bc43412b9864084988c8bc4f8a",
     "src/ui-tokens.css": "8f219d3fbacc3c660808360b6607b9f4f31d7745bf3bab13c564d24795ae03c3",
-    "src/workspace-layout.css": "d82400bf2545715a0852b3b6523e97de07fdcda0618c3c80a36e35a732283776",
+    "src/workspace-layout.css": "34f824a84e474baef8dda9e26de55891c60b2d91d73a572dcceff5dd2206c96d",
     "docs/LEGACY-CSS-RUNTIME-COVERAGE.json": "4a6b896ce1fd7bc8a256be3c3e91b82eaa3d5bc22d8bc97b95f07b076364bf5b"
   },
   "customPropertyReferences": [
@@ -113,11 +113,11 @@
       "locations": [
         {
           "file": "src/workspace-layout.css",
-          "line": 1520
+          "line": 1519
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1584
+          "line": 1583
         }
       ]
     },
@@ -279,43 +279,43 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1519
+          "line": 1518
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1536
+          "line": 1535
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1579
+          "line": 1578
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1595
+          "line": 1594
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1602
+          "line": 1601
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1610
+          "line": 1609
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1617
+          "line": 1616
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1635
+          "line": 1634
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1709
+          "line": 1708
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1714
+          "line": 1713
         }
       ]
     },
@@ -324,39 +324,39 @@
       "locations": [
         {
           "file": "src/workspace-layout.css",
-          "line": 1521
+          "line": 1520
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1530
+          "line": 1529
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1556
+          "line": 1555
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1576
+          "line": 1575
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1587
+          "line": 1586
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1591
+          "line": 1590
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1598
+          "line": 1597
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1606
+          "line": 1605
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1616
+          "line": 1615
         }
       ]
     },
@@ -369,7 +369,11 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1518
+          "line": 1517
+        },
+        {
+          "file": "src/workspace-layout.css",
+          "line": 1540
         },
         {
           "file": "src/workspace-layout.css",
@@ -381,7 +385,7 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1543
+          "line": 1570
         },
         {
           "file": "src/workspace-layout.css",
@@ -389,19 +393,15 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1572
+          "line": 1633
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1634
+          "line": 1704
         },
         {
           "file": "src/workspace-layout.css",
           "line": 1705
-        },
-        {
-          "file": "src/workspace-layout.css",
-          "line": 1706
         }
       ]
     },
@@ -410,23 +410,23 @@
       "locations": [
         {
           "file": "src/workspace-layout.css",
-          "line": 1523
+          "line": 1522
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1528
+          "line": 1527
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1598
+          "line": 1597
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1615
+          "line": 1614
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1637
+          "line": 1636
         }
       ]
     },
@@ -435,27 +435,27 @@
       "locations": [
         {
           "file": "src/workspace-layout.css",
-          "line": 1522
+          "line": 1521
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1529
+          "line": 1528
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1557
+          "line": 1556
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1599
+          "line": 1598
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1636
+          "line": 1635
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1654
+          "line": 1653
         }
       ]
     },
@@ -468,19 +468,23 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1517
+          "line": 1516
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1527
+          "line": 1526
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1535
+          "line": 1534
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1552
+          "line": 1551
+        },
+        {
+          "file": "src/workspace-layout.css",
+          "line": 1553
         },
         {
           "file": "src/workspace-layout.css",
@@ -488,39 +492,35 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1555
+          "line": 1587
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1588
+          "line": 1596
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1597
+          "line": 1602
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1603
+          "line": 1621
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1622
+          "line": 1626
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1627
+          "line": 1631
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1632
+          "line": 1683
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1684
-        },
-        {
-          "file": "src/workspace-layout.css",
-          "line": 1687
+          "line": 1686
         }
       ]
     },
@@ -533,11 +533,11 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1633
+          "line": 1632
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1638
+          "line": 1637
         }
       ]
     },
@@ -550,19 +550,19 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1638
+          "line": 1637
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1652
+          "line": 1651
+        },
+        {
+          "file": "src/workspace-layout.css",
+          "line": 1698
         },
         {
           "file": "src/workspace-layout.css",
           "line": 1699
-        },
-        {
-          "file": "src/workspace-layout.css",
-          "line": 1700
         }
       ]
     },
@@ -671,23 +671,23 @@
       "locations": [
         {
           "file": "src/workspace-layout.css",
-          "line": 1725
+          "line": 1724
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1728
+          "line": 1727
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1738
+          "line": 1737
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1756
+          "line": 1755
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1773
+          "line": 1772
         }
       ]
     },
@@ -1027,15 +1027,19 @@
       "locations": [
         {
           "file": "src/workspace-layout.css",
-          "line": 1371
+          "line": 1370
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1376
+          "line": 1375
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1382
+          "line": 1381
+        },
+        {
+          "file": "src/workspace-layout.css",
+          "line": 1387
         },
         {
           "file": "src/workspace-layout.css",
@@ -1048,10 +1052,6 @@
         {
           "file": "src/workspace-layout.css",
           "line": 1390
-        },
-        {
-          "file": "src/workspace-layout.css",
-          "line": 1391
         }
       ]
     },
@@ -1203,15 +1203,15 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1661
+          "line": 1660
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1666
+          "line": 1665
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1769
+          "line": 1768
         }
       ]
     },
@@ -1378,7 +1378,7 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1767
+          "line": 1766
         }
       ]
     },
@@ -1395,7 +1395,7 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1766
+          "line": 1765
         }
       ]
     },
@@ -1408,19 +1408,19 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1372
+          "line": 1371
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1377
+          "line": 1376
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1383
+          "line": 1382
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1401
+          "line": 1400
         }
       ]
     },
@@ -2185,15 +2185,15 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1653
+          "line": 1652
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1711
+          "line": 1710
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1751
+          "line": 1750
         }
       ]
     },
@@ -2294,15 +2294,15 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1655
+          "line": 1654
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1677
+          "line": 1676
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1782
+          "line": 1781
         }
       ]
     },
@@ -2441,15 +2441,15 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1669
+          "line": 1668
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1680
+          "line": 1679
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1769
+          "line": 1768
         }
       ]
     },
@@ -2623,11 +2623,11 @@
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1715
+          "line": 1714
         },
         {
           "file": "src/workspace-layout.css",
-          "line": 1716
+          "line": 1715
         }
       ]
     },
@@ -107712,7 +107712,6 @@
       ],
       "historicalUnmatched": false,
       "declarations": [
-        "padding: 10px",
         "gap: 6px",
         "grid-template-rows: auto 44px auto minmax(0, 1fr)"
       ],
@@ -107734,7 +107733,7 @@
     {
       "id": 1621,
       "file": "src/workspace-layout.css",
-      "line": 605,
+      "line": 604,
       "selector": ".team-panel .bans-heading",
       "conditions": [
         "@media (max-width: 600px)"
@@ -107773,7 +107772,7 @@
     {
       "id": 1622,
       "file": "src/workspace-layout.css",
-      "line": 608,
+      "line": 607,
       "selector": ".team-heading h2",
       "conditions": [
         "@media (max-width: 600px)"
@@ -107805,7 +107804,7 @@
     {
       "id": 1623,
       "file": "src/workspace-layout.css",
-      "line": 613,
+      "line": 612,
       "selector": ".team-panel .player-list",
       "conditions": [
         "@media (max-width: 600px)"
@@ -107844,7 +107843,7 @@
     {
       "id": 1624,
       "file": "src/workspace-layout.css",
-      "line": 616,
+      "line": 615,
       "selector": ".app:has(.draft-arena) .brand",
       "conditions": [
         "@media (max-width: 600px)"
@@ -107929,7 +107928,7 @@
     {
       "id": 1625,
       "file": "src/workspace-layout.css",
-      "line": 619,
+      "line": 618,
       "selector": ".app:has(.draft-arena) .header-phase",
       "conditions": [
         "@media (max-width: 600px)"
@@ -108020,7 +108019,7 @@
     {
       "id": 1626,
       "file": "src/workspace-layout.css",
-      "line": 624,
+      "line": 623,
       "selector": ".header-instruction",
       "conditions": [
         "@media (max-width: 600px)"
@@ -108054,7 +108053,7 @@
     {
       "id": 1627,
       "file": "src/workspace-layout.css",
-      "line": 631,
+      "line": 630,
       "selector": ".header-timer",
       "conditions": [
         "@media (max-width: 600px)"
@@ -108087,7 +108086,7 @@
     {
       "id": 1628,
       "file": "src/workspace-layout.css",
-      "line": 637,
+      "line": 636,
       "selector": ".app:has(.draft-arena) > .draft-main",
       "conditions": [
         "@media (max-width: 600px)"
@@ -108173,7 +108172,7 @@
     {
       "id": 1629,
       "file": "src/workspace-layout.css",
-      "line": 641,
+      "line": 640,
       "selector": ".decision-bar",
       "conditions": [
         "@media (max-width: 600px)"
@@ -108203,7 +108202,7 @@
     {
       "id": 1630,
       "file": "src/workspace-layout.css",
-      "line": 644,
+      "line": 643,
       "selector": ".decision-main",
       "conditions": [
         "@media (max-width: 600px)"
@@ -108234,7 +108233,7 @@
     {
       "id": 1631,
       "file": "src/workspace-layout.css",
-      "line": 648,
+      "line": 647,
       "selector": ".decision-extra",
       "conditions": [
         "@media (max-width: 600px)"
@@ -108265,7 +108264,7 @@
     {
       "id": 1632,
       "file": "src/workspace-layout.css",
-      "line": 652,
+      "line": 651,
       "selector": ".decision-extra .subtle-button",
       "conditions": [
         "@media (max-width: 600px)"
@@ -108320,7 +108319,7 @@
     {
       "id": 1633,
       "file": "src/workspace-layout.css",
-      "line": 657,
+      "line": 656,
       "selector": "*,\n  *::before,\n  *::after",
       "conditions": [
         "@media (prefers-reduced-motion: reduce)"
@@ -108343,7 +108342,7 @@
     {
       "id": 1634,
       "file": "src/workspace-layout.css",
-      "line": 666,
+      "line": 665,
       "selector": ".app:has(.draft-arena) > .draft-main",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108431,7 +108430,7 @@
     {
       "id": 1635,
       "file": "src/workspace-layout.css",
-      "line": 674,
+      "line": 673,
       "selector": ".progress-disclosure",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108461,7 +108460,7 @@
     {
       "id": 1636,
       "file": "src/workspace-layout.css",
-      "line": 677,
+      "line": 676,
       "selector": ".app:has(.compact-view-roster) > .draft-main",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108541,7 +108540,7 @@
     {
       "id": 1637,
       "file": "src/workspace-layout.css",
-      "line": 682,
+      "line": 681,
       "selector": ".progress-disclosure > summary",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108574,7 +108573,7 @@
     {
       "id": 1638,
       "file": "src/workspace-layout.css",
-      "line": 688,
+      "line": 687,
       "selector": ".progress-disclosure .progress-dots",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108613,7 +108612,7 @@
     {
       "id": 1639,
       "file": "src/workspace-layout.css",
-      "line": 691,
+      "line": 690,
       "selector": ".compact-view-tabs",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108643,7 +108642,7 @@
     {
       "id": 1640,
       "file": "src/workspace-layout.css",
-      "line": 694,
+      "line": 693,
       "selector": ".compact-team-name",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108674,7 +108673,7 @@
     {
       "id": 1641,
       "file": "src/workspace-layout.css",
-      "line": 698,
+      "line": 697,
       "selector": ".app:has(.draft-arena) .draft-arena",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108747,7 +108746,7 @@
     {
       "id": 1642,
       "file": "src/workspace-layout.css",
-      "line": 702,
+      "line": 701,
       "selector": ".decision-bar",
       "conditions": [
         "@media (max-width: 600px) and (max-height: 700px)"
@@ -108777,7 +108776,7 @@
     {
       "id": 1643,
       "file": "src/workspace-layout.css",
-      "line": 708,
+      "line": 707,
       "selector": ".decision-bar",
       "conditions": [],
       "conditionKinds": [],
@@ -108804,7 +108803,7 @@
     {
       "id": 1644,
       "file": "src/workspace-layout.css",
-      "line": 712,
+      "line": 711,
       "selector": ".utility-actions",
       "conditions": [],
       "conditionKinds": [],
@@ -108831,7 +108830,7 @@
     {
       "id": 1645,
       "file": "src/workspace-layout.css",
-      "line": 716,
+      "line": 715,
       "selector": ".decision-extra",
       "conditions": [],
       "conditionKinds": [],
@@ -108859,7 +108858,7 @@
     {
       "id": 1646,
       "file": "src/workspace-layout.css",
-      "line": 721,
+      "line": 720,
       "selector": ".decision-main",
       "conditions": [],
       "conditionKinds": [],
@@ -108894,7 +108893,7 @@
     {
       "id": 1647,
       "file": "src/workspace-layout.css",
-      "line": 733,
+      "line": 732,
       "selector": ".decision-main > .confirm-button",
       "conditions": [],
       "conditionKinds": [],
@@ -108942,7 +108941,7 @@
     {
       "id": 1648,
       "file": "src/workspace-layout.css",
-      "line": 742,
+      "line": 741,
       "selector": ".compact-picks",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -108973,7 +108972,7 @@
     {
       "id": 1649,
       "file": "src/workspace-layout.css",
-      "line": 746,
+      "line": 745,
       "selector": ".compact-picks > span",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -109005,7 +109004,7 @@
     {
       "id": 1650,
       "file": "src/workspace-layout.css",
-      "line": 751,
+      "line": 750,
       "selector": ".compact-picks .portrait",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -109089,7 +109088,7 @@
     {
       "id": 1651,
       "file": "src/workspace-layout.css",
-      "line": 755,
+      "line": 754,
       "selector": ".compact-picks > span > svg",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -109120,7 +109119,7 @@
     {
       "id": 1652,
       "file": "src/workspace-layout.css",
-      "line": 759,
+      "line": 758,
       "selector": ".player-portrait,\n  .player-portrait.has-pokemon",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -109160,7 +109159,7 @@
     {
       "id": 1653,
       "file": "src/workspace-layout.css",
-      "line": 766,
+      "line": 765,
       "selector": ".decision-bar",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -109190,7 +109189,7 @@
     {
       "id": 1654,
       "file": "src/workspace-layout.css",
-      "line": 769,
+      "line": 768,
       "selector": ".app:has(.draft-arena) > .draft-main",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -109275,7 +109274,7 @@
     {
       "id": 1655,
       "file": "src/workspace-layout.css",
-      "line": 772,
+      "line": 771,
       "selector": ".compact-view-tabs",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -109307,7 +109306,7 @@
     {
       "id": 1656,
       "file": "src/workspace-layout.css",
-      "line": 777,
+      "line": 776,
       "selector": ".compact-view-tabs:has(.roster:not(.selected))",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -109597,7 +109596,7 @@
     {
       "id": 1657,
       "file": "src/workspace-layout.css",
-      "line": 780,
+      "line": 779,
       "selector": ".compact-view-tabs .roster.selected",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -109885,7 +109884,7 @@
     {
       "id": 1658,
       "file": "src/workspace-layout.css",
-      "line": 783,
+      "line": 782,
       "selector": ".compact-view-tabs button",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -109915,7 +109914,7 @@
     {
       "id": 1659,
       "file": "src/workspace-layout.css",
-      "line": 786,
+      "line": 785,
       "selector": ".compact-view-tabs button:not(.roster)",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -110075,7 +110074,7 @@
     {
       "id": 1660,
       "file": "src/workspace-layout.css",
-      "line": 789,
+      "line": 788,
       "selector": ".compact-picks",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -110105,7 +110104,7 @@
     {
       "id": 1661,
       "file": "src/workspace-layout.css",
-      "line": 792,
+      "line": 791,
       "selector": ".compact-picks > span",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -110136,7 +110135,7 @@
     {
       "id": 1662,
       "file": "src/workspace-layout.css",
-      "line": 796,
+      "line": 795,
       "selector": ".decision-main > .confirm-button",
       "conditions": [
         "@media (max-height: 500px) and (min-width: 601px) and (max-width: 1000px)"
@@ -110184,7 +110183,7 @@
     {
       "id": 1663,
       "file": "src/workspace-layout.css",
-      "line": 802,
+      "line": 801,
       "selector": ".compact-view-tabs",
       "conditions": [
         "@media (max-width: 600px)"
@@ -110217,7 +110216,7 @@
     {
       "id": 1664,
       "file": "src/workspace-layout.css",
-      "line": 808,
+      "line": 807,
       "selector": ".compact-view-tabs button",
       "conditions": [
         "@media (max-width: 600px)"
@@ -110247,7 +110246,7 @@
     {
       "id": 1665,
       "file": "src/workspace-layout.css",
-      "line": 811,
+      "line": 810,
       "selector": ".compact-view-tabs .purple",
       "conditions": [
         "@media (max-width: 600px)"
@@ -110494,7 +110493,7 @@
     {
       "id": 1666,
       "file": "src/workspace-layout.css",
-      "line": 814,
+      "line": 813,
       "selector": ".compact-view-tabs .orange",
       "conditions": [
         "@media (max-width: 600px)"
@@ -110685,7 +110684,7 @@
     {
       "id": 1667,
       "file": "src/workspace-layout.css",
-      "line": 817,
+      "line": 816,
       "selector": ".compact-view-tabs .roster",
       "conditions": [
         "@media (max-width: 600px)"
@@ -110847,7 +110846,7 @@
     {
       "id": 1668,
       "file": "src/workspace-layout.css",
-      "line": 823,
+      "line": 822,
       "selector": ".compact-view-tabs .roster.selected",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111135,7 +111134,7 @@
     {
       "id": 1669,
       "file": "src/workspace-layout.css",
-      "line": 826,
+      "line": 825,
       "selector": ".compact-picks",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111165,7 +111164,7 @@
     {
       "id": 1670,
       "file": "src/workspace-layout.css",
-      "line": 829,
+      "line": 828,
       "selector": ".compact-picks > span",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111196,7 +111195,7 @@
     {
       "id": 1671,
       "file": "src/workspace-layout.css",
-      "line": 833,
+      "line": 832,
       "selector": ".decision-bar",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111229,7 +111228,7 @@
     {
       "id": 1672,
       "file": "src/workspace-layout.css",
-      "line": 839,
+      "line": 838,
       "selector": ".decision-main",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111260,7 +111259,7 @@
     {
       "id": 1673,
       "file": "src/workspace-layout.css",
-      "line": 843,
+      "line": 842,
       "selector": ".utility-actions",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111290,7 +111289,7 @@
     {
       "id": 1674,
       "file": "src/workspace-layout.css",
-      "line": 846,
+      "line": 845,
       "selector": ".decision-extra",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111321,7 +111320,7 @@
     {
       "id": 1675,
       "file": "src/workspace-layout.css",
-      "line": 850,
+      "line": 849,
       "selector": ".decision-main > .confirm-button",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111369,7 +111368,7 @@
     {
       "id": 1676,
       "file": "src/workspace-layout.css",
-      "line": 854,
+      "line": 853,
       "selector": ".selection-panel",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111399,7 +111398,7 @@
     {
       "id": 1677,
       "file": "src/workspace-layout.css",
-      "line": 857,
+      "line": 856,
       "selector": ".pokemon-grid",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111433,7 +111432,7 @@
     {
       "id": 1678,
       "file": "src/workspace-layout.css",
-      "line": 860,
+      "line": 859,
       "selector": ".decision-extra .subtle-button",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111488,7 +111487,7 @@
     {
       "id": 1679,
       "file": "src/workspace-layout.css",
-      "line": 863,
+      "line": 862,
       "selector": ".decision-extra .subtle-button span",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111543,7 +111542,7 @@
     {
       "id": 1680,
       "file": "src/workspace-layout.css",
-      "line": 866,
+      "line": 865,
       "selector": ".team-panel .player-list",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111585,7 +111584,7 @@
     {
       "id": 1681,
       "file": "src/workspace-layout.css",
-      "line": 872,
+      "line": 871,
       "selector": ".team-panel .player-slot",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111626,7 +111625,7 @@
     {
       "id": 1682,
       "file": "src/workspace-layout.css",
-      "line": 877,
+      "line": 876,
       "selector": ".player-slot,\n  .player-slot.filled",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111673,7 +111672,7 @@
     {
       "id": 1683,
       "file": "src/workspace-layout.css",
-      "line": 885,
+      "line": 884,
       "selector": ".player-portrait,\n  .player-portrait.has-pokemon",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111715,7 +111714,7 @@
     {
       "id": 1684,
       "file": "src/workspace-layout.css",
-      "line": 892,
+      "line": 891,
       "selector": ".player-info",
       "conditions": [
         "@media (max-width: 600px)"
@@ -111745,7 +111744,7 @@
     {
       "id": 1685,
       "file": "src/workspace-layout.css",
-      "line": 898,
+      "line": 897,
       "selector": ".team-panel .player-list",
       "conditions": [],
       "conditionKinds": [],
@@ -111784,7 +111783,7 @@
     {
       "id": 1686,
       "file": "src/workspace-layout.css",
-      "line": 905,
+      "line": 904,
       "selector": ".team-panel .player-slot",
       "conditions": [],
       "conditionKinds": [],
@@ -111826,7 +111825,7 @@
     {
       "id": 1687,
       "file": "src/workspace-layout.css",
-      "line": 915,
+      "line": 914,
       "selector": ".team-panel .player-portrait",
       "conditions": [],
       "conditionKinds": [],
@@ -111865,7 +111864,7 @@
     {
       "id": 1688,
       "file": "src/workspace-layout.css",
-      "line": 922,
+      "line": 921,
       "selector": ".team-panel .player-info",
       "conditions": [],
       "conditionKinds": [],
@@ -111904,7 +111903,7 @@
     {
       "id": 1689,
       "file": "src/workspace-layout.css",
-      "line": 929,
+      "line": 928,
       "selector": ".team-panel .role-text",
       "conditions": [],
       "conditionKinds": [],
@@ -111939,7 +111938,7 @@
     {
       "id": 1690,
       "file": "src/workspace-layout.css",
-      "line": 932,
+      "line": 931,
       "selector": ".team-panel .player-check,\n.team-panel .slot-dash",
       "conditions": [],
       "conditionKinds": [],
@@ -111984,7 +111983,7 @@
     {
       "id": 1691,
       "file": "src/workspace-layout.css",
-      "line": 937,
+      "line": 936,
       "selector": ".team-panel .trainer",
       "conditions": [],
       "conditionKinds": [],
@@ -112151,7 +112150,7 @@
     {
       "id": 1692,
       "file": "src/workspace-layout.css",
-      "line": 941,
+      "line": 940,
       "selector": ".team-panel",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -112183,7 +112182,7 @@
     {
       "id": 1693,
       "file": "src/workspace-layout.css",
-      "line": 946,
+      "line": 945,
       "selector": ".team-panel .team-heading",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -112222,7 +112221,7 @@
     {
       "id": 1694,
       "file": "src/workspace-layout.css",
-      "line": 949,
+      "line": 948,
       "selector": ".team-panel .bans-heading",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -112261,7 +112260,7 @@
     {
       "id": 1695,
       "file": "src/workspace-layout.css",
-      "line": 952,
+      "line": 951,
       "selector": ".team-panel .player-list",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -112300,7 +112299,7 @@
     {
       "id": 1696,
       "file": "src/workspace-layout.css",
-      "line": 955,
+      "line": 954,
       "selector": ".team-panel .player-slot",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -112340,7 +112339,7 @@
     {
       "id": 1697,
       "file": "src/workspace-layout.css",
-      "line": 959,
+      "line": 958,
       "selector": ".team-panel .player-portrait",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -112382,7 +112381,7 @@
     {
       "id": 1698,
       "file": "src/workspace-layout.css",
-      "line": 970,
+      "line": 969,
       "selector": ".app .draft-arena[class]",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)",
@@ -112456,7 +112455,7 @@
     {
       "id": 1699,
       "file": "src/workspace-layout.css",
-      "line": 974,
+      "line": 973,
       "selector": ".app .draft-arena[class] > .team-side",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)",
@@ -112543,7 +112542,7 @@
     {
       "id": 1700,
       "file": "src/workspace-layout.css",
-      "line": 978,
+      "line": 977,
       "selector": ".app .draft-arena[class] > .team-side.purple",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)",
@@ -112846,7 +112845,7 @@
     {
       "id": 1701,
       "file": "src/workspace-layout.css",
-      "line": 981,
+      "line": 980,
       "selector": ".app .draft-arena[class] > .team-side.orange",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)",
@@ -113093,7 +113092,7 @@
     {
       "id": 1702,
       "file": "src/workspace-layout.css",
-      "line": 984,
+      "line": 983,
       "selector": ".app .draft-arena[class] > .selection-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)",
@@ -113177,7 +113176,7 @@
     {
       "id": 1703,
       "file": "src/workspace-layout.css",
-      "line": 990,
+      "line": 989,
       "selector": ".app:has(.draft-arena) > .draft-main",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113267,7 +113266,7 @@
     {
       "id": 1704,
       "file": "src/workspace-layout.css",
-      "line": 999,
+      "line": 998,
       "selector": ".app .compact-view-tabs",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113338,7 +113337,7 @@
     {
       "id": 1705,
       "file": "src/workspace-layout.css",
-      "line": 1002,
+      "line": 1001,
       "selector": ".app .progress-disclosure",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113409,7 +113408,7 @@
     {
       "id": 1706,
       "file": "src/workspace-layout.css",
-      "line": 1005,
+      "line": 1004,
       "selector": ".app:has(.draft-arena) .draft-arena",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113483,7 +113482,7 @@
     {
       "id": 1707,
       "file": "src/workspace-layout.css",
-      "line": 1010,
+      "line": 1009,
       "selector": ".app .decision-bar",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113554,7 +113553,7 @@
     {
       "id": 1708,
       "file": "src/workspace-layout.css",
-      "line": 1013,
+      "line": 1012,
       "selector": ".team-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113587,7 +113586,7 @@
     {
       "id": 1709,
       "file": "src/workspace-layout.css",
-      "line": 1022,
+      "line": 1021,
       "selector": ".team-panel .team-heading",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113628,7 +113627,7 @@
     {
       "id": 1710,
       "file": "src/workspace-layout.css",
-      "line": 1027,
+      "line": 1026,
       "selector": ".team-heading h2",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113658,7 +113657,7 @@
     {
       "id": 1711,
       "file": "src/workspace-layout.css",
-      "line": 1030,
+      "line": 1029,
       "selector": ".team-emblem",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113692,7 +113691,7 @@
     {
       "id": 1712,
       "file": "src/workspace-layout.css",
-      "line": 1033,
+      "line": 1032,
       "selector": ".order-label",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113726,7 +113725,7 @@
     {
       "id": 1713,
       "file": "src/workspace-layout.css",
-      "line": 1036,
+      "line": 1035,
       "selector": ".team-panel .bans-heading,\n  .team-panel .picks-heading",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113776,7 +113775,7 @@
     {
       "id": 1714,
       "file": "src/workspace-layout.css",
-      "line": 1042,
+      "line": 1041,
       "selector": ".bans-heading svg,\n  .picks-heading svg",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113815,7 +113814,7 @@
     {
       "id": 1715,
       "file": "src/workspace-layout.css",
-      "line": 1046,
+      "line": 1045,
       "selector": ".ban-slots",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113845,7 +113844,7 @@
     {
       "id": 1716,
       "file": "src/workspace-layout.css",
-      "line": 1049,
+      "line": 1048,
       "selector": ".ban-slot",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113883,7 +113882,7 @@
     {
       "id": 1717,
       "file": "src/workspace-layout.css",
-      "line": 1052,
+      "line": 1051,
       "selector": ".ban-slot-label",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113913,7 +113912,7 @@
     {
       "id": 1718,
       "file": "src/workspace-layout.css",
-      "line": 1055,
+      "line": 1054,
       "selector": ".ban-slot > svg",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113952,7 +113951,7 @@
     {
       "id": 1719,
       "file": "src/workspace-layout.css",
-      "line": 1059,
+      "line": 1058,
       "selector": ".ban-mark",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -113983,7 +113982,7 @@
     {
       "id": 1720,
       "file": "src/workspace-layout.css",
-      "line": 1063,
+      "line": 1062,
       "selector": ".team-panel .player-list",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114023,7 +114022,7 @@
     {
       "id": 1721,
       "file": "src/workspace-layout.css",
-      "line": 1067,
+      "line": 1066,
       "selector": ".team-panel .player-slot",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114064,7 +114063,7 @@
     {
       "id": 1722,
       "file": "src/workspace-layout.css",
-      "line": 1072,
+      "line": 1071,
       "selector": ".team-panel .player-portrait",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114106,7 +114105,7 @@
     {
       "id": 1723,
       "file": "src/workspace-layout.css",
-      "line": 1078,
+      "line": 1077,
       "selector": ".team-panel .player-info",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114145,7 +114144,7 @@
     {
       "id": 1724,
       "file": "src/workspace-layout.css",
-      "line": 1081,
+      "line": 1080,
       "selector": ".team-panel .player-name",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114185,7 +114184,7 @@
     {
       "id": 1725,
       "file": "src/workspace-layout.css",
-      "line": 1085,
+      "line": 1084,
       "selector": ".team-panel .role-text",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114225,7 +114224,7 @@
     {
       "id": 1726,
       "file": "src/workspace-layout.css",
-      "line": 1089,
+      "line": 1088,
       "selector": ".team-panel .player-number,\n  .team-panel .player-check,\n  .team-panel .slot-dash,\n  .team-panel .trainer",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114423,7 +114422,7 @@
     {
       "id": 1727,
       "file": "src/workspace-layout.css",
-      "line": 1095,
+      "line": 1094,
       "selector": ".team-panel .empty-pick-mark",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114463,7 +114462,7 @@
     {
       "id": 1728,
       "file": "src/workspace-layout.css",
-      "line": 1099,
+      "line": 1098,
       "selector": ".team-panel .empty-pick-mark svg",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114503,7 +114502,7 @@
     {
       "id": 1729,
       "file": "src/workspace-layout.css",
-      "line": 1103,
+      "line": 1102,
       "selector": ".team-panel .player-slot:not(:disabled)",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114544,7 +114543,7 @@
     {
       "id": 1730,
       "file": "src/workspace-layout.css",
-      "line": 1106,
+      "line": 1105,
       "selector": ".selection-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114576,7 +114575,7 @@
     {
       "id": 1731,
       "file": "src/workspace-layout.css",
-      "line": 1111,
+      "line": 1110,
       "selector": ".selection-panel .selection-top",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114615,7 +114614,7 @@
     {
       "id": 1732,
       "file": "src/workspace-layout.css",
-      "line": 1114,
+      "line": 1113,
       "selector": ".roster-toolbar",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114640,7 +114639,7 @@
     {
       "id": 1733,
       "file": "src/workspace-layout.css",
-      "line": 1117,
+      "line": 1116,
       "selector": ".search-field",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114671,7 +114670,7 @@
     {
       "id": 1734,
       "file": "src/workspace-layout.css",
-      "line": 1121,
+      "line": 1120,
       "selector": ".search-field input",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114702,7 +114701,7 @@
     {
       "id": 1735,
       "file": "src/workspace-layout.css",
-      "line": 1125,
+      "line": 1124,
       "selector": ".selection-footer",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114733,7 +114732,7 @@
     {
       "id": 1736,
       "file": "src/workspace-layout.css",
-      "line": 1129,
+      "line": 1128,
       "selector": ".roster-pagination",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114763,7 +114762,7 @@
     {
       "id": 1737,
       "file": "src/workspace-layout.css",
-      "line": 1132,
+      "line": 1131,
       "selector": ".roster-range",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114790,7 +114789,7 @@
     {
       "id": 1738,
       "file": "src/workspace-layout.css",
-      "line": 1139,
+      "line": 1138,
       "selector": ".pokemon-grid .pokemon-card > .portrait",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114912,7 +114911,7 @@
     {
       "id": 1739,
       "file": "src/workspace-layout.css",
-      "line": 1144,
+      "line": 1143,
       "selector": ".pokemon-grid .pokemon-card",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -114980,7 +114979,7 @@
     {
       "id": 1740,
       "file": "src/workspace-layout.css",
-      "line": 1148,
+      "line": 1147,
       "selector": ".team-panel .team-heading h2",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -115020,7 +115019,7 @@
     {
       "id": 1741,
       "file": "src/workspace-layout.css",
-      "line": 1152,
+      "line": 1151,
       "selector": ".team-panel .team-heading > div",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -115059,7 +115058,7 @@
     {
       "id": 1742,
       "file": "src/workspace-layout.css",
-      "line": 1155,
+      "line": 1154,
       "selector": ".team-panel .team-heading",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -115098,7 +115097,7 @@
     {
       "id": 1743,
       "file": "src/workspace-layout.css",
-      "line": 1158,
+      "line": 1157,
       "selector": ".team-panel .order-label",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -115141,7 +115140,7 @@
     {
       "id": 1744,
       "file": "src/workspace-layout.css",
-      "line": 1163,
+      "line": 1162,
       "selector": ".app:has(.draft-arena) .app-header",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115224,7 +115223,7 @@
     {
       "id": 1745,
       "file": "src/workspace-layout.css",
-      "line": 1168,
+      "line": 1167,
       "selector": ".app .progress-disclosure > summary",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115296,7 +115295,7 @@
     {
       "id": 1746,
       "file": "src/workspace-layout.css",
-      "line": 1172,
+      "line": 1171,
       "selector": ".team-panel .team-heading",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115335,7 +115334,7 @@
     {
       "id": 1747,
       "file": "src/workspace-layout.css",
-      "line": 1175,
+      "line": 1174,
       "selector": ".team-panel .player-slot",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115374,7 +115373,7 @@
     {
       "id": 1748,
       "file": "src/workspace-layout.css",
-      "line": 1178,
+      "line": 1177,
       "selector": ".team-panel .player-portrait",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115416,7 +115415,7 @@
     {
       "id": 1749,
       "file": "src/workspace-layout.css",
-      "line": 1184,
+      "line": 1183,
       "selector": ".team-panel .player-list",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115455,7 +115454,7 @@
     {
       "id": 1750,
       "file": "src/workspace-layout.css",
-      "line": 1187,
+      "line": 1186,
       "selector": ".team-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115487,7 +115486,7 @@
     {
       "id": 1751,
       "file": "src/workspace-layout.css",
-      "line": 1192,
+      "line": 1191,
       "selector": ".team-panel .player-name",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115526,7 +115525,7 @@
     {
       "id": 1752,
       "file": "src/workspace-layout.css",
-      "line": 1195,
+      "line": 1194,
       "selector": ".team-panel .role-text",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115565,7 +115564,7 @@
     {
       "id": 1753,
       "file": "src/workspace-layout.css",
-      "line": 1198,
+      "line": 1197,
       "selector": ".selection-footer",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115595,7 +115594,7 @@
     {
       "id": 1754,
       "file": "src/workspace-layout.css",
-      "line": 1201,
+      "line": 1200,
       "selector": ".roster-range",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115620,7 +115619,7 @@
     {
       "id": 1755,
       "file": "src/workspace-layout.css",
-      "line": 1204,
+      "line": 1203,
       "selector": ".pokemon-grid",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115654,7 +115653,7 @@
     {
       "id": 1756,
       "file": "src/workspace-layout.css",
-      "line": 1207,
+      "line": 1206,
       "selector": ".selection-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115684,7 +115683,7 @@
     {
       "id": 1757,
       "file": "src/workspace-layout.css",
-      "line": 1212,
+      "line": 1211,
       "selector": ".app:has(.draft-arena) > .draft-main",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115770,7 +115769,7 @@
     {
       "id": 1758,
       "file": "src/workspace-layout.css",
-      "line": 1216,
+      "line": 1215,
       "selector": ".team-panel .player-slot",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115809,7 +115808,7 @@
     {
       "id": 1759,
       "file": "src/workspace-layout.css",
-      "line": 1219,
+      "line": 1218,
       "selector": ".decision-bar",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115839,7 +115838,7 @@
     {
       "id": 1760,
       "file": "src/workspace-layout.css",
-      "line": 1224,
+      "line": 1223,
       "selector": ".team-panel .picks-heading",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115878,7 +115877,7 @@
     {
       "id": 1761,
       "file": "src/workspace-layout.css",
-      "line": 1227,
+      "line": 1226,
       "selector": ".team-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -115908,7 +115907,7 @@
     {
       "id": 1762,
       "file": "src/workspace-layout.css",
-      "line": 1232,
+      "line": 1231,
       "selector": ".app .compact-view-tabs",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -115980,7 +115979,7 @@
     {
       "id": 1763,
       "file": "src/workspace-layout.css",
-      "line": 1236,
+      "line": 1235,
       "selector": ".app .compact-view-tabs .purple",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -116268,7 +116267,7 @@
     {
       "id": 1764,
       "file": "src/workspace-layout.css",
-      "line": 1239,
+      "line": 1238,
       "selector": ".app .compact-view-tabs .roster",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -116470,7 +116469,7 @@
     {
       "id": 1765,
       "file": "src/workspace-layout.css",
-      "line": 1244,
+      "line": 1243,
       "selector": ".app .compact-view-tabs .orange",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -116702,7 +116701,7 @@
     {
       "id": 1766,
       "file": "src/workspace-layout.css",
-      "line": 1247,
+      "line": 1246,
       "selector": ".compact-picks",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -116732,7 +116731,7 @@
     {
       "id": 1767,
       "file": "src/workspace-layout.css",
-      "line": 1250,
+      "line": 1249,
       "selector": ".compact-picks > span",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -116763,7 +116762,7 @@
     {
       "id": 1768,
       "file": "src/workspace-layout.css",
-      "line": 1256,
+      "line": 1255,
       "selector": ".team-panel .bans-heading",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -116802,7 +116801,7 @@
     {
       "id": 1769,
       "file": "src/workspace-layout.css",
-      "line": 1259,
+      "line": 1258,
       "selector": ".team-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -116832,7 +116831,7 @@
     {
       "id": 1770,
       "file": "src/workspace-layout.css",
-      "line": 1262,
+      "line": 1261,
       "selector": ".team-panel .player-info",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape) and (max-height: 500px)"
@@ -116871,7 +116870,7 @@
     {
       "id": 1771,
       "file": "src/workspace-layout.css",
-      "line": 1270,
+      "line": 1269,
       "selector": ".app .draft-arena[class]",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)",
@@ -116944,7 +116943,7 @@
     {
       "id": 1772,
       "file": "src/workspace-layout.css",
-      "line": 1274,
+      "line": 1273,
       "selector": ".pokemon-grid .pokemon-card > .portrait",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117065,7 +117064,7 @@
     {
       "id": 1773,
       "file": "src/workspace-layout.css",
-      "line": 1278,
+      "line": 1277,
       "selector": ".pokemon-grid .pokemon-card",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117134,7 +117133,7 @@
     {
       "id": 1774,
       "file": "src/workspace-layout.css",
-      "line": 1283,
+      "line": 1282,
       "selector": ".selection-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117164,7 +117163,7 @@
     {
       "id": 1775,
       "file": "src/workspace-layout.css",
-      "line": 1286,
+      "line": 1285,
       "selector": ".pokemon-grid",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117198,7 +117197,7 @@
     {
       "id": 1776,
       "file": "src/workspace-layout.css",
-      "line": 1289,
+      "line": 1288,
       "selector": ".pokemon-grid .empty-results",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117243,7 +117242,7 @@
     {
       "id": 1777,
       "file": "src/workspace-layout.css",
-      "line": 1294,
+      "line": 1293,
       "selector": ".pokemon-grid .empty-results > svg",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117286,7 +117285,7 @@
     {
       "id": 1778,
       "file": "src/workspace-layout.css",
-      "line": 1299,
+      "line": 1298,
       "selector": ".pokemon-grid",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117320,7 +117319,7 @@
     {
       "id": 1779,
       "file": "src/workspace-layout.css",
-      "line": 1302,
+      "line": 1301,
       "selector": ".pokemon-grid .pokemon-card > .portrait",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117441,7 +117440,7 @@
     {
       "id": 1780,
       "file": "src/workspace-layout.css",
-      "line": 1306,
+      "line": 1305,
       "selector": ".pokemon-grid .pokemon-card",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117508,7 +117507,7 @@
     {
       "id": 1781,
       "file": "src/workspace-layout.css",
-      "line": 1311,
+      "line": 1310,
       "selector": ".allstar-arena .team-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117548,7 +117547,7 @@
     {
       "id": 1782,
       "file": "src/workspace-layout.css",
-      "line": 1315,
+      "line": 1314,
       "selector": ".allstar-arena .team-history:not(:has(.history-game))",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -117598,7 +117597,7 @@
     {
       "id": 1783,
       "file": "src/workspace-layout.css",
-      "line": 1321,
+      "line": 1320,
       "selector": ".app .pokemon-grid .pokemon-card",
       "conditions": [],
       "conditionKinds": [],
@@ -117704,7 +117703,7 @@
     {
       "id": 1784,
       "file": "src/workspace-layout.css",
-      "line": 1326,
+      "line": 1325,
       "selector": ".app .pokemon-grid .pokemon-card > .portrait",
       "conditions": [],
       "conditionKinds": [],
@@ -117863,7 +117862,7 @@
     {
       "id": 1785,
       "file": "src/workspace-layout.css",
-      "line": 1331,
+      "line": 1330,
       "selector": ".app .pokemon-grid",
       "conditions": [],
       "conditionKinds": [],
@@ -117934,7 +117933,7 @@
     {
       "id": 1786,
       "file": "src/workspace-layout.css",
-      "line": 1334,
+      "line": 1333,
       "selector": ".app .decision-main",
       "conditions": [],
       "conditionKinds": [],
@@ -118001,7 +118000,7 @@
     {
       "id": 1787,
       "file": "src/workspace-layout.css",
-      "line": 1337,
+      "line": 1336,
       "selector": ".app .decision-bar",
       "conditions": [],
       "conditionKinds": [],
@@ -118068,7 +118067,7 @@
     {
       "id": 1788,
       "file": "src/workspace-layout.css",
-      "line": 1341,
+      "line": 1340,
       "selector": ".app .selection-panel",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -118139,7 +118138,7 @@
     {
       "id": 1789,
       "file": "src/workspace-layout.css",
-      "line": 1344,
+      "line": 1343,
       "selector": ".app .app-header",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -118210,7 +118209,7 @@
     {
       "id": 1790,
       "file": "src/workspace-layout.css",
-      "line": 1348,
+      "line": 1347,
       "selector": ".app .header-phase",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -118289,7 +118288,7 @@
     {
       "id": 1791,
       "file": "src/workspace-layout.css",
-      "line": 1351,
+      "line": 1350,
       "selector": ".app .decision-main > .confirm-button",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -118379,7 +118378,7 @@
     {
       "id": 1792,
       "file": "src/workspace-layout.css",
-      "line": 1358,
+      "line": 1357,
       "selector": ".app .pokemon-grid",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -118454,7 +118453,7 @@
     {
       "id": 1793,
       "file": "src/workspace-layout.css",
-      "line": 1361,
+      "line": 1360,
       "selector": ".app .selection-panel",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -118525,7 +118524,7 @@
     {
       "id": 1794,
       "file": "src/workspace-layout.css",
-      "line": 1364,
+      "line": 1363,
       "selector": ".app .pokemon-grid .pokemon-card > .portrait",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -118687,7 +118686,7 @@
     {
       "id": 1795,
       "file": "src/workspace-layout.css",
-      "line": 1370,
+      "line": 1369,
       "selector": ".app",
       "conditions": [],
       "conditionKinds": [],
@@ -118749,7 +118748,7 @@
     {
       "id": 1796,
       "file": "src/workspace-layout.css",
-      "line": 1375,
+      "line": 1374,
       "selector": ".app",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -118815,7 +118814,7 @@
     {
       "id": 1797,
       "file": "src/workspace-layout.css",
-      "line": 1381,
+      "line": 1380,
       "selector": ".app",
       "conditions": [
         "@media (max-width: 1000px) and (orientation: landscape)"
@@ -118881,7 +118880,7 @@
     {
       "id": 1798,
       "file": "src/workspace-layout.css",
-      "line": 1386,
+      "line": 1385,
       "selector": ".app .pokemon-grid .pokemon-card > .portrait,\n.app .team-panel .player-portrait",
       "conditions": [],
       "conditionKinds": [],
@@ -119061,7 +119060,7 @@
     {
       "id": 1799,
       "file": "src/workspace-layout.css",
-      "line": 1393,
+      "line": 1392,
       "selector": ".app .team-panel .player-portrait > .portrait",
       "conditions": [],
       "conditionKinds": [],
@@ -119191,7 +119190,7 @@
     {
       "id": 1800,
       "file": "src/workspace-layout.css",
-      "line": 1397,
+      "line": 1396,
       "selector": ".app .pokemon-grid .pokemon-card",
       "conditions": [],
       "conditionKinds": [],
@@ -119295,7 +119294,7 @@
     {
       "id": 1801,
       "file": "src/workspace-layout.css",
-      "line": 1400,
+      "line": 1399,
       "selector": ".app .pokemon-grid",
       "conditions": [],
       "conditionKinds": [],
@@ -119368,7 +119367,7 @@
     {
       "id": 1802,
       "file": "src/workspace-layout.css",
-      "line": 1403,
+      "line": 1402,
       "selector": ".app .decision-bar",
       "conditions": [],
       "conditionKinds": [],
@@ -119435,7 +119434,7 @@
     {
       "id": 1803,
       "file": "src/workspace-layout.css",
-      "line": 1407,
+      "line": 1406,
       "selector": ".app .decision-bar",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -119508,7 +119507,7 @@
     {
       "id": 1804,
       "file": "src/workspace-layout.css",
-      "line": 1412,
+      "line": 1411,
       "selector": ".app .decision-main",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -119579,7 +119578,7 @@
     {
       "id": 1805,
       "file": "src/workspace-layout.css",
-      "line": 1415,
+      "line": 1414,
       "selector": ".app .utility-actions",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -119652,7 +119651,7 @@
     {
       "id": 1806,
       "file": "src/workspace-layout.css",
-      "line": 1420,
+      "line": 1419,
       "selector": ".app .decision-extra",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -119723,7 +119722,7 @@
     {
       "id": 1807,
       "file": "src/workspace-layout.css",
-      "line": 1423,
+      "line": 1422,
       "selector": ".app .decision-extra .subtle-button span",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -119819,7 +119818,7 @@
     {
       "id": 1808,
       "file": "src/workspace-layout.css",
-      "line": 1426,
+      "line": 1425,
       "selector": ".app .decision-extra .subtle-button",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -119917,7 +119916,7 @@
     {
       "id": 1809,
       "file": "src/workspace-layout.css",
-      "line": 1431,
+      "line": 1430,
       "selector": ".app .utility-actions .subtle-button",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -120015,7 +120014,7 @@
     {
       "id": 1810,
       "file": "src/workspace-layout.css",
-      "line": 1438,
+      "line": 1437,
       "selector": ".app .decision-bar",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -120087,7 +120086,7 @@
     {
       "id": 1811,
       "file": "src/workspace-layout.css",
-      "line": 1442,
+      "line": 1441,
       "selector": ".app .decision-main",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -120158,7 +120157,7 @@
     {
       "id": 1812,
       "file": "src/workspace-layout.css",
-      "line": 1445,
+      "line": 1444,
       "selector": ".app .utility-actions",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -120230,7 +120229,7 @@
     {
       "id": 1813,
       "file": "src/workspace-layout.css",
-      "line": 1449,
+      "line": 1448,
       "selector": ".app .decision-extra",
       "conditions": [
         "@media (max-width: 600px) and (orientation: portrait)"
@@ -120301,7 +120300,7 @@
     {
       "id": 1814,
       "file": "src/workspace-layout.css",
-      "line": 1456,
+      "line": 1455,
       "selector": ".app .decision-bar",
       "conditions": [
         "@media (min-width: 400px) and (max-width: 600px) and (orientation: portrait)"
@@ -120373,7 +120372,7 @@
     {
       "id": 1815,
       "file": "src/workspace-layout.css",
-      "line": 1460,
+      "line": 1459,
       "selector": ".app .decision-main",
       "conditions": [
         "@media (min-width: 400px) and (max-width: 600px) and (orientation: portrait)"
@@ -120444,7 +120443,7 @@
     {
       "id": 1816,
       "file": "src/workspace-layout.css",
-      "line": 1463,
+      "line": 1462,
       "selector": ".app .utility-actions",
       "conditions": [
         "@media (min-width: 400px) and (max-width: 600px) and (orientation: portrait)"
@@ -120515,7 +120514,7 @@
     {
       "id": 1817,
       "file": "src/workspace-layout.css",
-      "line": 1466,
+      "line": 1465,
       "selector": ".app .decision-extra",
       "conditions": [
         "@media (min-width: 400px) and (max-width: 600px) and (orientation: portrait)"
@@ -120586,7 +120585,7 @@
     {
       "id": 1818,
       "file": "src/workspace-layout.css",
-      "line": 1469,
+      "line": 1468,
       "selector": ".app .decision-main > .confirm-button",
       "conditions": [
         "@media (min-width: 400px) and (max-width: 600px) and (orientation: portrait)"
@@ -120674,7 +120673,7 @@
     {
       "id": 1819,
       "file": "src/workspace-layout.css",
-      "line": 1474,
+      "line": 1473,
       "selector": ".app .search-field",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -120746,7 +120745,7 @@
     {
       "id": 1820,
       "file": "src/workspace-layout.css",
-      "line": 1478,
+      "line": 1477,
       "selector": ".app .search-field input",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -120819,7 +120818,7 @@
     {
       "id": 1821,
       "file": "src/workspace-layout.css",
-      "line": 1483,
+      "line": 1482,
       "selector": ".app .search-field > svg",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -120892,7 +120891,7 @@
     {
       "id": 1822,
       "file": "src/workspace-layout.css",
-      "line": 1488,
+      "line": 1487,
       "selector": ".app .sort-trigger,\n  .app .filter-toggle,\n  .app .roster-pagination button",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -120985,7 +120984,7 @@
     {
       "id": 1823,
       "file": "src/workspace-layout.css",
-      "line": 1497,
+      "line": 1496,
       "selector": ".app .sort-trigger svg,\n  .app .filter-toggle svg,\n  .app .roster-pagination button svg",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -121076,7 +121075,7 @@
     {
       "id": 1824,
       "file": "src/workspace-layout.css",
-      "line": 1504,
+      "line": 1503,
       "selector": ".app .roster-pagination",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -121147,7 +121146,7 @@
     {
       "id": 1825,
       "file": "src/workspace-layout.css",
-      "line": 1507,
+      "line": 1506,
       "selector": ".app .roster-pagination > span",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -121219,7 +121218,7 @@
     {
       "id": 1826,
       "file": "src/workspace-layout.css",
-      "line": 1511,
+      "line": 1510,
       "selector": ".app .selection-footer",
       "conditions": [
         "@media (max-width: 1000px)"
@@ -121290,7 +121289,7 @@
     {
       "id": 1827,
       "file": "src/workspace-layout.css",
-      "line": 1516,
+      "line": 1515,
       "selector": ".app",
       "conditions": [],
       "conditionKinds": [],
@@ -121362,7 +121361,7 @@
     {
       "id": 1828,
       "file": "src/workspace-layout.css",
-      "line": 1525,
+      "line": 1524,
       "selector": ".app .search-field",
       "conditions": [],
       "conditionKinds": [],
@@ -121438,7 +121437,7 @@
     {
       "id": 1829,
       "file": "src/workspace-layout.css",
-      "line": 1532,
+      "line": 1531,
       "selector": ".app .search-field input,\n.app .search-field input:focus",
       "conditions": [],
       "conditionKinds": [
@@ -121514,7 +121513,7 @@
     {
       "id": 1830,
       "file": "src/workspace-layout.css",
-      "line": 1540,
+      "line": 1539,
       "selector": ".app .search-field > svg",
       "conditions": [],
       "conditionKinds": [],
@@ -121585,7 +121584,7 @@
     {
       "id": 1831,
       "file": "src/workspace-layout.css",
-      "line": 1545,
+      "line": 1544,
       "selector": ".app\n  :is(\n    .sort-trigger,\n    .filter-toggle,\n    .roster-pagination button,\n    .app-header .icon-button\n  )",
       "conditions": [],
       "conditionKinds": [
@@ -121726,7 +121725,7 @@
     {
       "id": 1832,
       "file": "src/workspace-layout.css",
-      "line": 1562,
+      "line": 1561,
       "selector": ".app\n  :is(\n    .sort-trigger,\n    .filter-toggle,\n    .roster-pagination button,\n    .app-header .icon-button,\n    .decision-bar button\n  )\n  svg",
       "conditions": [],
       "conditionKinds": [
@@ -121868,7 +121867,7 @@
     {
       "id": 1833,
       "file": "src/workspace-layout.css",
-      "line": 1575,
+      "line": 1574,
       "selector": ".app .roster-pagination",
       "conditions": [],
       "conditionKinds": [],
@@ -121937,7 +121936,7 @@
     {
       "id": 1834,
       "file": "src/workspace-layout.css",
-      "line": 1578,
+      "line": 1577,
       "selector": ".app .roster-pagination > span",
       "conditions": [],
       "conditionKinds": [],
@@ -122008,7 +122007,7 @@
     {
       "id": 1835,
       "file": "src/workspace-layout.css",
-      "line": 1583,
+      "line": 1582,
       "selector": ".app .roster-range",
       "conditions": [],
       "conditionKinds": [],
@@ -122072,7 +122071,7 @@
     {
       "id": 1836,
       "file": "src/workspace-layout.css",
-      "line": 1586,
+      "line": 1585,
       "selector": ".app .selection-footer",
       "conditions": [],
       "conditionKinds": [],
@@ -122143,7 +122142,7 @@
     {
       "id": 1837,
       "file": "src/workspace-layout.css",
-      "line": 1590,
+      "line": 1589,
       "selector": ".app .decision-bar",
       "conditions": [],
       "conditionKinds": [],
@@ -122213,7 +122212,7 @@
     {
       "id": 1838,
       "file": "src/workspace-layout.css",
-      "line": 1594,
+      "line": 1593,
       "selector": ".app .decision-main > .confirm-button",
       "conditions": [],
       "conditionKinds": [],
@@ -122307,7 +122306,7 @@
     {
       "id": 1839,
       "file": "src/workspace-layout.css",
-      "line": 1601,
+      "line": 1600,
       "selector": ".app .decision-bar .subtle-button",
       "conditions": [],
       "conditionKinds": [],
@@ -122403,7 +122402,7 @@
     {
       "id": 1840,
       "file": "src/workspace-layout.css",
-      "line": 1605,
+      "line": 1604,
       "selector": ".app .app-header",
       "conditions": [],
       "conditionKinds": [],
@@ -122473,7 +122472,7 @@
     {
       "id": 1841,
       "file": "src/workspace-layout.css",
-      "line": 1609,
+      "line": 1608,
       "selector": ".app .app-header :is(.phase-label, .active-team-name)",
       "conditions": [],
       "conditionKinds": [
@@ -122552,7 +122551,7 @@
     {
       "id": 1842,
       "file": "src/workspace-layout.css",
-      "line": 1613,
+      "line": 1612,
       "selector": ".app .sort-trigger",
       "conditions": [
         "@media (min-width: 1001px)"
@@ -122630,7 +122629,7 @@
     {
       "id": 1843,
       "file": "src/workspace-layout.css",
-      "line": 1621,
+      "line": 1620,
       "selector": ".app",
       "conditions": [
         "@media (pointer: fine) and (max-height: 500px)"
@@ -122694,7 +122693,7 @@
     {
       "id": 1844,
       "file": "src/workspace-layout.css",
-      "line": 1626,
+      "line": 1625,
       "selector": ".app",
       "conditions": [
         "@media (pointer: coarse)"
@@ -122758,7 +122757,7 @@
     {
       "id": 1845,
       "file": "src/workspace-layout.css",
-      "line": 1631,
+      "line": 1630,
       "selector": ".app:not(.setup-mode)",
       "conditions": [],
       "conditionKinds": [
@@ -122849,7 +122848,7 @@
     {
       "id": 1846,
       "file": "src/workspace-layout.css",
-      "line": 1640,
+      "line": 1639,
       "selector": ".app:not(.setup-mode) :is(.search-field, .sort-trigger, .filter-toggle, .roster-pagination button, .decision-main > .confirm-button)",
       "conditions": [],
       "conditionKinds": [
@@ -122993,7 +122992,7 @@
     {
       "id": 1847,
       "file": "src/workspace-layout.css",
-      "line": 1647,
+      "line": 1646,
       "selector": ".app:not(.setup-mode) :is(.search-field, .sort-trigger, .filter-toggle, .roster-pagination button, .decision-main > .confirm-button)::before",
       "conditions": [],
       "conditionKinds": [
@@ -123146,7 +123145,7 @@
     {
       "id": 1848,
       "file": "src/workspace-layout.css",
-      "line": 1657,
+      "line": 1656,
       "selector": ".app:not(.setup-mode) .search-field::before",
       "conditions": [],
       "conditionKinds": [
@@ -123233,7 +123232,7 @@
     {
       "id": 1849,
       "file": "src/workspace-layout.css",
-      "line": 1660,
+      "line": 1659,
       "selector": ".app:not(.setup-mode) .search-field:focus-within::before",
       "conditions": [],
       "conditionKinds": [
@@ -123323,7 +123322,7 @@
     {
       "id": 1850,
       "file": "src/workspace-layout.css",
-      "line": 1663,
+      "line": 1662,
       "selector": ".app:not(.setup-mode) .filter-toggle.selected::before,\n.app:not(.setup-mode) .sort-select.open .sort-trigger::before",
       "conditions": [],
       "conditionKinds": [
@@ -123585,7 +123584,7 @@
     {
       "id": 1851,
       "file": "src/workspace-layout.css",
-      "line": 1668,
+      "line": 1667,
       "selector": ".app:not(.setup-mode) .decision-main > .confirm-button::before",
       "conditions": [],
       "conditionKinds": [
@@ -123692,7 +123691,7 @@
     {
       "id": 1852,
       "file": "src/workspace-layout.css",
-      "line": 1672,
+      "line": 1671,
       "selector": ".app:not(.setup-mode) .decision-main > .confirm-button:disabled::before",
       "conditions": [],
       "conditionKinds": [
@@ -123797,7 +123796,7 @@
     {
       "id": 1853,
       "file": "src/workspace-layout.css",
-      "line": 1676,
+      "line": 1675,
       "selector": ".app:not(.setup-mode) :is(.sort-trigger, .filter-toggle, .roster-pagination button):hover:not(:disabled)::before",
       "conditions": [
         "@media (hover: hover)"
@@ -123910,7 +123909,7 @@
     {
       "id": 1854,
       "file": "src/workspace-layout.css",
-      "line": 1679,
+      "line": 1678,
       "selector": ".app:not(.setup-mode) .decision-main > .confirm-button:hover:not(:disabled)::before",
       "conditions": [
         "@media (hover: hover)"
@@ -124021,7 +124020,7 @@
     {
       "id": 1855,
       "file": "src/workspace-layout.css",
-      "line": 1683,
+      "line": 1682,
       "selector": ".app:not(.setup-mode) .filter-toggle",
       "conditions": [],
       "conditionKinds": [
@@ -124109,7 +124108,7 @@
     {
       "id": 1856,
       "file": "src/workspace-layout.css",
-      "line": 1686,
+      "line": 1685,
       "selector": ".app:not(.setup-mode) :is(.sort-trigger, .filter-toggle, .roster-pagination button)",
       "conditions": [],
       "conditionKinds": [
@@ -124217,7 +124216,7 @@
     {
       "id": 1857,
       "file": "src/workspace-layout.css",
-      "line": 1691,
+      "line": 1690,
       "selector": ".app:not(.setup-mode) .sort-trigger",
       "conditions": [
         "@media (min-width: 1001px)"
@@ -124309,7 +124308,7 @@
     {
       "id": 1858,
       "file": "src/workspace-layout.css",
-      "line": 1698,
+      "line": 1697,
       "selector": ".app:not(.setup-mode) .filter-active-dot",
       "conditions": [],
       "conditionKinds": [
@@ -124398,7 +124397,7 @@
     {
       "id": 1859,
       "file": "src/workspace-layout.css",
-      "line": 1702,
+      "line": 1701,
       "selector": ".app:not(.setup-mode) .search-field > button svg,\n.app:not(.setup-mode) .header-timer svg,\n.app:not(.setup-mode) .compact-view-tabs .roster svg",
       "conditions": [],
       "conditionKinds": [
@@ -124634,7 +124633,7 @@
     {
       "id": 1860,
       "file": "src/workspace-layout.css",
-      "line": 1708,
+      "line": 1707,
       "selector": ".app:not(.setup-mode) :is(.header-timer, .compact-view-tabs .roster, .progress-toggle)",
       "conditions": [],
       "conditionKinds": [
@@ -124865,7 +124864,7 @@
     {
       "id": 1861,
       "file": "src/workspace-layout.css",
-      "line": 1711,
+      "line": 1710,
       "selector": ".app .selection-footer",
       "conditions": [],
       "conditionKinds": [],
@@ -124935,7 +124934,7 @@
     {
       "id": 1862,
       "file": "src/workspace-layout.css",
-      "line": 1712,
+      "line": 1711,
       "selector": ".app .roster-pagination",
       "conditions": [],
       "conditionKinds": [],
@@ -125005,7 +125004,7 @@
     {
       "id": 1863,
       "file": "src/workspace-layout.css",
-      "line": 1713,
+      "line": 1712,
       "selector": ".app .roster-pagination > span",
       "conditions": [],
       "conditionKinds": [],
@@ -125075,7 +125074,7 @@
     {
       "id": 1864,
       "file": "src/workspace-layout.css",
-      "line": 1714,
+      "line": 1713,
       "selector": ".app .roster-pagination b",
       "conditions": [],
       "conditionKinds": [],
@@ -125145,7 +125144,7 @@
     {
       "id": 1865,
       "file": "src/workspace-layout.css",
-      "line": 1715,
+      "line": 1714,
       "selector": ".app .roster-pagination b span",
       "conditions": [],
       "conditionKinds": [],
@@ -125214,7 +125213,7 @@
     {
       "id": 1866,
       "file": "src/workspace-layout.css",
-      "line": 1716,
+      "line": 1715,
       "selector": ".app .roster-pagination .roster-range",
       "conditions": [],
       "conditionKinds": [],
@@ -125288,7 +125287,7 @@
     {
       "id": 1867,
       "file": "src/workspace-layout.css",
-      "line": 1719,
+      "line": 1718,
       "selector": ".app .draft-arena.allstar-arena[class] > .team-side:has(.history-game)",
       "conditions": [
         "@layer adaptive-layout"
@@ -125393,7 +125392,7 @@
     {
       "id": 1868,
       "file": "src/workspace-layout.css",
-      "line": 1724,
+      "line": 1723,
       "selector": ".app .draft-arena.allstar-arena[class] > .team-side.purple:has(.history-game)",
       "conditions": [
         "@layer adaptive-layout"
@@ -125715,7 +125714,7 @@
     {
       "id": 1869,
       "file": "src/workspace-layout.css",
-      "line": 1727,
+      "line": 1726,
       "selector": ".app .draft-arena.allstar-arena[class] > .team-side.orange:has(.history-game)",
       "conditions": [
         "@layer adaptive-layout"
@@ -125981,7 +125980,7 @@
     {
       "id": 1870,
       "file": "src/workspace-layout.css",
-      "line": 1731,
+      "line": 1730,
       "selector": ".app .draft-arena.allstar-arena.compact-view-roster > .team-side:has(.history-game),\n    .app .draft-arena.allstar-arena.compact-view-purple > .team-side.orange:has(.history-game),\n    .app .draft-arena.allstar-arena.compact-view-orange > .team-side.purple:has(.history-game)",
       "conditions": [
         "@layer adaptive-layout",
@@ -126476,7 +126475,7 @@
     {
       "id": 1871,
       "file": "src/workspace-layout.css",
-      "line": 1738,
+      "line": 1737,
       "selector": ".app .allstar-arena",
       "conditions": [],
       "conditionKinds": [],
@@ -126545,7 +126544,7 @@
     {
       "id": 1872,
       "file": "src/workspace-layout.css",
-      "line": 1739,
+      "line": 1738,
       "selector": ".app .allstar-arena > .team-side:has(.history-game)",
       "conditions": [],
       "conditionKinds": [
@@ -126636,7 +126635,7 @@
     {
       "id": 1873,
       "file": "src/workspace-layout.css",
-      "line": 1740,
+      "line": 1739,
       "selector": ".app .allstar-arena > .team-side:has(.history-game) > :is(.team-panel,.team-history)",
       "conditions": [],
       "conditionKinds": [
@@ -126750,7 +126749,7 @@
     {
       "id": 1874,
       "file": "src/workspace-layout.css",
-      "line": 1743,
+      "line": 1742,
       "selector": ".app .allstar-arena > .team-side.purple > .team-history,\n.app .allstar-arena > .team-side.orange > .team-panel",
       "conditions": [],
       "conditionKinds": [],
@@ -127226,7 +127225,7 @@
     {
       "id": 1875,
       "file": "src/workspace-layout.css",
-      "line": 1745,
+      "line": 1744,
       "selector": ".app .allstar-arena > .team-side.purple > .team-panel,\n.app .allstar-arena > .team-side.orange > .team-history",
       "conditions": [],
       "conditionKinds": [],
@@ -127702,7 +127701,7 @@
     {
       "id": 1876,
       "file": "src/workspace-layout.css",
-      "line": 1747,
+      "line": 1746,
       "selector": ".app .allstar-arena .team-history",
       "conditions": [],
       "conditionKinds": [],
@@ -127780,7 +127779,7 @@
     {
       "id": 1877,
       "file": "src/workspace-layout.css",
-      "line": 1748,
+      "line": 1747,
       "selector": ".app .allstar-arena .history-heading",
       "conditions": [],
       "conditionKinds": [],
@@ -127860,7 +127859,7 @@
     {
       "id": 1878,
       "file": "src/workspace-layout.css",
-      "line": 1749,
+      "line": 1748,
       "selector": ".app .allstar-arena .history-scroll",
       "conditions": [],
       "conditionKinds": [],
@@ -127943,7 +127942,7 @@
     {
       "id": 1879,
       "file": "src/workspace-layout.css",
-      "line": 1750,
+      "line": 1749,
       "selector": ".app .allstar-arena .history-game",
       "conditions": [],
       "conditionKinds": [],
@@ -128020,7 +128019,7 @@
     {
       "id": 1880,
       "file": "src/workspace-layout.css",
-      "line": 1751,
+      "line": 1750,
       "selector": ".app .allstar-arena .history-game + .history-game",
       "conditions": [],
       "conditionKinds": [],
@@ -128101,7 +128100,7 @@
     {
       "id": 1881,
       "file": "src/workspace-layout.css",
-      "line": 1752,
+      "line": 1751,
       "selector": ".app .allstar-arena .history-game h3",
       "conditions": [],
       "conditionKinds": [],
@@ -128180,7 +128179,7 @@
     {
       "id": 1882,
       "file": "src/workspace-layout.css",
-      "line": 1753,
+      "line": 1752,
       "selector": ".app .allstar-arena .history-pokemon-item",
       "conditions": [],
       "conditionKinds": [],
@@ -128258,7 +128257,7 @@
     {
       "id": 1883,
       "file": "src/workspace-layout.css",
-      "line": 1754,
+      "line": 1753,
       "selector": ".app .allstar-arena .history-pokemon-item .portrait",
       "conditions": [],
       "conditionKinds": [],
@@ -128390,7 +128389,7 @@
     {
       "id": 1884,
       "file": "src/workspace-layout.css",
-      "line": 1756,
+      "line": 1755,
       "selector": ".app .allstar-arena",
       "conditions": [
         "@media (max-width:1000px) and (orientation:landscape)"
@@ -128463,7 +128462,7 @@
     {
       "id": 1885,
       "file": "src/workspace-layout.css",
-      "line": 1757,
+      "line": 1756,
       "selector": ".app .allstar-arena .history-heading strong",
       "conditions": [
         "@media (max-width:1000px) and (orientation:landscape)"
@@ -128543,7 +128542,7 @@
     {
       "id": 1886,
       "file": "src/workspace-layout.css",
-      "line": 1759,
+      "line": 1758,
       "selector": ".app .allstar-arena .team-history:not(:has(.history-game))",
       "conditions": [],
       "conditionKinds": [
@@ -128631,7 +128630,7 @@
     {
       "id": 1887,
       "file": "src/workspace-layout.css",
-      "line": 1760,
+      "line": 1759,
       "selector": ".app .allstar-arena > .team-side:not(:has(.history-game)) > .team-panel",
       "conditions": [],
       "conditionKinds": [
@@ -128732,7 +128731,7 @@
     {
       "id": 1888,
       "file": "src/workspace-layout.css",
-      "line": 1761,
+      "line": 1760,
       "selector": ".app .allstar-arena > .team-side:has(.history-game)",
       "conditions": [],
       "conditionKinds": [
@@ -128823,7 +128822,7 @@
     {
       "id": 1889,
       "file": "src/workspace-layout.css",
-      "line": 1762,
+      "line": 1761,
       "selector": ".app .allstar-arena > .team-side:has(.history-game) > :is(.team-panel,.team-history)",
       "conditions": [],
       "conditionKinds": [
@@ -128934,7 +128933,7 @@
     {
       "id": 1890,
       "file": "src/workspace-layout.css",
-      "line": 1763,
+      "line": 1762,
       "selector": ".app .allstar-arena .history-scroll",
       "conditions": [],
       "conditionKinds": [],
@@ -129010,7 +129009,7 @@
     {
       "id": 1891,
       "file": "src/workspace-layout.css",
-      "line": 1765,
+      "line": 1764,
       "selector": ".app .pokemon-grid .pokemon-card",
       "conditions": [],
       "conditionKinds": [],
@@ -129118,7 +129117,7 @@
     {
       "id": 1892,
       "file": "src/workspace-layout.css",
-      "line": 1769,
+      "line": 1768,
       "selector": ".app .pokemon-grid .pokemon-card.is-selected",
       "conditions": [],
       "conditionKinds": [],
@@ -129239,7 +129238,7 @@
     {
       "id": 1893,
       "file": "src/workspace-layout.css",
-      "line": 1773,
+      "line": 1772,
       "selector": ".app .allstar-arena",
       "conditions": [],
       "conditionKinds": [],
@@ -129308,7 +129307,7 @@
     {
       "id": 1894,
       "file": "src/workspace-layout.css",
-      "line": 1774,
+      "line": 1773,
       "selector": ".app .allstar-arena .team-history .history-scroll",
       "conditions": [],
       "conditionKinds": [],
@@ -129396,7 +129395,7 @@
     {
       "id": 1895,
       "file": "src/workspace-layout.css",
-      "line": 1775,
+      "line": 1774,
       "selector": ".app .allstar-arena .team-history .history-game",
       "conditions": [],
       "conditionKinds": [],
@@ -129486,7 +129485,7 @@
     {
       "id": 1896,
       "file": "src/workspace-layout.css",
-      "line": 1776,
+      "line": 1775,
       "selector": ".app .allstar-arena .team-history .history-game h3",
       "conditions": [],
       "conditionKinds": [],
@@ -129574,7 +129573,7 @@
     {
       "id": 1897,
       "file": "src/workspace-layout.css",
-      "line": 1777,
+      "line": 1776,
       "selector": ".app .allstar-arena .team-history .history-pokemon",
       "conditions": [],
       "conditionKinds": [],
@@ -129668,7 +129667,7 @@
     {
       "id": 1898,
       "file": "src/workspace-layout.css",
-      "line": 1778,
+      "line": 1777,
       "selector": ".app .allstar-arena .team-history .history-pokemon-item",
       "conditions": [],
       "conditionKinds": [],
@@ -129755,7 +129754,7 @@
     {
       "id": 1899,
       "file": "src/workspace-layout.css",
-      "line": 1779,
+      "line": 1778,
       "selector": ".app .allstar-arena .team-history .history-pokemon-item .portrait",
       "conditions": [],
       "conditionKinds": [],
@@ -129897,7 +129896,7 @@
     {
       "id": 1900,
       "file": "src/workspace-layout.css",
-      "line": 1780,
+      "line": 1779,
       "selector": ".app .history-pagination",
       "conditions": [],
       "conditionKinds": [],
@@ -129968,7 +129967,7 @@
     {
       "id": 1901,
       "file": "src/workspace-layout.css",
-      "line": 1781,
+      "line": 1780,
       "selector": ".app .history-pagination span",
       "conditions": [],
       "conditionKinds": [],
@@ -130039,7 +130038,7 @@
     {
       "id": 1902,
       "file": "src/workspace-layout.css",
-      "line": 1782,
+      "line": 1781,
       "selector": ".app .history-pagination button",
       "conditions": [],
       "conditionKinds": [],
@@ -130115,7 +130114,7 @@
     {
       "id": 1903,
       "file": "src/workspace-layout.css",
-      "line": 1783,
+      "line": 1782,
       "selector": ".app .history-pagination button:disabled",
       "conditions": [],
       "conditionKinds": [
@@ -130184,7 +130183,7 @@
     {
       "id": 1904,
       "file": "src/workspace-layout.css",
-      "line": 1785,
+      "line": 1784,
       "selector": ".app .allstar-arena .team-history .history-pokemon",
       "conditions": [
         "@layer adaptive-layout"
@@ -130277,7 +130276,7 @@
     {
       "id": 1905,
       "file": "src/workspace-layout.css",
-      "line": 1789,
+      "line": 1788,
       "selector": ".app .pokemon-grid, .app .history-scroll",
       "conditions": [],
       "conditionKinds": [],
@@ -130357,7 +130356,7 @@
     {
       "id": 1906,
       "file": "src/workspace-layout.css",
-      "line": 1791,
+      "line": 1790,
       "selector": ".app:not(.setup-mode) .app-header",
       "conditions": [
         "@layer adaptive-layout"
@@ -130447,7 +130446,7 @@
     {
       "id": 1907,
       "file": "src/workspace-layout.css",
-      "line": 1792,
+      "line": 1791,
       "selector": ".app:not(.setup-mode) .header-center",
       "conditions": [
         "@layer adaptive-layout"
@@ -130539,7 +130538,7 @@
     {
       "id": 1908,
       "file": "src/workspace-layout.css",
-      "line": 1793,
+      "line": 1792,
       "selector": ".app:not(.setup-mode) .header-phase",
       "conditions": [
         "@layer adaptive-layout"
@@ -130638,7 +130637,7 @@
     {
       "id": 1909,
       "file": "src/workspace-layout.css",
-      "line": 1794,
+      "line": 1793,
       "selector": ".app:not(.setup-mode) .header-actions",
       "conditions": [
         "@layer adaptive-layout"
@@ -130727,7 +130726,7 @@
     {
       "id": 1910,
       "file": "src/workspace-layout.css",
-      "line": 1796,
+      "line": 1795,
       "selector": ".app:not(.setup-mode) .header-center",
       "conditions": [
         "@layer adaptive-layout",
@@ -130820,7 +130819,7 @@
     {
       "id": 1911,
       "file": "src/workspace-layout.css",
-      "line": 1797,
+      "line": 1796,
       "selector": ".app:not(.setup-mode) .header-actions",
       "conditions": [
         "@layer adaptive-layout",
@@ -130912,7 +130911,7 @@
     {
       "id": 1912,
       "file": "src/workspace-layout.css",
-      "line": 1803,
+      "line": 1802,
       "selector": "html, body, #root",
       "conditions": [
         "@layer adaptive-layout"
@@ -130933,7 +130932,7 @@
     {
       "id": 1913,
       "file": "src/workspace-layout.css",
-      "line": 1804,
+      "line": 1803,
       "selector": "body",
       "conditions": [
         "@layer adaptive-layout"
@@ -130953,7 +130952,7 @@
     {
       "id": 1914,
       "file": "src/workspace-layout.css",
-      "line": 1805,
+      "line": 1804,
       "selector": ".app[class]",
       "conditions": [
         "@layer adaptive-layout"
@@ -131020,7 +131019,7 @@
     {
       "id": 1915,
       "file": "src/workspace-layout.css",
-      "line": 1806,
+      "line": 1805,
       "selector": ".app[class] > .app-header",
       "conditions": [
         "@layer adaptive-layout"
@@ -131095,7 +131094,7 @@
     {
       "id": 1916,
       "file": "src/workspace-layout.css",
-      "line": 1807,
+      "line": 1806,
       "selector": ".app[class] > .setup-main.setup-refresh",
       "conditions": [
         "@layer adaptive-layout"
@@ -131190,7 +131189,7 @@
     {
       "id": 1917,
       "file": "src/workspace-layout.css",
-      "line": 1808,
+      "line": 1807,
       "selector": ".app[class] > .draft-main",
       "conditions": [
         "@layer adaptive-layout"
@@ -131268,7 +131267,7 @@
     {
       "id": 1918,
       "file": "src/workspace-layout.css",
-      "line": 1809,
+      "line": 1808,
       "selector": ".app[class] > .app-footer",
       "conditions": [
         "@layer adaptive-layout"
@@ -131347,7 +131346,7 @@
     {
       "id": 1919,
       "file": "src/workspace-layout.css",
-      "line": 1810,
+      "line": 1809,
       "selector": ".app[class] > .app-footer > span",
       "conditions": [
         "@layer adaptive-layout"
@@ -131418,7 +131417,7 @@
     {
       "id": 1920,
       "file": "src/workspace-layout.css",
-      "line": 1811,
+      "line": 1810,
       "selector": ".app[class] .app-footer > div",
       "conditions": [
         "@layer adaptive-layout"
@@ -131493,7 +131492,7 @@
     {
       "id": 1921,
       "file": "src/workspace-layout.css",
-      "line": 1812,
+      "line": 1811,
       "selector": ".app[class] .app-footer :is(button,span)",
       "conditions": [
         "@layer adaptive-layout"
@@ -131565,7 +131564,7 @@
     {
       "id": 1922,
       "file": "src/workspace-layout.css",
-      "line": 1813,
+      "line": 1812,
       "selector": ".app[class] .decision-bar",
       "conditions": [
         "@layer adaptive-layout"
@@ -131636,7 +131635,7 @@
     {
       "id": 1923,
       "file": "src/workspace-layout.css",
-      "line": 1815,
+      "line": 1814,
       "selector": ".app .setup-portrait:nth-child(n)",
       "conditions": [],
       "conditionKinds": [
@@ -131709,7 +131708,7 @@
     {
       "id": 1924,
       "file": "src/workspace-layout.css",
-      "line": 1817,
+      "line": 1816,
       "selector": ".app[class] > .draft-main:has(.draft-arena)",
       "conditions": [
         "@layer adaptive-layout"
@@ -131795,7 +131794,7 @@
     {
       "id": 1925,
       "file": "src/workspace-layout.css",
-      "line": 1818,
+      "line": 1817,
       "selector": ".app[class] .draft-arena",
       "conditions": [
         "@layer adaptive-layout"
@@ -131869,7 +131868,7 @@
     {
       "id": 1926,
       "file": "src/workspace-layout.css",
-      "line": 1819,
+      "line": 1818,
       "selector": ".app[class] .decision-bar",
       "conditions": [
         "@layer adaptive-layout"

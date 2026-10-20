@@ -131,3 +131,7 @@ check-exact-conditional-duplicates.mjsを14ファイルへ拡張。main.tsxの�
 ## ホーム幅条件で上書きされる旧gap指定を削除（2026-10-20）
 
 `refinement.css`の`.app .setup-main`内、max-width:700pxの`gap:28px`を削除。同じ`.app .setup-main`・同じmax-width:700px・同じ`legacy`レイヤーで、後から読み込まれる`setup-experience.css`が`gap:14px`を指定するため旧宣言は常に後勝ち指定に上書きされる。refinement側のmax-width:1000pxにある広幅フォールバックと、後続のmax-width:700px gap14pxは維持。CSSOM比較では既存ルール内の元の位置へgap28pxを戻して除去し、ホーム画面全要素の矩形と計算済みgapを比較。Chromium/WebKit×320/390/600/700/701/900/1000pxで14/14一致・復元一致（700px以下の8比較で条件成立、6比較は境界確認）。`tests/browser/css-setup-main-gap-cascade.mjs`で再実行でき、`scripts/check-setup-main-gap-cascade.mjs`が宣言の再混入、import順変更、勝者指定の欠落をCIで検出する。現在の静的import順とホーム画面の有限幅検証を根拠とし、全状態・全条件付きCSSの完了を意味しない。
+
+## 狭幅でレイヤー指定を上書きする旧team-panel gapを削除（2026-10-20）
+
+`design.css`のmax-width:900px `.team-panel`から`gap:8px`だけを削除。これは`legacy`レイヤーにあり、main.tsxで後から読み込まれる非レイヤー`workspace-layout.css`がmax-width:1000pxで同じセレクターに`gap:4px`を指定し、max-width:600pxではさらに後の`gap:6px`を指定するため、900px以下で旧gapは勝てない。周辺のlegacy grid行・paddingとmax-width:1200pxの広域gapは維持。ブラウザー比較では削除前後に両ドラフトモードの実チームパネル2個（片側が非表示となる状態を含む）を使い、旧宣言をCSSOMの同じルール位置へ戻して除去し、全`.app`要素矩形と2パネルの計算済みgapを比較した。Chromium/WebKit×320/390/600/601/800/900/901/1000px×通常/オールスター×選択前後で64/64一致・復元一致、条件成立48比較と境界16比較。`tests/browser/css-legacy-team-panel-gap.mjs`で再現でき、`scripts/check-legacy-team-panel-gap.mjs`が対象宣言の再混入、import/layer順変更、広幅・電話幅の上書き指定欠落をCIで検出する。証拠は現在の静的cascade/importと列挙した2モード・画面幅に限定し、将来の外部CSSOM変更や全条件付きCSSの完了を意味しない。

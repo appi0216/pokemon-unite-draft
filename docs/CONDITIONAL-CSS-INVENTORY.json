@@ -31,7 +31,7 @@
     "src/result-image.ts": "1e469cf292afdb1a939d4acb64bc30f7b2b529ce3420eea63a602c49ae2c244c",
     "src/vite-env.d.ts": "42e587602e654d15a990ea632bf3993ba9c18f3808b7f3079e57c4c0cdc06762",
     "src/adaptive-ui.css": "4ee10f51cd6182241dfee5358040851f1bedd3c25023dbe4a0678149b4f58112",
-    "src/design.css": "b9c421b6e643c553aa9362b5c60d982ba8b1ed4d31756370a6fd244894db6f39",
+    "src/design.css": "26b24cf9b1d02302162750c2acb28df2e452018eea3da48774da9ee212c42f3e",
     "src/draft-experience.css": "89be71c47947f7964d27074d7662f490704025f33a193e2b35f1f451e7eacaa3",
     "src/interaction-upgrades.css": "c670426adf6a2be5fdd497ad9c6966689ce9c2007e5695556661fea8a9005301",
     "src/interface-polish.css": "e7555e8879551cd52f7abc25a32b2a632b91a94b9b2f7569ef925979ca049c53",
@@ -642,19 +642,19 @@
       "locations": [
         {
           "file": "src/design.css",
-          "line": 1981
+          "line": 1980
         },
         {
           "file": "src/design.css",
-          "line": 1992
+          "line": 1991
         },
         {
           "file": "src/design.css",
-          "line": 2001
+          "line": 2000
         },
         {
           "file": "src/design.css",
-          "line": 2031
+          "line": 2030
         },
         {
           "file": "src/theme.css",
@@ -1631,7 +1631,7 @@
         },
         {
           "file": "src/design.css",
-          "line": 1854
+          "line": 1853
         },
         {
           "file": "src/draft-experience.css",
@@ -28081,8 +28081,7 @@
       "historicalUnmatched": false,
       "declarations": [
         "grid-template-rows: 41px 15px 51px 18px minmax(0, 1fr) 18px",
-        "padding: 10px 7px",
-        "gap: 8px"
+        "padding: 10px 7px"
       ],
       "references": [
         {
@@ -28102,7 +28101,7 @@
     {
       "id": 468,
       "file": "src/design.css",
-      "line": 1467,
+      "line": 1466,
       "selector": ".team-emblem",
       "conditions": [
         "@media (max-width: 900px)"
@@ -28136,7 +28135,7 @@
     {
       "id": 469,
       "file": "src/design.css",
-      "line": 1470,
+      "line": 1469,
       "selector": ".team-heading h2",
       "conditions": [
         "@media (max-width: 900px)"
@@ -28166,7 +28165,7 @@
     {
       "id": 470,
       "file": "src/design.css",
-      "line": 1473,
+      "line": 1472,
       "selector": ".team-heading .eyebrow",
       "conditions": [
         "@media (max-width: 900px)"
@@ -28205,7 +28204,7 @@
     {
       "id": 471,
       "file": "src/design.css",
-      "line": 1476,
+      "line": 1475,
       "selector": ".order-label",
       "conditions": [
         "@media (max-width: 900px)"
@@ -28239,7 +28238,7 @@
     {
       "id": 472,
       "file": "src/design.css",
-      "line": 1479,
+      "line": 1478,
       "selector": ".ban-slots",
       "conditions": [
         "@media (max-width: 900px)"
@@ -28269,7 +28268,7 @@
     {
       "id": 473,
       "file": "src/design.css",
-      "line": 1482,
+      "line": 1481,
       "selector": ".ban-slot .portrait",
       "conditions": [
         "@media (max-width: 900px)"
@@ -28361,7 +28360,7 @@
     {
       "id": 474,
       "file": "src/design.css",
-      "line": 1486,
+      "line": 1485,
       "selector": ".ban-slot-label",
       "conditions": [
         "@media (max-width: 900px)"
@@ -28392,7 +28391,7 @@
     {
       "id": 475,
       "file": "src/design.css",
-      "line": 1490,
+      "line": 1489,
       "selector": ".player-portrait,\n  .player-portrait.has-pokemon",
       "conditions": [
         "@media (max-width: 900px)"
@@ -28431,7 +28430,7 @@
     {
       "id": 476,
       "file": "src/design.css",
-      "line": 1494,
+      "line": 1493,
       "selector": ".player-portrait > .portrait",
       "conditions": [
         "@media (max-width: 900px)"
@@ -28515,7 +28514,7 @@
     {
       "id": 477,
       "file": "src/design.css",
-      "line": 1498,
+      "line": 1497,
       "selector": ".player-name,\n  .filled .player-name",
       "conditions": [
         "@media (max-width: 900px)"
@@ -28558,7 +28557,7 @@
     {
       "id": 478,
       "file": "src/design.css",
-      "line": 1502,
+      "line": 1501,
       "selector": ".active .player-name",
       "conditions": [
         "@media (max-width: 900px)"
@@ -28749,7 +28748,7 @@
     {
       "id": 479,
       "file": "src/design.css",
-      "line": 1505,
+      "line": 1504,
       "selector": ".trainer",
       "conditions": [
         "@media (max-width: 900px)"
@@ -28911,7 +28910,7 @@
     {
       "id": 480,
       "file": "src/design.css",
-      "line": 1508,
+      "line": 1507,
       "selector": ".trainer svg,\n  .player-check",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29082,7 +29081,7 @@
     {
       "id": 481,
       "file": "src/design.css",
-      "line": 1512,
+      "line": 1511,
       "selector": ".role-text",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29112,7 +29111,7 @@
     {
       "id": 482,
       "file": "src/design.css",
-      "line": 1515,
+      "line": 1514,
       "selector": ".pokemon-grid",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29147,7 +29146,7 @@
     {
       "id": 483,
       "file": "src/design.css",
-      "line": 1519,
+      "line": 1518,
       "selector": ".selection-panel",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29178,7 +29177,7 @@
     {
       "id": 484,
       "file": "src/design.css",
-      "line": 1523,
+      "line": 1522,
       "selector": ".selection-top h2",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29208,7 +29207,7 @@
     {
       "id": 485,
       "file": "src/design.css",
-      "line": 1526,
+      "line": 1525,
       "selector": ".selection-top > div > svg",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29238,7 +29237,7 @@
     {
       "id": 486,
       "file": "src/design.css",
-      "line": 1529,
+      "line": 1528,
       "selector": ".selection-top > div",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29268,7 +29267,7 @@
     {
       "id": 487,
       "file": "src/design.css",
-      "line": 1532,
+      "line": 1531,
       "selector": ".sort-select select",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29298,7 +29297,7 @@
     {
       "id": 488,
       "file": "src/design.css",
-      "line": 1535,
+      "line": 1534,
       "selector": ".roster-tools",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29329,7 +29328,7 @@
     {
       "id": 489,
       "file": "src/design.css",
-      "line": 1539,
+      "line": 1538,
       "selector": ".search-field",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29359,7 +29358,7 @@
     {
       "id": 490,
       "file": "src/design.css",
-      "line": 1542,
+      "line": 1541,
       "selector": ".hide-used",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29390,7 +29389,7 @@
     {
       "id": 491,
       "file": "src/design.css",
-      "line": 1546,
+      "line": 1545,
       "selector": ".role-tabs",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29421,7 +29420,7 @@
     {
       "id": 492,
       "file": "src/design.css",
-      "line": 1550,
+      "line": 1549,
       "selector": ".role-tabs button",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29451,7 +29450,7 @@
     {
       "id": 493,
       "file": "src/design.css",
-      "line": 1553,
+      "line": 1552,
       "selector": ".roster-count",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29481,7 +29480,7 @@
     {
       "id": 494,
       "file": "src/design.css",
-      "line": 1556,
+      "line": 1555,
       "selector": ".utility-actions",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29512,7 +29511,7 @@
     {
       "id": 495,
       "file": "src/design.css",
-      "line": 1560,
+      "line": 1559,
       "selector": ".decision-bar",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29543,7 +29542,7 @@
     {
       "id": 496,
       "file": "src/design.css",
-      "line": 1564,
+      "line": 1563,
       "selector": ".confirm-button",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29582,7 +29581,7 @@
     {
       "id": 497,
       "file": "src/design.css",
-      "line": 1568,
+      "line": 1567,
       "selector": ".decision-extra .subtle-button",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29638,7 +29637,7 @@
     {
       "id": 498,
       "file": "src/design.css",
-      "line": 1572,
+      "line": 1571,
       "selector": ".timeline",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29693,7 +29692,7 @@
     {
       "id": 499,
       "file": "src/design.css",
-      "line": 1576,
+      "line": 1575,
       "selector": ".timeline-label",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29723,7 +29722,7 @@
     {
       "id": 500,
       "file": "src/design.css",
-      "line": 1579,
+      "line": 1578,
       "selector": ".timeline-step > span:last-child",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29754,7 +29753,7 @@
     {
       "id": 501,
       "file": "src/design.css",
-      "line": 1582,
+      "line": 1581,
       "selector": ".timeline-stages",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29784,7 +29783,7 @@
     {
       "id": 502,
       "file": "src/design.css",
-      "line": 1585,
+      "line": 1584,
       "selector": ".timeline-step",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29814,7 +29813,7 @@
     {
       "id": 503,
       "file": "src/design.css",
-      "line": 1588,
+      "line": 1587,
       "selector": ".app-footer",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29847,7 +29846,7 @@
     {
       "id": 504,
       "file": "src/design.css",
-      "line": 1594,
+      "line": 1593,
       "selector": ".app-footer > span",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29877,7 +29876,7 @@
     {
       "id": 505,
       "file": "src/design.css",
-      "line": 1597,
+      "line": 1596,
       "selector": ".app .setup-main",
       "conditions": [
         "@media (max-width: 900px)"
@@ -29951,7 +29950,7 @@
     {
       "id": 506,
       "file": "src/design.css",
-      "line": 1605,
+      "line": 1604,
       "selector": ".app-header",
       "conditions": [
         "@media (max-width: 680px)"
@@ -29983,7 +29982,7 @@
     {
       "id": 507,
       "file": "src/design.css",
-      "line": 1610,
+      "line": 1609,
       "selector": ".brand",
       "conditions": [
         "@media (max-width: 680px)"
@@ -30018,7 +30017,7 @@
     {
       "id": 508,
       "file": "src/design.css",
-      "line": 1614,
+      "line": 1613,
       "selector": ".brand img",
       "conditions": [
         "@media (max-width: 680px)"
@@ -30053,7 +30052,7 @@
     {
       "id": 509,
       "file": "src/design.css",
-      "line": 1618,
+      "line": 1617,
       "selector": ".brand small",
       "conditions": [
         "@media (max-width: 680px)"
@@ -30088,7 +30087,7 @@
     {
       "id": 510,
       "file": "src/design.css",
-      "line": 1622,
+      "line": 1621,
       "selector": ".header-actions",
       "conditions": [
         "@media (max-width: 680px)"
@@ -30118,7 +30117,7 @@
     {
       "id": 511,
       "file": "src/design.css",
-      "line": 1625,
+      "line": 1624,
       "selector": ".header-actions > .fullscreen-button",
       "conditions": [
         "@media (max-width: 680px)"
@@ -30157,7 +30156,7 @@
     {
       "id": 512,
       "file": "src/design.css",
-      "line": 1628,
+      "line": 1627,
       "selector": ".setup-return-button",
       "conditions": [
         "@media (max-width: 680px)"
@@ -30188,7 +30187,7 @@
     {
       "id": 513,
       "file": "src/design.css",
-      "line": 1632,
+      "line": 1631,
       "selector": ".setup-return-button span",
       "conditions": [
         "@media (max-width: 680px)"
@@ -30218,7 +30217,7 @@
     {
       "id": 514,
       "file": "src/design.css",
-      "line": 1635,
+      "line": 1634,
       "selector": ".app main",
       "conditions": [
         "@media (max-width: 680px)"
@@ -30280,7 +30279,7 @@
     {
       "id": 515,
       "file": "src/design.css",
-      "line": 1638,
+      "line": 1637,
       "selector": ".phase-banner",
       "conditions": [
         "@media (max-width: 680px)"
@@ -30316,7 +30315,7 @@
     {
       "id": 516,
       "file": "src/design.css",
-      "line": 1647,
+      "line": 1646,
       "selector": ".timer",
       "conditions": [
         "@media (max-width: 680px)"
@@ -30373,7 +30372,7 @@
     {
       "id": 517,
       "file": "src/design.css",
-      "line": 1653,
+      "line": 1652,
       "selector": ".timer strong",
       "conditions": [
         "@media (max-width: 680px)"
@@ -30427,7 +30426,7 @@
     {
       "id": 518,
       "file": "src/design.css",
-      "line": 1656,
+      "line": 1655,
       "selector": ".timer > .eyebrow",
       "conditions": [
         "@media (max-width: 680px)"
@@ -30490,7 +30489,7 @@
     {
       "id": 519,
       "file": "src/design.css",
-      "line": 1659,
+      "line": 1658,
       "selector": ".draft-arena",
       "conditions": [
         "@media (max-width: 680px)"
@@ -30522,7 +30521,7 @@
     {
       "id": 520,
       "file": "src/design.css",
-      "line": 1664,
+      "line": 1663,
       "selector": ".team-panel.purple",
       "conditions": [
         "@media (max-width: 680px)"
@@ -30770,7 +30769,7 @@
     {
       "id": 521,
       "file": "src/design.css",
-      "line": 1668,
+      "line": 1667,
       "selector": ".team-panel.orange",
       "conditions": [
         "@media (max-width: 680px)"
@@ -30962,7 +30961,7 @@
     {
       "id": 522,
       "file": "src/design.css",
-      "line": 1672,
+      "line": 1671,
       "selector": ".selection-panel",
       "conditions": [
         "@media (max-width: 680px)"
@@ -30994,7 +30993,7 @@
     {
       "id": 523,
       "file": "src/design.css",
-      "line": 1677,
+      "line": 1676,
       "selector": ".team-panel",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31027,7 +31026,7 @@
     {
       "id": 524,
       "file": "src/design.css",
-      "line": 1683,
+      "line": 1682,
       "selector": ".team-heading h2",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31057,7 +31056,7 @@
     {
       "id": 525,
       "file": "src/design.css",
-      "line": 1686,
+      "line": 1685,
       "selector": ".team-heading .eyebrow",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31096,7 +31095,7 @@
     {
       "id": 526,
       "file": "src/design.css",
-      "line": 1689,
+      "line": 1688,
       "selector": ".team-heading",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31126,7 +31125,7 @@
     {
       "id": 527,
       "file": "src/design.css",
-      "line": 1692,
+      "line": 1691,
       "selector": ".order-label",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31161,7 +31160,7 @@
     {
       "id": 528,
       "file": "src/design.css",
-      "line": 1696,
+      "line": 1695,
       "selector": ".ban-slot",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31199,7 +31198,7 @@
     {
       "id": 529,
       "file": "src/design.css",
-      "line": 1699,
+      "line": 1698,
       "selector": ".ban-slot .portrait",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31291,7 +31290,7 @@
     {
       "id": 530,
       "file": "src/design.css",
-      "line": 1703,
+      "line": 1702,
       "selector": ".ban-slot-label",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31321,7 +31320,7 @@
     {
       "id": 531,
       "file": "src/design.css",
-      "line": 1706,
+      "line": 1705,
       "selector": ".ban-slot > .ban-mark",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31371,7 +31370,7 @@
     {
       "id": 532,
       "file": "src/design.css",
-      "line": 1712,
+      "line": 1711,
       "selector": ".player-list",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31401,7 +31400,7 @@
     {
       "id": 533,
       "file": "src/design.css",
-      "line": 1715,
+      "line": 1714,
       "selector": ".player-slot",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31433,7 +31432,7 @@
     {
       "id": 534,
       "file": "src/design.css",
-      "line": 1720,
+      "line": 1719,
       "selector": ".player-portrait,\n  .player-portrait.has-pokemon",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31472,7 +31471,7 @@
     {
       "id": 535,
       "file": "src/design.css",
-      "line": 1724,
+      "line": 1723,
       "selector": ".player-portrait > .portrait",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31556,7 +31555,7 @@
     {
       "id": 536,
       "file": "src/design.css",
-      "line": 1728,
+      "line": 1727,
       "selector": ".player-name,\n  .filled .player-name",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31599,7 +31598,7 @@
     {
       "id": 537,
       "file": "src/design.css",
-      "line": 1732,
+      "line": 1731,
       "selector": ".trainer",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31762,7 +31761,7 @@
     {
       "id": 538,
       "file": "src/design.css",
-      "line": 1736,
+      "line": 1735,
       "selector": ".role-text",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31792,7 +31791,7 @@
     {
       "id": 539,
       "file": "src/design.css",
-      "line": 1739,
+      "line": 1738,
       "selector": ".player-number",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31824,7 +31823,7 @@
     {
       "id": 540,
       "file": "src/design.css",
-      "line": 1744,
+      "line": 1743,
       "selector": ".bans-heading,\n  .picks-heading",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31863,7 +31862,7 @@
     {
       "id": 541,
       "file": "src/design.css",
-      "line": 1748,
+      "line": 1747,
       "selector": ".bans-heading > span:last-child,\n  .picks-heading > span:last-child",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31903,7 +31902,7 @@
     {
       "id": 542,
       "file": "src/design.css",
-      "line": 1752,
+      "line": 1751,
       "selector": ".selection-top h2",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31933,7 +31932,7 @@
     {
       "id": 543,
       "file": "src/design.css",
-      "line": 1755,
+      "line": 1754,
       "selector": ".selection-top > div > svg",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31964,7 +31963,7 @@
     {
       "id": 544,
       "file": "src/design.css",
-      "line": 1759,
+      "line": 1758,
       "selector": ".sort-select select",
       "conditions": [
         "@media (max-width: 680px)"
@@ -31994,7 +31993,7 @@
     {
       "id": 545,
       "file": "src/design.css",
-      "line": 1762,
+      "line": 1761,
       "selector": ".roster-tools",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32026,7 +32025,7 @@
     {
       "id": 546,
       "file": "src/design.css",
-      "line": 1767,
+      "line": 1766,
       "selector": ".search-field",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32056,7 +32055,7 @@
     {
       "id": 547,
       "file": "src/design.css",
-      "line": 1770,
+      "line": 1769,
       "selector": ".search-field input",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32086,7 +32085,7 @@
     {
       "id": 548,
       "file": "src/design.css",
-      "line": 1773,
+      "line": 1772,
       "selector": ".role-tabs",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32118,7 +32117,7 @@
     {
       "id": 549,
       "file": "src/design.css",
-      "line": 1778,
+      "line": 1777,
       "selector": ".role-tabs button",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32151,7 +32150,7 @@
     {
       "id": 550,
       "file": "src/design.css",
-      "line": 1784,
+      "line": 1783,
       "selector": ".role-tabs i",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32181,7 +32180,7 @@
     {
       "id": 551,
       "file": "src/design.css",
-      "line": 1787,
+      "line": 1786,
       "selector": ".pokemon-grid",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32216,7 +32215,7 @@
     {
       "id": 552,
       "file": "src/design.css",
-      "line": 1791,
+      "line": 1790,
       "selector": ".selection-footer",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32247,7 +32246,7 @@
     {
       "id": 553,
       "file": "src/design.css",
-      "line": 1795,
+      "line": 1794,
       "selector": ".decision-bar",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32281,7 +32280,7 @@
     {
       "id": 554,
       "file": "src/design.css",
-      "line": 1802,
+      "line": 1801,
       "selector": ".confirm-button",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32323,7 +32322,7 @@
     {
       "id": 555,
       "file": "src/design.css",
-      "line": 1809,
+      "line": 1808,
       "selector": ".utility-actions",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32355,7 +32354,7 @@
     {
       "id": 556,
       "file": "src/design.css",
-      "line": 1814,
+      "line": 1813,
       "selector": ".decision-extra",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32385,7 +32384,7 @@
     {
       "id": 557,
       "file": "src/design.css",
-      "line": 1817,
+      "line": 1816,
       "selector": ".subtle-button,\n  .decision-extra .subtle-button",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32440,7 +32439,7 @@
     {
       "id": 558,
       "file": "src/design.css",
-      "line": 1821,
+      "line": 1820,
       "selector": ".game-counter",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32470,7 +32469,7 @@
     {
       "id": 559,
       "file": "src/design.css",
-      "line": 1824,
+      "line": 1823,
       "selector": ".timeline",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32528,7 +32527,7 @@
     {
       "id": 560,
       "file": "src/design.css",
-      "line": 1831,
+      "line": 1830,
       "selector": ".timeline-stages",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32558,7 +32557,7 @@
     {
       "id": 561,
       "file": "src/design.css",
-      "line": 1834,
+      "line": 1833,
       "selector": ".timeline-step",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32588,7 +32587,7 @@
     {
       "id": 562,
       "file": "src/design.css",
-      "line": 1837,
+      "line": 1836,
       "selector": ".step-node",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32620,7 +32619,7 @@
     {
       "id": 563,
       "file": "src/design.css",
-      "line": 1842,
+      "line": 1841,
       "selector": ".step-node svg",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32651,7 +32650,7 @@
     {
       "id": 564,
       "file": "src/design.css",
-      "line": 1846,
+      "line": 1845,
       "selector": ".timeline-step > span:last-child",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32683,7 +32682,7 @@
     {
       "id": 565,
       "file": "src/design.css",
-      "line": 1850,
+      "line": 1849,
       "selector": ".timeline-step:not(:last-child):after",
       "conditions": [
         "@media (max-width: 680px)"
@@ -32716,7 +32715,7 @@
     {
       "id": 566,
       "file": "src/design.css",
-      "line": 1853,
+      "line": 1852,
       "selector": ".timeline-step.current .step-node",
       "conditions": [
         "@media (max-width: 680px)"
@@ -33110,7 +33109,7 @@
     {
       "id": 567,
       "file": "src/design.css",
-      "line": 1856,
+      "line": 1855,
       "selector": ".timeline-separator",
       "conditions": [
         "@media (max-width: 680px)"
@@ -33140,7 +33139,7 @@
     {
       "id": 568,
       "file": "src/design.css",
-      "line": 1859,
+      "line": 1858,
       "selector": ".app-footer",
       "conditions": [
         "@media (max-width: 680px)"
@@ -33172,7 +33171,7 @@
     {
       "id": 569,
       "file": "src/design.css",
-      "line": 1864,
+      "line": 1863,
       "selector": ".app-footer > span",
       "conditions": [
         "@media (max-width: 680px)"
@@ -33203,7 +33202,7 @@
     {
       "id": 570,
       "file": "src/design.css",
-      "line": 1868,
+      "line": 1867,
       "selector": ".app-footer > div",
       "conditions": [
         "@media (max-width: 680px)"
@@ -33233,7 +33232,7 @@
     {
       "id": 571,
       "file": "src/design.css",
-      "line": 1871,
+      "line": 1870,
       "selector": ".footer-link,\n  .connection",
       "conditions": [
         "@media (max-width: 680px)"
@@ -33276,7 +33275,7 @@
     {
       "id": 572,
       "file": "src/design.css",
-      "line": 1875,
+      "line": 1874,
       "selector": ".app .setup-main",
       "conditions": [
         "@media (max-width: 680px)"
@@ -33351,7 +33350,7 @@
     {
       "id": 573,
       "file": "src/design.css",
-      "line": 1882,
+      "line": 1881,
       "selector": ".setup-mode .app-footer",
       "conditions": [
         "@media (max-width: 680px)"
@@ -33399,7 +33398,7 @@
     {
       "id": 574,
       "file": "src/design.css",
-      "line": 1886,
+      "line": 1885,
       "selector": ".toast",
       "conditions": [
         "@media (max-width: 680px)"
@@ -33430,7 +33429,7 @@
     {
       "id": 575,
       "file": "src/design.css",
-      "line": 1890,
+      "line": 1889,
       "selector": "dialog",
       "conditions": [
         "@media (max-width: 680px)"
@@ -33450,7 +33449,7 @@
     {
       "id": 576,
       "file": "src/design.css",
-      "line": 1893,
+      "line": 1892,
       "selector": ".modal-heading h2",
       "conditions": [
         "@media (max-width: 680px)"
@@ -33484,7 +33483,7 @@
     {
       "id": 577,
       "file": "src/design.css",
-      "line": 1898,
+      "line": 1897,
       "selector": ".draft-arena",
       "conditions": [
         "@media (max-width: 370px)"
@@ -33514,7 +33513,7 @@
     {
       "id": 578,
       "file": "src/design.css",
-      "line": 1901,
+      "line": 1900,
       "selector": ".team-panel",
       "conditions": [
         "@media (max-width: 370px)"
@@ -33544,7 +33543,7 @@
     {
       "id": 579,
       "file": "src/design.css",
-      "line": 1904,
+      "line": 1903,
       "selector": ".team-heading h2",
       "conditions": [
         "@media (max-width: 370px)"
@@ -33574,7 +33573,7 @@
     {
       "id": 580,
       "file": "src/design.css",
-      "line": 1907,
+      "line": 1906,
       "selector": ".team-heading .eyebrow",
       "conditions": [
         "@media (max-width: 370px)"
@@ -33613,7 +33612,7 @@
     {
       "id": 581,
       "file": "src/design.css",
-      "line": 1910,
+      "line": 1909,
       "selector": ".player-portrait,\n  .player-portrait.has-pokemon",
       "conditions": [
         "@media (max-width: 370px)"
@@ -33652,7 +33651,7 @@
     {
       "id": 582,
       "file": "src/design.css",
-      "line": 1914,
+      "line": 1913,
       "selector": ".player-portrait > .portrait",
       "conditions": [
         "@media (max-width: 370px)"
@@ -33736,7 +33735,7 @@
     {
       "id": 583,
       "file": "src/design.css",
-      "line": 1918,
+      "line": 1917,
       "selector": ".player-name,\n  .filled .player-name",
       "conditions": [
         "@media (max-width: 370px)"
@@ -33779,7 +33778,7 @@
     {
       "id": 584,
       "file": "src/design.css",
-      "line": 1922,
+      "line": 1921,
       "selector": ".role-tabs button",
       "conditions": [
         "@media (max-width: 370px)"
@@ -33810,7 +33809,7 @@
     {
       "id": 585,
       "file": "src/design.css",
-      "line": 1926,
+      "line": 1925,
       "selector": ".hide-used",
       "conditions": [
         "@media (max-width: 370px)"
@@ -33840,7 +33839,7 @@
     {
       "id": 586,
       "file": "src/design.css",
-      "line": 1929,
+      "line": 1928,
       "selector": ".app .setup-main",
       "conditions": [
         "@media (max-width: 370px)"
@@ -33911,7 +33910,7 @@
     {
       "id": 587,
       "file": "src/design.css",
-      "line": 1934,
+      "line": 1933,
       "selector": ".confirm-button,\n.modal-primary",
       "conditions": [],
       "conditionKinds": [],
@@ -33967,7 +33966,7 @@
     {
       "id": 588,
       "file": "src/design.css",
-      "line": 1939,
+      "line": 1938,
       "selector": ".subtle-button,\n.sort-select select,\n.hide-used,\n.role-tabs button",
       "conditions": [],
       "conditionKinds": [],
@@ -34036,7 +34035,7 @@
     {
       "id": 589,
       "file": "src/design.css",
-      "line": 1945,
+      "line": 1944,
       "selector": ".role-tabs button.active",
       "conditions": [],
       "conditionKinds": [],
@@ -34223,7 +34222,7 @@
     {
       "id": 590,
       "file": "src/design.css",
-      "line": 1948,
+      "line": 1947,
       "selector": ".bans-heading,\n.picks-heading,\n.trainer,\n.selection-footer,\n.timeline-label,\n.game-counter,\n.player-name",
       "conditions": [],
       "conditionKinds": [],
@@ -34435,7 +34434,7 @@
     {
       "id": 591,
       "file": "src/design.css",
-      "line": 1957,
+      "line": 1956,
       "selector": ".info-content p,\ndialog > p,\n.modal-secondary",
       "conditions": [],
       "conditionKinds": [],
@@ -34478,7 +34477,7 @@
     {
       "id": 592,
       "file": "src/design.css",
-      "line": 1963,
+      "line": 1962,
       "selector": ".team-side",
       "conditions": [],
       "conditionKinds": [],
@@ -34511,7 +34510,7 @@
     {
       "id": 593,
       "file": "src/design.css",
-      "line": 1969,
+      "line": 1968,
       "selector": ".team-side > .team-panel",
       "conditions": [],
       "conditionKinds": [],
@@ -34551,7 +34550,7 @@
     {
       "id": 594,
       "file": "src/design.css",
-      "line": 1973,
+      "line": 1972,
       "selector": ".allstar-arena .team-side",
       "conditions": [],
       "conditionKinds": [],
@@ -34591,7 +34590,7 @@
     {
       "id": 595,
       "file": "src/design.css",
-      "line": 1977,
+      "line": 1976,
       "selector": ".allstar-arena .team-side.orange",
       "conditions": [],
       "conditionKinds": [],
@@ -34791,7 +34790,7 @@
     {
       "id": 596,
       "file": "src/design.css",
-      "line": 1980,
+      "line": 1979,
       "selector": ".team-history",
       "conditions": [],
       "conditionKinds": [],
@@ -34827,7 +34826,7 @@
     {
       "id": 597,
       "file": "src/design.css",
-      "line": 1991,
+      "line": 1990,
       "selector": ".team-history.orange",
       "conditions": [],
       "conditionKinds": [],
@@ -35017,7 +35016,7 @@
     {
       "id": 598,
       "file": "src/design.css",
-      "line": 1995,
+      "line": 1994,
       "selector": ".history-heading",
       "conditions": [],
       "conditionKinds": [],
@@ -35054,7 +35053,7 @@
     {
       "id": 599,
       "file": "src/design.css",
-      "line": 2007,
+      "line": 2006,
       "selector": ".history-heading > span",
       "conditions": [],
       "conditionKinds": [],
@@ -35084,7 +35083,7 @@
     {
       "id": 600,
       "file": "src/design.css",
-      "line": 2014,
+      "line": 2013,
       "selector": ".history-scroll",
       "conditions": [],
       "conditionKinds": [],
@@ -35115,7 +35114,7 @@
     {
       "id": 601,
       "file": "src/design.css",
-      "line": 2022,
+      "line": 2021,
       "selector": ".history-game + .history-game",
       "conditions": [],
       "conditionKinds": [],
@@ -35143,7 +35142,7 @@
     {
       "id": 602,
       "file": "src/design.css",
-      "line": 2027,
+      "line": 2026,
       "selector": ".history-game h3",
       "conditions": [],
       "conditionKinds": [],
@@ -35175,7 +35174,7 @@
     {
       "id": 603,
       "file": "src/design.css",
-      "line": 2034,
+      "line": 2033,
       "selector": ".history-pokemon",
       "conditions": [],
       "conditionKinds": [],
@@ -35206,7 +35205,7 @@
     {
       "id": 604,
       "file": "src/design.css",
-      "line": 2038,
+      "line": 2037,
       "selector": ".history-pokemon-item",
       "conditions": [],
       "conditionKinds": [],
@@ -35238,7 +35237,7 @@
     {
       "id": 605,
       "file": "src/design.css",
-      "line": 2047,
+      "line": 2046,
       "selector": ".history-pokemon-item .portrait",
       "conditions": [],
       "conditionKinds": [],
@@ -35319,7 +35318,7 @@
     {
       "id": 606,
       "file": "src/design.css",
-      "line": 2052,
+      "line": 2051,
       "selector": ".history-pokemon-item > span",
       "conditions": [],
       "conditionKinds": [],
@@ -35350,7 +35349,7 @@
     {
       "id": 607,
       "file": "src/design.css",
-      "line": 2060,
+      "line": 2059,
       "selector": ".legacy-history",
       "conditions": [],
       "conditionKinds": [],
@@ -35382,7 +35381,7 @@
     {
       "id": 608,
       "file": "src/design.css",
-      "line": 2069,
+      "line": 2068,
       "selector": ".legacy-history summary",
       "conditions": [],
       "conditionKinds": [],
@@ -35408,7 +35407,7 @@
     {
       "id": 609,
       "file": "src/design.css",
-      "line": 2072,
+      "line": 2071,
       "selector": ".legacy-history > div",
       "conditions": [],
       "conditionKinds": [],
@@ -35437,7 +35436,7 @@
     {
       "id": 610,
       "file": "src/design.css",
-      "line": 2078,
+      "line": 2077,
       "selector": ".legacy-history > div > span",
       "conditions": [],
       "conditionKinds": [],
@@ -35465,7 +35464,7 @@
     {
       "id": 611,
       "file": "src/design.css",
-      "line": 2084,
+      "line": 2083,
       "selector": ".allstar-arena",
       "conditions": [
         "@media (min-width: 1300px)"
@@ -35496,7 +35495,7 @@
     {
       "id": 612,
       "file": "src/design.css",
-      "line": 2093,
+      "line": 2092,
       "selector": ".allstar-arena .team-side,\n  .allstar-arena .team-side.orange",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -35702,7 +35701,7 @@
     {
       "id": 613,
       "file": "src/design.css",
-      "line": 2099,
+      "line": 2098,
       "selector": ".allstar-arena .team-panel",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -35742,7 +35741,7 @@
     {
       "id": 614,
       "file": "src/design.css",
-      "line": 2103,
+      "line": 2102,
       "selector": ".team-history",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -35774,7 +35773,7 @@
     {
       "id": 615,
       "file": "src/design.css",
-      "line": 2108,
+      "line": 2107,
       "selector": ".history-heading",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -35807,7 +35806,7 @@
     {
       "id": 616,
       "file": "src/design.css",
-      "line": 2114,
+      "line": 2113,
       "selector": ".history-heading > svg",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -35838,7 +35837,7 @@
     {
       "id": 617,
       "file": "src/design.css",
-      "line": 2118,
+      "line": 2117,
       "selector": ".history-heading > span",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -35868,7 +35867,7 @@
     {
       "id": 618,
       "file": "src/design.css",
-      "line": 2121,
+      "line": 2120,
       "selector": ".history-scroll",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -35901,7 +35900,7 @@
     {
       "id": 619,
       "file": "src/design.css",
-      "line": 2127,
+      "line": 2126,
       "selector": ".history-game",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -35931,7 +35930,7 @@
     {
       "id": 620,
       "file": "src/design.css",
-      "line": 2130,
+      "line": 2129,
       "selector": ".history-game + .history-game",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -35964,7 +35963,7 @@
     {
       "id": 621,
       "file": "src/design.css",
-      "line": 2136,
+      "line": 2135,
       "selector": ".history-game h3",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -35996,7 +35995,7 @@
     {
       "id": 622,
       "file": "src/design.css",
-      "line": 2141,
+      "line": 2140,
       "selector": ".history-pokemon",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -36031,7 +36030,7 @@
     {
       "id": 623,
       "file": "src/design.css",
-      "line": 2145,
+      "line": 2144,
       "selector": ".history-pokemon-item",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -36061,7 +36060,7 @@
     {
       "id": 624,
       "file": "src/design.css",
-      "line": 2148,
+      "line": 2147,
       "selector": ".history-pokemon-item .portrait",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -36145,7 +36144,7 @@
     {
       "id": 625,
       "file": "src/design.css",
-      "line": 2152,
+      "line": 2151,
       "selector": ".history-pokemon-item > span",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -36175,7 +36174,7 @@
     {
       "id": 626,
       "file": "src/design.css",
-      "line": 2157,
+      "line": 2156,
       "selector": ".team-side.purple",
       "conditions": [
         "@media (max-width: 680px)"
@@ -36427,7 +36426,7 @@
     {
       "id": 627,
       "file": "src/design.css",
-      "line": 2161,
+      "line": 2160,
       "selector": ".team-side.orange",
       "conditions": [
         "@media (max-width: 680px)"
@@ -36623,7 +36622,7 @@
     {
       "id": 628,
       "file": "src/design.css",
-      "line": 2165,
+      "line": 2164,
       "selector": ".team-side > .team-panel",
       "conditions": [
         "@media (max-width: 680px)"
@@ -36667,7 +36666,7 @@
     {
       "id": 629,
       "file": "src/design.css",
-      "line": 2169,
+      "line": 2168,
       "selector": ".allstar-arena",
       "conditions": [
         "@media (max-width: 680px)"
@@ -36697,7 +36696,7 @@
     {
       "id": 630,
       "file": "src/design.css",
-      "line": 2174,
+      "line": 2173,
       "selector": ".history-scroll",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -36727,7 +36726,7 @@
     {
       "id": 631,
       "file": "src/design.css",
-      "line": 2177,
+      "line": 2176,
       "selector": ".history-game",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -36759,7 +36758,7 @@
     {
       "id": 632,
       "file": "src/design.css",
-      "line": 2182,
+      "line": 2181,
       "selector": ".history-pokemon",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -36793,7 +36792,7 @@
     {
       "id": 633,
       "file": "src/design.css",
-      "line": 2185,
+      "line": 2184,
       "selector": ".history-pokemon-item .portrait",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -36878,7 +36877,7 @@
     {
       "id": 634,
       "file": "src/design.css",
-      "line": 2190,
+      "line": 2189,
       "selector": ".history-game + .history-game",
       "conditions": [
         "@media (max-width: 1299px)"
@@ -36909,7 +36908,7 @@
     {
       "id": 635,
       "file": "src/design.css",
-      "line": 2196,
+      "line": 2195,
       "selector": ".draft-arena",
       "conditions": [],
       "conditionKinds": [],
@@ -36935,7 +36934,7 @@
     {
       "id": 636,
       "file": "src/design.css",
-      "line": 2199,
+      "line": 2198,
       "selector": ".player-portrait > .portrait",
       "conditions": [],
       "conditionKinds": [],
@@ -37017,7 +37016,7 @@
     {
       "id": 637,
       "file": "src/design.css",
-      "line": 2205,
+      "line": 2204,
       "selector": ".player-list",
       "conditions": [],
       "conditionKinds": [],
@@ -37043,7 +37042,7 @@
     {
       "id": 638,
       "file": "src/design.css",
-      "line": 2208,
+      "line": 2207,
       "selector": ".player-slot",
       "conditions": [],
       "conditionKinds": [],
@@ -37069,7 +37068,7 @@
     {
       "id": 639,
       "file": "src/design.css",
-      "line": 2212,
+      "line": 2211,
       "selector": ".player-portrait > .portrait",
       "conditions": [
         "@media (min-width: 1600px)"
@@ -37152,7 +37151,7 @@
     {
       "id": 640,
       "file": "src/design.css",
-      "line": 2217,
+      "line": 2216,
       "selector": ".allstar-arena",
       "conditions": [
         "@media (min-width: 681px) and (max-width: 1299px)"
@@ -37182,7 +37181,7 @@
     {
       "id": 641,
       "file": "src/design.css",
-      "line": 2220,
+      "line": 2219,
       "selector": ".allstar-arena .team-panel",
       "conditions": [
         "@media (min-width: 681px) and (max-width: 1299px)"
@@ -37221,7 +37220,7 @@
     {
       "id": 642,
       "file": "src/design.css",
-      "line": 2223,
+      "line": 2222,
       "selector": ".player-portrait > .portrait",
       "conditions": [
         "@media (min-width: 681px) and (max-width: 1299px)"
@@ -37304,7 +37303,7 @@
     {
       "id": 643,
       "file": "src/design.css",
-      "line": 2228,
+      "line": 2227,
       "selector": ".draft-arena",
       "conditions": [
         "@media (max-width: 680px)"
@@ -37334,7 +37333,7 @@
     {
       "id": 644,
       "file": "src/design.css",
-      "line": 2231,
+      "line": 2230,
       "selector": ".allstar-arena",
       "conditions": [
         "@media (max-width: 680px)"
@@ -37364,7 +37363,7 @@
     {
       "id": 645,
       "file": "src/design.css",
-      "line": 2234,
+      "line": 2233,
       "selector": ".allstar-arena .team-panel",
       "conditions": [
         "@media (max-width: 680px)"
@@ -37403,7 +37402,7 @@
     {
       "id": 646,
       "file": "src/design.css",
-      "line": 2237,
+      "line": 2236,
       "selector": ".player-list",
       "conditions": [
         "@media (max-width: 680px)"
@@ -37433,7 +37432,7 @@
     {
       "id": 647,
       "file": "src/design.css",
-      "line": 2240,
+      "line": 2239,
       "selector": ".player-slot",
       "conditions": [
         "@media (max-width: 680px)"
@@ -37463,7 +37462,7 @@
     {
       "id": 648,
       "file": "src/design.css",
-      "line": 2243,
+      "line": 2242,
       "selector": ".player-portrait > .portrait",
       "conditions": [
         "@media (max-width: 680px)"
@@ -37547,7 +37546,7 @@
     {
       "id": 649,
       "file": "src/design.css",
-      "line": 2247,
+      "line": 2246,
       "selector": ".player-portrait,\n  .player-portrait.has-pokemon",
       "conditions": [
         "@media (max-width: 680px)"
@@ -37586,7 +37585,7 @@
     {
       "id": 650,
       "file": "src/design.css",
-      "line": 2253,
+      "line": 2252,
       "selector": ".player-portrait > .portrait",
       "conditions": [
         "@media (max-width: 370px)"
@@ -37670,7 +37669,7 @@
     {
       "id": 651,
       "file": "src/design.css",
-      "line": 2257,
+      "line": 2256,
       "selector": ".player-portrait,\n  .player-portrait.has-pokemon",
       "conditions": [
         "@media (max-width: 370px)"
@@ -37709,7 +37708,7 @@
     {
       "id": 652,
       "file": "src/design.css",
-      "line": 2262,
+      "line": 2261,
       "selector": ".decision-main > .confirm-button",
       "conditions": [],
       "conditionKinds": [],

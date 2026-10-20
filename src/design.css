@@ -1462,7 +1462,6 @@ dialog > p {
   .team-panel {
     grid-template-rows: 41px 15px 51px 18px minmax(0, 1fr) 18px;
     padding: 10px 7px;
-    gap: 8px;
   }
   .team-emblem {
     display: none;

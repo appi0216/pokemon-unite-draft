@@ -75434,8 +75434,8 @@
           ]
         }
       ],
-      "status": "unproven-retained",
-      "reason": "Text references are search evidence only. DOM reachability, environmental predicates and cascade equivalence have not been proved for all states."
+      "status": "retain-observed-effect",
+      "reason": "tests/browser/css-pwa-focus.mjs: keyboard focus-visible confirmed; rule removal changes outline color in Chromium/WebKit and restoration matches. Effect witness, not each declaration necessity."
     },
     {
       "id": 1154,

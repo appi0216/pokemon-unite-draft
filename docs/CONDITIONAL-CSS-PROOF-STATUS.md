@@ -107,3 +107,7 @@ adaptive-ui.css / workspace-layout.css内の8宣言を削除。祖先メディ�
 ## 完全重複の継続検査範囲（2026-10-20）
 
 check-exact-conditional-duplicates.mjsを14ファイルへ拡張。main.tsxの直接importとlegacy.cssの9つのlayer(legacy) importを実際の順番で読み、legacyと非レイヤーを分けて検査する。メディア条件の祖先列・セレクター・プロパティ・値・重要度が完全一致する重複は現在0件。既に実行済みの一括書き換えモードは撤去し、公開前の読み取り専用検査にした。異なる条件・値の意味的な重複、supports/container/入れ子レイヤー、PWA CSSの全状態判定はこの結果に含まない。0件という結果を全CSSの不要性証明や監査完了と呼ばない。
+
+## PWAのキーボードフォーカス（2026-10-20）
+
+.pwa-panel button:focus-visibleを保持。Tab入力後に更新確認ボタンへフォーカスし、疑似クラスの成立を確認。指定だけを除去するとoutline色がrgb(246,245,248)からrgb(213,198,255)に変わり、復元で戻ることを両ブラウザーで確認。css-pwa-focus.mjsで再現可能。retain-observed-effectへ分類するが、各宣言の不可欠性や色の優劣を証明したものではない。アプリCSS変更なし。

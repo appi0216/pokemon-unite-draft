@@ -1,0 +1,141 @@
+{
+  "scope": "Current static stylesheet imports; no external CSSOM modifications",
+  "removed": [
+    {
+      "file": "src/adaptive-ui.css",
+      "line": 1184,
+      "selector": ".decision-main",
+      "conditions": [
+        [
+          "media",
+          "(max-width: 1000px)"
+        ]
+      ],
+      "declaration": "grid-column: 2",
+      "dominator": {
+        "file": "src/workspace-layout.css",
+        "line": 438
+      },
+      "reason": "Identical selector, ancestor media predicates, value and priority; same unlayered origin; later declaration always wins when earlier can apply."
+    },
+    {
+      "file": "src/workspace-layout.css",
+      "line": 481,
+      "selector": ".compact-view-tabs",
+      "conditions": [
+        [
+          "media",
+          "(max-height: 500px) and (min-width: 601px)"
+        ]
+      ],
+      "declaration": "align-content: start",
+      "dominator": {
+        "file": "src/workspace-layout.css",
+        "line": 550
+      },
+      "reason": "Identical selector, ancestor media predicates, value and priority; same unlayered origin; later declaration always wins when earlier can apply."
+    },
+    {
+      "file": "src/workspace-layout.css",
+      "line": 497,
+      "selector": ".decision-bar",
+      "conditions": [
+        [
+          "media",
+          "(max-height: 500px) and (min-width: 601px)"
+        ]
+      ],
+      "declaration": "grid-area: 3 / 1 / 4 / -1",
+      "dominator": {
+        "file": "src/workspace-layout.css",
+        "line": 553
+      },
+      "reason": "Identical selector, ancestor media predicates, value and priority; same unlayered origin; later declaration always wins when earlier can apply."
+    },
+    {
+      "file": "src/adaptive-ui.css",
+      "line": 1118,
+      "selector": ".compact-picks",
+      "conditions": [
+        [
+          "media",
+          "(max-width: 1000px)"
+        ]
+      ],
+      "declaration": "display: flex",
+      "dominator": {
+        "file": "src/workspace-layout.css",
+        "line": 752
+      },
+      "reason": "Identical selector, ancestor media predicates, value and priority; same unlayered origin; later declaration always wins when earlier can apply."
+    },
+    {
+      "file": "src/adaptive-ui.css",
+      "line": 1119,
+      "selector": ".compact-picks",
+      "conditions": [
+        [
+          "media",
+          "(max-width: 1000px)"
+        ]
+      ],
+      "declaration": "gap: 3px",
+      "dominator": {
+        "file": "src/workspace-layout.css",
+        "line": 753
+      },
+      "reason": "Identical selector, ancestor media predicates, value and priority; same unlayered origin; later declaration always wins when earlier can apply."
+    },
+    {
+      "file": "src/workspace-layout.css",
+      "line": 647,
+      "selector": ".decision-bar",
+      "conditions": [
+        [
+          "media",
+          "(max-width: 600px)"
+        ]
+      ],
+      "declaration": "gap: 4px 8px",
+      "dominator": {
+        "file": "src/workspace-layout.css",
+        "line": 845
+      },
+      "reason": "Identical selector, ancestor media predicates, value and priority; same unlayered origin; later declaration always wins when earlier can apply."
+    },
+    {
+      "file": "src/workspace-layout.css",
+      "line": 659,
+      "selector": ".decision-extra .subtle-button",
+      "conditions": [
+        [
+          "media",
+          "(max-width: 600px)"
+        ]
+      ],
+      "declaration": "width: auto",
+      "dominator": {
+        "file": "src/workspace-layout.css",
+        "line": 870
+      },
+      "reason": "Identical selector, ancestor media predicates, value and priority; same unlayered origin; later declaration always wins when earlier can apply."
+    },
+    {
+      "file": "src/workspace-layout.css",
+      "line": 662,
+      "selector": ".decision-extra .subtle-button span",
+      "conditions": [
+        [
+          "media",
+          "(max-width: 600px)"
+        ]
+      ],
+      "declaration": "display: inline",
+      "dominator": {
+        "file": "src/workspace-layout.css",
+        "line": 873
+      },
+      "reason": "Identical selector, ancestor media predicates, value and priority; same unlayered origin; later declaration always wins when earlier can apply."
+    }
+  ]
+}

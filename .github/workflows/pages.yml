@@ -27,6 +27,8 @@ jobs:
         run: node scripts/inventory-conditional-css.mjs --check
       - name: Reject obsolete positive UI selectors
         run: node scripts/prune-proven-obsolete-css.mjs --check
+      - name: Reject identical conditional declarations
+        run: node scripts/check-exact-conditional-duplicates.mjs
       - name: Check motion suppression cascade
         run: node scripts/check-motion-cascade.mjs
       - run: npm test

@@ -478,7 +478,6 @@ dialog .dialog-notice {
   .compact-view-tabs {
     grid-area: 2 / 1;
     grid-template-columns: minmax(0, 1fr);
-    align-content: start;
   }
   .compact-view-tabs button {
     min-height: 44px;
@@ -492,9 +491,6 @@ dialog .dialog-notice {
   .draft-arena {
     grid-area: 1 / 2 / 3 / 3;
     min-height: 0;
-  }
-  .decision-bar {
-    grid-area: 3 / 1 / 4 / -1;
   }
 }
 /* A bounded workspace changes pages instead of putting 102 cards in a scroller. */
@@ -644,7 +640,6 @@ dialog .dialog-notice {
   }
   .decision-bar {
     grid-template-columns: minmax(0, 1fr) minmax(112px, 1fr);
-    gap: 4px 8px;
   }
   .decision-main {
     grid-column: 2;
@@ -656,10 +651,6 @@ dialog .dialog-notice {
   }
   .decision-extra .subtle-button {
     height: 44px;
-    width: auto;
-  }
-  .decision-extra .subtle-button span {
-    display: inline;
   }
 }
 @media (prefers-reduced-motion: reduce) {

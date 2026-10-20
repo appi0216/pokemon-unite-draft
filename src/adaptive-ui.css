@@ -1114,10 +1114,6 @@ dialog > p,
     color: var(--team);
     background: none;
   }
-  .compact-picks {
-    display: flex;
-    gap: 3px;
-  }
   .compact-picks > span {
     display: grid;
     place-items: center;
@@ -1181,7 +1177,6 @@ dialog > p,
     min-height: 76px;
   }
   .decision-main {
-    grid-column: 2;
     grid-row: 1 / 3;
     gap: 8px;
   }

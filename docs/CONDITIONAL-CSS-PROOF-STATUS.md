@@ -95,3 +95,7 @@ css-pointer.mjsにヘッダーボタン寸法を追加。667×375・fine pointer
 `tests/browser/css-coarse-equivalence.mjs` removes/restores exactly that candidate at runtime, checks the active pointer predicate and exactly one rule, and compares 11 computed geometry/font properties on every app element. Chromium and WebKit, six viewports (320/390/667/800/1001/1600 widths, including short landscape), home and draft: 24/24 comparisons equal and restoration equal. Results are in `.artifacts/css-coarse-equivalence/results.json`.
 
 Decision: retain pending compatibility scope. This establishes supported-math equivalence and finite rendered comparisons, not all-browser/all-state unusedness. Custom properties accept token streams even when a consuming property cannot evaluate a math function; a partial-support engine can therefore treat the original nested expression differently from the base expression. No minimum CSS engine support contract exists. Do not silently broaden this conclusion to older engines, pseudo-elements, or future string readers. No application CSS was changed.
+
+## 完全一致する条件付き宣言の統合（2026-10-20）
+
+adaptive-ui.css / workspace-layout.css内の8宣言を削除。祖先メディア条件・セレクター・プロパティ・値・重要度が完全一致し、同じ非レイヤー領域で後方の指定が必ず優先されるものに限定。異なる値の互換フォールバックや異なる条件・レイヤーは対象外。3つの空ルールを除去し1931ルール、CSS180.23KB。削除箇所と優先される箇所はEXACT-CONDITIONAL-DUPLICATES.jsonに保存。check-exact-conditional-duplicates.mjsを公開前検査へ追加。現在の静的読み込み順が根拠であり、外部CSSOM操作や将来の読み込み変更まで含む全件証明ではない。

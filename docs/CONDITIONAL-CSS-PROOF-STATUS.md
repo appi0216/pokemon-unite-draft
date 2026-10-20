@@ -87,3 +87,11 @@ workspace-layout.cssのpointer:fine/max-height:500pxとpointer:coarseの--contro
 ## 入力機器指定の実寸確認（2026-10-20）
 
 css-pointer.mjsにヘッダーボタン寸法を追加。667×375・fine pointer・homeで除去前36×36、除去後44×44、復元36×36をChromium/WebKitで確認。fine/短い画面ルールをretain-observed-effectへ変更。coarse側は今回の寸法差なしのため未証明保持のまま。
+
+## Coarse pointer size expression — 2026-10-20
+
+`workspace-layout.css` repeats the base `.app` control size under `(pointer: coarse)` as `max(44px, clamp(44px, calc(36px + 1vw), 52px))`. In engines supporting both functions this equals the base clamp for every viewport width: the inner clamp is never below 44px. The intervening fine-pointer override cannot match coarse pointer. Later draft overrides remain unchanged. No TypeScript reader of this custom property's string or CSSOM was found in src.
+
+`tests/browser/css-coarse-equivalence.mjs` removes/restores exactly that candidate at runtime, checks the active pointer predicate and exactly one rule, and compares 11 computed geometry/font properties on every app element. Chromium and WebKit, six viewports (320/390/667/800/1001/1600 widths, including short landscape), home and draft: 24/24 comparisons equal and restoration equal. Results are in `.artifacts/css-coarse-equivalence/results.json`.
+
+Decision: retain pending compatibility scope. This establishes supported-math equivalence and finite rendered comparisons, not all-browser/all-state unusedness. Custom properties accept token streams even when a consuming property cannot evaluate a math function; a partial-support engine can therefore treat the original nested expression differently from the base expression. No minimum CSS engine support contract exists. Do not silently broaden this conclusion to older engines, pseudo-elements, or future string readers. No application CSS was changed.

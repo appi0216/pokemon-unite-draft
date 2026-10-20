@@ -103,3 +103,7 @@ adaptive-ui.css / workspace-layout.css内の8宣言を削除。祖先メディ�
 ## 旧CSS内の完全重複（2026-10-20）
 
 旧9ファイルを同じlegacyレイヤーとして確認し、interaction-upgrades.cssのヘッダー指定4宣言を削除。900px以下・680px以下の各条件で、同じセレクター・値・優先度のgrid-template-columns/padding-inlineが同一ファイルの後方で必ず上書きされる。LEGACY-EXACT-CONDITIONAL-DUPLICATES.jsonに元位置と後方位置を保存。空ルール2つを除去し1929ルール、CSS179.94KB。Chromium/WebKitの320/390/667/844/1440幅でホーム・ドラフトの固定ヘッダー/フッター、操作領域の重なり、横向きの操作サイズを検証し合格。全件証明への拡張はしない。
+
+## 完全重複の継続検査範囲（2026-10-20）
+
+check-exact-conditional-duplicates.mjsを14ファイルへ拡張。main.tsxの直接importとlegacy.cssの9つのlayer(legacy) importを実際の順番で読み、legacyと非レイヤーを分けて検査する。メディア条件の祖先列・セレクター・プロパティ・値・重要度が完全一致する重複は現在0件。既に実行済みの一括書き換えモードは撤去し、公開前の読み取り専用検査にした。異なる条件・値の意味的な重複、supports/container/入れ子レイヤー、PWA CSSの全状態判定はこの結果に含まない。0件という結果を全CSSの不要性証明や監査完了と呼ばない。

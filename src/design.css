@@ -1900,13 +1900,6 @@ dialog > p {
   .filled .player-name {
     font-size: 9px;
   }
-  .role-tabs button {
-    font-size: 8px;
-    padding: 5px 2px;
-  }
-  .hide-used {
-    font-size: 8px;
-  }
   .app .setup-main {
     padding: 25px 14px;
   }

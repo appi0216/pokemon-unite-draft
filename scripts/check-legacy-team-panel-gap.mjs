@@ -19,6 +19,16 @@ function declarations(file, selector, media, property, value) {
   return matches;
 }
 
+function declarationCount(file, selector, property, value) {
+  const root = postcss.parse(fs.readFileSync(file, 'utf8'), { from: file });
+  let count = 0;
+  root.walkRules(rule => {
+    if (!(rule.selectors || [rule.selector]).includes(selector)) return;
+    count += rule.nodes.filter(node => node.type === 'decl' && node.prop === property && node.value === value).length;
+  });
+  return count;
+}
+
 const legacy = fs.readFileSync('src/legacy.css', 'utf8');
 assert.match(legacy, /@import\s+"\.\/design\.css"\s+layer\(legacy\);/);
 const main = fs.readFileSync('src/main.tsx', 'utf8');
@@ -65,6 +75,18 @@ assert.equal(declarations('src/design.css', '.player-portrait > .portrait', '(ma
   'Keep the later narrow portrait width winner');
 assert.equal(declarations('src/design.css', '.player-portrait > .portrait', '(max-width: 370px)', 'height', '40px').length, 1,
   'Keep the later narrow portrait height winner');
+assert.equal(declarations('src/design.css', '.role-tabs button', '(max-width: 370px)', 'font-size', '8px').length, 0,
+  'The overridden max-width:370px role-button font size returned');
+assert.equal(declarations('src/design.css', '.role-tabs button', '(max-width: 370px)', 'padding', '5px 2px').length, 0,
+  'The overridden max-width:370px role-button padding returned');
+assert.equal(declarations('src/design.css', '.hide-used', '(max-width: 370px)', 'font-size', '8px').length, 0,
+  'The overridden max-width:370px hide-used font size returned');
+assert.equal(declarationCount('src/adaptive-ui.css', '.role-tabs button', 'font-size', '0.75rem'), 1,
+  'Keep the later unlayered role-button font size');
+assert.equal(declarationCount('src/adaptive-ui.css', '.role-tabs button', 'padding', '8px 10px'), 1,
+  'Keep the later unlayered role-button padding');
+assert.equal(declarationCount('src/adaptive-ui.css', '.hide-used', 'font-size', '0.8125rem'), 1,
+  'Keep the later unlayered hide-used font size');
 assert.equal(declarations('src/design.css', '.team-panel', '(max-width: 1200px)', 'gap', '8px').length, 1,
   'Keep the broader legacy fallback');
 console.log('PASS: overridden narrow layered team-panel layout declarations are absent; unlayered winners and distinct fallbacks remain');

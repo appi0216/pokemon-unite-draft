@@ -123,7 +123,6 @@
     display: flex;
     max-width: 520px;
     padding: 28px 18px;
-    gap: 28px;
   }
   .phase-banner {
     padding-inline: 12px;

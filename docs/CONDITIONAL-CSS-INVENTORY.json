@@ -38,7 +38,7 @@
     "src/layout-finish.css": "3a1e88037adc7cdb460bb0fe683d3ac172d90bd341d3bd4a55d3f1ce1e42ca0e",
     "src/legacy.css": "9ea5b3aca41e14f6bf71d26e913fdf5b80448a9aadce3885ede382181767c149",
     "src/pwa/install.css": "7dbebd24c9e2dcf3c7baed2a194ec3aa4482fe5f93a68dee06ccad956a781b0d",
-    "src/refinement.css": "e69a4c2f50336dc4f5c4278e13b7bc3c9f14d75d442429b7928462b3cdd51914",
+    "src/refinement.css": "16cd6c8876349c1b4a18d691b27e36efb0937b21f10522811a31224c8a14137a",
     "src/responsive-controls.css": "8e57c828850f07590440987b8715052421ec4e2fbe924be704e19a6601c17157",
     "src/setup-experience.css": "611f20e42ce3f75566bd99528f5d06cee8c46a705e334fc235b0fb047e6ea0eb",
     "src/setup-refresh.css": "575159b309eab372f696e4f44dbf0d6eedbb893b8f9b5fa6dc566a9b249b602a",
@@ -81412,8 +81412,7 @@
       "declarations": [
         "display: flex",
         "max-width: 520px",
-        "padding: 28px 18px",
-        "gap: 28px"
+        "padding: 28px 18px"
       ],
       "references": [
         {
@@ -81474,7 +81473,7 @@
     {
       "id": 1185,
       "file": "src/refinement.css",
-      "line": 128,
+      "line": 127,
       "selector": ".phase-banner",
       "conditions": [
         "@media (max-width: 700px)"

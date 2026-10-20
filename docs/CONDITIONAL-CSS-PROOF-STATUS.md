@@ -127,3 +127,7 @@ check-exact-conditional-duplicates.mjsを14ファイルへ拡張。main.tsxの�
 ## 狭幅のdecision-main配置指定を削除（2026-10-20）
 
 `workspace-layout.css`の`@media (max-width: 600px)`内にあった`.decision-main { grid-column:2; grid-row:1 / 3; }`を削除。同じメディア条件・同じセレクターの後続ルールが`grid-area:1 / 1 / 2 / -1`を指定し、後続のショートハンドが両longhandを上書きする。より広いmax-width:1000pxの配置指定と、狭幅の後続配置は保持。現行ドラフトDOMに実在するdecision-mainを対象に、指定を除去・復元して全`.app`要素の矩形と計算済みgrid配置を比較した。Chromium/WebKit×320/390/600pxの縦画面と600px横画面、境界幅601/800/1000px×選択前後で28比較が一致し、復元も一致。`tests/browser/css-narrow-decision-main-grid.mjs`はソース指定が既にない場合、同じmax-width:600pxブロックの元位置（`.decision-extra`の直前）へ検証用に再注入して比較する。CIの`check-narrow-decision-main-grid.mjs`は削除対象の再混入を拒否し、後続の狭幅配置と広幅配置の保持を確認する。これは現在の静的CSS順と有限のブラウザー/画面状態での証拠で、全条件付きCSSの完了を意味しない。
+
+## ホーム幅条件で上書きされる旧gap指定を削除（2026-10-20）
+
+`refinement.css`の`.app .setup-main`内、max-width:700pxの`gap:28px`を削除。同じ`.app .setup-main`・同じmax-width:700px・同じ`legacy`レイヤーで、後から読み込まれる`setup-experience.css`が`gap:14px`を指定するため旧宣言は常に後勝ち指定に上書きされる。refinement側のmax-width:1000pxにある広幅フォールバックと、後続のmax-width:700px gap14pxは維持。CSSOM比較では既存ルール内の元の位置へgap28pxを戻して除去し、ホーム画面全要素の矩形と計算済みgapを比較。Chromium/WebKit×320/390/600/700/701/900/1000pxで14/14一致・復元一致（700px以下の8比較で条件成立、6比較は境界確認）。`tests/browser/css-setup-main-gap-cascade.mjs`で再実行でき、`scripts/check-setup-main-gap-cascade.mjs`が宣言の再混入、import順変更、勝者指定の欠落をCIで検出する。現在の静的import順とホーム画面の有限幅検証を根拠とし、全状態・全条件付きCSSの完了を意味しない。

@@ -51,6 +51,8 @@ assert.equal(declarations('src/design.css', '.team-panel', '(max-width: 680px)',
   'The overridden max-width:680px legacy padding returned');
 assert.equal(declarations('src/design.css', '.team-panel', '(max-width: 680px)', 'border-radius', '13px').length, 1,
   'Keep the separate legacy max-width:680px radius');
+assert.equal(declarations('src/design.css', '.team-panel', '(max-width: 370px)', 'padding', '8px 5px').length, 0,
+  'The overridden max-width:370px legacy padding returned');
 assert.equal(declarations('src/design.css', '.team-panel', '(max-width: 1200px)', 'gap', '8px').length, 1,
   'Keep the broader legacy fallback');
 console.log('PASS: overridden narrow layered team-panel layout declarations are absent; unlayered winners and distinct fallbacks remain');

@@ -629,10 +629,6 @@
 }
 
 @media (max-width: 900px) {
-  .app:not(.setup-mode) .header-phase {
-    grid-template-columns: minmax(0, 1fr) minmax(250px, 48vw) minmax(0, 1fr);
-    padding-inline: 48px 118px;
-  }
 
   .app:not(.setup-mode) .decision-bar {
     min-height: 58px;
@@ -640,10 +636,6 @@
 }
 
 @media (max-width: 680px) {
-  .app:not(.setup-mode) .header-phase {
-    grid-template-columns: minmax(0, 1fr) minmax(210px, 50vw) minmax(0, 1fr);
-    padding-inline: 42px 104px;
-  }
 }
 
 /* Keep the three live-status groups balanced around the viewport center. */

@@ -99,3 +99,7 @@ Decision: retain pending compatibility scope. This establishes supported-math eq
 ## 完全一致する条件付き宣言の統合（2026-10-20）
 
 adaptive-ui.css / workspace-layout.css内の8宣言を削除。祖先メディア条件・セレクター・プロパティ・値・重要度が完全一致し、同じ非レイヤー領域で後方の指定が必ず優先されるものに限定。異なる値の互換フォールバックや異なる条件・レイヤーは対象外。3つの空ルールを除去し1931ルール、CSS180.23KB。削除箇所と優先される箇所はEXACT-CONDITIONAL-DUPLICATES.jsonに保存。check-exact-conditional-duplicates.mjsを公開前検査へ追加。現在の静的読み込み順が根拠であり、外部CSSOM操作や将来の読み込み変更まで含む全件証明ではない。
+
+## 旧CSS内の完全重複（2026-10-20）
+
+旧9ファイルを同じlegacyレイヤーとして確認し、interaction-upgrades.cssのヘッダー指定4宣言を削除。900px以下・680px以下の各条件で、同じセレクター・値・優先度のgrid-template-columns/padding-inlineが同一ファイルの後方で必ず上書きされる。LEGACY-EXACT-CONDITIONAL-DUPLICATES.jsonに元位置と後方位置を保存。空ルール2つを除去し1929ルール、CSS179.94KB。Chromium/WebKitの320/390/667/844/1440幅でホーム・ドラフトの固定ヘッダー/フッター、操作領域の重なり、横向きの操作サイズを検証し合格。全件証明への拡張はしない。

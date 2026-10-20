@@ -1,0 +1,60 @@
+{
+  "removed": [
+    {
+      "file": "src/interaction-upgrades.css",
+      "selector": ".app:not(.setup-mode) .header-phase",
+      "conditions": [
+        [
+          "media",
+          "(max-width: 900px)"
+        ]
+      ],
+      "declaration": "grid-template-columns: minmax(0, 1fr) minmax(250px, 48vw) minmax(0, 1fr)",
+      "removedLine": 633,
+      "dominatorLine": 1200,
+      "reason": "Same file and layer, identical media conditions, selector, value and priority; later declaration dominates."
+    },
+    {
+      "file": "src/interaction-upgrades.css",
+      "selector": ".app:not(.setup-mode) .header-phase",
+      "conditions": [
+        [
+          "media",
+          "(max-width: 900px)"
+        ]
+      ],
+      "declaration": "padding-inline: 48px 118px",
+      "removedLine": 634,
+      "dominatorLine": 1202,
+      "reason": "Same file and layer, identical media conditions, selector, value and priority; later declaration dominates."
+    },
+    {
+      "file": "src/interaction-upgrades.css",
+      "selector": ".app:not(.setup-mode) .header-phase",
+      "conditions": [
+        [
+          "media",
+          "(max-width: 680px)"
+        ]
+      ],
+      "declaration": "grid-template-columns: minmax(0, 1fr) minmax(210px, 50vw) minmax(0, 1fr)",
+      "removedLine": 644,
+      "dominatorLine": 1208,
+      "reason": "Same file and layer, identical media conditions, selector, value and priority; later declaration dominates."
+    },
+    {
+      "file": "src/interaction-upgrades.css",
+      "selector": ".app:not(.setup-mode) .header-phase",
+      "conditions": [
+        [
+          "media",
+          "(max-width: 680px)"
+        ]
+      ],
+      "declaration": "padding-inline: 42px 104px",
+      "removedLine": 645,
+      "dominatorLine": 1210,
+      "reason": "Same file and layer, identical media conditions, selector, value and priority; later declaration dominates."
+    }
+  ]
+}
